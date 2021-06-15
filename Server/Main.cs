@@ -148,8 +148,8 @@ namespace Server
 
 				fullPath = null;
 			}
-
-			return fullPath;
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Client, "Ultima Online directory:" + fullPath);
+            return fullPath;
 		}
 
 		public static string FindDataFile( string format, params object[] args )

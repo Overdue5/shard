@@ -93,6 +93,7 @@ namespace Server.Misc
 
                     if (v == null)
                         return null;
+                    Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Client, "Ultima Online directory:" + v);
 
                     return v;
                 }

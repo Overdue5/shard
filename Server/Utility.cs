@@ -1193,32 +1193,332 @@ namespace Server
 			}
 		}
 
-		private static Stack<ConsoleColor> m_ConsoleColors = new Stack<ConsoleColor>();
 
-		public static void PushColor( ConsoleColor color )
-		{
-			try
-			{
-				m_ConsoleColors.Push( Console.ForegroundColor );
-				Console.ForegroundColor = color;
-			}
-			catch
-			{
-			}
-		}
+        #region Console 
+        private static Stack<ConsoleColor> m_ConsoleColors = new Stack<ConsoleColor>();
+        public static void PushColor(ConsoleColor color)
+        {
+            try
+            {
+                m_ConsoleColors.Push(Console.ForegroundColor);
+                Console.ForegroundColor = color;
+            }
+            catch
+            {
+            }
+        }
 
-		public static void PopColor()
-		{
-			try
-			{
-				Console.ForegroundColor = m_ConsoleColors.Pop();
-			}
-			catch
-			{
-			}
-		}
+        public static void PopColor()
+        {
+            try
+            {
+                Console.ForegroundColor = m_ConsoleColors.Pop();
+            }
+            catch
+            {
+            }
+        }
 
-		public static bool NumberBetween( double num, int bound1, int bound2, double allowance )
+        public enum ConsoleMsgType
+        {
+            Client,
+            Error,
+            Warning
+        }
+
+        public static void ConsoleWriteLine(ConsoleMsgType type, string msg)
+        {
+            string typename;
+            ConsoleColor tColor, mColor;
+            switch (type)
+            {
+                case ConsoleMsgType.Error:
+                    typename = "Error";
+                    tColor = ConsoleColor.Red;
+                    mColor = ConsoleColor.White;
+                    break;
+                case ConsoleMsgType.Client:
+                    typename = "Info";
+                    tColor = ConsoleColor.Green;
+                    mColor = ConsoleColor.White;
+                    break;
+                case ConsoleMsgType.Warning:
+                    typename = "Warning";
+                    tColor = ConsoleColor.Yellow;
+                    mColor = ConsoleColor.White;
+                    break;
+                default:
+                    typename = "Error";
+                    tColor = ConsoleColor.Red;
+                    mColor = ConsoleColor.White;
+                    break;
+            }
+            ConsoleWriteLine(tColor, typename, mColor, msg);
+        }
+
+        public static void ConsoleWriteLine(Mobile client, ConsoleColor mColor, string msg)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(ConsoleColor.DarkGreen);
+            Console.Write("[Client] ");
+
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write(String.Format("0x{0:X8} \"{1}\" [{2}] : ", client.Serial.Value, client.Name, client.Account.Username));
+
+            Utility.PushColor(mColor);
+            Console.WriteLine(msg);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+            Console.Write(msg);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                for (int i = argN.Length; i < 15; ++i)
+                    argN += " ";
+            }
+
+            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                for (int i = argN.Length; i < 15; ++i)
+                    argN += " ";
+            }
+
+            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                for (int i = argN.Length; i < 15; ++i)
+                    argN += " ";
+            }
+
+            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                for (int i = argN.Length; i < 15; ++i)
+                    argN += " ";
+            }
+
+            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3, object arg4)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                for (int i = argN.Length; i < 15; ++i)
+                    argN += " ";
+            }
+
+            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3, arg4);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, params object[] args)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+            Console.Write(msg, args);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+            Console.WriteLine(msg);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                if (argN.Length < 15)
+                    argN += new string(' ', 15 - argN.Length);
+            }
+
+            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                if (argN.Length < 15)
+                    argN += new string(' ', 15 - argN.Length);
+            }
+
+            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                if (argN.Length < 15)
+                    argN += new string(' ', 15 - argN.Length);
+            }
+
+            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                if (argN.Length < 15)
+                    argN += new string(' ', 15 - argN.Length);
+            }
+
+            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3, object arg4)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+
+            string argN = String.Empty;
+            if (arg0 is NetState)
+            {
+                argN = (arg0 as NetState).ToString();
+                if (argN.Length < 15)
+                    argN += new string(' ', 15 - argN.Length);
+            }
+
+            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3, arg4);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, params object[] args)
+        {
+            Utility.PushColor(ConsoleColor.DarkGray);
+            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
+            Utility.PushColor(tColor);
+            Console.Write("[{0}] ", type);
+            Utility.PushColor(mColor);
+            Console.WriteLine(msg, args);
+            Utility.PushColor(ConsoleColor.Gray);
+        }
+
+        #endregion
+
+
+        public static bool NumberBetween( double num, int bound1, int bound2, double allowance )
 		{
 			if ( bound1 > bound2 )
 			{
