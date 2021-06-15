@@ -289,10 +289,10 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Log), 1044041, 20, 1044351);
             AddSkill(index, SkillName.Tactics, 80.0, 100.0);
 
-            index = AddCraft(typeof(LeafShield), 1044295, "leaf shield", 75.5, 102.5, typeof(Log), 1044041, 22, 1044351);
-            AddRes(index, typeof(OakBoard), "Oak Board", 10, "You lack the oak boards to make this");
-            AddRes(index, typeof(AshBoard), "Ash Board", 10, "You lack the ash boards to make this");
-            AddSkill(index, SkillName.Parry, 100.0, 100.0);
+            //index = AddCraft(typeof(LeafShield), 1044295, "leaf shield", 75.5, 102.5, typeof(Log), 1044041, 22, 1044351);
+            //AddRes(index, typeof(OakBoard), "Oak Board", 10, "You lack the oak boards to make this");
+            //AddRes(index, typeof(AshBoard), "Ash Board", 10, "You lack the ash boards to make this");
+            //AddSkill(index, SkillName.Parry, 100.0, 100.0);
 
             /*if (!Core.AOS)	//Duplicate Entries to preserve ordering depending on era 
             {

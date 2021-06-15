@@ -319,10 +319,10 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( BronzeShield ), 1011080, 1027026, -15.2, 34.8, typeof( IronIngot ), 1044036, 12, 1044037 );
 			AddCraft( typeof( HeaterShield ), 1011080, 1027030, 24.3, 74.3, typeof( IronIngot ), 1044036, 18, 1044037 );
             
-            index = AddCraft(typeof(CalvaryShield), 1011080, "calvary shield", 90.0, 102.0, typeof(IronIngot), 1044036, 20, 1044037);
-            AddRes(index, typeof(OakLog), "Oak Log", 5, "You lack the oak logs to make this");
-            AddRes(index, typeof(StarSapphire), "Star Sapphire", 20, "You lack the star sapphires to make this");
-            AddSkill(index, SkillName.Parry, 100.0, 100.0);
+            //index = AddCraft(typeof(CalvaryShield), 1011080, "calvary shield", 90.0, 102.0, typeof(IronIngot), 1044036, 20, 1044037);
+            //AddRes(index, typeof(OakLog), "Oak Log", 5, "You lack the oak logs to make this");
+            //AddRes(index, typeof(StarSapphire), "Star Sapphire", 20, "You lack the star sapphires to make this");
+            //AddSkill(index, SkillName.Parry, 100.0, 100.0);
 
 			AddCraft( typeof( MetalShield ), 1011080, 1027035, -10.2, 39.8, typeof( IronIngot ), 1044036, 14, 1044037 );
 			AddCraft( typeof( MetalKiteShield ), 1011080, 1027028, 4.6, 54.6, typeof( IronIngot ), 1044036, 16, 1044037 );

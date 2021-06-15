@@ -507,7 +507,7 @@
     <Compile Include="Custom\Adds\Items\Rewards\GMSmithHammer.cs" />
     <Compile Include="Custom\Adds\Items\Rewards\RewardDyeTub.cs" />
     <Compile Include="Custom\Adds\Items\SeedBox.cs" />
-    <Compile Include="Custom\Adds\Items\Shields.cs" />
+    <None Include="!Disabled\Shields.cs" />
     <Compile Include="Custom\Adds\Items\ShrinkPotion.cs" />
     <Compile Include="Custom\Adds\Items\SilverWeaponCrystal.cs" />
     <Compile Include="Custom\Adds\Items\SkillBook.cs" />
@@ -4363,5 +4363,6 @@
       <Name>Server</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
