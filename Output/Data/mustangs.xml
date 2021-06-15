@@ -12,7 +12,7 @@
 	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="90" Hue="1914" Name="Fire Mustang" ID="Fire" />
 	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="90" Hue="1109" Name="Blackrock Mustang" ID="Blackrock" />
 	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="85" Hue="2538" Name="Wizard Mustang" ID="Wizard" />
-	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="100" Hue="1959" Name="Peach Mustang" ID="Peach" />
+	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="100" Hue="1959" Name="Peach Mustang" ID="Peachey" />
 	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="80" Hue="1238" Name="Purple Mustang" ID="Purple" />
 	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="80" Hue="796" Name="Grey Mustang" ID="Grey" />
 	<anyType xsi:type="MustangInfo" BodyVal="204" Skill="80" Hue="1218" Name="Bloodrock Mustang" ID="Bloodrock" />
