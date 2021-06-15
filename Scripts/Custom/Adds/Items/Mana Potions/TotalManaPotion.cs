@@ -13,9 +13,9 @@ namespace Server.Items
         [Constructable]
         public TotalManaPotion(int amount) : base(PotionEffect.TotalMana)
         {
-            Name = "Greater Mana Potion";
+            Name = "Total Mana Potion";
             ItemID = 3853;
-            Hue = 0x387;
+            Hue = 0x388;
             Amount = amount;
         }
 
