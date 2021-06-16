@@ -731,14 +731,6 @@ namespace Server.Engines.Craft
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
             AddRecipe(index, 5);
 
-            index = AddCraft(typeof(DiamondKatana), "Colored Weapons", "Diamond Katana", 92.0, 101.1, typeof(BlackDiamondIngot), "Black Diamond Ingots", 4, 1044037);
-            AddRes(index, typeof(ValoriteIngot), "Valorite Ingots", 15, 1044037);
-            AddRes(index, typeof(Diamond), "Diamonds", 50, "You lack diamonds to create this");
-            AddRes(index, typeof(Log), 1044041, 10, 1044351);
-            AddRes(index, typeof(BlueDiamond), "Blue Diamonds", 1, "You lack blue diamond to create this");
-            AddSkill(index, SkillName.Tinkering, 90.0, 100.0);
-            AddSkill(index, SkillName.Tactics, 90.0, 100.0);
-            
             index = AddCraft(typeof(DwarvenBattleAxe), "Colored Weapons", "Dwarven Battle Axe", 91.0, 101.2, typeof(MytherilIngot), "Mytheril Ingots", 20, 1044037);
             AddRes(index, typeof(ValoriteIngot), "Valorite Ingots", 20, 1044037);
             AddRes(index, typeof(StarSapphire), "Star Sapphires", 4, "You lack star sapphires to create this");
@@ -788,7 +780,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Tourmaline), "Tourmalines", 8, "You lack tourmalines to create this");
             AddRes(index, typeof(Log), 1044041, 8, 1044351);
 
-            index = AddCraft(typeof(LionheartAxe), "Colored Weapons", "Lionheart Axe", 65.0, 100.0, typeof(SandRockIngot), "Sand Rock Ingots", 5, 1044037);
+            index = AddCraft(typeof(ApalalasClaw), "Colored Weapons", "Apalalas Claw", 65.0, 100.0, typeof(BloodRockIngot), "Blood Rock Ingots", 5, 1044037);
             AddRes(index, typeof(Citrine), "Citrines", 12, "You lack citrines to create this");
             AddRes(index, typeof(Log), 1044041, 18, 1044351);
 
