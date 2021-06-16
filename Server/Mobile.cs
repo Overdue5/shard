@@ -1916,7 +1916,7 @@ namespace Server
 
 		public virtual void ClearHands()
 		{
-`			ClearHand( FindItemOnLayer( Layer.OneHanded ) );
+			ClearHand( FindItemOnLayer( Layer.OneHanded ) );
 			ClearHand( FindItemOnLayer( Layer.TwoHanded ) );
 		}
 
