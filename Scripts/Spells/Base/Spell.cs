@@ -1201,8 +1201,8 @@ namespace Server.Spells
                     }
                 }
 
-                if (m_Caster is PlayerMobile && ClearHandsOnCast) //Mobiles don't need to disarm
-                    m_Caster.ClearHands();
+                //if (m_Caster is PlayerMobile && ClearHandsOnCast) //Mobiles don't need to disarm
+                //    m_Caster.ClearHands();
 
                 var karma = ComputeKarmaAward();
 
