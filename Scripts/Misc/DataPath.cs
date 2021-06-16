@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Microsoft.Win32;
+using Server;
 
 namespace Server.Misc
 {
@@ -12,8 +13,7 @@ namespace Server.Misc
          * 
          * private const string CustomPath = @"C:\Users\Administrator\Desktop\Deluxe Ultima Online (1.0)";
          */
-        //private static string CustomPath = @"C:\Users\Administrator\Desktop\Deluxe Ultima Online (1.0)";
-        private static readonly string CustomPath = Config.Get(@"DataPath.CustomPath", default(string));
+        private static string CustomPath = @"C:\Users\Administrator\Desktop\Deluxe Ultima Online (1.0)";
 
         /* The following is a list of files which a required for proper execution:
          * 
@@ -92,7 +92,6 @@ namespace Server.Misc
 
                     if (v == null)
                         return null;
-                    Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Client, "Ultima Online directory:" + v);
 
                     return v;
                 }
