@@ -56,10 +56,10 @@ namespace Server.Spells
         //the possibility of stacking 'em.  Note that a MA & an Explosion will stack, but
         //of course, two MA's won't.
 
-        //Maka
+        //Lizzy
         public virtual bool SpellDisabled { get { return false; } }
         public virtual bool CanTargetGround { get { return false; } }
-        public virtual bool SpellFizzlesOnHurt { get { return true; } }
+        public virtual bool SpellFizzlesOnHurt { get { return false; } }
         public virtual bool HasNoTarget { get { return false; } }
         public object SphereSpellTarget { get { return m_SphereSpellTarget; } }
         public PlayerMobile PlayerCaster { get { return m_PlayerCaster; } }
@@ -206,7 +206,7 @@ namespace Server.Spells
             if (!(Caster is PlayerMobile))
                 return;
 
-            //Maka
+            //Lizzy
             if (IsCasting)
             {
                 if (SpellFizzlesOnHurt)
