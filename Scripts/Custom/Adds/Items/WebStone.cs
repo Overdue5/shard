@@ -8,7 +8,7 @@ namespace Server.Items
 		[Constructable]
 		public WebStone() : base( 0xED4 )
 		{
-			Name = "Web Stone";
+			Name = "Website Stone";
 			Movable = false;
 			Hue = 2558;
 		}
@@ -71,11 +71,11 @@ namespace Server.Items
 			AddImageTiled(65, 250, 44, 43, 2606);
 			AddImageTiled(65, 151, 44, 100, 2603);
 			AddImageTiled(328, 151, 44, 100, 2605);
-			AddLabel(163, 125, 2960, @"IN WEB STONE");
+			AddLabel(163, 125, 2960, @"Deluxe Web Stone");
 			AddButton(109, 170, 1209, 1210, (int)Buttons.IN, GumpButtonType.Reply, 0);
 			AddButton(109, 216, 1209, 1210, (int)Buttons.INForums, GumpButtonType.Reply, 0);
-			AddLabel(134, 167, 1174, @"IN News");
-			AddLabel(134, 213, 1174, @"IN Forums");
+			AddLabel(134, 167, 1174, @"Deluxe Website");
+			AddLabel(134, 213, 1174, @"Deluxe Discord");
 			AddImage(340, 53, 10410);
 			AddImage(340, 203, 10411);
 			AddImage(322, 335, 10402);
@@ -86,7 +86,7 @@ namespace Server.Items
 		{	
 			m_From = sender.Mobile;
 			
-			string page = "You open the homepage.";
+			string page = "You open the website.";
 
 			switch( info.ButtonID )
 			{
@@ -99,7 +99,7 @@ namespace Server.Items
 				case 1:
 				{
 						m_From.PlaySound( 579 );
-                        m_From.LaunchBrowser(string.Format("http://in-uo.net/"));
+                        m_From.LaunchBrowser(string.Format(""));
                         m_From.SendAsciiMessage( page );
 
 					break;
@@ -108,7 +108,7 @@ namespace Server.Items
 				case 2:
 				{
 						m_From.PlaySound( 579 );
-                        m_From.LaunchBrowser(string.Format("http://in-uo.net/forums/index.php"));
+                        m_From.LaunchBrowser(string.Format("https://discord.gg/kbTkGUAKpX"));
                         m_From.SendAsciiMessage( page );
 
 					break;

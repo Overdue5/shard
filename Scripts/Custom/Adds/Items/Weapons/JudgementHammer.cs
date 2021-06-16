@@ -8,7 +8,7 @@ namespace Server.Items
         [Constructable]
         public JudgementHammer()
         {
-            Hue = 1154;
+            Hue = 2961;
             Name = "Judgement Hammer";
             Weight = 10.0;
             Speed = 545;

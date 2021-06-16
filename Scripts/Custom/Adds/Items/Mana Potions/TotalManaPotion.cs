@@ -15,7 +15,7 @@ namespace Server.Items
         {
             Name = "Greater Mana Potion";
             ItemID = 3853;
-            Hue = 0x387;
+            Hue = 0x388;
             Amount = amount;
         }
 

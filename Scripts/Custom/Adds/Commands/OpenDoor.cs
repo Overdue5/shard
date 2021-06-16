@@ -28,7 +28,7 @@ namespace Server.Scripts.Custom.Adds.Commands
 
             BaseDoor doorToOpen = null;
 
-            IPooledEnumerable eable = e.Mobile.GetObjectsInRange(3);
+            IPooledEnumerable eable = e.Mobile.GetObjectsInRange(4);
             foreach (object o in eable)
                 if (o is BaseDoor && ((BaseDoor)o).GuildID <= 0)
                 {
