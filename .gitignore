@@ -13,6 +13,9 @@
 /.vs
 /Honesty
 /Output/Logs
+/Output/docs
+/Output/staff
+/Output/stats
 /Output/Crash Logs
 /Output/Backups
 /Output/Saves
