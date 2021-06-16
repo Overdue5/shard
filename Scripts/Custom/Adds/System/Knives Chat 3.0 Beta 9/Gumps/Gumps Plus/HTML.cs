@@ -1,6 +1,3 @@
-using System;
-using Server;
-
 namespace Knives.Chat3
 {
 	public class HTML

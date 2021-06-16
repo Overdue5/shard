@@ -9,14 +9,10 @@
 /*********************************************************************************/
 
 using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Items;
 using Server.Network;
-using Server.Mobiles;
-using Server.Gumps;
-using Server.Games.PaintBall;
 
 namespace Server.Games.PaintBall
 {

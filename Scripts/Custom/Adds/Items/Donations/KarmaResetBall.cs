@@ -1,8 +1,4 @@
-﻿using Server.Items;
-using Server.Mobiles;
-using Server.Network;
-
-namespace Server.Items
+﻿namespace Server.Items
 {
     public class KarmaResetBall : Item
     {

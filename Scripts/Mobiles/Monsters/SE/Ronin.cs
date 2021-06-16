@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using Server.Items;
-
 namespace Server.Mobiles
 {
 	[CorpseName( "a ronin corpse" )]

@@ -1,7 +1,6 @@
 // ALlow Pms over the Multi, track with name, server, serial
 // Mc, MultiChat, change the channel options to go to Multi
 
-using System;
 using Server;
 
 namespace Knives.Chat3

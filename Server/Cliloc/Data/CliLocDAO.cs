@@ -1,12 +1,9 @@
 //CliLocDAO.cs - the data access object used to read/write cliloc files
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection; 				//needed for ConstructorInfo
+//needed for ConstructorInfo
 using Server;
-using Server.Items;
-
 
 
 namespace Solaris.CliLocHandler

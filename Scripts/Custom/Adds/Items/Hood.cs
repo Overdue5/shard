@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Server.Engines.Craft;
-using Server.Network;
-
-namespace Server.Items
+﻿namespace Server.Items
 {
     public class Hood : BaseHat
     {

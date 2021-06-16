@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Server;
-using Server.Items;
-using Server.Mobiles;
-using Server.Accounting; 
-using Server.Multis;
-using Server.Targeting;
-using Server.Network;
-
-namespace Server.Items
+﻿namespace Server.Items
 {
     public class TreasureScroll : LockableContainer
     {

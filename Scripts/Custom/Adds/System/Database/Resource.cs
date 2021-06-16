@@ -1,6 +1,4 @@
 ﻿using System.Data;
-using System.Data.Odbc;
-using System;
 
 namespace Server.Scripts.Custom.Adds.System.Database
 {

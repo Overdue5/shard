@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 namespace Server.Mobiles
 {
 	[CorpseName( "a smoldering corpse" )]

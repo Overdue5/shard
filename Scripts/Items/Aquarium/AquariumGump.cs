@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using Server.Gumps;
-using Server.Items;
 
 namespace Server.Items
 {

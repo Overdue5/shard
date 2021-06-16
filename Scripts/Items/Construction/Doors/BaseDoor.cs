@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Server.Commands;
 using Server.Network;
 using Server.Targeting;
-using Solaris.CliLocHandler;
 
 namespace Server.Items
 {

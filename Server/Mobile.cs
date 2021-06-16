@@ -21,9 +21,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using Server;
 using Server.Accounting;
 using Server.Commands;
 using Server.ContextMenus;
@@ -1918,7 +1916,7 @@ namespace Server
 
 		public virtual void ClearHands()
 		{
-			ClearHand( FindItemOnLayer( Layer.OneHanded ) );
+`			ClearHand( FindItemOnLayer( Layer.OneHanded ) );
 			ClearHand( FindItemOnLayer( Layer.TwoHanded ) );
 		}
 

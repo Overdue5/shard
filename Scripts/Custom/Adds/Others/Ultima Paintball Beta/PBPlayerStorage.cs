@@ -8,11 +8,8 @@
 /*                   Some Ideas + Code - Aj9251 (Disturbed)                      */
 /*********************************************************************************/
 
-using System;
 using System.Collections;
-using Server.Network;
 using Server.Items;
-using Server.Mobiles;
 
 namespace Server.Games.PaintBall
 {

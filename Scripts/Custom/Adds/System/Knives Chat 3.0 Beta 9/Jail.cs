@@ -7,7 +7,6 @@
 
 //#define Use_Xanthos
 
-using System;
 using Server;
 
 namespace Knives.Chat3

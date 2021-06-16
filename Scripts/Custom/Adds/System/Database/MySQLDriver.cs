@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using System.Data.Odbc;
 using System;
-using System.Threading;
 using System.Runtime.CompilerServices;
 
 namespace Server.Scripts.Custom.Adds.System.Database

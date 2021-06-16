@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Text;
 using Knives.Chat3;
 using Server.Commands.Generic;
-using Server.Diagnostics;
 using Server.Engines.Help;
 using Server.Gumps;
 using Server.Items;

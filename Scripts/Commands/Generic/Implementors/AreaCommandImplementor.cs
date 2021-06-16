@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Server.Targeting;
 
 namespace Server.Commands.Generic
 {

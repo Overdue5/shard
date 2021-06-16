@@ -6,10 +6,9 @@
 // History: 
 //  Written for RunUO 1.0 shard, Sylvan Dreams,  in February 2005. Based largely on work by David on his Sleepable NPCs scripts.
 //  Modified for RunUO 2.0, removed shard specific customizations (wing layers, etc.)
-using System;
+
 using System.IO;
 using System.Collections;
-using Server;
 using Server.Items;
 
 namespace Server.Network

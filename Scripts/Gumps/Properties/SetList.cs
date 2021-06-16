@@ -5,7 +5,6 @@ using Server.Commands;
 using Server.Commands.Generic;
 using Server.Network;
 using Server.Prompts;
-using System.Collections.Generic;
 
 namespace Server.Gumps
 {

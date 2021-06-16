@@ -1,8 +1,6 @@
 ﻿using System;
 using Carding.Mobiles;
 using Xanthos.ShrinkSystem;
-using Server;
-using Server.Scripts.Custom.Adds.System.Loots;
 
 namespace Server.Items
 {

@@ -2,15 +2,6 @@
 // Script by Admin Oak, Graphics design by Seer Anabelle
 // SylvanDreams.Com
 
-using System;
-using Server;
-using Server.Items;
-using Server.ContextMenus;
-using System.Collections;
-using Server.Prompts;
-using Server.Mobiles;
-
-
 namespace Server.Items
 {
 	public class RedWellAddon : BaseAddon, IWaterSource

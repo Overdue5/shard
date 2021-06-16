@@ -1,5 +1,3 @@
-using System;
-using Server;
 using Server.Gumps;
 
 namespace Knives.Chat3

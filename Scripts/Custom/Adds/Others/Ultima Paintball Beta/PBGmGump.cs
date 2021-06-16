@@ -9,17 +9,12 @@
 /*********************************************************************************/
 
 using System;
-using Server;
 using Server.Gumps;
 using Server.Network;
-using Server.Items;
-using System.Text;
 using Server.Mobiles;
 using System.Collections;
 using Server.Targeting;
-using Server.Commands;
 using System.Reflection;
-using Server.Prompts;
 
 namespace Server.Games.PaintBall
 {

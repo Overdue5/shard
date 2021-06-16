@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Server.Custom.PvpToolkit;
 using Server.Custom.PvpToolkit.DMatch.Items;
 using Server.Custom.PvpToolkit.Tournament;
 using Server.Mobiles;
-using Server.Scripts.Custom.Adds.System.Database;
-using System.Threading;
 using Server.Commands;
 using Server.Scripts.Custom.Adds.System;
 using Server.Targeting;
-using Server.Network;
 
 namespace Server.Custom.Games
 {

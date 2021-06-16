@@ -1,6 +1,3 @@
-using Server;
-using System;
-
 namespace Server.Custom.Games
 {
 	public class BombermanBombPlacer : Item

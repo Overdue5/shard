@@ -5,8 +5,6 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using Server.Accounting;
-using Server;
-using Server.Network;
 using System.Threading;
 
 namespace Server.Engines.OrbRemoteServer

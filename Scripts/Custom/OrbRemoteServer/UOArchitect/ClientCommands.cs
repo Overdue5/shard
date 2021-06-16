@@ -1,7 +1,5 @@
-using System;
 using Server;
 using Server.Items;
-using Server.Targeting;
 using Server.Multis;
 using Server.Engines.UOArchitect;
 using Server.Commands;

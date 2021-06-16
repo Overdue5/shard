@@ -1,5 +1,3 @@
-using Server.Mobiles;
-
 namespace Server.Items
 {
     public class HealPotion : BaseHealPotion

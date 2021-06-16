@@ -1,13 +1,9 @@
 //TODO: Add logging of all players entering and logging of all items that are added to the bags.
 //Also fix so that you cannot "drag" items from the bags, you will have to ".remove" them.
 
-using Server.Custom.Games;
 using Server.Gumps;
-using Server.Mobiles;
 using Server.Network;
 using SS = Server.SupplySystem;
-using Server.Scripts.Custom.Adds.System;
-using System;
 
 namespace Server.Items
 {

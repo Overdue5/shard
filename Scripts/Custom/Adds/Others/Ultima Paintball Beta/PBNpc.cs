@@ -8,13 +8,9 @@
 /*                   Some Ideas + Code - Aj9251 (Disturbed)                      */
 /*********************************************************************************/
 
-using System;
-using Server;
-using Server.Misc;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
-using System.Collections;
 
 namespace Server.Games.PaintBall
 {

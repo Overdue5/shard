@@ -1,13 +1,8 @@
 //#01 ordre alphabétique
 
-using System;
 using System.Collections;
-using Server;
 using Server.Gumps;
-using Server.Multis;
-using Server.Prompts;
 using Server.Mobiles;
-using Server.ContextMenus;
 
 namespace Server.Items
 {

@@ -16,7 +16,9 @@ Output/Logs
 Output/Crash Logs
 Output/Backups
 Output/Saves
+Output/output
 Output/Scripts.dll
+Output/*.html
 /Web
 /Docs
 /Reports

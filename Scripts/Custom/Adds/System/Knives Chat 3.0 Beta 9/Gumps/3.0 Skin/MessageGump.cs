@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using Server;
 
 namespace Knives.Chat3

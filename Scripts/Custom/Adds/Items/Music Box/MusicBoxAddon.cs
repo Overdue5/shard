@@ -1,7 +1,4 @@
 using System;
-using Server;
-using System.Collections;
-using Server.Items;
 
 namespace Server.Items.MusicBox
 {

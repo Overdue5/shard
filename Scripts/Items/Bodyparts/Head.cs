@@ -1,7 +1,7 @@
 using System;
 
 //Bounty System Start
-using Server.BountySystem;
+
 //End Bounty System
 
 namespace Server.Items

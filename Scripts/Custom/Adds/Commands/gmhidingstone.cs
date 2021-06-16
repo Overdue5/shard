@@ -6,11 +6,7 @@ Public Release: 06/05/04
 Updated Release: 01/29/07
 Purpose: A stone that allows for multiple hide/appear effects for counselors and above.
 */                                                            
-using System; 
-using Server; 
-using Server.Misc;
-using Server.Items; 
-using Server.Targeting;
+using System;
 
 namespace Server.Items
 {

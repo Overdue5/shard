@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using Server;
 
 namespace Knives.Chat3
 {

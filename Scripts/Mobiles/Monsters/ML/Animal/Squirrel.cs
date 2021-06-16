@@ -1,7 +1,3 @@
-using System;
-using Server;
-using Server.Mobiles;
-
 namespace Server.Mobiles
 {
 	[CorpseName( "a squirrel corpse" )]	

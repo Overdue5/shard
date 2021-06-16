@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace Server.Misc
 {
 	public class Broadcasts

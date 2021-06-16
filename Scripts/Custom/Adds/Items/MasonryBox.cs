@@ -1,18 +1,10 @@
 // Original Ingot Box Author Unknown
 // Scripted by Karmageddon
-using System;
-using System.Collections;
-using Server;
-using Server.Prompts;
+
 using Server.Mobiles;
-using Server.ContextMenus;
 using Server.Gumps;
-using Server.Items;
 using Server.Network;
 using Server.Targeting;
-using Server.Multis;
-using Server.Regions;
-using Server.Engines.Craft;
 
 namespace Server.Items
 {	

@@ -1,10 +1,3 @@
-using System;
-using Server;
-using Server.Misc;
-using System.Collections;
-using Server.Network;
-
-
 namespace Server.Items
 {
 	public class FlameAngelfish : Food

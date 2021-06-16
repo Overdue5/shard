@@ -8,13 +8,7 @@
 //  Modified for RunUO 2.0, removed shard specific customizations (wing layers, etc.)
 using System;
 using System.Collections;
-using Server;
-using Server.Engines.PartySystem;
-using Server.Misc;
-using Server.Guilds;
-using Server.Mobiles;
 using Server.Network;
-using Server.ContextMenus;
 
 namespace Server.Items
 {

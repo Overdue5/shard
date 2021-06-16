@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-using Server;
-using Server.Misc;
-using Server.Gumps;
-using Server.Items;
-using Server.Mobiles;
-using Server.Accounting;
 
 namespace Server.Voting
 {

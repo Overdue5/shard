@@ -1,10 +1,6 @@
-using System;
-
 using Server;
 using Server.Commands.Generic;
 using Server.Items;
-using Server.Multis;
-using Server.Targeting;
 
 namespace Khazman.Commands
 {
