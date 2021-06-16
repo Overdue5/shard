@@ -13,7 +13,7 @@ namespace Server.Misc
          * 
          * private const string CustomPath = @"C:\Users\Administrator\Desktop\Deluxe Ultima Online (1.0)";
          */
-        private static string CustomPath = @"C:\Users\Administrator\Desktop\Deluxe Ultima Online (1.0)";
+        private static readonly string CustomPath = Config.Get(@"DataPath.CustomPath", default(string));
 
         /* The following is a list of files which a required for proper execution:
          * 

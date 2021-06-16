@@ -13,6 +13,9 @@
 /.vs
 /Honesty
 /Output/Logs
+/Output/docs
+/Output/staff
+/Output/stats
 /Output/Crash Logs
 /Output/Backups
 /Output/Saves
@@ -30,12 +33,11 @@
 /Leaderboard
 /UltimaLive
 /TheBox
-<<<<<<< HEAD
+/Output/Config
 /packages
 /.vs
 =======
 /Export
->>>>>>> 05cdc8780ecd81a6abca0f5f14097c8e6bc4860f
 
 # Common Files
 /firewall.cfg
@@ -46,6 +48,7 @@
 
 # Custom Files
 /TotalAccountGold.txt
+/Output/Config/DataPath.cfg
 
 # Wildcard Files
 *.pdb
@@ -63,7 +66,6 @@
 
 # Include Data Files
 !/Data/*
-<<<<<<< HEAD
 !/bin/rosyln/*
 
 /BinMyUO
@@ -73,4 +75,3 @@
 
 # Exclude Data Files
 /Data/PVPTournamentSystemData
->>>>>>> 05cdc8780ecd81a6abca0f5f14097c8e6bc4860f
