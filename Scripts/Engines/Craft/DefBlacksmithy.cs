@@ -723,10 +723,9 @@ namespace Server.Engines.Craft
             AddSkill(index, SkillName.Alchemy, 90.0, 100.0);
             AddRecipe(index, 3);
 
-            index = AddCraft(typeof(SuperiorDiamondKatana), "Colored Weapons", "Superior Diamond Katana", 96.0, 101.9, typeof(BlackDiamondIngot), "Black Diamond Ingots", 10, 1044037);
-            AddRes(index, typeof(Diamond), "Diamonds", 25, "You lack diamonds to create this");
-            AddRes(index, typeof(BlueDiamond), "Blue Diamonds", 1, "You lack blue diamond to create this");
-            AddRes(index, typeof(DiamondKatana), "Diamond Katana", 1, "You lack a diamond katana to create this.");
+            index = AddCraft(typeof(SoulBardiche), "Colored Weapons", "Soul Infused Bardiche", 96.0, 101.9, typeof(SilverIngot), "SilverIngot Ingots", 20, 1044037);
+            AddRes(index, typeof(IronIngot), "Iron Ingots", 50, 1044037);            
+			AddRes(index, typeof(DragonsBlood), "Dragon's blood", 8, "You lack dragon's blood to create this");
             AddSkill(index, SkillName.Tinkering, 100.0, 100.0);
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
             AddRecipe(index, 5);
