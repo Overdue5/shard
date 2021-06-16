@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Server;
 using Server.Commands;
 using Server.Mobiles;
@@ -25,7 +21,7 @@ namespace Scripts.Commands
         }
 
         [Usage("TurnAccessLevel")]
-        [Description("Переключает права доступа на Player и обратно.")]
+        [Description("Switch access level to player and back")]
         private static void TurnAccessLevel_OnCommand(CommandEventArgs e)
         {
             if (!(e.Mobile is PlayerMobile) || (e.Mobile.Account == null))
@@ -60,7 +56,7 @@ namespace Scripts.Commands
                 };
             }
 
-            var access = (AccessLevel)Math.Min((int)e.Mobile.AccessLevel, (int)e.Mobile.Account.AccessLevel);
+            var access = (AccessLevel)Math.Max((int)e.Mobile.AccessLevel, (int)e.Mobile.Account.AccessLevel);
             if (access > AccessLevel.Player)
             {
                 _PreviousAccessLevel.Add(e.Mobile.Serial, access);

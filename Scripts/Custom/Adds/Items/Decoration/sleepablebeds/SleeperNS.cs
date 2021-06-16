@@ -9,11 +9,8 @@
 //  Deedable code by Zardoz. 7/8/2006
 
 using System;
-using System.Collections;
-using Server;
 using Server.Network;
 using Server.Mobiles;
-using Server.Gumps;
 using Server.Multis;
 namespace Server.Items
 {

@@ -1,5 +1,3 @@
-using System;
-
 namespace Server.Poker
 {
 	public enum PlayerAction

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Server.Commands;
 using Server.Factions;
 using Server.Network;

@@ -1,7 +1,5 @@
 // Feel Free to modify the code as you wish.
-using System;   
-using Server;
-using Server.Spells;
+using System;
 
 namespace Server.Items
 {

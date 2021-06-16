@@ -1,5 +1,4 @@
 ﻿using System;
-using Server.Network;
 using Server.Regions;
 
 namespace Server.Items

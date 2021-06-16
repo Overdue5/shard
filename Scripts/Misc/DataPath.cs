@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using Microsoft.Win32;
-using Server;
 
 namespace Server.Misc
 {
@@ -93,6 +92,7 @@ namespace Server.Misc
 
                     if (v == null)
                         return null;
+                    Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Client, "Ultima Online directory:" + v);
 
                     return v;
                 }

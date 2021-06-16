@@ -4,9 +4,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server;
-using Server.Gumps;
 using Server.Mobiles;
-using Server.Network;
 
 namespace Knives.Chat3
 {

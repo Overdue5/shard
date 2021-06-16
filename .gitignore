@@ -12,11 +12,15 @@
 # Common Directories
 /.vs
 /Honesty
-Output/Logs
-Output/Crash Logs
-Output/Backups
-Output/Saves
-Output/Scripts.dll
+/Output/Logs
+/Output/Crash Logs
+/Output/Backups
+/Output/Saves
+/Output/output/*
+/Output/Scripts.dll
+/Output/*.html
+/Output/*.xml
+/Output/Web
 /Web
 /Docs
 /Reports

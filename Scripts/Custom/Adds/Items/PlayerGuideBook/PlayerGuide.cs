@@ -12,12 +12,6 @@
 /* DESCRIPTION: A book when opened displays the playerguide gump.
  */
 
-using System;
-using Server;
-using Server.Gumps;
-using Server.Network;
-using Server.Mobiles;
-
 namespace Server.Items
 {
     public class PlayerGuide : Item

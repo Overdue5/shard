@@ -1,6 +1,3 @@
-using System.Collections;
-using System;
-
 namespace Server.Custom.Games
 {
 	public class CTFTeam : BaseGameTeam

@@ -5,9 +5,6 @@
 // (Yet Another Arya Addon Generator) //
 //                                    //
 ////////////////////////////////////////
-using System;
-using Server;
-using Server.Items;
 
 namespace Server.Items
 {

@@ -22,8 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
-using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,10 +29,6 @@ using System.Threading;
 #if Framework_4_0
 using System.Threading.Tasks;
 #endif
-
-using Server;
-using Server.Accounting;
-using Server.Gumps;
 using Server.Network;
 using System.Runtime;
 using System.Threading.Tasks;
@@ -148,8 +142,8 @@ namespace Server
 
 				fullPath = null;
 			}
-
-			return fullPath;
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Client, "Ultima Online directory:" + fullPath);
+            return fullPath;
 		}
 
 		public static string FindDataFile( string format, params object[] args )

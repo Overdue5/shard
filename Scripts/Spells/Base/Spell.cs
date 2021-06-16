@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
-using Server.Multis;
 using Server.Network;
 using Server.Regions;
 using Server.Spells.Fourth;
@@ -1201,8 +1200,8 @@ namespace Server.Spells
                     }
                 }
 
-                if (m_Caster is PlayerMobile && ClearHandsOnCast) //Mobiles don't need to disarm
-                    m_Caster.ClearHands();
+                //if (m_Caster is PlayerMobile && ClearHandsOnCast) //Mobiles don't need to disarm
+                //    m_Caster.ClearHands();
 
                 var karma = ComputeKarmaAward();
 

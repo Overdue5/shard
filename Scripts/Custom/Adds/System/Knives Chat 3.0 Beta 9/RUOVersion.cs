@@ -8,7 +8,6 @@
 #define RunUO_2_RC1
 //#define RunUO_1_Final
 
-using System;
 using System.Collections;
 using Server;
 using Server.Network;

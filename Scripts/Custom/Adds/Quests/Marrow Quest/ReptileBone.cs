@@ -1,6 +1,7 @@
 /* This file was created with
 Ilutzio's Questmaker. Enjoy! */
-using System;using Server;namespace Server.Items
+
+namespace Server.Items
 {
 public class ReptileBone : Item
 {

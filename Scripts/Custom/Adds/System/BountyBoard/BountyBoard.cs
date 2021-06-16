@@ -50,16 +50,10 @@
  */
 
 using System;
-using System.Text;
 using System.Collections;
 using System.Data;
-using System.IO;
-using Server;
-using Server.Prompts;
-using Server.Gumps;
 using Server.Network;
 using Server.Items;
-using Server.Misc;
 using Server.Mobiles;
 using Server.Commands;
 

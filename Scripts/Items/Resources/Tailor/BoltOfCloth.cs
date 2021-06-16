@@ -1,7 +1,3 @@
-using System;
-using Server.Network;
-using Solaris.CliLocHandler;
-
 namespace Server.Items
 {
 	[Flipable( 0xF95, 0xF96, 0xF97, 0xF98, 0xF99, 0xF9A, 0xF9B, 0xF9C )]

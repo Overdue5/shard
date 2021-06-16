@@ -1,8 +1,6 @@
 //CEO's Moongate Library V1.1
 using System;
-using System.IO;
 using System.Collections;
-using Server;
 using Server.Gumps;
 using Server.Network;
 using Server.Mobiles;

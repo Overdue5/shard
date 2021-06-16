@@ -1,6 +1,4 @@
-﻿using System;
-using Server.Items;
-using Server.Mobiles;
+﻿using Server.Mobiles;
 using Xanthos.ShrinkSystem;
 
 namespace Server.Items

@@ -8,12 +8,6 @@
 /*                   Some Ideas + Code - Aj9251 (Disturbed)                      */
 /*********************************************************************************/
 
-using Server;
-using System;
-using System.Collections;
-using Server.Mobiles;
-using Server.Targeting;
-
 namespace Server.Games.PaintBall
 {
 	//[Flipable( 0x1E5E, 0x1E5F )]

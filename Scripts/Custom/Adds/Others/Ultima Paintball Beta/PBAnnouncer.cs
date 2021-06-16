@@ -9,19 +9,7 @@
 /*********************************************************************************/
 
 
-
-using System;
-using System.Text;
-using System.Collections.Generic;
-using Server;
-using Server.Prompts;
-using Server.Gumps;
-using Server.Network;
 using Server.Items;
-using Server.Misc;
-using Server.Commands;
-using Server.Targeting;
-using Server.Mobiles;
 
 namespace Server.Games.PaintBall
 {

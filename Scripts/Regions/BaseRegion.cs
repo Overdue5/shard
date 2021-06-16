@@ -5,7 +5,6 @@ using System.Xml;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
-using Server.Network;
 
 namespace Server.Regions
 {

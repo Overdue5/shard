@@ -9,7 +9,6 @@ using Server;
 using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
-using Server.Regions;
 using Server.Spells;
 using Server.Targeting;
 using Xanthos.Interfaces;

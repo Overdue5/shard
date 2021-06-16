@@ -8,10 +8,7 @@
 /*                   Some Ideas + Code - Aj9251 (Disturbed)                      */
 /*********************************************************************************/
 
-using System;
-using Server;
 using Server.Gumps;
-using Server.Mobiles;
 using System.Collections;
 
 namespace Server.Games.PaintBall

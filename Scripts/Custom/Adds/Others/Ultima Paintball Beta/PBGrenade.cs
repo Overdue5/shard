@@ -11,11 +11,9 @@
 
 using System;
 using System.Collections;
-using Server;
 using Server.Network;
 using Server.Targeting;
 using Server.Spells;
-using Server.Items;
 
 namespace Server.Games.PaintBall
 {

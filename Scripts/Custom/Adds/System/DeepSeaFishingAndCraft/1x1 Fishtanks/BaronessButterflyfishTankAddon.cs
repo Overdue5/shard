@@ -3,10 +3,6 @@
 //Created by:  Morrigan and Ashlar, together forever.
 //
 /////////////////////////////////////////////////////
-using System;
-using Server;
-using Server.Items;
-using Server.Network;
 
 namespace Server.Items
 {

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Server.Engines.PartySystem;
 using Server.Guilds;
 using Server.Items;
 using Server.Misc;

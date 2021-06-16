@@ -1,5 +1,3 @@
-using System.Collections;
-
 namespace Server.Custom.Games
 {
 	public class CWTeam : BaseGameTeam

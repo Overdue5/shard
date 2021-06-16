@@ -108,8 +108,12 @@ namespace Server.Items
 
 			if( from.InRange( GetWorldLocation(), 1 ) )
 			{
-				//if ( !RequireFreeHand || HasFreeHand( from ) )
-				Drink( from );
+                //if ( !RequireFreeHand || HasFreeHand( from ) )
+                if (from.CanBeginAction(typeof(BasePotion)))
+                {
+                    from.ClearHands();
+                }
+                Drink( from );
 				//else
 				//from.SendLocalizedMessage( 502172 ); // You must have a free hand to drink a potion.
 			}

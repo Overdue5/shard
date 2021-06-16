@@ -1,16 +1,12 @@
 #define SVN
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Server;
 using Server.Targeting;
 using Server.Gumps;
 using Server.ContextMenus;
 using Server.Network;
-using Server.Mobiles;
 using Server.Commands;
-using Server.Items;
 using Server.Multis;
 
 
