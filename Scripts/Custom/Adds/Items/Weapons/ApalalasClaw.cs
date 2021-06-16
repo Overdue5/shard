@@ -1,13 +1,13 @@
 namespace Server.Items
 {
-    public class LionheartAxe : TwoHandedAxe
+    public class ApalalasClaw : ExecutionersAxe
     {
         [Constructable]
-        public LionheartAxe()
+        public ApalalasClaw()
         {
-            Hue = 1965;
-            Name = "Lionheart Axe";
-            Weight = 7.0;
+            Hue = 1946;
+            Name = "Apalalas Claw";
+            Weight = 12.0;
             Speed = 450;
             MinDamage = 10;
             MaxDamage = 27;
@@ -18,7 +18,7 @@ namespace Server.Items
             Slayer = SlayerName.SnakesBane;
         }
 
-        public LionheartAxe(Serial serial)
+        public ApalalasClaw(Serial serial)
             : base(serial)
         {
         }

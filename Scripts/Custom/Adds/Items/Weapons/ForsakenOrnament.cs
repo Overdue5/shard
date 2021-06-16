@@ -2,13 +2,13 @@ using Server.Network;
 
 namespace Server.Items
 {
-    public class ChuKoNu : Crossbow
+    public class ForsakenOrnament : Crossbow
     {
         [Constructable]
-        public ChuKoNu()
+        public ForsakenOrnament()
         {
-            Hue = 1940;
-            Name = "Chu Ko Nu";
+            Hue = 2577;
+            Name = "Forsaken Ornament";
             Weight = 4;
             Speed = 310;
             MinDamage = 15;
@@ -19,7 +19,7 @@ namespace Server.Items
             IsRenamed = true;
         }
 
-        public ChuKoNu(Serial serial)
+        public ForsakenOrnament(Serial serial)
             : base(serial)
         {
         }
