@@ -10,7 +10,7 @@ namespace Server.Spells.Third
         public override SpellCircle Circle { get { return SpellCircle.Third; } }
         public override int Sound { get { return 0x1FF; } }
         
-        public override bool SpellDisabled { get { return true; } }
+        public override bool SpellDisabled { get { return false; } }
 
 		private static readonly SpellInfo m_Info = new SpellInfo(
 				"Unlock Spell", "Ex Por",
