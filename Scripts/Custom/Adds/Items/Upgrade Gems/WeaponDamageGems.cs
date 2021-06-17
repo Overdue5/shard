@@ -66,7 +66,7 @@ namespace Server.Items
 			          		from.SendLocalizedMessage( 500446 ); // That is too far away. 
 		       			}
 
-                        if (targeted is HellsHalberd || targeted is JudgementHammer || targeted is BlackWidow || targeted is BloodTentacle || targeted is ChuKoNu || targeted is DiamondKatana || targeted is DwarfWarHammer || targeted is DwarvenBattleAxe || targeted is GoblinClooba || targeted is LionheartAxe || targeted is SerpentsTongue || targeted is Wolfbane || Weapon.LootType != LootType.Regular)
+                        if (targeted is HellsHalberd || targeted is JudgementHammer || targeted is KissOfDeath || targeted is BloodTentacle || targeted is ForsakenOrnament || targeted is DwarfWarHammer || targeted is DwarvenBattleAxe || targeted is GoblinClooba || targeted is ApalalasClaw || targeted is SerpentsTongue || targeted is Wolfbane || Weapon.LootType != LootType.Regular)
                         {
                             from.SendMessage("This gem cannot be used on that.");
                         }
@@ -234,7 +234,7 @@ namespace Server.Items
                         from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1019045); // I can't reach that. 
                     }
 
-                    if (targeted is HellsHalberd || targeted is JudgementHammer || targeted is BlackWidow || targeted is BloodTentacle || targeted is ChuKoNu || targeted is DiamondKatana || targeted is DwarfWarHammer || targeted is DwarvenBattleAxe || targeted is GoblinClooba || targeted is LionheartAxe || targeted is SerpentsTongue || targeted is Wolfbane)
+                    if (targeted is HellsHalberd || targeted is JudgementHammer || targeted is KissOfDeath || targeted is BloodTentacle || targeted is ForsakenOrnament || targeted is DwarfWarHammer || targeted is DwarvenBattleAxe || targeted is GoblinClooba || targeted is ApalalasClaw || targeted is SerpentsTongue || targeted is Wolfbane)
                     {
                         from.SendMessage("This gem cannot be used on that.");
                     }

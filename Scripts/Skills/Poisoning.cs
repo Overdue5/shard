@@ -188,7 +188,7 @@ namespace Server.SkillHandlers
 						{
 							startTimer = ( weapon.PrimaryAbility == WeaponAbility.InfectiousStrike || weapon.SecondaryAbility == WeaponAbility.InfectiousStrike );
 						}
-                        else if (weapon.Layer == Layer.OneHanded && !(weapon is SuperiorDiamondKatana || weapon is DiamondKatana || weapon is HellsHalberd || weapon is SuperiorDragonsBlade || weapon is DragonsBlade || weapon is HeavensFury || weapon is SoV)) //Loki edit: 1H blades only
+                        else if (weapon.Layer == Layer.OneHanded && !(weapon is HellsHalberd || weapon is SuperiorDragonsBlade || weapon is DragonsBlade || weapon is HeavensFury || weapon is SoV)) //Loki edit: 1H blades only
                         {
                             startTimer = (weapon.Type == WeaponType.Slashing || weapon.Type == WeaponType.Piercing);
                         }

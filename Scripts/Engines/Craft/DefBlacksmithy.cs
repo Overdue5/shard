@@ -774,11 +774,11 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(RedScales), "Red Scales", 8, "You lack red scales to create this");
             AddSkill(index, SkillName.Tinkering, 80.0, 100.0);
 
-            index = AddCraft(typeof(KissOfDeath), "Colored Weapons", "Kiss Of Death", 97.0, 100.9, typeof(ShadowIngot), "Shadow Ingots", 60, 1044037);
+            index = AddCraft(typeof(KissOfDeath), "Colored Weapons", "Kiss Of Death", 97.0, 100.9, typeof(ShadowIronIngot), "Shadow Iron Ingots", 60, 1044037);
 			AddRes(index, typeof(IronIngot), "Iron Ingots", 15, 1044037);
             AddRes(index, typeof(Tourmaline), "Tourmalines", 10, "You lack tourmalines to create this");
             AddRes(index, typeof(Log), 1044041, 50, 1044351);
-            AddSkill(index, SkillName.Bowcraft, 95.0, 100.0);
+            AddSkill(index, SkillName.Fletching, 95.0, 100.0);
             AddSkill(index, SkillName.Tactics, 80.0, 100.0);
 
             index = AddCraft(typeof(ApalalasClaw), "Colored Weapons", "Apalalas Claw", 75.0, 100.0, typeof(BloodRockIngot), "Blood Rock Ingots", 5, 1044037);
@@ -788,7 +788,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ElvenBow), "Colored Weapons", "Elven's Bow", 65.0, 100.0, typeof(CopperIngot), "Copper Ingots", 23, 1044037);
             AddRes(index, typeof(Ruby), "Rubies", 12, "You lack rubies to create this");
             AddRes(index, typeof(GreenScales), "Green Scales", 8, "You lack red scales to create this");
-            AddSkill(index, SkillName.Bowcraft, 58.0, 100.0);
+            AddSkill(index, SkillName.Fletching, 58.0, 100.0);
             AddSkill(index, SkillName.Tactics, 80.0, 100.0);
             #endregion
 
