@@ -5,11 +5,11 @@ namespace Server.Items
         [Constructable]
         public SerpentsTongue()
         {
-            Hue = 1964;
+            Hue = 2546;
             Name = "Serpents Tongue";
             Speed = 400;
-            MinDamage = 13;
-            MaxDamage = 27;
+            MinDamage = 14;
+            MaxDamage = 29;
             AccuracyLevel = WeaponAccuracyLevel.Supremely;
             DamageLevel = WeaponDamageLevel.Power;
             DurabilityLevel = WeaponDurabilityLevel.Substantial;

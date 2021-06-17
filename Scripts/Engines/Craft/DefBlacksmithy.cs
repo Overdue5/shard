@@ -774,10 +774,12 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(RedScales), "Red Scales", 8, "You lack red scales to create this");
             AddSkill(index, SkillName.Tinkering, 80.0, 100.0);
 
-            index = AddCraft(typeof(Wolfbane), "Colored Weapons", "Wolfbane", 65.0, 100.0, typeof(SilverIngot), "Silver Ingots", 32, 1044037);
-            AddRes(index, typeof(IronIngot), "Iron Ingots", 10, 1044037);
-            AddRes(index, typeof(Tourmaline), "Tourmalines", 8, "You lack tourmalines to create this");
-            AddRes(index, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(KissOfDeath), "Colored Weapons", "Kiss Of Death", 65.0, 100.0, typeof(ShadowIngot), "Shadow Ingots", 60, 1044037);
+			AddRes(index, typeof(IronIngot), "Iron Ingots", 15, 1044037);
+            AddRes(index, typeof(Tourmaline), "Tourmalines", 10, "You lack tourmalines to create this");
+            AddRes(index, typeof(Log), 1044041, 50, 1044351);
+            AddSkill(index, SkillName.Bowcraft, 95.0, 100.0);
+            AddSkill(index, SkillName.Tactics, 80.0, 100.0);
 
             index = AddCraft(typeof(ApalalasClaw), "Colored Weapons", "Apalalas Claw", 65.0, 100.0, typeof(BloodRockIngot), "Blood Rock Ingots", 5, 1044037);
             AddRes(index, typeof(Citrine), "Citrines", 12, "You lack citrines to create this");

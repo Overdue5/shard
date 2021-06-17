@@ -4,13 +4,13 @@ using Server.Regions;
 
 namespace Server.Items
 {
-    public class BlackWidow : HeavyCrossbow
+    public class KissOfDeath : HeavyCrossbow
     {
         [Constructable]
-        public BlackWidow()
+        public KissOfDeath()
         {
             Hue = 1174;
-            Name = "Black Widow";
+            Name = "Kiss of Death";
             Weight = 8;
             Speed = 510;
             MinDamage = 25;
@@ -21,7 +21,7 @@ namespace Server.Items
             IsRenamed = true;
         }
 
-        public BlackWidow(Serial serial)
+        public KissOfDeath(Serial serial)
             : base(serial)
         {
         }
