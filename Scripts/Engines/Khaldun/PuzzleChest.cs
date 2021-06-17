@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using Server.Gumps;
 using Server.Network;
@@ -340,13 +340,13 @@ namespace Server.Items
 				AddImage( 62, 20, 0x67 );
 
 				AddHtmlLocalized( 80, 36, 110, 70, 1018309, true, false ); // A Puzzle Lock
-*/
+
 
 				/* Correctly choose the sequence of cylinders needed to open the latch.  Each cylinder
 				 * may potentially be used more than once.  Beware!  A false attempt could be deadly!
 				 */
-/*
-AddHtmlLocalized( 214, 26, 270, 90, 1018310, true, true );
+
+                AddHtmlLocalized( 214, 26, 270, 90, 1018310, true, true );
 
 				AddLeftCylinderButton( 62, 130, PuzzleChestCylinder.LightBlue, 10 );
 				AddLeftCylinderButton( 62, 180, PuzzleChestCylinder.Blue, 11 );
@@ -792,4 +792,3 @@ AddHtmlLocalized( 214, 26, 270, 90, 1018310, true, true );
 		}
 	}
 }
-*/
