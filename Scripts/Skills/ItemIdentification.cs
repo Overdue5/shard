@@ -183,14 +183,21 @@ namespace Server.Items
                         if (((BaseWeapon)m_Targeted).Identified)
                             m_From.SendAsciiMessage("That is already identified.");
                         else
-                            ((BaseWeapon)m_Targeted).Identified = true;
+                        {
+                            ((BaseWeapon) m_Targeted).Identified = true;
+                            m_From.SendAsciiMessage("You have successfully identified the item");
+                        }
+
                     }
                     else if (m_Targeted is BaseArmor)
                     {
                         if (((BaseArmor)m_Targeted).Identified)
                             m_From.SendAsciiMessage("That is already identified.");
                         else
-                            ((BaseArmor)m_Targeted).Identified = true;
+                        {
+                            ((BaseArmor) m_Targeted).Identified = true;
+                            m_From.SendAsciiMessage("You have successfully identified the item");
+                        }
                     }
                     else if (m_Targeted is CustomQuestItem)
                     {

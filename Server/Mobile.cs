@@ -7621,14 +7621,16 @@ namespace Server
 
 		public virtual void OnHitsChange( int oldValue )
 		{
-		}
+        }
 
 		public virtual void OnStamChange( int oldValue )
 		{
+
 		}
 
 		public virtual void OnManaChange( int oldValue )
 		{
+
 		}
 
 		/// <summary>
@@ -7651,8 +7653,10 @@ namespace Server
 
                 if (Player) //Taran: Players can go over max hits
                 {
-                    if (value == HitsMax)
+                    if (value >= HitsMax)
                     {
+                        value = HitsMax;
+
                         if (m_HitsTimer != null)
                             m_HitsTimer.Stop();
 
@@ -7750,8 +7754,9 @@ namespace Server
 
                 if (Player) //Taran: Players can go over max stam
                 {
-                    if (value == StamMax)
+                    if (value >= StamMax)
                     {
+                        value = StamMax;
                         if (m_StamTimer != null)
                             m_StamTimer.Stop();
                     }
@@ -7837,8 +7842,9 @@ namespace Server
 
                 if (Player) //Taran: Players can go over max mana
                 {
-                    if (value == ManaMax)
+                    if (value >= ManaMax)
                     {
+                        value = ManaMax;
                         if (m_ManaTimer != null)
                             m_ManaTimer.Stop();
 

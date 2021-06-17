@@ -129,7 +129,7 @@ namespace Server.Engines.Craft
             // superior bow
             AddCraft(typeof(ElvenBow), "Magic Bows", "Elven Bow", 89.5, 120.0, typeof(OakLog), "Oak Logs", 7, 1044351);
 
-            index = AddCraft(typeof(BlackWidow), "Magic Bows", "Black Widow", 95.0, 105.4, typeof(BlackRockIngot), "Black Rock Ingots", 18, 1044037);
+            index = AddCraft(typeof(KissOfDeath), "Magic Bows", "Black Widow", 95.0, 105.4, typeof(BlackRockIngot), "Black Rock Ingots", 18, 1044037);
             AddRes(index, typeof(Log), 1044041, 50, 1044351);
             AddRes(index, typeof(Rope), "Ropes", 3, "You lack rope to create this");
             AddRes(index, typeof(DiseasedBark), "Diseased Bark", 1, "You lack diseased bark to create this");
@@ -139,7 +139,7 @@ namespace Server.Engines.Craft
             AddSkill(index, SkillName.Poisoning, 80.0, 100.0);
             AddRecipe(index, 2);
 
-            index = AddCraft(typeof(ChuKoNu), "Magic Bows", "Chu Ko Nu", 95.0, 104.0, typeof(GoldIngot), "Gold Ingots", 60, 1044037);
+            index = AddCraft(typeof(ForsakenOrnament), "Magic Bows", "Chu Ko Nu", 95.0, 104.0, typeof(GoldIngot), "Gold Ingots", 60, 1044037);
             AddRes(index, typeof(IronIngot), "Iron Ingots", 4, 1044037);
             AddRes(index, typeof(Amethyst), "Amethysts", 20, 1044037);
             AddRes(index, typeof(Log), 1044041, 40, 1044351);
