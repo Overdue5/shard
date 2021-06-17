@@ -25,6 +25,7 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
 using Server.Network;
@@ -623,10 +624,6 @@ namespace Server
         }
         #endregion
 
-        public static double RandomDouble()
-		{
-			return m_Random.NextDouble();
-        }
         #region In[...]Range
         public static bool InRange( Point3D p1, Point3D p2, int range )
 		{
@@ -782,51 +779,527 @@ namespace Server
 			return total;
 		}
 
-		public static int RandomList( params int[] list )
+
+        #region MathLimits
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int Min(int val1, int val2)
+        {
+            return val1 + ((val2 - val1) & ((val2 - val1) >> 31));  // min(val1, val2)
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int Max(int val1, int val2)
+        {
+            return val2 - ((val2 - val1) & ((val2 - val1) >> 31));  // max(val1, val2)
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float AbsMin(float val1, float val2)
+        {
+            return (Math.Abs(val1) < Math.Abs(val2)) ? val1 : val2;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float AbsMax(float val1, float val2)
+        {
+            return (Math.Abs(val1) > Math.Abs(val2)) ? val1 : val2;
+        }
+
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float LimitMin(float min, float val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(float min, ref float val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float LimitMax(float val, float max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref float val, float max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float LimitMinMax(float min, float val, float max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(float min, ref float val, float max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double LimitMin(double min, double val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(double min, ref double val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double LimitMax(double val, double max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref double val, double max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double LimitMinMax(double min, double val, double max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(double min, ref double val, double max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte LimitMin(byte min, byte val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(byte min, ref byte val, byte max)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte LimitMax(byte val, byte max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref byte val, byte max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte LimitMinMax(byte min, byte val, byte max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(byte min, ref byte val, byte max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static sbyte LimitMin(sbyte min, sbyte val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(sbyte min, ref sbyte val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static sbyte LimitMax(sbyte val, sbyte max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref sbyte val, sbyte max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static sbyte LimitMinMax(sbyte min, sbyte val, sbyte max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(sbyte min, ref sbyte val, sbyte max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static short LimitMin(short min, short val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(short min, ref short val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static short LimitMax(short val, short max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref short val, short max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static short LimitMinMax(short min, short val, short max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(short min, ref short val, short max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ushort LimitMin(ushort min, ushort val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(ushort min, ref ushort val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ushort LimitMax(ushort val, ushort max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref ushort val, ushort max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ushort LimitMinMax(ushort min, ushort val, ushort max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(ushort min, ref ushort val, ushort max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int LimitMin(int min, int val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(int min, ref int val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int LimitMax(int val, int max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref int val, int max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int LimitMinMax(int min, int val, int max)
+        {
+            // return (val < min) ? min : (val > max) ? max : val;
+            int rv1, rv2;
+            rv1 = max + ((val - max) & ((val - max) >> 31));        // min(val, max) <=> rv1 = max ^ ((val ^ max) & -(val < max));
+            rv2 = min - ((min - rv1) & ((min - rv1) >> 31));        // max(min, rv1) <=> rv2 = min ^ ((min ^ rv1) & -(min < rv1));
+            return rv2;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(int min, ref int val, int max)
+        {
+            //val = LimitMinMax(min, val, max);
+            val = max + ((val - max) & ((val - max) >> 31));        // min(val, max)
+            val = min - ((min - val) & ((min - val) >> 31));        // max(min, val)
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint LimitMin(uint min, uint val)
+        {
+            return (val < min) ? min : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMin(uint min, ref uint val)
+        {
+            val = LimitMin(min, val);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint LimitMax(uint val, uint max)
+        {
+            return (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMax(ref uint val, uint max)
+        {
+            val = LimitMax(val, max);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint LimitMinMax(uint min, uint val, uint max)
+        {
+            return (val < min) ? min : (val > max) ? max : val;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LimitMinMax(uint min, ref uint val, uint max)
+        {
+            val = LimitMinMax(min, val, max);
+        }
+
+        #endregion
+
+        #region MathRounding
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Round(float value)
+        {
+            return (float)Math.Floor(value + 0.5);
+
+            //return (float)Math.Round(value, 0, MidpointRounding.AwayFromZero);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Round(double value)
+        {
+            return Math.Round(value, 0, MidpointRounding.ToEven);
+        }
+        /*
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T Round<T>(double value) where T : struct, IConvertible, IComparable<T>, IEquatable<T>
+        {
+            return (T)Math.Round(value, 0, MidpointRounding.ToEven);
+        }
+        */
+        #endregion
+
+        #region Random
+        public static void RandomBytes(byte[] buffer)
+        {
+            m_Random.NextBytes(buffer);
+        }
+
+        public static T RandomList<T>(params T[] list)
+        {
+            return list[m_Random.Next(list.Length)];
+        }
+
+        public static bool RandomBool()
+        {
+            return (m_Random.Next(2) == 0);
+        }
+
+        public static double RandomDouble()
+        {
+            return m_Random.NextDouble();
+        }
+
+        public static double RandomMinMax(double min, double max)
+        {
+            if (min > max)
+            {
+                double copy = min;
+                min = max;
+                max = copy;
+            }
+            else if (min == max)
+            {
+                return min;
+            }
+
+            return min + (max - min) * m_Random.NextDouble();
+        }
+
+        public static int RandomMinMax(int min, int max)
+        {
+            if (min > max)
+            {
+                int copy = min;
+                min = max;
+                max = copy;
+            }
+            else if (min == max)
+            {
+                return min;
+            }
+
+            return min + m_Random.Next((max - min) + 1);
+        }
+
+        public static int Random(int from, int count)
+        {
+            if (count == 0)
+            {
+                return from;
+            }
+            else if (count > 0)
+            {
+                return from + m_Random.Next(count);
+            }
+            else
+            {
+                return from - m_Random.Next(-count);
+            }
+        }
+
+        public static int Random(int count)
+        {
+            return m_Random.Next(count);
+        }
+
+        public static UInt32 NextUInt32()
+        {
+            var buffer = new byte[4];
+            m_Random.NextBytes(buffer);
+            return BitConverter.ToUInt32(buffer, 0);
+        }
+
+        /// <summary>
+        /// Returns Int16 in the range [min, max)
+        /// </summary>
+        private static Int16 Next(Int16 min, Int16 max)
+        {
+            if (max <= min)
+                throw new ArgumentException("Значение \"max\" должно быть больше значения \"min\".");
+            double rn = ((double)(max - min)) * m_Random.NextDouble() + (double)min;
+            return Convert.ToInt16(rn);
+        }
+
+        /// <summary>
+        /// Returns UInt16 in the range [min, max)
+        /// </summary>
+        private static UInt16 Next(UInt16 min, UInt16 max)
+        {
+            if (max <= min)
+                throw new ArgumentException("Значение \"max\" должно быть больше значения \"min\".");
+            double rn = ((double)(max - min)) * m_Random.NextDouble() + (double)min;
+            return Convert.ToUInt16(rn);
+        }
+
+        public static uint RandomMinMax(uint min, uint max)
+        {
+            if (min > max)
+            {
+                uint copy = min;
+                min = max;
+                max = copy;
+            }
+            else if (min == max)
+            {
+                return min;
+            }
+
+            return Next(min, max + 1);
+        }
+
+        public static uint Random(uint from, uint count)
+        {
+            if (count > 0)
+                return from + Next(0, count);
+            else
+                return from;
+        }
+
+        public static uint Random(uint count)
+        {
+            if (count > 0)
+                return Next(0, count);
+            else
+                return 0;
+        }
+
+        /// <summary>
+        /// Returns UInt32 in the range [min, max)
+        /// </summary>
+        private static UInt32 Next(UInt32 min, UInt32 max)
+        {
+            if (max <= min)
+                throw new ArgumentException("Значение \"max\" должно быть больше значения \"min\".");
+            double rn = ((double)(max - min)) * m_Random.NextDouble() + (double)min;
+            return Convert.ToUInt32(rn);
+        }
+
+        /// <summary>
+        /// Returns Int64 in the range [min, max)
+        /// </summary>
+        private static Int64 Next(Int64 min, Int64 max)
+        {
+            if (max <= min)
+                throw new ArgumentException("Значение \"max\" должно быть больше значения \"min\".");
+            double rn = ((double)(max - min)) * m_Random.NextDouble() + (double)min;
+            return Convert.ToInt64(rn);
+        }
+
+        /// <summary>
+        /// Returns UInt64 in the range [min, max)
+        /// </summary>
+        private static UInt64 Next(UInt64 min, UInt64 max)
+        {
+            if (max <= min)
+                throw new ArgumentException("Значение \"max\" должно быть больше значения \"min\".");
+            double rn = ((double)(max - min)) * m_Random.NextDouble() + (double)min;
+            return Convert.ToUInt64(rn);
+        }
+
+        #endregion
+
+        public static int RandomList( params int[] list )
 		{
 			return list[m_Random.Next( list.Length )];
-		}
-
-		public static bool RandomBool()
-		{
-			return ( m_Random.Next( 2 ) == 0 );
-		}
-
-		public static int RandomMinMax( int min, int max )
-		{
-			if ( min > max )
-			{
-				int copy = min;
-				min = max;
-				max = copy;
-			}
-			else if ( min == max )
-			{
-				return min;
-			}
-
-			return min + m_Random.Next( (max - min) + 1 );
-		}
-
-		public static int Random( int from, int count )
-		{
-			if ( count == 0 )
-			{
-				return from;
-			}
-			else if ( count > 0 )
-			{
-				return from + m_Random.Next( count );
-			}
-			else
-			{
-				return from - m_Random.Next( -count );
-			}
-		}
-
-		public static int Random( int count )
-		{
-			return m_Random.Next( count );
 		}
 
 		#region Random Hues
