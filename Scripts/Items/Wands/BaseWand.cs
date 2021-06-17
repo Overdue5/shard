@@ -36,7 +36,8 @@ namespace Server.Items
 			Weight = 1.0;
 			Charges = charges;
             m_MaxCharges = charges;
-		}
+            Identified = true;
+        }
 
 		public void ConsumeCharge( Mobile from )
 		{
