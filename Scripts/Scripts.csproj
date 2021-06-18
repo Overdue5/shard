@@ -1093,11 +1093,11 @@
     <Compile Include="Custom\Adds\System\AntiMacro\AntiMacroGump-old.cs" />
     <Compile Include="Custom\Adds\System\AntiMacro\AntiMacroGump.cs" />
     <Compile Include="Custom\Adds\System\AntiMacro\MySQLManager.cs" />
-    <Compile Include="Custom\Adds\System\BountyBoard\AddBountyGump.cs" />
-    <Compile Include="Custom\Adds\System\BountyBoard\BountyBoard.cs" />
-    <Compile Include="Custom\Adds\System\BountyBoard\BountyBoardGump.cs" />
-    <Compile Include="Custom\Adds\System\BountyBoard\BountyStatusGump.cs" />
-    <Compile Include="Custom\Adds\System\BountyBoard\EditBountyGump.cs" />
+    <None Include="!Disabled\BountyBoard\AddBountyGump.cs" />
+    <None Include="!Disabled\BountyBoard\BountyBoard.cs" />
+    <None Include="!Disabled\BountyBoard\BountyBoardGump.cs" />
+    <None Include="!Disabled\BountyBoard\BountyStatusGump.cs" />
+    <None Include="!Disabled\BountyBoard\EditBountyGump.cs" />
     <Compile Include="Custom\Adds\System\ClayCraft\Clay.cs" />
     <Compile Include="Custom\Adds\System\ClayCraft\ClayCraft.cs" />
     <Compile Include="Custom\Adds\System\ClayCraft\ClayCraftTool.cs" />
