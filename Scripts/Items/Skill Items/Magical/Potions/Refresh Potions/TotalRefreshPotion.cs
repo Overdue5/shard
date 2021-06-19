@@ -7,7 +7,8 @@ namespace Server.Items
 		[Constructable]
 		public TotalRefreshPotion() : base( PotionEffect.RefreshTotal )
 		{
-		    Name = "Greater Refresh Potion";
+            Amount = amount;
+            Name = "Total Refresh Potion";
 		}
 
 		public TotalRefreshPotion( Serial serial ) : base( serial )

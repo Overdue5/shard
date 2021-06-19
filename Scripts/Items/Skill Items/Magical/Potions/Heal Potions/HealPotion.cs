@@ -19,7 +19,7 @@ namespace Server.Items
         public HealPotion(int amount): base(PotionEffect.Heal)
         {
             Amount = amount;
-            Name = "heal potion";
+            Name = "Heal Potion";
         }
 
 		public HealPotion( Serial serial ) : base( serial )

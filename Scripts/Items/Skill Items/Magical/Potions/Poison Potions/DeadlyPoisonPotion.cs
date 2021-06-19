@@ -10,6 +10,8 @@ namespace Server.Items
 		[Constructable]
 		public DeadlyPoisonPotion() : base( PotionEffect.PoisonDeadly )
 		{
+            Amount = amount;
+            Name = "Deadly Poison Potion";
 		}
 
 		public DeadlyPoisonPotion( Serial serial ) : base( serial )

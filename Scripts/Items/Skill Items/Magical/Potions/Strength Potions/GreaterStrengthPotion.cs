@@ -11,6 +11,8 @@ namespace Server.Items
 		[Constructable]
 		public GreaterStrengthPotion() : base( PotionEffect.StrengthGreater )
 		{
+            Amount = amount;
+            Name = "Greater Strength Potion";
 		}
 
 		public GreaterStrengthPotion( Serial serial ) : base( serial )

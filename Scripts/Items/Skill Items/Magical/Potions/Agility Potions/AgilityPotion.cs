@@ -10,6 +10,8 @@ namespace Server.Items
 		[Constructable]
 		public AgilityPotion() : base( PotionEffect.Agility )
 		{
+            Amount = amount;
+            Name = "Agility Potion";
 		}
 
 		public AgilityPotion( Serial serial ) : base( serial )

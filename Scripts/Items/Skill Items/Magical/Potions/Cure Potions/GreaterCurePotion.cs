@@ -25,6 +25,8 @@ namespace Server.Items
 		[Constructable]
 		public GreaterCurePotion() : base( PotionEffect.CureGreater )
 		{
+            Amount = amount;
+            Name = "Greater Cure Potion";
 		}
 
 		public GreaterCurePotion( Serial serial ) : base( serial )

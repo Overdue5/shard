@@ -18,7 +18,7 @@ namespace Server.Items
         [Constructable]
         public LesserHealPotion(int amount)  : base(PotionEffect.HealLesser)
         {
-            Name = "lesser heal potion";
+            Name = "Lesser Heal Potion";
             Amount = amount;
         }
 

@@ -8,6 +8,8 @@ namespace Server.Items
 		[Constructable]
 		public ExplosionPotion() : base( PotionEffect.Explosion )
 		{
+            Amount = amount;
+            Name = "Explosion Potion";
 		}
 
 		public ExplosionPotion( Serial serial ) : base( serial )

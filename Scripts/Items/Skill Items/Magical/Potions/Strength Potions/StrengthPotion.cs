@@ -10,6 +10,8 @@ namespace Server.Items
 		[Constructable]
 		public StrengthPotion() : base( PotionEffect.Strength )
 		{
+            Amount = amount;
+            Name = "Strength Potion";
 		}
 
 		public StrengthPotion( Serial serial ) : base( serial )
