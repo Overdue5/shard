@@ -65,7 +65,7 @@ namespace Server.Items
             //Loki edit: All heal potions will do the heal animation
             from.FixedParticles(0x376A, 5, 15, 5005, EffectLayer.Waist);
 
-            return false;
+            return true;
 
 		    //from.Heal( Utility.RandomMinMax( min, max ) );
 		}
