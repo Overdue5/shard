@@ -1,3 +1,4 @@
+using System;
 using Server.Items;
 using Server.Targeting;
 
@@ -18,6 +19,11 @@ namespace Server.Spells.First
 		public MagicArrowSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
+
+        public override TimeSpan GetCastDelay()
+        {
+            return new TimeSpan(0,0,0,1,200);
+        }
 
         public override void OnPlayerCast()
         {
