@@ -24,7 +24,6 @@ namespace Server.Items
 		[Constructable]
 		public CurePotion() : base( PotionEffect.Cure )
 		{
-            Amount = amount;
             Name = "Cure Potion";
 		}
 

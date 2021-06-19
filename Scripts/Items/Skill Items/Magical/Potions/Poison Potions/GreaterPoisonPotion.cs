@@ -10,7 +10,6 @@ namespace Server.Items
 		[Constructable]
 		public GreaterPoisonPotion() : base( PotionEffect.PoisonGreater )
 		{
-            Amount = amount;
             Name = "Greater Poison Potion";
 		}
 

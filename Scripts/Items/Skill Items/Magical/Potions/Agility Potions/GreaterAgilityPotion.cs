@@ -11,7 +11,6 @@ namespace Server.Items
 		[Constructable]
 		public GreaterAgilityPotion() : base( PotionEffect.AgilityGreater )
 		{
-            Amount = amount;
             Name = "Greater Agility Potion";
 		}
 

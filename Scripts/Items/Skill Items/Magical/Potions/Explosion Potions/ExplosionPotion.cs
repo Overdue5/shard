@@ -8,7 +8,6 @@ namespace Server.Items
 		[Constructable]
 		public ExplosionPotion() : base( PotionEffect.Explosion )
 		{
-            Amount = amount;
             Name = "Explosion Potion";
 		}
 

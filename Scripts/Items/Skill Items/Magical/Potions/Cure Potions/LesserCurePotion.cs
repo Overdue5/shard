@@ -21,7 +21,6 @@ namespace Server.Items
 		[Constructable]
 		public LesserCurePotion() : base( PotionEffect.CureLesser )
 		{
-            Amount = amount;
             Name = "Lesser Cure Potion";
 		}
 

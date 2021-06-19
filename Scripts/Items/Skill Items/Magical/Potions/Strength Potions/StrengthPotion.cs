@@ -10,7 +10,6 @@ namespace Server.Items
 		[Constructable]
 		public StrengthPotion() : base( PotionEffect.Strength )
 		{
-            Amount = amount;
             Name = "Strength Potion";
 		}
 

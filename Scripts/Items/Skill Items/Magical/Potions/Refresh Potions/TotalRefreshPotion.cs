@@ -7,7 +7,6 @@ namespace Server.Items
 		[Constructable]
 		public TotalRefreshPotion() : base( PotionEffect.RefreshTotal )
 		{
-            Amount = amount;
             Name = "Total Refresh Potion";
 		}
 
