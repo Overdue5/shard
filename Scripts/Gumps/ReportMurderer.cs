@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using Server.Mobiles;
 using Server.Network;
 using Server.SkillHandlers;
-//bounty system here
-using Server.BountySystem;
-//end bounty system
 
 namespace Server.Gumps
 {
@@ -30,15 +27,11 @@ namespace Server.Gumps
             foreach (AggressorInfo ai in m.Aggressors)
             {
                 if (ai.Attacker.Player && ai.CanReportMurder && !ai.Reported)
-                    //bounty system edit
-                    // orig if ( ai.Attacker.Player && ai.CanReportMurder && !ai.Reported )
-                    if (ai.Attacker.Player && ai.CanReportMurder && !ai.Reported && !BountyBoard.Attackable(ai.Attacker, e.Mobile) && !m.IsInEvent)
-                    // end bounty system edit
-                    {
-                        killers.Add(ai.Attacker);
-                        ai.Reported = true;
-                        ai.CanReportMurder = false;
-                    }
+                {
+                    killers.Add(ai.Attacker);
+                    ai.Reported = true;
+                    ai.CanReportMurder = false;
+                }
                 if (ai.Attacker.Player && (DateTime.Now - ai.LastCombatTime) < TimeSpan.FromSeconds(30.0) &&
                     !toGive.Contains(ai.Attacker))
                     toGive.Add(ai.Attacker);
@@ -96,11 +89,7 @@ namespace Server.Gumps
 			{
                 Mobile killer = m_Killers[0];
 
-                //bounty system here
-                m_Victim.SendGump(new AddBountyGump(m_Victim, killer));
-                //end bounty system
-
-				//m_Victim.SendGump( new ReportMurdererGump( m_Victim, m_Killers ) );
+                //m_Victim.SendGump( new ReportMurdererGump( m_Victim, m_Killers ) );
 			}
 		}
 

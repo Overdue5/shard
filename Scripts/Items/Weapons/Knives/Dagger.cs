@@ -26,7 +26,7 @@ namespace Server.Items
 		[Constructable]
 		public Dagger() : base( 0xF52 )
 		{
-            Stackable = true;
+            
 		}
 
 		public Dagger( Serial serial ) : base( serial )

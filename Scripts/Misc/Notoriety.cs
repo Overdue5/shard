@@ -8,7 +8,7 @@ using Server.Multis;
 using Server.Regions;
 using Server.SkillHandlers;
 //Bounty System Start
-using Server.BountySystem;
+//using Server.BountySystem;
 //Bounty System End
 
 namespace Server.Misc
@@ -567,8 +567,8 @@ namespace Server.Misc
 			}
 
             //bounty system
-            if (BountyBoard.Attackable(source, target))
-                return Notoriety.CanBeAttacked;
+            //if (BountyBoard.Attackable(source, target))
+            //    return Notoriety.CanBeAttacked;
             //end bounty system
 
 			return Notoriety.Innocent;

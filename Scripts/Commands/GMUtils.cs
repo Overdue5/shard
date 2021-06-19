@@ -12,12 +12,9 @@ namespace Scripts.Commands
 
         public static void Initialize()
         {
-            Register("TurnAccessLevel", AccessLevel.Player, new CommandEventHandler(TurnAccessLevel_OnCommand));
-        }
-
-        public static void Register(string command, AccessLevel access, CommandEventHandler handler)
-        {
-            CommandSystem.Register(command, access, handler);
+            CommandSystem.Register("TurnAccessLevel", AccessLevel.Player, new CommandEventHandler(TurnAccessLevel_OnCommand));
+            CommandSystem.Register("TAL", AccessLevel.Player, new CommandEventHandler(TurnAccessLevel_OnCommand));
+            CommandSystem.Register("anim", AccessLevel.GameMaster, new CommandEventHandler(Animation_OnCommand));
         }
 
         [Usage("TurnAccessLevel")]
@@ -72,6 +69,49 @@ namespace Scripts.Commands
             }
         }
 
+        [Usage("anim")]
+        [Description("Test animation play.  anim AnimationType action")]
+        private static void Animation_OnCommand(CommandEventArgs e)
+        {
+            //public virtual void Animate( int action, int frameCount, int repeatCount, bool forward, bool repeat, int delay )
+            try
+            {
+                if (e.Length >= 2)
+                {
+                    var animstr = e.GetString(0);
+                    var actionstr = e.GetString(1);
+                    int repeatCount = 1;
+                    bool forward = false;
+                    bool repeat = false;
+                    int delay = 1;
+                    if (e.Length >= 3)
+                        repeatCount = e.GetInt32(2);
+                    if (e.Length >= 4)
+                        forward = e.GetBoolean(3);
+                    if (e.Length >= 5)
+                        repeat = e.GetBoolean(4);
+                    if (e.Length >= 6)
+                        delay = e.GetInt32(5);
+                    var anim = 0;
+                    var action = 0;
+                    if (int.TryParse(animstr, out anim) && int.TryParse(actionstr, out action))
+                    {
+                        e.Mobile.Animate(anim, action, repeatCount, forward, repeat, delay);
+                        return;
+                    }
+                    //else if (Enum.TryParse<AnimationType>(animstr, out AnimationType animEnum) && int.TryParse(actionstr, out action))
+                    //{
+                    //    e.Mobile.Animate((int)(AnimationType)Enum.ToObject(typeof(AnimationType), animEnum), action, repeatCount, forward, repeat, delay);
+                    //    return;
+                    //}
+                }
+            }
+            catch (Exception exception)
+            {
+                e.Mobile.SendAsciiMessage("Incorrect input, usage 'anim AnimationType action framcount repeatcount '");
+            }
+
+        }
     }
 
 }

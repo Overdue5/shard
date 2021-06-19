@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using Server.BountySystem;
 using Server.Guilds;
 using Server.Mobiles;
 using Server.Network;
@@ -254,19 +253,19 @@ namespace Server.Misc
 
                         #region Bounty
 
-                        //Start the column
-                        op.Write("               <td>");
+                        ////Start the column
+                        //op.Write("               <td>");
 
-                        ArrayList m_Entries = BountyBoard.Entries;
-                        int price = 0;
+                        //ArrayList m_Entries = BountyBoard.Entries;
+                        //int price = 0;
 
-                        foreach (BountyBoardEntry entry in m_Entries)
-                        {
-                            if (entry.Wanted == m)
-                                price += entry.Price;
-                        }
+                        //foreach (BountyBoardEntry entry in m_Entries)
+                        //{
+                        //    if (entry.Wanted == m)
+                        //        price += entry.Price;
+                        //}
 
-                        op.Write(price.ToString("#,##0", new CultureInfo("en-US")));
+                        //op.Write(price.ToString("#,##0", new CultureInfo("en-US")));
 
                         #endregion
 

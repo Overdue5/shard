@@ -184,15 +184,9 @@ namespace Server.SkillHandlers
 					{
 						BaseWeapon weapon = (BaseWeapon)targeted;
 
-						if ( Core.AOS )
-						{
-							startTimer = ( weapon.PrimaryAbility == WeaponAbility.InfectiousStrike || weapon.SecondaryAbility == WeaponAbility.InfectiousStrike );
-						}
-                        else if (weapon.Layer == Layer.OneHanded && !(weapon is HellsHalberd || weapon is SuperiorDragonsBlade || weapon is DragonsBlade || weapon is HeavensFury || weapon is SoV)) //Loki edit: 1H blades only
-                        {
-                            startTimer = (weapon.Type == WeaponType.Slashing || weapon.Type == WeaponType.Piercing);
-                        }
-					}
+                        startTimer = (weapon.Type != WeaponType.Bashing && weapon.Type != WeaponType.Fists &&
+                                      weapon.Type != WeaponType.Ranged && weapon.Type != WeaponType.Staff);
+                    }
 
 					if ( startTimer )
 					{

@@ -36,9 +36,6 @@ using Server.Spells.Spellweaving;
 using Server.Custom.Games;
 using Server.Poker;
 using Server.Engines.PartySystem;
-//bounty system
-using Server.BountySystem;
-//end bounty system
 
 namespace Server.Mobiles
 {
@@ -118,18 +115,6 @@ namespace Server.Mobiles
             set { m_SwingActionCount = value; }
         }
         #endregion
-
-        // bounty system
-	    private ArrayList m_BountyUpdateList = new ArrayList();
-
-	    public bool ShowBountyUpdate { get; set; }
-
-	    public ArrayList BountyUpdateList
-        {
-            get { return m_BountyUpdateList; }
-            set { m_BountyUpdateList = value; }
-        }
-        //end bounty system
 
         private class CountAndTimeStamp
 		{
@@ -1120,16 +1105,6 @@ namespace Server.Mobiles
                 ((PlayerMobile)from).OfflineMessagesFrom.Clear();
             }
 
-            //bounty system
-            PlayerMobile player = (PlayerMobile)from;
-
-            if (player.ShowBountyUpdate)
-            {
-                from.SendGump(new BountyStatusGump(from, player.BountyUpdateList));
-                player.BountyUpdateList.Clear();
-                player.ShowBountyUpdate = false;
-            }
-            //end bounty system
 		}
 
 		private bool m_NoDeltaRecursion;
@@ -3671,11 +3646,7 @@ namespace Server.Mobiles
             if (Core.ML && target is BaseCreature && ((BaseCreature)target).Controlled && this == ((BaseCreature)target).ControlMaster)
                 return false;
 
-            //bounty system
-			if( BountyBoard.Attackable( this, target ) )
-				return false;
-			//end bounty system
-
+           
 			return base.IsHarmfulCriminal( target );
 		}
 

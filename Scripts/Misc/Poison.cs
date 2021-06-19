@@ -66,7 +66,8 @@ namespace Server
             //m_Interval = TimeSpan.FromSeconds(9);
             m_Count = count;
             m_MessageInterval = messageInterval;
-		}
+            AddDelay = new TimeSpan(0);
+        }
 
 		public override string Name{ get{ return m_Name; } }
 		public override int Level{ get{ return m_Level; } }
@@ -81,7 +82,7 @@ namespace Server
 
 			public Mobile From{ get{ return m_From; } set{ m_From = value; } }
 
-			public PoisonTimer( Mobile m, PoisonImpl p ) : base( p.m_Delay, p.m_Interval )
+			public PoisonTimer( Mobile m, PoisonImpl p ) : base( p.m_Delay + p.AddDelay, p.m_Interval )
 			{
 				m_From = m;
 				m_Mobile = m;

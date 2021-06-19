@@ -2026,406 +2026,420 @@ namespace Server.Items
 
             // hook for attachment OnWeaponHit method
             Engines.XmlSpawner2.XmlAttach.OnWeaponHit(this, attacker, defender, damageGiven);
+
+            if (!Core.AOS && Poison != null && PoisonCharges > 0)
+            {
+                --PoisonCharges;
+                Poison.AddDelay = BaseWeapon.CalculatePoisonDelay(Poison);
+                if (Utility.RandomDouble() >= 0.5) // 50% chance to poison
+                    defender.ApplyPoison(attacker, Poison);
+                Poison.AddDelay = new TimeSpan(0);
+            }
         }
 
-	    #region OldOnHitINX
-//        public virtual void OnHit( Mobile attacker, Mobile defender, double damageBonus )
-//        {
-//            if ( MirrorImage.HasClone( defender ) && (defender.Skills.Ninjitsu.Value / 150.0) > Utility.RandomDouble() )
-//            {
-//                Clone bc;
-
-//                foreach ( Mobile m in defender.GetMobilesInRange( 4 ) )
-//                {
-//                    bc = m as Clone;
-
-//                    if ( bc != null && bc.Summoned && bc.SummonMaster == defender )
-//                    {
-//                        attacker.SendLocalizedMessage( 1063141 ); // Your attack has been diverted to a nearby mirror image of your target!
-//                        defender.SendLocalizedMessage( 1063140 ); // You manage to divert the attack onto one of your nearby mirror images.
-
-//                        
-//                         * TODO: What happens if the Clone parries a blow?
-//                         * And what about if the attacker is using Honorable Execution
-//                         * and kills it?
-//                         
-
-//                        defender = m;
-//                        break;
-//                    }
-//                }
-//            }
-
-//            PlayHurtAnimation( defender );
-//            HitMessages(attacker, defender);
-
-//            attacker.PlaySound( GetHitAttackSound( attacker, defender ) );
-//            defender.PlaySound( GetHitDefendSound( attacker, defender ) );
-
-//            int damage = ComputeDamage( attacker, defender );
-
-//            #region Damage Multipliers
-//            //double factor = 1.0;
-//            int percentageBonus = 0;
-
-//            //WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);
-//            //SpecialMove move = SpecialMove.GetCurrentMove(attacker);
-
-//            //if (a != null)
-//            //{
-//            //    //factor *= a.DamageScalar;
-//            //    percentageBonus += (int)(a.DamageScalar * 100) - 100;
-//            //}
-
-//            //if (move != null)
-//            //{
-//            //    //factor *= move.GetDamageScalar( attacker, defender );
-//            //    percentageBonus += (int)(move.GetDamageScalar(attacker, defender) * 100) - 100;
-//            //}
-
-//            ////factor *= damageBonus;
-//            //percentageBonus += (int)(damageBonus * 100) - 100;
-
-//            CheckSlayerResult cs = CheckSlayers(attacker, defender);
-
-//            if (cs != CheckSlayerResult.None)
-//            {
-//                if (cs == CheckSlayerResult.Slayer)
-//                    defender.FixedEffect(0x37B9, 10, 5);
-
-//                //factor *= 2.0;
-//                percentageBonus += 100;
-//            }
-
-//            if (!attacker.Player)
-//            {
-//                if (defender is PlayerMobile)
-//                {
-//                    PlayerMobile pm = (PlayerMobile)defender;
-
-//                    if (pm.EnemyOfOneType != null && pm.EnemyOfOneType != attacker.GetType())
-//                    {
-//                        //factor *= 2.0;
-//                        percentageBonus += 100;
-//                    }
-//                }
-//            }
-//            //else if (!defender.Player)
-//            //{
-//            //    if (attacker is PlayerMobile)
-//            //    {
-//            //        PlayerMobile pm = (PlayerMobile)attacker;
-
-//            //        if (pm.WaitingForEnemy)
-//            //        {
-//            //            pm.EnemyOfOneType = defender.GetType();
-//            //            pm.WaitingForEnemy = false;
-//            //        }
-
-//            //        if (pm.EnemyOfOneType == defender.GetType())
-//            //        {
-//            //            defender.FixedEffect(0x37B9, 10, 5, 1160, 0);
-//            //            //factor *= 1.5;
-//            //            percentageBonus += 50;
-//            //        }
-//            //    }
-//            //}
-
-//            //int packInstinctBonus = GetPackInstinctBonus(attacker, defender);
+        public static TimeSpan CalculatePoisonDelay(Poison poison)
+        {
+            return new TimeSpan(0, 0, Utility.LimitMinMax(1, (5 - poison.Level) * 10, 50));
+        }
+
+        #region OldOnHitINX
+        //        public virtual void OnHit( Mobile attacker, Mobile defender, double damageBonus )
+        //        {
+        //            if ( MirrorImage.HasClone( defender ) && (defender.Skills.Ninjitsu.Value / 150.0) > Utility.RandomDouble() )
+        //            {
+        //                Clone bc;
+
+        //                foreach ( Mobile m in defender.GetMobilesInRange( 4 ) )
+        //                {
+        //                    bc = m as Clone;
+
+        //                    if ( bc != null && bc.Summoned && bc.SummonMaster == defender )
+        //                    {
+        //                        attacker.SendLocalizedMessage( 1063141 ); // Your attack has been diverted to a nearby mirror image of your target!
+        //                        defender.SendLocalizedMessage( 1063140 ); // You manage to divert the attack onto one of your nearby mirror images.
+
+        //                        
+        //                         * TODO: What happens if the Clone parries a blow?
+        //                         * And what about if the attacker is using Honorable Execution
+        //                         * and kills it?
+        //                         
+
+        //                        defender = m;
+        //                        break;
+        //                    }
+        //                }
+        //            }
+
+        //            PlayHurtAnimation( defender );
+        //            HitMessages(attacker, defender);
+
+        //            attacker.PlaySound( GetHitAttackSound( attacker, defender ) );
+        //            defender.PlaySound( GetHitDefendSound( attacker, defender ) );
+
+        //            int damage = ComputeDamage( attacker, defender );
+
+        //            #region Damage Multipliers
+        //            //double factor = 1.0;
+        //            int percentageBonus = 0;
+
+        //            //WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);
+        //            //SpecialMove move = SpecialMove.GetCurrentMove(attacker);
+
+        //            //if (a != null)
+        //            //{
+        //            //    //factor *= a.DamageScalar;
+        //            //    percentageBonus += (int)(a.DamageScalar * 100) - 100;
+        //            //}
+
+        //            //if (move != null)
+        //            //{
+        //            //    //factor *= move.GetDamageScalar( attacker, defender );
+        //            //    percentageBonus += (int)(move.GetDamageScalar(attacker, defender) * 100) - 100;
+        //            //}
+
+        //            ////factor *= damageBonus;
+        //            //percentageBonus += (int)(damageBonus * 100) - 100;
+
+        //            CheckSlayerResult cs = CheckSlayers(attacker, defender);
+
+        //            if (cs != CheckSlayerResult.None)
+        //            {
+        //                if (cs == CheckSlayerResult.Slayer)
+        //                    defender.FixedEffect(0x37B9, 10, 5);
+
+        //                //factor *= 2.0;
+        //                percentageBonus += 100;
+        //            }
+
+        //            if (!attacker.Player)
+        //            {
+        //                if (defender is PlayerMobile)
+        //                {
+        //                    PlayerMobile pm = (PlayerMobile)defender;
+
+        //                    if (pm.EnemyOfOneType != null && pm.EnemyOfOneType != attacker.GetType())
+        //                    {
+        //                        //factor *= 2.0;
+        //                        percentageBonus += 100;
+        //                    }
+        //                }
+        //            }
+        //            //else if (!defender.Player)
+        //            //{
+        //            //    if (attacker is PlayerMobile)
+        //            //    {
+        //            //        PlayerMobile pm = (PlayerMobile)attacker;
+
+        //            //        if (pm.WaitingForEnemy)
+        //            //        {
+        //            //            pm.EnemyOfOneType = defender.GetType();
+        //            //            pm.WaitingForEnemy = false;
+        //            //        }
+
+        //            //        if (pm.EnemyOfOneType == defender.GetType())
+        //            //        {
+        //            //            defender.FixedEffect(0x37B9, 10, 5, 1160, 0);
+        //            //            //factor *= 1.5;
+        //            //            percentageBonus += 50;
+        //            //        }
+        //            //    }
+        //            //}
+
+        //            //int packInstinctBonus = GetPackInstinctBonus(attacker, defender);
+
+        //            //if (packInstinctBonus != 0)
+        //            //{
+        //            //    //factor *= 1.0 + (double)packInstinctBonus / 100.0;
+        //            //    percentageBonus += packInstinctBonus;
+        //            //}
+
+        //            //if (m_InDoubleStrike)
+        //            //{
+        //            //    //factor *= 0.9; // 10% loss when attacking with double-strike
+        //            //    percentageBonus -= 10;
+        //            //}
+
+        //            TransformContext context = TransformationSpellHelper.GetContext(defender);
+
+        //            //if ((m_Slayer == SlayerName.Silver || m_Slayer2 == SlayerName.Silver) && context != null && context.Spell is NecromancerSpell && context.Type != typeof(HorrificBeastSpell))
+        //            //{
+        //            //    //factor *= 1.25; // Every necromancer transformation other than horrific beast takes an additional 25% damage
+        //            //    percentageBonus += 25;
+        //            //}
+
+        //            //if (attacker is PlayerMobile && !(Core.ML && defender is PlayerMobile))
+        //            //{
+        //            //    PlayerMobile pmAttacker = (PlayerMobile)attacker;
+
+        //            //    if (pmAttacker.HonorActive && pmAttacker.InRange(defender, 1))
+        //            //    {
+        //            //        //factor *= 1.25;
+        //            //        percentageBonus += 25;
+        //            //    }
+
+        //            //    if (pmAttacker.SentHonorContext != null && pmAttacker.SentHonorContext.Target == defender)
+        //            //    {
+        //            //        //pmAttacker.SentHonorContext.ApplyPerfectionDamageBonus( ref factor );
+        //            //        percentageBonus += pmAttacker.SentHonorContext.PerfectionDamageBonus;
+        //            //    }
+        //            //}
+
+        //            ////if ( factor > 3.0 )
+        //            ////	factor = 3.0;
+
+        //            //percentageBonus = Math.Min(percentageBonus, 300);
 
-//            //if (packInstinctBonus != 0)
-//            //{
-//            //    //factor *= 1.0 + (double)packInstinctBonus / 100.0;
-//            //    percentageBonus += packInstinctBonus;
-//            //}
+        //            ////damage = (int)(damage * factor);
+        //            //damage = AOS.Scale(damage, 100 + percentageBonus);
+        //            #endregion
 
-//            //if (m_InDoubleStrike)
-//            //{
-//            //    //factor *= 0.9; // 10% loss when attacking with double-strike
-//            //    percentageBonus -= 10;
-//            //}
+        //            if ( attacker is BaseCreature )
+        //                ((BaseCreature)attacker).AlterMeleeDamageTo( defender, ref damage );
 
-//            TransformContext context = TransformationSpellHelper.GetContext(defender);
+        //            if ( defender is BaseCreature )
+        //                ((BaseCreature)defender).AlterMeleeDamageFrom( attacker, ref damage );
 
-//            //if ((m_Slayer == SlayerName.Silver || m_Slayer2 == SlayerName.Silver) && context != null && context.Spell is NecromancerSpell && context.Type != typeof(HorrificBeastSpell))
-//            //{
-//            //    //factor *= 1.25; // Every necromancer transformation other than horrific beast takes an additional 25% damage
-//            //    percentageBonus += 25;
-//            //}
+        //            damage = AbsorbDamage( attacker, defender, damage );
 
-//            //if (attacker is PlayerMobile && !(Core.ML && defender is PlayerMobile))
-//            //{
-//            //    PlayerMobile pmAttacker = (PlayerMobile)attacker;
+        //            if ( !Core.AOS && damage < 1 )
+        //                damage = 1;
 
-//            //    if (pmAttacker.HonorActive && pmAttacker.InRange(defender, 1))
-//            //    {
-//            //        //factor *= 1.25;
-//            //        percentageBonus += 25;
-//            //    }
+        //            AddBlood( attacker, defender, damage );
 
-//            //    if (pmAttacker.SentHonorContext != null && pmAttacker.SentHonorContext.Target == defender)
-//            //    {
-//            //        //pmAttacker.SentHonorContext.ApplyPerfectionDamageBonus( ref factor );
-//            //        percentageBonus += pmAttacker.SentHonorContext.PerfectionDamageBonus;
-//            //    }
-//            //}
+        //            int phys, fire, cold, pois, nrgy;
 
-//            ////if ( factor > 3.0 )
-//            ////	factor = 3.0;
+        //            GetDamageTypes( attacker, out phys, out fire, out cold, out pois, out nrgy );
 
-//            //percentageBonus = Math.Min(percentageBonus, 300);
+        //            if ( m_Consecrated )
+        //            {
+        //                phys = defender.PhysicalResistance;
+        //                fire = defender.FireResistance;
+        //                cold = defender.ColdResistance;
+        //                pois = defender.PoisonResistance;
+        //                nrgy = defender.EnergyResistance;
 
-//            ////damage = (int)(damage * factor);
-//            //damage = AOS.Scale(damage, 100 + percentageBonus);
-//            #endregion
+        //                int low = phys, type = 0;
 
-//            if ( attacker is BaseCreature )
-//                ((BaseCreature)attacker).AlterMeleeDamageTo( defender, ref damage );
+        //                if ( fire < low ){ low = fire; type = 1; }
+        //                if ( cold < low ){ low = cold; type = 2; }
+        //                if ( pois < low ){ low = pois; type = 3; }
+        //                if ( nrgy < low ){ low = nrgy; type = 4; }
 
-//            if ( defender is BaseCreature )
-//                ((BaseCreature)defender).AlterMeleeDamageFrom( attacker, ref damage );
-
-//            damage = AbsorbDamage( attacker, defender, damage );
-
-//            if ( !Core.AOS && damage < 1 )
-//                damage = 1;
-
-//            AddBlood( attacker, defender, damage );
-
-//            int phys, fire, cold, pois, nrgy;
-
-//            GetDamageTypes( attacker, out phys, out fire, out cold, out pois, out nrgy );
-
-//            if ( m_Consecrated )
-//            {
-//                phys = defender.PhysicalResistance;
-//                fire = defender.FireResistance;
-//                cold = defender.ColdResistance;
-//                pois = defender.PoisonResistance;
-//                nrgy = defender.EnergyResistance;
-
-//                int low = phys, type = 0;
-
-//                if ( fire < low ){ low = fire; type = 1; }
-//                if ( cold < low ){ low = cold; type = 2; }
-//                if ( pois < low ){ low = pois; type = 3; }
-//                if ( nrgy < low ){ low = nrgy; type = 4; }
-
-//                phys = fire = cold = pois = nrgy = 0;
-
-//                if ( type == 0 ) phys = 100;
-//                else if ( type == 1 ) fire = 100;
-//                else if ( type == 2 ) cold = 100;
-//                else if ( type == 3 ) pois = 100;
-//                else if ( type == 4 ) nrgy = 100;
-//            }
-
-//            //if ( a != null && !a.OnBeforeDamage( attacker, defender ) )
-//            //{
-//            //    WeaponAbility.ClearCurrentAbility( attacker );
-//            //    a = null;
-//            //}
-
-//            //if ( move != null && !move.OnBeforeDamage( attacker, defender ) )
-//            //{
-//            //    SpecialMove.ClearCurrentMove( attacker );
-//            //    move = null;
-//            //}
-
-//            bool ignoreArmor = false; //(a is ArmorIgnore || (move != null && move.IgnoreArmor(attacker)));
-
-//            damageGiven = AOS.Damage( defender, attacker, damage, ignoreArmor, phys, fire, cold, pois, nrgy, chaos, direct, false, this is BaseRanged, false );
-
-//            //Auto attack on hit
-//            if (defender is PlayerMobile)
-//            {
-//                PlayerMobile pm = (PlayerMobile)defender;
-
-//                if (pm.Combatant == null && pm.Combatant != attacker)
-//                    pm.Combatant = attacker;
-
-//                //Autoattack someone if we have if it was a long time since we attacked them
-//                //or if our new combat time is far in the future. Auto attacking reacts slower then manual attacking.
-//                if (pm.NextCombatTime > DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3) || (DateTime.Now - TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3)) > pm.NextCombatTime)
-//                    pm.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3);
-//            }
-
-//            double propertyBonus = 1.0;// (move == null) ? 1.0 : move.GetPropertyBonus(attacker);
-
-//            if ( Core.AOS )
-//            {
-//                int lifeLeech = 0;
-//                int stamLeech = 0;
-//                int manaLeech = 0;
-//                int wraithLeech = 0;
-
-//                if ( (int)(m_AosWeaponAttributes.HitLeechHits * propertyBonus) > Utility.Random( 100 ) )
-//                    lifeLeech += 30; // HitLeechHits% chance to leech 30% of damage as hit points
-
-//                if ( (int)(m_AosWeaponAttributes.HitLeechStam * propertyBonus) > Utility.Random( 100 ) )
-//                    stamLeech += 100; // HitLeechStam% chance to leech 100% of damage as stamina
-
-//                if ( (int)(m_AosWeaponAttributes.HitLeechMana * propertyBonus) > Utility.Random( 100 ) )
-//                    manaLeech += 40; // HitLeechMana% chance to leech 40% of damage as mana
-
-//                if ( m_Cursed )
-//                    lifeLeech += 50; // Additional 50% life leech for cursed weapons (necro spell)
-
-//                context = TransformationSpellHelper.GetContext(attacker);
-
-//                if ( context != null && context.Type == typeof( VampiricEmbraceSpell ) )
-//                    lifeLeech += 20; // Vampiric embrace gives an additional 20% life leech
-
-//                if ( context != null && context.Type == typeof( WraithFormSpell ) )
-//                {
-//                    wraithLeech = (5 + (int)((15 * attacker.Skills.SpiritSpeak.Value) / 100)); // Wraith form gives an additional 5-20% mana leech
-
-//                    // Mana leeched by the Wraith Form spell is actually stolen, not just leeched.
-//                    defender.Mana -= AOS.Scale( damageGiven, wraithLeech );
-
-//                    manaLeech += wraithLeech;
-//                }
-
-//                if ( lifeLeech != 0 )
-//                    attacker.Hits += AOS.Scale( damageGiven, lifeLeech );
-
-//                if ( stamLeech != 0 )
-//                    attacker.Stam += AOS.Scale( damageGiven, stamLeech );
-
-//                if ( manaLeech != 0 )
-//                    attacker.Mana += AOS.Scale( damageGiven, manaLeech );
-
-//                if ( lifeLeech != 0 || stamLeech != 0 || manaLeech != 0 )
-//                    attacker.PlaySound( 0x44D );
-//            }
-
-//            if ( m_MaxHits > 0 && ((MaxRange <= 1 && (defender is Slime || defender is ToxicElemental)) || Utility.Random( 25 ) == 0) ) // Stratics says 50% chance, seems more like 4%..
-//            {
-//                if ( MaxRange <= 1 && (defender is Slime || defender is ToxicElemental) )
-//                    attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
-
-//                if ( Core.AOS && m_AosWeaponAttributes.SelfRepair > Utility.Random( 10 ) )
-//                {
-//                    HitPoints += 2;
-//                }
-//                else
-//                {
-//                    if ( m_Hits > 0 )
-//                    {
-//                        --HitPoints;
-//                    }
-//                    else if ( m_MaxHits > 1 )
-//                    {
-//                        --MaxHitPoints;
-
-//                        if ( Parent is Mobile )
-//                            ((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
-//                    }
-//                    else
-//                    {
-//                        Delete();
-//                    }
-//                }
-//            }
-
-//            if ( attacker is VampireBatFamiliar )
-//            {
-//                BaseCreature bc = (BaseCreature)attacker;
-//                Mobile caster = bc.ControlMaster;
-
-//                if ( caster == null )
-//                    caster = bc.SummonMaster;
-
-//                if ( caster != null && caster.Map == bc.Map && caster.InRange( bc, 2 ) )
-//                    caster.Hits += damage;
-//                else
-//                    bc.Hits += damage;
-//            }
-
-//            if ( Core.AOS )
-//            {
-//                int physChance = (int)(m_AosWeaponAttributes.HitPhysicalArea * propertyBonus);
-//                int fireChance = (int)(m_AosWeaponAttributes.HitFireArea * propertyBonus);
-//                int coldChance = (int)(m_AosWeaponAttributes.HitColdArea * propertyBonus);
-//                int poisChance = (int)(m_AosWeaponAttributes.HitPoisonArea * propertyBonus);
-//                int nrgyChance = (int)(m_AosWeaponAttributes.HitEnergyArea * propertyBonus);
-
-//                if ( physChance != 0 && physChance > Utility.Random( 100 ) )
-//                    DoAreaAttack( attacker, defender, 0x10E,   50, 100, 0, 0, 0, 0 );
-
-//                if ( fireChance != 0 && fireChance > Utility.Random( 100 ) )
-//                    DoAreaAttack( attacker, defender, 0x11D, 1160, 0, 100, 0, 0, 0 );
-
-//                if ( coldChance != 0 && coldChance > Utility.Random( 100 ) )
-//                    DoAreaAttack( attacker, defender, 0x0FC, 2100, 0, 0, 100, 0, 0 );
-
-//                if ( poisChance != 0 && poisChance > Utility.Random( 100 ) )
-//                    DoAreaAttack( attacker, defender, 0x205, 1166, 0, 0, 0, 100, 0 );
-
-//                if ( nrgyChance != 0 && nrgyChance > Utility.Random( 100 ) )
-//                    DoAreaAttack( attacker, defender, 0x1F1,  120, 0, 0, 0, 0, 100 );
-
-//                int maChance = (int)(m_AosWeaponAttributes.HitMagicArrow * propertyBonus);
-//                int harmChance = (int)(m_AosWeaponAttributes.HitHarm * propertyBonus);
-//                int fireballChance = (int)(m_AosWeaponAttributes.HitFireball * propertyBonus);
-//                int lightningChance = (int)(m_AosWeaponAttributes.HitLightning * propertyBonus);
-//                int dispelChance = (int)(m_AosWeaponAttributes.HitDispel * propertyBonus);
-
-//                if ( maChance != 0 && maChance > Utility.Random( 100 ) )
-//                    DoMagicArrow( attacker, defender );
-
-//                if ( harmChance != 0 && harmChance > Utility.Random( 100 ) )
-//                    DoHarm( attacker, defender );
-
-//                if ( fireballChance != 0 && fireballChance > Utility.Random( 100 ) )
-//                    DoFireball( attacker, defender );
-
-//                if ( lightningChance != 0 && lightningChance > Utility.Random( 100 ) )
-//                    DoLightning( attacker, defender );
-
-//                if ( dispelChance != 0 && dispelChance > Utility.Random( 100 ) )
-//                    DoDispel( attacker, defender );
-
-//                int laChance = (int)(m_AosWeaponAttributes.HitLowerAttack * propertyBonus);
-//                int ldChance = (int)(m_AosWeaponAttributes.HitLowerDefend * propertyBonus);
-
-//                if ( laChance != 0 && laChance > Utility.Random( 100 ) )
-//                    DoLowerAttack( attacker, defender );
-
-//                if ( ldChance != 0 && ldChance > Utility.Random( 100 ) )
-//                    DoLowerDefense( attacker, defender );
-//            }
-
-//            if ( attacker is BaseCreature )
-//                ((BaseCreature)attacker).OnGaveMeleeAttack( defender );
-
-//            if ( defender is BaseCreature )
-//                ((BaseCreature)defender).OnGotMeleeAttack( attacker );
-///*
-//            if (a != null && !(defender is PlayerMobile))
-//                a.OnHit( attacker, defender, damage );
-
-//            if ( move != null && !(defender is PlayerMobile))
-//                move.OnHit( attacker, defender, damage );
-//*/
-//            if ( defender is IHonorTarget && ((IHonorTarget)defender).ReceivedHonorContext != null )
-//                ((IHonorTarget)defender).ReceivedHonorContext.OnTargetHit( attacker );
-
-//            if ( !(this is BaseRanged) )
-//            {
-//                if ( AnimalForm.UnderTransformation( attacker, typeof( GiantSerpent ) ) )
-//                    defender.ApplyPoison( attacker, Poison.Lesser );
-
-//                if (AnimalForm.UnderTransformation(defender, typeof(BullFrog)))
-//                    attacker.ApplyPoison(defender, Poison.Regular);
-//            }
-//            // hook for attachment OnWeaponHit method
-//            Server.Engines.XmlSpawner2.XmlAttach.OnWeaponHit(this, attacker, defender, damageGiven);
-//        }	
+        //                phys = fire = cold = pois = nrgy = 0;
+
+        //                if ( type == 0 ) phys = 100;
+        //                else if ( type == 1 ) fire = 100;
+        //                else if ( type == 2 ) cold = 100;
+        //                else if ( type == 3 ) pois = 100;
+        //                else if ( type == 4 ) nrgy = 100;
+        //            }
+
+        //            //if ( a != null && !a.OnBeforeDamage( attacker, defender ) )
+        //            //{
+        //            //    WeaponAbility.ClearCurrentAbility( attacker );
+        //            //    a = null;
+        //            //}
+
+        //            //if ( move != null && !move.OnBeforeDamage( attacker, defender ) )
+        //            //{
+        //            //    SpecialMove.ClearCurrentMove( attacker );
+        //            //    move = null;
+        //            //}
+
+        //            bool ignoreArmor = false; //(a is ArmorIgnore || (move != null && move.IgnoreArmor(attacker)));
+
+        //            damageGiven = AOS.Damage( defender, attacker, damage, ignoreArmor, phys, fire, cold, pois, nrgy, chaos, direct, false, this is BaseRanged, false );
+
+        //            //Auto attack on hit
+        //            if (defender is PlayerMobile)
+        //            {
+        //                PlayerMobile pm = (PlayerMobile)defender;
+
+        //                if (pm.Combatant == null && pm.Combatant != attacker)
+        //                    pm.Combatant = attacker;
+
+        //                //Autoattack someone if we have if it was a long time since we attacked them
+        //                //or if our new combat time is far in the future. Auto attacking reacts slower then manual attacking.
+        //                if (pm.NextCombatTime > DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3) || (DateTime.Now - TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3)) > pm.NextCombatTime)
+        //                    pm.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3);
+        //            }
+
+        //            double propertyBonus = 1.0;// (move == null) ? 1.0 : move.GetPropertyBonus(attacker);
+
+        //            if ( Core.AOS )
+        //            {
+        //                int lifeLeech = 0;
+        //                int stamLeech = 0;
+        //                int manaLeech = 0;
+        //                int wraithLeech = 0;
+
+        //                if ( (int)(m_AosWeaponAttributes.HitLeechHits * propertyBonus) > Utility.Random( 100 ) )
+        //                    lifeLeech += 30; // HitLeechHits% chance to leech 30% of damage as hit points
+
+        //                if ( (int)(m_AosWeaponAttributes.HitLeechStam * propertyBonus) > Utility.Random( 100 ) )
+        //                    stamLeech += 100; // HitLeechStam% chance to leech 100% of damage as stamina
+
+        //                if ( (int)(m_AosWeaponAttributes.HitLeechMana * propertyBonus) > Utility.Random( 100 ) )
+        //                    manaLeech += 40; // HitLeechMana% chance to leech 40% of damage as mana
+
+        //                if ( m_Cursed )
+        //                    lifeLeech += 50; // Additional 50% life leech for cursed weapons (necro spell)
+
+        //                context = TransformationSpellHelper.GetContext(attacker);
+
+        //                if ( context != null && context.Type == typeof( VampiricEmbraceSpell ) )
+        //                    lifeLeech += 20; // Vampiric embrace gives an additional 20% life leech
+
+        //                if ( context != null && context.Type == typeof( WraithFormSpell ) )
+        //                {
+        //                    wraithLeech = (5 + (int)((15 * attacker.Skills.SpiritSpeak.Value) / 100)); // Wraith form gives an additional 5-20% mana leech
+
+        //                    // Mana leeched by the Wraith Form spell is actually stolen, not just leeched.
+        //                    defender.Mana -= AOS.Scale( damageGiven, wraithLeech );
+
+        //                    manaLeech += wraithLeech;
+        //                }
+
+        //                if ( lifeLeech != 0 )
+        //                    attacker.Hits += AOS.Scale( damageGiven, lifeLeech );
+
+        //                if ( stamLeech != 0 )
+        //                    attacker.Stam += AOS.Scale( damageGiven, stamLeech );
+
+        //                if ( manaLeech != 0 )
+        //                    attacker.Mana += AOS.Scale( damageGiven, manaLeech );
+
+        //                if ( lifeLeech != 0 || stamLeech != 0 || manaLeech != 0 )
+        //                    attacker.PlaySound( 0x44D );
+        //            }
+
+        //            if ( m_MaxHits > 0 && ((MaxRange <= 1 && (defender is Slime || defender is ToxicElemental)) || Utility.Random( 25 ) == 0) ) // Stratics says 50% chance, seems more like 4%..
+        //            {
+        //                if ( MaxRange <= 1 && (defender is Slime || defender is ToxicElemental) )
+        //                    attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Acid blood scars your weapon!*
+
+        //                if ( Core.AOS && m_AosWeaponAttributes.SelfRepair > Utility.Random( 10 ) )
+        //                {
+        //                    HitPoints += 2;
+        //                }
+        //                else
+        //                {
+        //                    if ( m_Hits > 0 )
+        //                    {
+        //                        --HitPoints;
+        //                    }
+        //                    else if ( m_MaxHits > 1 )
+        //                    {
+        //                        --MaxHitPoints;
+
+        //                        if ( Parent is Mobile )
+        //                            ((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
+        //                    }
+        //                    else
+        //                    {
+        //                        Delete();
+        //                    }
+        //                }
+        //            }
+
+        //            if ( attacker is VampireBatFamiliar )
+        //            {
+        //                BaseCreature bc = (BaseCreature)attacker;
+        //                Mobile caster = bc.ControlMaster;
+
+        //                if ( caster == null )
+        //                    caster = bc.SummonMaster;
+
+        //                if ( caster != null && caster.Map == bc.Map && caster.InRange( bc, 2 ) )
+        //                    caster.Hits += damage;
+        //                else
+        //                    bc.Hits += damage;
+        //            }
+
+        //            if ( Core.AOS )
+        //            {
+        //                int physChance = (int)(m_AosWeaponAttributes.HitPhysicalArea * propertyBonus);
+        //                int fireChance = (int)(m_AosWeaponAttributes.HitFireArea * propertyBonus);
+        //                int coldChance = (int)(m_AosWeaponAttributes.HitColdArea * propertyBonus);
+        //                int poisChance = (int)(m_AosWeaponAttributes.HitPoisonArea * propertyBonus);
+        //                int nrgyChance = (int)(m_AosWeaponAttributes.HitEnergyArea * propertyBonus);
+
+        //                if ( physChance != 0 && physChance > Utility.Random( 100 ) )
+        //                    DoAreaAttack( attacker, defender, 0x10E,   50, 100, 0, 0, 0, 0 );
+
+        //                if ( fireChance != 0 && fireChance > Utility.Random( 100 ) )
+        //                    DoAreaAttack( attacker, defender, 0x11D, 1160, 0, 100, 0, 0, 0 );
+
+        //                if ( coldChance != 0 && coldChance > Utility.Random( 100 ) )
+        //                    DoAreaAttack( attacker, defender, 0x0FC, 2100, 0, 0, 100, 0, 0 );
+
+        //                if ( poisChance != 0 && poisChance > Utility.Random( 100 ) )
+        //                    DoAreaAttack( attacker, defender, 0x205, 1166, 0, 0, 0, 100, 0 );
+
+        //                if ( nrgyChance != 0 && nrgyChance > Utility.Random( 100 ) )
+        //                    DoAreaAttack( attacker, defender, 0x1F1,  120, 0, 0, 0, 0, 100 );
+
+        //                int maChance = (int)(m_AosWeaponAttributes.HitMagicArrow * propertyBonus);
+        //                int harmChance = (int)(m_AosWeaponAttributes.HitHarm * propertyBonus);
+        //                int fireballChance = (int)(m_AosWeaponAttributes.HitFireball * propertyBonus);
+        //                int lightningChance = (int)(m_AosWeaponAttributes.HitLightning * propertyBonus);
+        //                int dispelChance = (int)(m_AosWeaponAttributes.HitDispel * propertyBonus);
+
+        //                if ( maChance != 0 && maChance > Utility.Random( 100 ) )
+        //                    DoMagicArrow( attacker, defender );
+
+        //                if ( harmChance != 0 && harmChance > Utility.Random( 100 ) )
+        //                    DoHarm( attacker, defender );
+
+        //                if ( fireballChance != 0 && fireballChance > Utility.Random( 100 ) )
+        //                    DoFireball( attacker, defender );
+
+        //                if ( lightningChance != 0 && lightningChance > Utility.Random( 100 ) )
+        //                    DoLightning( attacker, defender );
+
+        //                if ( dispelChance != 0 && dispelChance > Utility.Random( 100 ) )
+        //                    DoDispel( attacker, defender );
+
+        //                int laChance = (int)(m_AosWeaponAttributes.HitLowerAttack * propertyBonus);
+        //                int ldChance = (int)(m_AosWeaponAttributes.HitLowerDefend * propertyBonus);
+
+        //                if ( laChance != 0 && laChance > Utility.Random( 100 ) )
+        //                    DoLowerAttack( attacker, defender );
+
+        //                if ( ldChance != 0 && ldChance > Utility.Random( 100 ) )
+        //                    DoLowerDefense( attacker, defender );
+        //            }
+
+        //            if ( attacker is BaseCreature )
+        //                ((BaseCreature)attacker).OnGaveMeleeAttack( defender );
+
+        //            if ( defender is BaseCreature )
+        //                ((BaseCreature)defender).OnGotMeleeAttack( attacker );
+        ///*
+        //            if (a != null && !(defender is PlayerMobile))
+        //                a.OnHit( attacker, defender, damage );
+
+        //            if ( move != null && !(defender is PlayerMobile))
+        //                move.OnHit( attacker, defender, damage );
+        //*/
+        //            if ( defender is IHonorTarget && ((IHonorTarget)defender).ReceivedHonorContext != null )
+        //                ((IHonorTarget)defender).ReceivedHonorContext.OnTargetHit( attacker );
+
+        //            if ( !(this is BaseRanged) )
+        //            {
+        //                if ( AnimalForm.UnderTransformation( attacker, typeof( GiantSerpent ) ) )
+        //                    defender.ApplyPoison( attacker, Poison.Lesser );
+
+        //                if (AnimalForm.UnderTransformation(defender, typeof(BullFrog)))
+        //                    attacker.ApplyPoison(defender, Poison.Regular);
+        //            }
+        //            // hook for attachment OnWeaponHit method
+        //            Server.Engines.XmlSpawner2.XmlAttach.OnWeaponHit(this, attacker, defender, damageGiven);
+        //        }	
 
         #endregion
 
-		public void HitMessages( Mobile attacker, Mobile defender )
+        public void HitMessages( Mobile attacker, Mobile defender )
 		{
 			if( attacker == null || defender == null )
 				return;

@@ -180,12 +180,20 @@ namespace Server.Items
                 {
                     if (m_Targeted is BaseWeapon)
                     {
-                        if (((BaseWeapon)m_Targeted).Identified)
+                        var weapon = (BaseWeapon) m_Targeted;
+                        if (weapon.Identified)
+                        {
                             m_From.SendAsciiMessage("That is already identified.");
+                        }
                         else
                         {
-                            ((BaseWeapon) m_Targeted).Identified = true;
+                            weapon.Identified = true;
                             m_From.SendAsciiMessage("You have successfully identified the item");
+                        }
+                        if (weapon.Poison != null && weapon.PoisonCharges > 0)
+                        {
+                            m_From.SendAsciiMessage($"This weapon is poisoned with {weapon.Poison.Name} venom, " +
+                                                    $"it remains about {weapon.PoisonCharges} hits ");
                         }
 
                     }

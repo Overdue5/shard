@@ -21,7 +21,12 @@ namespace Server.Items
 		public int Charges
 		{
 			get{ return m_Charges; }
-			set{ m_Charges = value; InvalidateProperties(); }
+            set
+            {
+                if (value > 9)
+                    value = Utility.LimitMinMax(0, 3 + Utility.Random(value), 9);
+                m_Charges = value; InvalidateProperties();
+            }
 		}
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -35,7 +40,7 @@ namespace Server.Items
 		{
 			Weight = 1.0;
 			Charges = charges;
-            m_MaxCharges = charges;
+            m_MaxCharges = Charges;
             Identified = true;
         }
 
@@ -103,8 +108,8 @@ namespace Server.Items
 			        }
 				case 0:
 				{
-					m_Charges = reader.ReadInt();
-					break;
+                    Charges = reader.ReadInt();
+                    break;
 				}
 			}
 		}

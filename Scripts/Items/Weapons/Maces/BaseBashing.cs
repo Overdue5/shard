@@ -74,8 +74,6 @@ namespace Server.Items
 
             base.OnDoubleClick(from);
 
-            if ( this is HammerPick || this is WarHammer)
-                from.Target = new SmithTarget(this, DefBlacksmithy.CraftSystem);
         }
 	}
 }

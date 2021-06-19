@@ -31,6 +31,7 @@ namespace Server
         public abstract string Name { get; }
         public abstract int Level { get; }
         public abstract Timer ConstructTimer(Mobile m);
+        public TimeSpan AddDelay { get; set; }
         /*public abstract void OnDamage( Mobile m, ref object state );*/
 
         public override string ToString()

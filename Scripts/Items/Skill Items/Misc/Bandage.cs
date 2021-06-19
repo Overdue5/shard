@@ -488,44 +488,9 @@ namespace Server.Items
 					}
 					else if( ( !origin.Deleted && (!origin.EventItem || (origin.EventItem && origin.EventItemConsume)) ) || ( bandage != null && (!bandage.EventItem || (bandage.EventItem && bandage.EventItemConsume)) ) )
 					{
-                        Item item = new BloodyBandage();
-
-                        if (origin.EventItem || (bandage != null && bandage.EventItem))
-                        {
-                            item.EventItem = true;
-                            item.Hue = origin.Hue;
-                            item.Name = "event Bloody bandage";
-                        }
-
-					    Mobile from = m_Healer;
-
-                        if (from.AddToBackpack(item))
-                        {
-                            from.SendAsciiMessage("You put the {0} in your pack.", item.Name ?? CliLoc.LocToString(item.LabelNumber));
-                        }
-                        else //Taran: Bloody bandages stack on ground if the player is overweight
-                        {
-                            from.SendAsciiMessage("You are overweight and put the {0} on the ground.", item.Name ?? CliLoc.LocToString(item.LabelNumber));
-
-                            IPooledEnumerable eable = from.Map.GetItemsInRange(from.Location, 0);
-
-                            foreach (Item i in eable)
-                            {
-                                if (i is BloodyBandage)
-                                {
-                                    if (i.Serial != item.Serial)
-                                    {
-                                        i.Amount++;
-                                        item.Delete();
-                                    }
-
-                                    break;
-                                }
-                            }
-
-                            eable.Free();
-                        }
-					}
+                        m_Healer.SendAsciiMessage($"{Utility.LimitMax(toHeal,m_Healer.HitsMax-m_Healer.Hits)} " +
+                                                  $"points of damage have been healed");
+                    }
                     else if ( !origin.Deleted && (origin.EventItem && !origin.EventItemConsume))
                     {
                         Mobile from = m_Healer;
