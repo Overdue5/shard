@@ -116,7 +116,6 @@ namespace Server.Mobiles
         }
         #endregion
 
-
         private class CountAndTimeStamp
 		{
 			private int m_Count;

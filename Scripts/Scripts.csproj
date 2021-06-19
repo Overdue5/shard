@@ -3217,38 +3217,18 @@
     <Compile Include="Items\Traps\SpikeTrap.cs" />
     <Compile Include="Items\Traps\StoneFaceTrap.cs" />
     <Compile Include="Items\Wands\BaseWand.cs" />
-    <Compile Include="Items\Wands\Eighth\AirElementalWand.cs" />
-    <Compile Include="Items\Wands\Eighth\EarthElementalWand.cs" />
-    <Compile Include="Items\Wands\Eighth\EarthquakeWand.cs" />
-    <Compile Include="Items\Wands\Eighth\EnergyVortexWand.cs" />
-    <Compile Include="Items\Wands\Eighth\FireElementalWand.cs" />
-    <Compile Include="Items\Wands\Eighth\ResurrectionWand.cs" />
-    <Compile Include="Items\Wands\Eighth\SummonDaemonWand.cs" />
-    <Compile Include="Items\Wands\Eighth\WaterElementalWand.cs" />
-    <Compile Include="Items\Wands\Fifth\BladeSpiritsWand.cs" />
-    <Compile Include="Items\Wands\Fifth\DispelFieldWand.cs" />
-    <Compile Include="Items\Wands\Fifth\IncognitoWand.cs" />
-    <Compile Include="Items\Wands\Fifth\MagicReflectWand.cs" />
     <Compile Include="Items\Wands\Fifth\MindBlastWand.cs" />
-    <Compile Include="Items\Wands\Fifth\ParalyzeWand.cs" />
-    <Compile Include="Items\Wands\Fifth\PoisonFieldWand.cs" />
-    <Compile Include="Items\Wands\Fifth\SummonCreatureWand.cs" />
     <Compile Include="Items\Wands\First\ClumsyWand.cs" />
     <Compile Include="Items\Wands\First\CreateFoodWand.cs" />
     <Compile Include="Items\Wands\First\FeeblemindWand.cs" />
     <Compile Include="Items\Wands\First\HealWand.cs" />
     <Compile Include="Items\Wands\First\MagicArrowWand.cs" />
     <Compile Include="Items\Wands\First\NightSightWand.cs" />
-    <Compile Include="Items\Wands\First\ReactiveArmorWand.cs" />
     <Compile Include="Items\Wands\First\WeakenWand.cs" />
-    <Compile Include="Items\Wands\Fourth\ArchCureWand.cs" />
-    <Compile Include="Items\Wands\Fourth\ArchProtectionWand.cs" />
     <Compile Include="Items\Wands\Fourth\CurseWand.cs" />
-    <Compile Include="Items\Wands\Fourth\FireFieldWand.cs" />
     <Compile Include="Items\Wands\Fourth\GreaterHealWand.cs" />
     <Compile Include="Items\Wands\Fourth\LightningWand.cs" />
     <Compile Include="Items\Wands\Fourth\ManaDrainWand.cs" />
-    <Compile Include="Items\Wands\Fourth\RecallWand.cs" />
     <Compile Include="Items\Wands\Second\AgilityWand.cs" />
     <Compile Include="Items\Wands\Second\CunningWand.cs" />
     <Compile Include="Items\Wands\Second\CureWand.cs" />
@@ -3257,29 +3237,13 @@
     <Compile Include="Items\Wands\Second\ProtectionWand.cs" />
     <Compile Include="Items\Wands\Second\RemoveTrapWand.cs" />
     <Compile Include="Items\Wands\Second\StrengthWand.cs" />
-    <Compile Include="Items\Wands\Seventh\ChainLightningWand.cs" />
-    <Compile Include="Items\Wands\Seventh\EnergyFieldWand.cs" />
-    <Compile Include="Items\Wands\Seventh\FlameStrikeWand.cs" />
-    <Compile Include="Items\Wands\Seventh\GateTravelWand.cs" />
-    <Compile Include="Items\Wands\Seventh\ManaVampireWand.cs" />
-    <Compile Include="Items\Wands\Seventh\MassDispelWand.cs" />
-    <Compile Include="Items\Wands\Seventh\MeteorSwarmWand.cs" />
-    <Compile Include="Items\Wands\Seventh\PolymorphWand.cs" />
-    <Compile Include="Items\Wands\Sixth\DispelWand.cs" />
     <Compile Include="Items\Wands\Sixth\EnergyBoltWand.cs" />
-    <Compile Include="Items\Wands\Sixth\ExplosionWand.cs" />
     <Compile Include="Items\Wands\Sixth\InvisibilityWand.cs" />
-    <Compile Include="Items\Wands\Sixth\MarkWand.cs" />
-    <Compile Include="Items\Wands\Sixth\MassCurseWand.cs" />
-    <Compile Include="Items\Wands\Sixth\ParalyzeFieldWand.cs" />
     <Compile Include="Items\Wands\Sixth\RevealWand.cs" />
     <Compile Include="Items\Wands\Third\BlessWand.cs" />
     <Compile Include="Items\Wands\Third\FireballWand.cs" />
     <Compile Include="Items\Wands\Third\MagicLockWand.cs" />
-    <Compile Include="Items\Wands\Third\PoisonWand.cs" />
-    <Compile Include="Items\Wands\Third\TelekinesisWand.cs" />
     <Compile Include="Items\Wands\Third\TeleportWand.cs" />
-    <Compile Include="Items\Wands\Third\UnlockWand.cs" />
     <Compile Include="Items\Wands\Third\WallOfStoneWand.cs" />
     <Compile Include="Items\Wands\WandTarget.cs" />
     <Compile Include="Items\Weapons\Abilities\ArmorIgnore.cs" />
@@ -4363,6 +4327,8 @@
       <Name>Server</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Items\Wands\Seventh\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
