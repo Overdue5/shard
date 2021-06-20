@@ -802,7 +802,7 @@ namespace Server.Spells
                 if (m_Caster.CheckSpellCast(this) && CheckCast() && m_Caster.Region.OnBeginSpellCast(m_Caster, this))
                 {
                     if (m_Caster is PlayerMobile && ClearHandsOnCast) //Mobiles don't need to disarm
-                        m_Caster.ClearHands();
+                        m_Caster.ClearHands(typeof(BaseWand));
 
                     m_State = SpellState.Casting;
 
@@ -932,12 +932,11 @@ namespace Server.Spells
                     }
 
                     if (m_Caster is PlayerMobile && ClearHandsOnCast) //Mobiles don't need to disarm
-                        m_Caster.ClearHands();
+                        m_Caster.ClearHands(typeof(BaseWand));
 
                     m_CastTimer = new CastTimer(this, castDelay);
                     m_CastTimer.Start();
 
-                    OnBeginCast();
 
                     return true;
                 }

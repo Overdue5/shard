@@ -1914,13 +1914,31 @@ namespace Server
 			SendLocalizedMessage( 500119 ); // You must wait to perform another action.
 		}
 
-		public virtual void ClearHands()
+        public virtual void ClearHands(Type ignoreType)
 		{
-			ClearHand( FindItemOnLayer( Layer.OneHanded ) );
-			ClearHand( FindItemOnLayer( Layer.TwoHanded ) );
-		}
+            if (ignoreType == null)
+            {
+                ClearHand(FindItemOnLayer(Layer.OneHanded));
+                ClearHand(FindItemOnLayer(Layer.TwoHanded));
+            }
+            else
+            {
+                var item = FindItemOnLayer(Layer.OneHanded);
+                if (item != null && item.GetType() != ignoreType)
+                    ClearHand(item);
+                item = FindItemOnLayer(Layer.TwoHanded);
+                if (item != null && item.GetType() != ignoreType)
+                    ClearHand(item);
+            }
+        }
 
-		public virtual void ClearHand( Item item )
+        public virtual void ClearHands()
+        {
+            ClearHand(FindItemOnLayer(Layer.OneHanded));
+            ClearHand(FindItemOnLayer(Layer.TwoHanded));
+        }
+
+        public virtual void ClearHand( Item item )
 		{
 			if( item != null && item.Movable && !item.AllowEquipedCast( this ) )
 			{
