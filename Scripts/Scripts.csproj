@@ -510,7 +510,6 @@
     <Compile Include="Custom\Adds\Items\SeedBox.cs" />
     <None Include="!Disabled\Shields.cs" />
     <Compile Include="Custom\Adds\Items\ShrinkPotion.cs" />
-    <Compile Include="Custom\Adds\Items\SilverWeaponCrystal.cs" />
     <Compile Include="Custom\Adds\Items\SkillBook.cs" />
     <Compile Include="Custom\Adds\Items\SkillGate.cs" />
     <Compile Include="Custom\Adds\Items\StaffBox.cs" />

@@ -59,7 +59,6 @@ dropped.Delete();
 
 //the reward
 mobile.AddToBackpack( new Gold( 5000 ) );
-mobile.AddToBackpack( new SilverWeaponCrystal( ) );
 if (0.10 > Utility.RandomDouble())
     mobile.AddToBackpack(new MysticFishingNet());
 
