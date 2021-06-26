@@ -200,10 +200,6 @@ namespace Server
                                                                       new LootPackItem(typeof (BaseRanged), 1),
                                                                       new LootPackItem(typeof (BaseShield), 1)
                                                                    };
-        public static readonly LootPackItem[] SilverWeaponCrystal = new[]
-                                                                  {
-                                                                      new LootPackItem(typeof (SilverWeaponCrystal), 1),
-                                                                   };
         public static readonly LootPackItem[] EasterEggs = new[]
                                                                   {
                                                                       new LootPackItem(typeof (EasterEggs), 1),
@@ -468,7 +464,6 @@ namespace Server
         {
             new LootPackEntry(false, Gold, 100.00, "1d25+15"), // 15 - 40
             new LootPackEntry(false, OldMagicItems, 10.00, 1, 0, 0, 0),
-            new LootPackEntry(false, SilverWeaponCrystal, 1.5, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 1.5, 1, 0, 0, 0)
         });
 
@@ -476,7 +471,6 @@ namespace Server
         {
             new LootPackEntry(false, Gold, 100.00, "5d11+35"), //40 - 90
             new LootPackEntry(false, OldMagicItems, 30.00, 1, 0, 0, 0),
-            new LootPackEntry(false, SilverWeaponCrystal, 3.50, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 2.5, 1, 0, 0, 0)
         });
 
@@ -485,7 +479,6 @@ namespace Server
             new LootPackEntry(false, Gold, 100.00, "10d20+60"), //80 - 260
             new LootPackEntry(false, OldMagicItems, 30.00, 1, 0, 0, 0),
             new LootPackEntry(false, OldMagicItems, 10.00, 1, 2, 20, 40),
-            new LootPackEntry(false, SilverWeaponCrystal, 10.00, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 4.5, 1, 0, 0, 0)
         });
 
@@ -497,7 +490,6 @@ namespace Server
             new WeapMod(new Damage(100, new Attribute(2, 90), new Attribute(3,10)),
             new Accuracy(33, new Attribute(1, 45), new Attribute(2, 35), new Attribute(3, 19), new Attribute(4, 1))),
             new ArMod(new Protection(100, new Attribute(2, 90), new Attribute(3, 10)))),
-            new LootPackEntry(false, SilverWeaponCrystal, 18.00, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 6.5, 1, 0, 0, 0)
         });
 
@@ -509,7 +501,6 @@ namespace Server
             new WeapMod(new Damage(100, new Attribute(2, 50), new Attribute(3, 40), new Attribute(4,10)),
             new Accuracy(33, new Attribute(1, 40), new Attribute(2, 25), new Attribute(3, 24), new Attribute(4, 10), new Attribute(5, 1))),
             new ArMod(new Protection(100, new Attribute(2, 50), new Attribute(3, 40), new Attribute(4,10)))),
-            new LootPackEntry(false, SilverWeaponCrystal, 24.00, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 7.5, 1, 0, 0, 0)
         });
                                                                          
@@ -522,7 +513,6 @@ namespace Server
             new WeapMod(new Damage(100, new Attribute(2, 30), new Attribute(3, 54), new Attribute(4,15), new Attribute(5,1)),
             new Accuracy(44, new Attribute(1, 10), new Attribute(2, 45), new Attribute(3, 40), new Attribute(4, 5))),
             new ArMod(new Protection(100, new Attribute(2, 37), new Attribute(3, 45), new Attribute(4,18)))),
-            new LootPackEntry(false, SilverWeaponCrystal, 42.00, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 8.5, 1, 0, 0, 0)
         });
 
@@ -535,7 +525,6 @@ namespace Server
             new WeapMod(new Damage(100, new Attribute(3, 34), new Attribute(4,42), new Attribute(5,24)),
             new Accuracy(50,new Attribute(1, 1), new Attribute(2, 2), new Attribute(3, 39), new Attribute(4, 49), new Attribute(5, 9))),
             new ArMod(new Protection(100, new Attribute(3, 49), new Attribute(4, 42), new Attribute(5,9)))),
-            new LootPackEntry(false, SilverWeaponCrystal, 66.00, 1, 0, 0, 0),
             //new LootPackEntry(false, EasterEggs, 12.0, 1, 0, 0, 0)
         });
 
