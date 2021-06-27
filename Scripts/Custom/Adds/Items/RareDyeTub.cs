@@ -34,7 +34,7 @@ namespace Server.Items
         {
             Hue = DyedHue = 0;
             Redyable = false;
-            Name = "Rare dye tub";
+            Name = "Rare Dye Tub";
             LootType = LootType.Blessed;
         }
 
