@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -17,9 +17,30 @@ namespace Server
             EventSink.Login += OnLogin;
         }
 
+        private static bool IsAdminIP(Mobile mob)
+        {
+            if (mob?.NetState?.Address == null)
+                return false;
+            foreach (var account in Accounts.GetAccounts())
+            {
+                if (account.AccessLevel > AccessLevel.Counselor && ((Account)account).LoginIPs != null)
+                {
+                    foreach (var ip in ((Account)account).LoginIPs)
+                    {
+                        if (ip.Equals(mob.NetState.Address))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
         private static void OnLogin(LoginEventArgs e)
         {
-            if (e.Mobile == null || e.Mobile.NetState == null || e.Mobile.AccessLevel > AccessLevel.Player)
+            if (e.Mobile == null || e.Mobile.NetState == null || e.Mobile.AccessLevel > AccessLevel.Player || 
+                CheckExistingIP.IsAdminIP(e.Mobile))
                 return;
 
             Account a = e.Mobile.Account as Account;
