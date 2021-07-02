@@ -33,21 +33,21 @@ namespace Server.Mobiles
 			Karma = -4000;
 			VirtualArmor = 20;
 
-		    Item temp = new PlateGloves {Movable = false, Hue = 0x0590, Name = "Vampire Plate Gauntlets"};
+		    Item temp = new PlateGloves {Movable = false, Hue = 2975, Name = "Vampire Plate Gauntlets"};
 		    AddItem( temp );
-			temp = new PlateArms {Hue = 0x0845, Movable = false, Name = "Vampire Plate Arms"};
+			temp = new PlateArms {Hue = 2975, Movable = false, Name = "Vampire Plate Arms"};
 		    AddItem( temp );
-			temp = new PlateGorget {Movable = false, Hue = 0x0590, Name = "Vampire Plate Gorget"};
+			temp = new PlateGorget {Movable = false, Hue = 2975, Name = "Vampire Plate Gorget"};
 		    AddItem( temp );
-			temp = new PlateLegs {Movable = false, Hue = 0x0590, Name = "Vampire Plate Legs"};
+			temp = new PlateLegs {Movable = false, Hue = 2975, Name = "Vampire Plate Legs"};
 		    AddItem( temp );
-			temp = new PlateChest {Movable = false, Hue = 0x0590, Name = "Vampire Plate Chest"};
+			temp = new PlateChest {Movable = false, Hue = 2975, Name = "Vampire Plate Chest"};
 		    AddItem( temp );
-			temp = new Cloak( 0x1 ) {Movable = false};
+			temp = new Cloak( 0x1 ) {Movable = false, Hue = 2691, Name = "Vampire Cloak"};
 		    AddItem( temp );
 
 		    HairItemID = 8252;
-		    HairHue = Utility.RandomHairHue();
+		    HairHue = Hue = 1150();
 
 			BaseSword twep;
 			switch( Utility.Random( 8 ) )
