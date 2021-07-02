@@ -19,7 +19,7 @@ namespace Server.Items
 		private ArrayList m_RuneBooks = new ArrayList();
 		public Mobile m_Owner;
 		public bool m_RedsAnywhere = true;
-		private int m_Cost = 25;
+		private int m_Cost = 250;
 		private long m_AmountCollected;
 
 		// DecayTimer Stuff
@@ -76,13 +76,13 @@ namespace Server.Items
 					Effects.SendLocationEffect(new Point3D(this.X, this.Y + 1, this.Z), this.Map, 0x373A, 15, this.Hue - 1, 0);
 					Effects.SendLocationEffect(new Point3D(this.X + 1, this.Y, this.Z), this.Map, 0x373A, 15, this.Hue - 1, 0);
 					Effects.SendLocationEffect(new Point3D(this.X, this.Y, this.Z - 1), this.Map, 0x373A, 15, this.Hue - 1, 0);
-					this.PublicOverheadMessage(0, this.Hue, false, "CEOMoongateLibrary Active!");
+					this.PublicOverheadMessage(0, this.Hue, false, "Moongate Library Active!");
 				}
 				else
 				{
 					m_Active = false;
 					Hue = 826;
-					this.PublicOverheadMessage(0, this.Hue, false, "CEOMoongateLibrary Inactive.");
+					this.PublicOverheadMessage(0, this.Hue, false, "MoongateLibrary Inactive.");
 				}
 				UpdateDate();
 			}
@@ -596,7 +596,7 @@ namespace Server.Items
 			else
 				AddBackground(0, 0, 435, 440, 5054);
 			AddHtmlLocalized(5, 5, 210, 20, 1012011, false, false); // Pick your destination:
-			AddHtml(280, 5, 210, 20, "<basefont size=2 color=#0000ff>CEO Moongate Library<basefont>", false, false);
+			AddHtml(280, 5, 210, 20, "<basefont size=2 color=#0000ff>Moongate Library<basefont>", false, false);
 			if (m_MoongateLibrary.Cost != 0)
 			{
 				if (myGate)
