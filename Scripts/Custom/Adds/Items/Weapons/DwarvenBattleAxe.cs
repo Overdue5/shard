@@ -14,7 +14,7 @@ namespace Server.Items
         [Constructable]
         public DwarvenBattleAxe()
         {
-            Hue = 1942;
+            Hue = 1940;
             Name = "Dwarven Battle Axe";
             Speed = 428;
             MinDamage = 20;
