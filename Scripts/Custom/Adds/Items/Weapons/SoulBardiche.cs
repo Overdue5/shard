@@ -8,8 +8,8 @@ namespace Server.Items
             Hue = 1175;
             Name = "Soul Infused Bardiche";
             Weight = 15.0;
-            Speed = 202;
-            MinDamage = 13;
+            Speed = 302;
+            MinDamage = 18;
             MaxDamage = 36;
             AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
             DamageLevel = WeaponDamageLevel.Force;

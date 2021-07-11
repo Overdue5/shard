@@ -50,9 +50,9 @@ namespace Server.Mobiles
 		    AddItem( temp );
 			temp = new PlateHelm {Movable = false, Hue = 0x0492, Name = "Vampire Plate Helm"};
 		    AddItem( temp );
-			temp = new BodySash {Movable = false, Hue = 0x1, Name = "Vampire Sash"};
+			temp = new BodySash {Movable = false, Hue = 2691, Name = "Vampire Sash"};
 		    AddItem( temp );
-			temp = new Cloak {Movable = false, Hue = 0x1};
+			temp = new Cloak {Movable = false, Hue = 2691};
 		    AddItem( temp );
 
             BaseArmor tarm;

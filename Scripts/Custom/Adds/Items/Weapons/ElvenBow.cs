@@ -6,9 +6,9 @@ namespace Server.Items
         public ElvenBow()
         {
             Hue = 1941;
-            Name = "Elven's Bow";
+            Name = "Elven Bow";
             Speed = 510;
-            MinDamage = 8;
+            MinDamage = 13;
             MaxDamage = 23;
             AccuracyLevel = WeaponAccuracyLevel.Supremely;
             DamageLevel = WeaponDamageLevel.Power;

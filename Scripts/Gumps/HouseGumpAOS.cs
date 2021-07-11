@@ -443,7 +443,6 @@ namespace Server.Gumps
 				{
 					bool isCustomizable = isOwner && ( house is HouseFoundation );
 
-					AddButtonLabeled( 10, 120, GetButtonID( 5, 0 ), 1060759, isOwner && !isCustomizable && ( house.ConvertEntry != null ) ); // Convert Into Customizable House
 					AddButtonLabeled( 10, 160, GetButtonID( 5, 1 ), 1060765, isOwner && isCustomizable ); // Customize This House
 					AddButtonLabeled( 10, 180, GetButtonID( 5, 2 ), 1060760, isOwner && house.MovingCrate != null ); // Relocate Moving Crate
 					AddButtonLabeled( 10, 210, GetButtonID( 5, 3 ), 1060761, isOwner && house.Public ); // Change House Sign

@@ -5,7 +5,7 @@ namespace Server.Items
         [Constructable]
         public DwarfWarHammer()
         {
-            Hue = 1325;
+            Hue = 1940;
             Name = "Dwarf War Hammer";
             Weight = 15.0;
             Speed = 428;
