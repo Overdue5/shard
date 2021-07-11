@@ -845,6 +845,15 @@ namespace Server.Mobiles
 
             return base.ApplyNameSuffix(suffix);
         }
+        public override void OnDeathPvXSystem()
+        {
+            PvXPointSystem.CalculateStats(this);
+        }
+
+        public bool IsSummonedOrTamed()
+        {
+            return !this.Deleted && (Summoned || Controlled);
+        }
 
         public virtual bool CheckControlChance(Mobile m)
         {

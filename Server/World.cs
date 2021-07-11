@@ -31,6 +31,7 @@ namespace Server {
 	public static class World {
 
 		private static Dictionary<Serial, Mobile> m_Mobiles;
+		private static Dictionary<Serial, Mobile> m_PlayerMobiles;
 		private static Dictionary<Serial, Item> m_Items;
 
 		private static bool m_Loading;
@@ -73,7 +74,21 @@ namespace Server {
 			get { return m_Mobiles; }
 		}
 
-		public static Dictionary<Serial, Item> Items {
+        public static Dictionary<Serial, Mobile> PlayerMobiles
+        {
+            get { return m_PlayerMobiles; }
+        }
+
+        public static void UpdatePlayerMobileList(WorldBeforeSaveEventArgs w)
+        {
+            foreach (Mobile m in m_Mobiles.Values)
+            {
+                if (m.Player)
+                    m_PlayerMobiles.Add(m.Serial, m);
+            }
+        }
+
+        public static Dictionary<Serial, Item> Items {
 			get { return m_Items; }
 		}
 
@@ -1084,6 +1099,7 @@ namespace Server {
                 item.ClearProperties();
             }
 
+            m_PlayerMobiles = new Dictionary<Serial, Mobile>();
             foreach (Mobile m in m_Mobiles.Values)
             {
                 m.UpdateRegion(); // Is this really needed?
@@ -1092,6 +1108,8 @@ namespace Server {
                 m.ClearProperties();
             }
 
+            UpdatePlayerMobileList(null);
+            EventSink.WorldBeforeSave += UpdatePlayerMobileList;
             watch.Stop();
 
             Console.WriteLine("done ({1} items, {2} mobiles) ({0:F2} seconds)", watch.Elapsed.TotalSeconds, m_Items.Count, m_Mobiles.Count);

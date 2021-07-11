@@ -4113,10 +4113,15 @@ namespace Server
 			}
 
 			Region.OnDeath( this );
+            OnDeathPvXSystem();
 			OnDeath( c );
 		}
 
-		private Container m_Corpse;
+        public virtual void OnDeathPvXSystem()
+        {
+        }
+
+        private Container m_Corpse;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Container Corpse

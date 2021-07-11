@@ -182,7 +182,9 @@ namespace Server
 
 				Console.WriteLine();
 			}
-		}
+
+            EventSink.WorldSave += Config.OnSave;
+        }
 
 		private static void LoadFile(string path)
 		{
@@ -271,7 +273,12 @@ namespace Server
 			}
 		}
 
-		public static void Save()
+        public static void OnSave(WorldSaveEventArgs w)
+        {
+            Save();
+        }
+
+        public static void Save()
 		{
 			if (!_Initialized)
 			{

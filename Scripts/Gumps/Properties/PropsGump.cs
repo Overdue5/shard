@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Scripts.SpecialSystems;
 using Server.Commands.Generic;
 using Server.Network;
 using CPA = Server.CommandPropertyAttribute;
@@ -328,6 +329,8 @@ namespace Server.Gumps
                             from.SendGump(new SetListOptionGump(prop, from, m_Object, m_Stack, m_Page, m_List, m_PoisonNames, m_PoisonValues));
                         else if (IsType(type, typeofMap))
                             from.SendGump(new SetListOptionGump(prop, from, m_Object, m_Stack, m_Page, m_List, Map.GetMapNames(), Map.GetMapValues()));
+                        else if (IsType(type, typeofPvXSysten))
+                            from.SendGump(new SetObjectGump(prop, from, m_Object, m_Stack, type, m_Page, m_List));
                         else if (IsType(type, typeofSkills) && m_Object is Mobile)
                         {
                             from.SendGump(new PropertiesGump(from, m_Object, m_Stack, m_List, m_Page));
@@ -342,7 +345,7 @@ namespace Server.Gumps
                             else
                                 from.SendGump(new PropertiesGump(from, m_Object, m_Stack, m_List, m_Page));
                         }
-					}
+                    }
 
 					break;
 				}
@@ -440,6 +443,7 @@ namespace Server.Gumps
 		private static readonly Type typeofSkills = typeof( Skills );
 		private static readonly Type typeofPropertyObject = typeof( PropertyObjectAttribute );
 		private static readonly Type typeofNoSort = typeof( NoSortAttribute );
+		private static readonly Type typeofPvXSysten = typeof( PvXSystem );
 
 		private static readonly Type[] typeofReal = new Type[]
 			{
@@ -541,7 +545,8 @@ namespace Server.Gumps
             if (m_Type == null)
                 return list;
 
-            PropertyInfo[] props = m_Type.GetProperties(BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public);
+            PropertyInfo[] props = m_Type.GetProperties(BindingFlags.Static | BindingFlags.Instance | 
+                                                        BindingFlags.Public | BindingFlags.FlattenHierarchy);
 
             ArrayList groups = GetGroups(m_Type, props);
 
