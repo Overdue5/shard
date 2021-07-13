@@ -10,6 +10,7 @@ namespace Server.Mobiles
 		{
 			Name = "Reaper";
 			Body = 47;
+                        Hue = 1940;
 			BaseSoundID = 442;
 
 			SetStr( 66, 215 );
