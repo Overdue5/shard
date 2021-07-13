@@ -1942,6 +1942,9 @@
     <Compile Include="Gumps\Properties\SetPoint2DGump.cs" />
     <Compile Include="Gumps\Properties\SetPoint3DGump.cs" />
     <Compile Include="Gumps\Properties\SetTimeSpanGump.cs" />
+    <Compile Include="Gumps\PVxSystem\OverallPvXGump.cs" />
+    <Compile Include="Gumps\PVxSystem\PvXScoreBoardHelpGump.cs" />
+    <Compile Include="Gumps\PVxSystem\PvXSortGump.cs" />
     <Compile Include="Gumps\ReclaimVendorGump.cs" />
     <Compile Include="Gumps\ReportMurderer.cs" />
     <Compile Include="Gumps\ResurrectGump.cs" />
@@ -2645,6 +2648,8 @@
     <Compile Include="Items\PlantsFlowers\Potted\PottedCactus.cs" />
     <Compile Include="Items\PlantsFlowers\Potted\PottedPlants.cs" />
     <Compile Include="Items\PlantsFlowers\Potted\PottedTrees.cs" />
+    <Compile Include="Items\PvXSystem\PvXRewardStone.cs" />
+    <Compile Include="Items\PvXSystem\PvXScoreBoard.cs" />
     <Compile Include="Items\Quivers\BaseQuiver.cs" />
     <Compile Include="Items\Quivers\ElvenQuiver.cs" />
     <Compile Include="Items\Quivers\QuiverOfBlight.cs" />
@@ -4144,6 +4149,9 @@
     <Compile Include="SpecialSystems\Items\SupplyBags\ScribeBag.cs" />
     <Compile Include="SpecialSystems\Items\SupplyBags\SmithBag.cs" />
     <Compile Include="SpecialSystems\Items\SupplyBags\TailorBag.cs" />
+    <Compile Include="SpecialSystems\PvX\PvXPointSystem.cs" />
+    <None Include="SpecialSystems\PvX\PvPSystem.cs" />
+    <Compile Include="SpecialSystems\PvX\PvXSystem.cs" />
     <Compile Include="Spells\Base\DisturbType.cs" />
     <Compile Include="Spells\Base\MagerySpell.cs" />
     <Compile Include="Spells\Base\SpecialMove.cs" />

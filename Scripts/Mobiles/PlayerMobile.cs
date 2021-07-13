@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Scripts.SpecialSystems;
 using Server.Accounting;
 using Server.ContextMenus;
 using Server.Custom.PvpToolkit;
@@ -770,6 +771,25 @@ namespace Server.Mobiles
 				base.Combatant = value;
 			}
 		}
+
+        #region PvxSystem
+
+        public Dictionary<PvXType, PvXSystem> PvXStat;
+        [CommandProperty(AccessLevel.GameMaster)]
+        public PvXSystem PVPStat
+        {
+            get { return PvXStat[PvXType.PVP];}
+            set { PvXStat[PvXType.PVP] = value; }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public PvXSystem PVMStat
+        {
+            get { return PvXStat[PvXType.PVM]; }
+            set { PvXStat[PvXType.PVM] = value; }
+        }
+
+        #endregion
 
         public override void OnWarmodeChanged()
         {
@@ -2831,11 +2851,10 @@ namespace Server.Mobiles
 				m_SentHonorContext.OnSourceKilled();
 
             RecoverAmmo();
-
-			return base.OnBeforeDeath();
+            return base.OnBeforeDeath();
 		}
-
-		private bool CheckInsuranceOnDeath( Item item )
+        
+        private bool CheckInsuranceOnDeath( Item item )
 		{
 			if ( InsuranceEnabled && item.Insured )
 			{
@@ -3153,10 +3172,10 @@ namespace Server.Mobiles
         }
 
 	    public PlayerMobile()
-		{
+        {
+            PvXStat = PvXSystem.PlayerInit();
             m_AutoStabled = new List<Mobile>();
-
-			m_VisList = new List<Mobile>();
+            m_VisList = new List<Mobile>();
 			m_PermaFlags = new List<Mobile>();
 			m_AntiMacroTable = new Hashtable();
             m_Snoopers = new List<Mobile>();
@@ -3606,7 +3625,8 @@ namespace Server.Mobiles
 
 		public PlayerMobile( Serial s ) : base( s )
 		{
-			m_VisList = new List<Mobile>();
+            PvXStat = PvXSystem.PlayerInit();
+            m_VisList = new List<Mobile>();
 			m_AntiMacroTable = new Hashtable();
 			InvalidateMyRunUO();
 		}
@@ -4035,8 +4055,8 @@ namespace Server.Mobiles
 			if( Hidden )	//Hiding is the only buff where it has an effect that's serialized.
 				AddBuff( new BuffInfo( BuffIcon.HidingAndOrStealth, 1075655 ) );
 		}
-		
-		public override void Serialize( GenericWriter writer )
+
+        public override void Serialize( GenericWriter writer )
 		{
 			//cleanup our anti-macro table 
 			foreach ( Hashtable t in m_AntiMacroTable.Values )
@@ -4462,6 +4482,11 @@ namespace Server.Mobiles
                 playerName = String.Concat(name, " ", suffix);
             else
                 playerName = name;
+            PvXPointSystem.UpdatePvXRank(this);
+            if ((int) PvXPointSystem.GetPvPRank(this) > (int)PvXPointSystem.GetPvMRank(this))
+                playerName += $" ({PVPStat.RankName}) ";
+            else
+                playerName += $" ({PVMStat.RankName}) ";
 
             //Taran: Add criminal to nametag when clicking self
             if (from == this && from.Criminal)
