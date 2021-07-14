@@ -8,26 +8,17 @@ namespace Server.Mobiles
 		public static double ChestChance = .10;         // Chance that a paragon will carry a paragon chest
 		public static Map[] Maps         = new Map[]    // Maps that paragons will spawn on
 		{
-			Map.Ilshenar
+			Map.Felucca
 		};
 
 		public static Type[] Artifacts = new Type[]
 		{
-			typeof( GoldBricks ), typeof( PhillipsWoodenSteed ), 
-			typeof( AlchemistsBauble ), typeof( ArcticDeathDealer ),
-			typeof( BlazeOfDeath ), typeof( BowOfTheJukaKing ),
-			typeof( BurglarsBandana ), typeof( CavortingClub ),
-			typeof( EnchantedTitanLegBone ), typeof( GwennosHarp ),
-			typeof( IolosLute ), typeof( LunaLance ),
-			typeof( NightsKiss ), typeof( NoxRangersHeavyCrossbow ),
 			typeof( OrcishVisage ), typeof( PolarBearMask ),
-			typeof( ShieldOfInvulnerability ), typeof( StaffOfPower ),
-			typeof( VioletCourage ), typeof( HeartOfTheLion ), 
-			typeof( WrathOfTheDryad ), typeof( PixieSwatter ), 
+			typeof( ShieldOfInvulnerability ), typeof( StaffOfPower ), 
 			typeof( GlovesOfThePugilist )
 		};
 
-		public static int    Hue   = 0x501;        // Paragon hue
+		public static int    Hue   = 1944;        // Paragon hue
 		
 		// Buffs
 		public static double HitsBuff   = 5.0;
