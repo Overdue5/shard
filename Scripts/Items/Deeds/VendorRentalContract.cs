@@ -70,7 +70,7 @@ namespace Server.Items
 		public VendorRentalContract() : base( 0x14F0 )
 		{
 			Weight = 1.0;
-			Hue = 0x672;
+			Hue = 1941;
 
 			m_Duration = VendorRentalDuration.Instances[0];
 			m_Price = 1500;
