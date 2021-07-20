@@ -4150,8 +4150,8 @@
     <Compile Include="SpecialSystems\Items\SupplyBags\SmithBag.cs" />
     <Compile Include="SpecialSystems\Items\SupplyBags\TailorBag.cs" />
     <Compile Include="SpecialSystems\PvX\PvXPointSystem.cs" />
-    <None Include="SpecialSystems\PvX\PvPSystem.cs" />
     <Compile Include="SpecialSystems\PvX\PvXSystem.cs" />
+    <Compile Include="SpecialSystems\PvX\PvXGumpList.cs" />
     <Compile Include="Spells\Base\DisturbType.cs" />
     <Compile Include="Spells\Base\MagerySpell.cs" />
     <Compile Include="Spells\Base\SpecialMove.cs" />

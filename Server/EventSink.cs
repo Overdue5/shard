@@ -63,7 +63,7 @@ namespace Server
 	public delegate void DeleteRequestEventHandler( DeleteRequestEventArgs e );
 	public delegate void WorldLoadEventHandler();
     public delegate void WorldBeforeSaveEventHandler(WorldBeforeSaveEventArgs e);
-    public delegate void AfterWorldLoadEventHandler(AfterWorldLoadEventArgs e);
+    public delegate void AfterWorldLoadEventHandler();
     public delegate void WorldSaveEventHandler( WorldSaveEventArgs e );
 	public delegate void SetAbilityEventHandler( SetAbilityEventArgs e );
 	public delegate void FastWalkEventHandler( FastWalkEventArgs e );
@@ -776,12 +776,6 @@ namespace Server
         }
     }
 
-    public class AfterWorldLoadEventArgs : EventArgs
-    {
-        public AfterWorldLoadEventArgs()
-        {
-        }
-    }
     public class WorldSaveEventArgs : EventArgs
 	{
 		private bool m_Msg;
@@ -1184,6 +1178,12 @@ namespace Server
 			if ( WorldLoad != null )
 				WorldLoad();
 		}
+
+        public static void InvokeAfterWorldLoad()
+        {
+            if (AfterWorldLoad != null)
+                AfterWorldLoad();
+        }
 
         public static void InvokeWorldBeforeSave(WorldBeforeSaveEventArgs e)
         {

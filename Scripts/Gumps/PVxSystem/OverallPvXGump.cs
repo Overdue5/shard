@@ -1,7 +1,7 @@
-using Server.Guilds;
-using Server.Mobiles;
 using Server.Network;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Scripts.SpecialSystems;
 using Server.Items;
 
@@ -13,15 +13,15 @@ namespace Server.Gumps
         private int m_ListPage;
         private ArrayList m_CountList;
         private PvXType m_SType;
+        private int m_CountPlayer;
 
-        public OverallPvXGump(Mobile from, int listPage, ArrayList list, ArrayList count, PvXType stype) :
-            base(50, 50)
+        public OverallPvXGump(Mobile from, int listPage, ArrayList list, ArrayList count, PvXType xtype) : base(50, 50)
         {
-            var textGumpId = PvXScoreBoard.GetTextHueId(stype);
+            var textGumpId = PvXScoreBoard.GetTextHueId(xtype);
             m_List = list;
             m_ListPage = listPage;
             m_CountList = count;
-            m_SType = stype;
+            m_SType = xtype;
 
 
             Closable = true;
@@ -37,7 +37,7 @@ namespace Server.Gumps
             AddButton(202, 50, 4005, 4006, 2, GumpButtonType.Reply, 0);
             AddButton(364, 50, 4005, 4006, 3, GumpButtonType.Reply, 0);
             AddButton(28, 75, 4005, 4006, 4, GumpButtonType.Reply, 0);
-            if (stype == PvXType.PVP)
+            if (xtype == PvXType.PVP)
             {
                 AddButton(202, 75, 4005, 4006, 5, GumpButtonType.Reply, 0);
             }
@@ -69,7 +69,12 @@ namespace Server.Gumps
             AddButton(264, 285, 4026, 4006, 8, GumpButtonType.Reply, 0);
             if (m_List == null)
             {
-                m_List = new ArrayList(World.PlayerMobiles.Values);
+                m_List = new ArrayList(PvXData.GetPvXData(xtype).Values);
+                foreach (var pvXSystem in PvXData.GetPvXData(xtype))
+                {
+                    if (pvXSystem.Value.Owner.AccessLevel == AccessLevel.Player)
+                        m_CountPlayer++;
+                }
             }
 
             if (listPage > 0)
@@ -87,14 +92,14 @@ namespace Server.Gumps
             AddLabel(236, 49, textGumpId, @"Most Wins");
             AddLabel(398, 49, textGumpId, @"Most Loses");
             AddLabel(61, 75, textGumpId, @"Most Times Res Killed");
-            if (stype == PvXType.PVP)
+            if (xtype == PvXType.PVP)
             {
                 AddLabel(237, 75, textGumpId, @"Most Res Kills");
             }
             AddLabel(397, 75, textGumpId, @"Most Pure Wins");
             AddLabel(299, 286, textGumpId, @"Help Menu");
             AddLabel(517, 286, textGumpId, @"Close");
-            string time = "Viewing " + m_List.Count + $" player {stype.ToString().ToLower()} records.";
+            string time = "Viewing " + m_CountPlayer + $" player {xtype.ToString().ToLower()} records.";
             AddLabel(30, 25, textGumpId, time.ToString());
 
             int k = 0;
@@ -103,44 +108,42 @@ namespace Server.Gumps
                 i < 6 && index >= 0 && index < m_List.Count && j >= 0;
                 ++i, ++j, ++index)
             {
-                Mobile mob = m_List[index] as Mobile;
+                var stat = m_List[index] as PvXSystem;
+                var mob = stat.Owner;
 
-                if (mob is PlayerMobile)
+                if (mob != null)
                 {
-                    PlayerMobile m = (PlayerMobile) mob;
-
                     int offset = 148 + (i * 20);
 
-                    if (m.AccessLevel != AccessLevel.Player)
+                    if (mob.AccessLevel != AccessLevel.Player)
                     {
                         --i;
                     }
                     else
                     {
                         int pure = 0;
-                        AddLabel(30, offset, textGumpId, m.Name.ToString());
-                        AddLabel(236, offset, textGumpId, m.PvXStat[stype].TotalWins.ToString());
-                        AddLabel(285, offset, textGumpId, m.PvXStat[stype].TotalLoses.ToString());
-                        AddLabel(383, offset, textGumpId, m.PvXStat[stype].TotalResKilled.ToString());
-                        if (stype == PvXType.PVP)
+                        AddLabel(30, offset, textGumpId, mob.Name.ToString());
+                        AddLabel(236, offset, textGumpId, stat.TotalWins.ToString());
+                        AddLabel(285, offset, textGumpId, stat.TotalLoses.ToString());
+                        AddLabel(383, offset, textGumpId, stat.TotalResKilled.ToString());
+                        if (xtype == PvXType.PVP)
                         {
-                            AddLabel(334, offset, textGumpId, m.PvXStat[m_SType].TotalResKills.ToString());
-                            pure = m.PvXStat[m_SType].TotalWins - m.PvXStat[m_SType].TotalLoses -
-                                   m.PvXStat[m_SType].TotalResKills;
+                            AddLabel(334, offset, textGumpId, stat.TotalResKills.ToString());
+                            pure = stat.TotalPoints;
                         }
                         else
                         {
                             AddLabel(334, offset, textGumpId, "-");
-                            pure = m.PvXStat[m_SType].TotalWins - m.PvXStat[m_SType].TotalLoses;
+                            pure = stat.TotalPoints;
                         }
 
                         AddLabel(433, offset, textGumpId, pure.ToString());
-                        if (m.Guild == null)
+                        if (mob.Guild == null)
                             AddLabel(482, offset, textGumpId, @"No Guild");
                         else
                         {
-                            AddLabel(482, offset, textGumpId, $@"[{(m.Guild.Name.Length > 10 ?
-                                m.Guild.Name.Substring(0, 10) : m.Guild.Name)}]");
+                            AddLabel(482, offset, textGumpId, $@"[{(mob.Guild.Name.Length > 10 ?
+                                mob.Guild.Name.Substring(0, 10) : mob.Guild.Name)}]");
                         }
 
                     }
