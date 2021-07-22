@@ -12,7 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public AquaIngot( int amount ) : base( CraftResource.Aqua, amount )
 		{
-			Name = "aqua ingot";
+			Name = "Aqua ingot";
 		}
 
 		public AquaIngot( Serial serial ) : base( serial )
@@ -46,7 +46,7 @@ namespace Server.Items
 		[Constructable]
 		public OldCopperIngot( int amount ) : base( CraftResource.OldCopper, amount )
 		{
-			Name = "old copper ingot";
+			Name = "0ld Copper Ingot";
 		}
 
 		public OldCopperIngot( Serial serial ) : base( serial )
@@ -80,7 +80,7 @@ namespace Server.Items
 		[Constructable]
 		public RoseIngot( int amount ) : base( CraftResource.Rose, amount )
 		{
-			Name = "rose ingot";
+			Name = "Rose Ingot";
 		}
 
 		public RoseIngot( Serial serial ) : base( serial )
@@ -114,7 +114,7 @@ namespace Server.Items
 		[Constructable]
 		public OceanicIngot( int amount ) : base( CraftResource.Oceanic, amount )
 		{
-			Name = "oceanic ingot";
+			Name = "Oceanic Ingot";
 		}
 
 		public OceanicIngot( Serial serial ) : base( serial )
@@ -148,7 +148,7 @@ namespace Server.Items
 		[Constructable]
 		public MytherilIngot( int amount ) : base( CraftResource.Mytheril, amount )
 		{
-			Name = "mytheril ingot";
+			Name = "Mytheril Ingot";
 		}
 
 		public MytherilIngot( Serial serial ) : base( serial )
@@ -182,7 +182,7 @@ namespace Server.Items
 		[Constructable]
 		public AdamantiumIngot( int amount ) : base( CraftResource.Adamantium, amount )
 		{
-			Name = "adamantium ingot";
+			Name = "Adamantium ingot";
 		}
 
 		public AdamantiumIngot( Serial serial ) : base( serial )
@@ -250,7 +250,7 @@ namespace Server.Items
 		[Constructable]
 		public SilverIngot( int amount ) : base( CraftResource.Silver, amount )
 		{
-			Name = "silver ingot";
+			Name = "Silver Ingot";
 		}
 
 		public SilverIngot( Serial serial ) : base( serial )
@@ -284,7 +284,7 @@ namespace Server.Items
 		[Constructable]
 		public IceIngot( int amount ) : base( CraftResource.Ice, amount )
 		{
-			Name = "ice ingot";
+			Name = "Ice Ingot";
 		}
 
 		public IceIngot( Serial serial ) : base( serial )
@@ -320,7 +320,7 @@ namespace Server.Items
         public HavocIngot(int amount)
             : base(CraftResource.Havoc, amount)
         {
-            Name = "havoc ingot";
+            Name = "Havoc Ingot";
         }
 
         public HavocIngot(Serial serial)
@@ -355,7 +355,7 @@ namespace Server.Items
 		[Constructable]
 		public BloodRockIngot( int amount ) : base( CraftResource.BloodRock, amount )
 		{
-			Name = "blood rock ingot";
+			Name = "Blood Rock Ingot";
 		}
 
 		public BloodRockIngot( Serial serial ) : base( serial )
@@ -389,7 +389,7 @@ namespace Server.Items
 		[Constructable]
 		public OpiateIngot( int amount ) : base( CraftResource.Opiate, amount )
 		{
-			Name = "opiate ingot";
+			Name = "Opiate Ingot";
 		}
 
 		public OpiateIngot( Serial serial ) : base( serial )
@@ -423,7 +423,7 @@ namespace Server.Items
 		[Constructable]
 		public SandRockIngot( int amount ) : base( CraftResource.SandRock, amount )
 		{
-			Name = "sand rock ingot";
+			Name = "Sand Rock Ingot";
 		}
 
 		public SandRockIngot( Serial serial ) : base( serial )
@@ -457,7 +457,7 @@ namespace Server.Items
 		[Constructable]
 		public BlackRockIngot( int amount ) : base( CraftResource.BlackRock, amount )
 		{
-			Name = "black rock ingot";
+			Name = "Black Rock Ingot";
 		}
 
 		public BlackRockIngot( Serial serial ) : base( serial )
@@ -491,7 +491,7 @@ namespace Server.Items
 		[Constructable]
 		public DaemonSteelIngot( int amount ) : base( CraftResource.DaemonSteel, amount )
 		{
-			Name = "daemon steel ingot";
+			Name = "Daemon Steel Ingot";
 		}
 
 		public DaemonSteelIngot( Serial serial ) : base( serial )
@@ -527,7 +527,7 @@ namespace Server.Items
         public FireIngot(int amount)
             : base(CraftResource.Fire, amount)
         {
-            Name = "fire ingot";
+            Name = "Fire Ingot";
         }
 
         public FireIngot(Serial serial)
@@ -564,7 +564,7 @@ namespace Server.Items
         public ReactiveIngot(int amount)
             : base(CraftResource.Reactive, amount)
         {
-            Name = "reactive ingot";
+            Name = "Reactive Ingot";
         }
 
         public ReactiveIngot(Serial serial)
@@ -599,7 +599,7 @@ namespace Server.Items
 		[Constructable]
 		public SapphireIngot( int amount ) : base( CraftResource.Sapphire, amount )
 		{
-			Name = "sapphire ingot";
+			Name = "Sapphire Ingot";
 		}
 
 		public SapphireIngot( Serial serial ) : base( serial )
@@ -635,7 +635,7 @@ namespace Server.Items
         public DwarvenIngot(int amount)
             : base(CraftResource.Dwarven, amount)
         {
-            Name = "dwarven ingot";
+            Name = "Dwarven Ingot";
         }
 
         public DwarvenIngot(Serial serial)
@@ -671,7 +671,7 @@ namespace Server.Items
         [Constructable]
         public AmethystIngot(int amount) : base(CraftResource.Amethyst, amount)
         {
-            Name = "amethyst ingot";
+            Name = "Amethyst Ingot";
         }
 
         public AmethystIngot(Serial serial)
