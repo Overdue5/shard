@@ -11,7 +11,7 @@ namespace Server.Mobiles
 			Name = "Lunar Lich";
 			Body = 79;
 			BaseSoundID = 412;
-            Hue = 53;
+            Hue = 2944;
 
 			SetStr( 640, 700 );
 			SetDex( 180, 205 );

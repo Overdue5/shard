@@ -24,8 +24,8 @@ namespace Server.Items
 		public LunarGloves() : base( 0x1450 )
 		{
 			Weight = 1.0;
-            Name = "Lunar bone gloves";
-            Hue = 53;
+            Name = "Lunar Bone Gloves";
+            Hue = 2944;
             BaseArmorRating = 45;
 		}
 

@@ -26,8 +26,8 @@ namespace Server.Items
 		public ElvenLeatherSkirt() : base( 0x1C08 )
 		{
 			Weight = 1.0;
-            Name = "Magical elven leather skirt";
-            Hue = 1159;
+            Name = "Magical Elven Leather Skirt";
+            Hue = 2549;
             BaseArmorRating = 39;
 		}
 

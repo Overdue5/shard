@@ -28,7 +28,7 @@ namespace Server.Items
 		public DaemonChest() : base( 0x144F )
 		{
 			Weight = 6.0;
-			Hue = 0x648;
+			Hue = 1171;
 
 			ArmorAttributes.SelfRepair = 1;
 		}

@@ -26,8 +26,8 @@ namespace Server.Items
 		public DragonScalemailGloves() : base( 0x13C6 )
 		{
 			Weight = 1.0;
-            Name = "Dragon scalemail gloves";
-            Hue = 1171;
+            Name = "Dragon Scalemail Gloves";
+            Hue = 2534;
             BaseArmorRating = 48;
 		}
 

@@ -26,8 +26,8 @@ namespace Server.Items
 		public ElvenLeatherCap() : base( 0x1DB9 )
 		{
 			Weight = 2.0;
-            Name = "Magical elven leather cap";
-            Hue = 1159;
+            Name = "Magical Elven Leather Cap";
+            Hue = 2549;
             BaseArmorRating = 39;
 		}
 

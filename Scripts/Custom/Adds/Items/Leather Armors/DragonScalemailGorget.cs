@@ -25,8 +25,8 @@ namespace Server.Items
 		public DragonScalemailGorget() : base( 0x13C7 )
 		{
 			Weight = 1.0;
-            Name = "Dragon scalemail gorget";
-            Hue = 1171;
+            Name = "Dragon Scalemail Gorget";
+            Hue = 2534;
             BaseArmorRating = 48;
 		}
 

@@ -28,7 +28,7 @@ namespace Server.Items
 		public DaemonLegs() : base( 0x1452 )
 		{
 			Weight = 3.0;
-			Hue = 0x648;
+			Hue = 1171;
 
 			ArmorAttributes.SelfRepair = 1;
 		}

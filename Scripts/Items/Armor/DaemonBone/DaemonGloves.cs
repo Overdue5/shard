@@ -28,7 +28,7 @@ namespace Server.Items
 		public DaemonGloves() : base( 0x1450 )
 		{
 			Weight = 2.0;
-			Hue = 0x648;
+			Hue = 1171;
 
 			ArmorAttributes.SelfRepair = 1;
 		}

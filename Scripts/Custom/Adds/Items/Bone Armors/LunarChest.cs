@@ -24,8 +24,8 @@ namespace Server.Items
 		public LunarChest() : base( 0x144F )
 		{
 			Weight = 6.0;
-            Name = "Lunar bone armor";
-            Hue = 53;
+            Name = "Lunar Bone Armor";
+            Hue = 2944;
             BaseArmorRating = 45;
 		}
 

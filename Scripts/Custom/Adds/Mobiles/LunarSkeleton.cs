@@ -11,7 +11,7 @@ namespace Server.Mobiles
         {
             Name = "Lunar Skeleton";
             Body = 50;
-            Hue = 53;
+            Hue = 2944;
             SetStr(600);
             SetDex(120);
             SetInt(200);
