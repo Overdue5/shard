@@ -61,7 +61,7 @@ namespace Server.Mobiles
         {
             m_RegionOreList.Add("Britain", CraftResource.Mytheril);
             m_RegionOreList.Add("Minoc", CraftResource.Dwarven);
-            m_RegionOreList.Add("Trinsic", CraftResource.SunStone);
+            m_RegionOreList.Add("Trinsic", CraftResource.Silver);
             m_RegionOreList.Add("Moonglow", CraftResource.Aqua);
             m_RegionOreList.Add("Serpent's Hold", CraftResource.DaemonSteel);
             m_RegionOreList.Add("Magincia", CraftResource.Sapphire);
