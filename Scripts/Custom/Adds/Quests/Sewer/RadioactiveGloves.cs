@@ -19,7 +19,7 @@ namespace Server.Items
 		{
             Weight = 1.0;
             Hue = 1957;
-            Name = "Radioactive gloves";
+            Name = "Radioactive Gloves";
             BaseArmorRating = 40;
             IsRenamed = true;
 		}
