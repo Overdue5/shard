@@ -9,9 +9,9 @@ namespace Server.Mobiles
 		[Constructable]
 		public SummonedAirElemental () : base( AIType.AI_SphereMage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "Air Elemental";
+			Name = "Summoned (Air Elemental)";
 			Body = 13;
-			Hue = 0x4001;
+			Hue = 3000;
 			BaseSoundID = 655;
 
 			SetStr( 200 );

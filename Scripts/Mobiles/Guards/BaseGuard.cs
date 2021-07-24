@@ -59,13 +59,13 @@ namespace Server.Mobiles
 
         public static void Initialize()
         {
-            m_RegionOreList.Add("Britain", CraftResource.Verite);
-            m_RegionOreList.Add("Minoc", CraftResource.BloodRock);
-            m_RegionOreList.Add("Trinsic", CraftResource.Gold);
-            m_RegionOreList.Add("Moonglow", CraftResource.BlackRock);
-            m_RegionOreList.Add("Serpent's Hold", CraftResource.Silver);
-            m_RegionOreList.Add("Magincia", CraftResource.Valorite);
-            m_RegionOreList.Add("Vespern", CraftResource.Mytheril);
+            m_RegionOreList.Add("Britain", CraftResource.Mytheril);
+            m_RegionOreList.Add("Minoc", CraftResource.Dwarven);
+            m_RegionOreList.Add("Trinsic", CraftResource.SunStone);
+            m_RegionOreList.Add("Moonglow", CraftResource.Aqua);
+            m_RegionOreList.Add("Serpent's Hold", CraftResource.DaemonSteel);
+            m_RegionOreList.Add("Magincia", CraftResource.Sapphire);
+            m_RegionOreList.Add("Vespern", CraftResource.Silver);
         }
 
         public BaseGuard(Serial serial)  : base(serial)

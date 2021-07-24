@@ -9,9 +9,10 @@ namespace Server.Mobiles
 		[Constructable]
 		public SummonedDaemon () : base( AIType.AI_SphereMage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = NameList.RandomName( "daemon" );
+			Name = "Summoned (Daemon)";
 			Body = 9;
 			BaseSoundID = 357;
+			Hue = 3000;
 
 			SetStr( 200 );
 			SetDex( 110 );

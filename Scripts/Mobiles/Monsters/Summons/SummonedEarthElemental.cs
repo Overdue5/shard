@@ -9,9 +9,10 @@ namespace Server.Mobiles
 		[Constructable]
 		public SummonedEarthElemental() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "Earth Elemental";
+			Name = "Summoned (Earth Elemental)";
 			Body = 14;
 			BaseSoundID = 268;
+			Hue = 3000;
 
 			SetStr( 200 );
 			SetDex( 70 );

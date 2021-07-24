@@ -28,7 +28,7 @@ namespace Server.Scripts.Custom.Adds.Commands
             m_SupportedTypes["ghscroll"] = typeof(GreaterHealScroll);
             m_SupportedTypes["greaterexplosionpot"] = typeof(GreaterExplosionPotion);
             m_SupportedTypes["greaterhealpot"] = typeof(GreaterHealPotion);
-            m_SupportedTypes["greatermanapot"] = typeof(TotalManaPotion);
+            m_SupportedTypes["totalmanapot"] = typeof(TotalManaPotion);
             m_SupportedTypes["invispot"] = typeof(InvisibilityPotion);
             m_SupportedTypes["lightningscroll"] = typeof(LightningScroll);
             m_SupportedTypes["manapot"] = typeof(ManaPotion);

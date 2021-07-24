@@ -11,9 +11,10 @@ namespace Server.Mobiles
 		[Constructable]
 		public SummonedFireElemental () : base( AIType.AI_SphereMage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "Fire Elemental";
+			Name = "Summoned (Fire Elemental)";
 			Body = 15;
 			BaseSoundID = 838;
+			Hue = 3000;
 
 			SetStr( 200 );
 			SetDex( 200 );
