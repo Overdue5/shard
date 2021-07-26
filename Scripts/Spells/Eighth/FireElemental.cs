@@ -9,8 +9,7 @@ namespace Server.Spells.Eighth
     {
         public override SpellCircle Circle { get { return SpellCircle.Eighth; } }
         public override int Sound { get { return 0x217; } }
-
-        public override bool CanTargetGround { get { return true; } }
+        public override bool HasNoTarget { get { return true; } }
 
 		private static readonly SpellInfo m_Info = new SpellInfo(
 				"Fire Elemental", "Kal Vas Xen Flam",
