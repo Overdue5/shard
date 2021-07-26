@@ -9,11 +9,11 @@ namespace Server.Items
         private Dictionary<Serial, Mobile> m_MobileList = new Dictionary<Serial, Mobile>();
 
         [Constructable]
-        public RecipeScrollStone() : base(0x2a94)
+        public RecipeScrollStone() : base(0xed4)
         {
             Name = "Recipe Scroll Stone";
             Movable = false;
-            Hue = 2708;
+            Hue = 2137;
         }
 
         public RecipeScrollStone(Serial serial)

@@ -12,7 +12,7 @@ namespace Server.Items
             : base(0xF6C)
         {
             Movable = false;
-            Hue = 0x2D1;
+            Hue = 1171;
             Light = LightType.Circle300;
         }
 
