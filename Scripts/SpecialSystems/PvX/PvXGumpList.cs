@@ -12,7 +12,7 @@ namespace Scripts.SpecialSystems.PvX
     {
         public static void Initialize()
         {
-            CommandSystem.Register("PvXAdmin", AccessLevel.Developer, new CommandEventHandler(PvXAdmin_Command));
+            //CommandSystem.Register("PvXAdmin", AccessLevel.Developer, new CommandEventHandler(PvXAdmin_Command));
             TargetCommands.Register(new PvXEditCommand());
         }
 

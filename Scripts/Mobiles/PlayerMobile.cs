@@ -4385,9 +4385,18 @@ namespace Server.Mobiles
 
             #endregion
 
-            #region Mobile.cs OnSingleclick
+            #region PvX
 
-            if (Deleted)
+            if (PvXData.GetBestTitle(this.Serial.Value) != "")
+            {
+                PrivateOverheadMessage(MessageType.Label, 1173, false, PvXData.GetBestTitle(this.Serial.Value), from.NetState);
+            }
+
+            #endregion
+
+                #region Mobile.cs OnSingleclick
+
+                if (Deleted)
                 return;
 
             string abbreviation ="";

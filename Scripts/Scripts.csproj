@@ -495,7 +495,6 @@
     <Compile Include="Custom\Adds\Items\PlayerGuideBook\PlayerGuide.cs" />
     <Compile Include="Custom\Adds\Items\PlayerGuideBook\PlayerGuidegump.cs" />
     <Compile Include="Custom\Adds\Items\PVPRewardStone.cs" />
-    <Compile Include="Custom\Adds\Items\RandomAccurateWeap.cs" />
     <Compile Include="Custom\Adds\Items\RandomJewelryDeed.cs" />
     <Compile Include="Custom\Adds\Items\RandomLanternDeed.cs" />
     <Compile Include="Custom\Adds\Items\RareDyeTub.cs" />
@@ -618,8 +617,8 @@
     <Compile Include="Custom\Adds\Items\Waystone.cs" />
     <Compile Include="Custom\Adds\Items\WeaponDeed.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\ApalalasClaw.cs" />
+    <Compile Include="Custom\Adds\Items\Weapons\AzazelsBlade.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\BloodTentacle.cs" />
-    <Compile Include="Custom\Adds\Items\Weapons\DragonsBlade.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\DwarfWarHammer.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\DwarvenBattleAxe.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\ForsakenOrnament.cs" />
@@ -628,10 +627,11 @@
     <Compile Include="Custom\Adds\Items\Weapons\HellsHalberd.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\JudgementHammer.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\KissOfDeath.cs" />
+    <Compile Include="Custom\Adds\Items\Weapons\RandomAccurateWeap.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\SerpentsTounge.cs" />
+    <Compile Include="Custom\Adds\Items\Weapons\SkyfallLongsword.cs" />
+    <Compile Include="Custom\Adds\Items\Weapons\SorrowsCarver.cs" />
     <Compile Include="Custom\Adds\Items\Weapons\SoulBardiche.cs" />
-    <Compile Include="Custom\Adds\Items\Weapons\SoV.cs" />
-    <Compile Include="Custom\Adds\Items\Weapons\Wolfbane.cs" />
     <Compile Include="Custom\Adds\Items\WebStone.cs" />
     <Compile Include="Custom\Adds\Mobiles\Algazars.cs" />
     <Compile Include="Custom\Adds\Mobiles\Altageas.cs" />
@@ -2648,8 +2648,8 @@
     <Compile Include="Items\PlantsFlowers\Potted\PottedCactus.cs" />
     <Compile Include="Items\PlantsFlowers\Potted\PottedPlants.cs" />
     <Compile Include="Items\PlantsFlowers\Potted\PottedTrees.cs" />
-    <Compile Include="Items\PvXSystem\PvXRewardStone.cs" />
-    <Compile Include="Items\PvXSystem\PvXScoreBoard.cs" />
+    <Compile Include="SpecialSystems\PvX\Item\PvXRewardStone.cs" />
+    <Compile Include="SpecialSystems\PvX\Item\PvXScoreBoard.cs" />
     <Compile Include="Items\Quivers\BaseQuiver.cs" />
     <Compile Include="Items\Quivers\ElvenQuiver.cs" />
     <Compile Include="Items\Quivers\QuiverOfBlight.cs" />

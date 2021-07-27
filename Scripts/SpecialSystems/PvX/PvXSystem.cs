@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using Server;
@@ -75,7 +76,7 @@ namespace Scripts.SpecialSystems
         private int m_TotalPointsSpent;
         private string m_RankName;
         private PvXType m_type;
-
+        public int RankId;
         #endregion
 
         #region Properties
@@ -208,6 +209,39 @@ namespace Scripts.SpecialSystems
         }
 
         #endregion
+
+        public void CalculateRankName()
+        {
+            RankName = "";
+            RankId = 0;
+            if (PvXType == PvXType.PVP)
+            {
+                foreach (var key in PvXPointSystem.PvPRankTable)
+                {
+                    if (key.Value > TotalPoints)
+                    {
+                        RankName = key.Key.ToString().Replace("_", " ");
+                        RankId = (int)key.Key;
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                foreach (var key in PvXPointSystem.PvMRankTable)
+                {
+                    if (key.Value > TotalPoints)
+                    {
+                        RankName = key.Key.ToString().Replace("_", " ");
+                        RankId = (int)key.Key;
+                        return;
+                    }
+                }
+            }
+
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
+                $"Something wrong with Get{PvXType}Rank for {(Owner == null ? "null":Owner.Name)}");
+        }
     }
 
     public class PvXData
@@ -218,16 +252,29 @@ namespace Scripts.SpecialSystems
         /// <summary>
         /// Full info about all mobiles
         /// </summary>
-        private static Dictionary<PvXType, SortedDictionary<int, PvXSystem>> PvXDataDict;
+        private static Dictionary<PvXType, Dictionary<int, PvXSystem>> PvXDataDict;
 
         /// <summary>
         /// Full statistic info for PvXBoards
         /// </summary>
         public static Dictionary<PvXType, PvXStatistic> PvXStatistics = new Dictionary<PvXType, PvXStatistic>();
 
-        public static SortedDictionary<int, PvXSystem> GetPvXData(PvXType xtype)
+        public static Dictionary<int, PvXSystem> GetPvXData(PvXType xtype)
         {
             return PvXDataDict[xtype];
+        }
+
+        public static int GeUnSpendPoints(PvXType xtype, PlayerMobile mob)
+        {
+            if (PvXDataDict[xtype][mob.Serial.Value] == null)
+                return 0;
+            int value = PvXDataDict[xtype][mob.Serial.Value].TotalWins - PvXDataDict[xtype][mob.Serial.Value].TotalPointsSpent;
+            if (value < 0)
+            {
+                Logs.PvXLog.WriteLine(mob, $"TotalPointsSpent more than TotalWins in {xtype}");
+                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"TotalPointsSpent more than TotalWins in {xtype} for {mob.Name}");
+            }
+            return value;
         }
 
         public static void Configure()
@@ -256,10 +303,10 @@ namespace Scripts.SpecialSystems
 
         static PvXData()
         {
-            PvXDataDict = new Dictionary<PvXType, SortedDictionary<int, PvXSystem>>();
+            PvXDataDict = new Dictionary<PvXType, Dictionary<int, PvXSystem>>();
             foreach (PvXType pvx in (PvXType[]) Enum.GetValues(typeof(PvXType)))
             {
-                PvXDataDict[pvx] = new SortedDictionary<int, PvXSystem>();
+                PvXDataDict[pvx] = new Dictionary<int, PvXSystem>();
                 PvXStatistics[pvx] = new PvXStatistic();
             }
         }
@@ -358,6 +405,23 @@ namespace Scripts.SpecialSystems
             }
         }
 
+        public static string GetBestTitle(int serial)
+        {
+            int id = 0;
+            string result = "";
+            if (PvXDataDict[PvXType.PVM].ContainsKey(serial))
+            {
+                id = PvXDataDict[PvXType.PVM][serial].RankId;
+                result = PvXDataDict[PvXType.PVM][serial].RankName;
+            }
+            if (PvXDataDict[PvXType.PVP].ContainsKey(serial) && PvXDataDict[PvXType.PVP][serial].RankId >= id)
+            {
+               return PvXDataDict[PvXType.PVP][serial].RankName;
+            }
+
+            return result;
+        }
+
         private static void OnSave(WorldSaveEventArgs e)
         {
             var watch = Stopwatch.StartNew();
@@ -383,6 +447,7 @@ namespace Scripts.SpecialSystems
                         writer.Write(PvXDataDict[xtype][serial].Owner);
                         PvXDataDict[xtype][serial].LastKilled = new Hashtable();
                         PvXDataDict[xtype][serial].LastKiller = new Hashtable();
+                        PvXDataDict[xtype][serial].CalculateRankName();
                     }
                 }
             });
@@ -414,6 +479,7 @@ namespace Scripts.SpecialSystems
                         PvXDataDict[xtype][serial].Owner = reader.ReadMobile<PlayerMobile>();
                         PvXDataDict[xtype][serial].LastKilled = new Hashtable();
                         PvXDataDict[xtype][serial].LastKiller = new Hashtable();
+                        PvXDataDict[xtype][serial].CalculateRankName();
                     }   
                 }
             });

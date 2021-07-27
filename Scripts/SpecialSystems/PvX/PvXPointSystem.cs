@@ -47,7 +47,7 @@ namespace Server
 
     public class PvXPointSystem
     {
-        private static Dictionary<PvPRank, int> PvPRankTable = new Dictionary<PvPRank, int>
+        public static Dictionary<PvPRank, int> PvPRankTable = new Dictionary<PvPRank, int>
         {
             [PvPRank.Ultra_Newb] = 3,
             [PvPRank.Newbie] = 10,
@@ -66,7 +66,7 @@ namespace Server
             [PvPRank.Legendary_Duelist] = Int32.MaxValue
         };
 
-        private static Dictionary<PvMRank, int> PvMRankTable = new Dictionary<PvMRank, int>
+        public static Dictionary<PvMRank, int> PvMRankTable = new Dictionary<PvMRank, int>
         {
             [PvMRank.Butcher] = 100,
             [PvMRank.Inquisitor] = 500,
@@ -101,44 +101,14 @@ namespace Server
         // Enables Rank System
         //private static readonly bool EnableRankSystem = true;
 
-        public static PvPRank GetPvPRank(PlayerMobile mobile)
+        public static void UpdatePvMRank(PlayerMobile mobile)
         {
-            var stat = PvXData.GetPvPStat(mobile);
-            foreach (var key in PvPRankTable)
-            {
-                if (key.Value > stat.TotalPoints)
-                {
-                    return key.Key;
-                }
-            }
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
-                $@"Something wrong with GetPvPRank for {mobile.Name}");
-            return 0;
+            PvXData.GetPvMStat(mobile).CalculateRankName();
         }
 
-        public static PvMRank GetPvMRank(PlayerMobile mobile)
+        public static void UpdatePvPRank(PlayerMobile mobile)
         {
-            var stat = PvXData.GetPvMStat(mobile);
-            foreach (var key in PvMRankTable)
-            {
-                if (key.Value > stat.TotalPoints)
-                {
-                    return key.Key;
-                }
-            }
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
-                $@"Something wrong with GetPvMRank for {mobile.Name}");
-            return 0;
-        }
-
-        private static void UpdatePvMRank(PlayerMobile mobile)
-        {
-            PvXData.GetPvMStat(mobile).RankName = GetPvMRank(mobile).ToString().Replace("_"," ");
-        }
-
-        private static void UpdatePvPRank(PlayerMobile mobile)
-        {
-            PvXData.GetPvPStat(mobile).RankName = GetPvPRank(mobile).ToString().Replace("_", " ");
+            PvXData.GetPvPStat(mobile).CalculateRankName();
         }
 
         public static void UpdatePvXRank(PlayerMobile mobile)
@@ -207,7 +177,7 @@ namespace Server
                 var maxPoint = Utility.LimitMinMax(0, defender.HitsMax / 100, 10);
                 if (defender.HitsMax > attStat.TotalPoints)
                     maxPoint += 1;
-                var rank = (int)GetPvMRank(pa);
+                var rank = attStat.RankId;
                 if (DateTime.UtcNow - attStat.ResKillTime > TimeSpan.FromSeconds(3))
                 {
                     var bonus = Utility.LimitMinMax(1, maxPoint - rank, 5);
@@ -225,7 +195,7 @@ namespace Server
             {
                 var defStat = PvXData.GetPvPStat(pd);
                 var maxPoint = Utility.LimitMinMax(0, attacker.HitsMax / 100, 10);
-                var rank = (int)GetPvMRank(pd);
+                var rank = defStat.RankId;
                 var bonus = 1;
                 if (rank > maxPoint)
                     bonus = Utility.LimitMinMax(0, rank - maxPoint, 5);
