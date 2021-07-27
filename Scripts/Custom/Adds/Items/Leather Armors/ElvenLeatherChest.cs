@@ -26,8 +26,8 @@ namespace Server.Items
 		public ElvenLeatherChest() : base( 0x13CC )
 		{
 			Weight = 6.0;
-            Name = "Magical elven leather tunic";
-            Hue = 1159;
+            Name = "Magical Elven Leather Tunic";
+            Hue = 2549;
             BaseArmorRating = 39;
 		}
 

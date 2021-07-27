@@ -24,9 +24,9 @@ namespace Server.Items
 		public LunarLegs() : base( 0x1452 )
 		{
 			Weight = 4.0;
-            Name = "Lunar bone leggings";
-            Hue = 53;
-            BaseArmorRating = 45;
+            Name = "Lunar Bone Leggings";
+            Hue = 2944;
+            BaseArmorRating = 53;
 		}
 
 		public LunarLegs( Serial serial ) : base( serial )

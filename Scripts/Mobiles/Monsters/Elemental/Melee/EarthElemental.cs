@@ -14,6 +14,7 @@ namespace Server.Mobiles
 			Name = "Earth Elemental";
 			Body = 14;
 			BaseSoundID = 268;
+                        Hue = 1159;
 
 			SetStr( 126, 155 );
 			SetDex( 66, 85 );

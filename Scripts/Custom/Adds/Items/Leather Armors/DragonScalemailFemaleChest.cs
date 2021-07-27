@@ -26,8 +26,8 @@ namespace Server.Items
 		public DragonScalemailFemaleChest() : base( 0x1C06 )
 		{
 			Weight = 4.0;
-            Name = "Female dragon scalemail";
-            Hue = 1171;
+            Name = "Female Dragon Scalemail";
+            Hue = 2534;
             BaseArmorRating = 48;
 		}
 

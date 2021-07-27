@@ -26,8 +26,8 @@ namespace Server.Items
 		public DragonScalemailCap() : base( 0x1DB9 )
 		{
 			Weight = 2.0;
-            Name = "Dragon scalemail cap";
-            Hue = 1171;
+            Name = "Dragon Scalemail Cap";
+            Hue = 2534;
             BaseArmorRating = 48;
 		}
 

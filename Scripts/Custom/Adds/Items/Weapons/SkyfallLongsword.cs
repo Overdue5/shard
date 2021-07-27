@@ -1,12 +1,12 @@
 namespace Server.Items
 {
-    public class Wolfbane : Longsword
+    public class SkyfallLongsword : Longsword
     {
         [Constructable]
-        public Wolfbane()
+        public SkyfallLongsword()
         {
-            Hue = 1175;
-            Name = "Wolfbane";
+            Hue = 1952;
+            Name = "Skyfall Longsword";
             Weight = 6.0;
             Speed = 400;
             MinDamage = 10;
@@ -18,7 +18,7 @@ namespace Server.Items
             Slayer = SlayerName.Repond;
         }
 
-        public Wolfbane(Serial serial)
+        public SkyfallLongsword(Serial serial)
             : base(serial)
         {
         }

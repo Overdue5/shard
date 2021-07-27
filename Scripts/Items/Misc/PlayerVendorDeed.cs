@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public ContractOfEmployment() : base( 0x14F0 )
 		{
+                        Hue = 2546;
 			Weight = 1.0;
 			//LootType = LootType.Blessed;
 		}

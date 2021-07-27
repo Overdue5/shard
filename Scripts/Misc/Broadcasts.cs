@@ -12,7 +12,7 @@ namespace Server.Misc
 		{
 			try
 			{
-			    World.Broadcast(0x35, true, "The server has crashed, attempting to restart automatically...");
+			    World.Broadcast(0x35, true, "Deluxe: The server has crashed, attempting to restart automatically...");
             }
 			catch
 			{
@@ -23,7 +23,7 @@ namespace Server.Misc
 		{
 			try
 			{
-				World.Broadcast( 0x35, true, "The server has shut down." );
+				World.Broadcast( 0x35, true, "Deluxe: The server has shut down, be back up shortly..." );
 			}
 			catch
 			{

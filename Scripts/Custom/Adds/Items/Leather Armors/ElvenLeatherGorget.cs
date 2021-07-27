@@ -25,8 +25,8 @@ namespace Server.Items
 		public ElvenLeatherGorget() : base( 0x13C7 )
 		{
 			Weight = 1.0;
-            Name = "Magical elven leather gorget";
-            Hue = 1159;
+            Name = "Magical Elven Leather Gorget";
+            Hue = 2549;
             BaseArmorRating = 39;
 		}
 

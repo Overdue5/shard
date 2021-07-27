@@ -2,13 +2,13 @@
 
 namespace Server.Items
 {
-    public class DragonsBlade : Broadsword
+    public class AzazelsBlade : Broadsword
     {
         [Constructable]
-        public DragonsBlade()
+        public AzazelsBlade()
         {
-            Hue = 2881;
-            Name = "Dragon's Blade";
+            Hue = 2586;
+            Name = "Azazel's Blade";
             Weight = 5.0;
             Speed = 350;
             MinDamage = 14;
@@ -58,14 +58,14 @@ namespace Server.Items
     public class SuperiorDragonsBlade : Broadsword
     {
         [Constructable]
-        public SuperiorDragonsBlade()
+        public SuperiorAzazelsBlade()
         {
-            Hue = 2881;
-            Name = "Superior Dragon's Blade";
+            Hue = 2586;
+            Name = "Superior Azazel's Blade";
             Weight = 6.0;
             Speed = 340;
             MinDamage = 15;
-            MaxDamage = 30;
+            MaxDamage = 33;
             AccuracyLevel = WeaponAccuracyLevel.Supremely;
             DamageLevel = WeaponDamageLevel.Vanq;
             DurabilityLevel = WeaponDurabilityLevel.Substantial;

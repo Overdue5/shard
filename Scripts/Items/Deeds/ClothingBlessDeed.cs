@@ -87,12 +87,13 @@ namespace Server.Items
 	{
 		public override string DefaultName
 		{
-			get { return "a clothing bless deed"; }
+			get { return "Clothing Bless Deed"; }
 		}
 
 		[Constructable]
 		public ClothingBlessDeed() : base( 0x14F0 )
 		{
+                        Hue = 1953;
 			Weight = 1.0;
 			LootType = LootType.Blessed;
 		}

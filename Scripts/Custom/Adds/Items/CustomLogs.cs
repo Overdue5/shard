@@ -12,7 +12,7 @@
         public MahoganyLog(int amount)
             : base(CraftResource.Mahoganywood, amount)
         {
-            Name = "mahogany log";
+            Name = "Mahogany Log";
         }
 
         public MahoganyLog(Serial serial)
@@ -47,7 +47,7 @@
         public CedarLog(int amount)
             : base(CraftResource.Cedarwood, amount)
         {
-            Name = "cedar log";
+            Name = "Cedar Log";
         }
 
         public CedarLog(Serial serial)
@@ -82,7 +82,7 @@
         public WillowLog(int amount)
             : base(CraftResource.Willowwood, amount)
         {
-            Name = "willow log";
+            Name = "Willow Log";
         }
 
         public WillowLog(Serial serial)
@@ -117,7 +117,7 @@
         public MystWoodLog(int amount)
             : base(CraftResource.Mystwood, amount)
         {
-            Name = "mystwood log";
+            Name = "Mystwood Log";
         }
 
         public MystWoodLog(Serial serial)

@@ -52,7 +52,7 @@ namespace Server.Items
 		public BankCheck( int worth ) : base( 0x14F0 )
 		{
 			Weight = 1.0;
-			Hue = 0x34;
+			Hue = 1944;
 			LootType = LootType.Blessed;
 
 			m_Worth = worth;
@@ -78,7 +78,7 @@ namespace Server.Items
 
 		public override void OnSingleClick( Mobile from )
 		{
-            LabelTo( from, "A bank check worth {0} gold", m_Worth.ToString() );
+            LabelTo( from, "Bank Check Worth {0} Gold", m_Worth.ToString() );
 			//from.Send( new MessageLocalizedAffix( Serial, ItemID, MessageType.Label, 0x3B2, 3, 1041361, "", AffixType.Append, String.Concat( " ", m_Worth.ToString() ), "" ) ); // A bank check:
 		}
 

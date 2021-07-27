@@ -9,13 +9,12 @@ namespace Server.Items
             Name = "Apalalas Claw";
             Weight = 12.0;
             Speed = 450;
-            MinDamage = 10;
-            MaxDamage = 27;
+            MinDamage = 21;
+            MaxDamage = 42;
             AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
             DamageLevel = WeaponDamageLevel.Force;
             DurabilityLevel = WeaponDurabilityLevel.Substantial;
             IsRenamed = true;
-            Slayer = SlayerName.SnakesBane;
         }
 
         public ApalalasClaw(Serial serial)

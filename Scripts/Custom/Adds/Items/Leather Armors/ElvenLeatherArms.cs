@@ -26,8 +26,8 @@ namespace Server.Items
 		public ElvenLeatherArms() : base( 0x13CD )
 		{
 			Weight = 2.0;
-            Name = "Magical elven leather sleeves";
-            Hue = 1159;
+            Name = "Magical Elven Leather Sleeves";
+            Hue = 2549;
             BaseArmorRating = 39;
 		}
 

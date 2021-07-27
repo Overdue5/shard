@@ -11,7 +11,7 @@ namespace Server.Items
         public LunarBone(int amount): base(0xF8A)
 		{
 			Name = "Lunar bone";
-            Hue = 53;
+            Hue = 2944;
             Stackable = true;
             Amount = amount;
 		}

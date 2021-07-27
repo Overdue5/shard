@@ -21,8 +21,7 @@ namespace Server.Mobiles
 				if ( BaseHouse.NewVendorSystem )
 					Add( new GenericBuyInfo( "Vendor Rental Contract", typeof( VendorRentalContract ), 1252, 20, 0x14F0, 0x672 ) );
 
-				Add( new GenericBuyInfo( "Commodity Deed", typeof( CommodityDeed ), 5, 20, 0x14F0, 0x47 ) );
-                Add( new GenericBuyInfo( "Waystone", typeof(Waystone), 5000, 20, 7955, 2473));
+				Add( new GenericBuyInfo( "Commodity Deed", typeof( CommodityDeed ), 2000, 20, 0x14F0, 0x47 ) );
 
 			}
 		}

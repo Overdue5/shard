@@ -26,8 +26,8 @@ namespace Server.Items
 		public ElvenFemaleLeatherChest() : base( 0x1C06 )
 		{
 			Weight = 4.0;
-            Name = "Magical elven female armor";
-            Hue = 1159;
+            Name = "Magical Elven Female Armor";
+            Hue = 2549;
             BaseArmorRating = 39;
 		}
 

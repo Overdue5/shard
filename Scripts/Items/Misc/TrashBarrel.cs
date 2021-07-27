@@ -19,8 +19,8 @@ namespace Server.Items
 		[Constructable]
 		public TrashBarrel() : base( 0xE77 )
 		{
-			Hue = 0x3B2;
-			Movable = true;
+			Hue = 1940;
+			Movable = false;
             Name = "Trash barrel";
 		}
 
