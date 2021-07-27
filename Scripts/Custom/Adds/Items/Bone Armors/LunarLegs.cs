@@ -26,7 +26,7 @@ namespace Server.Items
 			Weight = 4.0;
             Name = "Lunar Bone Leggings";
             Hue = 2944;
-            BaseArmorRating = 45;
+            BaseArmorRating = 53;
 		}
 
 		public LunarLegs( Serial serial ) : base( serial )
