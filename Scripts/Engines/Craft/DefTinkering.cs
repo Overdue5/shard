@@ -306,16 +306,6 @@ namespace Server.Engines.Craft
 			AddRes( index, typeof( BarrelLid ), "Barrel Lid", 1, 1044253 );
 			AddRes( index, typeof( BarrelTap ), 1044252, 1, 1044253 );
 
-            index = AddCraft(typeof( SeedBox ), 1044051, "seed box", 95.0, 104.0, typeof(Log), 1044041, 50, 1044351);
-            AddSkill(index, SkillName.Carpentry, 50.0, 80.0);
-            AddRes(index, typeof(IronIngot), 1044036, 100, 1044037);
-            AddRes(index, typeof(Hinge), 1044172, 2, 1044253);
-
-            index = AddCraft(typeof(MasonryBox), 1044051, "masonry box", 96.0, 102.5, typeof(Log), 1044041, 28, 1044351);
-            AddSkill(index, SkillName.Carpentry, 85.0, 105.0);
-            AddRes(index, typeof(IronIngot), 1044036, 12, 1044037);
-            AddRes(index, typeof(Hinge), 1044172, 2, 1044253);
-
             index = AddCraft(typeof( Brazier ), 1044050, "brazier", 90.0, 101.0, typeof(IronIngot), 1044036, 35, 1044037);//
             AddRes(index, typeof(Kindling), "kindling", 50, "You do not have enough kindling to make that.");
             AddSkill(index, SkillName.Blacksmith, 50.0, 50.0);
