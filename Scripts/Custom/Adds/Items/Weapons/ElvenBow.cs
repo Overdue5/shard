@@ -7,9 +7,9 @@ namespace Server.Items
         {
             Hue = 1941;
             Name = "Elven Bow";
-            Speed = 510;
+            Speed = 410;
             MinDamage = 13;
-            MaxDamage = 23;
+            MaxDamage = 33;
             AccuracyLevel = WeaponAccuracyLevel.Supremely;
             DamageLevel = WeaponDamageLevel.Power;
             DurabilityLevel = WeaponDurabilityLevel.Substantial;

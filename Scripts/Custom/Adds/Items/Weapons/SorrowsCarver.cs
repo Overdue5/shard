@@ -4,13 +4,13 @@ using Server.Regions;
 
 namespace Server.Items
 {
-    public class SoV : Scimitar
+    public class SorrowsCarver : Wakizashi
     {
         [Constructable]
-        public SoV()
+        public SorrowsCarver()
         {
-            Hue = 1904;
-            Name = "Soul of the Vampire";
+            Hue = 2529;
+            Name = "Sorrow's Carver";
             Weight = 8;
             Speed = 475;
             MinDamage = 14;
@@ -20,7 +20,7 @@ namespace Server.Items
             IsRenamed = true;
         }
 
-        public SoV(Serial serial)
+        public SorrowsCarver(Serial serial)
             : base(serial)
         {
         }
@@ -64,7 +64,7 @@ namespace Server.Items
                     if (Utility.RandomDouble() < 0.14) //14% chance of bonus damage
                     {
                         Effects.SendLocationParticles(EffectItem.Create(defender.Location, defender.Map, EffectItem.DefaultDuration), 0x37C4, 10, 10, 2023);
-                        attacker.SendAsciiMessage("The Soul of the Vampire strikes at their very soul");
+                        attacker.SendAsciiMessage("The Sorrow's Carver strikes at their very soul!");
                         bonus = 1.15;
                     }
                 }
