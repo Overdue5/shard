@@ -201,6 +201,8 @@ namespace Scripts.SpecialSystems
         {
             m_type = _type;
             m_LastChangeTime = DateTime.UtcNow;
+            m_LastKilled = new Hashtable();
+            m_LastKiller = new Hashtable();
         }
 
         public PvXSystem(PvXType _type, PlayerMobile owner) : this(_type)
@@ -445,8 +447,8 @@ namespace Scripts.SpecialSystems
                         writer.Write(PvXDataDict[xtype][serial].TotalPointsSpent);
                         writer.Write(PvXDataDict[xtype][serial].LastChangeTime);
                         writer.Write(PvXDataDict[xtype][serial].Owner);
-                        PvXDataDict[xtype][serial].LastKilled = new Hashtable();
-                        PvXDataDict[xtype][serial].LastKiller = new Hashtable();
+                        CutHashtable(PvXDataDict[xtype][serial].LastKilled);
+                        CutHashtable(PvXDataDict[xtype][serial].LastKiller);
                         PvXDataDict[xtype][serial].CalculateRankName();
                     }
                 }
@@ -454,6 +456,17 @@ namespace Scripts.SpecialSystems
             OnCalculateStat();
             watch.Stop();
             Console.WriteLine($"PvX stats save complete, duration:{watch.Elapsed.TotalMilliseconds} ms");
+        }
+
+        private static void CutHashtable(Hashtable tbl)
+        {
+            if (tbl == null)
+                return;
+            foreach (var key in tbl.Keys.Cast<int>().ToList())
+            {
+                if (DateTime.UtcNow - (DateTime)tbl[key] > TimeSpan.FromHours(4))
+                    tbl.Remove(key);
+            }
         }
 
         private static void OnLoad()
