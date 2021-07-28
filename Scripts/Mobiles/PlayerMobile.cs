@@ -772,25 +772,6 @@ namespace Server.Mobiles
 			}
 		}
 
-        #region PvxSystem
-
-        public Dictionary<PvXType, PvXSystem> PvXStat;
-        [CommandProperty(AccessLevel.GameMaster)]
-        public PvXSystem PVPStat
-        {
-            get { return PvXStat[PvXType.PVP];}
-            set { PvXStat[PvXType.PVP] = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public PvXSystem PVMStat
-        {
-            get { return PvXStat[PvXType.PVM]; }
-            set { PvXStat[PvXType.PVM] = value; }
-        }
-
-        #endregion
-
         public override void OnWarmodeChanged()
         {
             //Abort action
@@ -3173,7 +3154,6 @@ namespace Server.Mobiles
 
 	    public PlayerMobile()
         {
-            PvXStat = PvXSystem.PlayerInit();
             m_AutoStabled = new List<Mobile>();
             m_VisList = new List<Mobile>();
 			m_PermaFlags = new List<Mobile>();
@@ -3625,7 +3605,6 @@ namespace Server.Mobiles
 
 		public PlayerMobile( Serial s ) : base( s )
 		{
-            PvXStat = PvXSystem.PlayerInit();
             m_VisList = new List<Mobile>();
 			m_AntiMacroTable = new Hashtable();
 			InvalidateMyRunUO();
@@ -4406,9 +4385,18 @@ namespace Server.Mobiles
 
             #endregion
 
-            #region Mobile.cs OnSingleclick
+            #region PvX
 
-            if (Deleted)
+            if (PvXData.GetBestTitle(this.Serial.Value) != "")
+            {
+                PrivateOverheadMessage(MessageType.Label, 1173, false, PvXData.GetBestTitle(this.Serial.Value), from.NetState);
+            }
+
+            #endregion
+
+                #region Mobile.cs OnSingleclick
+
+                if (Deleted)
                 return;
 
             string abbreviation ="";
@@ -4482,12 +4470,6 @@ namespace Server.Mobiles
                 playerName = String.Concat(name, " ", suffix);
             else
                 playerName = name;
-            PvXPointSystem.UpdatePvXRank(this);
-            if ((int) PvXPointSystem.GetPvPRank(this) > (int)PvXPointSystem.GetPvMRank(this))
-                playerName += $" ({PVPStat.RankName}) ";
-            else
-                playerName += $" ({PVMStat.RankName}) ";
-
             //Taran: Add criminal to nametag when clicking self
             if (from == this && from.Criminal)
                 playerName += " (criminal)";

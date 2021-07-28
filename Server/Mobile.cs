@@ -443,7 +443,7 @@ namespace Server
 		Developer,
 		Administrator,
 		Owner
-	}
+    }
 
 	public enum VisibleDamageType
 	{

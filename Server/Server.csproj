@@ -109,6 +109,8 @@
     <Compile Include="Items\SecureTradeContainer.cs" />
     <Compile Include="Items\VirtualHair.cs" />
     <Compile Include="KeywordList.cs" />
+    <Compile Include="Logs\BaseLogs.cs" />
+    <Compile Include="Logs\Logs.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menus\IMenu.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="Notoriety.cs" />
     <Compile Include="ObjectPropertyList.cs" />
     <Compile Include="Party.cs" />
+    <Compile Include="Persistence.cs" />
     <Compile Include="Persistence\BinaryMemoryWriter.cs" />
     <Compile Include="Persistence\DualSaveStrategy.cs" />
     <Compile Include="Persistence\DynamicSaveStrategy.cs" />

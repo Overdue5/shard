@@ -88,35 +88,30 @@ namespace Server.Gumps
             string time = GetNameForCounter(counter);
             AddLabel(30, 25, textGumpId, time.ToString());
 
-            ArrayList mobs = new ArrayList(World.PlayerMobiles.Values);
-
             int step = 0;
-            foreach (PlayerMobile pMobile in PvXSystem.StatDict[m_SType].StatTypesDict[counter])
+            
+            foreach (var stat in PvXData.PvXStatistics[m_SType].StatTypesDict[counter])
             {
-                AddLabel(30, 148 + step, textGumpId, pMobile.Name.ToString());
-                AddLabel(236, 148 + step, textGumpId, pMobile.PvXStat[m_SType].TotalWins.ToString());
-                AddLabel(285, 148 + step, textGumpId, pMobile.PvXStat[m_SType].TotalLoses.ToString());
-                AddLabel(383, 148 + step, textGumpId, pMobile.PvXStat[m_SType].TotalResKilled.ToString());
-                int pure = 0;
+                AddLabel(30, 148 + step, textGumpId, stat.Owner.Name.ToString());
+                AddLabel(236, 148 + step, textGumpId, stat.TotalWins.ToString());
+                AddLabel(285, 148 + step, textGumpId, stat.TotalLoses.ToString());
+                AddLabel(383, 148 + step, textGumpId, stat.TotalResKilled.ToString());
                 if (stype == PvXType.PVP)
                 {
-                    AddLabel(334, 148 + step, textGumpId, pMobile.PvXStat[m_SType].TotalResKills.ToString());
-                    pure = pMobile.PvXStat[m_SType].TotalWins - pMobile.PvXStat[m_SType].TotalLoses -
-                               pMobile.PvXStat[m_SType].TotalResKills;
+                    AddLabel(334, 148 + step, textGumpId, stat.TotalResKills.ToString());
                 }
                 else
                 {
                     AddLabel(334, 148 + step, textGumpId, "-");
-                    pure = pMobile.PvXStat[m_SType].TotalWins - pMobile.PvXStat[m_SType].TotalLoses;
                 }
-                AddLabel(433, 148 + step, textGumpId, pure.ToString());
+                AddLabel(433, 148 + step, textGumpId, stat.TotalPoints.ToString());
 
-                if (pMobile.Guild == null)
+                if (stat.Owner.Guild == null)
                     AddLabel(482, 148 + step, textGumpId, @"No Guild");
                 else
                 {
-                    AddLabel(482, 148 + step, textGumpId, $@"[{(pMobile.Guild.Name.Length > 10 ? 
-                        pMobile.Guild.Name.Substring(0, 10) : pMobile.Guild.Name)}]");
+                    AddLabel(482, 148 + step, textGumpId, $@"[{(stat.Owner.Guild.Name.Length > 10 ?
+                        stat.Owner.Guild.Name.Substring(0, 10) : stat.Owner.Guild.Name)}]");
                 }
 
                 step += 20;

@@ -47,7 +47,7 @@ namespace Server
 
     public class PvXPointSystem
     {
-        private static Dictionary<PvPRank, int> PvPRankTable = new Dictionary<PvPRank, int>
+        public static Dictionary<PvPRank, int> PvPRankTable = new Dictionary<PvPRank, int>
         {
             [PvPRank.Ultra_Newb] = 3,
             [PvPRank.Newbie] = 10,
@@ -66,7 +66,7 @@ namespace Server
             [PvPRank.Legendary_Duelist] = Int32.MaxValue
         };
 
-        private static Dictionary<PvMRank, int> PvMRankTable = new Dictionary<PvMRank, int>
+        public static Dictionary<PvMRank, int> PvMRankTable = new Dictionary<PvMRank, int>
         {
             [PvMRank.Butcher] = 100,
             [PvMRank.Inquisitor] = 500,
@@ -101,42 +101,14 @@ namespace Server
         // Enables Rank System
         //private static readonly bool EnableRankSystem = true;
 
-        public static PvPRank GetPvPRank(PlayerMobile mobile)
+        public static void UpdatePvMRank(PlayerMobile mobile)
         {
-            foreach (var key in PvPRankTable)
-            {
-                if (key.Value > mobile.PVPStat.TotalPoints)
-                {
-                    return key.Key;
-                }
-            }
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
-                $@"Something wrong with GetPvPRank for {mobile.Name}");
-            return 0;
+            PvXData.GetPvMStat(mobile).CalculateRankName();
         }
 
-        public static PvMRank GetPvMRank(PlayerMobile mobile)
+        public static void UpdatePvPRank(PlayerMobile mobile)
         {
-            foreach (var key in PvMRankTable)
-            {
-                if (key.Value > mobile.PVMStat.TotalPoints)
-                {
-                    return key.Key;
-                }
-            }
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
-                $@"Something wrong with GetPvMRank for {mobile.Name}");
-            return 0;
-        }
-
-        private static void UpdatePvMRank(PlayerMobile mobile)
-        {
-            mobile.PVMStat.RankName = GetPvMRank(mobile).ToString().Replace("_"," ");
-        }
-
-        private static void UpdatePvPRank(PlayerMobile mobile)
-        {
-            mobile.PVPStat.RankName = GetPvPRank(mobile).ToString().Replace("_", " ");
+            PvXData.GetPvPStat(mobile).CalculateRankName();
         }
 
         public static void UpdatePvXRank(PlayerMobile mobile)
@@ -149,46 +121,50 @@ namespace Server
         {
             if (!EnablePvPPointSystem)
                 return;
-            if (defender.PVPStat.TotalPoints >= 0)
+            var defStat = PvXData.GetPvPStat(defender);
+            var attStat = PvXData.GetPvPStat(attacker);
+            if (defStat.TotalPoints >= 0)
             {
-                defender.PVPStat.TotalPointsLost += 1;
+                defStat.TotalPointsLost += 1;
             }
             if (EnableResKillTimer == true)
             {
-                if (defender.LastKiller != defender.PVPStat.LastKiller)
+                if (!attStat.LastKilled.ContainsKey(defender.Serial.Value))
                 {
-                    defender.PVPStat.TotalLoses += 1;
-                    attacker.PVPStat.TotalWins += 1;
+                    defStat.TotalLoses += 1;
+                    attStat.TotalWins += 1;
                     attacker.SendMessage($"You have gained one pvp point from {defender.Name}");
-                    defender.PVPStat.ResKillTime = DateTime.UtcNow;
+                    defStat.ResKillTime = DateTime.UtcNow;
                 }
                 else
                 {
-                    if (defender.PVPStat.ResKillTime - DateTime.UtcNow < ResKillPvPTime)
+                    if (Convert.ToDateTime(attStat.LastKilled[defender.Serial.Value]) + ResKillPvPTime < DateTime.UtcNow)
                     {
-                        attacker.PVPStat.TotalResKills += 1;
-                        attacker.PVPStat.TotalWins += 1;
-                        defender.PVPStat.TotalLoses += 1;
-                        defender.PVPStat.TotalResKilled += 1;
+                        attStat.TotalResKills += 1;
+                        attStat.TotalWins += 1;
+                        defStat.TotalLoses += 1;
+                        defStat.TotalResKilled += 1;
                     }
                     else
                     {
-                        defender.PVPStat.TotalLoses += 1;
-                        attacker.PVPStat.TotalWins += 1;
+                        defStat.TotalLoses += 1;
+                        attStat.TotalWins += 1;
                         attacker.SendMessage($"You have gained one pvp point from {defender.Name}");
                     }
                 }
-                defender.PVPStat.ResKillTime = DateTime.UtcNow;
+                defStat.ResKillTime = DateTime.UtcNow;
             }
             else
             {
-                defender.PVPStat.TotalLoses += 1;
-                attacker.PVPStat.TotalWins += 1;
+                defStat.TotalLoses += 1;
+                attStat.TotalWins += 1;
                 attacker.SendMessage($"You have gained one pvp point from {defender.Name}");
             }
 
-            attacker.PVPStat.LastKilled = defender;
-            defender.PVPStat.LastKiller = attacker;
+            attStat.LastKilled[defender.Serial.Value] = DateTime.UtcNow;
+            defStat.LastKiller[attacker.Serial.Value] = DateTime.UtcNow;
+            attStat.LastChangeTime = DateTime.UtcNow;
+            defStat.LastChangeTime = DateTime.UtcNow;
         }
 
         public static void CalculatePvMStat(Mobile attacker, Mobile defender)
@@ -197,39 +173,43 @@ namespace Server
                 return;
             if (attacker is PlayerMobile pa)
             {
+                var attStat = PvXData.GetPvPStat(pa);
                 var maxPoint = Utility.LimitMinMax(0, defender.HitsMax / 100, 10);
-                if (defender.HitsMax > pa.PVPStat.TotalPoints)
+                if (defender.HitsMax > attStat.TotalPoints)
                     maxPoint += 1;
-                var rank = (int)GetPvMRank(pa);
-                if (DateTime.UtcNow - pa.PVMStat.ResKillTime > TimeSpan.FromSeconds(3))
+                var rank = attStat.RankId;
+                if (DateTime.UtcNow - attStat.ResKillTime > TimeSpan.FromSeconds(3))
                 {
                     var bonus = Utility.LimitMinMax(1, maxPoint - rank, 5);
-                    if (defender.HitsMax > pa.PVMStat.TotalWins)
+                    if (defender.HitsMax > attStat.TotalWins)
                         bonus += 1;
                     maxPoint = Utility.LimitMinMax(0, maxPoint * (1 + Utility.Random(bonus)), 30);
                 }
                 pa.SendMessage($"PvM rating increased by {maxPoint}");
-                pa.PVMStat.TotalWins += maxPoint;
-                pa.PVMStat.ResKillTime = DateTime.UtcNow;
+                attStat.TotalWins += maxPoint;
+                attStat.ResKillTime = DateTime.UtcNow;
+                attStat.LastChangeTime = DateTime.UtcNow;
                 UpdatePvMRank(pa);
             }
             else if (defender is PlayerMobile pd)
             {
+                var defStat = PvXData.GetPvPStat(pd);
                 var maxPoint = Utility.LimitMinMax(0, attacker.HitsMax / 100, 10);
-                var rank = (int)GetPvMRank(pd);
+                var rank = defStat.RankId;
                 var bonus = 1;
                 if (rank > maxPoint)
                     bonus = Utility.LimitMinMax(0, rank - maxPoint, 5);
-                if (pd.LastKiller == pd.PVMStat.LastKiller)
+                if (defStat.LastKiller.ContainsKey(attacker.Serial.Value))
                 {
                     bonus++;
-                    pd.PVMStat.TotalResKilled += 1;
+                    defStat.TotalResKilled += 1;
                 }
 
                 maxPoint = maxPoint * Utility.LimitMinMax(1, Utility.Random(bonus), 5);
                 pd.SendMessage($"PvM rating decreased by {maxPoint}");
-                pd.PVMStat.LastKiller = attacker;
-                pd.PVMStat.TotalLoses += maxPoint;
+                defStat.LastKiller[attacker.Serial.Value] = DateTime.UtcNow;
+                defStat.TotalLoses += maxPoint;
+                defStat.LastChangeTime = DateTime.UtcNow;
                 UpdatePvMRank(pd);
             }
         }

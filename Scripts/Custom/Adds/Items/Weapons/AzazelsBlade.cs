@@ -19,7 +19,7 @@ namespace Server.Items
             IsRenamed = true;
         }
 
-        public DragonsBlade(Serial serial)
+        public AzazelsBlade(Serial serial)
             : base(serial)
         {
         }
@@ -55,7 +55,7 @@ namespace Server.Items
         }
     }
 
-    public class SuperiorDragonsBlade : Broadsword
+    public class SuperiorAzazelsBlade : Broadsword
     {
         [Constructable]
         public SuperiorAzazelsBlade()
@@ -73,7 +73,7 @@ namespace Server.Items
             Slayer = SlayerName.DragonSlaying;
         }
 
-        public SuperiorDragonsBlade(Serial serial)
+        public SuperiorAzazelsBlade(Serial serial)
             : base(serial)
         {
         }

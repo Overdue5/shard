@@ -109,6 +109,7 @@ namespace Server
 		public static Process Process { get { return m_Process; } }
 		public static Thread Thread { get { return m_Thread; } }
 		public static MultiTextWriter MultiConsoleOut { get { return m_MultiConOut; } }
+        public static readonly Encoding ASCIIEncoding = Encoding.GetEncoding(1251);
 
 #if Framework_4_0
 		public static readonly bool Is64Bit = Environment.Is64BitProcess;

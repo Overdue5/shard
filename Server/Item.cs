@@ -3821,7 +3821,22 @@ namespace Server
 			}
 		}
 
-		public virtual object Parent
+        public string CalculateName()
+        {
+            var info = LookupCompactInfo();
+
+            if (info != null && info.m_Name != null)
+            {
+                return info.m_Name;
+            }
+
+            if (CliLoc.LocToString(LabelNumber) != null)
+                return CliLoc.LocToString(LabelNumber);
+
+            return this.GetType().Name;
+        }
+
+        public virtual object Parent
 		{
 			get
 			{
