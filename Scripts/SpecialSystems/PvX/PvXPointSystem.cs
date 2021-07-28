@@ -98,8 +98,10 @@ namespace Server
         private static readonly TimeSpan ResKillPvMTime = TimeSpan.FromMinutes(
             Config.Get(@"PvXsystem.ResKillPvMTime", 3));
 
-        // Enables Rank System
-        //private static readonly bool EnableRankSystem = true;
+        public static void Initialize()
+        {
+            EventSink.PlayerDeath += PvXPointSystem.EventSink_CalculateStats;
+        }
 
         public static void UpdatePvMRank(PlayerMobile mobile)
         {
@@ -173,7 +175,7 @@ namespace Server
                 return;
             if (attacker is PlayerMobile pa)
             {
-                var attStat = PvXData.GetPvPStat(pa);
+                var attStat = PvXData.GetPvMStat(pa);
                 var maxPoint = Utility.LimitMinMax(0, defender.HitsMax / 100, 10);
                 if (defender.HitsMax > attStat.TotalPoints)
                     maxPoint += 1;
@@ -193,7 +195,7 @@ namespace Server
             }
             else if (defender is PlayerMobile pd)
             {
-                var defStat = PvXData.GetPvPStat(pd);
+                var defStat = PvXData.GetPvMStat(pd);
                 var maxPoint = Utility.LimitMinMax(0, attacker.HitsMax / 100, 10);
                 var rank = defStat.RankId;
                 var bonus = 1;
@@ -214,22 +216,22 @@ namespace Server
             }
         }
 
-        public static void CalculateStats(PlayerDeathEventArgs w)
+        public static void EventSink_CalculateStats(PlayerDeathEventArgs w)
         {
-            CalculateStats(w.Mobile);
+            EventSink_CalculateStats(w.Mobile);
         }
 
-        public static void CalculateStats(Mobile def)
+        public static void EventSink_CalculateStats(Mobile def)
         {
             foreach (var damageEntry in def.DamageEntries)
             {
                 if (damageEntry.Damager is BaseGuard)
                     return;
             }
-            CalculateStats(def.FindMostRecentDamager(false),def);
+            EventSink_CalculateStats(def.FindMostRecentDamager(false),def);
         }
 
-        public static void CalculateStats(Mobile attacker, Mobile defender)
+        public static void EventSink_CalculateStats(Mobile attacker, Mobile defender)
         {
             if (attacker == null || defender == null || (!attacker.Player && !defender.Player) || 
                 !attacker.Alive || attacker is BaseGuard || defender is BaseGuard || attacker.Deleted)

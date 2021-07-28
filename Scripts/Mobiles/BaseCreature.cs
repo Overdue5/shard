@@ -847,7 +847,7 @@ namespace Server.Mobiles
         }
         public override void OnDeathPvXSystem()
         {
-            PvXPointSystem.CalculateStats(this);
+            PvXPointSystem.EventSink_CalculateStats(this);
         }
 
         public bool IsSummonedOrTamed()
