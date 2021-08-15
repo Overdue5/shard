@@ -231,7 +231,7 @@ namespace Server.Misc
                     }*/
                     else
                     {
-                        Console.WriteLine(@"Client: {0}: Deleting character {1} (0x{2:X})", state, index, m.Serial.Value);
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $@"Client: {state}: Deleting character {index} (0x{m.Serial.Value:X})");
 
                         acct.Comments.Add(new AccountComment("System", String.Format("Character #{0} {1} deleted by {2}", index + 1, m, state)));
 
@@ -311,11 +311,11 @@ namespace Server.Misc
 
 			if ( !CanCreate( state.Address ) )
 			{
-				Console.WriteLine( "Login: {0}: Account '{1}' not created, ip already has {2} account{3}.", state, un, MaxAccountsPerIP, MaxAccountsPerIP == 1 ? "" : "s" );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {state}: Account '{un}' not created, ip already has {MaxAccountsPerIP} account{(MaxAccountsPerIP == 1 ? "" : "s")}." );
 				return null;
 			}
 
-			Console.WriteLine( "Login: {0}: Creating new account '{1}'", state, un );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Login: {state}: Creating new account '{un}'" );
 
 			Account a = new Account( un, pw );
 
@@ -329,7 +329,7 @@ namespace Server.Misc
 				e.Accepted = false;
 				e.RejectReason = ALRReason.InUse;
 
-				Console.WriteLine( "Login: {0}: Past IP limit threshold", e.State );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Past IP limit threshold" );
 
 				using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
 					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.Now );
@@ -355,18 +355,18 @@ namespace Server.Misc
 				}
 				else
 				{
-					Console.WriteLine( "Login: {0}: Invalid username '{1}'", e.State, un );
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Invalid username '{un}'" );
 					e.RejectReason = ALRReason.Invalid;
 				}
 			}
 			else if ( !acct.HasAccess( e.State ) )
 			{
-				Console.WriteLine( "Login: {0}: Access denied for '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Access denied for '{un}'" );
 				e.RejectReason = ( m_LockdownLevel > AccessLevel.Player ? ALRReason.BadComm : ALRReason.BadPass );
 			}
 			else if ( !acct.CheckPassword( pw ) )
 			{
-				Console.WriteLine( "Login: {0}: Invalid password for '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Invalid password for '{un}'" );
 				e.RejectReason = ALRReason.BadPass;
                 //*****Logging attempt*****
                 try
@@ -378,13 +378,13 @@ namespace Server.Misc
                 }
                 catch
                 {
-                    Console.WriteLine("Record Error... {0} Login", un);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Record Error... {un} Login");
                 }
                 //**************************
 			}
 			else if ( acct.Banned )
 			{
-				Console.WriteLine( "Login: {0}: Banned account '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Banned account '{un}'" );
 				e.RejectReason = ALRReason.Blocked;
                 //*****Logging attempt*****
                 try
@@ -396,13 +396,13 @@ namespace Server.Misc
                 }
                 catch
                 {
-                    Console.WriteLine("Record Error... {0} Login", un);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Record Error... {un} Login");
                 }
                 //**************************
 			}
 			else
 			{
-				Console.WriteLine( "Login: {0}: Valid credentials for '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Login: {e.State}: Valid credentials for '{un}'" );
 				e.State.Account = acct;
 				e.Accepted = true;
 
@@ -419,7 +419,7 @@ namespace Server.Misc
 			{
 				e.Accepted = false;
 
-				Console.WriteLine( "Login: {0}: Past IP limit threshold", e.State );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Past IP limit threshold" );
 
 				using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
 					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.Now );
@@ -438,12 +438,12 @@ namespace Server.Misc
 			}
 			else if ( !acct.HasAccess( e.State ) )
 			{
-				Console.WriteLine( "Login: {0}: Access denied for '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Access denied for '{un}'" );
 				e.Accepted = false;
 			}
 			else if ( !acct.CheckPassword( pw ) )
 			{
-				Console.WriteLine( "Login: {0}: Invalid password for '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Invalid password for '{un}'" );
 				e.Accepted = false;
                 //*****Logging attempt*****
                 try
@@ -455,13 +455,13 @@ namespace Server.Misc
                 }
                 catch
                 {
-                    Console.WriteLine("Record Error... {0} Login", un);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Record Error... {un} Login");
                 }
                 //**************************
 			}
 			else if ( acct.Banned )
 			{
-				Console.WriteLine( "Login: {0}: Banned account '{1}'", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Banned account '{un}'" );
 				e.Accepted = false;
                 //*****Logging attempt*****
                 try
@@ -473,7 +473,7 @@ namespace Server.Misc
                 }
                 catch
                 {
-                    Console.WriteLine("Record Error... {0} Login", un);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Record Error... {un} Login");
                 }
                 //**************************
 			}
@@ -481,7 +481,7 @@ namespace Server.Misc
 			{
 				acct.LogAccess( e.State );
 
-				Console.WriteLine( "Login: {0}: Account '{1}' at character list", e.State, un );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Login: {e.State}: Account '{un}' at character list" );
 				e.State.Account = acct;
 				e.Accepted = true;
 				e.CityInfo = StartingCities;

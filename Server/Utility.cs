@@ -1665,331 +1665,165 @@ namespace Server
 		}
 
 
-        #region Console 
-        private static Stack<ConsoleColor> m_ConsoleColors = new Stack<ConsoleColor>();
-        public static void PushColor(ConsoleColor color)
-        {
-            try
-            {
-                m_ConsoleColors.Push(Console.ForegroundColor);
-                Console.ForegroundColor = color;
-            }
-            catch
-            {
-            }
-        }
+		#region Console
 
-        public static void PopColor()
-        {
-            try
-            {
-                Console.ForegroundColor = m_ConsoleColors.Pop();
-            }
-            catch
-            {
-            }
-        }
+		private static readonly Stack<ConsoleColor> m_ConsoleColors = new Stack<ConsoleColor>();
+		private static bool m_NewLine = true;
 
-        public enum ConsoleMsgType
-        {
-            Client,
-            Error,
-            Warning
-        }
+		public static void PushColor(ConsoleColor color)
+		{
+			try
+			{
+				lock (((ICollection)m_ConsoleColors).SyncRoot)
+				{
+					m_ConsoleColors.Push(Console.ForegroundColor);
 
-        public static void ConsoleWriteLine(ConsoleMsgType type, string msg)
-        {
-            string typename;
-            ConsoleColor tColor, mColor;
-            switch (type)
-            {
-                case ConsoleMsgType.Error:
-                    typename = "Error";
-                    tColor = ConsoleColor.Red;
-                    mColor = ConsoleColor.White;
-                    break;
-                case ConsoleMsgType.Client:
-                    typename = "Info";
-                    tColor = ConsoleColor.Green;
-                    mColor = ConsoleColor.White;
-                    break;
-                case ConsoleMsgType.Warning:
-                    typename = "Warning";
-                    tColor = ConsoleColor.Yellow;
-                    mColor = ConsoleColor.White;
-                    break;
-                default:
-                    typename = "Error";
-                    tColor = ConsoleColor.Red;
-                    mColor = ConsoleColor.White;
-                    break;
-            }
-            ConsoleWriteLine(tColor, typename, mColor, msg);
-        }
+					Console.ForegroundColor = color;
+				}
+			}
+			catch (Exception e)
+			{
+				Diagnostics.ExceptionLogging.LogException(e);
+			}
+		}
 
-        public static void ConsoleWriteLine(Mobile client, ConsoleColor mColor, string msg)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(ConsoleColor.DarkGreen);
-            Console.Write("[Client] ");
+		public static void PopColor()
+		{
+			try
+			{
+				lock (((ICollection)m_ConsoleColors).SyncRoot)
+				{
+					Console.ForegroundColor = m_ConsoleColors.Pop();
+				}
+			}
+			catch (Exception e)
+			{
+				Diagnostics.ExceptionLogging.LogException(e);
+			}
+		}
 
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write(String.Format("0x{0:X8} \"{1}\" [{2}] : ", client.Serial.Value, client.Name, client.Account.Username));
+		public enum ConsoleMsgType
+		{
+			Info,
+			Client,
+			Error,
+			Warning
+		}
 
-            Utility.PushColor(mColor);
-            Console.WriteLine(msg);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
+		public static void PrepareMsgType(ConsoleMsgType type, out string typename, out ConsoleColor tColor, out ConsoleColor mColor)
+		{
+			switch (type)
+			{
+				case ConsoleMsgType.Error:
+					typename = "Error";
+					tColor = ConsoleColor.Red;
+					mColor = ConsoleColor.White;
+					break;
+				case ConsoleMsgType.Warning:
+					typename = "Warning";
+					tColor = ConsoleColor.Yellow;
+					mColor = ConsoleColor.White;
+					break;
+				case ConsoleMsgType.Info:
+					typename = "Info";
+					tColor = ConsoleColor.Green;
+					mColor = ConsoleColor.White;
+					break;
+				case ConsoleMsgType.Client:
+					typename = "Client";
+					tColor = ConsoleColor.Blue;
+					mColor = ConsoleColor.White;
+					break;
+				default:
+					typename = "Unknown Type";
+					tColor = ConsoleColor.Red;
+					mColor = ConsoleColor.White;
+					break;
+			}
+		}
 
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-            Console.Write(msg);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
+		public static void ConsoleWrite(ConsoleMsgType type, string msg)
+		{
+			string typename;
+			ConsoleColor tColor, mColor;
+			PrepareMsgType(type, out typename, out tColor, out mColor);
+			ConsoleWrite(tColor, typename, mColor, msg);
+		}
 
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
+		public static void ConsoleWriteLine(ConsoleMsgType type, string msg)
+		{
+			string typename;
+			ConsoleColor tColor, mColor;
+			PrepareMsgType(type, out typename, out tColor, out mColor);
+			ConsoleWriteLine(tColor, typename, mColor, msg);
+		}
 
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                for (int i = argN.Length; i < 15; ++i)
-                    argN += " ";
-            }
+		public static void ConsoleWriteLine(Mobile client, ConsoleColor mColor, string msg)
+		{
+			lock (((ICollection)m_ConsoleColors).SyncRoot)
+			{
+				Utility.PushColor(ConsoleColor.DarkGray);
+				Console.Write($"{DateTime.UtcNow.ToString(Core.DateFormat)} ");
+				Utility.PushColor(ConsoleColor.DarkGreen);
+				Console.Write("[Client] ");
 
-            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
+				Utility.PushColor(ConsoleColor.DarkGray);
+				Console.Write($"0x{client.Serial.Value:X8} \"{client.Name}\" [{client.Account.Username}] : ");
 
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
+				Utility.PushColor(mColor);
+				Console.WriteLine(msg);
+				Utility.PushColor(ConsoleColor.Gray);
+			}
+		}
 
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                for (int i = argN.Length; i < 15; ++i)
-                    argN += " ";
-            }
+		public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg)
+		{
+			lock (((ICollection)m_ConsoleColors).SyncRoot)
+			{
+				if (m_NewLine)
+				{
+					Utility.PushColor(ConsoleColor.DarkGray);
+					Console.Write($"{DateTime.UtcNow.ToString(Core.DateFormat)} ");
+					m_NewLine = false;
+				}
 
-            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
+				Utility.PushColor(tColor);
+				Console.Write($"[{type}] ");
+				Utility.PushColor(mColor);
+				Console.Write(msg);
+				Utility.PushColor(ConsoleColor.Gray);
+			}
+		}
 
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
+		public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg)
+		{
+			ConsoleWriteLine(tColor, type, mColor, msg, null);
+		}
 
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                for (int i = argN.Length; i < 15; ++i)
-                    argN += " ";
-            }
+		public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor,
+			string msg, params object[] args)
+		{
+			lock (((ICollection)m_ConsoleColors).SyncRoot)
+			{
+				if (m_NewLine)
+				{
+					Utility.PushColor(ConsoleColor.DarkGray);
+					Console.Write($"{DateTime.UtcNow.ToString(Core.DateFormat)} ");
+				}
 
-            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
+				Utility.PushColor(tColor);
+				Console.Write($"[{type}] ");
+				Utility.PushColor(mColor);
+				Console.WriteLine(msg, args);
+				Utility.PushColor(ConsoleColor.Gray);
+				m_NewLine = true;
+			}
+		}
 
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                for (int i = argN.Length; i < 15; ++i)
-                    argN += " ";
-            }
-
-            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3, object arg4)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                for (int i = argN.Length; i < 15; ++i)
-                    argN += " ";
-            }
-
-            Console.Write(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3, arg4);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWrite(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, params object[] args)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-            Console.Write(msg, args);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-            Console.WriteLine(msg);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                if (argN.Length < 15)
-                    argN += new string(' ', 15 - argN.Length);
-            }
-
-            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                if (argN.Length < 15)
-                    argN += new string(' ', 15 - argN.Length);
-            }
-
-            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                if (argN.Length < 15)
-                    argN += new string(' ', 15 - argN.Length);
-            }
-
-            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                if (argN.Length < 15)
-                    argN += new string(' ', 15 - argN.Length);
-            }
-
-            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, object arg0, object arg1, object arg2, object arg3, object arg4)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-
-            string argN = String.Empty;
-            if (arg0 is NetState)
-            {
-                argN = (arg0 as NetState).ToString();
-                if (argN.Length < 15)
-                    argN += new string(' ', 15 - argN.Length);
-            }
-
-            Console.WriteLine(msg, String.IsNullOrEmpty(argN) ? arg0 : argN, arg1, arg2, arg3, arg4);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        public static void ConsoleWriteLine(ConsoleColor tColor, string type, ConsoleColor mColor, string msg, params object[] args)
-        {
-            Utility.PushColor(ConsoleColor.DarkGray);
-            Console.Write("{0} ", DateTime.UtcNow.ToString("HH:mm:ss"));
-            Utility.PushColor(tColor);
-            Console.Write("[{0}] ", type);
-            Utility.PushColor(mColor);
-            Console.WriteLine(msg, args);
-            Utility.PushColor(ConsoleColor.Gray);
-        }
-
-        #endregion
+		#endregion
 
 
-        public static bool NumberBetween( double num, int bound1, int bound2, double allowance )
+		public static bool NumberBetween( double num, int bound1, int bound2, double allowance )
 		{
 			if ( bound1 > bound2 )
 			{

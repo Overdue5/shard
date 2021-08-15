@@ -73,7 +73,7 @@ namespace Server.Commands
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, exception.ToString());
                     //throw new ArgumentException();
                 }
             }

@@ -1578,7 +1578,7 @@ namespace Server.Mobiles
             }
             catch
             {
-                Console.WriteLine("GetProperties error with type {0}", type);
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"GetProperties error with type {type}");
                 return null;
             }
 

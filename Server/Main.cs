@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -39,6 +40,7 @@ namespace Server
 
     public static class Core
     {
+	    public static readonly string DateFormat = "[MMMM dd HH:mm:ss.f]: ";
 		private static bool m_Crashed;
 		private static Thread timerThread;
 		private static string m_BaseDirectory;
@@ -143,7 +145,7 @@ namespace Server
 
 				fullPath = null;
 			}
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Client, "Ultima Online directory:" + fullPath);
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Ultima Online directory:" + fullPath);
             return fullPath;
 		}
 
@@ -242,8 +244,8 @@ namespace Server
 
 		private static void CurrentDomain_UnhandledException( object sender, UnhandledExceptionEventArgs e )
 		{
-			Console.WriteLine( e.IsTerminating ? "Error:" : "Warning:" );
-			Console.WriteLine( e.ExceptionObject );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning,  e.IsTerminating ? "Error:" : "Warning:" );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, e.ExceptionObject.ToString() );
 
 			if( e.IsTerminating )
 			{
@@ -278,11 +280,11 @@ namespace Server
                     
                     if (m_Service)
                     {
-                        Console.WriteLine("This exception is fatal.");
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "This exception is fatal.");
                     }
                     else
                     {
-                        Console.WriteLine("This exception is fatal, press return to exit");
+	                    Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,"This exception is fatal, press return to exit");
                         Console.ReadLine();
                     }
 				}
@@ -371,7 +373,7 @@ namespace Server
 
 			m_Closing = true;
 
-			Console.Write( "Exiting..." );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Exiting..." );
 
             World.WaitForWriteCompletion();
 
@@ -380,7 +382,7 @@ namespace Server
 
 			Timer.TimerThread.Set();
 
-			Console.WriteLine( "done" );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "done" );
 		}
 
 		private static AutoResetEvent m_Signal = new AutoResetEvent( true );
@@ -390,7 +392,8 @@ namespace Server
 		{
 			AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler( CurrentDomain_UnhandledException );
 			AppDomain.CurrentDomain.ProcessExit += new EventHandler( CurrentDomain_ProcessExit );
-			for( int i = 0; i < args.Length; ++i )
+			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+			for ( int i = 0; i < args.Length; ++i )
 			{
                 if (Insensitive.Equals(args[i], "-debug"))
                     m_Debug = true;
@@ -414,14 +417,18 @@ namespace Server
 			{
 				if( m_Service )
 				{
-					if( !Directory.Exists( "Logs" ) )
-						Directory.CreateDirectory( "Logs" );
+					if( !Directory.Exists( "Logs/Console" ) )
+						Directory.CreateDirectory("Logs/Console");
 
-                    Console.SetOut(m_MultiConOut = new MultiTextWriter(new FileLogger("Logs/Console.log")));
+                    Console.SetOut(m_MultiConOut = new MultiTextWriter(new FileLogger("Logs/Console")));
                 }
 				else
 				{
+					if (!Directory.Exists("Logs/Console"))
+						Directory.CreateDirectory("Logs/Console");
+
 					Console.SetOut( m_MultiConOut = new MultiTextWriter( Console.Out ) );
+					MultiConsoleOut.Add(new FileLogger("Logs/Console"));
 				}
 			}
 			catch
@@ -445,13 +452,13 @@ namespace Server
 			Version ver = m_Assembly.GetName().Version;
 
 			// Added to help future code support on forums, as a 'check' people can ask for to it see if they recompiled core or not
-			Console.WriteLine( "RunUO - [www.runuo.com] Version {0}.{1}, Build {2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision );
-			Console.WriteLine( "Core: Running on .NET Framework Version {0}.{1}.{2}", Environment.Version.Major, Environment.Version.Minor, Environment.Version.Build );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"RunUO - [www.runuo.com] Version {ver.Major}.{ver.Minor}, Build {ver.Build}.{ver.Revision}" );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Core: Running on .NET Framework Version {Environment.Version.Major}.{Environment.Version.Minor}.{Environment.Version.Build}" );
 
 			string s = Arguments;
 
 			if( s.Length > 0 )
-				Console.WriteLine( "Core: Running with arguments: {0}", s );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Core: Running with arguments: {s}" );
 
             m_ProcessorCount = Environment.ProcessorCount;
 
@@ -459,12 +466,12 @@ namespace Server
                 m_MultiProcessor = true;
 
             if (m_MultiProcessor || Is64Bit)
-                Console.WriteLine("Core: Optimizing for {0} {2}processor{1}", m_ProcessorCount, m_ProcessorCount == 1 ? "" : "s", Is64Bit ? "64-bit " : "");
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Core: Optimizing for {m_ProcessorCount} {(Is64Bit ? "64-bit " : "")}processor{(m_ProcessorCount == 1 ? "" : "s")}");
 
             int platform = (int)Environment.OSVersion.Platform;
             if (platform == 4 || platform == 128) { // MS 4, MONO 128
                 m_Unix = true;
-                Console.WriteLine("Core: Unix environment detected");
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Core: Unix environment detected");
             }
             else {
                 m_ConsoleEventHandler = new ConsoleEventHandler(OnConsoleEvent);
@@ -472,18 +479,18 @@ namespace Server
             }
 
             if (GCSettings.IsServerGC)
-                Console.WriteLine("Core: Server garbage collection mode enabled");
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Core: Server garbage collection mode enabled");
 
             if (!m_NoCompile || !ScriptCompiler.LoadPrecompiledAssembly())
             {
                 while (!ScriptCompiler.Compile(m_Debug, m_Cache))
                 {
-                    Console.WriteLine("Scripts: One or more scripts failed to compile or no script files were found.");
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Scripts: One or more scripts failed to compile or no script files were found.");
 
                     if (m_Service)
                         return;
 
-                    Console.WriteLine(" - Press return to exit, or R to try again.");
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, " - Press return to exit, or R to try again.");
 
                     if (Console.ReadKey(true).Key != ConsoleKey.R)
                         return;
@@ -664,16 +671,12 @@ namespace Server
 
                     if (warningSb != null && warningSb.Length > 0)
                     {
-                        Utility.PushColor(ConsoleColor.Yellow);
-                        Console.WriteLine("Warning: {0}\n{1}", t, warningSb);
-                        Utility.PopColor();
-                    }
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"{t}\n{warningSb}");
+	                }
                 }
                 catch
                 {
-                    Utility.PushColor(ConsoleColor.Yellow);
-                    Console.WriteLine("Warning: Exception in serialization verification of type {0}", t);
-                    Utility.PopColor();
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Exception in serialization verification of type {t}");
                 }
             }
         }
@@ -738,12 +741,12 @@ namespace Server
 
                     if (warningSb != null && warningSb.Length > 0)
                     {
-                        Console.WriteLine("Warning: {0}\n{1}", t, warningSb.ToString());
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"{t}\n{warningSb.ToString()}");
                     }
                 }
                 catch
                 {
-                    Console.WriteLine("Warning: Exception in serialization verification of type {0}", t);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Exception in serialization verification of type {t}");
                 }
             }
         }
@@ -759,30 +762,26 @@ namespace Server
 
 	public class FileLogger : TextWriter, IDisposable
 	{
-		private string m_FileName;
 		private bool m_NewLine;
 		public const string DateFormat = "[MMMM dd hh:mm:ss.f tt]: ";
+		public const string FileNameFormat = "yyyy_MM_dd";
 
-		public string FileName { get { return m_FileName; } }
+		public string FileName => Path.Combine(LogDir,$"{DateTime.UtcNow.ToString(FileNameFormat)}.log");
+		public string LogDir { get; set; }
 
-		public FileLogger( string file )
-			: this( file, false )
+		public FileLogger( string dir, bool append=false )
 		{
-		}
-
-		public FileLogger( string file, bool append )
-		{
-			m_FileName = file;
-			using( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, append ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.Read ) ) )
+			LogDir = dir;
+			using ( StreamWriter writer = new StreamWriter( new FileStream(FileName, append ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.Read ) ) )
 			{
-				writer.WriteLine( ">>>Logging started on {0}.", DateTime.Now.ToString( "f" ) ); //f = Tuesday, April 10, 2001 3:51 PM 
+				writer.WriteLine( $">>>Logging started on {DateTime.Now:f}." ); //f = Tuesday, April 10, 2001 3:51 PM 
 			}
 			m_NewLine = true;
 		}
 
 		public override void Write( char ch )
 		{
-			using( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream(FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
 			{
 				if( m_NewLine )
 				{
@@ -795,7 +794,7 @@ namespace Server
 
 		public override void Write( string str )
 		{
-			using( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream(FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
 			{
 				if( m_NewLine )
 				{
@@ -808,7 +807,7 @@ namespace Server
 
 		public override void WriteLine( string line )
 		{
-			using( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream(FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
 			{
 				if( m_NewLine )
 					writer.Write( DateTime.Now.ToString( DateFormat ) );
@@ -826,6 +825,7 @@ namespace Server
 	public class MultiTextWriter : TextWriter
 	{
 		private List<TextWriter> m_Streams;
+		private StringBuilder wline = new StringBuilder();
 
 		public MultiTextWriter( params TextWriter[] streams )
 		{
@@ -849,12 +849,31 @@ namespace Server
 		{
 			for( int i = 0; i < m_Streams.Count; i++ )
 				m_Streams[i].Write( ch );
+			wline.Append(ch);
 		}
 
 		public override void WriteLine( string line )
 		{
 			for( int i = 0; i < m_Streams.Count; i++ )
 				m_Streams[i].WriteLine( line );
+
+			if (line.StartsWith("!"))
+			{
+				if (wline.Length > 0)
+					wline.Clear();
+				return;
+			}
+
+			if (wline.Length > 0)
+			{
+				wline.Append(line);
+				BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Console, $"{wline.ToString()}");
+				wline.Clear();
+			}
+			else
+			{
+				BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Console, $"{line}");
+			}
 		}
 
 		public override void WriteLine( string line, params object[] args )

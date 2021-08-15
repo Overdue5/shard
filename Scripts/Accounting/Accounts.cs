@@ -109,7 +109,7 @@ namespace Server.Accounting
                 }
                 catch
                 {
-                    Console.WriteLine("Warning: Account instance load failed");
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, "Account instance load failed");
                 }
             }
         }

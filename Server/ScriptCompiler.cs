@@ -650,9 +650,8 @@ namespace Server
 
             Assemblies = assemblies.ToArray();
 
-            Utility.PushColor(ConsoleColor.Yellow);
-            Console.WriteLine("Scripts: Verifying...");
-            Utility.PopColor();
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Scripts: Verifying...");
+            
 
             var watch = Stopwatch.StartNew();
 
@@ -660,15 +659,9 @@ namespace Server
 
             watch.Stop();
 
-            Utility.PushColor(ConsoleColor.Green);
-            Console.WriteLine(
-                "Finished ({0} items, {1} mobiles, {2} customs) ({3:F2} seconds)",
-                Core.ScriptItems,
-                Core.ScriptMobiles,
-                Core.ScriptCustoms,
-                watch.Elapsed.TotalSeconds);
-            Utility.PopColor();
-
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, 
+                $"Finished ({Core.ScriptItems} items, {Core.ScriptMobiles} mobiles, {Core.ScriptCustoms} customs) ({watch.Elapsed.TotalSeconds:F2} seconds)");
+            
             return true;
         }
 

@@ -85,7 +85,7 @@ namespace Xanthos.Utilities
 			}
 			catch ( SecurityException exc )
 			{
-				Console.WriteLine( "SecurityException: " + exc.Message );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"SecurityException: {exc.Message}");
 			}
 			return result;
 		}

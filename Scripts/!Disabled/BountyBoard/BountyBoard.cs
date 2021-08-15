@@ -147,9 +147,8 @@ namespace Server.BountySystem
 		{
 			if( !System.IO.File.Exists( xmlSchema ) )
 			{
-				Console.WriteLine( "Could not open {0}.", xmlSchema );
-				Console.WriteLine( "{0} must be in .\\Data\\Bounty System", xmlSchema );
-				Console.WriteLine( "Cannot save bounties." );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
+					$"Could not open {xmlSchema}\n{xmlSchema} must be in .\\Data\\Bounty System\nCannot save bounties." );
 				return;
 			}
 
@@ -229,7 +228,7 @@ namespace Server.BountySystem
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, exception);
             }
 		}
 
@@ -237,17 +236,15 @@ namespace Server.BountySystem
 		{
 			if( !System.IO.File.Exists( xmlSchema ) )
 			{
-				Console.WriteLine( "Could not open {0}.", xmlSchema );
-				Console.WriteLine( "{0} must be in .\\Data\\Bounty System", xmlSchema );
-				Console.WriteLine( "Cannot save bounties." );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, 
+					$"Could not open {xmlSchema}.\nIt must be in .\\Data\\Bounty System\nCannot save bounties." );
 				return;
 			}
 
 			if( !System.IO.File.Exists( xmlFile ) )
 			{
-				Console.WriteLine( "Could not open {0}.", xmlFile );
-				Console.WriteLine( "{0} must be in .\\Data\\Bounty System", xmlFile );
-				Console.WriteLine( "This is okay if this is the first run after installation of the Bounty system." );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, 
+					$"Could not open xmlFile{}.It must be in .\\Data\\Bounty System\nThis is okay if this is the first run after installation of the Bounty system." );
 				return;
 			}
 
@@ -259,7 +256,7 @@ namespace Server.BountySystem
 			}
 			catch
 			{
-				Console.WriteLine( "Error reading {0}.  File may be corrupt.", xmlFile);
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Error reading {xmlFile}.  File may be corrupt.");
 				return;
 			}
 

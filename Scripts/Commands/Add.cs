@@ -377,7 +377,7 @@ namespace Server.Commands
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, ex.ToString());
                 return 0;
             }
         }

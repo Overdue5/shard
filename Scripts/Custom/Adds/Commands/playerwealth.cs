@@ -167,7 +167,7 @@ namespace Server.Commands
             if (m != null)
                 m.SendMessage("Total accounts processed: {0}", totalaccounts);
             else
-                Console.WriteLine("Player wealth report generated. Total accounts: {0}", totalaccounts);
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Player wealth report generated. Total accounts: {totalaccounts}");
         }
 
         public static WealthInfo SearchContainer(Container pack, WealthInfo w)

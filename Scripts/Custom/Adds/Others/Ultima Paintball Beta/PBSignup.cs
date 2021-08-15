@@ -35,8 +35,7 @@ namespace Server.Games.Paintball
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "Warning: Exception caught loading name lists:" );
-				Console.WriteLine( e );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Warning: Exception caught loading name lists:{e}" );
 			}
 			//mob.SendGump( new Motd() );
 		}

@@ -20,13 +20,13 @@ namespace Server
 
 				if ( Firewall.IsBlocked( ip ) )
 				{
-					Console.WriteLine( "Client: {0}: Firewall blocked connection attempt.", ip );
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Client: {ip}: Firewall blocked connection attempt." );
 					e.AllowConnection = false;
 					return;
 				}
 				else if ( IPLimiter.SocketBlock && !IPLimiter.Verify( ip ) )
 				{
-					Console.WriteLine( "Client: {0}: Past IP limit threshold", ip );
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Client: {ip}: Past IP limit threshold" );
 
 					using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
 						op.WriteLine( "{0}\tPast IP limit threshold\t{1}", ip, DateTime.Now );

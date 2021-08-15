@@ -18,7 +18,7 @@ namespace Server.Misc
 		public static void EventSink_ServerStarted()
 		{
 			ThreadPool.QueueUserWorkItem( new WaitCallback( ConsoleListen ) );
-			Console.WriteLine( "CC initialized..." );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "CC initialized..." );
 		}
 
 		#endregion
@@ -53,10 +53,10 @@ namespace Server.Misc
 				}
 				catch
 				{
-					Console.WriteLine( "Thats not a number,try again." );
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Thats not a number,try again." );
 					goto up;
 				}
-				Console.WriteLine( "Type your response" );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Type your response" );
 				object[] ob = new object[] { 2, paG };
 				ThreadPool.QueueUserWorkItem( new WaitCallback( PageResp ), ob );
 			}
@@ -67,7 +67,7 @@ namespace Server.Misc
 				m_List = (PageEntry[])list.ToArray( typeof( PageEntry ) );
 				if( m_List.Length > 0 )
 					if( pag > m_List.Length )
-						Console.WriteLine( "Error: Not a valid page number" );
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, "Error: Not a valid page number" );
 					else
 						for( int i = 0; i < m_List.Length; ++i )
 						{
@@ -76,11 +76,11 @@ namespace Server.Misc
 							{
 								e.Sender.SendGump( new MessageSentGump( e.Sender, "Admin", resp, true ) );
 								PageQueue.Remove( e );
-								Console.WriteLine( "Message Sent..." );
+								Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Message Sent..." );
 							}
 						}
 				else
-					Console.WriteLine( "There are no pages to display." );
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "There are no pages to display." );
 			}
 			paging = false;
 			ThreadPool.QueueUserWorkItem( new WaitCallback( ConsoleListen ) );

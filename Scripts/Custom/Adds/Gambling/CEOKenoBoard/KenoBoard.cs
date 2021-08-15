@@ -1270,7 +1270,7 @@ namespace Server.Items
                 PlayerInfo player = (PlayerInfo)PlayerList[i];
                 if (player.OnCredit < 0)
                 {
-                    Console.WriteLine("{0} has an invalidate credit amount for {1}({2}). Set to 0.", Name, player.mobile.Name, player.OnCredit);
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"{Name} has an invalidate credit amount for {player.mobile.Name}({player.OnCredit}). Set to 0.");
                     player.OnCredit = 0;
                 }
                 if (player.OnCredit != 0)

@@ -51,7 +51,7 @@ namespace Server.Commands
 				NetState.ProcessDisposedQueue();
 				World.Save();
 
-                Console.WriteLine("{0} players have been converted to PlayerMobile. {1}.", count, Core.Service ? "The server is now restarting" : "Press any key to restart the server");
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"{count} players have been converted to PlayerMobile. {(Core.Service ? "The server is now restarting" : "Press any key to restart the server")}.");
 
                 if (!Core.Service)
                     Console.ReadKey(true);

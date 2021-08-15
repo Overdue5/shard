@@ -61,7 +61,7 @@ namespace Arya.Chess
 				}
 				catch ( Exception err )
 				{
-					Console.WriteLine( err.ToString() );
+					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, err.ToString() );
 				}
 			}
 		}

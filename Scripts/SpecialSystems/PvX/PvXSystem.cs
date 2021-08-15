@@ -50,7 +50,7 @@ namespace Scripts.SpecialSystems
 		/// <summary>
 		/// Full info about all mobiles
 		/// </summary>
-		private static Dictionary<PvXType, Dictionary<int, PvXSystem>> PvXDataDict { get; set; }
+		private static Dictionary<PvXType, Dictionary<int, PvXSystem>> PvXDataDict;
 
 		#endregion Private Fields
 

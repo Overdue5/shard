@@ -18,15 +18,21 @@
  *
  ***************************************************************************/
 
+using Server.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using Server.Diagnostics;
 
 namespace Server
 {
+    public delegate void TimerCallback();
+
+	public delegate void TimerStateCallback(object state);
+
+	public delegate void TimerStateCallback<T>(T state);
+
 	public enum TimerPriority
 	{
 		EveryTick,
@@ -39,32 +45,84 @@ namespace Server
 		OneMinute
 	}
 
-	public delegate void TimerCallback();
-	public delegate void TimerStateCallback( object state );
-	public delegate void TimerStateCallback<T>( T state );
-
 	public class Timer
 	{
-		private DateTime m_Next;
+		#region Private Fields
+
+		private static int m_BreakCount = 20000;
+		private static Queue<Timer> m_Queue = new Queue<Timer>();
+		private static int m_QueueCountAtSlice;
 		private TimeSpan m_Delay;
-		private TimeSpan m_Interval;
-		private bool m_Running;
 		private int m_Index, m_Count;
-		private TimerPriority m_Priority;
+		private TimeSpan m_Interval;
 		private List<Timer> m_List;
-        private bool m_PrioritySet;
+		private DateTime m_Next;
+		private TimerPriority m_Priority;
+		private bool m_PrioritySet;
+		private bool m_Queued;
+		private bool m_Running;
 
-		private static string FormatDelegate( Delegate callback )
+		#endregion Private Fields
+
+		#region Public Constructors
+
+		public Timer(TimeSpan delay) : this(delay, TimeSpan.Zero, 1)
 		{
-			if ( callback == null )
-				return "null";
-
-			return String.Format( "{0}.{1}", callback.Method.DeclaringType.FullName, callback.Method.Name );
 		}
 
-		public static void DumpInfo( TextWriter tw )
+		public Timer(TimeSpan delay, TimeSpan interval) : this(delay, interval, 0)
 		{
-			TimerThread.DumpInfo( tw );
+		}
+
+		public Timer(TimeSpan delay, TimeSpan interval, int count)
+		{
+			m_Delay = delay;
+			m_Interval = interval;
+			m_Count = count;
+
+			if (!m_PrioritySet)
+			{
+				if (count == 1)
+				{
+					m_Priority = ComputePriority(delay);
+				}
+				else
+				{
+					m_Priority = ComputePriority(interval);
+				}
+				m_PrioritySet = true;
+			}
+
+			if (DefRegCreation)
+				RegCreation();
+		}
+
+		#endregion Public Constructors
+
+		#region Public Properties
+
+		public static int BreakCount { get { return m_BreakCount; } set { m_BreakCount = value; } }
+
+		public virtual bool DefRegCreation
+		{
+			get { return true; }
+		}
+
+		public TimeSpan Delay
+		{
+			get { return m_Delay; }
+			set { m_Delay = value; }
+		}
+
+		public TimeSpan Interval
+		{
+			get { return m_Interval; }
+			set { m_Interval = value; }
+		}
+
+		public DateTime Next
+		{
+			get { return m_Next; }
 		}
 
 		public TimerPriority Priority
@@ -75,72 +133,193 @@ namespace Server
 			}
 			set
 			{
-                if (!m_PrioritySet)
-                    m_PrioritySet = true;
+				if (!m_PrioritySet)
+					m_PrioritySet = true;
 
-				if ( m_Priority != value )
+				if (m_Priority != value)
 				{
 					m_Priority = value;
 
-					if ( m_Running )
-						TimerThread.PriorityChange( this, (int)m_Priority );
+					if (m_Running)
+						TimerThread.PriorityChange(this, (int)m_Priority);
 				}
 			}
 		}
 
-		public DateTime Next
+		public bool Running
 		{
-			get { return m_Next; }
+			get { return m_Running; }
+			set
+			{
+				if (value)
+				{
+					Start();
+				}
+				else
+				{
+					Stop();
+				}
+			}
 		}
 
-		public TimeSpan Delay
+		#endregion Public Properties
+
+		#region Public Methods
+
+		public static TimerPriority ComputePriority(TimeSpan ts)
 		{
-            get { return m_Delay; }
-            set { m_Delay = value; }
+			if (ts >= TimeSpan.FromMinutes(1.0))
+				return TimerPriority.FiveSeconds;
+
+			if (ts >= TimeSpan.FromSeconds(10.0))
+				return TimerPriority.OneSecond;
+
+			if (ts >= TimeSpan.FromSeconds(5.0))
+				return TimerPriority.TwoFiftyMS;
+
+			if (ts >= TimeSpan.FromSeconds(2.5))
+				return TimerPriority.FiftyMS;
+
+			if (ts >= TimeSpan.FromSeconds(1.0))
+				return TimerPriority.TwentyFiveMS;
+
+			if (ts >= TimeSpan.FromSeconds(0.5))
+				return TimerPriority.TenMS;
+
+			return TimerPriority.EveryTick;
 		}
 
-		public TimeSpan Interval
+		public static void DumpInfo(TextWriter tw)
 		{
-            get { return m_Interval; }
-            set { m_Interval = value; }
+			TimerThread.DumpInfo(tw);
 		}
 
-        public bool Running
-        {
-            get { return m_Running; }
-            set
-            {
-                if (value)
-                {
-                    Start();
-                }
-                else
-                {
-                    Stop();
-                }
-            }
-        }
+		public static void Slice()
+		{
+			lock (m_Queue)
+			{
+				m_QueueCountAtSlice = m_Queue.Count;
+
+				int index = 0;
+
+				while (index < m_BreakCount && m_Queue.Count != 0)
+				{
+					Timer t = m_Queue.Dequeue();
+					TimerProfile prof = t.GetProfile();
+
+					if (prof != null)
+					{
+						prof.Start();
+					}
+
+					t.OnTick();
+					t.m_Queued = false;
+					++index;
+
+					if (prof != null)
+					{
+						prof.Finish();
+					}
+				}
+			}
+		}
 
 		public TimerProfile GetProfile()
 		{
-			if ( !Core.Profiling ) {
+			if (!Core.Profiling)
+			{
 				return null;
 			}
 
 			string name = ToString();
 
-			if ( name == null ) {
+			if (name == null)
+			{
 				name = "null";
 			}
 
-			return TimerProfile.Acquire( name );
+			return TimerProfile.Acquire(name);
 		}
+
+		public virtual void RegCreation()
+		{
+			TimerProfile prof = GetProfile();
+
+			if (prof != null)
+			{
+				prof.Created++;
+			}
+		}
+
+		public void Start()
+		{
+			if (!m_Running)
+			{
+				m_Running = true;
+				TimerThread.AddTimer(this);
+
+				TimerProfile prof = GetProfile();
+
+				if (prof != null)
+				{
+					prof.Started++;
+				}
+			}
+		}
+
+		public void Stop()
+		{
+			if (m_Running)
+			{
+				m_Running = false;
+				TimerThread.RemoveTimer(this);
+
+				TimerProfile prof = GetProfile();
+
+				if (prof != null)
+				{
+					prof.Stopped++;
+				}
+			}
+		}
+
+		public override string ToString()
+		{
+			return GetType().FullName;
+		}
+
+		#endregion Public Methods
+
+		#region Protected Methods
+
+		protected virtual void OnTick()
+		{
+		}
+
+		#endregion Protected Methods
+
+		#region Private Methods
+
+		private static string FormatDelegate(Delegate callback)
+		{
+			if (callback == null)
+				return "null";
+
+			return String.Format("{0}.{1}", callback.Method.DeclaringType.FullName, callback.Method.Name);
+		}
+
+		#endregion Private Methods
+
+		#region Public Classes
 
 		public class TimerThread
 		{
-			private static Queue m_ChangeQueue = Queue.Synchronized( new Queue() );
+			#region Private Fields
+
+			private static Queue m_ChangeQueue = Queue.Synchronized(new Queue());
 
 			private static DateTime[] m_NextPriorities = new DateTime[8];
+
 			private static TimeSpan[] m_PriorityDelays = new TimeSpan[8]
 			{
 				TimeSpan.Zero,
@@ -153,8 +332,10 @@ namespace Server
 				TimeSpan.FromMinutes( 1.0 )
 			};
 
+			private static AutoResetEvent m_Signal = new AutoResetEvent(false);
+
 			private static List<Timer>[] m_Timers = new List<Timer>[8]
-			{
+						{
 				new List<Timer>(),
 				new List<Timer>(),
 				new List<Timer>(),
@@ -165,36 +346,59 @@ namespace Server
 				new List<Timer>(),
 			};
 
-			public static void DumpInfo( TextWriter tw )
+			#endregion Private Fields
+
+			#region Public Constructors
+
+			public TimerThread()
 			{
-				for ( int i = 0; i < 8; ++i )
+			}
+
+			#endregion Public Constructors
+
+			#region Public Methods
+
+			public static void AddTimer(Timer t)
+			{
+				Change(t, (int)t.Priority, true);
+			}
+
+			public static void Change(Timer t, int newIndex, bool isAdd)
+			{
+				m_ChangeQueue.Enqueue(TimerChangeEntry.GetInstance(t, newIndex, isAdd));
+				m_Signal.Set();
+			}
+
+			public static void DumpInfo(TextWriter tw)
+			{
+				for (int i = 0; i < 8; ++i)
 				{
-					tw.WriteLine( "Priority: {0}", (TimerPriority)i );
+					tw.WriteLine("Priority: {0}", (TimerPriority)i);
 					tw.WriteLine();
 
 					Dictionary<string, List<Timer>> hash = new Dictionary<string, List<Timer>>();
 
-					for ( int j = 0; j < m_Timers[i].Count; ++j )
+					for (int j = 0; j < m_Timers[i].Count; ++j)
 					{
 						Timer t = m_Timers[i][j];
 
 						string key = t.ToString();
 
 						List<Timer> list;
-						hash.TryGetValue( key, out list );
+						hash.TryGetValue(key, out list);
 
-						if ( list == null )
+						if (list == null)
 							hash[key] = list = new List<Timer>();
 
-						list.Add( t );
+						list.Add(t);
 					}
 
-					foreach ( KeyValuePair<string, List<Timer>> kv in hash )
+					foreach (KeyValuePair<string, List<Timer>> kv in hash)
 					{
 						string key = kv.Key;
 						List<Timer> list = kv.Value;
 
-						tw.WriteLine( "Type: {0}; Count: {1}; Percent: {2}%", key, list.Count, (int)(100 * (list.Count / (double)m_Timers[i].Count)) );
+						tw.WriteLine("Type: {0}; Count: {1}; Percent: {2}%", key, list.Count, (int)(100 * (list.Count / (double)m_Timers[i].Count)));
 					}
 
 					tw.WriteLine();
@@ -202,145 +406,66 @@ namespace Server
 				}
 			}
 
-			private class TimerChangeEntry
+			public static string GetTimersShortInfo()
 			{
-				public Timer m_Timer;
-				public int m_NewIndex;
-				public bool m_IsAdd;
-
-				private TimerChangeEntry( Timer t, int newIndex, bool isAdd )
+				string result = "";
+				for (var i = 0; i < m_Timers.Length; i++)
 				{
-					m_Timer = t;
-					m_NewIndex = newIndex;
-					m_IsAdd = isAdd;
+					result += $"{((TimerPriority)i).ToString()}:{m_Timers[i].Count}; ";
 				}
 
-				public void Free()
-				{
-					//m_InstancePool.Enqueue( this );
-				}
-
-				private static Queue<TimerChangeEntry> m_InstancePool = new Queue<TimerChangeEntry>();
-
-				public static TimerChangeEntry GetInstance( Timer t, int newIndex, bool isAdd )
-				{
-					TimerChangeEntry e;
-
-					if ( m_InstancePool.Count > 0 )
-					{
-						e = m_InstancePool.Dequeue();
-
-						if ( e == null )
-							e = new TimerChangeEntry( t, newIndex, isAdd );
-						else
-						{
-							e.m_Timer = t;
-							e.m_NewIndex = newIndex;
-							e.m_IsAdd = isAdd;
-						}
-					}
-					else
-					{
-						e = new TimerChangeEntry( t, newIndex, isAdd );
-					}
-
-					return e;
-				}
+				return result;
 			}
 
-			public TimerThread()
+			public static void PriorityChange(Timer t, int newPrio)
 			{
+				Change(t, newPrio, false);
 			}
 
-			public static void Change( Timer t, int newIndex, bool isAdd )
+			public static void RemoveTimer(Timer t)
 			{
-				m_ChangeQueue.Enqueue( TimerChangeEntry.GetInstance( t, newIndex, isAdd ) );
-				m_Signal.Set();
+				Change(t, -1, false);
 			}
 
-			public static void AddTimer( Timer t )
-			{
-				Change( t, (int)t.Priority, true );
-			}
+            public static void Set()
+            {
+                m_Signal.Set();
+            }
 
-			public static void PriorityChange( Timer t, int newPrio )
-			{
-				Change( t, newPrio, false );
-			}
-
-			public static void RemoveTimer( Timer t )
-			{
-				Change( t, -1, false );
-			}
-
-			private static void ProcessChangeQueue()
-			{
-				while ( m_ChangeQueue.Count > 0 )
-				{
-					TimerChangeEntry tce = (TimerChangeEntry)m_ChangeQueue.Dequeue();
-					Timer timer = tce.m_Timer;
-					int newIndex = tce.m_NewIndex;
-
-					if ( timer.m_List != null )
-						timer.m_List.Remove( timer );
-
-					if ( tce.m_IsAdd )
-					{
-						timer.m_Next = DateTime.Now + timer.m_Delay;
-						timer.m_Index = 0;
-					}
-
-					if ( newIndex >= 0 )
-					{
-						timer.m_List = m_Timers[newIndex];
-						timer.m_List.Add( timer );
-					}
-					else
-					{
-						timer.m_List = null;
-					}
-
-					tce.Free();
-				}
-			}
-
-			private static AutoResetEvent m_Signal = new AutoResetEvent( false );
-			public static void Set() { m_Signal.Set(); }
-
-			public void TimerMain()
+            public void TimerMain()
 			{
 				DateTime now;
 				int i, j;
 				bool loaded;
 
-				while ( !Core.Closing )
+				while (!Core.Closing)
 				{
 					ProcessChangeQueue();
 
 					loaded = false;
 
-					for ( i = 0; i < m_Timers.Length; i++)
+					for (i = 0; i < m_Timers.Length; i++)
 					{
 						now = DateTime.Now;
-						if ( now < m_NextPriorities[i] )
+						if (now < m_NextPriorities[i])
 							break;
 
 						m_NextPriorities[i] = now + m_PriorityDelays[i];
 
-						for ( j = 0; j < m_Timers[i].Count; j++)
+						for (j = 0; j < m_Timers[i].Count; j++)
 						{
 							Timer t = m_Timers[i][j];
 
-							if ( !t.m_Queued && now > t.m_Next )
+							if (!t.m_Queued && now > t.m_Next)
 							{
 								t.m_Queued = true;
 
-								lock ( m_Queue )
-									m_Queue.Enqueue( t );
+								lock (m_Queue)
+									m_Queue.Enqueue(t);
 
 								loaded = true;
-									
-								if ( t.m_Count != 0 && (++t.m_Index >= t.m_Count) )
+
+								if (t.m_Count != 0 && (++t.m_Index >= t.m_Count))
 								{
 									t.Stop();
 								}
@@ -352,253 +477,274 @@ namespace Server
 						}
 					}
 
-					if ( loaded )
+					if (loaded)
 						Core.Set();
 
-					m_Signal.WaitOne( 10, false );
+					m_Signal.WaitOne(10, false);
 				}
 			}
-		}
 
-		private static Queue<Timer> m_Queue = new Queue<Timer>();
-		private static int m_BreakCount = 20000;
+			#endregion Public Methods
 
-		public static int BreakCount{ get{ return m_BreakCount; } set{ m_BreakCount = value; } }
+			#region Private Methods
 
-		private static int m_QueueCountAtSlice;
-
-		private bool m_Queued;
-
-		public static void Slice()
-		{
-			lock ( m_Queue )
+			private static void ProcessChangeQueue()
 			{
-				m_QueueCountAtSlice = m_Queue.Count;
-
-				int index = 0;
-
-				while ( index < m_BreakCount && m_Queue.Count != 0 )
+				while (m_ChangeQueue.Count > 0)
 				{
-					Timer t = m_Queue.Dequeue();
-					TimerProfile prof = t.GetProfile();
+					TimerChangeEntry tce = (TimerChangeEntry)m_ChangeQueue.Dequeue();
+					Timer timer = tce.m_Timer;
+					int newIndex = tce.m_NewIndex;
 
-					if ( prof != null ) {
-						prof.Start();
+					if (timer.m_List != null)
+						timer.m_List.Remove(timer);
+
+					if (tce.m_IsAdd)
+					{
+						timer.m_Next = DateTime.Now + timer.m_Delay;
+						timer.m_Index = 0;
 					}
 
-					t.OnTick();
-					t.m_Queued = false;
-					++index;
-
-					if ( prof != null ) {
-						prof.Finish();
+					if (newIndex >= 0)
+					{
+						timer.m_List = m_Timers[newIndex];
+						timer.m_List.Add(timer);
 					}
+					else
+					{
+						timer.m_List = null;
+					}
+
+					tce.Free();
 				}
 			}
-		}
 
-		public Timer( TimeSpan delay ) : this( delay, TimeSpan.Zero, 1 )
-		{
-		}
+			#endregion Private Methods
 
-		public Timer( TimeSpan delay, TimeSpan interval ) : this( delay, interval, 0 )
-		{
-		}
+			#region Private Classes
 
-		public virtual bool DefRegCreation
-		{
-			get{ return true; }
-		}
+			private class TimerChangeEntry
+			{
+				#region Public Fields
 
-		public virtual void RegCreation()
-		{
-			TimerProfile prof = GetProfile();
+				public bool m_IsAdd;
+				public int m_NewIndex;
+				public Timer m_Timer;
 
-			if ( prof != null ) {
-				prof.Created++;
+				#endregion Public Fields
+
+				#region Private Fields
+
+				private static Queue<TimerChangeEntry> m_InstancePool = new Queue<TimerChangeEntry>();
+
+				#endregion Private Fields
+
+				#region Private Constructors
+
+				private TimerChangeEntry(Timer t, int newIndex, bool isAdd)
+				{
+					m_Timer = t;
+					m_NewIndex = newIndex;
+					m_IsAdd = isAdd;
+				}
+
+				#endregion Private Constructors
+
+				#region Public Methods
+
+				public static TimerChangeEntry GetInstance(Timer t, int newIndex, bool isAdd)
+				{
+					TimerChangeEntry e;
+
+					if (m_InstancePool.Count > 0)
+					{
+						e = m_InstancePool.Dequeue();
+
+						if (e == null)
+							e = new TimerChangeEntry(t, newIndex, isAdd);
+						else
+						{
+							e.m_Timer = t;
+							e.m_NewIndex = newIndex;
+							e.m_IsAdd = isAdd;
+						}
+					}
+					else
+					{
+						e = new TimerChangeEntry(t, newIndex, isAdd);
+					}
+
+					return e;
+				}
+
+				public void Free()
+				{
+					//m_InstancePool.Enqueue( this );
+				}
+
+				#endregion Public Methods
 			}
+
+			#endregion Private Classes
 		}
 
-		public Timer( TimeSpan delay, TimeSpan interval, int count )
-		{
-			m_Delay = delay;
-			m_Interval = interval;
-			m_Count = count;
-
-            if (!m_PrioritySet)
-            {
-                if (count == 1)
-                {
-                    m_Priority = ComputePriority(delay);
-                }
-                else
-                {
-                    m_Priority = ComputePriority(interval);
-                }
-                m_PrioritySet = true;
-            }
-
-			if ( DefRegCreation )
-				RegCreation();
-		}
-
-		public override string ToString()
-		{
-			return GetType().FullName;
-		}
-
-		public static TimerPriority ComputePriority( TimeSpan ts )
-		{
-			if ( ts >= TimeSpan.FromMinutes( 1.0 ) )
-				return TimerPriority.FiveSeconds;
-
-			if ( ts >= TimeSpan.FromSeconds( 10.0 ) )
-				return TimerPriority.OneSecond;
-
-			if ( ts >= TimeSpan.FromSeconds( 5.0 ) )
-				return TimerPriority.TwoFiftyMS;
-
-			if ( ts >= TimeSpan.FromSeconds( 2.5 ) )
-				return TimerPriority.FiftyMS;
-
-			if ( ts >= TimeSpan.FromSeconds( 1.0 ) )
-				return TimerPriority.TwentyFiveMS;
-
-			if ( ts >= TimeSpan.FromSeconds( 0.5 ) )
-				return TimerPriority.TenMS;
-
-			return TimerPriority.EveryTick;
-		}
+		#endregion Public Classes
 
 		#region DelayCall(..)
 
-        public static Timer DelayCall(TimerCallback callback)
-        {
-            return DelayCall(TimeSpan.Zero, TimeSpan.Zero, 1, callback);
-        }
-
-		public static Timer DelayCall( TimeSpan delay, TimerCallback callback )
+		public static Timer DelayCall(TimerCallback callback)
 		{
-			return DelayCall( delay, TimeSpan.Zero, 1, callback );
+			return DelayCall(TimeSpan.Zero, TimeSpan.Zero, 1, callback);
 		}
 
-		public static Timer DelayCall( TimeSpan delay, TimeSpan interval, TimerCallback callback )
+		public static Timer DelayCall(TimeSpan delay, TimerCallback callback)
 		{
-			return DelayCall( delay, interval, 0, callback );
+			return DelayCall(delay, TimeSpan.Zero, 1, callback);
 		}
 
-		public static Timer DelayCall( TimeSpan delay, TimeSpan interval, int count, TimerCallback callback )
+		public static Timer DelayCall(TimeSpan delay, TimeSpan interval, TimerCallback callback)
 		{
-			Timer t = new DelayCallTimer( delay, interval, count, callback );
+			return DelayCall(delay, interval, 0, callback);
+		}
 
-			if ( count == 1 )
-				t.Priority = ComputePriority( delay );
+		public static Timer DelayCall(TimeSpan delay, TimeSpan interval, int count, TimerCallback callback)
+		{
+			Timer t = new DelayCallTimer(delay, interval, count, callback);
+
+			if (count == 1)
+				t.Priority = ComputePriority(delay);
 			else
-				t.Priority = ComputePriority( interval );
+				t.Priority = ComputePriority(interval);
 
 			t.Start();
 
 			return t;
 		}
 
-        public static Timer DelayCall(TimerStateCallback callback, object state)
-        {
-            return DelayCall(TimeSpan.Zero, TimeSpan.Zero, 1, callback, state);
-        }
-
-		public static Timer DelayCall( TimeSpan delay, TimerStateCallback callback, object state )
+		public static Timer DelayCall(TimerStateCallback callback, object state)
 		{
-			return DelayCall( delay, TimeSpan.Zero, 1, callback, state );
+			return DelayCall(TimeSpan.Zero, TimeSpan.Zero, 1, callback, state);
 		}
 
-		public static Timer DelayCall( TimeSpan delay, TimeSpan interval, TimerStateCallback callback, object state )
+		public static Timer DelayCall(TimeSpan delay, TimerStateCallback callback, object state)
 		{
-			return DelayCall( delay, interval, 0, callback, state );
+			return DelayCall(delay, TimeSpan.Zero, 1, callback, state);
 		}
 
-		public static Timer DelayCall( TimeSpan delay, TimeSpan interval, int count, TimerStateCallback callback, object state )
+		public static Timer DelayCall(TimeSpan delay, TimeSpan interval, TimerStateCallback callback, object state)
 		{
-			Timer t = new DelayStateCallTimer( delay, interval, count, callback, state );
+			return DelayCall(delay, interval, 0, callback, state);
+		}
 
-			if ( count == 1 )
-				t.Priority = ComputePriority( delay );
+		public static Timer DelayCall(TimeSpan delay, TimeSpan interval, int count, TimerStateCallback callback, object state)
+		{
+			Timer t = new DelayStateCallTimer(delay, interval, count, callback, state);
+
+			if (count == 1)
+				t.Priority = ComputePriority(delay);
 			else
-				t.Priority = ComputePriority( interval );
+				t.Priority = ComputePriority(interval);
 
 			t.Start();
 
 			return t;
 		}
-		#endregion
+
+		#endregion DelayCall(..)
 
 		#region DelayCall<T>(..)
-        public static Timer DelayCall<T>(TimerStateCallback<T> callback, T state)
-        {
-            return DelayCall(TimeSpan.Zero, TimeSpan.Zero, 1, callback, state);
-        }
 
-		public static Timer DelayCall<T>( TimeSpan delay, TimerStateCallback<T> callback, T state )
+		public static Timer DelayCall<T>(TimerStateCallback<T> callback, T state)
 		{
-			return DelayCall( delay, TimeSpan.Zero, 1, callback, state );
+			return DelayCall(TimeSpan.Zero, TimeSpan.Zero, 1, callback, state);
 		}
 
-		public static Timer DelayCall<T>( TimeSpan delay, TimeSpan interval, TimerStateCallback<T> callback, T state )
+		public static Timer DelayCall<T>(TimeSpan delay, TimerStateCallback<T> callback, T state)
 		{
-			return DelayCall( delay, interval, 0, callback, state );
+			return DelayCall(delay, TimeSpan.Zero, 1, callback, state);
 		}
 
-		public static Timer DelayCall<T>( TimeSpan delay, TimeSpan interval, int count, TimerStateCallback<T> callback, T state )
+		public static Timer DelayCall<T>(TimeSpan delay, TimeSpan interval, TimerStateCallback<T> callback, T state)
 		{
-			Timer t = new DelayStateCallTimer<T>( delay, interval, count, callback, state );
+			return DelayCall(delay, interval, 0, callback, state);
+		}
 
-			if( count == 1 )
-				t.Priority = ComputePriority( delay );
+		public static Timer DelayCall<T>(TimeSpan delay, TimeSpan interval, int count, TimerStateCallback<T> callback, T state)
+		{
+			Timer t = new DelayStateCallTimer<T>(delay, interval, count, callback, state);
+
+			if (count == 1)
+				t.Priority = ComputePriority(delay);
 			else
-				t.Priority = ComputePriority( interval );
+				t.Priority = ComputePriority(interval);
 
 			t.Start();
 
 			return t;
 		}
-		#endregion
+
+		#endregion DelayCall<T>(..)
 
 		#region DelayCall Timers
+
 		private class DelayCallTimer : Timer
 		{
+			#region Private Fields
+
 			private TimerCallback m_Callback;
 
-			public TimerCallback Callback{ get{ return m_Callback; } }
+			#endregion Private Fields
 
-			public override bool DefRegCreation{ get{ return false; } }
+			#region Public Constructors
 
-			public DelayCallTimer( TimeSpan delay, TimeSpan interval, int count, TimerCallback callback ) : base( delay, interval, count )
+			public DelayCallTimer(TimeSpan delay, TimeSpan interval, int count, TimerCallback callback) : base(delay, interval, count)
 			{
 				m_Callback = callback;
 				RegCreation();
 			}
 
-			protected override void OnTick()
-			{
-				if ( m_Callback != null )
-					m_Callback();
-			}
+			#endregion Public Constructors
+
+			#region Public Properties
+
+			public TimerCallback Callback { get { return m_Callback; } }
+
+			public override bool DefRegCreation { get { return false; } }
+
+			#endregion Public Properties
+
+			#region Public Methods
 
 			public override string ToString()
 			{
-				return String.Format( "DelayCallTimer[{0}]", FormatDelegate( m_Callback ) );
+				return String.Format("DelayCallTimer[{0}]", FormatDelegate(m_Callback));
 			}
+
+			#endregion Public Methods
+
+			#region Protected Methods
+
+			protected override void OnTick()
+			{
+				if (m_Callback != null)
+					m_Callback();
+			}
+
+			#endregion Protected Methods
 		}
 
 		private class DelayStateCallTimer : Timer
 		{
+			#region Private Fields
+
 			private TimerStateCallback m_Callback;
 			private object m_State;
 
-			public TimerStateCallback Callback{ get{ return m_Callback; } }
+			#endregion Private Fields
 
-			public override bool DefRegCreation{ get{ return false; } }
+			#region Public Constructors
 
-			public DelayStateCallTimer( TimeSpan delay, TimeSpan interval, int count, TimerStateCallback callback, object state ) : base( delay, interval, count )
+			public DelayStateCallTimer(TimeSpan delay, TimeSpan interval, int count, TimerStateCallback callback, object state) : base(delay, interval, count)
 			{
 				m_Callback = callback;
 				m_State = state;
@@ -606,81 +752,86 @@ namespace Server
 				RegCreation();
 			}
 
-			protected override void OnTick()
-			{
-				if ( m_Callback != null )
-					m_Callback( m_State );
-			}
+			#endregion Public Constructors
+
+			#region Public Properties
+
+			public TimerStateCallback Callback { get { return m_Callback; } }
+
+			public override bool DefRegCreation { get { return false; } }
+
+			#endregion Public Properties
+
+			#region Public Methods
 
 			public override string ToString()
 			{
-				return String.Format( "DelayStateCall[{0}]", FormatDelegate( m_Callback ) );
+				return String.Format("DelayStateCall[{0}]", FormatDelegate(m_Callback));
 			}
+
+			#endregion Public Methods
+
+			#region Protected Methods
+
+			protected override void OnTick()
+			{
+				if (m_Callback != null)
+					m_Callback(m_State);
+			}
+
+			#endregion Protected Methods
 		}
 
 		private class DelayStateCallTimer<T> : Timer
 		{
+			#region Private Fields
+
 			private TimerStateCallback<T> m_Callback;
 			private T m_State;
+
+			#endregion Private Fields
+
+			#region Public Constructors
+
+			public DelayStateCallTimer(TimeSpan delay, TimeSpan interval, int count, TimerStateCallback<T> callback, T state)
+				: base(delay, interval, count)
+			{
+				m_Callback = callback;
+				m_State = state;
+
+				RegCreation();
+			}
+
+			#endregion Public Constructors
+
+			#region Public Properties
 
 			public TimerStateCallback<T> Callback { get { return m_Callback; } }
 
 			public override bool DefRegCreation { get { return false; } }
 
-			public DelayStateCallTimer( TimeSpan delay, TimeSpan interval, int count, TimerStateCallback<T> callback, T state )
-				: base( delay, interval, count )
-			{
-				m_Callback = callback;
-				m_State = state;
+			#endregion Public Properties
 
-				RegCreation();
-			}
-
-			protected override void OnTick()
-			{
-				if( m_Callback != null )
-					m_Callback( m_State );
-			}
+			#region Public Methods
 
 			public override string ToString()
 			{
-				return String.Format( "DelayStateCall[{0}]", FormatDelegate( m_Callback ) );
+				return String.Format("DelayStateCall[{0}]", FormatDelegate(m_Callback));
 			}
-		}
-		#endregion
 
-		public void Start()
-		{
-			if ( !m_Running )
+			#endregion Public Methods
+
+			#region Protected Methods
+
+			protected override void OnTick()
 			{
-				m_Running = true;
-				TimerThread.AddTimer( this );
-
-				TimerProfile prof = GetProfile();
-
-				if ( prof != null ) {
-					prof.Started++;
-				}
+				if (m_Callback != null)
+					m_Callback(m_State);
 			}
+
+			#endregion Protected Methods
 		}
 
-		public void Stop()
-		{
-			if ( m_Running )
-			{
-				m_Running = false;
-				TimerThread.RemoveTimer( this );
-
-				TimerProfile prof = GetProfile();
-
-				if ( prof != null ) {
-					prof.Stopped++;
-				}
-			}
-		}
-
-		protected virtual void OnTick()
-		{
-		}
+		#endregion DelayCall Timers
 	}
 }

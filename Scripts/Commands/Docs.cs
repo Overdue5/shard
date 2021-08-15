@@ -22,7 +22,7 @@ namespace Server.Commands
 		private static void DocGen_OnCommand( CommandEventArgs e )
 		{
 			World.Broadcast( 0x35, true, "Documentation is being generated, please wait." );
-			Console.WriteLine( "Documentation is being generated, please wait." );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Documentation is being generated, please wait." );
 
 			Network.NetState.FlushAll();
 			Network.NetState.Pause();
@@ -38,12 +38,12 @@ namespace Server.Commands
 			if( generated )
 			{
 				World.Broadcast( 0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds );
-				Console.WriteLine( "Documentation complete." );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Documentation complete." );
 			}
 			else
 			{
 				World.Broadcast( 0x35, true, "Docmentation failed: Documentation directories are locked and in use. Please close all open files and directories and try again." );
-				Console.WriteLine( "Documentation failed." );
+				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Documentation failed." );
 			}
 		}
 

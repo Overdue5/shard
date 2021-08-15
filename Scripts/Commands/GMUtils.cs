@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using Server;
 using Server.Commands;
@@ -15,9 +16,38 @@ namespace Scripts.Commands
             CommandSystem.Register("TurnAccessLevel", AccessLevel.Player, new CommandEventHandler(TurnAccessLevel_OnCommand));
             CommandSystem.Register("TAL", AccessLevel.Player, new CommandEventHandler(TurnAccessLevel_OnCommand));
             CommandSystem.Register("anim", AccessLevel.GameMaster, new CommandEventHandler(Animation_OnCommand));
+            CommandSystem.Register("status", AccessLevel.Counselor, new CommandEventHandler(Status_OnCommand));
+            CommandSystem.Register("discord", AccessLevel.Counselor, new CommandEventHandler(Discord_OnCommand));
+		}
+
+        [Usage("status")]
+        [Description("Print server status ans short performance info")]
+        private static void Status_OnCommand(CommandEventArgs e)
+        {
+	        e.Mobile.SendMessage($"\nTotal Items:{World.Items.Count}; Total Mobile:{World.Mobiles.Count}; " +
+	                             $"Total Players:{World.Mobiles.Values.Count(x => x.Player)}; " +
+	                             $"Online:{World.Mobiles.Values.Count(x => x.NetState != null)};\n" +
+	                             $"Performance:CyclesPerSecond:{Core.CyclesPerSecond:0.00};AverageCPS:{Core.AverageCPS:0.00};\n" +
+	                             $"Timers:{Timer.TimerThread.GetTimersShortInfo()}");
         }
 
-        [Usage("TurnAccessLevel")]
+        [Usage("discord")]
+        [Description("Restart discord")]
+        private static void Discord_OnCommand(CommandEventArgs e)
+        {
+	        try
+	        {
+		        if (BaseDiscord.DTimer!=null)
+			        BaseDiscord.DTimer.Stop();
+		        BaseDiscord.MainAsync();
+	        }
+	        catch (Exception exception)
+	        {
+		        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Restart discord finished with error.{e}");
+	        }
+        }
+
+		[Usage("TurnAccessLevel")]
         [Description("Switch access level to player and back")]
         private static void TurnAccessLevel_OnCommand(CommandEventArgs e)
         {

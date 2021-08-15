@@ -10986,38 +10986,38 @@ namespace Server
 
 		#region Send[ASCII]Message
 
-		public void SendMessage( string text )
+		public virtual void SendMessage( string text )
 		{
 			SendMessage( 0x3B2, text );
 		}
 
-		public void SendMessage( string format, params object[] args )
+		public virtual void SendMessage( string format, params object[] args )
 		{
 			SendMessage( 0x3B2, String.Format( format, args ) );
 		}
 
-		public void SendMessage( int hue, string text )
+		public virtual void SendMessage( int hue, string text )
 		{
 			if( m_NetState != null )
 				SendAsciiMessage( hue, text );
 		}
 
-		public void SendMessage( int hue, string format, params object[] args )
+		public virtual void SendMessage( int hue, string format, params object[] args )
 		{
 			SendMessage( hue, String.Format( format, args ) );
 		}
 
-		public void SendAsciiMessage( string text )
+		public virtual void SendAsciiMessage( string text )
 		{
 			SendAsciiMessage( 0x3B2, text );
 		}
 
-		public void SendAsciiMessage( string format, params object[] args )
+		public virtual void SendAsciiMessage( string format, params object[] args )
 		{
 			SendAsciiMessage( 0x3B2, String.Format( format, args ) );
 		}
 
-		public void SendAsciiMessage( int hue, string text )
+		public virtual void SendAsciiMessage( int hue, string text )
 		{
 			NetState ns = m_NetState;
 
@@ -11025,7 +11025,7 @@ namespace Server
 				ns.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", text ) );
 		}
 
-		public void SendAsciiMessage( int hue, string format, params object[] args )
+		public virtual void SendAsciiMessage( int hue, string format, params object[] args )
 		{
 			SendAsciiMessage( hue, String.Format( format, args ) );
 		}

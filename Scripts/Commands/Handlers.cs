@@ -907,7 +907,7 @@ namespace Server.Commands
 
 			//Iza - exclude GMToggle command from help list if player
 			foreach ( CommandEntry entry in CommandSystem.Entries.Values )
-				if ( m.Account.AccessLevel >= GMToggleCommand.Minimum_Accesslevel && entry.Command == "gm")
+				if (m.AccessLevel >= GMToggleCommand.Minimum_Accesslevel || m.Account.AccessLevel >= GMToggleCommand.Minimum_Accesslevel && entry.Command == "gm")
 					list.Add( entry );
 				else if ( m.AccessLevel >= entry.AccessLevel && entry.Command != "GM")
 					list.Add( entry );
