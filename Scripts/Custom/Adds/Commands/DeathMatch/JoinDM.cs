@@ -16,7 +16,7 @@ namespace Server.Scripts.Custom.Adds.Commands.DeathMatch
         public static void Initialize()
         {
 #if ENABLED
-                CommandSystem.Register("JoinDM", AccessLevel.Player, Execute);
+                CommandSystem.Register("JoinDM", AccessLevel.Counselor, Execute);
 #endif
         }
 
