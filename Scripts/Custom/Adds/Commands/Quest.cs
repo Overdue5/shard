@@ -9,7 +9,7 @@ namespace Server.Scripts.Custom.Adds.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Quest", AccessLevel.Player, Execute);
+            CommandSystem.Register("Quest", AccessLevel.Counselor, Execute);
         }
 
         [Usage("Quest")]
