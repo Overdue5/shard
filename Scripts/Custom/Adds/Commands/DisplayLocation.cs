@@ -11,8 +11,8 @@ namespace Server.Scripts.Custom.Adds.Commands
 
         public static void Initialize()
         {
-            CommandSystem.Register("DisplayLocation", AccessLevel.Player, Execute);
-            CommandSystem.Register("DL", AccessLevel.Player, Execute);
+            CommandSystem.Register("DisplayLocation", AccessLevel.Counselor, Execute);
+            CommandSystem.Register("DL", AccessLevel.Counselor, Execute);
         }
 
         [Usage("DisplayLocation [on/off]")]

@@ -7,8 +7,8 @@ namespace Server.Scripts.Custom.Adds.Commands.DeathMatch
     {
         public static void Initialize()
         {
-            CommandSystem.Register("DMScore", AccessLevel.Player, Execute);
-            CommandSystem.Register("DMS", AccessLevel.Player, Execute);
+            CommandSystem.Register("DMScore", AccessLevel.Counselor, Execute);
+            CommandSystem.Register("DMS", AccessLevel.Counselor, Execute);
         }
 
         [Usage("DMScore")]

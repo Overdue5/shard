@@ -11,7 +11,7 @@ namespace Server.Scripts.Custom.Adds.Commands
 
         public Trash()
         {
-            AccessLevel = AccessLevel.Player;
+            AccessLevel = AccessLevel.Counselor;
             Supports = CommandSupport.AllItems;
             Commands = new[] { "Trash" };
             ObjectTypes = ObjectTypes.Items;

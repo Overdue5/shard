@@ -22,7 +22,7 @@ namespace Server.Scripts.Custom.Adds.System
             {
                 CommandSystem.Register("refreshtips", AccessLevel.Developer, Execute_Refresh);
                 CommandSystem.Register("savetips", AccessLevel.Developer, Execute_Save);
-                CommandSystem.Register("tips", AccessLevel.Player, Execute_Tips);
+                CommandSystem.Register("tips", AccessLevel.Counselor, Execute_Tips);
                 CommandSystem.Register("addtip", AccessLevel.GameMaster, Execute_Add);
             }
 
