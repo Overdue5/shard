@@ -13,7 +13,7 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Massmove", AccessLevel.Player, Massmove_OnCommand);
+            CommandSystem.Register("Massmove", AccessLevel.Counselor, Massmove_OnCommand);
         }
 
         [Usage("Massmove")]

@@ -14,8 +14,8 @@ namespace Server.Gumps
 
         public static void Initialize()
         {
-            CommandSystem.Register("ShowPlayers", AccessLevel.Player, On_OnCommand);
-            CommandSystem.Register("SP", AccessLevel.Player, On_OnCommand);
+            CommandSystem.Register("ShowPlayers", AccessLevel.Counselor, On_OnCommand);
+            CommandSystem.Register("SP", AccessLevel.Counselor, On_OnCommand);
         }
 
         [Usage("ShowPlayers [filter]")]

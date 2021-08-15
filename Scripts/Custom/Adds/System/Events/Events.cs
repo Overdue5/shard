@@ -452,9 +452,9 @@ namespace Server.Custom.Games
             CommandSystem.Register("Gameclose", AccessLevel.Counselor, CloseEvent_Command);
             CommandSystem.Register("Gameclear", AccessLevel.Counselor, ClearEvent_Command);
             CommandSystem.Register("Gamekick", AccessLevel.Counselor, KickPlayerFromEvent_Command);
-            CommandSystem.Register("T", AccessLevel.Player, EventTeamSay_Command);
-            CommandSystem.Register("Team", AccessLevel.Player, EventTeamSay_Command);
-            CommandSystem.Register("Gamegump", AccessLevel.Player, EventStoneGump_Command);
+            CommandSystem.Register("T", AccessLevel.Counselor, EventTeamSay_Command);
+            CommandSystem.Register("Team", AccessLevel.Counselor, EventTeamSay_Command);
+            CommandSystem.Register("Gamegump", AccessLevel.Counselor, EventStoneGump_Command);
             CommandSystem.Register("SendScore", AccessLevel.Counselor, SendScore_Command);
 
             m_UpdateRatings = new HashMap<PlayerMobile, int>();

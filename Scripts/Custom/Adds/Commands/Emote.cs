@@ -35,7 +35,7 @@ namespace Server.Commands
 		public static void Initialize()
 		{
 			CommandSystem.Register( "emote", AccessLevel.Player, Emote_OnCommand );
-			CommandSystem.Register( "e", AccessLevel.Player, Emote_OnCommand );
+			CommandSystem.Register( "e", AccessLevel.Counselor, Emote_OnCommand );
 		}
 
 	  	[Usage( "<sound>" )] 
