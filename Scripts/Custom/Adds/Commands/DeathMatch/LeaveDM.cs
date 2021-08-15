@@ -7,8 +7,8 @@ namespace Server.Scripts.Custom.Adds.Commands.DeathMatch
     {
         public static void Initialize()
         {
-            CommandSystem.Register("LeaveDM", AccessLevel.Player, Execute);
-            CommandSystem.Register("LDM", AccessLevel.Player, Execute);
+            CommandSystem.Register("LeaveDM", AccessLevel.Counselor, Execute);
+            CommandSystem.Register("LDM", AccessLevel.Counselor, Execute);
         }
 
         [Usage("LeaveDM")]
