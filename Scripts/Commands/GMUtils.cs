@@ -36,10 +36,9 @@ namespace Scripts.Commands
         private static void Discord_OnCommand(CommandEventArgs e)
         {
 	        try
-	        {
-		        if (BaseDiscord.DTimer!=null)
-			        BaseDiscord.DTimer.Stop();
-		        BaseDiscord.MainAsync();
+            {
+                BaseDiscord.StopAsync();
+		        Timer.DelayCall(TimeSpan.FromSeconds(5),  ()=>BaseDiscord.MainAsync());
 	        }
 	        catch (Exception exception)
 	        {
