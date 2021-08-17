@@ -82,6 +82,15 @@ namespace Server
 			str = Intern( str );
 		}
 
+		public static string LineCut(string str, int maxLength)
+		{
+			if (String.IsNullOrEmpty(str))
+				return str;
+			if (str.Length > maxLength)
+				str = str.Substring(0, maxLength);
+			return str;
+		}
+		
 		private static Dictionary<IPAddress, IPAddress> _ipAddressTable;
 
 		public static IPAddress Intern( IPAddress ipAddress ) {
@@ -1663,6 +1672,28 @@ namespace Server
 				output.WriteLine( chars.ToString() );
 			}
 		}
+
+		public static Point3D GetWorldObjLocation(object obj)
+		{
+			if (obj is Mobile mob)
+			{
+				return mob.Location;
+			}
+
+			if (obj is Item item)
+			{
+				if (item.Parent != null)
+				{
+					return GetWorldObjLocation(item.Parent);
+				}
+
+				return item.Location;
+			}
+
+			return new Point3D();
+		}
+
+
 
 
 		#region Console
