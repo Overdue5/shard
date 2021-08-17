@@ -218,6 +218,8 @@ namespace Knives.Chat3
         public bool ShowStaff { get { return c_ShowStaff; } set { c_ShowStaff = value; } }
         public bool Enabled { get { return c_Enabled; } set { c_Enabled = value; } }
 
+        protected BaseDiscord.Channel DiscordChannel = BaseDiscord.Channel.None;
+
         #endregion
 
         #region Constructors
@@ -385,10 +387,12 @@ namespace Knives.Chat3
             AddHistory(m, msg);
             UpdateHistory(m);
             Events.InvokeChat(new ChatEventArgs(m, this, msg));
-
-            if (Data.LogChat)
-                Logging.LogChat(String.Format(DateTime.Now + " <{0}{1}> {2}: {3}", c_Name, (c_Style == ChatStyle.Regional && m.Region != null ? "-" + m.Region.Name : ""), m.RawName, msg));
-
+			var toLog = $"<{c_Name}{(c_Style == ChatStyle.Regional && m.Region != null ? " - " + m.Region.Name : "")}> {m.RawName}: {msg}";
+			if (Data.LogChat)
+                Logging.LogChat($"{DateTime.Now} {toLog}");
+			if (DiscordChannel!=BaseDiscord.Channel.None)
+				BaseDiscord.Bot.SendToDiscord(DiscordChannel, toLog);
+			
             Data.TotalChats++;
             Data.GetData(m).Karma++;
 
@@ -404,7 +408,7 @@ namespace Knives.Chat3
                 return;
 
             //Custom: Display staff tag
-            string a_Name = m.AccessLevel > AccessLevel.Player ? String.Format("{0} [{1}]", m.RawName, m.AccessLevel) : m.RawName;
+            string a_Name = m.AccessLevel > AccessLevel.Player ? $"{m.RawName} [{m.AccessLevel}]" : m.RawName;
 
             foreach (Data data in Data.Datas.Values)
             {
@@ -419,7 +423,8 @@ namespace Knives.Chat3
                     data.Mobile.SendMessage(m.AccessLevel == AccessLevel.Player ? ColorFor(data.Mobile) : Data.GetData(m).StaffC, String.Format("<{0}{1}> {2}: {3}", NameFor(m), (c_Style == ChatStyle.Regional && m.Region != null ? "-" + m.Region.Name : ""), a_Name, msg));
                 }
                 else if (data.Mobile.AccessLevel >= m.AccessLevel && ((data.GlobalC && !data.GIgnores.Contains(m)) || data.GListens.Contains(m)))
-                    data.Mobile.SendMessage(data.GlobalCC, String.Format("(Global) <{0}{1}> {2}: {3}", c_Name, (c_Style == ChatStyle.Regional && m.Region != null ? "-" + m.Region.Name : ""), a_Name, msg));
+                    data.Mobile.SendMessage(data.GlobalCC,
+	                    $"(Global) <{c_Name}{(c_Style == ChatStyle.Regional && m.Region != null ? "-" + m.Region.Name : "")}> {a_Name}: {msg}");
             }
         }
 

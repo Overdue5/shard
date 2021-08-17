@@ -1,3 +1,5 @@
+using Server;
+
 namespace Knives.Chat3
 {
     public class Public : Channel
@@ -7,7 +9,7 @@ namespace Knives.Chat3
             Commands.Add("chat");
             Commands.Add("c");
             NewChars = true;
-
+            DiscordChannel = BaseDiscord.Channel.GlobalChat;
             Register(this);
         }
     }

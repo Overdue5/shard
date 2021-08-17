@@ -4269,7 +4269,7 @@ namespace Server.Mobiles
                     m_GameTime = value;
             }
 		}
-
+		#region GhostVision
 		public override void ShowGhostOnScreen()
 		{
 			if (Map != null)
@@ -4323,7 +4323,7 @@ namespace Server.Mobiles
 				eable.Free();
 			}
 		}
-
+		#endregion
 		public override bool CanSee( Mobile m )
 		{
             if (m is CharacterStatue)

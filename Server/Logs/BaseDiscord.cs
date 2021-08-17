@@ -13,7 +13,7 @@ namespace Server
 #if (!DEBUG)
 		private static bool Enabled = true;
 #else
-        private static bool Enabled = false;
+        private static bool Enabled = true;
 #endif
         private static int MsgLength;
         private static BaseDiscord m_Discord;
@@ -52,9 +52,16 @@ namespace Server
         public enum Channel : ulong
         {
             //Test = 876407848941281320,
-            Console = 876407848941281320,
-            //Logs = 876407848941281320
-        }
+			None = 0,
+
+#if (!DEBUG)
+			Console = 876407848941281320,
+			GlobalChat = 871460287021207552
+#else
+	        Console = 877330007947612270,
+			GlobalChat = 877330103317708841
+#endif
+		}
 
         async public static Task StopAsync()
         {
@@ -89,7 +96,7 @@ namespace Server
 
         async public virtual void SendToDiscord(Channel ch, string msg)
         {
-            if (!Enabled)
+            if (!Enabled || ch == Channel.None)
                 return;
             try
             {
