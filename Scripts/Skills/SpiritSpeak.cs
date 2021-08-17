@@ -53,9 +53,10 @@ namespace Server.SkillHandlers
                         duration = 15;
 
                     new SpiritSpeakEndTimer(m_Owner, duration).Start();
-
+                    
                     m_Owner.PlaySound(0x24A);
-                    m_Owner.SendLocalizedMessage(502444);//You contact the netherworld.     
+                    m_Owner.SendLocalizedMessage(502444);//You contact the netherworld.
+	                m_Owner.ShowGhostOnScreen();
                 }
                 else
                 {
@@ -112,7 +113,8 @@ namespace Server.SkillHandlers
 
 				m_Owner.CanHearGhosts = false;
 				m_Owner.SendLocalizedMessage( 502445 );//You feel your contact with the neitherworld fading.
-			}
+				m_Owner.RemoveGhostFromScreen();
+            }
 		}
 
 		private class SpiritSpeakSpell : Spell

@@ -4270,6 +4270,60 @@ namespace Server.Mobiles
             }
 		}
 
+		public override void ShowGhostOnScreen()
+		{
+			if (Map != null)
+			{
+				Packet p = null;
+
+				IPooledEnumerable eable = Map.GetClientsInRange(Location);
+
+				foreach (NetState ns in eable)
+				{
+					if ((this.Alive && !ns.Mobile.Alive && NetState != null && this.CanHearGhosts && this.CanSee(ns.Mobile)) ||
+					(!this.Alive && ns.Mobile.Alive && NetState != null && ns.Mobile.CanHearGhosts && this.CanSee(ns.Mobile)))
+					{
+						if (NetState.StygianAbyss)
+						{
+							NetState.Send(new MobileIncoming(this, ns.Mobile));
+							ns.Send(new MobileIncoming(ns.Mobile, this));
+						}
+						else
+						{
+							NetState.Send(new MobileIncomingOld(this, ns.Mobile ));
+							ns.Send(new MobileIncomingOld(ns.Mobile, this));
+						}
+
+					}
+				}
+				eable.Free();
+			}
+		}
+
+		public override void RemoveGhostFromScreen()
+		{
+			if (Map != null)
+			{
+				Packet p = null;
+
+				IPooledEnumerable eable = Map.GetClientsInRange(Location);
+
+				foreach (NetState ns in eable)
+				{
+					if ((this.Alive && !ns.Mobile.Alive && ns.Mobile.NetState != null && NetState!=null && !this.CanHearGhosts) ||
+					    (!this.Alive && ns.Mobile.Alive && ns.Mobile.NetState != null && !ns.Mobile.CanHearGhosts))
+					{
+						if (p == null)
+							p = RemovePacket;
+						ns.Send(p);
+						if (NetState != null)
+							NetState.Send(ns.Mobile.RemovePacket);
+					}
+				}
+				eable.Free();
+			}
+		}
+
 		public override bool CanSee( Mobile m )
 		{
             if (m is CharacterStatue)
@@ -4278,6 +4332,23 @@ namespace Server.Mobiles
 			if ( m is PlayerMobile && ((PlayerMobile)m).m_VisList.Contains( this ) )
 				return true;
 
+			#region GhostVision
+
+			if (!this.Alive)
+			{
+				if (m is BaseHealer || m.CanHearGhosts || !m.Alive || m.AccessLevel>AccessLevel.Player)
+					return true;
+				return false;
+			}
+
+			if (!m.Alive)
+			{
+				if (this.CanHearGhosts || !this.Alive || this.AccessLevel > AccessLevel.Player)
+					return true;
+				return false;
+			}
+
+			#endregion
 			return base.CanSee( m );
 		}
 

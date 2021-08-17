@@ -3450,7 +3450,6 @@ namespace Server
 			OnAfterMove( oldLocation );
 			return true;
 		}
-
 		public virtual void OnAfterMove( Point3D oldLocation )
 		{
 		}
@@ -6724,17 +6723,13 @@ namespace Server
 
 				foreach( object o in eable )
 				{
-					if( o is Mobile )
+					if( o is Mobile mobile )
 					{
-						Mobile m = (Mobile)o;
-
-						if( m != this && Utility.InUpdateRange( m_Location, m.m_Location ) )
-							ns.Send( m.RemovePacket );
+						if( mobile != this && Utility.InUpdateRange( m_Location, mobile.m_Location ) )
+							ns.Send( mobile.RemovePacket );
 					}
-					else if( o is Item )
+					else if( o is Item item)
 					{
-						Item item = (Item)o;
-
 						if( InRange( item.Location, item.GetUpdateRange( this ) ) )
 							ns.Send( item.RemovePacket );
 					}
@@ -6927,40 +6922,36 @@ namespace Server
 
 				foreach( object o in eable )
 				{
-					if( o is Item )
+					if( o is Item item )
 					{
-						Item item = (Item)o;
-
 						if( CanSee( item ) && InRange( item.Location, item.GetUpdateRange( this ) ) )
 							item.SendInfoTo( ns );
 					}
-					else if( o is Mobile )
+					else if( o is Mobile mobile)
 					{
-						Mobile m = (Mobile)o;
-
-						if( CanSee( m ) && Utility.InUpdateRange( m_Location, m.m_Location ) )
+						if( CanSee( mobile ) && Utility.InUpdateRange( m_Location, mobile.m_Location ) )
 						{
 							if ( ns.StygianAbyss )
                             {
-                                ns.Send(new MobileIncoming(this, m));
+                                ns.Send(new MobileIncoming(this, mobile));
 
-                                if (m.Poisoned)
-                                    ns.Send(new HealthbarPoison(m));
+                                if (mobile.Poisoned)
+                                    ns.Send(new HealthbarPoison(mobile));
 
-                                if (m.Blessed || m.YellowHealthbar)
-                                    ns.Send(new HealthbarYellow(m));
+                                if (mobile.Blessed || mobile.YellowHealthbar)
+                                    ns.Send(new HealthbarYellow(mobile));
                             }
                             else
                             {
-                                ns.Send(new MobileIncomingOld(this, m));
+                                ns.Send(new MobileIncomingOld(this, mobile));
                             }
 
-							if( m.IsDeadBondedPet )
-								ns.Send( new BondedStatus( 0, m.m_Serial, 1 ) );
+							if( mobile.IsDeadBondedPet )
+								ns.Send( new BondedStatus( 0, mobile.m_Serial, 1 ) );
 
 							if( ObjectPropertyList.Enabled )
 							{
-								ns.Send( m.OPLPacket );
+								ns.Send( mobile.OPLPacket );
 
 								//foreach ( Item item in m.m_Items )
 								//	ns.Send( item.OPLPacket );
@@ -8403,15 +8394,22 @@ namespace Server
 			return !item.Deleted && item.Map == m_Map && (item.Visible || m_AccessLevel > AccessLevel.Counselor);
 		}
 
+		public virtual void RemoveGhostFromScreen()
+		{
+		}
+
+		public virtual void ShowGhostOnScreen()
+		{
+		}
+
 		public virtual bool CanSee( Mobile m )
 		{
 			if( m_Deleted || m.m_Deleted || m_Map == Map.Internal || m.m_Map == Map.Internal )
 				return false;
 
-			return this == m || (
-				m.m_Map == m_Map &&
-				(!m.Hidden || (m_AccessLevel != AccessLevel.Player && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Administrator))) &&	//Admins/devs can still see/find eachother though admin gump, they should be able to see 'em too.
-				((m.Alive || (Core.SE && Skills.SpiritSpeak.Value >= 100.0)) || !Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
+			return this == m || ( m.m_Map == m_Map &&
+			                     (!m.Hidden || (m_AccessLevel != AccessLevel.Player && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Administrator))) &&	//Admins/devs can still see/find eachother though admin gump, they should be able to see 'em too.
+			                     ((m.Alive || (Core.SE && Skills.SpiritSpeak.Value >= 100.0)) || !Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
 
 		}
 

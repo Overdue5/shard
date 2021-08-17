@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using Discord.Rest;
 using Discord.WebSocket;
 using Server.Commands;
-using Server;
-using Server.Network;
 
 namespace Server.Misc.EConnect
 {

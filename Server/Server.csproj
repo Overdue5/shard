@@ -1,227 +1,43 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{75C28E8A-90B2-424E-ABBB-5FA12587D627}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <RootNamespace>Server</RootNamespace>
-    <AssemblyName>Server</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+	<OutputPath>..\Output</OutputPath>
+	<ServerGarbageCollection>true</ServerGarbageCollection>
+	<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFramework>net48</TargetFramework>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\Output\</OutputPath>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefineConstants>DEBUG;NEWTIMERS;ServUO</DefineConstants>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\Output\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
   <PropertyGroup>
     <StartupObject />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ApplicationIcon />
   </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="Discord.Net.Commands, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Commands.2.4.0\lib\net461\Discord.Net.Commands.dll</HintPath>
-    </Reference>
-    <Reference Include="Discord.Net.Core, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Core.2.4.0\lib\net461\Discord.Net.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Discord.Net.Rest, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Rest.2.4.0\lib\net461\Discord.Net.Rest.dll</HintPath>
-    </Reference>
-    <Reference Include="Discord.Net.Webhook, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Webhook.2.4.0\lib\netstandard2.0\Discord.Net.Webhook.dll</HintPath>
-    </Reference>
-    <Reference Include="Discord.Net.WebSocket, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.WebSocket.2.4.0\lib\net461\Discord.Net.WebSocket.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Interactive.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Interactive.Async.4.0.0\lib\net461\System.Interactive.Async.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Linq.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Linq.Async.4.0.0\lib\net461\System.Linq.Async.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Discord.Net" Version="2.4.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AggressorInfo.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Attributes.cs" />
-    <Compile Include="BaseVendor.cs" />
-    <Compile Include="Body.cs" />
-    <Compile Include="ClientVersion.cs" />
-    <Compile Include="Cliloc\Data\CliLoc.cs" />
-    <Compile Include="Cliloc\Data\CliLocDAO.cs" />
-    <Compile Include="Cliloc\Data\DirectOPL.cs" />
-    <Compile Include="Cliloc\Gumps\CliLocViewerGump.cs" />
-    <Compile Include="Cliloc\Gumps\ObjectPropertyListGump.cs" />
-    <Compile Include="Commands.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="ContextMenus\ContextMenu.cs" />
-    <Compile Include="ContextMenus\ContextMenuEntry.cs" />
-    <Compile Include="ContextMenus\OpenBackpackEntry.cs" />
-    <Compile Include="ContextMenus\PaperdollEntry.cs" />
-    <Compile Include="Diagnostics\BaseProfile.cs" />
-    <Compile Include="Diagnostics\GumpProfile.cs" />
-    <Compile Include="Diagnostics\PacketProfile.cs" />
-    <Compile Include="Diagnostics\TargetProfile.cs" />
-    <Compile Include="Diagnostics\TimerProfile.cs" />
-    <Compile Include="Effects.cs" />
-    <Compile Include="EventLog.cs" />
-    <Compile Include="EventSink.cs" />
-    <Compile Include="ExpansionInfo.cs" />
-    <Compile Include="Geometry.cs" />
-    <Compile Include="Guild.cs" />
-    <Compile Include="Gumps\Gump.cs" />
-    <Compile Include="Gumps\GumpAlphaRegion.cs" />
-    <Compile Include="Gumps\GumpBackground.cs" />
-    <Compile Include="Gumps\GumpButton.cs" />
-    <Compile Include="Gumps\GumpCheck.cs" />
-    <Compile Include="Gumps\GumpEntry.cs" />
-    <Compile Include="Gumps\GumpGroup.cs" />
-    <Compile Include="Gumps\GumpHtml.cs" />
-    <Compile Include="Gumps\GumpHtmlLocalized.cs" />
-    <Compile Include="Gumps\GumpImage.cs" />
-    <Compile Include="Gumps\GumpImageTileButton.cs" />
-    <Compile Include="Gumps\GumpImageTiled.cs" />
-    <Compile Include="Gumps\GumpItem.cs" />
-    <Compile Include="Gumps\GumpLabel.cs" />
-    <Compile Include="Gumps\GumpLabelCropped.cs" />
-    <Compile Include="Gumps\GumpPage.cs" />
-    <Compile Include="Gumps\GumpRadio.cs" />
-    <Compile Include="Gumps\GumpTextEntry.cs" />
-    <Compile Include="Gumps\GumpTextEntryLimited.cs" />
-    <Compile Include="Gumps\GumpTooltip.cs" />
-    <Compile Include="Gumps\RelayInfo.cs" />
-    <Compile Include="HuePicker.cs" />
-    <Compile Include="IAccount.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="Insensitive.cs" />
-    <Compile Include="Interfaces.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemBounds.cs" />
-    <Compile Include="Items\BaseMulti.cs" />
-    <Compile Include="Items\Container.cs" />
-    <Compile Include="Items\Containers.cs" />
-    <Compile Include="Items\SecureTradeContainer.cs" />
-    <Compile Include="Items\VirtualHair.cs" />
-    <Compile Include="KeywordList.cs" />
-    <Compile Include="Logs\BaseDiscord.cs" />
-    <Compile Include="Logs\BaseLogs.cs" />
-    <Compile Include="Logs\ExceptionLogging.cs" />
-    <Compile Include="Logs\Logs.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="Menus\IMenu.cs" />
-    <Compile Include="Menus\ItemListMenu.cs" />
-    <Compile Include="Menus\QuestionMenu.cs" />
-    <Compile Include="Mobile.cs" />
-    <Compile Include="Movement.cs" />
-    <Compile Include="MultiData.cs" />
-    <Compile Include="NativeReader.cs" />
-    <Compile Include="Network\BufferPool.cs" />
-    <Compile Include="Network\ByteQueue.cs" />
-    <Compile Include="Network\Compression.cs" />
-    <Compile Include="Network\EncodedPacketHandler.cs" />
-    <Compile Include="Network\EncodedReader.cs" />
-    <Compile Include="Network\Listener.cs" />
-    <Compile Include="Network\MessagePump.cs" />
-    <Compile Include="Network\NetState.cs" />
-    <Compile Include="Network\PacketHandler.cs" />
-    <Compile Include="Network\PacketHandlers.cs" />
-    <Compile Include="Network\PacketReader.cs" />
-    <Compile Include="Network\Packets.cs" />
-    <Compile Include="Network\PacketWriter.cs" />
-    <Compile Include="Network\SendQueue.cs" />
-    <Compile Include="Notoriety.cs" />
-    <Compile Include="ObjectPropertyList.cs" />
-    <Compile Include="Party.cs" />
-    <Compile Include="Persistence.cs" />
-    <Compile Include="Persistence\BinaryMemoryWriter.cs" />
-    <Compile Include="Persistence\DualSaveStrategy.cs" />
-    <Compile Include="Persistence\DynamicSaveStrategy.cs" />
-    <Compile Include="Persistence\FileOperations.cs" />
-    <Compile Include="Persistence\FileQueue.cs" />
-    <Compile Include="Persistence\ParallelSaveStrategy.cs" />
-    <Compile Include="Persistence\QueuedMemoryWriter.cs" />
-    <Compile Include="Persistence\SaveMetrics.cs" />
-    <Compile Include="Persistence\SaveStrategy.cs" />
-    <Compile Include="Persistence\SequentialFileWriter.cs" />
-    <Compile Include="Persistence\StandardSaveStrategy.cs" />
-    <Compile Include="Point3DList.cs" />
-    <Compile Include="Poison.cs" />
-    <Compile Include="Prompt.cs" />
-    <Compile Include="QuestArrow.cs" />
-    <Compile Include="Race.cs" />
-    <Compile Include="Region.cs" />
-    <Compile Include="ScriptCompiler.cs" />
-    <Compile Include="Sector.cs" />
-    <Compile Include="SecureTrade.cs" />
-    <Compile Include="Serial.cs" />
-    <Compile Include="Serialization.cs" />
-    <Compile Include="Skills.cs" />
-    <Compile Include="Targeting\LandTarget.cs" />
-    <Compile Include="Targeting\MultiTarget.cs" />
-    <Compile Include="Targeting\StaticTarget.cs" />
-    <Compile Include="Targeting\Target.cs" />
-    <Compile Include="Targeting\TargetCancelType.cs" />
-    <Compile Include="Targeting\TargetFlags.cs" />
-    <Compile Include="TileData.cs" />
-    <Compile Include="TileList.cs" />
-    <Compile Include="TileMatrix.cs" />
-    <Compile Include="TileMatrixPatch.cs" />
-    <Compile Include="Timer.cs" />
-    <Compile Include="Utility.cs" />
-    <Compile Include="VirtueInfo.cs" />
-    <Compile Include="World.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
 </Project>
