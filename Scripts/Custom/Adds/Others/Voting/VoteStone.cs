@@ -86,6 +86,7 @@ namespace Server.Items
         public override void OnSingleClick(Mobile from)
         {
             LabelTo(from, "", Name, VoteConfig.Instance.DefaultGold);
+			base.OnSingleClick(from);
         }
 
 		public override void Serialize(GenericWriter writer)

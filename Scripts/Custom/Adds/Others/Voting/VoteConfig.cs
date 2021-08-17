@@ -12,23 +12,23 @@ namespace Server.Voting
 		/// <summary>
 		/// The default VoteSite Name to use on new VoteSite Profiles
 		/// </summary>
-		public static string __DefaultName = "Xtreme Top 100";
+		public static string __DefaultName = Config.Get("VoteConfig.Name", "Deluxe UO");
 
 		/// <summary>
 		/// The default URL to launch in the request senders' browser.
 		/// </summary>
-        public static string __DefaultURL = "";
+        public static string __DefaultURL = Config.Get("VoteConfig.URL", "https://google.com");
 
 		/// <summary>
 		/// The default CoolDown delay between vote requests. 
 		/// A new request will be rejected if the request sender has previously made a vote request within this amount of time.
 		/// </summary>
-		public static TimeSpan __DefaultCoolDown = TimeSpan.FromHours(24.0);
+		public static TimeSpan __DefaultCoolDown = TimeSpan.FromHours(Config.Get("VoteConfig.DefaultCoolDown", 24));
 
         /// <summary>
         /// The default amount of gold to give voters
         /// </summary>
-        public static int __DefaultGold = 500;
+        public static int __DefaultGold = Config.Get("VoteConfig.Gold", 500);
 
 		 /* * * * * * * * * * * * * * *||||* * * * * * * * * * * * * * * *\
 		 * ============================================================== *
@@ -38,8 +38,8 @@ namespace Server.Voting
 
 		public static void Initialize()
 		{
-			EventSink.WorldSave += EventSink_WorldSave;
-			EventSink.ServerStarted += EventSink_ServerStarted;
+			//EventSink.WorldSave += EventSink_WorldSave;
+			//EventSink.ServerStarted += EventSink_ServerStarted;
 		}
 
 		private static void EventSink_ServerStarted()
@@ -75,7 +75,9 @@ namespace Server.Voting
 		/// The default URL to launch in the request senders' browser.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public string DefaultURL { get { return _DefaultURL; } set { _DefaultURL = value; } }
+		public string DefaultURL { get 
+			{ return _DefaultURL; } 
+			set { _DefaultURL = value; } }
 
 		private TimeSpan _DefaultCoolDown = __DefaultCoolDown;
 		/// <summary>

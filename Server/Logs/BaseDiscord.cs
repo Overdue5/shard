@@ -162,7 +162,7 @@ namespace Server
                     var sendTask = info.DChannel.SendMessageAsync(toSend.ToString());
                     while ((sendTask != null && sendTask.Status != TaskStatus.RanToCompletion) && count < 5)
                     {
-                        await Task.Delay(200);
+                        await Task.Delay(500);
                         if (sendTask.Status == TaskStatus.Faulted)
                         {
                             sendTask = info.DChannel.SendMessageAsync(toSend.ToString());
@@ -172,7 +172,7 @@ namespace Server
 
                     if (count >= 5)
                     {
-                        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "!Error send messages to discord");
+                        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"!Error send messages to discord.Len:{toSend.Length}");
                     }
                 }
             }
