@@ -52,7 +52,7 @@ namespace Server.WebServices
             }
             m_LastVendorUpdate = DateTime.Now;
             m_NextVendorUpdate = m_LastVendorUpdate + m_WorldSaveInterval;
-            Console.WriteLine("Caching " + count + " Player Vendors");
+            Utility.ConsoleWriteLine($"Caching {count} Player Vendors");
         }
 
         private static void processContainer(PlayerVendor vendor, Container container)

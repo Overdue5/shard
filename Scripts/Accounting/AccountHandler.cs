@@ -373,7 +373,7 @@ namespace Server.Misc
                 {
                     Stream fileStream = File.Open("Logs/LoginLogout/" + un + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                     StreamWriter writeAdapter = new StreamWriter(fileStream);
-                    writeAdapter.WriteLine(String.Format("{0}: Invalid password for {1} on {2}", e.State, un, DateTime.Now));
+                    writeAdapter.WriteLine($"{e.State}: Invalid password for {un} on {DateTime.Now}");
                     writeAdapter.Close();
                 }
                 catch

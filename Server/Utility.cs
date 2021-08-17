@@ -1750,6 +1750,11 @@ namespace Server
 			ConsoleWrite(tColor, typename, mColor, msg);
 		}
 
+		public static void ConsoleWriteLine(string msg)
+		{
+			ConsoleWriteLine(ConsoleMsgType.Info, msg);
+		}
+
 		public static void ConsoleWriteLine(ConsoleMsgType type, string msg)
 		{
 			string typename;

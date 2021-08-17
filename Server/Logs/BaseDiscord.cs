@@ -78,6 +78,15 @@ namespace Server
             DTimer = Timer.DelayCall(TimeSpan.FromSeconds(5), ()=>BaseDiscord.Bot.SendMsg());
         }
 
+        async public static void CheckAndRestart()
+        {
+	        if (discord == null || discord.ConnectionState != ConnectionState.Connected)
+	        {
+		        await StopAsync();
+		        await MainAsync();
+	        }
+        }
+
         async public virtual void SendToDiscord(Channel ch, string msg)
         {
             if (!Enabled)
@@ -159,20 +168,24 @@ namespace Server
                     }
 
                     int count = 0;
+                    int fcount = 0;
                     var sendTask = info.DChannel.SendMessageAsync(toSend.ToString());
                     while ((sendTask != null && sendTask.Status != TaskStatus.RanToCompletion) && count < 5)
                     {
-                        await Task.Delay(500);
+                        await Task.Delay(1000);
                         if (sendTask.Status == TaskStatus.Faulted)
                         {
                             sendTask = info.DChannel.SendMessageAsync(toSend.ToString());
+                            fcount++;
                         }
                         count++;
                     }
 
                     if (count >= 5)
                     {
-                        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"!Error send messages to discord.Len:{toSend.Length}");
+                        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, 
+	                        $"!Error send messages to discord.Len:{toSend.Length}.fcount:{fcount}\n" +
+	                        $"sendtask.Result:{sendTask.Result}");
                     }
                 }
             }

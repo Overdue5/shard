@@ -474,9 +474,7 @@ namespace Server
 
 		private static void Warn<T>(string key)
 		{
-			Utility.PushColor(ConsoleColor.Yellow);
-			Console.WriteLine("Config: Warning, '{0}' invalid value for '{1}'", typeof(T), key);
-			Utility.PopColor();
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Config: Warning, '{typeof(T)}' invalid value for '{key}'");
 		}
 
 		private static string InternalGet(string key)
@@ -492,10 +490,7 @@ namespace Server
 				return e.UseDefault ? null : e.Value;
 			}
 
-			Utility.PushColor(ConsoleColor.Yellow);
-			Console.WriteLine("Config: Warning, using default value for {0}", key);
-			Utility.PopColor();
-
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Config: Warning, using default value for {key}");
 			return null;
 		}
 

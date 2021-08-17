@@ -161,7 +161,7 @@ namespace Server.Network
                     foreach (IPAddressInformation unicast in properties.UnicastAddresses)
                     {
                         if (ipep.AddressFamily == unicast.Address.AddressFamily)
-                            Console.WriteLine("Listening: {0}:{1}", unicast.Address, ipep.Port);
+                            Utility.ConsoleWriteLine($"Listening: {unicast.Address}:{ipep.Port}");
                     }
                 }
                 /*
@@ -177,7 +177,7 @@ namespace Server.Network
             }
             else
             {
-                Console.WriteLine("Listening: {0}:{1}", ipep.Address, ipep.Port);
+	            Utility.ConsoleWriteLine($"Listening: {ipep.Address}:{ipep.Port}");
             }
         }
 

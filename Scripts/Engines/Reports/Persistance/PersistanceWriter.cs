@@ -82,7 +82,7 @@ namespace Server.Engines.Reports
 
 		public override void WriteDocument( PersistableObject root )
 		{
-			Console.WriteLine( "Reports: {0}: Save started", m_Title );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Reports: {m_Title}: Save started" );
 
 			m_Xml.Formatting = Formatting.Indented;
 			m_Xml.IndentChar = '\t';
@@ -92,7 +92,7 @@ namespace Server.Engines.Reports
 
 			root.Serialize( this );
 
-			Console.WriteLine( "Reports: {0}: Save complete", m_Title );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Reports: {m_Title}: Save complete" );
 		}
 
 		public override void Close()

@@ -420,12 +420,14 @@ namespace Server.Network {
 			}
 		}
 
-		public void WriteConsole( string text ) {
-			Console.WriteLine( "Client: {0}: {1}", this, text );
+		public void WriteConsole( string text ) 
+		{
+			Utility.ConsoleWriteLine($"Client: {this}: {text}" );
 		}
 
-		public void WriteConsole( string format, params object[] args ) {
-			WriteConsole( String.Format( format, args ) );
+		public void WriteConsole( string format, params object[] args ) 
+		{
+			Utility.ConsoleWriteLine(String.Format( format, args ) );
 		}
 
 		public void AddMenu( IMenu menu ) {

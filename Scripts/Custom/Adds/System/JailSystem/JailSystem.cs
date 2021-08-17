@@ -244,7 +244,7 @@ namespace Server.Jailing
 
 		public static void onLoad()
 		{
-			Console.WriteLine( "Loading Jailings" );
+			Utility.ConsoleWriteLine("Loading Jailings" );
 			FileStream idxFileStream;
 			FileStream binFileStream;
 			//BinaryReader idxReader;
@@ -301,9 +301,9 @@ namespace Server.Jailing
 			else
 			{
 				defaultSettings();
-				Console.WriteLine( "{0}: No prior Jailsystem save, using default settings", JSName );
+				Utility.ConsoleWriteLine($"{JSName}: No prior Jailsystem save, using default settings" );
 			}
-			Console.WriteLine( "{0} Jailings Loaded:{1}", JailCount, list.Count );
+			Utility.ConsoleWriteLine($"{JailCount} Jailings Loaded:{list.Count}" );
 		}
 
 		public static void OnLoginJail( LoginEventArgs e )
@@ -321,9 +321,9 @@ namespace Server.Jailing
 					}
 					catch( Exception err )
 					{
-						Console.WriteLine( "Restarting the Jail timer load process:{0}", err.Message );
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,$"Restarting the Jail timer load process:{err.Message}");
 					}
-				Console.WriteLine( "The Jail timer load process has finished" );
+				Utility.ConsoleWriteLine("The Jail timer load process has finished" );
 			}
 			if( e.Mobile == null )
 				return;
@@ -338,7 +338,7 @@ namespace Server.Jailing
 
 		public static void onSave( WorldSaveEventArgs e )
 		{
-			Console.WriteLine( "Saving Jailings" );
+			Utility.ConsoleWriteLine("Saving Jailings" );
 			if( !Directory.Exists( jailDirectory ) )
 				Directory.CreateDirectory( jailDirectory );
 			GenericWriter idxWriter;
@@ -370,7 +370,7 @@ namespace Server.Jailing
 					}
 					catch( Exception err )
 					{
-						Console.WriteLine( "{0}, {1} serialize", err.Message, err.TargetSite );
+						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,$"{err.Message}, {err.TargetSite} serialize" );
 					}
 					idxWriter.Write( (int)( binWriter.Position - tPos ) );
 				}
@@ -382,7 +382,7 @@ namespace Server.Jailing
 			}
 			idxWriter.Close();
 			binWriter.Close();
-			Console.WriteLine( "Jailings Saved" );
+			Utility.ConsoleWriteLine("Jailings Saved" );
 		}
 		#endregion
 

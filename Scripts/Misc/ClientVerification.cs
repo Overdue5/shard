@@ -113,9 +113,8 @@ namespace Server.Misc
 
             if (Required != null)
             {
-                Utility.PushColor(ConsoleColor.White);
-                Console.WriteLine("Restricting client version to {0}. Action to be taken: {1}", Required, m_OldClientResponse);
-                Utility.PopColor();
+                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning,
+	                $"Restricting client version to {Required}. Action to be taken: {m_OldClientResponse}");
             }
         }
 
@@ -130,7 +129,7 @@ namespace Server.Misc
 
             if (Required != null && version < Required && (m_OldClientResponse == OldClientResponse.Kick || (m_OldClientResponse == OldClientResponse.LenientKick && (DateTime.Now - state.Mobile.CreationTime) > m_AgeLeniency && state.Mobile is PlayerMobile && ((PlayerMobile)state.Mobile).GameTime > m_GameTimeLeniency)))
             {
-                kickMessage = String.Format("This server requires your client version be at least {0}.", Required);
+                kickMessage = $"This server requires your client version be at least {Required}.";
             }
             else if (!AllowGod || !AllowRegular || !AllowUOTD)
             {
@@ -169,7 +168,7 @@ namespace Server.Misc
                 {
                     if (state.Socket != null)
                     {
-                        Console.WriteLine("Client: {0}: Disconnecting, bad version", state);
+                        Console.WriteLine($"Client: {state}: Disconnecting, bad version");
                         state.Dispose();
                     }
                 });

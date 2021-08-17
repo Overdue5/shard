@@ -101,12 +101,12 @@ namespace Server.Engines.Reports
 
 		public override void ReadDocument( PersistableObject root )
 		{
-			Console.Write( "Reports: {0}: Loading...", m_Title );
+			Utility.ConsoleWrite(Utility.ConsoleMsgType.Info,$"Reports: {m_Title}: Loading..." );
 			m_Xml.Read();
 			m_Xml.Read();
 			m_HasChild = !m_Xml.IsEmptyElement;
 			root.Deserialize( this );
-			Console.WriteLine( "done" );
+			Utility.ConsoleWriteLine( "done" );
 		}
 
 		public override void Close()

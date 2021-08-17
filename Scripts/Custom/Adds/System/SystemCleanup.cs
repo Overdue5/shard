@@ -56,7 +56,7 @@ namespace Server.Scripts.Custom.Adds.System
             }
 
             int oldItems = World.Items.Values.Count;
-            Console.WriteLine(string.Format("Attempting to clean up {0} item types in {1} containers.", +m_ValidTypes.Count, containerList.Count));
+            Utility.ConsoleWriteLine($"Attempting to clean up {+m_ValidTypes.Count} item types in {containerList.Count} containers.");
             foreach (Container container in containerList)
             {
                 foreach (Type type in m_ValidTypes.Keys)
@@ -94,8 +94,9 @@ namespace Server.Scripts.Custom.Adds.System
                 }
             }
 
-            Console.WriteLine(String.Format("Items deleted:{0} | Total containers:{1} | Excluded containers:{2} | Items left:{3}", 
-                (oldItems - World.Items.Values.Count), containerList.Count, excluded, World.Items.Values.Count));
+			Utility.ConsoleWriteLine($"Items deleted:{(oldItems - World.Items.Values.Count)} | " +
+			                         $"Total containers:{containerList.Count} | Excluded containers:{excluded} | " +
+			                         $"Items left:{World.Items.Values.Count}");
         }
 
         private static void AddExcludedItems(IEnumerable<Item> itemList)

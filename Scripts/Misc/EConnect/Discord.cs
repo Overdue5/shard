@@ -19,7 +19,7 @@ namespace Server.Misc.EConnect
 			Bot = new Discord();
 			try
 			{
-				MainAsync();
+				Timer.DelayCall(TimeSpan.Zero, TimeSpan.FromMinutes(1), CheckAndRestart);
 			}
 			catch (Exception e)
 			{

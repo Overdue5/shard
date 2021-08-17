@@ -2242,7 +2242,7 @@ namespace Server.Items
         protected override void OnTick()
         {
             World.Broadcast(0, true, "Lottery System Message...");
-            Console.WriteLine("Lottery System Tick.");
+            Utility.ConsoleWriteLine("Lottery System Tick.");
 
             ArrayList listLottoStones = new ArrayList();
             foreach (Item item in World.Items.Values)
@@ -2254,14 +2254,14 @@ namespace Server.Items
             if (listLottoStones.Count > 1)
             {
                 World.Broadcast(0x35, true, "Auto Shutdown, Only ONE stone allowed in the world.");
-                Console.WriteLine("Lottery System Shutdown, Only ONE stone allowed in the world.");
+                Utility.ConsoleWriteLine("Lottery System Shutdown, Only ONE stone allowed in the world.");
                 Stop();
             }
 
             if (listLottoStones.Count == 0)
             {
                 World.Broadcast(0x35, true, "Auto Shutdown, No Lottery Stones in The World.");
-                Console.WriteLine("Lottery System Shutdown, No Lottery Stone Found.");
+                Utility.ConsoleWriteLine("Lottery System Shutdown, No Lottery Stone Found.");
                 Stop();
             }
 

@@ -61,14 +61,14 @@ namespace Server.Engines.Reports
 
 		public void Render()
 		{
-			Console.WriteLine( "Reports: {0}: Render started", m_Title );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Reports: {m_Title}: Render started" );
 
 			RenderFull();
 
 			for ( int i = 0; i < m_Objects.Count; ++i )
 				RenderSingle( m_Objects[i] );
 
-			Console.WriteLine( "Reports: {0}: Render complete", m_Title );
+			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Reports: {m_Title}: Render complete" );
 		}
 
 		private static readonly string FtpHost = null;
@@ -84,7 +84,7 @@ namespace Server.Engines.Reports
 			if ( FtpHost == null )
 				return;
 
-			Console.WriteLine( "Reports: {0}: Upload started", m_Title );
+			Utility.ConsoleWriteLine( $"Reports: {m_Title}: Upload started" );
 
 			string filePath = Path.Combine( m_OutputDirectory, "upload.ftp" );
 
@@ -121,7 +121,7 @@ namespace Server.Engines.Reports
 			{
 			}
 
-			Console.WriteLine( "Reports: {0}: Upload complete", m_Title );
+			Utility.ConsoleWriteLine( $"Reports: {m_Title}: Upload complete" );
 
 			try{ File.Delete( filePath ); }
 			catch{}
