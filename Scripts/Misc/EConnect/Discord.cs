@@ -31,7 +31,7 @@ namespace Server.Misc.EConnect
 							{
 								try
 								{
-									CommandSystem.Handle(DiscordMobile.GetMobile(msg.Author.Username, Channel.Console), msg.Content);
+									CommandSystem.Handle(DiscordConsoleMobile.GetMobile(msg.Author.Username, Channel.Console), msg.Content);
 								}
 								catch (Exception e)
 								{
@@ -41,30 +41,44 @@ namespace Server.Misc.EConnect
 							break;
 						}
 				}
+
+			//if (!msg.Author.IsBot && msg.Channel.Id == (ulong)Channel.GlobalChat)
+			//{
+			//	try
+			//	{
+			//		CommandSystem.Handle(DiscordChatMobile.GetMobile(msg.Author.Username, Channel.GlobalChat),
+			//			$".c {msg.Content}");
+			//	}
+			//	catch (Exception e)
+			//	{
+			//		msg.Channel.SendMessageAsync($"Error run command:{e.Message}");
+			//	}
+			//}
+
 			return Task.CompletedTask;
 		}
 
 	}
 
-	public class DiscordMobile : Mobile
+	public class DiscordConsoleMobile : Mobile
 	{
-		private static DiscordMobile m_Bot;
+		private static DiscordConsoleMobile m_Bot;
 		private BaseDiscord.Channel m_Channel;
-		private DiscordMobile()
+		private DiscordConsoleMobile()
 		{
 			m_Channel = BaseDiscord.Channel.Console;
 			this.AccessLevel = AccessLevel.Owner;
 		}
 
-		public DiscordMobile(Serial serial)
+		public DiscordConsoleMobile(Serial serial)
 		{
 		}
 
-		public static DiscordMobile GetMobile(string name, BaseDiscord.Channel ch)
+		public static DiscordConsoleMobile GetMobile(string name, BaseDiscord.Channel ch)
 		{
 			if (m_Bot == null)
 			{
-				m_Bot = new DiscordMobile();
+				m_Bot = new DiscordConsoleMobile();
 			}
 			m_Bot.Name = "Discord_" + name;
 			m_Bot.m_Channel =ch;
@@ -89,6 +103,42 @@ namespace Server.Misc.EConnect
 		public override void SendMessage(int hue, string text)
 		{
 			Discord.Bot.SendToDiscord(m_Channel, text);
+		}
+
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+		}
+
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize(reader);
+			m_Bot = this;
+		}
+	}
+
+	public class DiscordChatMobile : Mobile
+	{
+		private static DiscordChatMobile m_Bot;
+		private BaseDiscord.Channel m_Channel;
+		private DiscordChatMobile()
+		{
+			m_Channel = BaseDiscord.Channel.GlobalChat;
+		}
+
+		public DiscordChatMobile(Serial serial)
+		{
+		}
+
+		public static DiscordChatMobile GetMobile(string name, BaseDiscord.Channel ch)
+		{
+			if (m_Bot == null)
+			{
+				m_Bot = new DiscordChatMobile();
+			}
+			m_Bot.Name = "<Discord>" + name;
+			m_Bot.m_Channel = ch;
+			return m_Bot;
 		}
 
 		public override void Serialize(GenericWriter writer)

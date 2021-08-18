@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Scripts.Commands;
 using Server.Gumps;
 using Server.Network;
 
@@ -62,16 +63,11 @@ namespace Server.Commands
 			for (int i = Info.PrintId; i < count; i++)
 			{
 				var offset = 60 + 20 * (i - Info.PrintId);
-				//AddImage(120, offset - 20, items[i].Body.BodyID);
 				AddImageTiled(170, offset, 80, 20, 3004);
 				AddImageTiled(270, offset, 80, 20, 3004);
 				AddImageTiled(370, offset, 80, 20, 3004);
 				AddImageTiled(470, offset, 80, 20, 3004);
 				AddImageTiled(570, offset, 250, 20, 3004);
-				//AddAlphaRegion(170, offset, 80, 20);
-				//AddAlphaRegion(270, offset, 80, 20);
-				//AddAlphaRegion(370, offset, 80, 20);
-				//AddAlphaRegion(470, offset, 80, 20);
 				AddLabel(175, offset + 5, 0, Utility.LineCut(mob[i].Serial.Value.ToString("X"), 10));
 				AddLabel(275, offset + 5, 0, Utility.LineCut(mob[i].Name, 10));
 				AddLabel(375, offset + 5, 0, Utility.LineCut(mob[i].GetType().Name, 10));
@@ -167,6 +163,7 @@ namespace Server.Commands
 			if (Info.PrintId >= TabSize)
 				AddButton(176, 570, 5223, 5223, 101, GumpButtonType.Reply, 0); //Previous
 
+			AddLabel(350, 570, 0, @"Request");
 			AddTextEntry(420, 570, 200, 20, 0, 0, Info.LastRequest);
 			AddButton(630, 570, 247, 248, 105, GumpButtonType.Reply, 0);
 
@@ -180,23 +177,23 @@ namespace Server.Commands
 				switch (flag)
 				{
 					case 0:
-					{
-						Info.IsMobiles = true;
-						Info.IsItems = false;
-						continue;
-					}
+						{
+							Info.IsMobiles = true;
+							Info.IsItems = false;
+							continue;
+						}
 
 					case 1:
-					{
-						Info.IsItems = true;
-						Info.IsMobiles = false;
-						continue;
-					}
+						{
+							Info.IsItems = true;
+							Info.IsMobiles = false;
+							continue;
+						}
 					case int n when (n >= 10 && n <= 16):
-					{
-						Info.UpdateMapCheck(flag);
-						continue;
-					}
+						{
+							Info.UpdateMapCheck(flag);
+							continue;
+						}
 				}
 			}
 		}
@@ -208,67 +205,68 @@ namespace Server.Commands
 			switch (info.ButtonID)
 			{
 				case 0: // Closed or Cancel
-				{
-					return;
-				}
+					{
+						return;
+					}
 				default:
-				{
-					if (info.ButtonID == 100)
 					{
-						Info.ResetFlags();
-						UpdateFlags(info.Switches);
-						Info.Update();
-						Info.PrintId = 0;
-						mobile.SendGump(new GMItemsGump(mobile, Info));
-					}
-
-					if (info.ButtonID == 101)
-					{
-						Info.PrintId -= TabSize;
-						if (Info.PrintId < 0)
+						if (info.ButtonID == 100)
+						{
+							Info.ResetFlags();
+							UpdateFlags(info.Switches);
+							Info.Update();
 							Info.PrintId = 0;
-						mobile.SendGump(new GMItemsGump(mobile, Info));
-					}
-
-					if (info.ButtonID == 102)
-					{
-						Info.PrintId += TabSize;
-						mobile.SendGump(new GMItemsGump(mobile, Info));
-					}
-
-					if (info.ButtonID == 105)
-					{
-						Info.LastRequest += info.TextEntries[0].Text;
-						mobile.SendGump(new GMItemsGump(mobile, Info));
-					}
-
-					if (info.ButtonID >= 1000 && info.ButtonID <= 99999)
-					{
-						if (Info.IsMobiles)
-						{
-							var mob = Info.ListMobiles.ToArray()[info.ButtonID - 1000];
-							mobile.MoveToWorld(mob.Location, mob.Map);
-						}
-						else
-						{
-							var item = Info.ListItems.ToArray()[info.ButtonID - 1000];
-							mobile.MoveToWorld(Utility.GetWorldObjLocation(item), item.Map);
+							mobile.SendGump(new GMItemsGump(mobile, Info));
 						}
 
-						mobile.SendGump(new GMItemsGump(mobile, Info));
-					}
+						if (info.ButtonID == 101)
+						{
+							Info.PrintId -= TabSize;
+							if (Info.PrintId < 0)
+								Info.PrintId = 0;
+							mobile.SendGump(new GMItemsGump(mobile, Info));
+						}
 
-					if (info.ButtonID >= 100000)
-					{
-						IEntity ent;
-						ent = World.FindEntity(Info.IsMobiles ? Info.ListMobiles.ToArray()[info.ButtonID - 100000].Serial.Value : 
-							Info.ListItems.ToArray()[info.ButtonID - 100000].Serial.Value);
-						mobile.SendGump(new PropertiesGump(mobile, ent));
-						mobile.SendGump(new GMItemsGump(mobile, Info));
-					}
+						if (info.ButtonID == 102)
+						{
+							Info.PrintId += TabSize;
+							mobile.SendGump(new GMItemsGump(mobile, Info));
+						}
 
-					break;
-				}
+						if (info.ButtonID == 105)
+						{
+							Info.LastRequest += info.TextEntries[0].Text;
+							mobile.SendGump(new GMItemsGump(mobile, Info));
+						}
+
+						if (info.ButtonID >= 1000 && info.ButtonID <= 99999)
+						{
+							if (Info.IsMobiles)
+							{
+								var mob = Info.ListMobiles.ToArray()[info.ButtonID - 1000];
+								mobile.MoveToWorld(mob.Location, mob.Map);
+							}
+							else
+							{
+								var item = Info.ListItems.ToArray()[info.ButtonID - 1000];
+								mobile.MoveToWorld(Utility.GetWorldObjLocation(item), item.Map);
+							}
+
+							mobile.SendGump(new GMItemsGump(mobile, Info));
+						}
+
+						if (info.ButtonID >= 100000)
+						{
+							IEntity ent;
+							ent = World.FindEntity(Info.IsMobiles
+								? Info.ListMobiles.ToArray()[info.ButtonID - 100000].Serial.Value
+								: Info.ListItems.ToArray()[info.ButtonID - 100000].Serial.Value);
+							mobile.SendGump(new PropertiesGump(mobile, ent));
+							mobile.SendGump(new GMItemsGump(mobile, Info));
+						}
+
+						break;
+					}
 			}
 		}
 	}
@@ -282,7 +280,7 @@ namespace Server.Commands
 		public List<Item> ListItems;
 		public List<Mobile> ListMobiles;
 		public int PrintId;
-		public string LastRequest;
+		public string LastRequest = "";
 
 		public bool IsAnyMap { get { return MapsCheckBox.ContainsKey(AllMaps) && MapsCheckBox[AllMaps]; } }
 
@@ -290,7 +288,7 @@ namespace Server.Commands
 		{
 			IsMobiles = false;
 			IsItems = false;
-			LastRequest = "";
+			//LastRequest = "";
 			foreach (var key in MapsCheckBox.Keys.ToArray())
 			{
 				MapsCheckBox[key] = false;
@@ -343,7 +341,17 @@ namespace Server.Commands
 
 				if (IsAnyMap || (MapsCheckBox.Keys.Contains(mobile.Map.Name) && MapsCheckBox[mobile.Map.Name]))
 				{
-					ListMobiles.Add(mobile);
+					if (!String.IsNullOrEmpty(LastRequest.Trim()))
+					{
+						var type = ScriptCompiler.FindTypeByName(LastRequest.Trim(), true);
+						if (type != null && (Utility.IsBaseType(mobile.GetType(), type)|| mobile.GetType() == type))
+						{
+							ListMobiles.Add(mobile);
+						}
+
+					}
+					else
+						ListMobiles.Add(mobile);
 				}
 			}
 		}
@@ -360,7 +368,17 @@ namespace Server.Commands
 
 					if (IsAnyMap || (MapsCheckBox.Keys.Contains(item.Map.Name) && MapsCheckBox[item.Map.Name]))
 					{
-						ListItems.Add(item);
+						if (!String.IsNullOrEmpty(LastRequest.Trim()))
+						{
+							var type = ScriptCompiler.FindTypeByName(LastRequest.Trim(), true);
+							if (type != null && Utility.IsBaseType(item.GetType(), type))
+							{
+								ListItems.Add(item);
+							}
+
+						}
+						else
+							ListItems.Add(item);
 					}
 				}
 				catch (Exception e)

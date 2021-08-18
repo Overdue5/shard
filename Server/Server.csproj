@@ -18,7 +18,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <DefineConstants>DEBUG;NEWTIMERS;ServUO</DefineConstants>
+    <DefineConstants>NEWTIMERS;ServUO</DefineConstants>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   

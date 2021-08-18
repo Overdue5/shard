@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,8 +97,14 @@ namespace Server
 
         async public virtual void SendToDiscord(Channel ch, string msg)
         {
-            if (!Enabled || ch == Channel.None)
+            if (!Enabled)
                 return;
+            if (ch == Channel.None)
+            {
+	            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"!Send to None channel.{new StackTrace()}");
+	            return;
+            }
+
             try
             {
                 lock (Channels[ch].Msg)

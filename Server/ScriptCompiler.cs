@@ -798,7 +798,7 @@ namespace Server
             return FindTypeByName(name, true);
         }
 
-        public static Type FindTypeByName(string name, bool ignoreCase)
+        public static Type FindTypeByName(string name, bool ignoreCase= true)
         {
             Type type = null;
 

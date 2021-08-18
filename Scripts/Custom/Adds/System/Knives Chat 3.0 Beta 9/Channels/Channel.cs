@@ -24,6 +24,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server;
+using Server.Misc.EConnect;
 
 namespace Knives.Chat3
 {
@@ -390,7 +391,7 @@ namespace Knives.Chat3
 			var toLog = $"<{c_Name}{(c_Style == ChatStyle.Regional && m.Region != null ? " - " + m.Region.Name : "")}> {m.RawName}: {msg}";
 			if (Data.LogChat)
                 Logging.LogChat($"{DateTime.Now} {toLog}");
-			if (DiscordChannel!=BaseDiscord.Channel.None)
+			if (DiscordChannel!=BaseDiscord.Channel.None && !(m is DiscordChatMobile))
 				BaseDiscord.Bot.SendToDiscord(DiscordChannel, toLog);
 			
             Data.TotalChats++;

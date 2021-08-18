@@ -1673,6 +1673,15 @@ namespace Server
 			}
 		}
 
+		public static bool IsBaseType(Type checkType, Type baseType)
+		{
+			if (checkType.BaseType == typeof(Object))
+				return false;
+			if (checkType.BaseType == baseType)
+				return true;
+			return IsBaseType(checkType.BaseType, baseType);
+		}
+
 		public static Point3D GetWorldObjLocation(object obj)
 		{
 			if (obj is Mobile mob)
