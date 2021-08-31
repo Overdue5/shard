@@ -106,9 +106,9 @@ namespace Server.Misc
             //55555 is the default value.
 
             //Shade- Skill time estimates are no longer accurate
-            SkillInfo.Table[0].GainFactor = 127000; // Alchemy = 0, 
+            SkillInfo.Table[0].GainFactor = 86400; // Alchemy = 0, 
 			//Macro type: People will create nightsights, delay 8 seconds.
-			//Time estimate: 12 days 24/7.
+			//Time estimate: 1 days 24/7.
 
             SkillInfo.Table[1].GainFactor = 39200; // Anatomy = 1, 
 			//Macro type: Target yourself, delay 1 second
@@ -126,37 +126,37 @@ namespace Server.Misc
 			//Macro type: Target weapon/armor, delay 1 second
 			//Time estimate: 11 hours.
 
-            SkillInfo.Table[5].GainFactor = 56800; // Parry = 5, 
+            SkillInfo.Table[5].GainFactor = 18000; // Parry = 5, 
 			//Macro type: Sparring with someone that wrestles you, delay 2 seconds
-			//Time estimate: 1½ days 24/7.
+			//Time estimate: 5 hours 24/7.
 
-            SkillInfo.Table[6].GainFactor = 39200; // Begging = 6, 
+            SkillInfo.Table[6].GainFactor = 25200; // Begging = 6, 
 			//Macro type: On mobs, delay 3 seconds
-			//Time estimate: 1½ days 24/7
+			//Time estimate: 7 hours 24/7
 
-            SkillInfo.Table[7].GainFactor = 223428; // Blacksmith = 7, 
+            SkillInfo.Table[7].GainFactor = 172800; // Blacksmith = 7, 
 			//Macro type: Make daggers, delay about 3.5 seconds in average
-			//Time estimate: 9-10 days 24/7
+			//Time estimate: 2 days 24/7
 
-            SkillInfo.Table[8].GainFactor = 144040; // Fletching = 8, 
+            SkillInfo.Table[8].GainFactor = 36000; // Fletching = 8, 
 			//Macro type: Make kindlings, delay about 3.5 seconds in average
-			//Time estimate: 6 days 24/7
+			//Time estimate: 10 hours 24/7
 
-            SkillInfo.Table[9].GainFactor = 34500; // Peacemaking = 9, 
+            SkillInfo.Table[9].GainFactor = 50400; // Peacemaking = 9, 
 			//Macro type: Target self, delay 11 seconds when failing, 5½ seconds when success. Estimate 50/50
-			//Time estimate: 3-4 days 24/7
+			//Time estimate: 14 hours 24/7
 
-            SkillInfo.Table[10].GainFactor = 56400; // Camping = 10,
+            SkillInfo.Table[10].GainFactor = 18000; // Camping = 10,
 			//Macro type: Light kindlings, delay 1 second
-			//Time estimate: 16 hours
+			//Time estimate: 5 hours
 
-            SkillInfo.Table[11].GainFactor = 248114; // Carpentry = 11,
+            SkillInfo.Table[11].GainFactor = 172800; // Carpentry = 11,
 			//Macro type: Clubs or anything that requires 3 logs up to 70, then blank scrolls that requires 1 log, delay about 3 seconds average
-			//Time estimate: 9 days 24/7          
+			//Time estimate: 2 days 24/7          
 
-	        SkillInfo.Table[12].GainFactor = 152000; // Cartography = 12, 
+	        SkillInfo.Table[12].GainFactor = 86400; // Cartography = 12, 
 			//Macro type: Create local map, average delay of about 3 seconds
-			//Time estimate: 6 days 24/7
+			//Time estimate: 1 day 24/7
 
             SkillInfo.Table[13].GainFactor = 191840; // Cooking = 13,
 			//Macro type: Use raw ribs and cook them,  delay 2.5 seconds
