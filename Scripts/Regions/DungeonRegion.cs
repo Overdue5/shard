@@ -36,6 +36,7 @@ namespace Server.Regions
 		public override void AlterLightLevel( Mobile m, ref int global, ref int personal )
 		{
 			global = LightCycle.DungeonLevel;
+			Light = LightCycle.DungeonLevel;
 		}
 
 		public override bool CanUseStuckMenu( Mobile m )

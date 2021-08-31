@@ -12,15 +12,15 @@ namespace Server.Misc
 			 * 4) Changing or removing any predefined maps may cause server instability.
 			 */
 
-			RegisterMap( 0, 0, 0, 7168, 4096, 1, "Felucca",		MapRules.FeluccaRules );
+			RegisterMap( 0, 0, 0, 7168, 4096, SeasonName.Spring, -2, "Felucca",		MapRules.FeluccaRules );
 			//Changed
-            RegisterMap( 1, 1, 1, 7168, 4096, 0, "Trammel",		MapRules.TrammelRules );
-			RegisterMap( 2, 2, 2, 2304, 1600, 1, "Ilshenar",	MapRules.TrammelRules );
-			RegisterMap( 3, 3, 3, 2560, 2048, 1, "Malas",		MapRules.TrammelRules );
-			RegisterMap( 4, 4, 4, 1448, 1448, 1, "Tokuno",		MapRules.TrammelRules );
-            RegisterMap (5, 5, 5, 1280, 4096, 1, "TerMur",       MapRules.TrammelRules );
+            RegisterMap( 1, 1, 1, 7168, 4096, SeasonName.Spring, -2, "Trammel",		MapRules.TrammelRules );
+			RegisterMap( 2, 2, 2, 2304, 1600, SeasonName.Spring, -2, "Ilshenar",	MapRules.TrammelRules );
+			RegisterMap( 3, 3, 3, 2560, 2048, SeasonName.Spring, -2, "Malas",		MapRules.TrammelRules );
+			RegisterMap( 4, 4, 4, 1448, 1448, SeasonName.Spring, -2, "Tokuno",		MapRules.TrammelRules );
+            RegisterMap (5, 5, 5, 1280, 4096, SeasonName.Spring, -2, "TerMur",       MapRules.TrammelRules );
 
-			RegisterMap( 0x7F, 0x7F, 0x7F, Map.SectorSize, Map.SectorSize, 1, "Internal", MapRules.Internal );
+			RegisterMap( 0x7F, 0x7F, 0x7F, Map.SectorSize, Map.SectorSize, SeasonName.Spring, 0, "Internal", MapRules.Internal );
 
 			/* Example of registering a custom map:
 			 * RegisterMap( 32, 0, 0, 6144, 4096, 3, "Iceland", MapRules.FeluccaRules );
@@ -40,9 +40,9 @@ namespace Server.Misc
             MultiComponentList.PostHSFormat = true; // OSI Client Patch 7.0.9.0
         }
 
-		public static void RegisterMap( int mapIndex, int mapID, int fileIndex, int width, int height, int season, string name, MapRules rules )
+		public static void RegisterMap( int mapIndex, int mapID, int fileIndex, int width, int height, SeasonName season, int light, string name, MapRules rules )
 		{
-			Map newMap = new Map( mapID, mapIndex, fileIndex, width, height, season, name, rules );
+			Map newMap = new Map( mapID, mapIndex, fileIndex, width, height, season, light, name, rules );
 
 			Map.Maps[mapIndex] = newMap;
 			Map.AllMaps.Add( newMap );

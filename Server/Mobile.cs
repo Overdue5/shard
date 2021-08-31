@@ -8019,12 +8019,12 @@ namespace Server
 			}
 		}
 
-		public virtual int GetSeason()
+		public virtual SeasonName GetSeason()
 		{
 			if( m_Map != null )
 				return m_Map.Season;
 
-			return 1;
+			return SeasonName.Summer;
 		}
 
 		public virtual int GetPacketFlags()

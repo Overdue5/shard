@@ -2641,22 +2641,25 @@ namespace Server.Network
 				new SeasonChange[2]
 			};
 
-		public static SeasonChange Instantiate( int season )
+		public static SeasonChange Instantiate(SeasonName season )
 		{
 			return Instantiate( season, true );
 		}
 
-		public static SeasonChange Instantiate( int season, bool playSound )
+		public static SeasonChange Instantiate(SeasonName season, bool playSound )
 		{
-			if ( season >= 0 && season < m_Cache.Length )
+			if (season == SeasonName.Parent)
+				return null;
+			int s = (int)season;
+			if ( s >= 0 && s < m_Cache.Length )
 			{
 				int idx = playSound ? 1 : 0;
 
-				SeasonChange p = m_Cache[season][idx];
+				SeasonChange p = m_Cache[s][idx];
 
 				if ( p == null )
 				{
-					m_Cache[season][idx] = p = new SeasonChange( season, playSound );
+					m_Cache[s][idx] = p = new SeasonChange( season, playSound );
 					p.SetStatic();
 				}
 
@@ -2668,11 +2671,11 @@ namespace Server.Network
 			}
 		}
 
-		public SeasonChange( int season ) : this( season, true )
+		public SeasonChange(SeasonName season ) : this( season, true )
 		{
 		}
 
-		public SeasonChange( int season, bool playSound ) : base( 0xBC, 3 )
+		public SeasonChange( SeasonName season, bool playSound ) : base( 0xBC, 3 )
 		{
 			m_Stream.Write( (byte) season );
 			m_Stream.Write( (bool) playSound );
