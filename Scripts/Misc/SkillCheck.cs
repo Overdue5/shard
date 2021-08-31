@@ -286,9 +286,9 @@ namespace Server.Misc
 			//Macro type: Chop chop wood in the foooorest, delay average about 4 seconds
 			//Time estimate: 3-4 days 24/7
 
-            SkillInfo.Table[45].GainFactor = 52500; // Mining = 45
+            SkillInfo.Table[45].GainFactor = 7200; // Mining = 45
 			//Macro type: Mine all day long, delay average about 5 seconds
-			//Time estimate: 3 days 24/7
+			//Time estimate: 5 hours 24/7
 
             SkillInfo.Table[46].GainFactor = 8575; // Meditation = 46
 			//Macro type: Meditation while macroing magery, delay 5 seconds (although longer since you have to use a spell as well)
