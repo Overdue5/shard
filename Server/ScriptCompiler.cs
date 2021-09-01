@@ -25,6 +25,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -811,7 +812,21 @@ namespace Server
             return type;
         }
 
-        public static void EnsureDirectory(string dir)
+        public static List<Type> FindTypeByBaseClass(Type baseType)
+        {
+	        List<Type> result = new List<Type>();
+	        for (int i = 0; i < m_Assemblies.Length; ++i)
+		        foreach (Type type in Assembly.GetAssembly(baseType).GetTypes().Where(myType =>
+			        myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(baseType)))
+		        {
+			        result.Add(type);
+		        }
+
+	        return result;
+        }
+
+
+public static void EnsureDirectory(string dir)
         {
             string path = Path.Combine(Core.BaseDirectory, dir);
 

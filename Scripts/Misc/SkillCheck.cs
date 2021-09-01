@@ -17,7 +17,7 @@ namespace Server.Misc
 		private const int LocationSize = 1; //The size of eeach location, make this smaller so players dont have to move as far
 		public static TimeSpan AntiMacroExpire = TimeSpan.FromMinutes( 5.0 ); //How long do we remember targets/locations?
 
-        /*
+		/*
 		private static bool[] UseAntiMacro = new bool[]{ // true if this skill uses the anti-macro code, false if it does not
 			false, // Alchemy = 0,
 			false, // Anatomy = 1,
@@ -73,22 +73,25 @@ namespace Server.Misc
 			false, // Chivalry = 51
 		};
         */
+#if DEBUG
+		public static TimeSpan m_StatGainDelay = TimeSpan.FromMinutes(1.0);
+#else
 		private static readonly TimeSpan m_StatGainDelay = TimeSpan.FromMinutes( 1.0 );
-
-        //****************************A guide to decide the GainFactor****************************//
-        //****    First off, since this is repetetive skillgain, which means that you gain    ****//
-        //****    on the amount of items you make, there is a few things to keep in mind.     ****//
-        //****    What item will the player do? Most players will do the item that will       ****//
-        //****    provide them with the cheapest gain, some players might do the item         ****//
-        //****    that will provide them with the fastest gain. Keep this in mind when        ****//
-        //****    you set the gain rates. Think about speed(fast and slow macroing), cost     ****//
-        //****    and not to mention the obvious, gain. Make sure that they are not           ****//
+#endif
+		//****************************A guide to decide the GainFactor****************************//
+		//****    First off, since this is repetetive skillgain, which means that you gain    ****//
+		//****    on the amount of items you make, there is a few things to keep in mind.     ****//
+		//****    What item will the player do? Most players will do the item that will       ****//
+		//****    provide them with the cheapest gain, some players might do the item         ****//
+		//****    that will provide them with the fastest gain. Keep this in mind when        ****//
+		//****    you set the gain rates. Think about speed(fast and slow macroing), cost     ****//
+		//****    and not to mention the obvious, gain. Make sure that they are not           ****//
 		//****    "macroing" anything they can harvest money on.                              ****//
 
 		//****    Now for you to set the skill gain, you only have to keep in mind the things ****//
 		//****    above and set the amount of repetitions you want the skill to take to GM    ****//
 		//****    from 40%. 40% has been selected cause you can buy skills to 35 and and      ****//
-        //****    there is no point in adepting the algo for the lower levels.                ****//
+		//****    there is no point in adepting the algo for the lower levels.                ****//
 
 
 
@@ -374,10 +377,11 @@ namespace Server.Misc
                 multiplier = 0.7;
             else if (multiplier <= 0)		//At 45%-50%. 90% of the amount required at 40 and up.
                 multiplier = 0.9;
-
-            //The chance to gain at your current skill level
-            //Divides 50 tenths (5.0 skill%) with the repetitions required to reach next level (not from your current skill, but from the start of your level).
-            double gc = 50 / (skill.Info.GainFactor * multiplier);
+            if (skill.Base > 90)
+	            multiplier = multiplier + 0;
+			//The chance to gain at your current skill level
+			//Divides 50 tenths (5.0 skill%) with the repetitions required to reach next level (not from your current skill, but from the start of your level).
+				double gc = 50 / (skill.Info.GainFactor * multiplier);
 
 			if (from is BaseCreature && ((BaseCreature)from).Controlled)
 				gc *= 2;
@@ -505,13 +509,13 @@ namespace Server.Misc
                     }
                 }
                 /*
-                #region Scroll of Alacrity
+#region Scroll of Alacrity
                 PlayerMobile pm = from as PlayerMobile;
 
                 if (from is PlayerMobile)
                     if (pm != null && skill.SkillName == pm.AcceleratedSkill && pm.AcceleratedStart > DateTime.Now)
                         toGain *= Utility.RandomMinMax(2, 5);
-                #endregion
+#endregion
                 */
                 if ( ( skills.Total + toGain ) <= skills.Cap )
 					skill.BaseFixedPoint += toGain;
