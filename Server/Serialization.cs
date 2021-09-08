@@ -94,6 +94,8 @@ namespace Server
         public abstract Race ReadRace();
 
         public abstract bool End();
+
+        public string Info;
     }
 
     public abstract class GenericWriter

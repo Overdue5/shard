@@ -88,8 +88,8 @@ namespace Server.Games.PaintBall
 	}
 
 
-	public class PaintBall : Item
-	{
+	public class PaintBall : BaseAmmo
+	{ 
 		[Constructable]
 		public PaintBall( int hue ) : this( hue, 1 )
 		{
@@ -118,7 +118,12 @@ namespace Server.Games.PaintBall
 		public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
-			int version = reader.ReadInt();
+			if (reader.Info == "S")
+			{
+				reader.Info = null;
+				return;
+			}
+			reader.ReadInt();
 		}
 	}
 
@@ -127,7 +132,7 @@ namespace Server.Games.PaintBall
 	{
 		public override int EffectID{ get{ return 3962; } }
 		public override Type AmmoType{ get{ return typeof( PaintBall ); } }
-		public override Item Ammo{ get{ return new PaintBall( this.Hue ); } }
+		public override BaseAmmo Ammo { get{ return new PaintBall( this.Hue ); } }
 
 		public override int AosStrengthReq{ get{ return 0; } }
 		public override int AosMinDamage{ get{ return 0; } }

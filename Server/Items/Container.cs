@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Server.Network;
 using Solaris.CliLocHandler;
 
@@ -1008,6 +1009,21 @@ namespace Server.Items
 		private static List<Item> m_FindItemsList = new List<Item>();
 
 		#region Non-Generic FindItem[s] by Type
+		public Item FindUpItemByType(Type type)
+		{
+			var items = FindItemsByType(type, true);
+			Item result = null;
+			foreach (var item in items)
+			{
+				if (result == null || item.Y < result.Y)
+				{
+					result = item;
+				}
+			}
+
+			return result;
+		}
+
 		public Item[] FindItemsByType( Type type )
 		{
 			return FindItemsByType( type, true );
@@ -1153,6 +1169,7 @@ namespace Server.Items
 		#endregion
 
 		#region Generic FindItem[s] by Type
+
 		public List<T> FindItemsByType<T>() where T : Item
 		{
 			return FindItemsByType<T>( true, null );
@@ -1202,6 +1219,17 @@ namespace Server.Items
 						RecurseFindItemsByType<T>( item, recurse, list, predicate );
 				}
 			}
+		}
+		public T FindUpItemByType<T>() where T : Item
+		{
+			var items = FindItemsByType<T>();
+			T result = null;
+			foreach (var item in items.Where(item => result == null || item.X < result.X))
+			{
+				result = item;
+			}
+
+			return result;
 		}
 
 		public T FindItemByType<T>() where T : Item

@@ -1,4 +1,5 @@
 using System;
+using Server.Games.PaintBall;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
@@ -176,7 +177,7 @@ namespace Server.SkillHandlers
 
 					bool startTimer = false;
 
-					if ( targeted is Food || targeted is FukiyaDarts || targeted is Shuriken )
+					if ( targeted is Food || targeted is FukiyaDarts || targeted is Shuriken || targeted is BaseAmmo )
 					{
 						startTimer = true;
 					}
@@ -405,7 +406,35 @@ namespace Server.SkillHandlers
 								((Shuriken)m_Target).Poison = m_Poison;
 								((Shuriken)m_Target).PoisonCharges = Math.Min( 18 - (m_Poison.Level * 2), ((Shuriken)m_Target).UsesRemaining );
 							}
+							else if (m_Target is BaseAmmo ammo)
+							{
+								BaseAmmo result = null;
+								int count = (int)Utility.LimitMinMax(Utility.Min(ammo.Amount, (int)m_MinSkill / 20), Utility.Random((uint)m_MaxSkill / 10), Utility.Min(ammo.Amount,10));
+								if (ammo is Arrow)
+								{
+									result = new Arrow(count) {Name = $"{m_Poison.Name} poison arrow"};
+								}
+								else if (ammo is Bolt)
+								{
+									result = new Bolt(count) {Name = $"{m_Poison.Name} poison bolt"};
+								}
+								else if (ammo is PaintBall)
+								{
+									result = new PaintBall(count) {Name = $"{m_Poison.Name} poison ball"};
+								}
+								else
+								{
+									m_From.SendAsciiMessage("Unknown ammo type");
+									Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Unknown ammo type for poisoning");
+									return;
+								}
 
+								result.Poison = m_Poison;
+								ammo.Consume(count);
+								result.Hue = 0x3D + m_Poison.Level;
+								result.DropToItem(m_From, m_From.Backpack, new Point3D(-1, -1, 0));
+							}
+							
 							m_From.SendLocalizedMessage( 1010517 ); // You apply the poison
 
 							//Titles.AwardKarma( m_From, -20, true );

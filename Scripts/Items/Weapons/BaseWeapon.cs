@@ -2026,16 +2026,20 @@ namespace Server.Items
 
             // hook for attachment OnWeaponHit method
             Engines.XmlSpawner2.XmlAttach.OnWeaponHit(this, attacker, defender, damageGiven);
-
-            if (!Core.AOS && Poison != null && PoisonCharges > 0)
-            {
-                --PoisonCharges;
-                Poison.AddDelay = BaseWeapon.CalculatePoisonDelay(Poison);
-                if (Utility.RandomDouble() >= 0.5) // 50% chance to poison
-                    defender.ApplyPoison(attacker, Poison);
-                Poison.AddDelay = new TimeSpan(0);
-            }
+            ApplyPoison(attacker, defender);
         }
+
+        public virtual void ApplyPoison(Mobile attacker, Mobile defender)
+        {
+	        if (!Core.AOS && Poison != null && PoisonCharges > 0)
+	        {
+		        --PoisonCharges;
+		        Poison.AddDelay = BaseWeapon.CalculatePoisonDelay(Poison);
+		        if (Utility.RandomDouble() >= 0.5) // 50% chance to poison
+			        defender.ApplyPoison(attacker, Poison);
+		        Poison.AddDelay = new TimeSpan(0);
+	        }
+		}
 
         public static TimeSpan CalculatePoisonDelay(Poison poison)
         {
