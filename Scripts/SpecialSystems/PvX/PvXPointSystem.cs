@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Scripts.SpecialSystems;
+using Server.Misc;
 using Server.Mobiles;
 
 namespace Server
@@ -108,6 +109,26 @@ namespace Server
 
 		#region Public Methods
 
+		public static void CalculateStat(double winPoint, double loosePoint, out int winChange, out int looseChange)
+		{
+			if (winPoint < 0)
+				winPoint = 0;
+			if (loosePoint < 0)
+				loosePoint = 0;
+			double w = (loosePoint - winPoint) / 400;
+			winChange = Convert.ToInt32(GetEloK(winPoint) * (1 - 1 / (1 + Math.Pow(10, w))));
+			looseChange = Convert.ToInt32(GetEloK(loosePoint) * (1 / (1 + Math.Pow(10, -w))));
+		}
+
+		private static int GetEloK(double point)
+		{
+			if (point > 2400)
+				return 10;
+			else if (point > 1800)
+				return 20;
+			return 40;
+		}
+
 		public static void CalculatePvMStat(Mobile attacker, Mobile defender)
 		{
 			if (!EnablePvMPointSystem)
@@ -115,19 +136,15 @@ namespace Server
 			if (attacker is PlayerMobile pa)
 			{
 				var attStat = PvXData.GetPvMStat(pa);
-				var maxPoint = Utility.LimitMinMax(0, defender.HitsMax / 100, 10);
-				if (defender.HitsMax > attStat.TotalPoints)
-					maxPoint += 1;
-				var rank = attStat.RankId;
-				if (DateTime.UtcNow - attStat.ResKillTime > TimeSpan.FromSeconds(3))
-				{
-					var bonus = Utility.LimitMinMax(1, maxPoint - rank, 5);
-					if (defender.HitsMax > attStat.TotalWins)
-						bonus += 1;
-					maxPoint = Utility.LimitMinMax(0, maxPoint * (1 + Utility.Random(bonus)), 30);
-				}
-				pa.SendMessage($"PvM rating increased by {maxPoint}");
-				attStat.TotalWins += maxPoint;
+				var defPoint = Utility.LimitMinMax(1, defender.HitsMax/3, 3000);
+				int bonus = Utility.LimitMinMax(0, defender.HitsMax / 5000 - 1, 2);
+				int winChange = 0;
+				int looseChange = 0;
+				CalculateStat(attStat.TotalPoints / 50, defPoint, out winChange, out looseChange);
+				winChange = Utility.LimitMinMax(0, winChange + bonus, 40);
+				if (winChange > 0)
+					pa.SendMessage($"PvM rating increased by {winChange}");
+				attStat.TotalWins += winChange;
 				attStat.ResKillTime = DateTime.UtcNow;
 				attStat.LastChangeTime = DateTime.UtcNow;
 				UpdatePvMRank(pa);
@@ -135,21 +152,19 @@ namespace Server
 			else if (defender is PlayerMobile pd)
 			{
 				var defStat = PvXData.GetPvMStat(pd);
-				var maxPoint = Utility.LimitMinMax(0, attacker.HitsMax / 100, 10);
-				var rank = defStat.RankId;
-				var bonus = 1;
-				if (rank > maxPoint)
-					bonus = Utility.LimitMinMax(0, rank - maxPoint, 5);
+				var attackPoint = Utility.LimitMinMax(1, defender.HitsMax / 3, 3000);
+				int winChange = 0;
+				int looseChange = 0;
+				CalculateStat(attackPoint, defStat.TotalPoints / 50, out winChange, out looseChange);
 				if (defStat.LastKiller.ContainsKey(attacker.Serial.Value))
 				{
-					bonus++;
+					looseChange++;
 					defStat.TotalResKilled += 1;
 				}
-
-				maxPoint = maxPoint * Utility.LimitMinMax(1, Utility.Random(bonus), 5);
-				pd.SendMessage($"PvM rating decreased by {maxPoint}");
+				looseChange = Utility.LimitMinMax(0, looseChange, 40);
+				pd.SendMessage($"PvM rating decreased by {looseChange}");
 				defStat.LastKiller[attacker.Serial.Value] = DateTime.UtcNow;
-				defStat.TotalLoses += maxPoint;
+				defStat.TotalLoses += looseChange;
 				defStat.LastChangeTime = DateTime.UtcNow;
 				UpdatePvMRank(pd);
 			}
@@ -161,17 +176,21 @@ namespace Server
 				return;
 			var defStat = PvXData.GetPvPStat(defender);
 			var attStat = PvXData.GetPvPStat(attacker);
+			int winChange = 0;
+			int looseChange = 0;
+			CalculateStat(attStat.TotalPoints / 10, defStat.TotalPoints / 10, out winChange, out looseChange);
 			if (defStat.TotalPoints >= 0)
 			{
-				defStat.TotalPointsLost += 1;
+				defStat.TotalPointsLost += looseChange;
 			}
 			if (EnableResKillTimer == true)
 			{
 				if (!attStat.LastKilled.ContainsKey(defender.Serial.Value))
 				{
-					defStat.TotalLoses += 1;
-					attStat.TotalWins += 1;
-					attacker.SendMessage($"You have gained one pvp point from {defender.Name}");
+					defStat.TotalLoses += looseChange;
+					attStat.TotalWins += winChange;
+					attacker.SendMessage($"You have gained {winChange} pvp point from {defender.Name}");
+					defender.SendMessage($"You have lost {looseChange} pvp point");
 					defStat.ResKillTime = DateTime.UtcNow;
 				}
 				else
@@ -179,24 +198,28 @@ namespace Server
 					if (Convert.ToDateTime(attStat.LastKilled[defender.Serial.Value]) + ResKillPvPTime < DateTime.UtcNow)
 					{
 						attStat.TotalResKills += 1;
-						attStat.TotalWins += 1;
-						defStat.TotalLoses += 1;
+						attStat.TotalWins += winChange;
+						defStat.TotalLoses += looseChange;
 						defStat.TotalResKilled += 1;
+						attacker.SendMessage($"You have gained {winChange} pvp point from {defender.Name}");
+						defender.SendMessage($"You have lost {looseChange} pvp point");
 					}
 					else
 					{
-						defStat.TotalLoses += 1;
-						attStat.TotalWins += 1;
-						attacker.SendMessage($"You have gained one pvp point from {defender.Name}");
+						defStat.TotalLoses += looseChange;
+						attStat.TotalWins += winChange;
+						attacker.SendMessage($"You have gained {winChange} pvp point from {defender.Name}");
+						defender.SendMessage($"You have lost {looseChange} pvp point");
 					}
 				}
 				defStat.ResKillTime = DateTime.UtcNow;
 			}
 			else
 			{
-				defStat.TotalLoses += 1;
-				attStat.TotalWins += 1;
-				attacker.SendMessage($"You have gained one pvp point from {defender.Name}");
+				defStat.TotalLoses += looseChange;
+				attStat.TotalWins += winChange;
+				attacker.SendMessage($"You have gained {winChange} pvp point from {defender.Name}");
+				defender.SendMessage($"You have lost {looseChange} pvp point");
 			}
 
 			attStat.LastKilled[defender.Serial.Value] = DateTime.UtcNow;
