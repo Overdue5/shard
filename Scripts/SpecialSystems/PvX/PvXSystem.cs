@@ -186,6 +186,13 @@ namespace Scripts.SpecialSystems
 						continue;
 					}
 
+					if (World.Mobiles.ContainsKey(serial) && World.Mobiles[serial].Player && World.Mobiles[serial].Account == null)
+					{
+						Logs.PvXLog.WriteLine($"For serial:0x{serial.ToString("X")} account not found, deleted pvx");
+						PvXDataDict[xtype].Remove(serial);
+						continue;
+					}
+
 					if (PvXDataDict[xtype][serial].LastChangeTime + TimeSpan.FromDays(30) < DateTime.UtcNow)
 					{
 						int minus = Utility.LimitMinMax(1,
