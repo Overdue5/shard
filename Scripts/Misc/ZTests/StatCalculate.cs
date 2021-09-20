@@ -6,6 +6,7 @@ using Server.Mobiles;
 
 namespace Scripts.ZTest
 {
+#if DEBUG
 	public static partial class StatCalculate
 	{
 		public static void SkillTests()
@@ -92,4 +93,5 @@ namespace Scripts.ZTest
 		}
 
 	}
+#endif
 }
