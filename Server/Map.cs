@@ -79,11 +79,13 @@ namespace Server
 
         private int m_Width, m_Height;
         private int m_SectorsWidth, m_SectorsHeight;
-        private int m_Season;
+        private int m_Light;
+		private SeasonName m_Season;
         private Dictionary<string, Region> m_Regions;
         private Region m_DefaultRegion;
 
-        public int Season { get { return m_Season; } set { m_Season = value; } }
+        public int Light { get { return m_Light; } set { m_Light = value; } }
+		public SeasonName Season { get { return m_Season; } set { m_Season = value; } }
 
         private string m_Name;
         private MapRules m_Rules;
@@ -682,7 +684,7 @@ namespace Server
             return new Point2D(x, y);
         }
 
-        public Map(int mapID, int mapIndex, int fileIndex, int width, int height, int season, string name, MapRules rules)
+        public Map(int mapID, int mapIndex, int fileIndex, int width, int height, SeasonName season, int light, string name, MapRules rules)
         {
             m_MapID = mapID;
             m_MapIndex = mapIndex;
@@ -690,7 +692,8 @@ namespace Server
             m_Width = width;
             m_Height = height;
             m_Season = season;
-            m_Name = name;
+            m_Light = light;
+			m_Name = name;
             m_Rules = rules;
             m_Regions = new Dictionary<string, Region>(StringComparer.OrdinalIgnoreCase);
             m_InvalidSector = new Sector(0, 0, this);
@@ -801,8 +804,12 @@ namespace Server
         {
             if (this == Map.Internal)
                 return;
-
-            Sector sector = GetSector(m);
+            if (m.NetState != null && m.Region == null)
+            {
+	            m.Send(GlobalLightLevel.Instantiate(this.Light));
+	            m.Send(SeasonChange.Instantiate(this.Season, false));
+            }
+			Sector sector = GetSector(m);
 
             sector.OnEnter(m);
         }

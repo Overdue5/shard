@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Server.Mobiles;
 using Server.Network;
 
@@ -8,9 +9,10 @@ namespace Server.Items
 	{
 		public abstract int EffectID{ get; }
 		public abstract Type AmmoType{ get; }
-		public abstract Item Ammo{ get; }
+		public abstract BaseAmmo Ammo{ get; }
+		public BaseAmmo LastAmmo { get; set; }
 
-      		public override int DefHitSound { get { return 0x234; }}
+		public override int DefHitSound { get { return 0x234; }}
 		public override int DefMissSound {get { return Utility.RandomList(0x238, 0x239, 0x23A); }}
 
 		public override SkillName DefSkill{ get{ return SkillName.Archery; } }
@@ -135,6 +137,17 @@ namespace Server.Items
 			base.OnHit( attacker, defender, damageBonus );
 		}
 
+		public override void ApplyPoison(Mobile attacker, Mobile defender)
+		{
+			if (!Core.AOS && LastAmmo!=null && LastAmmo.Poison != null)
+			{
+				LastAmmo.Poison.AddDelay = BaseWeapon.CalculatePoisonDelay(LastAmmo.Poison);
+				if (Utility.RandomDouble() >= 0.3) // 50% chance to poison
+					defender.ApplyPoison(attacker, LastAmmo.Poison);
+				//LastAmmo.Poison.AddDelay = new TimeSpan(0);
+			}
+		}
+
 		public override void OnMiss( Mobile attacker, Mobile defender )
 		{
             if (!EventItem)
@@ -199,14 +212,30 @@ namespace Server.Items
             {
                 if (attacker.Player)
                 {
-                    if (quiver == null || quiver.LowerAmmoCost == 0 || quiver.LowerAmmoCost > Utility.Random(100))
+	                LastAmmo = null;
+					if (quiver == null || quiver.LowerAmmoCost == 0 || quiver.LowerAmmoCost > Utility.Random(100))
                     {
-                        if (quiver != null && quiver.ConsumeTotal(AmmoType, 1))
-                            quiver.InvalidateWeight();
-                        else if (pack == null || !pack.ConsumeTotal(AmmoType, 1))
-                            return false;
+	                    if (quiver != null)
+	                    {
+		                    LastAmmo = (BaseAmmo)quiver.FindUpItemByType(AmmoType);
+		                    LastAmmo?.Consume(1);
+	                    }
+						if (LastAmmo == null && pack != null)
+	                    {
+							LastAmmo = (BaseAmmo)pack.FindUpItemByType(AmmoType);
+							LastAmmo?.Consume(1);
+						}
+						if (LastAmmo == null)
+						{
+		                    return false;
+	                    }
+
+	                    //if (quiver != null && quiver.ConsumeTotal(AmmoType, 1))
+	                    //    quiver.InvalidateWeight();
+	                    //else if (pack == null || !pack.ConsumeTotal(AmmoType, 1))
+	                    //    return false;
                     }
-                }
+				}
             }
 
 		    if (attacker.Mounted)

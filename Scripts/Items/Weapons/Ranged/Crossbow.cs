@@ -7,7 +7,7 @@ namespace Server.Items
 	{
 		public override int EffectID{ get{ return 0x1BFE; } }
 		public override Type AmmoType{ get{ return typeof( Bolt ); } }
-		public override Item Ammo{ get{ return new Bolt(); } }
+		public override BaseAmmo Ammo { get{ return new Bolt(); } }
 
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }

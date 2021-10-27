@@ -2,44 +2,54 @@ namespace Server.Items
 {
 	public class Feather : Item, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+		#region Public Constructors
+
+		[Constructable]
+		public Feather() : this(1)
+		{
+		}
+
+		[Constructable]
+		public Feather(int amount) : base(0x1BD1)
+		{
+			Stackable = true;
+			Amount = amount;
+		}
+
+		public Feather(Serial serial) : base(serial)
+		{
+		}
+
+		#endregion Public Constructors
+
+		#region Public Properties
 
 		public override double DefaultWeight
 		{
 			get { return 0.1; }
 		}
 
-		[Constructable]
-		public Feather() : this( 1 )
-		{
-		}
+		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
+		bool ICommodity.IsDeedable { get { return true; } }
 
-		[Constructable]
-		public Feather( int amount ) : base( 0x1BD1 )
-		{
-			Stackable = true;
-			Amount = amount;
-		}
+		#endregion Public Properties
 
-		public Feather( Serial serial ) : base( serial )
-		{
-		}
+		#region Public Methods
 
-		public override void Serialize( GenericWriter writer )
+		public override void Deserialize(GenericReader reader)
 		{
-			base.Serialize( writer );
-
-			writer.Write( 0 ); // version
-		}
-
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+			base.Deserialize(reader);
 
 			int version = reader.ReadInt();
 		}
 
-		
+		public override void Serialize(GenericWriter writer)
+		{
+			base.Serialize(writer);
+
+			writer.Write(0); // version
+		}
+
+		#endregion Public Methods
 	}
 }
