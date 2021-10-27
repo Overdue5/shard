@@ -214,93 +214,93 @@ namespace Server.Misc
 			//Macro type: Run in firefield healing yourself, train magery etc, estimated delay ½-1 second
 			//Time estimate: 1 day 24/7
 
-            SkillInfo.Table[27].GainFactor = 55800; // Tactics = 27, 
+            SkillInfo.Table[27].GainFactor = 14400; // Tactics = 27, 
 			//Macro type: Wrestle someone, delay 2 seconds
-			//Time estimate: 1½ days 24/7.
+			//Time estimate: 4 hours 24/7.
 
-            SkillInfo.Table[28].GainFactor = 50840; // Snooping = 28, 
+            SkillInfo.Table[28].GainFactor = 1800; // Snooping = 28, 
 			//Macro type: Open another mob/players backpack, delay 2.5 seconds
-			//Time estimate: 1½ days 24/7.
+			//Time estimate: 30 minites 24/7.
 
-            SkillInfo.Table[29].GainFactor = 15525; // Musicianship = 29, 
+            SkillInfo.Table[29].GainFactor = 14400; // Musicianship = 29, 
 			//Macro type: Play instrument, repeat. Delay 7 seconds
-			//Time estimate: 1½ days 24/7.
+			//Time estimate: 4 hours 24/7.
 
-            SkillInfo.Table[30].GainFactor = 16280; // Poisoning = 30 
+            SkillInfo.Table[30].GainFactor = 32400; // Poisoning = 30 
 			//Macro type: Poison weapons with poison bottles. Delay 10 seconds
-			//Time estimate: 2 days 24/7
+			//Time estimate: 9 hours 24/7
 
-            SkillInfo.Table[31].GainFactor = 36560; // Archery = 31
+            SkillInfo.Table[31].GainFactor = 18000; // Archery = 31
 			//Macro type: Shoot with bow on monsters/friends. Delay 2.5 seconds
-			//Time estimate: 1 day 24/7
+			//Time estimate: 5 hours 24/7
 
-            SkillInfo.Table[32].GainFactor = 30560; // SpiritSpeak = 32 
+            SkillInfo.Table[32].GainFactor = 7200; // SpiritSpeak = 32 
 			//Macro type: Just repeat, delay 2.5 seconds
-			//Time estimate: 1 day 24/7
+			//Time estimate: 2 hours 24/7
 
-            SkillInfo.Table[33].GainFactor = 116400; // Stealing = 33
+            SkillInfo.Table[33].GainFactor = 50400; // Stealing = 33
             //Macro type: Just repeat, delay 4 seconds
-            //Time estimate: 5-6 days 24/7
+            //Time estimate: 14 hors 24/7
 
-            SkillInfo.Table[34].GainFactor = 178000; // Tailoring = 34 
+            SkillInfo.Table[34].GainFactor = 129600; // Tailoring = 34 
 			//Macro type: Create bandanas, repeat. Delay about 4 seconds in average
-			//Time estimate: 8-9 days 24/7
+			//Time estimate: 1-2 days 24/7
 
-            SkillInfo.Table[35].GainFactor = 49800; // AnimalTaming = 35 
+            SkillInfo.Table[35].GainFactor = 259200; // AnimalTaming = 35 
 			//Macro type: Tame any animal, release, repeat. Delay about 16 seconds in average
-			//Time estimate: 9-10 days 24/7
+			//Time estimate: 3 days 24/7
 
-            SkillInfo.Table[36].GainFactor = 40200; // TasteID = 36 
+            SkillInfo.Table[36].GainFactor = 14400; // TasteID = 36 
 			//Macro type: Target food, delay 1 second
-			//Time estimate: 11 hours
+			//Time estimate: 4 hours
 
-            SkillInfo.Table[37].GainFactor = 111200; // Tinkering = 37
+            SkillInfo.Table[37].GainFactor = 86400; // Tinkering = 37
 			//Macro type: Make clockparts, delay about 4 seconds in average
-			//Time estimate: 5-6 days 24/7
+			//Time estimate: 1 days 24/7
 
-            SkillInfo.Table[38].GainFactor = 93600; // Tracking = 38 
+            SkillInfo.Table[38].GainFactor = 18000; // Tracking = 38 
 			//Macro type: Keep tracking, gain all the time. Delay 1 second
-			//Time estimate: 1 day 24/7
+			//Time estimate: 5 hours 24/7
 
-            SkillInfo.Table[39].GainFactor = 59200; // Veterinary = 39 
+            SkillInfo.Table[39].GainFactor = 43200; // Veterinary = 39 
 			//Macro type: Hurt a mob, then heal it, delay 5 seconds
-			//Time estimate: 3-4 days 24/7
+			//Time estimate: 12 hours 24/7
 
-            SkillInfo.Table[40].GainFactor = 28400; // Swords = 40 
+            SkillInfo.Table[40].GainFactor = 14400; // Swords = 40 
 			//Macro type: Hit something with a butcher's knife, delay 2 seconds
-			//Time estimate: 16 hours
+			//Time estimate: 4 hours
 
-            SkillInfo.Table[41].GainFactor = 28600; // Macing = 41 
+            SkillInfo.Table[41].GainFactor = 21600; // Macing = 41 
 			//Macro type: Hit something with a club, delay 3 seconds
-			//Time estimate: 16 hours
+			//Time estimate: 6 hours
 
-            SkillInfo.Table[42].GainFactor = 28400; // Fencing = 42 
+            SkillInfo.Table[42].GainFactor = 28800; // Fencing = 42 
 			//Macro type: Hit something with a dagger, delay 2 seconds
-			//Time estimate: 16 hours
+			//Time estimate: 8 hours
 
-            SkillInfo.Table[43].GainFactor = 26400; // Wrestling = 43
+            SkillInfo.Table[43].GainFactor = 28800; // Wrestling = 43
 			//Macro type: Wrestle someone, delay 2 seconds
-			//Time estimate: 15 hours
+			//Time estimate: 5 hours
 
-            SkillInfo.Table[44].GainFactor = 70200; // Lumberjacking = 44
+            SkillInfo.Table[44].GainFactor = 172800; // Lumberjacking = 44
 			//Macro type: Chop chop wood in the foooorest, delay average about 4 seconds
-			//Time estimate: 3-4 days 24/7
+			//Time estimate: 2 days 24/7
 
             SkillInfo.Table[45].GainFactor = 7200; // Mining = 45
 			//Macro type: Mine all day long, delay average about 5 seconds
-			//Time estimate: 5 hours 24/7
+			//Time estimate: 2 hours 24/7
 
-            SkillInfo.Table[46].GainFactor = 8575; // Meditation = 46
+            SkillInfo.Table[46].GainFactor = 36000; // Meditation = 46
 			//Macro type: Meditation while macroing magery, delay 5 seconds (although longer since you have to use a spell as well)
-			//Time estimate: ½-1 day 24/7
+			//Time estimate: 10 hours 24/7
 
-            SkillInfo.Table[47].GainFactor = 72020; // Stealth = 47 
+            SkillInfo.Table[47].GainFactor = 10800; // Stealth = 47 
 			//Macro type: Use stealth to hide, delay 2.5 seconds
-			//Time estimate: 2 days 24/7
+			//Time estimate: 3 hours 24/7
 
-            SkillInfo.Table[48].GainFactor = 39280; // RemoveTrap = 48 
+            SkillInfo.Table[48].GainFactor = 14400; // RemoveTrap = 48 
 			//Macro type: Use skill on a high level trapped chest, delay 5 seconds
-			//Time estimate: 2 days 24/7
+			//Time estimate: 4 hours 24/7
 
             SkillInfo.Table[49].GainFactor = 55555; // Necromancy = 49
 			//Not used
