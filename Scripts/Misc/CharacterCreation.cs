@@ -28,15 +28,25 @@ namespace Server.Misc
 				m.AddItem( pack );
 			}
 
-			PackItem( new Gold( 1000 ) ); // Starting gold can be customized here
-			PackItem( new Dagger() );
-			PackItem( new Spellbook() );
-            PackItem( new KeyRing());
-            PackItem( new Scissors());
-		
+			PackItem(MakeNewbie(new TambourineTassel()));
+			PackItem(MakeNewbie(new Candle()));
+			PackItem(MakeNewbie(new Scissors()));
+			PackItem(MakeNewbie(new Dagger()));
+			PackItem(new Apple());
+			PackItem(new RedBook("a book", m.Name, 20, true));
+			//Region Ethy (Method used to hue item on creation)
+			EtherealHorse mount = new EtherealHorse();
+			mount.Hue = (Utility.RandomMetalHue());
+			PackItem(mount);
+			//End Region
+			//Noob one time only bank loot caller
+			NewbBank(m);
+			//Noob Broadcast
+			World.Broadcast(33, true, "" + m.Name + " has joined Mystic for the first time!");
+
 		}
 
-		private static Item MakeBlessed( Item item )
+        private static Item MakeBlessed( Item item )
 		{
 			if ( !Core.AOS )
 				item.LootType = LootType.Blessed;
@@ -685,8 +695,8 @@ namespace Server.Misc
             //SetSkills( newChar, args.Skills, args.Profession );
 
             // Max stats
-            newChar.Str = 100; newChar.Int = 100; newChar.Dex = 100;
-            newChar.Hits = 100; newChar.Mana = 100; newChar.Stam = 100;
+            newChar.Str = 120; newChar.Int = 110; newChar.Dex = 70;
+            newChar.Hits = 120; newChar.Mana = 110; newChar.Stam = 70;
 			
             Race race = newChar.Race;
 
@@ -724,7 +734,7 @@ namespace Server.Misc
 			newChar.SkillsCap = 54000; //Iza - changed from 52000 to 54000 for proper all skills cap.
 
 			//CityInfo city = GetStartLocation( args, false );
-            CityInfo city = new CityInfo("Britain", "Bank", 1424, 1697, 10, Map.Felucca);
+            CityInfo city = new CityInfo("Britain", "Bank", 5948, 1465, 5, Map.Felucca);
 
 			newChar.MoveToWorld( city.Location, city.Map );
 
