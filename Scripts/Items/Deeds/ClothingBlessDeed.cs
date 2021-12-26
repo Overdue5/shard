@@ -93,7 +93,7 @@ namespace Server.Items
 		[Constructable]
 		public ClothingBlessDeed() : base( 0x14F0 )
 		{
-                        Hue = 1953;
+            Hue = 2029;
 			Weight = 1.0;
 			LootType = LootType.Blessed;
 		}
@@ -117,7 +117,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override bool DisplayLootType{ get{ return false; } }
+		public override bool DisplayLootType{ get{ return true; } }
 
 		public override void OnDoubleClick( Mobile from ) // Override double click of the deed to call our target
 		{
