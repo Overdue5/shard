@@ -40,11 +40,18 @@ namespace Server.Misc
 			PackItem(mount);
 			//End Region
 			//Noob one time only bank loot caller
-			NewbBank(m);
+			//NewbBank(m);
 			//Noob Broadcast
 			World.Broadcast(33, true, "" + m.Name + " has joined Mystic for the first time!");
 
 		}
+
+        public static Item MakeNewbie(Item item) //started editing here
+        {
+            item.LootType = LootType.Newbied;
+
+            return item;
+        }
 
         private static Item MakeBlessed( Item item )
 		{
