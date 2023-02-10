@@ -413,27 +413,27 @@ namespace Server
                     m_IgnoreCache = true;
 			}
 
-			//try
-			//{
-			//	if( m_Service )
-			//	{
-			//		if( !Directory.Exists( "Logs/Console" ) )
-			//			Directory.CreateDirectory("Logs/Console");
+			try
+			{
+				if (m_Service)
+				{
+					if (!Directory.Exists("Logs/Console"))
+						Directory.CreateDirectory("Logs/Console");
 
-   //                 Console.SetOut(m_MultiConOut = new MultiTextWriter(new FileLogger("Logs/Console")));
-   //             }
-			//	else
-			//	{
-			//		if (!Directory.Exists("Logs/Console"))
-			//			Directory.CreateDirectory("Logs/Console");
+					Console.SetOut(m_MultiConOut = new MultiTextWriter(new FileLogger("Logs/Console")));
+				}
+				else
+				{
+					if (!Directory.Exists("Logs/Console"))
+						Directory.CreateDirectory("Logs/Console");
 
-			//		Console.SetOut( m_MultiConOut = new MultiTextWriter( Console.Out ) );
-			//		MultiConsoleOut.Add(new FileLogger("Logs/Console"));
-			//	}
-			//}
-			//catch
-			//{
-			//}
+					Console.SetOut(m_MultiConOut = new MultiTextWriter(Console.Out));
+                    //MultiConsoleOut.Add(new FileLogger("Logs/Console"));
+				}
+			}
+			catch
+			{
+			}
 
 			m_Thread = Thread.CurrentThread;
 			m_Process = Process.GetCurrentProcess();
