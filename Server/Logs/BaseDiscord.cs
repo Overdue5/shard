@@ -12,9 +12,9 @@ namespace Server
     public class BaseDiscord
     {
 #if (!DEBUG)
-		private static bool Enabled = true;
+		private static bool Enabled = false;
 #else
-        private static bool Enabled = true;
+        private static bool Enabled = false;
 #endif
         private static int MsgLength;
         private static BaseDiscord m_Discord;

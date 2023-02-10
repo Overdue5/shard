@@ -1,8 +1,10 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 using Server.Network;
 
 namespace Server.Misc
@@ -37,10 +39,13 @@ namespace Server.Misc
 		 * firewalls) or specific IP adddresses you can do so by modifying the file SocketOptions.cs found in this directory.
 		 */
 
-        	public static readonly string Address = "3.17.247.28";
+        public static readonly string Address = "3.19.42.179";
 		public static readonly string ServerName = "Deluxe";
+        private static IPAddress _PublicAddress;
+		private static readonly Regex _AddressPattern = new Regex(@"([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})");
 
-		public static readonly bool AutoDetect = true;
+
+        public static readonly bool AutoDetect = true;
 
 		public static void Initialize()
 		{
@@ -76,27 +81,104 @@ namespace Server.Misc
 				}
 
 				e.AddServer( ServerName, new IPEndPoint( localAddress, localPort ) );
-			}
+                Console.WriteLine($"{ServerName}:{new IPEndPoint(localAddress, localPort)}");
+}
 			catch
 			{
 				e.Rejected = true;
 			}
 		}
 
-		private static void AutoDetection()
-		{
-			if ( !HasPublicIPAddress() ) {
-				Console.Write( "ServerList: Auto-detecting public IP address..." );
-				m_PublicAddress = FindPublicAddress();
+        public static string[] IPServices =
+        {
+            "http://services.servuo.com/ip.php", "http://api.ipify.org",
+            "http://checkip.dyndns.org/"
+        };
 
-				if ( m_PublicAddress != null )
-					Console.WriteLine( "done ({0})", m_PublicAddress.ToString() );
-				else
-					Console.WriteLine( "failed" );
-			}
-		}
+        private static void AutoDetection()
+        {
+            if (!HasPublicIPAddress())
+            {
+                Utility.PushColor(ConsoleColor.Yellow);
+                Console.WriteLine("ServerList: Auto-detecting public IP address...");
 
-		private static void Resolve( string addr, out IPAddress outValue )
+                _PublicAddress = FindPublicAddress(IPServices);
+
+                if (_PublicAddress != null)
+                {
+                    Console.WriteLine("ServerList: Done: '{0}'", _PublicAddress);
+                }
+                else
+                {
+                    _PublicAddress = IPAddress.Any;
+
+                    Console.WriteLine("ServerList: Failed: reverting to private IP address...");
+                }
+
+                Utility.PopColor();
+            }
+        }
+
+        public static IPAddress FindPublicAddress(params string[] services)
+        {
+            if (services == null || services.Length == 0)
+            {
+                services = IPServices;
+            }
+
+            if (services == null || services.Length == 0)
+            {
+                return null;
+            }
+
+            IPAddress ip = null;
+
+            Uri uri;
+            string data;
+            Match match;
+
+            foreach (string service in services.Where(s => !string.IsNullOrWhiteSpace(s)))
+            {
+                try
+                {
+                    uri = new Uri(service);
+
+                    Console.WriteLine("ServerList: >>> {0}", uri.Host);
+
+                    using (WebClient client = new WebClient())
+                    {
+                        data = client.DownloadString(uri);
+                    }
+
+                    Console.WriteLine("ServerList: <<< {0}", data);
+
+                    match = _AddressPattern.Match(data);
+
+                    if (!match.Success || !IPAddress.TryParse(match.Value, out ip))
+                    {
+                        ip = null;
+                    }
+                }
+                catch (UriFormatException)
+                {
+                    Console.WriteLine("ServerList: Invalid IP service Uri '{0}'", service);
+
+                    ip = null;
+                }
+                catch
+                {
+                }
+
+                if (ip != null)
+                {
+                    break;
+                }
+            }
+
+            return ip;
+        }
+
+        private static void Resolve( string addr, out IPAddress outValue )
 		{
 			if ( IPAddress.TryParse( addr, out outValue ) )
 				return;
