@@ -316,8 +316,8 @@ namespace Server.Items
                 return true;
             }
 
-            from.Animate(from.Mounted ? 58 : 34, 5, 1, true, true, 0);
-            from.PlaySound(48);
+            //from.Animate(from.Mounted ? 58 : 34, 5, 1, true, true, 0);
+            //from.PlaySound(48);
             from.SendAsciiMessage("You can't drink another potion yet!");
 
             return false;
