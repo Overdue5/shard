@@ -218,7 +218,11 @@ namespace Server.Items
                         m_From.SendAsciiMessage("You already know what kind of item that is.");
 
                     if (m_Targeted.LootType == LootType.Blessed || m_Targeted.LootType == LootType.Newbied)
-                        m_From.SendAsciiMessage("It has a slight magical aura.");
+                        m_From.SendAsciiMessage("You see Divine Aura around this item.");
+                    if (m_Targeted.BlessedFor != null && m_Targeted.BlessedFor.Name != null)
+                    {
+                        m_From.SendAsciiMessage($"You see Divine Aura between {m_Targeted.BlessedFor.Name} and {m_Targeted.CalculateName()}.");
+                    }
                 }
                 else
                     m_From.SendLocalizedMessage(500353); // You are not certain...
