@@ -54,8 +54,8 @@ namespace Server.Items
 
             if (version == 0)
             {
-                MinDamage = 13;
-                MaxDamage = 20;
+                MinDamage = 17;
+                MaxDamage = 24;
             }
 		}
 	}
