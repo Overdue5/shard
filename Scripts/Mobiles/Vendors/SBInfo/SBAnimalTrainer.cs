@@ -17,9 +17,9 @@ namespace Server.Mobiles
 			{
                 Add(new AnimalBuyInfo(1, typeof(Cat), 132, Utility.RandomMinMax(5, 15), 201, 0));
                 Add(new AnimalBuyInfo(1, typeof(Dog), 170, Utility.RandomMinMax(5, 15), 217, 0));
-                Add(new AnimalBuyInfo(1, typeof(Horse), 750, Utility.RandomMinMax(5, 15), 204, 0));
-                Add(new AnimalBuyInfo(1, typeof(PackHorse), 841, Utility.RandomMinMax(5, 15), 291, 0));
-                Add(new AnimalBuyInfo(1, typeof(PackLlama), 815, Utility.RandomMinMax(5, 15), 292, 0));
+                Add(new AnimalBuyInfo(1, typeof(Horse), 450, Utility.RandomMinMax(5, 15), 204, 0));
+                Add(new AnimalBuyInfo(1, typeof(PackHorse), 141, Utility.RandomMinMax(5, 15), 291, 0));
+                Add(new AnimalBuyInfo(1, typeof(PackLlama), 215, Utility.RandomMinMax(5, 15), 292, 0));
                 Add(new AnimalBuyInfo(1, typeof(Rabbit), 106, Utility.RandomMinMax(5, 15), 205, 0));
                 Add(new GenericBuyInfo(typeof(Apple), 3, Utility.RandomMinMax(15, 25), 0x9D0, 0));
                 Add(new GenericBuyInfo(typeof(SheafOfHay), 3, Utility.RandomMinMax(15, 25), 0xF36, 0));
@@ -27,11 +27,11 @@ namespace Server.Mobiles
 
 				if( !Core.AOS )
 				{
-                    Add(new AnimalBuyInfo(1, typeof(Eagle), 402, Utility.RandomMinMax(5, 15), 5, 0));
-                    Add(new AnimalBuyInfo(1, typeof(BrownBear), 855, Utility.RandomMinMax(5, 15), 167, 0));
-                    Add(new AnimalBuyInfo(1, typeof(GrizzlyBear), 1767, Utility.RandomMinMax(5, 15), 212, 0));
-                    Add(new AnimalBuyInfo(1, typeof(Panther), 1271, Utility.RandomMinMax(5, 15), 214, 0));
-                    Add(new AnimalBuyInfo(1, typeof(TimberWolf), 768, Utility.RandomMinMax(5, 15), 225, 0));
+                    Add(new AnimalBuyInfo(1, typeof(Eagle), 102, Utility.RandomMinMax(5, 15), 5, 0));
+                    Add(new AnimalBuyInfo(1, typeof(BrownBear), 255, Utility.RandomMinMax(5, 15), 167, 0));
+                    Add(new AnimalBuyInfo(1, typeof(GrizzlyBear), 767, Utility.RandomMinMax(5, 15), 212, 0));
+                    Add(new AnimalBuyInfo(1, typeof(Panther), 871, Utility.RandomMinMax(5, 15), 214, 0));
+                    Add(new AnimalBuyInfo(1, typeof(TimberWolf), 468, Utility.RandomMinMax(5, 15), 225, 0));
                     Add(new AnimalBuyInfo(1, typeof(Rat), 107, Utility.RandomMinMax(5, 15), 238, 0));
 				}
 					
