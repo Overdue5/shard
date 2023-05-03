@@ -10,6 +10,7 @@ namespace Server.AntiMacro
     public class AntiMacroGump : Gump
     {
         private static readonly Dictionary<Mobile, AntiMacroGump> m_GumpDictionary = new Dictionary<Mobile, AntiMacroGump>();
+        private static bool isEnable = false;
         private const int c_MaxTriesBeforeDeath = 5;
         private const int c_MaxAllowedTries = 20;
         private const string c_CaptchaURLFormat = @"http://game.in-uo.net/am/index.php?id={0}&s={1}";
@@ -31,6 +32,8 @@ namespace Server.AntiMacro
 
         public static void SendGumpThreaded(PlayerMobile to)
         {
+            if (!isEnable)
+                return;
             if (to.AntiMacroGump && m_GumpDictionary.ContainsKey(to))
             {
                 AntiMacroGump oldGump = m_GumpDictionary[to];
