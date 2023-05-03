@@ -109,117 +109,117 @@ namespace Server.Misc
             //55555 is the default value.
 
             //Shade- Skill time estimates are no longer accurate
-            SkillInfo.Table[0].GainFactor = 86400; // Alchemy = 0, 
+            SkillInfo.Table[0].GainFactor = 21600; // Alchemy = 0, 
 			//Macro type: People will create nightsights, delay 8 seconds.
-			//Time estimate: 1 days 24/7.
+			//Time estimate: 6 hours.
 
-            SkillInfo.Table[1].GainFactor = 39200; // Anatomy = 1, 
+            SkillInfo.Table[1].GainFactor = 10800; // Anatomy = 1, 
 			//Macro type: Target yourself, delay 1 second
-			//Time estimate: 11 hours.
+			//Time estimate: 3 hours.
 
-            SkillInfo.Table[2].GainFactor = 39200; // AnimalLore = 2, 
+            SkillInfo.Table[2].GainFactor = 10800; // AnimalLore = 2, 
 			//Macro type: Target animal, delay 1 second
-			//Time estimate: 11 hours.
+			//Time estimate: 3 hours.
 
-            SkillInfo.Table[3].GainFactor = 39200; // ItemID = 3, 
+            SkillInfo.Table[3].GainFactor = 5400; // ItemID = 3, 
 			//Macro type: Target weapon/armor, delay 1 second
-			//Time estimate: 11 hours.
+			//Time estimate: 1.5 hours.
 
-            SkillInfo.Table[4].GainFactor = 39200; // ArmsLore = 4,
+            SkillInfo.Table[4].GainFactor = 7560; // ArmsLore = 4,
 			//Macro type: Target weapon/armor, delay 1 second
-			//Time estimate: 11 hours.
+			//Time estimate: 2.1 hours.
 
-            SkillInfo.Table[5].GainFactor = 18000; // Parry = 5, 
+            SkillInfo.Table[5].GainFactor = 8280; // Parry = 5, 
 			//Macro type: Sparring with someone that wrestles you, delay 2 seconds
-			//Time estimate: 5 hours 24/7.
+			//Time estimate: 2.3 hours.
 
-            SkillInfo.Table[6].GainFactor = 25200; // Begging = 6, 
+            SkillInfo.Table[6].GainFactor = 6120; // Begging = 6, 
 			//Macro type: On mobs, delay 3 seconds
-			//Time estimate: 7 hours 24/7
+			//Time estimate: 1.7 hours.
 
-            SkillInfo.Table[7].GainFactor = 172800; // Blacksmith = 7, 
+            SkillInfo.Table[7].GainFactor = 29160; // Blacksmith = 7, 
 			//Macro type: Make daggers, delay about 3.5 seconds in average
-			//Time estimate: 2 days 24/7
+			//Time estimate: 8.1 hours.
 
-            SkillInfo.Table[8].GainFactor = 36000; // Fletching = 8, 
+            SkillInfo.Table[8].GainFactor = 15480; // Fletching = 8, 
 			//Macro type: Make kindlings, delay about 3.5 seconds in average
-			//Time estimate: 10 hours 24/7
+			//Time estimate: 4.3 hours.
 
-            SkillInfo.Table[9].GainFactor = 50400; // Peacemaking = 9, 
+            SkillInfo.Table[9].GainFactor = 7560; // Peacemaking = 9, 
 			//Macro type: Target self, delay 11 seconds when failing, 5½ seconds when success. Estimate 50/50
-			//Time estimate: 14 hours 24/7
+			//Time estimate: 2.1 hours.
 
-            SkillInfo.Table[10].GainFactor = 18000; // Camping = 10,
+            SkillInfo.Table[10].GainFactor = 4320; // Camping = 10,
 			//Macro type: Light kindlings, delay 1 second
-			//Time estimate: 5 hours
+			//Time estimate: 1.2 hours.
 
-            SkillInfo.Table[11].GainFactor = 172800; // Carpentry = 11,
+            SkillInfo.Table[11].GainFactor = 25200; // Carpentry = 11,
 			//Macro type: Clubs or anything that requires 3 logs up to 70, then blank scrolls that requires 1 log, delay about 3 seconds average
-			//Time estimate: 2 days 24/7          
+			//Time estimate: 7 hours.         
 
-	        SkillInfo.Table[12].GainFactor = 86400; // Cartography = 12, 
+	        SkillInfo.Table[12].GainFactor = 18000; // Cartography = 12, 
 			//Macro type: Create local map, average delay of about 3 seconds
-			//Time estimate: 1 day 24/7
+			//Time estimate: 5 hours.
 
-            SkillInfo.Table[13].GainFactor = 191840; // Cooking = 13,
+            SkillInfo.Table[13].GainFactor = 11520; // Cooking = 13,
 			//Macro type: Use raw ribs and cook them,  delay 2.5 seconds
-			//Time estimate: 6 days 24/7
+			//Time estimate: 3.2 hours.
 
-            SkillInfo.Table[14].GainFactor = 76400; // DetectHidden = 14, 
+            SkillInfo.Table[14].GainFactor = 1044; // DetectHidden = 14, 
 			//Macro type: Just press skill, delay 1 second
-			//Time estimate: 1 day 24/7
+			//Time estimate: 0.29 hours.
 
-            SkillInfo.Table[15].GainFactor = 60600; // Discordance = 15, 
+            SkillInfo.Table[15].GainFactor = 14040; // Discordance = 15, 
 			//Macro type: Target creature, delay 1 second
-			//Time estimate: 17 hours
+			//Time estimate: 3.9 hours.
 
-            SkillInfo.Table[16].GainFactor = 39200; // EvalInt = 16,
+            SkillInfo.Table[16].GainFactor = 8640; // EvalInt = 16,
 			//Macro type: Target yourself, delay 1 second
-			//Time estimate: 11 hours
+			//Time estimate: 2.4 hours.
 
-            SkillInfo.Table[17].GainFactor = 40200; // Healing = 17, 
+            SkillInfo.Table[17].GainFactor = 7920; // Healing = 17, 
 			//Macro type: Hurt yourself somehow, delay 3 seconds
-			//Time estimate: 1½ days 24/7
+			//Time estimate: 2.2 hours.
 
-            SkillInfo.Table[18].GainFactor = 107600; // Fishing = 18, 
+            SkillInfo.Table[18].GainFactor = 21600; // Fishing = 18, 
 			//Macro type: Just fish in water, delay 3 seconds
-			//Time estimate: 4 days 24/7
+			//Time estimate: 6 hours.
 
-            SkillInfo.Table[19].GainFactor = 49200; // Forensics = 19, 
+            SkillInfo.Table[19].GainFactor = 15480; // Forensics = 19, 
 			//Macro type: Target corpse, delay 1 second
-			//Time estimate: 15 hours
+			//Time estimate: 4.3 hours.
 
-            SkillInfo.Table[20].GainFactor = 149600; // Herding = 20,
+            SkillInfo.Table[20].GainFactor = 6840; // Herding = 20,
 			//Macro type: Herd any tamable animal, delay 1 second
-			//Time estimate: 2 days 24/7
+			//Time estimate: 1.9 hours.
 
-            SkillInfo.Table[21].GainFactor = 48640; // Hiding = 21,
+            SkillInfo.Table[21].GainFactor = 18000; // Hiding = 21,
 			//Macro type: Just repeat, delay 2.5 seconds
-			//Time estimate: 1½ days 24/7
+			//Time estimate: 5 hours.
 
-            SkillInfo.Table[22].GainFactor = 28000; // Provocation = 22,
+            SkillInfo.Table[22].GainFactor = 18360; // Provocation = 22,
 			//Macro type: Target two creatures, delay 11 seconds when succeding, 5½ seconds when fail. Estimate 50/50
-			//Time estimate: 2 days 24/7
+			//Time estimate: 5.1 hours.
 
-            SkillInfo.Table[23].GainFactor = 164400; // Inscribe = 23,
+            SkillInfo.Table[23].GainFactor = 25920; // Inscribe = 23,
 			//Macro type: People will do just make the easiest scroll, and with meditation delay is calculated to about 7 seconds
-			//Time estimate: 14 days 24/7.
+			//Time estimate: 7.2 hours.
 
-            SkillInfo.Table[24].GainFactor = 49900; // Lockpicking = 24, 
+            SkillInfo.Table[24].GainFactor = 5400; // Lockpicking = 24, 
 			//Macro type: Repeat lockpicking, if needed relock the chest, delay 3.5 seconds, estimate 4
-			//Time estimate: 2½ days 24/7
+			//Time estimate: 1.5 hours.
 
-            SkillInfo.Table[25].GainFactor = 29250; // Magery = 25, 
+            SkillInfo.Table[25].GainFactor = 19080; // Magery = 25, 
 			//Macro type: Repeat casting easy spell such as nightsight, delay with meditation calculated to about 7 seconds
-			//Time estimate: 2½ days 24/7
+			//Time estimate: 5.3 hours.
 
-            SkillInfo.Table[26].GainFactor = 95800; // MagicResist = 26, 
+            SkillInfo.Table[26].GainFactor = 4680; // MagicResist = 26, 
 			//Macro type: Run in firefield healing yourself, train magery etc, estimated delay ½-1 second
-			//Time estimate: 1 day 24/7
+			//Time estimate: 1.3 hours. 24/7
 
-            SkillInfo.Table[27].GainFactor = 14400; // Tactics = 27, 
+            SkillInfo.Table[27].GainFactor = 4320; // Tactics = 27, 
 			//Macro type: Wrestle someone, delay 2 seconds
-			//Time estimate: 4 hours 24/7.
+			//Time estimate: 1.2 hours 24/7.
 
             SkillInfo.Table[28].GainFactor = 1800; // Snooping = 28, 
 			//Macro type: Open another mob/players backpack, delay 2.5 seconds
@@ -229,81 +229,81 @@ namespace Server.Misc
 			//Macro type: Play instrument, repeat. Delay 7 seconds
 			//Time estimate: 4 hours 24/7.
 
-            SkillInfo.Table[30].GainFactor = 32400; // Poisoning = 30 
+            SkillInfo.Table[30].GainFactor = 8280; // Poisoning = 30 
 			//Macro type: Poison weapons with poison bottles. Delay 10 seconds
-			//Time estimate: 9 hours 24/7
+			//Time estimate: 2.3 hours 24/7
 
-            SkillInfo.Table[31].GainFactor = 18000; // Archery = 31
+            SkillInfo.Table[31].GainFactor = 14040; // Archery = 31
 			//Macro type: Shoot with bow on monsters/friends. Delay 2.5 seconds
-			//Time estimate: 5 hours 24/7
+			//Time estimate: 3.9 hours 24/7
 
             SkillInfo.Table[32].GainFactor = 7200; // SpiritSpeak = 32 
 			//Macro type: Just repeat, delay 2.5 seconds
 			//Time estimate: 2 hours 24/7
 
-            SkillInfo.Table[33].GainFactor = 50400; // Stealing = 33
+            SkillInfo.Table[33].GainFactor = 15480; // Stealing = 33
             //Macro type: Just repeat, delay 4 seconds
-            //Time estimate: 14 hors 24/7
+            //Time estimate: 4.3 hors 24/7
 
-            SkillInfo.Table[34].GainFactor = 129600; // Tailoring = 34 
+            SkillInfo.Table[34].GainFactor = 36000; // Tailoring = 34 
 			//Macro type: Create bandanas, repeat. Delay about 4 seconds in average
-			//Time estimate: 1-2 days 24/7
+			//Time estimate: 10 hours 24/7
 
-            SkillInfo.Table[35].GainFactor = 259200; // AnimalTaming = 35 
+            SkillInfo.Table[35].GainFactor = 43200; // AnimalTaming = 35 
 			//Macro type: Tame any animal, release, repeat. Delay about 16 seconds in average
-			//Time estimate: 3 days 24/7
+			//Time estimate: 12 hours 24/7
 
             SkillInfo.Table[36].GainFactor = 14400; // TasteID = 36 
 			//Macro type: Target food, delay 1 second
 			//Time estimate: 4 hours
 
-            SkillInfo.Table[37].GainFactor = 86400; // Tinkering = 37
+            SkillInfo.Table[37].GainFactor = 14400; // Tinkering = 37
 			//Macro type: Make clockparts, delay about 4 seconds in average
-			//Time estimate: 1 days 24/7
+			//Time estimate: 4 hours 24/7
 
-            SkillInfo.Table[38].GainFactor = 18000; // Tracking = 38 
+            SkillInfo.Table[38].GainFactor = 9000; // Tracking = 38 
 			//Macro type: Keep tracking, gain all the time. Delay 1 second
-			//Time estimate: 5 hours 24/7
+			//Time estimate: 2.5 hours 24/7
 
-            SkillInfo.Table[39].GainFactor = 43200; // Veterinary = 39 
+            SkillInfo.Table[39].GainFactor = 28800; // Veterinary = 39 
 			//Macro type: Hurt a mob, then heal it, delay 5 seconds
-			//Time estimate: 12 hours 24/7
+			//Time estimate: 8 hours 24/7
 
-            SkillInfo.Table[40].GainFactor = 14400; // Swords = 40 
+            SkillInfo.Table[40].GainFactor = 2100; // Swords = 40 
 			//Macro type: Hit something with a butcher's knife, delay 2 seconds
-			//Time estimate: 4 hours
+			//Time estimate: 35 minutes.
 
-            SkillInfo.Table[41].GainFactor = 21600; // Macing = 41 
+            SkillInfo.Table[41].GainFactor = 1620; // Macing = 41 
 			//Macro type: Hit something with a club, delay 3 seconds
-			//Time estimate: 6 hours
+			//Time estimate: 27 minutes.
 
-            SkillInfo.Table[42].GainFactor = 28800; // Fencing = 42 
+            SkillInfo.Table[42].GainFactor = 3840; // Fencing = 42 
 			//Macro type: Hit something with a dagger, delay 2 seconds
-			//Time estimate: 8 hours
+			//Time estimate: 50 mintues.
 
-            SkillInfo.Table[43].GainFactor = 28800; // Wrestling = 43
+            SkillInfo.Table[43].GainFactor = 1380; // Wrestling = 43
 			//Macro type: Wrestle someone, delay 2 seconds
-			//Time estimate: 5 hours
+			//Time estimate: 23 mintues.
 
-            SkillInfo.Table[44].GainFactor = 172800; // Lumberjacking = 44
+            SkillInfo.Table[44].GainFactor = 21600; // Lumberjacking = 44
 			//Macro type: Chop chop wood in the foooorest, delay average about 4 seconds
-			//Time estimate: 2 days 24/7
+			//Time estimate: 6 hours 24/7
 
             SkillInfo.Table[45].GainFactor = 7200; // Mining = 45
 			//Macro type: Mine all day long, delay average about 5 seconds
 			//Time estimate: 2 hours 24/7
 
-            SkillInfo.Table[46].GainFactor = 36000; // Meditation = 46
+            SkillInfo.Table[46].GainFactor = 7200; // Meditation = 46
 			//Macro type: Meditation while macroing magery, delay 5 seconds (although longer since you have to use a spell as well)
-			//Time estimate: 10 hours 24/7
+			//Time estimate: 2 hours 24/7
 
             SkillInfo.Table[47].GainFactor = 10800; // Stealth = 47 
 			//Macro type: Use stealth to hide, delay 2.5 seconds
 			//Time estimate: 3 hours 24/7
 
-            SkillInfo.Table[48].GainFactor = 14400; // RemoveTrap = 48 
+            SkillInfo.Table[48].GainFactor = 10800; // RemoveTrap = 48 
 			//Macro type: Use skill on a high level trapped chest, delay 5 seconds
-			//Time estimate: 4 hours 24/7
+			//Time estimate: 3 hours 24/7
 
             SkillInfo.Table[49].GainFactor = 55555; // Necromancy = 49
 			//Not used
