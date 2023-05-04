@@ -27,7 +27,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.LaunchBrowser("http://in-uo.net/info/guides");
+            from.LaunchBrowser("https://discord.gg/C2kMaERQCG");
             //from.CloseGump(typeof(PlayerGuidegump));
             //from.SendGump(new PlayerGuidegump());
         }
