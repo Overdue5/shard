@@ -726,7 +726,7 @@ namespace Server.Engines.Craft
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
             AddSkill(index, SkillName.Alchemy, 90.0, 100.0);
 
-            index = AddCraft(typeof(SoulBardiche), "Colored Weapons", "Soul Infused Bardiche", 96.0, 101.9, typeof(SilverIngot), "Silver Ingots", , 1044037);
+            index = AddCraft(typeof(SoulBardiche), "Colored Weapons", "Soul Infused Bardiche", 96.0, 101.9, typeof(SilverIngot), "Silver Ingots", 100, 1044037);
             AddRes(index, typeof(IronIngot), "Iron Ingots", 120, 1044037);            
 			AddRes(index, typeof(DragonsBlood), "Dragon's blood", 14, "You lack dragon's blood to create this");
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
