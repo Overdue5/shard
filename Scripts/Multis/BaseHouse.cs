@@ -1761,7 +1761,7 @@ namespace Server.Multis
 				bool valid = m_House != null && Sextant.Format( m_House.Location, m_House.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth );
 
 				if ( valid )
-					location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					location = String.Format( "{0}ï¿½ {1}'{2}, {3}ï¿½ {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				else
 					location = "unknown";
 
@@ -3775,7 +3775,6 @@ namespace Server.Multis
 		}
 	}
 
-    /* this is out comented because we do not want secure containers on IN:X
         public class SecureTarget : Target
         {
             private bool m_Release;
@@ -3845,7 +3844,7 @@ namespace Server.Multis
                     from.SendLocalizedMessage( 1010424 );//You cannot secure this
                 }
             }
-        }*/
+        }
 
     public class HouseKickTarget : Target
 	{

@@ -255,7 +255,7 @@ namespace Server.Regions
             if (!m_House.IsInside(from) || !m_House.IsActive)
                 return;
 
-           /*else if ( e.HasKeyword( 0x33 ) ) // remove thyself
+           else if ( e.HasKeyword( 0x33 ) ) // remove thyself
             {
                 if ( isFriend )
                 {
@@ -325,7 +325,7 @@ namespace Server.Regions
                 {
                     from.SendLocalizedMessage( 502094 ); // You must be in your house to do this.
                 }
-            }*/
+            }
             if ( e.HasKeyword( 0x23 ) ) // I wish to lock this down
             {
                 if ( isCoOwner )
