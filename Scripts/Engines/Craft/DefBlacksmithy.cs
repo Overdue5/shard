@@ -703,15 +703,15 @@ namespace Server.Engines.Craft
 
             #region Colored Weapons
 
-            index = AddCraft(typeof(SkyfallLongsword), "Colored Weapons", "Skyfall Longsword", 95.0, 102.4, typeof(MytherilIngot), "Mytheril Ingots", 6, 1044037);
-            AddRes(index, typeof(IronIngot), "Iron Ingots", 43, 1044037);
+            index = AddCraft(typeof(SkyfallLongsword), "Colored Weapons", "Skyfall Longsword", 95.0, 102.4, typeof(MytherilIngot), "Mytheril Ingots", 12, 1044037);
+            AddRes(index, typeof(IronIngot), "Iron Ingots", 100, 1044037);
             AddRes(index, typeof(Ruby), "Rubies", 3, "You lack rubies to create this");
             AddRes(index, typeof(Log), 1044041, 10, 1044351);
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
 
             index = AddCraft(typeof(HellsHalberd), "Colored Weapons", "Hell's Halberd", 95.0, 102.4, typeof(DaemonSteelIngot), "Daemon Steel Ingots", 16, 1044037);
-            AddRes(index, typeof(IronIngot), "Iron Ingots", 60, 1044037);
-            AddRes(index, typeof(Ruby), "Rubies", 10, "You lack rubies to create this");
+            AddRes(index, typeof(IronIngot), "Iron Ingots", 120, 1044037);
+            AddRes(index, typeof(Ruby), "Rubies", 13, "You lack rubies to create this");
             AddRes(index, typeof(FleshOfTheUndead), "Flesh of the Undead", 3, "You lack flesh of the undead to create this");
             AddRes(index, typeof(Log), 1044041, 10, 1044351);
 		    AddSkill(index, SkillName.Tinkering, 100.0, 100.0);
@@ -726,69 +726,71 @@ namespace Server.Engines.Craft
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
             AddSkill(index, SkillName.Alchemy, 90.0, 100.0);
 
-            index = AddCraft(typeof(SoulBardiche), "Colored Weapons", "Soul Infused Bardiche", 96.0, 101.9, typeof(OldCopperIngot), "Old Copper Ingots", 25, 1044037);
-            AddRes(index, typeof(IronIngot), "Iron Ingots", 50, 1044037);            
-			AddRes(index, typeof(DragonsBlood), "Dragon's blood", 8, "You lack dragon's blood to create this");
+            index = AddCraft(typeof(SoulBardiche), "Colored Weapons", "Soul Infused Bardiche", 96.0, 101.9, typeof(SilverIngot), "Silver Ingots", , 1044037);
+            AddRes(index, typeof(IronIngot), "Iron Ingots", 120, 1044037);            
+			AddRes(index, typeof(DragonsBlood), "Dragon's blood", 14, "You lack dragon's blood to create this");
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
+			AddSkill(index, SkillName.Tinkering, 100.0, 100.0);
+			AddSkill(index, SkillName.Alchemy, 90.0, 100.0);
 			
-            index = AddCraft(typeof(DwarvenBattleAxe), "Colored Weapons", "Dwarven Battle Axe", 91.0, 101.2, typeof(MytherilIngot), "Mytheril Ingots", 20, 1044037);
+            index = AddCraft(typeof(DwarvenBattleAxe), "Colored Weapons", "Dwarven Battle Axe", 91.0, 101.2, typeof(MytherilIngot), "Mytheril Ingots", 40, 1044037);
             AddRes(index, typeof(ValoriteIngot), "Valorite Ingots", 20, 1044037);
-            AddRes(index, typeof(StarSapphire), "Star Sapphires", 4, "You lack star sapphires to create this");
+            AddRes(index, typeof(StarSapphire), "Star Sapphires", 10, "You lack star sapphires to create this");
             AddRes(index, typeof(Log), 1044041, 12, 1044351);
             AddSkill(index, SkillName.Tinkering, 100.0, 100.0);
             AddSkill(index, SkillName.Tactics, 90.0, 100.0);
 
-            index = AddCraft(typeof(AzazelsBlade), "Colored Weapons", "Azazel's Blade", 92.0, 101.1, typeof(VeriteIngot), "Verite Ingots", 30, 1044037);
+            index = AddCraft(typeof(AzazelsBlade), "Colored Weapons", "Azazel's Blade", 92.0, 101.1, typeof(VeriteIngot), "Verite Ingots", 50, 1044037);
             AddRes(index, typeof(DragonsBlood), "Dragons Blood", 75, 1044037);
             AddRes(index, typeof(Emerald), "Emeralds", 10, "You lack emeralds to create this");
             AddRes(index, typeof(GreenScales), "Green Scales", 15, "You lack green scales to create this");
             AddSkill(index, SkillName.Tinkering, 90.0, 100.0);
             AddSkill(index, SkillName.Tactics, 80.0, 100.0);
 
-            index = AddCraft(typeof(SuperiorAzazelsBlade), "Colored Weapons", "Superior Azazel's Blade", 96.0, 101.9, typeof(ReactiveIngot), "Reactive Ingots", 3, 1044037);
+            index = AddCraft(typeof(SuperiorAzazelsBlade), "Colored Weapons", "Superior Azazel's Blade", 96.0, 101.9, typeof(ReactiveIngot), "Reactive Ingots", 40, 1044037);
             AddRes(index, typeof(DragonsBlood), "Dragons Blood", 150, 1044037);
             AddRes(index, typeof(GreenScales), "Green Scales", 10, "You lack green scales to create this");
             AddRes(index, typeof(AzazelsBlade), "Azazel's Blade", 1, "You lack a azazel's blade to create this.");
             AddSkill(index, SkillName.Tinkering, 100.0, 100.0);
             AddSkill(index, SkillName.Tactics, 100.0, 100.0);
 
-            index = AddCraft(typeof(SerpentsTongue), "Colored Weapons", "Serpent's Tongue", 92.0, 101.2, typeof(OldCopperIngot), "Old Copper Ingots", 30, 1044037);
-            AddRes(index, typeof(VeriteIngot), "Verite Ingots", 20, 1044037);
+            index = AddCraft(typeof(SerpentsTongue), "Colored Weapons", "Serpent's Tongue", 92.0, 101.2, typeof(OldCopperIngot), "Old Copper Ingots", 50, 1044037);
+            AddRes(index, typeof(VeriteIngot), "Verite Ingots", 35, 1044037);
             AddRes(index, typeof(Emerald), "Emeralds", 10, "You lack emeralds to create this");
-            AddRes(index, typeof(GreenScales), "Green Scales", 10, "You lack green scales to create this");
+            AddRes(index, typeof(GreenScales), "Green Scales", 15, "You lack green scales to create this");
             AddSkill(index, SkillName.Tinkering, 90.0, 100.0);
             AddSkill(index, SkillName.Tactics, 80.0, 100.0);
 
-            index = AddCraft(typeof(DwarfWarHammer), "Colored Weapons", "Dwarf War Hammer", 88.0, 100.8, typeof(DwarvenIngot), "Dwarven Ingots", 15, 1044037);
+            index = AddCraft(typeof(DwarfWarHammer), "Colored Weapons", "Dwarf War Hammer", 88.0, 100.8, typeof(DwarvenIngot), "Dwarven Ingots", 40, 1044037);
             AddRes(index, typeof(ValoriteIngot), "Valorite Ingots", 10, 1044037);
-            AddRes(index, typeof(Sapphire), "Sapphires", 8, "You lack sapphire to create this");
+            AddRes(index, typeof(Sapphire), "Sapphires", 10, "You lack sapphire to create this");
             AddRes(index, typeof(Log), 1044041, 10, 1044351);
             AddSkill(index, SkillName.Tinkering, 90.0, 100.0);
             AddSkill(index, SkillName.Tactics, 70.0, 100.0);
 
-            index = AddCraft(typeof(DwarvenBattleAxe), "Colored Weapons", "Dwarven Battle Axe", 88.0, 100.8, typeof(DwarvenIngot), "Dwarven Ingots", 25, 1044037);
-            AddRes(index, typeof(ValoriteIngot), "Valorite Ingots", 15, 1044037);
-            AddRes(index, typeof(Sapphire), "Sapphires", 8, "You lack sapphire to create this");
+            index = AddCraft(typeof(DwarvenBattleAxe), "Colored Weapons", "Dwarven Battle Axe", 88.0, 100.8, typeof(DwarvenIngot), "Dwarven Ingots", 64, 1044037);
+            AddRes(index, typeof(ValoriteIngot), "Valorite Ingots", 34, 1044037);
+            AddRes(index, typeof(Sapphire), "Sapphires", 18, "You lack sapphire to create this");
             AddRes(index, typeof(Log), 1044041, 10, 1044351);
-            AddRes(index, typeof(IronIngot), "Iron Ingots", 35, 1044037);
+            AddRes(index, typeof(IronIngot), "Iron Ingots", 80, 1044037);
             AddSkill(index, SkillName.Tinkering, 90.0, 100.0);
             AddSkill(index, SkillName.Tactics, 70.0, 100.0);
 
-            index = AddCraft(typeof(BloodTentacle), "Colored Weapons", "Blood Tentacle", 85.0, 100.5, typeof(BloodRockIngot), "Blood Rock Ingots", 16, 1044037);
-            AddRes(index, typeof(IronIngot), "Iron Ingots", 10, 1044037);
-            AddRes(index, typeof(Ruby), "Rubies", 10, "You lack rubies to create this");
+            index = AddCraft(typeof(BloodTentacle), "Colored Weapons", "Blood Tentacle", 85.0, 100.5, typeof(BloodRockIngot), "Blood Rock Ingots", 65, 1044037);
+            AddRes(index, typeof(IronIngot), "Iron Ingots", 100, 1044037);
+            AddRes(index, typeof(Ruby), "Rubies", 25, "You lack rubies to create this");
             AddRes(index, typeof(RedScales), "Red Scales", 8, "You lack red scales to create this");
             AddSkill(index, SkillName.Tinkering, 80.0, 100.0);
 
-            index = AddCraft(typeof(KissOfDeath), "Colored Weapons", "Kiss Of Death", 97.0, 100.9, typeof(ShadowIronIngot), "Shadow Iron Ingots", 60, 1044037);
-			AddRes(index, typeof(IronIngot), "Iron Ingots", 15, 1044037);
-            AddRes(index, typeof(Tourmaline), "Tourmalines", 10, "You lack tourmalines to create this");
+            index = AddCraft(typeof(KissOfDeath), "Colored Weapons", "Kiss Of Death", 97.0, 100.9, typeof(ShadowIronIngot), "Shadow Iron Ingots", 150, 1044037);
+			AddRes(index, typeof(IronIngot), "Iron Ingots", 200, 1044037);
+            AddRes(index, typeof(Tourmaline), "Tourmalines", 20, "You lack tourmalines to create this");
             AddRes(index, typeof(Log), 1044041, 50, 1044351);
             AddSkill(index, SkillName.Fletching, 95.0, 100.0);
             AddSkill(index, SkillName.Tactics, 80.0, 100.0);
 
-            index = AddCraft(typeof(ApalalasClaw), "Colored Weapons", "Apalalas Claw", 75.0, 100.0, typeof(FireIngot), "Fire Ingots", 27, 1044037);
-            AddRes(index, typeof(Citrine), "Citrines", 12, "You lack citrines to create this");
+            index = AddCraft(typeof(ApalalasClaw), "Colored Weapons", "Apalalas Claw", 75.0, 100.0, typeof(FireIngot), "Fire Ingots", 56, 1044037);
+            AddRes(index, typeof(Citrine), "Citrines", 20, "You lack citrines to create this");
             AddRes(index, typeof(IronIngot), "Iron Ingots", 50, 1044037);
             AddRes(index, typeof(Log), 1044041, 20, 1044351);
 
