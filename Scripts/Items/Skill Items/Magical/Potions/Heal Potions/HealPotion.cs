@@ -6,8 +6,8 @@ namespace Server.Items
         public override int MinHeal { get { return 10; } }
         public override int MaxHeal { get { return 25; } }
          */
-        public override int MinHeal { get { return 20; } }
-        public override int MaxHeal { get { return 20; } }
+        public override int MinHeal { get { return 25; } }
+        public override int MaxHeal { get { return 40; } }
 		//public override double Delay{ get{ return (Core.AOS ? 8.0 : 10.0); } }
 
 		[Constructable]
@@ -26,7 +26,7 @@ namespace Server.Items
 		{
 		}
 
-        //public override double PotionDelay { get { return 15.0; } }
+        public override double PotionDelay { get { return 13.0; } }
         /*
         //Maka - unstacking pots on death, stacking on resurrection
         public override void OnAdded(object parent)

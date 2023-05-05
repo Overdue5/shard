@@ -32,6 +32,8 @@ namespace Server.Items
 		{
 		}
 
+		public override double PotionDelay { get { return 13.0; } }
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );

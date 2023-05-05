@@ -41,7 +41,7 @@ namespace Server.Items
         */
 		public override int Mana
 		{
-			get { return 9; }
+			get { return 30; }
 		}
 
 		public override void Serialize( GenericWriter writer )
