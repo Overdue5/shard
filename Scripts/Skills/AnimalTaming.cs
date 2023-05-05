@@ -54,7 +54,7 @@ namespace Server.SkillHandlers
             return false;
         }
 
-        public static bool MustBeSubdued(BaseCreature bc)
+       public static bool MustBeSubdued(BaseCreature bc)
         {
             if (bc.Owners.Count > 0) { return false; } //Checks to see if the animal has been tamed before
             return bc.SubdueBeforeTame && (bc.Hits > (bc.HitsMax / 10));
@@ -634,14 +634,14 @@ namespace Server.SkillHandlers
                                     ScaleStats(m_Creature, 0.50);
                             }
 
-                            if (alreadyOwned)
-                            {
-                                //m_Tamer.SendLocalizedMessage( 502797 ); // That wasn't even challenging.
-                                m_Tamer.SendAsciiMessage("{0} remembers you and accepts you once more as its master.", m_Creature.Name);
+                            //if (alreadyOwned)
+                           // {
+                           //     //m_Tamer.SendLocalizedMessage( 502797 ); // That wasn't even challenging.
+                           //     m_Tamer.SendAsciiMessage("{0} remembers you and accepts you once more as its master.", m_Creature.Name);
 
-                                if (m_Tamer is PlayerMobile)
-                                    ((PlayerMobile)m_Tamer).EndPlayerAction();
-                            }
+                           //     if (m_Tamer is PlayerMobile)
+                            //        ((PlayerMobile)m_Tamer).EndPlayerAction();
+                            //}
                             else
                             {
                                 if (m_Creature.Controlled && m_Creature.ControlMaster != null)
