@@ -2706,7 +2706,9 @@ namespace Server.Mobiles
 					item.Y = m_ItemLocations[item].Y;
 				}
 			}
-		}
+            ClearScreen();
+            SendEverything();
+        }
 
 
 		public override double RacialSkillBonus
@@ -4335,8 +4337,10 @@ namespace Server.Mobiles
 			#region GhostVision
 
 			if (!this.Alive)
-			{
-				if (m is BaseHealer || m.CanHearGhosts || !m.Alive || m.AccessLevel>AccessLevel.Counselor)
+            {
+                if (m.Hidden)
+                    return false;
+				if (m is BaseHealer || m.CanHearGhosts || !m.Alive)
 					return true;
 				return false;
 			}
