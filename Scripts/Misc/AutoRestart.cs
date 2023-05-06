@@ -8,7 +8,7 @@ namespace Server.Misc
 		public static bool Enabled = false; // is the script enabled?
 
 		private static readonly TimeSpan RestartTime = TimeSpan.FromHours( 2.0 ); // time of day at which to restart
-		private static readonly TimeSpan RestartDelay = TimeSpan.Zero; // how long the server should remain active before restart (period of 'server wars')
+		private static readonly TimeSpan RestartDelay = TimeSpan.FromMinutes(1.0); // how long the server should remain active before restart (period of 'server wars')
 
 		private static readonly TimeSpan WarningDelay = TimeSpan.FromMinutes( 1.0 ); // at what interval should the shutdown message be displayed?
 
@@ -23,7 +23,8 @@ namespace Server.Misc
 		public static void Initialize()
 		{
 			CommandSystem.Register( "Restart", AccessLevel.Administrator, Restart_OnCommand );
-			new AutoRestart().Start();
+			if (Enabled)
+                new AutoRestart().Start();
 		}
 
 		public static void Restart_OnCommand( CommandEventArgs e )
@@ -34,10 +35,12 @@ namespace Server.Misc
 			}
 			else
 			{
-				e.Mobile.SendMessage( "You have initiated server shutdown." );
 				Enabled = true;
-				m_RestartTime = DateTime.Now;
-			}
+				new AutoRestart().Start();
+                m_RestartTime = DateTime.Now;
+                
+				e.Mobile.SendMessage($"You have initiated server shutdown in {DateTime.Now + RestartDelay}, after {((m_RestartTime + RestartDelay) - DateTime.Now).TotalSeconds} seconds");
+            }
 		}
 
 		public AutoRestart() : base( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ) )
@@ -51,12 +54,15 @@ namespace Server.Misc
 		}
 
 		private void Warning_Callback()
-		{
-			World.Broadcast( 0x22, true, "The server is going down shortly." );
+        {
+            var time = Utility.LimitMinMax(0, (m_RestartTime + RestartDelay - DateTime.Now).TotalSeconds, RestartDelay.TotalSeconds);
+
+			World.Broadcast( 0x22, true, $"Britain will soon be out of reach for avatars. {Math.Truncate(time)} seconds remain");
 		}
 
         private void Restart_Callback()
         {
+            AutoSave.Save(false);
             Core.Kill(true);
         }
 
@@ -71,10 +77,8 @@ namespace Server.Misc
 			if ( WarningDelay > TimeSpan.Zero )
 			{
 				Warning_Callback();
-				DelayCall( WarningDelay, WarningDelay, new TimerCallback( Warning_Callback ) );
+				DelayCall(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(10), new TimerCallback( Warning_Callback ) );
 			}
-
-			AutoSave.Save(false);
 
 			m_Restarting = true;
 

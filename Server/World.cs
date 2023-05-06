@@ -109,9 +109,9 @@ namespace Server {
 			}
 
 			p.Release();
-
-			NetState.FlushAll();
-		}
+            NetState.FlushAll();
+            BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, text);
+        }
 
 		public static void Broadcast( int hue, bool ascii, string format, params object[] args ) {
 			Broadcast( hue, ascii, String.Format( format, args ) );

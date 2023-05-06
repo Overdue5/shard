@@ -42,18 +42,18 @@ namespace Server.Misc.EConnect
 						}
 				}
 
-			//if (!msg.Author.IsBot && msg.Channel.Id == (ulong)Channel.GlobalChat)
-			//{
-			//	try
-			//	{
-			//		CommandSystem.Handle(DiscordChatMobile.GetMobile(msg.Author.Username, Channel.GlobalChat),
-			//			$".c {msg.Content}");
-			//	}
-			//	catch (Exception e)
-			//	{
-			//		msg.Channel.SendMessageAsync($"Error run command:{e.Message}");
-			//	}
-			//}
+			if (!msg.Author.IsBot && msg.Channel.Id == (ulong)Channel.WorldChat)
+			{
+				try
+				{
+					CommandSystem.Handle(DiscordChatMobile.GetMobile(msg.Author.Username, Channel.GlobalChat),
+						$".c {msg.Content}");
+				}
+				catch (Exception e)
+				{
+					msg.Channel.SendMessageAsync($"Error run command:{e.Message}");
+				}
+			}
 
 			return Task.CompletedTask;
 		}

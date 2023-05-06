@@ -42,7 +42,7 @@ namespace Server.Misc
 			//Noob one time only bank loot caller
 			//NewbBank(m);
 			//Noob Broadcast
-			World.Broadcast(33, true, "" + m.Name + " has joined Mystic for the first time!");
+			World.Broadcast(33, true, $"New Avatar {m.Name} has appeared in Britain");
 
 		}
 

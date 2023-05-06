@@ -6,15 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using static System.Net.WebRequestMethods;
 
 namespace Server
 {
     public class BaseDiscord
     {
 #if (!DEBUG)
-		private static bool Enabled = false;
+		private static bool Enabled = true;
 #else
-        private static bool Enabled = false;
+        private static bool Enabled = true;
 #endif
         private static int MsgLength;
         private static BaseDiscord m_Discord;
@@ -56,15 +57,19 @@ namespace Server
 			None = 0,
 
 #if (!DEBUG)
-			Console = 876407848941281320,
-			GlobalChat = 871460287021207552
+			Console = 1104380028558508187,
+			GlobalChat = 1104380028558508187,
+            Announcement = 1092018919151243295,
+            WorldChat = 1104418812427763864
 #else
-	        Console = 877330007947612270,
-			GlobalChat = 877330103317708841
+            Console = 877330007947612270,
+            GlobalChat = 877330103317708841,
+            Announcement = 877330103317708841,
+            WorldChat = 877330103317708841
 #endif
-		}
+        }
 
-        async public static Task StopAsync()
+        public static async Task StopAsync()
         {
             if (discord != null)
                 await discord.StopAsync();
@@ -72,7 +77,7 @@ namespace Server
                 DTimer.Stop();
         }
 
-        async public static Task MainAsync()
+        public static async Task MainAsync()
         {
             if (!Enabled)
                 return;
@@ -86,7 +91,7 @@ namespace Server
             DTimer = Timer.DelayCall(TimeSpan.FromSeconds(5), ()=>BaseDiscord.Bot.SendMsg());
         }
 
-        async public static void CheckAndRestart()
+        public static async void CheckAndRestart()
         {
 	        if (discord == null || discord.ConnectionState != ConnectionState.Connected)
 	        {
@@ -95,7 +100,7 @@ namespace Server
 	        }
         }
 
-        async public virtual void SendToDiscord(Channel ch, string msg)
+        public virtual async void SendToDiscord(Channel ch, string msg)
         {
             if (!Enabled)
                 return;
@@ -134,7 +139,7 @@ namespace Server
             }
         }
 
-        async private Task SendAsync(Channel ch, ChannelsInfo info)
+        private async Task SendAsync(Channel ch, ChannelsInfo info)
         {
             try
             {
