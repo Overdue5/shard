@@ -91,7 +91,7 @@ namespace Server {
 			return true;
 		}
 
-		public static void Broadcast( int hue, bool ascii, string text ) {
+		public static void Broadcast( int hue, bool ascii, string text, bool toDiscord=true ) {
 			Packet p;
 
 			if ( ascii )
@@ -110,7 +110,8 @@ namespace Server {
 
 			p.Release();
             NetState.FlushAll();
-            BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, text);
+			if (toDiscord)
+                BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, text);
         }
 
 		public static void Broadcast( int hue, bool ascii, string format, params object[] args ) {
@@ -1216,7 +1217,7 @@ namespace Server {
             m_DiskWriteHandle.Reset();
 
 			if ( message )
-				Broadcast( 906, true, "World save has been initiated..." );
+				Broadcast( 906, true, "World save has been initiated...", false );
 
 			SaveStrategy strategy = SaveStrategy.Acquire();
 			Console.WriteLine( "Core: Using {0} save strategy", strategy.Name.ToLowerInvariant() );
@@ -1257,7 +1258,7 @@ namespace Server {
             Console.WriteLine("Save done in {0:F2} seconds.", watch.Elapsed.TotalSeconds);
 
 			if ( message )
-				Broadcast( 906, true, "World save complete." );
+				Broadcast( 906, true, "World save complete.", false );
 
 			NetState.Resume();
 		}

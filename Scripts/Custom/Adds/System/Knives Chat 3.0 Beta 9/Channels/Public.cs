@@ -9,7 +9,7 @@ namespace Knives.Chat3
             Commands.Add("chat");
             Commands.Add("c");
             NewChars = true;
-            DiscordChannel = BaseDiscord.Channel.GlobalChat;
+            DiscordChannel = BaseDiscord.Channel.WorldChat;
             Register(this);
         }
     }

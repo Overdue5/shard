@@ -14,6 +14,7 @@ namespace Server.Misc
 
 		private static bool m_Restarting;
 		private static DateTime m_RestartTime;
+        private bool m_SendToDiscord = true;
 
 		public static bool Restarting
 		{
@@ -57,8 +58,9 @@ namespace Server.Misc
         {
             var time = Utility.LimitMinMax(0, (m_RestartTime + RestartDelay - DateTime.Now).TotalSeconds, RestartDelay.TotalSeconds);
 
-			World.Broadcast( 0x22, true, $"Britain will soon be out of reach for avatars. {Math.Truncate(time)} seconds remain");
-		}
+			World.Broadcast( 0x22, true, $"Britain will soon be out of reach for avatars. {Math.Truncate(time)} seconds remain", m_SendToDiscord);
+            m_SendToDiscord = false;
+        }
 
         private void Restart_Callback()
         {
