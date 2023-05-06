@@ -15,9 +15,10 @@ namespace Scripts.ZTest
 			var result = new SortedDictionary<string, Dictionary<string, object>>();
 			var p = MHelper.GetMobile<PlayerMobile>();
 			int startValue = 0;
-			for (int cap = 7; cap >= 7; cap--)
+            var rnd = new Random(DateTime.Now.Millisecond);
+			for (int cap = 0; cap <= 5; cap++)
 			{
-				p.Skills.Cap = cap * 1000;
+				p.Skills.Cap = 7000;
 				for (var i = 0; i < p.Skills.Length; i++)
 				{
 					MHelper.SetAllSkills(p, startValue);
@@ -27,13 +28,21 @@ namespace Scripts.ZTest
 					int ok_count = 0;
 					int fail_count = 0;
 					var skill = p.Skills[i];
-					string name = $"{skill.Name}_{8 - cap}";
+                    while (p.SkillsTotal < 1000 * cap)
+                    {
+                        int r = rnd.Next(p.Skills.Length);
+                        while (r == i)
+                            r = rnd.Next(p.Skills.Length);
+                        p.Skills[r].Base = 100;
+                    }
+
+                    string name = $"{skill.Name}_{cap*1000}";
 					result[name] = new Dictionary<string, object>();
 					result[name]["SkillName"] = name;
 					while (skill.Base < 100)
 					{
 						if (SkillCheck.Mobile_SkillCheckLocation(p, skill.SkillName, 
-							Utility.LimitMinMax(0,/*skill.Base-20*/0, 100), skill.Base + 20))
+							Utility.LimitMinMax(0,/*skill.Base-20*/0, 100), 30))
 							ok_count++;
 						else
 							fail_count++;

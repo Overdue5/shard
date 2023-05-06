@@ -39,8 +39,8 @@ namespace Server.Misc
 		 * firewalls) or specific IP adddresses you can do so by modifying the file SocketOptions.cs found in this directory.
 		 */
 
-        public static readonly string Address = "3.19.42.179";
-		public static readonly string ServerName = "Deluxe";
+        public static readonly string Address = Config.Get("Server.IP", "127.0.0.1");
+		public static readonly string ServerName = Config.Get("Server.Name", "Deluxe");
         private static IPAddress _PublicAddress;
 		private static readonly Regex _AddressPattern = new Regex(@"([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})");
 

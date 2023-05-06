@@ -11,6 +11,7 @@ namespace Server
     public class CheckExistingIP
     {
         private static Timer warningTimer;
+        public static readonly int CharPerIp = Config.Get("Server.CharPerIp", 1);
 
         public static void Initialize()
         {
@@ -82,7 +83,7 @@ namespace Server
                 }
             }
 
-            if (accs.Count > 0)
+            if (accs.Count >= CharPerIp)
                 CheckChars(e.Mobile, accs);
         }
 
@@ -176,7 +177,7 @@ namespace Server
                 {
                     List<Mobile> mobileList = keyValuePair.Value;
 
-                    if (mobileList.Count > 1)
+                    if (mobileList.Count >= CheckExistingIP.CharPerIp)
                     {
                         stopTimer = false;
                         string multiEntry = string.Format("Staff warning message: {0}", mobileList[0].Name);
