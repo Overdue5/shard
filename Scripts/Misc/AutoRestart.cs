@@ -64,7 +64,6 @@ namespace Server.Misc
 
         private void Restart_Callback()
         {
-            AutoSave.Save(false);
             Core.Kill(true);
         }
 
@@ -82,7 +81,8 @@ namespace Server.Misc
 				DelayCall(TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(10), new TimerCallback( Warning_Callback ) );
 			}
 
-			m_Restarting = true;
+            AutoSave.Save(false);
+            m_Restarting = true;
 
 			DelayCall( RestartDelay, new TimerCallback( Restart_Callback ) );
 		}
