@@ -28,7 +28,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\OpenAI_API\OpenAI_API.csproj" />
     <ProjectReference Include="..\Server\Server.csproj" />
   </ItemGroup>
   
