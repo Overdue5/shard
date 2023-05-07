@@ -28,16 +28,17 @@ namespace Server.Misc
 				m.AddItem( pack );
 			}
 
-			PackItem(MakeNewbie(new TambourineTassel()));
-			PackItem(MakeNewbie(new Candle()));
-			PackItem(MakeNewbie(new Scissors()));
-			PackItem(MakeNewbie(new Dagger()));
-			PackItem(new Apple());
-			PackItem(new RedBook("a book", m.Name, 20, true));
-			//Region Ethy (Method used to hue item on creation)
-			EtherealHorse mount = new EtherealHorse();
-			mount.Hue = (Utility.RandomMetalHue());
-			PackItem(mount);
+
+            PackItem(new Gold(3000)); // Starting gold can be customized here
+            PackItem(new Dagger());
+            PackItem(new Spellbook());
+            PackItem(new KeyRing());
+            PackItem(new PlayerGuide());
+            PackItem(new Scissors());
+            //Region Ethy (Method used to hue item on creation)
+            //EtherealHorse mount = new EtherealHorse();
+			//mount.Hue = (Utility.RandomMetalHue());
+			//PackItem(mount);
 			//End Region
 			//Noob one time only bank loot caller
 			//NewbBank(m);
@@ -87,7 +88,7 @@ namespace Server.Misc
 			for ( int i = 0; i < PowerScroll.Skills.Count; ++i )
 				m.Skills[PowerScroll.Skills[ i ]].Cap = 120.0;
 
-			m.StatCap = 300;
+			m.StatCap = 250;
 
 
 			Container cont;
@@ -702,8 +703,8 @@ namespace Server.Misc
             //SetSkills( newChar, args.Skills, args.Profession );
 
             // Max stats
-            newChar.Str = 120; newChar.Int = 110; newChar.Dex = 70;
-            newChar.Hits = 120; newChar.Mana = 110; newChar.Stam = 70;
+            newChar.Str = 95; newChar.Int = 95; newChar.Dex = 95;
+            newChar.Hits = 95; newChar.Mana = 95; newChar.Stam = 95;
 			
             Race race = newChar.Race;
 
@@ -740,10 +741,10 @@ namespace Server.Misc
 			newChar.StatCap = 300;
 			newChar.SkillsCap = 54000; //Iza - changed from 52000 to 54000 for proper all skills cap.
 
-			//CityInfo city = GetStartLocation( args, false );
-            CityInfo city = new CityInfo("Britain", "Bank", 5948, 1465, 5, Map.Felucca);
+            //CityInfo city = GetStartLocation( args, false );
+            CityInfo city = new CityInfo("Tertahn Keep", "Star Gate", 5140, 1773, 0, Map.Felucca);
 
-			newChar.MoveToWorld( city.Location, city.Map );
+            newChar.MoveToWorld( city.Location, city.Map );
 
 			//if ((newChar.Account).AccessLevel <= AccessLevel.GameMaster)
 			//{
