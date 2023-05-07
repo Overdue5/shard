@@ -2,7 +2,7 @@ namespace Server.Misc
 {
 	public class Broadcasts
 	{
-		public static void Initialize()
+		public static void Configure()
 		{
             EventSink.AfterWorldLoad += EventSink_Load;
             EventSink.Crashed += EventSink_Crashed;
