@@ -34,7 +34,7 @@ namespace Server.Gumps
 	        m_Itemid = itemid;
 
 
-			Closable = true;
+			Closable = false;
 			Disposable = true;
 			Dragable = true;
 			Resizable = false;

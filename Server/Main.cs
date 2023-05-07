@@ -37,6 +37,11 @@ using System.Threading.Tasks;
 namespace Server
 {
 	public delegate void Slice();
+	public enum ExitCode
+    {
+		Success = 0,
+		PullAndRebuild = 100
+    }
 
     public static class Core
     {
@@ -362,7 +367,7 @@ namespace Server
 
 			if ( restart )
 				Process.Start( ExePath, Arguments );
-
+            Environment.Exit((int)ExitCode.Success);
 			m_Process.Kill();
 		}
 

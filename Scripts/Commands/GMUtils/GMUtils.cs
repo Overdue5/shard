@@ -18,7 +18,29 @@ namespace Scripts.Commands
             CommandSystem.Register("anim", AccessLevel.GameMaster, new CommandEventHandler(Animation_OnCommand));
             CommandSystem.Register("status", AccessLevel.Counselor, new CommandEventHandler(Status_OnCommand));
             CommandSystem.Register("discord", AccessLevel.Counselor, new CommandEventHandler(Discord_OnCommand));
-		}
+            CommandSystem.Register("online", AccessLevel.Counselor, new CommandEventHandler(Online_OnCommand));
+            EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
+
+
+
+        }
+
+        private static string GetOnlineReport()
+        {
+            int count = World.Mobiles.Values.Count(x => x.NetState != null && x is PlayerMobile pl && pl.AccessLevel == AccessLevel.Player);
+            if (count == 0)
+                return $"No any avatars in Britain";
+            if (count == 1)
+                return $"Now only {count} avatar in Britain";
+            return $"Now {count} avatars in Britain";
+        }
+
+        [Usage("online")]
+        [Description("Print server online status")]
+        private static void Online_OnCommand(CommandEventArgs e)
+        {
+            e.Mobile.SendAsciiMessage(GetOnlineReport());
+        }
 
         [Usage("status")]
         [Description("Print server status ans short performance info")]

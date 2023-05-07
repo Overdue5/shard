@@ -111,35 +111,72 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
-		{
-			if ( !m.Frozen && DateTime.Now >= m_NextResurrect && InRange( m, 4 ) && !InRange( oldLocation, 4 ) && InLOS( m ) )
-			{
-				if ( !m.Alive )
-				{
-					m_NextResurrect = DateTime.Now + ResurrectDelay;
+        public override void OnDoubleClickDead(Mobile m)
+        {
+            if (!Resurect(m, m.Location, false))
+			    base.OnDoubleClickDead(m);
+        }
 
-					if ( m.Map == null || !m.Map.CanFit( m.Location, 16, false, false ) )
-					{
-						m.SendLocalizedMessage( 502391 ); // Thou can not be resurrected there!
-					}
-                    else if (m.Region is HouseRegion)
-                    {
-                        m.SendAsciiMessage("You can't get resurrected in house regions.");
-                    }
-                    else if (CheckResurrect(m))
-                    {
-                        OfferResurrection(m);
-                    }
-				}
-				else if ( HealsYoungPlayers && m.Hits < m.HitsMax && m is PlayerMobile && ((PlayerMobile)m).Young )
-				{
-					OfferHeal( (PlayerMobile) m );
-				}
-			}
+        public override void OnMovement( Mobile m, Point3D oldLocation )
+		{
+			Resurect(m, oldLocation, true);
 		}
 
-		public BaseHealer( Serial serial ) : base( serial )
+        public bool Resurect(Mobile m, Point3D oldLocation, bool onMovement)
+        {
+            if (m.Frozen)
+            {
+				if (!onMovement)
+					m.SendAsciiMessage("You are frozen and cannot be healed");
+                return false;
+            }
+
+            if (DateTime.Now < m_NextResurrect)
+            {
+                if (!onMovement)
+                    this.Say("I need to take a break.");
+                return false;
+            }
+
+			if (!m.Alive || ((HealsYoungPlayers && m.Hits < m.HitsMax && m is PlayerMobile pl && pl.Young)))
+            {
+                if (InRange(m, 4) && InLOS(m) && (!onMovement || !InRange(oldLocation, 4)))
+                {
+                    if (!m.Alive)
+                    {
+
+                        if (m.Map == null || !m.Map.CanFit(m.Location, 16, false, false))
+                        {
+                            m.SendLocalizedMessage(502391); // Thou can not be resurrected there!
+                        }
+                        else if (m.Region is HouseRegion)
+                        {
+                            m.SendAsciiMessage("You can't get resurrected in house regions.");
+                        }
+                        else if (CheckResurrect(m))
+                        {
+                            m_NextResurrect = DateTime.Now + ResurrectDelay;
+                            OfferResurrection(m);
+                        }
+                    }
+                    else
+                    {
+                        m_NextResurrect = DateTime.Now + ResurrectDelay;
+                        OfferHeal((PlayerMobile)m);
+                    }
+                }
+                else
+                {
+                    if (!onMovement)
+                        m.SendLocalizedMessage(501853);// Target is too far away.
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public BaseHealer( Serial serial ) : base( serial )
 		{
 		}
 
