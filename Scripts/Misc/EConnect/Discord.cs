@@ -8,7 +8,9 @@ namespace Server.Misc.EConnect
 	public class Discord : BaseDiscord
 	{
 		public static void Initialize()
-		{
+        {
+            if (!Enabled)
+                return;
 			Bot = new Discord();
 			try
 			{

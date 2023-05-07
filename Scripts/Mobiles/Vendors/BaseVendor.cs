@@ -433,7 +433,12 @@ namespace Server.Mobiles
 
         }
 
-		public virtual void TurnToGargoyle()
+        public override void OnDoubleClick(Mobile from)
+        {
+            base.OnDoubleClick(from);
+        }
+
+        public virtual void TurnToGargoyle()
 		{
 			for ( var i = 0; i < Items.Count; ++i )
 			{

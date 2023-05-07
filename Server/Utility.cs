@@ -1378,6 +1378,16 @@ namespace Server
 			return Random( 2201, 24 );
 		}
 
+		public static int RandomBrightHue()
+		{
+			if (RandomDouble() < 0.1)
+			{
+				return RandomList(0x62, 0x71);
+			}
+
+			return RandomList(0x03, 0x0D, 0x13, 0x1C, 0x21, 0x30, 0x37, 0x3A, 0x44, 0x59);
+		}
+
 		public static int RandomAnimalHue()
 		{
 			return Random( 2301, 18 );

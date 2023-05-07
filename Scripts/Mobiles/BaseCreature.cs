@@ -4187,6 +4187,24 @@ namespace Server.Mobiles
         }
         #endregion
 
+        public virtual void SetWearable(Item item, int hue = -1, double dropChance = 0.0)
+        {
+            if (hue > -1)
+                item.Hue = hue;
+
+            item.Movable = dropChance > Utility.RandomDouble();
+
+            if (!CheckEquip(item) || !OnEquip(item) || !item.OnEquip(this))
+            {
+                PackItem(item);
+            }
+            else
+            {
+                AddItem(item);
+            }
+        }
+
+
         public override void OnDoubleClick(Mobile from)
         {
             if (from.AccessLevel >= AccessLevel.GameMaster && !Body.IsHuman)

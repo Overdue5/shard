@@ -2,6 +2,9 @@
 # Project Assemblies
 /Server.dll
 /Server/bin
+/OpenAI_API/bin
+/OpenAI_API/obj
+/OpenAI_API.dll
 /Server/obj
 /Scripts.dll
 /Scripts/bin
@@ -23,7 +26,12 @@
 /Output/Scripts.dll
 /Output/*.html
 /Output/*.xml
+/Output/*.dll
+/Output/*.csv
+/Output/*.xls
+/Output/*.nupkg
 /Output/Web
+/Output/netstandard2.0/*
 /Web
 /Docs
 /Reports
