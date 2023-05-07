@@ -467,7 +467,7 @@ namespace Server.SkillHandlers
                     m_Count++;
 
                     DamageEntry de = m_Creature.FindMostRecentDamageEntry(false);
-                    bool alreadyOwned = (m_Creature.LastOwner == m_Tamer);
+                    bool alreadyOwned = false;//(m_Creature.LastOwner == m_Tamer);
 
                     if (!m_Tamer.InRange(m_Creature, 6))
                     {

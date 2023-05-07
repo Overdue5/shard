@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using Server;
 using Server.Commands;
 using Server.Mobiles;
+using Server.Engines.Harvest;
+using Server.Items;
+using Server.Targeting;
+using CommandEventArgs = Server.Commands.CommandEventArgs;
+using CommandEventHandler = Server.Commands.CommandEventHandler;
 
 namespace Scripts.Commands
 {
@@ -20,8 +26,9 @@ namespace Scripts.Commands
             CommandSystem.Register("discord", AccessLevel.Counselor, new CommandEventHandler(Discord_OnCommand));
             CommandSystem.Register("online", AccessLevel.Counselor, new CommandEventHandler(Online_OnCommand));
             EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
-
-
+#if DEBUG
+            CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
+#endif
 
         }
 
@@ -35,6 +42,70 @@ namespace Scripts.Commands
             return $"Now {count} avatars in Britain";
         }
 
+        [Usage("harvestStat")]
+        [Description("CheckHarvestStat")]
+        private static void CheckHarvestStat_OnCommand(CommandEventArgs e)
+        {
+            var loc = new Point3D(2481, 46, 0);
+            var target = new StaticTarget(loc, 1343);
+            var tileID = 17727;
+            HarvestDefinition def = Mining.System.GetDefinition(tileID);
+            HarvestBank bank = def.GetBank(Map.Felucca, loc.X, loc.Y);
+            var tool = new Pickaxe();
+            var exist = new Dictionary<Serial, int>();
+            foreach (var item in e.Mobile.Backpack.Items.ToArray())
+            {
+                if (item is BaseOre bo)
+                {
+                    bo.Delete();
+                    continue;
+                }
+
+                exist[item.Serial] = item.Amount;
+            }
+
+            Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    bank.ResetRespawnTimer();
+                    Mining.System.FinishHarvesting(e.Mobile, tool, def, target, null);
+                }
+            });
+
+            Timer.DelayCall(TimeSpan.FromSeconds(5), () =>
+            {
+                var loot = new Dictionary<Serial, int>();
+                var stat = new Dictionary<string, float>();
+                var oreTotal = 0;
+                foreach (Item item in e.Mobile.Backpack.Items.ToArray())
+                {
+                    if (item.Deleted)
+                        continue;
+                    if (exist.Keys.Contains(item.Serial))
+                    {
+                        if (exist[item.Serial] == item.Amount)
+                            continue;
+                        loot[item.Serial] = exist[item.Serial] - item.Amount;
+                    }
+
+                    loot[item.Serial] = item.Amount;
+                    if (item is BaseOre)
+                        oreTotal += item.Amount;
+                    stat[item.GetType().ToString()] = item.Amount;
+                }
+
+                foreach (string statKey in stat.Keys)
+                {
+                    int p = (int)(100 * stat[statKey] / oreTotal);
+                    e.Mobile.SendAsciiMessage($"{statKey}:{(int)stat[statKey]}:{p}");
+                }
+                e.Mobile.SendAsciiMessage($"Total Ore:{oreTotal}");
+                tool.Delete();
+            });
+
+        }
+        
         [Usage("online")]
         [Description("Print server online status")]
         private static void Online_OnCommand(CommandEventArgs e)
