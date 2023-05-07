@@ -657,6 +657,7 @@ namespace Server.SkillHandlers
                             if (!m_Creature.Controlled && m_Creature.ControlMaster == null)
                             {
                                 //m_Tamer.SendAsciiMessage("The {0} accepts you as its master.", m_Creature.Name);
+                                m_Tamer.SendAsciiMessage(CliLoc.LocToString(502799));
                                 m_Creature.SetControlMaster(m_Tamer);
                             }
                             else
