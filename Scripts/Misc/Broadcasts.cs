@@ -24,7 +24,8 @@ namespace Server.Misc
         {
             try
             {
-                World.Broadcast(0x35, true, "Deluxe: Britain is available again");
+                World.Broadcast(0x35, true, "Britain is available again");
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: Britain is available again");
             }
             catch
             {

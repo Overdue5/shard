@@ -60,12 +60,14 @@ namespace Server
 			Console = 1104380028558508187,
 			GlobalChat = 1104380028558508187,
             Announcement = 1092018919151243295,
-            WorldChat = 1104418812427763864
+            WorldChat = 1104418812427763864,
+            ConsoleImportant = 1104746301393997864
 #else
             Console = 877330007947612270,
             GlobalChat = 877330103317708841,
             Announcement = 877330103317708841,
-            WorldChat = 877330103317708841
+            WorldChat = 877330103317708841,
+            ConsoleImportant = 877330103317708841
 #endif
         }
 

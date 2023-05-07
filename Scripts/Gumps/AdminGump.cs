@@ -2784,10 +2784,14 @@ namespace Server.Gumps
         private void Shutdown(bool restart, bool save)
         {
             CommandLogging.WriteLine(m_From, "{0} {1} shutting down server (Restart: {2}) (Save: {3})", m_From.AccessLevel, CommandLogging.Format(m_From), restart, save);
-			if (restart)
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Server is restarting, back soon");
-			else
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Server shutdown");
+            if (restart)
+            {
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: The Britain is currently unavailable, be back up shortly...");
+            }
+            else
+            {
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: The Britain is currently unavailable");
+            }
 
             if (save)
                 InvokeCommand("Save");
