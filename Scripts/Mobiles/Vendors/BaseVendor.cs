@@ -436,6 +436,7 @@ namespace Server.Mobiles
         public override void OnDoubleClick(Mobile from)
         {
             base.OnDoubleClick(from);
+			VendorBuy(from);
         }
 
         public virtual void TurnToGargoyle()
