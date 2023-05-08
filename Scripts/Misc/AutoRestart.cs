@@ -23,7 +23,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Restart", AccessLevel.Administrator, Restart_OnCommand );
+			//CommandSystem.Register( "Restart", AccessLevel.Administrator, Restart_OnCommand );
 			if (Enabled)
                 new AutoRestart().Start();
 		}

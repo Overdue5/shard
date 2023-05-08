@@ -2,20 +2,25 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
+using Discord;
 using Server;
 using Server.Commands;
 using Server.Mobiles;
 using Server.Engines.Harvest;
 using Server.Items;
+using Server.Misc;
 using Server.Targeting;
 using CommandEventArgs = Server.Commands.CommandEventArgs;
 using CommandEventHandler = Server.Commands.CommandEventHandler;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Scripts.Commands
 {
     public class GMUtils
     {
         private static Hashtable _PreviousAccessLevel = null;
+        private static bool m_RestartFlag = false;
 
         public static void Initialize()
         {
@@ -25,6 +30,7 @@ namespace Scripts.Commands
             CommandSystem.Register("status", AccessLevel.Counselor, new CommandEventHandler(Status_OnCommand));
             CommandSystem.Register("discord", AccessLevel.Counselor, new CommandEventHandler(Discord_OnCommand));
             CommandSystem.Register("online", AccessLevel.Counselor, new CommandEventHandler(Online_OnCommand));
+            CommandSystem.Register("restart", AccessLevel.GameMaster, new CommandEventHandler(Restart_OnCommand));
             EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
@@ -40,6 +46,87 @@ namespace Scripts.Commands
             if (count == 1)
                 return $"Now only {count} avatar in Britannia";
             return $"Now {count} avatars in Britannia";
+        }
+
+        [Usage("Restart")]
+        [Description("Restart server")]
+        private static void Restart_OnCommand(CommandEventArgs e)
+        {
+            if (m_RestartFlag)
+            {
+                e.Mobile.SendAsciiMessage($"Restart already activated");
+                return;
+            }
+
+            var msg = new List<string>();
+            msg.Add("Portals to Britannia close,\nAvatars pause,\nJourney's end beckons.");
+            msg.Add("Travelers heed,\nMagic fades,\nBritannia's doors slowly closing.");
+            msg.Add("Mystic currents shift,\nGates to Britannia soon to seal,\nFarewell, dear avatars.");
+            msg.Add("Crystal moon above,\nBritannia's gate will soon close,\nTravelers, rest well.");
+            msg.Add("Darkness fills the sky,\nBritannia's doors soon will shut,\nJourney's end for now.");
+            msg.Add("Sunset on the shore,\nBritannia bids farewell,\nRest, weary traveler.");
+            msg.Add("Majestic mountains,\nBritannia soon sleeps,\nTravelers dream of dawn.");
+            msg.Add("Nightfall in Britannia,\nJourneys pause, gates close,\nRest, brave adventurer.");
+            msg.Add("The gates of Britannia will soon be barred to all weary travelers.");
+            msg.Add("The land of Britannia shall soon close its doors to all wandering souls.");
+            msg.Add("The time approaches when Britannia shall deny entry to all who seek it.");
+            msg.Add("The way to Britannia will soon be sealed to all those who would enter.");
+            msg.Add("A warning to all who seek Britannia: soon its gates shall be shut tight.");
+            msg.Add("As the arcane energies shift, Britannia's paths close to all but the initiated.");
+            msg.Add("The winds of magic warn of Britannia's impending closure to mortal passage.");
+            msg.Add("The enchanted realm of Britannia will soon bar its gates to wandering feet.");
+            msg.Add("The veil between worlds grows thin, soon Britannia will close its mystical doors.");
+            World.Broadcast(33, false, $"{msg[Utility.Random(msg.Count)]}");
+            int delay = 5;
+            var restartTime = DateTime.UtcNow;
+            try
+            {
+                if (e.Length >= 1)
+                    delay = e.GetInt32(0);
+                restartTime += TimeSpan.FromMinutes(delay);
+            }
+            catch (Exception exception)
+            {
+                e.Mobile.SendAsciiMessage($"Error restart: {exception.Message}");
+                return;
+            }
+
+            m_RestartFlag = true;
+            Timer.DelayCall(TimeSpan.Zero, () => {RestartPrepare(restartTime, true); });
+            AutoSave.Save(false);
+        }
+
+        private static void RestartPrepare(DateTime restartTime, bool restart)
+        {
+            var time = (restartTime - DateTime.UtcNow).TotalSeconds;
+            if (!m_RestartFlag)
+            {
+                return;
+            }
+
+            if (time > 60)
+            {
+                World.Broadcast(33, true, $"Britannia will be unavailable for travelers in {Math.Ceiling(time / 60)} minutes");
+                if (time>90)
+                    Timer.DelayCall(TimeSpan.FromMinutes(1), () => { RestartPrepare(restartTime, restart); });
+                else
+                    Timer.DelayCall(TimeSpan.FromSeconds(40), () => { RestartPrepare(restartTime, restart); });
+                return;
+            }
+            else if (time < 60 && time > 0)
+            {
+                World.Broadcast(33, true, $"Britannia will be unavailable for travelers in {Math.Ceiling(time)} seconds");
+                if (time>20)
+                    Timer.DelayCall(TimeSpan.FromSeconds(10), () => { RestartPrepare(restartTime, restart); });
+                else
+                    Timer.DelayCall(TimeSpan.FromSeconds(1), () => { RestartPrepare(restartTime, restart); });
+            }
+            else if (time <=0 )
+            {
+                AutoSave.Save(false);
+                Core.Kill(restart);
+            }
+
         }
 
         [Usage("harvestStat")]
