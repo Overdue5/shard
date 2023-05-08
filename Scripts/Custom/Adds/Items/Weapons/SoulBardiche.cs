@@ -9,8 +9,8 @@ namespace Server.Items
             Name = "Soul Infused Bardiche";
             Weight = 15.0;
             Speed = 302;
-            MinDamage = 18;
-            MaxDamage = 36;
+            MinDamage = 30;
+            MaxDamage = 48;
             AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
             DamageLevel = WeaponDamageLevel.Force;
             DurabilityLevel = WeaponDurabilityLevel.Substantial;
