@@ -13,7 +13,8 @@ namespace Server.Misc
 		{
 			try
 			{
-			    World.Broadcast(0x35, true, "Deluxe: The server has crashed, attempting to restart automatically...");
+			    World.Broadcast(0x35, true, "Deluxe: Communication with the Britannia cut off");
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.ConsoleImportant, $"Deluxe: The server has crashed, attempting to restart automatically...");
             }
 			catch
 			{
@@ -24,8 +25,8 @@ namespace Server.Misc
         {
             try
             {
-                World.Broadcast(0x35, true, "Britain is available again");
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: Britain is available again");
+                World.Broadcast(0x35, true, "Britannia is available again");
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: Britannia is available again");
             }
             catch
             {
@@ -36,7 +37,7 @@ namespace Server.Misc
 		{
 			try
 			{
-				World.Broadcast( 0x35, true, "Deluxe: The Britain is currently unavailable, be back up shortly...");
+				World.Broadcast( 0x35, true, "Deluxe: The Britannia is currently unavailable, be back up shortly...");
 			}
 			catch
 			{

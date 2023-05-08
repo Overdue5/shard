@@ -177,7 +177,7 @@ namespace Server
                 {
                     List<Mobile> mobileList = keyValuePair.Value;
 
-                    if (mobileList.Count >= CheckExistingIP.CharPerIp)
+                    if (mobileList.Count > CheckExistingIP.CharPerIp)
                     {
                         stopTimer = false;
                         string multiEntry = string.Format("Staff warning message: {0}", mobileList[0].Name);

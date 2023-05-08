@@ -971,8 +971,8 @@ namespace Server.Commands
             //Then add prefix and name to avoid duplicate of those in IRC chat (since that is done separate)
             if (mob != null)
                 message = string.Format("{0} {1}", GetStaffTag(mob), message);
-
-			BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant,message);
+			if (ac>AccessLevel.Player)
+			    BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant,message);
             foreach (NetState state in NetState.Instances)
             {
                 Mobile m = state.Mobile;

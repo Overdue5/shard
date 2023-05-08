@@ -36,10 +36,10 @@ namespace Scripts.Commands
         {
             int count = World.Mobiles.Values.Count(x => x.NetState != null && x is PlayerMobile pl && pl.AccessLevel == AccessLevel.Player);
             if (count == 0)
-                return $"No any avatars in Britain";
+                return $"No any avatars in Britannia";
             if (count == 1)
-                return $"Now only {count} avatar in Britain";
-            return $"Now {count} avatars in Britain";
+                return $"Now only {count} avatar in Britannia";
+            return $"Now {count} avatars in Britannia";
         }
 
         [Usage("harvestStat")]

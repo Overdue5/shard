@@ -2786,11 +2786,11 @@ namespace Server.Gumps
             CommandLogging.WriteLine(m_From, "{0} {1} shutting down server (Restart: {2}) (Save: {3})", m_From.AccessLevel, CommandLogging.Format(m_From), restart, save);
             if (restart)
             {
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: The Britain is currently unavailable, be back up shortly...");
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: The Britannia is currently unavailable, be back up shortly...");
             }
             else
             {
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: The Britain is currently unavailable");
+                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: The Britannia is currently unavailable");
             }
 
             if (save)
