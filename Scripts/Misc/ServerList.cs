@@ -40,7 +40,12 @@ namespace Server.Misc
 		 */
 
         public static readonly string Address = Config.Get("Server.IP", "127.0.0.1");
-		public static readonly string ServerName = Config.Get("Server.Name", "Deluxe");
+#if DEBUG
+        public static readonly string ServerName = "Deluxe Debug";
+#else
+        public static readonly string ServerName = Config.Get("Server.Name", "Deluxe");
+#endif
+
         private static IPAddress _PublicAddress;
 		private static readonly Regex _AddressPattern = new Regex(@"([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})");
 

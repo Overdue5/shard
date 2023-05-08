@@ -972,6 +972,7 @@ namespace Server.Commands
             if (mob != null)
                 message = string.Format("{0} {1}", GetStaffTag(mob), message);
 
+			BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant,message);
             foreach (NetState state in NetState.Instances)
             {
                 Mobile m = state.Mobile;

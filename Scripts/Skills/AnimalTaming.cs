@@ -467,7 +467,7 @@ namespace Server.SkillHandlers
                     m_Count++;
 
                     DamageEntry de = m_Creature.FindMostRecentDamageEntry(false);
-                    bool alreadyOwned = (m_Creature.LastOwner == m_Tamer);
+                    bool alreadyOwned = false;//(m_Creature.LastOwner == m_Tamer);
 
                     if (!m_Tamer.InRange(m_Creature, 6))
                     {
@@ -657,6 +657,7 @@ namespace Server.SkillHandlers
                             if (!m_Creature.Controlled && m_Creature.ControlMaster == null)
                             {
                                 //m_Tamer.SendAsciiMessage("The {0} accepts you as its master.", m_Creature.Name);
+                                m_Tamer.SendAsciiMessage(CliLoc.LocToString(502799));
                                 m_Creature.SetControlMaster(m_Tamer);
                             }
                             else

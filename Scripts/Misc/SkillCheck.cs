@@ -9,7 +9,7 @@ namespace Server.Misc
 	public class SkillCheck
 	{
 		//Used to calculate the base repetition quantity.
-		public const int TotalRepetitionParts = 78; //How many times may we use the same location/target for gain
+		public const int TotalRepetitionParts = 250; //How many times may we use the same location/target for gain
 
 		//private const bool AntiMacroCode = false; //Change this to false to disable anti-macro code
 

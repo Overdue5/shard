@@ -11,6 +11,11 @@ namespace Server.Engines.Harvest
 
         readonly HarvestDefinition m_Definition;
 
+        public void ResetRespawnTimer()
+        {
+            m_NextRespawn = DateTime.Now;
+        }
+
         public HarvestDefinition Definition
         {
             get { return m_Definition; }

@@ -209,7 +209,12 @@ namespace Server.Engines.Help
 		public static void Initialize()
 		{
 			CommandSystem.Register( "Pages", AccessLevel.Counselor, Pages_OnCommand );
-		}
+            EventSink.WorldSave += args =>
+            {
+				if (List.Count>0)
+                    BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"{List.Count} messaged in PageQueue");
+            };
+}
 
 		public static bool CheckAllowedToPage( Mobile from )
 		{
