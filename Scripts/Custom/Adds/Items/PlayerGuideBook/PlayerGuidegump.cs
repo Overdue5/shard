@@ -310,27 +310,27 @@ Questing Commands
                 switch (info.ButtonID)
                 {
                     case (int)Buttons.WebsiteButton1:
-                        sender.LaunchBrowser("http://in-uo.net/info/2011-11-06-11-05-03/regular--commands");//......Command List Url
+                        sender.LaunchBrowser("https://discord.gg/48TUWrhRU3");//......Command List Url
                         break;
 
                     case (int)Buttons.WebsiteButton2:
-                        sender.LaunchBrowser("http://in-uo.net/info/server-rules");//......Shard Rules Url
+                        sender.LaunchBrowser("https://discord.gg/48TUWrhRU3");//......Shard Rules Url
                         break;
 
                     case (int)Buttons.WebsiteButton3:
-                        sender.LaunchBrowser("http://in-uo.net/forums");//......Forum Url
+                        sender.LaunchBrowser("https://discord.gg/48TUWrhRU3");//......Forum Url
                         break;
 
                     case (int)Buttons.WebsiteButton4:
-                        sender.LaunchBrowser("http://in-uo.net/donate");//......Shard Donation Store Url
+                        sender.LaunchBrowser("https://discord.gg/48TUWrhRU3");//......Shard Donation Store Url
                         break;
 
                     case (int)Buttons.WebsiteButton5:
-                        sender.LaunchBrowser("http://in-uo.net/changelogs/2011-07-28-18-05-48");//......Shard Updates Url
+                        sender.LaunchBrowser("https://discord.gg/48TUWrhRU3");//......Shard Updates Url
                         break;
 
                     case (int)Buttons.WebsiteButton6:
-                        sender.LaunchBrowser("http://in-uo.net/join");//how to patch
+                        sender.LaunchBrowser("https://discord.gg/48TUWrhRU3");//how to patch
                         break;
                 }
             }

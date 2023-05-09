@@ -183,7 +183,7 @@ namespace Server.Engines.Help
                 if (m_Entry.Sender.NetState != null && index != -1)
                 {
                     m_Entry.Sender.SendLocalizedMessage(1008077, false, (index + 1).ToString());// Thank you for paging. Queue status : 
-                    m_Entry.Sender.SendMessage("You can reference our website at www.in-uo.net. To cancel your page, please select the help button again and select cancel.");
+                    m_Entry.Sender.SendMessage("You can reference https://discord.gg/48TUWrhRU3. To cancel your page, please select the help button again and select cancel.");
 
                     if (m_Entry.Handler != null && m_Entry.Handler.NetState == null)
                     {
