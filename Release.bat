@@ -3,6 +3,6 @@
 
 :loop
 
-dotnet build -c Debug && "%CURPATH%\Output\Server.exe"
+dotnet build -c Release && "%CURPATH%\Output\Server.exe"
 if %ERRORLEVEL% EQU 100	goto loop
 
