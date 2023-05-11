@@ -437,7 +437,6 @@ namespace Server
 	public enum AccessLevel
 	{
 		Player,
-		VIP,
 		Counselor,
 		GameMaster,
 		Seer,

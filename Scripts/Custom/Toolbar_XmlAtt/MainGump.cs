@@ -19,8 +19,8 @@ namespace Server.Gumps
 		{
 			//Instance = World.GetCore(typeof(ToolbarCore)) as ToolbarCore ?? new ToolbarCore();
 
-			CommandHandlers.Register("Toolbar", AccessLevel.VIP, Toolbar_OnCommand);
-			CommandHandlers.Register("ToolbarLength", AccessLevel.VIP, ToolbarL_OnCommand);
+			CommandHandlers.Register("Toolbar", AccessLevel.Counselor, Toolbar_OnCommand);
+			CommandHandlers.Register("ToolbarLength", AccessLevel.Counselor, ToolbarL_OnCommand);
 
 			EventSink.Login += OnLogin;
 			EventSink.PlayerDeath += OnPlayerDeath;
@@ -36,7 +36,7 @@ namespace Server.Gumps
 				ToolbarInfo.CreateNew(e.Mobile);
 			}
 
-			if (e.Mobile.AccessLevel >= AccessLevel.VIP)
+			if (e.Mobile.AccessLevel >= AccessLevel.Counselor)
 			{
 				SendToolbar(e.Mobile);
 			}
@@ -44,7 +44,7 @@ namespace Server.Gumps
 
 		public static void OnPlayerDeath(PlayerDeathEventArgs e)
 		{
-			if (e.Mobile.AccessLevel < AccessLevel.VIP || e.Mobile.NetState == null)
+			if (e.Mobile.AccessLevel < AccessLevel.Counselor || e.Mobile.NetState == null)
 			{
 				return;
 			}
