@@ -1691,13 +1691,14 @@ namespace Server.Mobiles
 			get
 			{
 				if( Core.ML && AccessLevel == AccessLevel.Player )
-					return Math.Min( base.Str, 150 );
+					return Math.Min( base.Str, 100 );
 
 				return base.Str;
 			}
 			set
 			{
-				base.Str = value;
+
+				base.Str = Math.Min(value, 100);
 			}
 		}
 
@@ -1707,13 +1708,13 @@ namespace Server.Mobiles
 			get
 			{
 				if( Core.ML && AccessLevel == AccessLevel.Player )
-					return Math.Min( base.Int, 150 );
+					return Math.Min( base.Int, 100 );
 
 				return base.Int;
 			}
 			set
 			{
-				base.Int = value;
+				base.Int = Math.Min(value, 100); ;
 			}
 		}
 
@@ -1723,13 +1724,13 @@ namespace Server.Mobiles
 			get
 			{
 				if( Core.ML && AccessLevel == AccessLevel.Player )
-					return Math.Min( base.Dex, 150 );
+					return Math.Min( base.Dex, 100 );
 
 				return base.Dex;
 			}
 			set
 			{
-				base.Dex = value;
+				base.Dex = Math.Min(value, 100);
 			}
 		}
 

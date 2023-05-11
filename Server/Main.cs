@@ -361,14 +361,29 @@ namespace Server
 			Kill( false );
 		}
 
-		public static void Kill( bool restart )
+		public static void Kill( bool restart , bool update=false)
 		{
 			HandleClosed();
 
 			if ( restart )
 				Process.Start( ExePath, Arguments );
+			if (update) 
+            {
+                var startInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    FileName = "git.exe",
+                    Arguments = "fetch -v --progress \"origin\"",
+                    WorkingDirectory = Directory.GetParent(System.IO.Directory.GetCurrentDirectory())?.ToString(),
+                };
+                var process = System.Diagnostics.Process.Start(startInfo);
+                string output = process.StandardOutput.ReadToEnd();
+                Console.WriteLine(output);
+                process.WaitForExit();
+                Environment.Exit((int)ExitCode.PullAndRebuild);
+            }
             Environment.Exit((int)ExitCode.Success);
-			m_Process.Kill();
 		}
 
 		private static void HandleClosed()

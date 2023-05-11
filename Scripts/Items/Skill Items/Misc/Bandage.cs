@@ -490,6 +490,20 @@ namespace Server.Items
 					{
                         m_Healer.SendAsciiMessage($"{Utility.LimitMax(toHeal,m_Healer.HitsMax-m_Healer.Hits)} " +
                                                   $"points of damage have been healed");
+                        if ((healing + anatomy + m_Healer.Stam + m_Healer.Int) / 700 > Utility.RandomDouble() && m_Healer.TotalWeight<m_Healer.MaxWeight)
+                        {
+                            var bb = new BloodyBandage(1);
+							if (m_Healer.PlaceInBackpack(bb))
+                            {
+                                m_Healer.SendAsciiMessage("You put bloody bandage in your pack");
+                            }
+                            else
+                            {
+                                bb.Delete();
+                            }
+                            
+                        }
+
                     }
                     else if ( !origin.Deleted && (origin.EventItem && !origin.EventItemConsume))
                     {
@@ -498,8 +512,9 @@ namespace Server.Items
                         from.PlaySound(0x57);
                         from.SendAsciiMessage("You are able to re-use your bandage and put it in your pack.");
                     }
+                    
 
-					//m_Patient.Heal( (int)toHeal );
+                    //m_Patient.Heal( (int)toHeal );
                     //Rev ~ 140 update
                     m_Patient.Heal((int)toHeal, m_Healer, false);
 				}

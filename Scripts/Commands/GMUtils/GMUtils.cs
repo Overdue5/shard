@@ -14,6 +14,8 @@ using Server.Targeting;
 using CommandEventArgs = Server.Commands.CommandEventArgs;
 using CommandEventHandler = Server.Commands.CommandEventHandler;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Diagnostics;
+using System.IO;
 
 namespace Scripts.Commands
 {
@@ -31,6 +33,8 @@ namespace Scripts.Commands
             CommandSystem.Register("discord", AccessLevel.Counselor, new CommandEventHandler(Discord_OnCommand));
             CommandSystem.Register("online", AccessLevel.Counselor, new CommandEventHandler(Online_OnCommand));
             CommandSystem.Register("restart", AccessLevel.GameMaster, new CommandEventHandler(Restart_OnCommand));
+            CommandSystem.Register("update", AccessLevel.GameMaster, new CommandEventHandler(Update_OnCommand));
+            CommandSystem.Register("shutdown", AccessLevel.GameMaster, new CommandEventHandler(ShutDown_OnCommand));
             EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
@@ -47,10 +51,28 @@ namespace Scripts.Commands
                 return $"Now only {count} avatar in Britannia";
             return $"Now {count} avatars in Britannia";
         }
+        [Usage("update")]
+        [Description("Update server")]
+        private static void Update_OnCommand(CommandEventArgs e)
+        {
+            Restart_part(e, restart: false, update:true);
+        }
+
+        [Usage("ShutDown")]
+        [Description("Shutdown server")]
+        private static void ShutDown_OnCommand(CommandEventArgs e)
+        {
+            Restart_part(e, restart: false);
+        }
 
         [Usage("Restart")]
         [Description("Restart server")]
         private static void Restart_OnCommand(CommandEventArgs e)
+        {
+            Restart_part(e, restart: true);
+        }
+
+        private static void Restart_part(CommandEventArgs e, bool restart, bool update=false)
         {
             if (m_RestartFlag)
             {
@@ -92,11 +114,12 @@ namespace Scripts.Commands
             }
 
             m_RestartFlag = true;
-            Timer.DelayCall(TimeSpan.Zero, () => {RestartPrepare(restartTime, true); });
+            Timer.DelayCall(TimeSpan.Zero, () => { RestartPrepare(restartTime, restart, update); });
             AutoSave.Save(false);
+
         }
 
-        private static void RestartPrepare(DateTime restartTime, bool restart)
+        private static void RestartPrepare(DateTime restartTime, bool restart, bool update=false)
         {
             var time = (restartTime - DateTime.UtcNow).TotalSeconds;
             if (!m_RestartFlag)
@@ -108,23 +131,23 @@ namespace Scripts.Commands
             {
                 World.Broadcast(33, true, $"Britannia will be unavailable for travelers in {Math.Ceiling(time / 60)} minutes");
                 if (time>90)
-                    Timer.DelayCall(TimeSpan.FromMinutes(1), () => { RestartPrepare(restartTime, restart); });
+                    Timer.DelayCall(TimeSpan.FromMinutes(1), () => { RestartPrepare(restartTime, restart, update); });
                 else
-                    Timer.DelayCall(TimeSpan.FromSeconds(40), () => { RestartPrepare(restartTime, restart); });
+                    Timer.DelayCall(TimeSpan.FromSeconds(40), () => { RestartPrepare(restartTime, restart, update); });
                 return;
             }
             else if (time < 60 && time > 0)
             {
                 World.Broadcast(33, true, $"Britannia will be unavailable for travelers in {Math.Ceiling(time)} seconds");
                 if (time>20)
-                    Timer.DelayCall(TimeSpan.FromSeconds(10), () => { RestartPrepare(restartTime, restart); });
+                    Timer.DelayCall(TimeSpan.FromSeconds(10), () => { RestartPrepare(restartTime, restart, update); });
                 else
-                    Timer.DelayCall(TimeSpan.FromSeconds(1), () => { RestartPrepare(restartTime, restart); });
+                    Timer.DelayCall(TimeSpan.FromSeconds(1), () => { RestartPrepare(restartTime, restart, update); });
             }
             else if (time <=0 )
             {
                 AutoSave.Save(false);
-                Core.Kill(restart);
+                Core.Kill(restart, update);
             }
 
         }
