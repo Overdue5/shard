@@ -161,6 +161,31 @@ namespace Server.Items
 				}
 
 				BaseHouse house = BaseHouse.FindHouseAt( from );
+				 #region VendorTile
+				foreach (Mobile m in from.GetMobilesInRange(0))
+				{
+					if (m is PlayerVendor)
+					{
+						from.SendMessage("There is someone in the way!");
+						return;
+					}
+				}
+				foreach (Item i in from.GetItemsInRange(0))
+				{
+					if (i is VendorTile && i.Location.X == from.Location.X && i.Location.Y == from.Location.Y)
+					{
+						Mobile v = new PlayerVendor(from, house);
+
+						v.Direction = from.Direction & Direction.Mask;
+						v.MoveToWorld(from.Location, from.Map);
+
+						v.SayTo(from, 503246); // Ah! it feels good to be working again.
+
+						this.Delete();
+						return;
+					}
+				}
+				#endregion
 
 				if ( house == null || !house.IsOwner( from ) )
 				{
