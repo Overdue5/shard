@@ -8,11 +8,27 @@ namespace Server.Voting
 		public static void Initialize()
 		{
 			CommandSystem.Register("Vote", AccessLevel.Player, Vote_OnCommand);
+			CommandSystem.Register("VoteFix", AccessLevel.GameMaster, VoteUpdate_OnCommand);
 			CommandSystem.Register("VoteConfig", AccessLevel.GameMaster, VoteConfig_OnCommand);
 			CommandSystem.Register("VoteInstance", AccessLevel.GameMaster, VoteInstance_OnCommand);
 		}
 
-		[Usage("Vote")]
+
+        [Usage("VoteFix")]
+        [Description("Cast a vote for your shard.")]
+        private static void VoteUpdate_OnCommand(CommandEventArgs e)
+        {
+            foreach (var item in World.Items.Values)
+            {
+				if (item is VoteItem vi)
+                {
+                    if (vi.VoteSite.URL.Contains("google"))
+                        vi.VoteSite.URL = VoteConfig.__DefaultURL;
+                }
+			}
+        }
+
+        [Usage("Vote")]
 		[Description("Cast a vote for your shard.")]
 		private static void Vote_OnCommand(CommandEventArgs e)
 		{
