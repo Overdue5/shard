@@ -87,7 +87,7 @@ namespace Server.Items
 		public Runebook( int maxCharges ) : base( Core.AOS ? 0x22C5 : 0xEFA )
 		{
 			Weight = (Core.SE ? 1.0 : 3.0);
-			LootType = LootType.Regular;
+			LootType = LootType.Blessed;
 			Hue = 0x461;
 
 			Layer = (Core.AOS ? Layer.Invalid : Layer.OneHanded);
