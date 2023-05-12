@@ -9,7 +9,7 @@ namespace Server.Items
             Name = "Apalalas Claw";
             Weight = 12.0;
             Speed = 450;
-            MinDamage = 21;
+            MinDamage = 29;
             MaxDamage = 42;
             AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
             DamageLevel = WeaponDamageLevel.Force;
