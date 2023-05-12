@@ -209,12 +209,7 @@ namespace Server.Engines.Help
 		public static void Initialize()
 		{
 			CommandSystem.Register( "Pages", AccessLevel.Counselor, Pages_OnCommand );
-            EventSink.WorldSave += args =>
-            {
-				if (List.Count>0)
-                    BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"{List.Count} messaged in PageQueue");
-            };
-}
+        }
 
 		public static bool CheckAllowedToPage( Mobile from )
 		{
@@ -334,8 +329,8 @@ namespace Server.Engines.Help
 			m_KeyedBySender[entry.Sender] = entry;
 
 			bool isStaffOnline = false;
-
-			foreach ( NetState ns in NetState.Instances )
+            BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"New messaged in PageQueue\n{entry.Sender.Name}:{entry.Message}");
+            foreach ( NetState ns in NetState.Instances )
 			{
 				Mobile m = ns.Mobile;
 
