@@ -9,8 +9,8 @@ namespace Server.Items
             Name = "Skyfall Longsword";
             Weight = 6.0;
             Speed = 400;
-            MinDamage = 10;
-            MaxDamage = 28;
+            MinDamage = 34;
+            MaxDamage = 48;
             AccuracyLevel = WeaponAccuracyLevel.Eminently;
             DamageLevel = WeaponDamageLevel.Force;
             DurabilityLevel = WeaponDurabilityLevel.Substantial;
