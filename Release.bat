@@ -1,8 +1,8 @@
 @SET CURPATH=%~dp0
 
-@SET EXENAME=Server
 
-dotnet build -c Release
+:loop
 
-if %ERRORLEVEL% EQU 0 "%CURPATH%\Output\%EXENAME%.exe"
+dotnet build -c Debug && "%CURPATH%\Output\Server.exe"
+if %ERRORLEVEL% EQU 100	goto loop
 

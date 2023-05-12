@@ -222,7 +222,7 @@ namespace Server.Engines
 		}
 
 		[Usage("DateTime")]
-		[Description("Сообщает текущую дату и время.")]
+		[Description("Print current dateTime")]
 		public static void DateTime_OnCommand(CommandEventArgs e)
 		{
 			if (e.Mobile is PlayerMobile)
