@@ -1,0 +1,58 @@
+Alchemy: Beginner's Guide to Alchemy, Essential Alchemy Techniques, Intermediate Alchemy Methods, Advanced Alchemy Skills, Mastering the Art of Alchemy
+Anatomy: Anatomy Basics for Beginners, The Human Body and its Functions, Intermediate Anatomy Techniques, Advanced Anatomy Methods, Mastery of Anatomy
+AnimalLore: A Beginner's Guide to Animal Companions, Mastering the Language of the Wild, Taming the Untamable, The Art of Beast Whispering, A Zoologist's Handbook
+ItemID: A Beginner's Guide to Item Identification, Uncovering the Secrets of Objects, Mastering the Art of Appraisal, The Art of Divination through Objects, A Collector's Compendium
+ArmsLore: A Beginner's Guide to the Art of War, Swords, Axes, and Maces: A Comprehensive Guide, Mastering the Art of Weaponry, The Art of Swordplay and Battle Tactics, Legendary Armaments and their Histories
+Parry: A Beginner's Guide to Defending, Mastering the Art of Parrying, The Art of Dueling and Defensive Maneuvers, Defend Yourself: A Practical Guide, The Techniques of Expert Fencers
+Begging: A Beginner's Guide to the Art of Begging, The Art of Persuasion and Charm, Mastering the Art of Obtaining What You Want, The Psychology of Begging and Negotiation, The Art of the Deal: A Beggar's Guide
+Blacksmith: Beginner's Guide to Blacksmithing, Essential Blacksmithing Techniques, Intermediate Blacksmithing Methods, Advanced Blacksmithing Skills, Mastering the Art of Blacksmithing
+Fletching:Crafting the Perfect Arrow: Beginner's Guide,Mastering the Art of Bow-Making: Novice's Handbook,From Twig to Shaft: A Fletching Journey,Fletching Finesse: Intermediate Techniques,Arrowhead Addict: Expert Guide to Fletching Mastery
+Peacemaking:Harmony Begins Within: Beginner's Guide,Peaceful Persuasion: Novice's Handbook,Finding the Right Words: A Peacemaker's Journey,Soothing the Savage Beast: Intermediate Techniques,The Art of Peace: Expert Guide to Peacemaking Mastery
+Camping:Back to Basics: Beginner's Guide to Camping,Wilderness Survival: Novice's Handbook,From Tent to Teepee: A Camper's Journey,Campfire Cooking: Intermediate Techniques,Mastering the Great Outdoors: Expert Guide to Camping Mastery
+Carpentry: Carpentry Fundamentals for Beginners, Essential Carpentry Techniques, Intermediate Carpentry Methods, Advanced Carpentry Skills, Mastering the Art of Carpentry
+Cartography:Mastering Mapmaking: A Guide to Precision Cartography,Charting Uncharted Waters: Navigating with Expert Cartography,From Blank Paper to Treasure Troves: Advanced Cartography Techniques,Beyond the Basics: A Comprehensive Guide to Cartography Mastery,Finding the Way: Secrets of Cartography for Adventurers
+Cooking: Cooking Fundamentals for Beginners, Essential Cooking Techniques, Intermediate Cooking Methods, Advanced Cooking Skills, Mastering the Art of Cooking
+DetectHidden: The Fundamentals of Detecting Hidden, Effective Detection Techniques, Intermediate Detection Methods, Advanced Detection Strategies, Mastering the Art of Detection
+Discordance: Discordance Basics for Beginners, The Art of Discordance, Intermediate Discordance Techniques, Advanced Discordance Methods, Mastery of Discordance
+EvalInt: The Fundamentals of Evaluating Intelligence, Effective Intelligence Evaluation Techniques, Intermediate Intelligence Evaluation Methods, Advanced Intelligence Evaluation Strategies, Mastering the Art of Intelligence Evaluation
+Healing: Healing Basics for Beginners, Essential Healing Techniques, Intermediate Healing Methods, Advanced Healing Skills, Mastering the Art of Healing
+Fishing: Fishing Fundamentals for Beginners, Essential Fishing Techniques, Intermediate Fishing Methods, Advanced Fishing Skills, Mastering the Art of Fishing
+Forensics:The Detective's Handbook: Forensic Science and Evidence Collection,From Clues to Conclusions: Mastering Forensic Investigation,The Art of Deduction: Advanced Forensic Techniques for Experts,The Science of Crime-Solving: Essential Forensic Knowledge,The Ultimate Forensic Guide: Uncovering Secrets and Solving Mysteries
+Herding: The Fundamentals of Herding, Effective Herding Techniques, Intermediate Herding Methods, Advanced Herding Strategies, Mastering the Art of Herding
+Hiding:The Art of Invisibility: Mastering the Hiding Skill,Vanishing Act: Advanced Techniques for Expert Hiders,Disappearing in Plain Sight: A Guide to Hiding Mastery,The Hidden Truth: Secrets of Hiding for the Savvy Adventurer,The Ultimate Hiding Handbook: Techniques for Any Situation
+Provocation:The Art of Taunting: Mastering Provocation Techniques,Stirring Up Trouble: Advanced Provocation Tactics,Pushing Buttons: A Guide to Provocation Mastery,Words as Weapons: Secrets of Provocation for Adventurers,The Ultimate Provocation Handbook: Techniques for Any Opponent
+Inscribe: Inscription Fundamentals for Beginners, Essential Inscription Techniques, Intermediate Inscription Methods, Advanced Inscription Skills, Mastering the Art of Inscription
+Lockpicking:The Art of Picking Locks: Beginner's Guide,Lockpicking: The Next Level,Mastering Lockpicking: Advanced Techniques,The Locksmith's Handbook: Expert Training,The Ultimate Guide to Lockpicking Mastery
+Magery:Introduction to Magery: Beginner's Guide,The Fundamentals of Magery,Mastering the Arcane Arts: Advanced Techniques,The Magician's Handbook: Expert Training,The Ultimate Guide to Magery Mastery
+MagicResist:Introduction to Magic Resistance: Beginner's Guide,The Basics of Magic Resistance,Mastering Magic Resistance: Advanced Techniques,The Defender's Handbook: Expert Training,The Ultimate Guide to Magic Resistance Mastery
+Tactics:Introduction to Tactics: Beginner's Guide,The Basics of Combat Tactics,Mastering Tactical Warfare: Advanced Techniques,The Warrior's Handbook: Expert Training,The Ultimate Guide to Tactical Mastery
+Snooping:Introduction to Snooping: Beginner's Guide,The Art of Sneaking: Basic Techniques,Mastering the Art of Snooping: Advanced Techniques,The Spy's Handbook: Expert Training,The Ultimate Guide to Snooping Mastery
+Musicianship:Introduction to Musicianship: Beginner's Guide,The Basics of Music Theory,Mastering Musicianship: Advanced Techniques,The Bard's Handbook: Expert Training,The Ultimate Guide to Musicianship Mastery
+Poisoning:Introduction to Poisoning: Beginner's Guide,The Fundamentals of Poisoning,Mastering the Art of Poisoning: Advanced Techniques,The Assassin's Handbook: Expert Training,The Ultimate Guide to Poisoning Mastery
+Archery: Archery Fundamentals for Beginners, Essential Archery Techniques, Intermediate Archery Methods, Advanced Archery Skills, Mastering the Art of Archery
+SpiritSpeak:Whispers from Beyond,Haunting Voices,The Ethereal Realm Unveiled,Ghosts, Wraiths, and Specters: A Field Guide to SpiritSpeak Entities,Echoes of the Dead: Developing Your Psychic Sensitivity in SpiritSpeak
+Stealing:The Art of Sleight of Hand,The Silent Thief,The Pickpocket's Handbook,Techniques of the Shadow,The Fingers of the Night
+Tailoring:The Basics of Needle and Thread,Designing for Dummies,Garment Construction for Beginners,Mastering the Art of Fashion,The Tailor's Guide to Excellence
+AnimalTaming:The Art of Domestication,Animal Communication Techniques,Nurturing and Training Your Pets,The Tamer's Companion,The Care and Keeping of Magical Beasts
+TasteId:Savory or Sour? The Basics of Flavor Identification,The Palate's Palette: An Introduction to Taste,Aroma Analysis: Scent Detection Techniques,Unlocking the Secrets of Taste,The Taste ID Handbook
+Tinkering:The Tinker's Toolkit,The Inventor's Handbook,Creating with Clockwork,The Art of Gadgetry,Mastering Mechanical Marvels
+Tracking:Reading the Signs,Hunting 101,Footprints and Fur: The Tracker's Guide,The Art of Trailing,Survival Tracking
+Veterinary:Caring for Creatures,Basic Animal Anatomy,Diagnosis and Treatment of Common Ailments,The Veterinarian's Handbook,The Animal Healer's Guide
+Swords:Swordplay for Beginners,The Art of Dueling,The Sword Master's Handbook,Perfecting Your Parry,The Blade's Song
+Macing:Basics of Bashing,Hammer and Mace: The Art of Smashing,Crushing Your Enemies,Mastering the Mace,Mace Combat Techniques
+Fencing: Fencing Fundamentals for Beginners, Essential Fencing Techniques, Intermediate Fencing Methods, Advanced Fencing Skills, Mastering the Art of Fencing
+Wrestling: Basic Grappling Techniques, Intermediate Wrestling Moves, Advanced Combat Throws, Expert Submission Holds, Masterful Ground-and-Pound
+Lumberjacking: The Basics of Woodcutting, Intermediate Lumberjacking Techniques, Advanced Tree Felling Methods, Expert Timber Harvesting, Masterful Deforestation Strategies
+Mining: Mining 101: The Basics, Intermediate Mining Techniques, Advanced Ore Extraction Methods, Expert Geology and Mineralogy, Masterful Mining Strategies
+Meditation: The Art of Concentration, Intermediate Meditation Techniques, Advanced Mindfulness Practices, Expert Transcendental Meditation, Masterful Enlightenment Techniques
+Stealth: Sneaking 101: The Fundamentals, Intermediate Stealth Techniques, Advanced Invisibility Methods, Expert Assassination Techniques, Masterful Subterfuge Strategies
+RemoveTrap: The Basics of Disarming Traps, Intermediate Trap Removal Techniques, Advanced Demolition Strategies, Expert Explosive Disarmament, Masterful Trap Neutralization Tactics
+Necromancy: The Foundations of Necromancy, Intermediate Corpse Reanimation Techniques, Advanced Soul Manipulation Methods, Expert Life-Draining Spells, Masterful Undead Army Creation
+Focus: The Fundamentals of Focus, Intermediate Concentration Techniques, Advanced Mental Fortitude Practices, Expert Channeling Abilities, Masterful Psychic Mastery Techniques
+Chivalry: The Virtues of Chivalry, Intermediate Knightly Techniques, Advanced Divine Intervention Methods, Expert Holy Smite Tactics, Masterful Paladin Tactics
+Bushido: The Way of the Samurai, Intermediate Bushido Techniques, Advanced Dueling Methods, Expert Katana Techniques, Masterful Swordsmanship Strategies
+Ninjitsu: The Art of Stealth and Subterfuge, Intermediate Ninjitsu Techniques, Advanced Assassin Methods, Expert Disguise and Infiltration Tactics, Masterful Shadow Techniques
+Spellweaving: The Basics of Spellweaving, Intermediate Weaving Techniques, Advanced Spell Crafting Methods, Expert Magic Enhancements, Masterful Weaving Mastery
+Mysticism: The Mysteries of the Universe, Intermediate Mystical Techniques, Advanced Astral Projection Methods, Expert Elemental Magic, Masterful Cosmic Mastery Techniques
+Imbuing: The Art of Imbuing, Intermediate Imbuing Techniques, Advanced Item Enhancement Methods, Expert Artifact Creation, Masterful Item Customization Strategies
+Throwing: The Basics of Throwing, Intermediate Throwing Techniques, Advanced Precision Targeting Methods, Expert Lethal Throwing Techniques, Masterful Throwing Mastery
