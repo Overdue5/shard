@@ -1990,7 +1990,11 @@ namespace Server
 				if (m_Owner.Mana > m_Owner.ManaMax)
 						m_Owner.Mana--;
 
-				Delay = Interval = Mobile.GetManaRegenRate( m_Owner );
+				if (this.Running && m_Owner.Mana == m_Owner.ManaMax)
+					Stop();
+
+
+                Delay = Interval = Mobile.GetManaRegenRate( m_Owner );
 			}
 		}
 
@@ -2015,7 +2019,10 @@ namespace Server
 				if (m_Owner.Hits > m_Owner.HitsMax)
 					m_Owner.Hits--;
 
-				Delay = Interval = Mobile.GetHitsRegenRate( m_Owner );
+                if (m_Owner.Hits == m_Owner.HitsMax)
+                    this.Stop();
+
+                Delay = Interval = Mobile.GetHitsRegenRate( m_Owner );
 			}
 		}
 
@@ -2041,7 +2048,10 @@ namespace Server
 				if (m_Owner.Stam > m_Owner.StamMax)
 					m_Owner.Stam--;
 
-				Delay = Interval = Mobile.GetStamRegenRate( m_Owner );
+                if (m_Owner.Stam == m_Owner.StamMax)
+                    this.Stop();
+
+                Delay = Interval = Mobile.GetStamRegenRate( m_Owner );
 			}
 		}
 
