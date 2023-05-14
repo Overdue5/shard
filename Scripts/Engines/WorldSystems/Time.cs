@@ -5,6 +5,7 @@ using Server.Network;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Server.Items;
 
 namespace Server.Engines
 {
@@ -405,7 +406,28 @@ namespace Server.Engines
 			return (Day)((date.GetTotalDays() % UtilityWorldTime.DaysInWeek) + 1);
 		}
 
-#endregion Public Methods
+        public static bool IsLight(Mobile mob)
+        {
+            if (mob.LightLevel <= 15 && mob.LightLevel >= 1 || UtilityWorldTime.NowLightLevel<=15)
+                return true;
+            if (mob.FindItemOnLayer(Layer.OneHanded) is BaseLight lh && lh.Burning || mob.FindItemOnLayer(Layer.TwoHanded) is BaseLight rh && rh.Burning)
+                return true;
+
+            var items = mob.GetItemsInRange(4);
+            foreach (Item item in items)
+            {
+                if (item is BaseLight bs && bs.Burning)
+                {
+                    items.Free();
+                    return true;
+                }
+
+            }
+			items.Free();
+            return false;
+        }
+
+        #endregion Public Methods
 
 #region Private Methods
 
@@ -539,7 +561,7 @@ namespace Server.Engines
 #region Private Classes
 
 		private class AutoDayUpdateTimer : Timer
-		{
+        {
 #region Private Fields
 
 			private static WorldDateTime m_LastDate;
@@ -599,7 +621,7 @@ namespace Server.Engines
 
 					if ((mobile.Region != null ? mobile.Region.Light : mobile.Map.Light) < 0)
 					{
-						if (sendlight && (mobile.AccessLevel == AccessLevel.Player || !m_AutoChangeLightLevelList.Contains(mobile.Serial)))
+						if (sendlight && mobile.LightLevel==0 && (mobile.AccessLevel == AccessLevel.Player || !m_AutoChangeLightLevelList.Contains(mobile.Serial)))
 							state.Send(packetLight);
 					}
 

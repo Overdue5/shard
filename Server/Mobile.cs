@@ -6120,8 +6120,8 @@ namespace Server
 
 					CheckLightLevels( false );
 
-					/*if ( m_NetState != null )
-						m_NetState.Send( new PersonalLightLevel( this ) );*/
+					if ( m_NetState != null && value > 0)
+						m_NetState.Send( new PersonalLightLevel( this ) );
 				}
 			}
 		}
@@ -11069,7 +11069,7 @@ namespace Server
 		}
 		#endregion
 
-		public void InitStats( int str, int dex, int intel )
+        public void InitStats( int str, int dex, int intel )
 		{
 			m_Str = str;
 			m_Dex = dex;
