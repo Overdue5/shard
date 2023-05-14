@@ -60,7 +60,12 @@ namespace Server.Spells.Second
                             m.SendAsciiMessage("You are under the effect of a curse spell and cannot get any stat bonuses");
                     }
                     else
+                    {
                         SpellHelper.AddStatBonus(Caster, m, StatType.Str);
+                        int percentage = (int)(SpellHelper.GetOffsetScalar(Caster, m, false) * 100);
+                        TimeSpan length = SpellHelper.GetDuration(Caster, m);
+                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Strength, 1075845, length, m, percentage.ToString()));
+                    }
                 }
                 else
                 {

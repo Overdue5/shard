@@ -129,8 +129,13 @@ namespace Server
 				m_Owner = owner;
 				Priority = TimerPriority.OneMinute;
 			}
+            public NightSightTimer(Mobile owner, TimeSpan duration) : base(duration)
+            {
+                m_Owner = owner;
+                Priority = TimerPriority.OneMinute;
+            }
 
-			protected override void OnTick()
+protected override void OnTick()
 			{
 				m_Owner.EndAction( typeof( LightCycle ) );
 				m_Owner.LightLevel = 0;

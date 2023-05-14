@@ -31,7 +31,12 @@ namespace Server.Spells.First
             {
                 Mobile targ = (Mobile)SphereSpellTarget;
 
-                new LightCycle.NightSightTimer(targ).Start();
+                TimeSpan duration = TimeSpan.FromMinutes(Utility.Random(15, 25));
+                new LightCycle.NightSightTimer(targ, duration).Start();
+                
+                
+                BuffInfo.AddBuff(targ, new BuffInfo(BuffIcon.NightSight, 1015008, 1015008, duration, targ));
+
                 int level = (int)Math.Abs(LightCycle.DungeonLevel * (Caster.Skills[SkillName.Magery].Base / 100));
 
                 if (level > 25 || level < 0)
