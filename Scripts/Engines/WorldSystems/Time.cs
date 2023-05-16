@@ -406,6 +406,11 @@ namespace Server.Engines
 			return (Day)((date.GetTotalDays() % UtilityWorldTime.DaysInWeek) + 1);
 		}
 
+        public static bool IsDark(Mobile mob)
+        {
+            return !IsLight(mob);
+        }
+
         public static bool IsLight(Mobile mob)
         {
             if (mob.LightLevel <= 15 && mob.LightLevel >= 1 || UtilityWorldTime.NowLightLevel<=15)
