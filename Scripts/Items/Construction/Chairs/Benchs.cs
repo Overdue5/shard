@@ -1,8 +1,10 @@
+using Server.Items.Construction.Chairs;
+
 namespace Server.Items
 {
 	[Furniture]
 	[Flipable( 0xB2D, 0xB2C )]
-	public class WoodenBench : Item
+	public class WoodenBench : BaseChair
 	{
 		[Constructable]
 		public WoodenBench() : base( 0xB2D )
