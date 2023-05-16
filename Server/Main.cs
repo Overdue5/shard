@@ -374,7 +374,7 @@ namespace Server
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     FileName = "git.exe",
-                    Arguments = "fetch -v --progress \"origin\"",
+                    Arguments = "pull --progress -v --no-rebase \"origin\"",
                     WorkingDirectory = Directory.GetParent(System.IO.Directory.GetCurrentDirectory())?.ToString(),
                 };
                 var process = System.Diagnostics.Process.Start(startInfo);
