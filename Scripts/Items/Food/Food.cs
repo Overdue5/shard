@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Server.Commands.GMUtils;
 using Server.ContextMenus;
 using Server.Network;
 using Solaris.CliLocHandler;
@@ -74,7 +75,7 @@ namespace Server.Items
 				// Play a random "eat" sound
 				from.PlaySound( Utility.Random( 0x3A, 3 ) );
 
-                from.PublicOverheadMessage(MessageType.Emote, 0x22, true, string.Format("*You see {0} eating some {1}*", from.Name, Name==null ? CliLoc.LocToString(LabelNumber) : Name));
+				from.SayAction(GMExtendMethods.EmotionalTextHue.NormalAction, $"You see {from.Name} eating some {Name ?? CliLoc.LocToString(LabelNumber)}");
 
 				if ( from.Body.IsHuman && !from.Mounted )
 					from.Animate( 34, 5, 1, true, false, 0 );

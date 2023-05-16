@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Commands;
+using Server.Commands.GMUtils;
 using Server.Factions;
 using Server.Items;
 using Server.Mobiles;
@@ -1095,25 +1096,25 @@ namespace Server.Engines.Craft
                         if (RetainsColorFrom(m_System, item.GetType()))
                         {
                             if (typeRes == typeof (OakLog))
-                                item.Name = string.Format("Oak {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Oak {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof (AshLog))
-                                item.Name = string.Format("Ash {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Ash {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof (YewLog))
-                                item.Name = string.Format("Yew {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Yew {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof (HeartwoodLog))
-                                item.Name = string.Format("Heartwood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Heartwood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof (BloodwoodLog))
-                                item.Name = string.Format("Bloodwood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Bloodwood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof (FrostwoodLog))
-                                item.Name = string.Format("Frostwood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Frostwood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof(MahoganyLog))
-                                item.Name = string.Format("Mahoganywood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Mahoganywood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof(CedarLog))
-                                item.Name = string.Format("Cedarwood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Cedarwood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof(WillowLog))
-                                item.Name = string.Format("Willowwood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Willowwood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                             else if (typeRes == typeof(MystWoodLog))
-                                item.Name = string.Format("Mystwood {0}", !string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower());
+                                item.Name = $"Mystwood {(!string.IsNullOrEmpty(item.Name) ? item.Name.ToLower() : CliLoc.LocToString(item.LabelNumber).ToLower())}";
                         }
                     }
 
@@ -1306,6 +1307,7 @@ namespace Server.Engines.Craft
 				: base(TimeSpan.Zero, TimeSpan.FromSeconds(craftSystem.Delay), iCountMax)
 			{
 				m_From = from;
+				m_From.SayAction(GMExtendMethods.EmotionalTextHue.NormalAction, $"You see that {m_From.Name} started making a {(!string.IsNullOrEmpty(craftItem.NameString) ? craftItem.NameString.ToLower() : CliLoc.LocToString(craftItem.NameNumber).ToLower())}");
 				m_CraftItem = craftItem;
 				m_iCount = 0;
 				m_iCountMax = iCountMax;
