@@ -265,7 +265,7 @@ namespace Server.Mobiles
                 return base.HitsRegen;
             }
         }
-        public virtual int ManaRegen
+        public override int ManaRegen
         {
             get
             {
@@ -274,7 +274,7 @@ namespace Server.Mobiles
                 return base.ManaRegen;
             }
         }
-        public virtual int StamRegen
+        public override int StamRegen
         {
             get
             {
