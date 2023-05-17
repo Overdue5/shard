@@ -47,7 +47,9 @@ namespace Server.Mobiles
 			PackNecroReg( 12, 40 );
 		}
 
-		public override OppositionGroup OppositionGroup
+        public override bool IsNight => true;
+
+        public override OppositionGroup OppositionGroup
 		{
 			get{ return OppositionGroup.FeyAndUndead; }
 		}

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Engines;
 using Server.Engines.Quests;
 using Server.Engines.Quests.Doom;
 using Server.Engines.Quests.Haven;
@@ -255,6 +256,33 @@ namespace Server.Mobiles
         private DateTime m_LastPoisonMessage = DateTime.MinValue;
 
         #endregion
+
+        public override int HitsRegen {
+            get
+            {
+                if (IsNight && UtilityWorldTime.IsNight())
+                    return base.HitsRegen + 2;
+                return base.HitsRegen;
+            }
+        }
+        public virtual int ManaRegen
+        {
+            get
+            {
+                if (IsNight && UtilityWorldTime.IsNight())
+                    return base.ManaRegen + 2;
+                return base.ManaRegen;
+            }
+        }
+        public virtual int StamRegen
+        {
+            get
+            {
+                if (IsNight && UtilityWorldTime.IsNight())
+                    return base.StamRegen + 2;
+                return base.StamRegen;
+            }
+        }
 
         public virtual InhumanSpeech SpeechType { get { return null; } }
 

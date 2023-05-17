@@ -46,7 +46,9 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void GenerateLoot()
+        public override bool IsNight => true;
+
+        public override void GenerateLoot()
 		{
             PackGold(100);
 			AddLoot( LootPack.Poor );

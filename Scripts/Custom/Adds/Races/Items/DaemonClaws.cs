@@ -1,4 +1,5 @@
-﻿using Server.Mobiles;
+﻿using Server.Commands.GMUtils;
+using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
 
@@ -55,7 +56,7 @@ namespace Server.Items
                 if (c.Owner is PlayerMobile)
                 {
                     ((ICarvable)obj).Carve(from, this);
-                    c.PublicOverheadMessage(MessageType.Emote, 33, true, string.Format("*You see {0} steal the soul of {1}*", from.Name, c.Owner.Name));
+                    c.Owner.SayAction(GMExtendMethods.EmotionalTextHue.AttackAction, $"You see {from.Name} steal the soul of {c.Owner.Name}");
                     from.PlaySound(0x19c);
                     from.PlaySound(20);
                     from.PlaySound(230);

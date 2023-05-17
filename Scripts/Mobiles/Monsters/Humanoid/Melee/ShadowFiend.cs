@@ -48,7 +48,9 @@ namespace Server.Mobiles
 			m_Timer.Start();
 		}
 
-		public override int GetIdleSound()
+        public override bool IsNight => true;
+        
+        public override int GetIdleSound()
 		{
 			return 0x37A;
 		}

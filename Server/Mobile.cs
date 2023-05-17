@@ -519,10 +519,16 @@ namespace Server
 		}
 
 		public virtual bool ShowContextMenu { get { return false; } }
-		#endregion
+        #endregion
 
-		#region CompareTo(...)
-		public int CompareTo( IEntity other )
+        public virtual bool IsNight => false;
+
+        public virtual int HitsRegen => 1;
+        public virtual int ManaRegen => 1;
+        public virtual int StamRegen => 1;
+        
+        #region CompareTo(...)
+        public int CompareTo( IEntity other )
 		{
 			if( other == null )
 				return -1;
@@ -1984,7 +1990,7 @@ namespace Server
 				if (m_Owner.CanRegenMana)// m_Owner.Alive )
 				{
 					if (m_Owner.Mana < m_Owner.ManaMax)
-						m_Owner.Mana++;
+						m_Owner.Mana += m_Owner.ManaRegen;
 				}
 
 				if (m_Owner.Mana > m_Owner.ManaMax)
@@ -2011,10 +2017,10 @@ namespace Server
 			protected override void OnTick()
 			{
 				if (m_Owner.CanRegenHits)// m_Owner.Alive && !m_Owner.Poisoned )
-				{
-					if (m_Owner.Hits < m_Owner.HitsMax)
-						m_Owner.Hits++;
-				}
+                {
+                    if (m_Owner.Hits < m_Owner.HitsMax)
+                        m_Owner.Hits += m_Owner.HitsRegen;
+                }
 
 				if (m_Owner.Hits > m_Owner.HitsMax)
 					m_Owner.Hits--;
@@ -2042,7 +2048,7 @@ namespace Server
 				if (m_Owner.CanRegenStam)// m_Owner.Alive )
 				{
 					if (m_Owner.Stam < m_Owner.StamMax)
-						m_Owner.Stam++;
+						m_Owner.Stam += m_Owner.StamRegen;
 				}
 
 				if (m_Owner.Stam > m_Owner.StamMax)

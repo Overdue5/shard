@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Commands.GMUtils;
 using Server.Items;
 using Server.Mobiles;
 using Server.Spells;
@@ -72,7 +73,7 @@ namespace Server
                 }
 
                 m.PlaySound(m.GetHurtSound());
-
+                damage = from.ChangeDamage(m, damage);
 			    m.Damage( damage, from );
 				return damage;
 			}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Scripts.SpecialSystems;
 using Server.Accounting;
+using Server.Commands.GMUtils;
 using Server.ContextMenus;
 using Server.Custom.PvpToolkit;
 using Server.Custom.PvpToolkit.Tournament;
@@ -4277,7 +4278,6 @@ namespace Server.Mobiles
 		{
 			if (Map != null)
 			{
-				Packet p = null;
 
 				IPooledEnumerable eable = Map.GetClientsInRange(Location);
 
@@ -6075,50 +6075,51 @@ namespace Server.Mobiles
 				string toMsg = string.Empty, fromMsg = string.Empty;
 				if (poison.Level == 0)
 				{
-					toMsg = "*You feel sickly*";
-					fromMsg = string.Format("*You see {0} looks sickly*", Name);
+					toMsg = "You feel sickly";
+					fromMsg = $"You see {Name} looks sickly";
 				}
 				else if (poison.Level == 1)
 				{
 					switch (Utility.Random(2))
 					{
 						case 0:
-							toMsg = "*You feel sickly*";
-							fromMsg = string.Format("*You see {0} looks sickly*", Name);
+							toMsg = "You feel sickly";
+							fromMsg = $"You see {Name} looks sickly";
 							break;
 						case 1:
-							toMsg = "*You feel very ill*";
-							fromMsg = string.Format("*You see {0} looks very ill*", Name);
+							toMsg = "You feel very ill";
+							fromMsg = $"You see {Name} looks very ill";
 							break;
 					}
 				}
 				else if (poison.Level == 2)
 				{
-					toMsg = "*You feel very ill*";
-					fromMsg = string.Format("*You see {0} looks very ill*", Name);
+					toMsg = "You feel very ill";
+					fromMsg = $"You see {Name} looks very ill";
 				}
 				else if (poison.Level == 3)
 				{
 					switch (Utility.Random(2))
 					{
 						case 0:
-							toMsg = "*You feel very ill*";
-							fromMsg = string.Format("*You see {0} looks very ill*", Name);
+							toMsg = "You feel very ill";
+							fromMsg = $"You see {Name} looks very ill";
 							break;
 						case 1:
-							toMsg = "*You feel extremely sick*";
-							fromMsg = string.Format("*You see {0} looks extremely sick*", Name);
+							toMsg = "You feel extremely sick";
+							fromMsg = $"You see {Name} looks extremely sick";
 							break;
 					}
 				}
 				else
 				{
-					toMsg = "*You feel very ill*";
-					fromMsg = string.Format("*You see {0} looks extremely sick*", Name);
+					toMsg = "You feel very ill";
+					fromMsg = $"You see {Name} looks extremely sick";
 				}
 
-				LocalOverheadMessage(MessageType.Regular, 0x22, true, toMsg);
-				NonlocalOverheadMessage(MessageType.Regular, 0x22, true, fromMsg);
+				//LocalOverheadMessage(MessageType.Regular, 0x22, true, toMsg);
+				//NonlocalOverheadMessage(MessageType.Regular, 0x22, true, fromMsg);
+				this.SayAction(GMExtendMethods.EmotionalTextHue.PainFeel, fromMsg, toMsg);
 			}
 		}
 

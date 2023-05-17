@@ -6,7 +6,7 @@ namespace Server.WebServices
 {
     class HttpServer
     {
-        private static HttpServer Server;
+        private static HttpServer Server = null;
         private readonly int Port = 2595;
 
         protected HttpListener Listener;

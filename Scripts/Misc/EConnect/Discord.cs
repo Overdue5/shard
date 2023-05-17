@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Server.Commands;
+using Server.WebServices;
 
 namespace Server.Misc.EConnect
 {
@@ -57,7 +58,19 @@ namespace Server.Misc.EConnect
 				}
 			}
 
-			return Task.CompletedTask;
+            //if (!msg.Author.IsBot && msg.Channel.Id == (ulong)Channel.TradeChannel)
+            //{
+            //    try
+            //    {
+            //        VendorItems.    
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        msg.Channel.SendMessageAsync($"Error run command:{e.Message}");
+            //    }
+            //}
+
+            return Task.CompletedTask;
 		}
 
 	}

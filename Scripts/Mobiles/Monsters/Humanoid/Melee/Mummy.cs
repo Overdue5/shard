@@ -44,7 +44,9 @@ namespace Server.Mobiles
 			PackItem( new Bandage( 10 ) );
 		}
 
-		public override void GenerateLoot()
+        public override bool IsNight => true;
+
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich );
 			AddLoot( LootPack.Gems );

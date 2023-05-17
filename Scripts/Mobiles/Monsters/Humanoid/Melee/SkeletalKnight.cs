@@ -51,7 +51,9 @@ namespace Server.Mobiles
 			PackItem( new WoodenShield() );
 		}
 
-		public override void GenerateLoot()
+        public override bool IsNight => true;
+
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
             PackGold(100, 150);

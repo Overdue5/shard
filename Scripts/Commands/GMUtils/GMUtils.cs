@@ -16,6 +16,11 @@ using CommandEventHandler = Server.Commands.CommandEventHandler;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Diagnostics;
 using System.IO;
+using static Server.Games.PaintBall.PBGameItem;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
+using Server.Network;
+using MessageType = Server.Network.MessageType;
 
 namespace Scripts.Commands
 {
@@ -38,6 +43,7 @@ namespace Scripts.Commands
             EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
+            CommandSystem.Register("saycheck", AccessLevel.Player, new CommandEventHandler(Say_OnCommand));
 #endif
 
         }
@@ -240,10 +246,10 @@ namespace Scripts.Commands
         {
 	        try
             {
-                BaseDiscord.StopAsync();
-		        Timer.DelayCall(TimeSpan.FromSeconds(5),  ()=>BaseDiscord.MainAsync());
+                _ = BaseDiscord.StopAsync();
+                Timer.DelayCall(TimeSpan.FromSeconds(5), () => _ = BaseDiscord.MainAsync());
 	        }
-	        catch (Exception exception)
+	        catch
 	        {
 		        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Restart discord finished with error.{e}");
 	        }
@@ -338,11 +344,76 @@ namespace Scripts.Commands
                     //}
                 }
             }
-            catch (Exception exception)
+            catch
             {
                 e.Mobile.SendAsciiMessage("Incorrect input, usage 'anim AnimationType action framcount repeatcount '");
             }
 
+        }
+
+        [Usage("SayCheck")]
+        [Description("Test say font, hues and etc for ascii message")]
+        private static void Say_OnCommand(CommandEventArgs e)
+        {
+            var t = MessageType.Emote;
+            bool ascii = true;
+            int hueS = 10;
+            int hueE = 11;
+            int font = 3;
+            for (int i = 0; i < e.Length; i++)
+            {
+                var attr = e.GetString(i).ToLower();
+                if (attr == "u")
+                {
+                    ascii = false;
+                }
+
+                if (attr.StartsWith("f"))
+                {
+                    attr = attr.Replace("f", "");
+                    font = Convert.ToInt32(attr);
+                    continue;
+                }
+                if (attr.StartsWith("m"))
+                {
+                    attr = attr.Replace("m", "");
+                    t = (MessageType)Enum.Parse(typeof(MessageType), attr);
+                    continue;
+                }
+
+                if (attr.StartsWith("h"))
+                {
+                    if (attr.Contains("-"))
+                    {
+                        attr = attr.Replace("h", "");
+                        hueS = Convert.ToInt32(attr.Split('-')[0]);
+                        hueE = Convert.ToInt32(attr.Split('-')[1]);
+                    }
+                    else
+                    {
+                        attr = attr.Replace("h", "");
+                        hueS = Convert.ToInt32(attr);
+                        hueE = hueS;
+                    }
+                    continue;
+                }
+            }
+            var mob = e.Mobile;
+            for (int h = hueS; h <= hueE; h++)
+            {
+                if (ascii)
+                {
+                    Packet p = new AsciiMessage(mob.Serial, mob.Body, t, h, font, "Test", $"T:{t};H:{h};F:{font}. Pack my box with five dozen liquor jugs");
+                    p.Acquire();
+                    mob.NetState.Send(p);
+                }
+                else
+                {
+                    Packet p = new UnicodeMessage(mob.Serial, mob.Body, t, h, font, "","Test", $"T:{(int)t};H:{h};F:{font}. Pack my box with five dozen liquor jugs");
+                    p.Acquire();
+                    mob.NetState.Send(p);
+                }
+            }
         }
     }
 

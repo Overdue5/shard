@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Server.Commands.GMUtils;
 using Server.Factions;
 using Server.Gumps;
 using Server.Mobiles;
@@ -254,7 +255,7 @@ namespace Server.Items
 					m_Patient.PlaySound( 0x214 );
 					m_Patient.Resurrect();
 					m_Patient.Hits = 10;
-					m_Healer.PublicOverheadMessage( MessageType.Regular, 0x22, true, "*You see " + m_Healer.Name + " resurrecting " + m_Patient.Name + "*" );
+                    m_Healer.SayAction(GMExtendMethods.EmotionalTextHue.StrangeAction, $"You see {m_Healer.Name} resurrecting {m_Patient.Name}");
 					m_Healer.Hits -= 34;
                     origin.Consume(25);
 				}

@@ -34,7 +34,7 @@ namespace Server
 {
 	public static class Utility
 	{
-		private static Random m_Random = new Random();
+		private static Random m_Random = new Random(DateTime.UtcNow.Millisecond);
 		private static Encoding m_UTF8, m_UTF8WithEncoding;
 
 		public static Encoding UTF8

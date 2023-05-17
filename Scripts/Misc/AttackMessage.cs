@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Commands.GMUtils;
 using Server.Network;
 
 namespace Server.Misc
@@ -33,8 +34,8 @@ namespace Server.Misc
 
 
                 //Show the 2 players
-                aggressed.LocalOverheadMessage(MessageType.Regular, Hue, true, String.Format(AggressedFormat, aggressor.Name));
-                aggressor.LocalOverheadMessage(MessageType.Regular, Hue, true, String.Format(AggressedFormat, aggressed.Name));
+                aggressed.LocalOverheadMessage(MessageType.Regular, (int)GMExtendMethods.EmotionalTextHue.StrangeAction, false, String.Format(AggressedFormat, aggressor.Name));
+                aggressor.LocalOverheadMessage(MessageType.Regular, (int)GMExtendMethods.EmotionalTextHue.StrangeAction, false, String.Format(AggressedFormat, aggressed.Name));
             }
 		}
 

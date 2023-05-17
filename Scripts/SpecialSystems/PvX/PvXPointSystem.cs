@@ -255,15 +255,38 @@ namespace Server
 
 			if (attacker.Player && defender.Player)
 			{
+				if (attacker.AccessLevel==AccessLevel.Player && defender.AccessLevel == AccessLevel.Player)
+				    BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.PvP, Utility.RandomList(m_DeathMessage).Replace(m_WinName, attacker.Name).Replace(m_LooseName, defender.Name));
 				CalculatePvPStat(attacker as PlayerMobile, defender as PlayerMobile);
-			}
+            }
 			else
 			{
 				CalculatePvMStat(attacker, defender);
 			}
 		}
 
-		public static void Initialize()
+        private static string m_WinName = "$Player1$";
+        private static string m_LooseName = "$Player2$";
+
+        private static string[] m_DeathMessage = new[]
+        {
+            "$Player1$ strikes a fatal blow, defeating $Player2$ in a fierce battle.",
+            "With a swift and precise strike, $Player1$ vanquishes $Player2$ from existence.",
+            "$Player1$ emerges victorious as $Player2$'s life force is extinguished in a clash of blades.",
+            "$Player1$ claims dominance by defeating $Player2$, leaving no chance for retaliation.",
+            "In a display of superior skill, $Player1$ delivers the final blow, ending $Player2$'s journey.",
+            "Clash of warriors,\n$Player1$'s might conquers all,\n$Player2$ meets end.",
+            "Battle's fierce dance,\n$Player1$ claims victory's song,\n$Player2$ falls, vanquished.",
+            "Steel against steel clash,\n$Player1$'s valor prevails,\n$Player2$'s fate sealed.",
+            "Silent shadows weep,\n$Player1$'s blade finds its mark,\n$Player2$'s journey ends.",
+            "$Player1$'s victory dance leaves $Player2$ questioning their life choices and contemplating a career change to farming.",
+            "The forces of destiny intertwine as $Player1$'s blade claims the spirit of $Player2$.",
+            "A prophecy fulfilled: $Player1$, the harbinger of fate, extinguishes the essence of $Player2$.",
+            "$Player1$, an embodiment of ethereal might, banishes $Player2$'s soul to realms beyond mortal reach.",
+            "The stars whisper secrets of $Player1$'s triumph, as $Player2$'s existence fades into the eternal night."
+        };
+
+        public static void Initialize()
 		{
 			EventSink.PlayerDeath += PvXPointSystem.EventSink_CalculateStats;
 		}

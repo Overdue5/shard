@@ -1,3 +1,5 @@
+using Server.Commands.GMUtils;
+
 namespace Server.Items
 {
 	public class Torso : Item
@@ -28,7 +30,8 @@ namespace Server.Items
                     from.Animate(34, 5, 1, true, false, 0);
 
                 if (Owner != null)
-                    from.PublicOverheadMessage(Server.Network.MessageType.Emote, 0x22, true, string.Format("*You see {0} eat some {1}*", from.Name, Name));
+                    from.SayAction(GMExtendMethods.EmotionalTextHue.StrangeAction, $"You see {from.Name} eat some {Name}");
+//from.PublicOverheadMessage(Server.Network.MessageType.Emote, 0x22, true, string.Format("*You see {0} eat some {1}*", from.Name, Name));
 
                 Consume();
             }

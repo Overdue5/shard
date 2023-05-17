@@ -52,7 +52,9 @@ namespace Server.Mobiles
 			Fame = 7000;           
 		}
 
-		public override int GetIdleSound()
+        public override bool IsNight => true;
+
+        public override int GetIdleSound()
 		{
 			return 0x200;
 		}

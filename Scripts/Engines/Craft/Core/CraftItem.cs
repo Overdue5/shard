@@ -1349,14 +1349,13 @@ namespace Server.Engines.Craft
 
 							if (m_CraftSystem == DefAlchemy.CraftSystem)
 							{
-								//m_From.PublicOverheadMessage(MessageType.Emote, 0x22, true, string.Format("*You see {0} toss the failed mixture*", m_From.Name));
-								//For you
-								m_From.LocalOverheadMessage(MessageType.Emote, 0x22, true, "*You toss the failed mixture*");
-
-								//For everyone else
-								m_From.NonlocalOverheadMessage(MessageType.Emote, 0x22, true,
-															 string.Format("*You see {0} toss the failed mixture*", m_From.Name));
-							}
+                                //m_From.PublicOverheadMessage(MessageType.Emote, 0x22, true, string.Format("*You see {0} toss the failed mixture*", m_From.Name));
+                                //For you
+                                //m_From.LocalOverheadMessage(MessageType.Emote, 0x22, true, "*You toss the failed mixture*");
+                                //m_From.SendMessage("You toss the failed mixture");
+                                //For everyone else
+                                m_From.SayAction(GMExtendMethods.EmotionalTextHue.NormalAction, $"You see {m_From.Name} toss the failed mixture", "You toss the failed mixture");
+                            }
 							else //Display message
 								m_From.SendAsciiMessage(CliLoc.LocToString(badCraft));
 						}
@@ -1416,7 +1415,8 @@ namespace Server.Engines.Craft
 			public void AbortAction(Mobile from)
 			{
 				if (m_CraftSystem == DefAlchemy.CraftSystem)
-					from.PublicOverheadMessage(MessageType.Emote, 0x22, true, string.Format("*You see {0} toss the failed mixture*", m_From.Name));
+					from.SayAction(GMExtendMethods.EmotionalTextHue.NormalAction, $"You see {m_From.Name} toss the failed mixture", "You failed to craft that item.");
+					//from.PublicOverheadMessage(MessageType.Emote, 0x22, true, string.Format("*You see {0} toss the failed mixture*", m_From.Name));
 				else //Display message
 					from.SendAsciiMessage("You failed to craft that item.");
 

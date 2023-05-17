@@ -61,13 +61,18 @@ namespace Server
 			GlobalChat = 1104380028558508187,
             Announcement = 1092018919151243295,
             WorldChat = 1104418812427763864,
-            ConsoleImportant = 1104746301393997864
+            ConsoleImportant = 1104746301393997864,
+            TradeChannel = 1104746301393997864,
+            PvP = 1092018746018779136
 #else
             Console = 877330007947612270,
             GlobalChat = 877330103317708841,
             Announcement = 877330103317708841,
             WorldChat = 877330103317708841,
-            ConsoleImportant = 877330103317708841
+            ConsoleImportant = 877330103317708841,
+            TradeChannel = 877330007947612270,
+            PvP = 877330007947612270
+
 #endif
         }
 
@@ -81,16 +86,23 @@ namespace Server
 
         public static async Task MainAsync()
         {
-            if (!Enabled)
-                return;
-            var token = Config.Get("Discord.Token", "");
-            MsgLength = Config.Get("Discord.MsgLength", 1000);
-            discord = new DiscordSocketClient();
-            discord.MessageReceived += Bot.CommandsHandler;
-            discord.Log += Bot.Log;
-            await discord.LoginAsync(TokenType.Bot, token);
-            await discord.StartAsync();
-            DTimer = Timer.DelayCall(TimeSpan.FromSeconds(5), ()=>BaseDiscord.Bot.SendMsg());
+            try
+            {
+                if (!Enabled)
+                    return;
+                var token = Config.Get("Discord.Token", "");
+                MsgLength = Config.Get("Discord.MsgLength", 1000);
+                discord = new DiscordSocketClient();
+                discord.MessageReceived += Bot.CommandsHandler;
+                discord.Log += Bot.Log;
+                await discord.LoginAsync(TokenType.Bot, token);
+                await discord.StartAsync();
+                DTimer = Timer.DelayCall(TimeSpan.FromSeconds(5), ()=>Bot.SendMsg());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public static async void CheckAndRestart()
@@ -136,7 +148,7 @@ namespace Server
             {
                 foreach (var ch in Channels.Keys.Where(ch => !Channels[ch].Sending))
                 {
-                    SendAsync(ch, Channels[ch]);
+                    _ = SendAsync(ch, Channels[ch]);
                 }
             }
         }

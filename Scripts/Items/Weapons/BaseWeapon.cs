@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Server.Commands.GMUtils;
+using Server.Engines;
 using Server.Engines.Craft;
 using Server.Ethics;
 using Server.Factions;
@@ -977,9 +979,8 @@ namespace Server.Items
             double hitChance = (m_SphereHitPercetage*((atkSkill.Value + (attacker.Skills.Tactics.Value*2))/(300)));
 
             //Skill gain, chance doesnt matter
-            attacker.CheckSkill(atkSkill.SkillName, 1.0);
+            attacker.CheckSkill(attacker.FindItemOnLayer(Layer.OneHanded) is SmithHammer ? SkillName.Macing : atkSkill.SkillName, 1.0);
 
-            
             #region HitChanceModifier
             /*
             double hitChanceModifier;
@@ -1716,6 +1717,8 @@ namespace Server.Items
 
             damage = AOS.Scale(damage, 100 + percentageBonus);
 
+            damage = attacker.ChangeDamage(defender, damage);
+            
             #endregion
 
             if (attacker is BaseCreature)

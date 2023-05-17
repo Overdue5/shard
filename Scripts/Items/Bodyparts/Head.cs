@@ -1,4 +1,5 @@
 using System;
+using Server.Commands.GMUtils;
 
 //Bounty System Start
 
@@ -120,7 +121,8 @@ namespace Server.Items
                     from.Animate(34, 5, 1, true, false, 0);
 
                 if (PlayerName != null)
-                    from.PublicOverheadMessage(Network.MessageType.Emote, 0x22, true, string.Format("*You see {0} eat the head of {1}*", from.Name, m_PlayerName));
+					from.SayAction(GMExtendMethods.EmotionalTextHue.StrangeAction, $"You see {from.Name} eat the head of {m_PlayerName}");
+                    //from.PublicOverheadMessage(Network.MessageType.Emote, 0x22, true, string.Format("*You see {0} eat the head of {1}*", from.Name, m_PlayerName));
 
                 Consume();
             }

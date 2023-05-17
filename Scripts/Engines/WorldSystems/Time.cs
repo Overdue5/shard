@@ -128,13 +128,13 @@ namespace Server.Engines
 
 		private static TimeSpan AutoDayUpdateCheck = TimeSpan.FromSeconds(SecInMinute);
 
-		private static WorldDateTime lastdate;
+		//private static WorldDateTime lastdate;
 
-		private static int lastframe = 999;
+		//private static int lastframe = 999;
 
 		private static List<Serial> m_AutoChangeLightLevelList = new List<Serial>(10);
 
-		private static int m_BackgroundItemID;
+        //private static int m_BackgroundItemID;
 
 		private static int m_NowLightLevel;
 
@@ -250,7 +250,29 @@ namespace Server.Engines
 			}
 		}
 
-		public static List<Month> GetMonthBySeason(SeasonName season)
+        public static double NightMultiplier()
+        {
+            switch (WorldDateTime.Now.Daylight)
+            {
+                case Daylight.Midnight:
+                    return 1.75;
+				case Daylight.Night:
+                    return 2.5;
+				case Daylight.Evening:
+                    return 1.75;
+				default:
+                    return 1;
+
+            }
+        }
+
+        public static bool IsNight()
+        {
+            var dl = WorldDateTime.Now.Daylight;
+            return (dl == Daylight.Night || dl == Daylight.Evening || dl == Daylight.Midnight);
+        }
+
+        public static List<Month> GetMonthBySeason(SeasonName season)
 		{
 			return GetMonthBySeasons(new List<SeasonName> {season});
 		}
@@ -595,7 +617,7 @@ namespace Server.Engines
 			{
 				WorldDateTime date = WorldDateTime.Now;
 
-				bool sendlight = false, sendbackground = false, sendmessage = false;
+				bool sendlight = false, sendmessage = false;
 
 				GlobalLightLevel packetLight = null;
 				int lightlevel = GetLightLevel(date);

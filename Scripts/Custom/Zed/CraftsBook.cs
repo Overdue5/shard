@@ -18,7 +18,6 @@ namespace Server.Items
 {
     public class CraftBook : Item
     {
-        private StudyTimer m_StudyTimer;
         private Mobile m_Student;
         private SkillName m_SkillToLearn;
         private Timer m_Timer;
@@ -50,7 +49,7 @@ namespace Server.Items
                             string[] split = line.Split(':');
                             m_BookNames[(SkillName)Enum.Parse(typeof(SkillName), split[0], true)] = split[1].Split(',');
                         }
-                        catch(Exception e)
+                        catch
                         {
                             Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Error parse row:{line}");
                             throw;
