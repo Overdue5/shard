@@ -74,7 +74,7 @@ namespace Server.Spells
 
 		public virtual bool CheckSkills( Mobile m )
 		{
-            m.SendAsciiMessage("This is disabled on INX.");
+            m.SendAsciiMessage("This is disabled on Deluxe.");
             return false;
 
             /*

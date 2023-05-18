@@ -42,7 +42,7 @@ namespace Server.Spells.Fourth
         public override TimeSpan GetCastDelay()
         {
             if (Scroll != null)
-                return TimeSpan.FromSeconds(2.00);
+                return TimeSpan.FromSeconds(2.50);
 
             return base.GetCastDelay();
         }
