@@ -14,7 +14,7 @@ namespace Server.Items
         {
             Weight = 1.0;
             LootType = LootType.Blessed;
-			Hue = 1325;
+			Hue = 1159;
 			Name = "Marvelous mask";
         }
 
