@@ -22,9 +22,7 @@ namespace Server.Items
 		public SPvPBag( int amount )
 		{
 			DropItem( new TotalManaPotion( 10 ) );
-			DropItem( new GreaterHealPotion( 10 ) );
-			DropItem( new GreaterAgilityPotion( 3 ) );
-			DropItem( new GreaterStrengthPotion( 3 ) );
+			DropItem( new GreaterHealPotion( 8 ) );
 			DropItem( new FlamestrikeScroll( 8 ) );
 			DropItem( new GreaterHealScroll( 8 ) );
 			DropItem( new LightningScroll( 8 ) );

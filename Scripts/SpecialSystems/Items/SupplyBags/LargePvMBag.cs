@@ -21,8 +21,8 @@ namespace Server.Items
 		[Constructable]
 		public LPvMBag( int amount )
 		{
-			DropItem( new TotalManaPotion( 15 ) );
-			DropItem( new GreaterHealPotion( 10 ) );
+			DropItem( new TotalManaPotion( 10 ) );
+			DropItem( new GreaterHealPotion( 8 ) );
 			DropItem( new EnergyVortexScroll( 28 ) );
 			DropItem( new BladeSpiritsScroll( 28 ) );
 			DropItem( new Arrow( 120 ) );
