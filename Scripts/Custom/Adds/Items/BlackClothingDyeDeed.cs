@@ -60,6 +60,7 @@ namespace Server.Items
         {
             Weight = 1.0;
             LootType = LootType.Blessed;
+            Hue = 01;
         }
 
         public BlackDyeDeed(Serial serial)
