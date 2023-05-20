@@ -245,9 +245,14 @@ namespace Server.Items
 					value = Config.Get($"PvXsystem.{pvx}Rewards{count++}", "");
 					try
 					{
-						if (value != "")
-							RewardsDict[pvx].Add(new RewardsInfo(value));
-					}
+                        if (value != "")
+                        {
+                            var r = new RewardsInfo(value);
+                            if (r.RewardType == null)
+                                throw new Exception($"Error parse {value}, wrong type name");
+                            RewardsDict[pvx].Add(r);
+                        }
+                    }
 					catch
 					{
 						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
