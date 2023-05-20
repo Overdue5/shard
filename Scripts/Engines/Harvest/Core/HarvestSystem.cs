@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Custom.Zed;
 using Server.Items;
 using Server.Mobiles;
 using Server.Regions;
@@ -579,7 +580,13 @@ namespace Server.Engines.Harvest
 				map = from.Map;
 				loc = obj.Location;
 			}
-			else
+            else if (toHarvest is BaseMineFloor mf)
+            {
+                tileID = BaseMineFloor.TileId;
+                map = from.Map;
+                loc = mf.Location;
+            }
+            else
 			{
 				tileID = 0;
 				map = null;

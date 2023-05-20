@@ -258,6 +258,8 @@ namespace Server
             return tiles;
         }
 
+
+
         public StaticTile[] GetStaticTiles(int x, int y)
         {
             StaticTile[][][] tiles = GetStaticBlock(x >> 3, y >> 3);

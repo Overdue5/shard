@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms.VisualStyles;
 using Server.ContextMenus;
 using Server.Engines.BulkOrders;
 using Server.Factions;
@@ -25,6 +26,8 @@ namespace Server.Mobiles
 
 	public abstract class BaseVendor : BaseCreature, IVendor
     {
+        public static Dictionary<Serial, BaseVendor> Vendors = new Dictionary<Serial, BaseVendor>();
+        public static Dictionary<SkillName, HashSet<BaseVendor>> SkilledVendors = new Dictionary<SkillName, HashSet<BaseVendor>>();
         private const int MaxSell = 999;
 
         protected abstract List<SBInfo> SBInfos { get; }
@@ -167,13 +170,20 @@ namespace Server.Mobiles
 
 			m_LastRestock = DateTime.Now;
             m_RestockDelay = GetRestockDelay();
-		}
+            Timer.DelayCall(TimeSpan.FromSeconds(5), () => { UpdateVendorTables(this); });
+        }
 		
 		public BaseVendor( Serial serial ) : base( serial )
 		{
 		}
 
-		public DateTime LastRestock
+        public override void OnDelete()
+        {
+            base.OnDelete();
+            DeleteVendorTables(this);
+        }
+
+        public DateTime LastRestock
 		{
 			get
 			{
@@ -1372,11 +1382,44 @@ namespace Server.Mobiles
 			writer.WriteEncodedInt( 0 );
 		}
 
-		public override void Deserialize( GenericReader reader )
+        private static void UpdateVendorTables(BaseVendor vendor)
+        {
+            if (!vendor.Deleted)
+            {
+                Vendors[vendor.Serial] = vendor;
+                for (int i = 0; i < vendor.Skills.Length; i++)
+                {
+                    if (vendor.Skills[i].Base >= 30)
+                    {
+                        if (!SkilledVendors.ContainsKey(vendor.Skills[i].SkillName))
+                            SkilledVendors[vendor.Skills[i].SkillName] = new HashSet<BaseVendor>();
+                        SkilledVendors[vendor.Skills[i].SkillName].Add(vendor);
+                    }
+                }
+            }
+        }
+
+        private static void DeleteVendorTables(BaseVendor vendor)
+        {
+            if (Vendors.ContainsKey(vendor.Serial))
+                Vendors.Remove(vendor.Serial);
+            for (int i = 0; i < vendor.Skills.Length; i++)
+            {
+                if (vendor.Skills[i].Base > 80)
+                {
+                    if (SkilledVendors.ContainsKey(vendor.Skills[i].SkillName) && SkilledVendors[vendor.Skills[i].SkillName].Contains(vendor))
+                        SkilledVendors[vendor.Skills[i].SkillName].Remove(vendor);
+                }
+            }
+        }
+
+        public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 
-			int version = reader.ReadInt();
+            UpdateVendorTables(this);
+
+            int version = reader.ReadInt();
 
 			LoadSBInfo();
 
