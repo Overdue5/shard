@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using Discord;
 using Server;
 using Server.Commands;
 using Server.Mobiles;
@@ -13,12 +11,6 @@ using Server.Misc;
 using Server.Targeting;
 using CommandEventArgs = Server.Commands.CommandEventArgs;
 using CommandEventHandler = Server.Commands.CommandEventHandler;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
-using System.Diagnostics;
-using System.IO;
-using static Server.Games.PaintBall.PBGameItem;
-using static System.Net.Mime.MediaTypeNames;
-using System.Xml.Linq;
 using Server.Network;
 using MessageType = Server.Network.MessageType;
 

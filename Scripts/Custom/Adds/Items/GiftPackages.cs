@@ -1,5 +1,4 @@
 ﻿using Server.Mobiles;
-using Solaris.CliLocHandler;
 using Xanthos.ShrinkSystem;
 
 namespace Server.Items

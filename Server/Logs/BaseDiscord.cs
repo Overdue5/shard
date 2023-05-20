@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
-using static System.Net.WebRequestMethods;
 
 namespace Server
 {

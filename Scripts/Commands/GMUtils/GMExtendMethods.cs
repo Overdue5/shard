@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Server.Engines;
-using Server.Engines.XmlSpawner2;
-using Server.Ethics;
-using Server.Mobiles;
 using Server.Network;
-using static Server.Games.PaintBall.PBGameItem;
 
 namespace Server.Commands.GMUtils
 {
