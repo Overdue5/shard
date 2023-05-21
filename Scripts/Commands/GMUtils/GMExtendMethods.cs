@@ -66,21 +66,13 @@ namespace Server.Commands.GMUtils
 
         public static int ChangeDamage(this Mobile mob, Mobile def, int damage)
         {
-            try
-            {
-                if (def == null || mob == null ||  mob.IsNight == def.IsNight)
-                    return damage;
-                if (mob.IsNight)
-                    return (int)(damage * UtilityWorldTime.NightMultiplier());
-                if (def.IsNight)
-                    return Utility.LimitMin(1, (int)(damage / UtilityWorldTime.NightMultiplier()));
+            if (def == null || mob == null ||  mob.IsNight == def.IsNight)
                 return damage;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return damage;
-            }
+            if (mob.IsNight)
+                return (int)(damage * UtilityWorldTime.NightMultiplier());
+            if (def.IsNight)
+                return Utility.LimitMin(1, (int)(damage / UtilityWorldTime.NightMultiplier()));
+            return damage;
         }
 
         public static List<Point3D> GetStaticTileAround(this TileMatrix tm, Point3D loc, int range, HashSet<int> filter)

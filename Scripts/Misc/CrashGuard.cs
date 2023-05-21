@@ -222,7 +222,7 @@ namespace Server.Misc
 							Mobile m = state.Mobile;
 
 							if ( m != null )
-								op.Write( " (mobile = 0x{0:X} '{1}')", m.Serial.Value, m.Name );
+								op.Write( $" (mobile = 0x{0:m.Serial.Value}, '{m.Name}, X:{m.X},Y:{m.Y},Z:{m.Z}',M:{m.Map})");
 
 							op.WriteLine();
 						}
