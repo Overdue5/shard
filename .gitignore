@@ -14,6 +14,7 @@
 
 # Common Directories
 /.vs
+/ForServ/
 /Honesty
 /Output/Logs
 /Output/docs
@@ -21,7 +22,7 @@
 /Output/stats
 /Output/Crash Logs
 /Output/Backups
-/Output/Saves
+/Output/Saves*
 /Output/output/*
 /Output/Scripts.dll
 /Output/*.html

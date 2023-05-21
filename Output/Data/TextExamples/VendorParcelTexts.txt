@@ -1,0 +1,68 @@
+Q
+Hail, brave $Player$! I beseech thee, take this package of utmost importance and deliver it to $Trader2$ in the grand city of $CityT2$. Within lies an assortment of enchanted socks! Yes, enchanted socks! They possess the power to make one dance uncontrollably with joy and style! May your feet be forever blessed!
+A
+Ah, a courier arrives bearing mysterious cargo from afar! Verily, I expected a treasure of great value, but lo and behold, I am greeted with a bundle of... enchanted socks! Oh, the legends did not lie! With each step, I feel the uncontrollable urge to boogie woogie and strut my stuff! Surely, these magical socks shall be the envy of all fashion-conscious traders! Many thanks to thee, brave courier, for this unexpected, yet funky delight!
+
+Q
+Hail, noble $Player$! I beseech thee to undertake a grand adventure in service of trade. Take this sacred package and embark on a journey to the illustrious $CityT2$. Within lies an ancient artifact, a mystical artifact of immeasurable power... a talking parrot-shaped keychain! It possesses the ability to unlock doors and entertain with its witty banter. Deliver it unto $Trader2$, and let the enchantment unfold!
+A
+Greetings, valiant traveler! What wonders thou bringest from distant lands? Ah, behold, a package from our esteemed merchant comrade! But, alas, instead of a legendary artifact, I am graced with a... talking parrot-shaped keychain? Well, by the virtues, never have I needed a keychain with such avian eloquence! Fear not, brave courier, for I shall treasure this unexpected gift and engage in heartfelt conversations with my newfound feathered companion. Thank thee for this whimsical surprise!
+
+Q
+Hail, adventurer! I have a pressing matter that requires thy swift and steadfast assistance. Take this sealed package and make haste to the bustling city of $CityT2$. Within its confines lies a relic of immense value, a mythical artifact known as the "Scroll of Never-Ending Wisdom." Its words hold the secrets of the ages and bestow upon its reader profound enlightenment. Deliver it safely to $Trader2$, for the fate of knowledge itself hangs in the balance!
+A
+Well met, brave courier, for thou hast brought tidings from afar. Ah, the package from Trader1! Yet, what do mine eyes behold? 'Tis not the legendary Scroll of Never-Ending Wisdom, but a most curious object indeed. Behold, a cheese wheel labeled "The Wedge of Enlightenment"! Verily, I shall partake in this cheesy wisdom and savor its creamy enlightenment. A peculiar turn of events, but I am grateful for thy delivery, noble traveler! May thou never lack for cheesy knowledge!
+
+Q
+Greetings, esteemed $Player$! I come before thee with a matter of utmost importance. I beseech thee to embark on a noble quest to deliver this precious package unto $Trader2$ in the distant city of $CityT2$. Within its confines lies an ancient artifact of great power, the "Amulet of Unpredictable Fortune." It bestows upon its wearer unexpected blessings and unpredictable twists of fate. Thy role in this journey is vital, for the balance of fortune hangs in the balance!
+A
+Ah, fortune smiles upon me as a courier arrives bearing gifts! What might this package hold, I wonder? Lo and behold, it is not the fabled "Amulet of Unpredictable Fortune," but a peculiar trinket indeed. A rubber chicken?! Aye, it seems fortune has a sense of humor. Fear not, gallant messenger, for I shall wield this comedic charm as a symbol of prosperity and unyielding laughter. I thank thee for this whimsical twist of fate, and may fortune forever be on thy side!
+
+Q
+Hear me, brave $Player$, for a tale of arcane marvels unfolds before thee. I beseech thee to undertake a perilous quest, carrying this ancient and mystic package to $Trader2$ in the enchanted realm of $CityT2$. Within its enchanted confines rests the "Orb of Everlasting Conjuring," a conduit to summon ethereal creatures and shape reality itself. Guard it with your life, for its power knows no bounds!
+A
+By the mystic energies that surround us, what is this? A courier arrives, bearing a package shrouded in ancient enchantments! But lo, it is not the legendary "Orb of Everlasting Conjuring" that thou hast delivered. Nay, it is a jar of enchanted fireflies! Their ethereal glow illuminates the night, creating a spectacle fit for fae. I accept this unexpected gift with joy and wonder, for in their delicate dance lies a magic of their own. I thank thee, valiant traveler, for bringing forth this luminescent enchantment into my realm. May the fireflies guide thy path, and may magic forever be thy ally!
+
+Q
+Hail, brave $Player$! I summon thee to embark on a quest that intertwines the realms of magic and mystery. Take this ethereal package and traverse the realms to reach $Trader2$ in the mystical city of $CityT2$. Within lies an ancient grimoire, the "Book of Transmutation." Its pages hold the secrets to transforming ordinary objects into extraordinary wonders. Deliver it safely, for the very fabric of reality yearns for its arcane wisdom!
+A
+Ah, a traveler from afar arrives, bearing a package shrouded in magical aura! But what wonders doth it hold? Alas, it is not the fabled "Book of Transmutation" that thou hast brought me, but a most curious artifact indeed. It is... a jar filled with pixie dust! With a sprinkle of its magical essence, dreams come alive, and the impossible becomes possible. I accept this unexpected gift with gratitude, for within its glimmering particles lies the very essence of enchantment. I thank thee, valiant courier, for the unexpected twist of magic that dances within this humble jar. May thy journey be forever touched by the whimsy of the mystical!
+
+Q
+"Brave $Player$! I beseech you to deliver this package to $Trader2$ in $CityT2$. Its contents are vital for our trade. Guard it with your life!"
+A
+"Thank you, $Player$. The package has arrived safely. Your efforts are appreciated. Take this as a token of my gratitude. Farewell."
+
+Q
+"Greetings, brave $Player$! I have an important task for you. Deliver this package to $Trader2$ in $CityT2$. Its contents hold great significance for our trade. Take caution on the journey, for danger lurks. May the gods guide your path, and remember, failure is not an option."
+A
+"Ah, the package has arrived! Your dedication is commendable, $Player$. I extend my deepest gratitude for ensuring its safe delivery. You have my thanks. Your actions have cemented our alliance. Should you ever require assistance, do not hesitate to call upon me. Farewell, and may fortune favor your future endeavors."
+
+Q
+"Listen up, $Player$! I've got a package that needs deliverin' to $Trader2$ in $CityT2$. It's somethin' real important, like a magical chicken or a jar of dancing pickles. Don't ask questions, just get it there in one piece, or you'll have a swarm of angry goblins on your tail!"
+A:"Well, look who finally showed up! I was startin' to think the chickens got to ya. But hey, thanks for deliverin' the package, stranger. It's all here, no dancin' pickles escaped. You're a real hero, and I owe you one."
+
+Q
+"Listen up, my fellow $Player$! I have a task for you that's more elusive than a sneaky rogue stealing a gnome's socks. Take this package and deliver it to $Trader2$ in $CityT2$. But beware, the path is as twisted as a pretzel in a gnome's hand! Just remember, if you encounter a troll, offer him a riddle. They can't resist those, unlike a dwarf passing up a keg of ale!"
+A
+"Well, well, well! Look who managed to navigate the maze of twists and turns and deliver my precious package! You're sharper than a gnome's wit! Consider yourself an honorary member of the Jester's Guild. Thanks for the delivery, my friend. You've brought joy to my heart, like a bard singing a limerick. Farewell, and may your adventures be as amusing as a halfling juggling squirrels!"
+
+Q
+"Greetings, noble $Player$! I have a crucial mission for one of your caliber. Take this package, carefully sealed with the secrets of $CityT2$, and deliver it to $Trader2$. The path may be perilous, but fear not, for your valor is renowned. Be swift as an arrow and cunning as a fox. May the blessings of the gods guide your journey, and may you triumph over any challenge that crosses your path."
+A
+"Ah, behold the hero who braved the trials to deliver the package! Your dedication shines as brightly as a sunbeam on a clear morning. I am grateful for your swift and safe delivery. The contents are of utmost importance, and your success ensures the prosperity of our trade. Take this token of appreciation as a symbol of my gratitude. Farewell, brave $Player$, and may your path always be filled with glory and riches."
+
+Q
+"Greetings, mystical traveler! I require your assistance in a matter of arcane significance. Take hold of this enchanted parcel, infused with the powers of the elements, and deliver it to $Trader2$ from $CityT2$. Its contents hold the key to unlocking ancient secrets. Be cautious, for the parcel is attuned to magic and may attract unwanted attention. May the mystic energies guide and protect you on your journey, and may you emerge victorious!"
+A
+"Ah, the magical parcel has arrived, carried by the hands of a true champion! Your bravery and resilience are worthy of legends. The powers contained within this parcel are awe-inspiring, and your successful delivery ensures the preservation of our arcane heritage. Accept my heartfelt gratitude, noble adventurer. May the realms of magic forever bestow their blessings upon you. Until we meet again, may your path be filled with wonder and enchantment!"
+
+Q
+"Greetings, mighty Avatar! I have a task of great importance that only someone of your exceptional power can accomplish. Take this parcel, infused with the essence of the Virtues, and deliver it to $Trader2$ from $CityT2$. Its contents hold the potential to shape the fate of Britannia. Harness your immense strength and wield the virtues with unwavering resolve. May the power of the Avatar guide your path, and may you bring balance and harmony to our troubled land."
+A
+"Behold, the Avatar has arrived, bearing the parcel imbued with the essence of virtue! Your presence radiates with a divine aura, and your actions speak volumes of your unyielding power. The contents of this parcel hold the potential for great change and restoration. I offer my deepest gratitude for your unwavering dedication to the path of righteousness. Britannia is indebted to you, noble Avatar. May your journey be forever guided by the Virtues, and may your light continue to illuminate our world."
+
+Q
+"Greetings, mighty Avatar! I have a task of great importance that only someone of your exceptional power can accomplish. Take this parcel, infused with the essence of the Virtues, and deliver it to $Trader2$ in the illustrious city of $CityT2$. Its contents hold the potential to shape the fate of Britannia. Harness your immense strength and wield the virtues with unwavering resolve. May the power of the Avatar guide your path, and may you bring balance and harmony to our troubled land."
+A
+"Behold, the Avatar has arrived, bearing the parcel imbued with the essence of virtue! Your presence radiates with a divine aura, and your actions speak volumes of your unyielding power. The contents of this parcel hold the potential for great change and restoration. I offer my deepest gratitude for your unwavering dedication to the path of righteousness. Britannia, and the glorious city of $CityT2$, are indebted to you, noble Avatar. May your journey be forever guided by the Virtues, and may your light continue to illuminate our world."

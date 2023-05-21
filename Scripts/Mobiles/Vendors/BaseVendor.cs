@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Custom;
 using Server.Engines.BulkOrders;
 using Server.Factions;
 using Server.Items;
@@ -1492,6 +1493,8 @@ namespace Server.Mobiles
 
 				if ( IsActiveBuyer )
 					list.Add( new VendorSellEntry( from, this ) );
+
+				list.Add(new VendorParcelMenu(from, this));
 			}
 
 			base.AddCustomContextEntries( from, list );
