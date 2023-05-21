@@ -580,9 +580,9 @@ namespace Server.Engines.Harvest
 				map = from.Map;
 				loc = obj.Location;
 			}
-            else if (toHarvest is BaseMineFloor mf)
+            else if (toHarvest is BaseMine mf)
             {
-                tileID = BaseMineFloor.TileId;
+                tileID = BaseMine.TileId;
                 map = from.Map;
                 loc = mf.Location;
             }

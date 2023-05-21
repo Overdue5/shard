@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Reflection;
-using Knives.Chat3;
 using Server.Commands;
 using Server.Commands.Generic;
 using Server.Network;

@@ -65,7 +65,7 @@ namespace Server.Commands.GMUtils
 
         public static int ChangeDamage(this Mobile mob, Mobile def, int damage)
         {
-            if (mob.IsNight == def.IsNight)
+            if (def == null || mob.IsNight == def.IsNight)
                 return damage;
             if (mob.IsNight)
                 return (int)(damage * UtilityWorldTime.NightMultiplier());

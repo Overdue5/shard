@@ -48,6 +48,16 @@ namespace Server.Items.Construction.Chairs
             base.OnMovement(m, oldLocation);
         }
 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
         public class SittingTimer : Timer
         {
             private static TimeSpan m_waitTimer = TimeSpan.FromSeconds(5);
@@ -144,6 +154,7 @@ namespace Server.Items.Construction.Chairs
                     timer.Interval = m_waitTimer;
                 }
             }
+
         }
     }
 }
