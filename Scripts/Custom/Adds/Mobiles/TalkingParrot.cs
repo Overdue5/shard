@@ -134,46 +134,46 @@ namespace Server.Mobiles
 				{
 					m_LearnBonus = m_AnimalLore/1000; 
 					m_SpeakBonus = m_AnimalLore/300; 
-					if ( Utility.RandomDouble() < (m_ChanceToSpeakForMaster + m_SpeakBonus) && DateTime.Now - m_LastSpoke > m_SpeakingInterval )
+					if ( Utility.RandomDouble() < (m_ChanceToSpeakForMaster + m_SpeakBonus) && DateTime.UtcNow - m_LastSpoke > m_SpeakingInterval )
 					{
 						if ( e.Speech.ToLower().IndexOf( Name.ToLower() ) >= 0 )
 						{
 							SayRand( m_phrases, this );
-							m_LastSpoke = DateTime.Now;
+							m_LastSpoke = DateTime.UtcNow;
 						}
 						else if ( Utility.RandomDouble() < 0.2 ) 
 						{
 							SayRand( m_phrases, this );
-							m_LastSpoke = DateTime.Now;
+							m_LastSpoke = DateTime.UtcNow;
 						}
 					}
-					if ( Utility.RandomDouble() < (m_ChanceToLearnFromMaster + m_LearnBonus) && DateTime.Now - m_LastLearned > m_LearningInterval )
+					if ( Utility.RandomDouble() < (m_ChanceToLearnFromMaster + m_LearnBonus) && DateTime.UtcNow - m_LastLearned > m_LearningInterval )
 					{
 						m_phrases[ Utility.Random( 11 ) ] = e.Speech;
-						m_LastLearned = DateTime.Now;
+						m_LastLearned = DateTime.UtcNow;
 					}
 				}
 				else
 				{
 					m_LearnBonus = m_AnimalLore/4000;
 					m_SpeakBonus = m_AnimalLore/300;
-					if ( Utility.RandomDouble() < (m_ChanceToSpeakForStranger + m_SpeakBonus) && DateTime.Now - m_LastSpoke > m_SpeakingInterval )
+					if ( Utility.RandomDouble() < (m_ChanceToSpeakForStranger + m_SpeakBonus) && DateTime.UtcNow - m_LastSpoke > m_SpeakingInterval )
 					{
 						if ( e.Speech.ToLower().IndexOf( Name.ToLower() ) >= 0 )
 						{
 							SayRand( m_phrases, this );
-							m_LastSpoke = DateTime.Now;
+							m_LastSpoke = DateTime.UtcNow;
 						}
 						else if ( Utility.RandomDouble() < 0.2 ) 
 						{
 							SayRand( m_phrases, this );
-							m_LastSpoke = DateTime.Now;
+							m_LastSpoke = DateTime.UtcNow;
 						}
 					}
-					if ( Utility.RandomDouble() < (m_ChanceToLearnFromAnyone + m_LearnBonus) && DateTime.Now - m_LastLearned > m_LearningInterval )
+					if ( Utility.RandomDouble() < (m_ChanceToLearnFromAnyone + m_LearnBonus) && DateTime.UtcNow - m_LastLearned > m_LearningInterval )
 					{
 						m_phrases[ Utility.Random( 11 ) ] = e.Speech;
-						m_LastLearned = DateTime.Now;
+						m_LastLearned = DateTime.UtcNow;
 					}
 				}
 
@@ -201,10 +201,10 @@ namespace Server.Mobiles
 		{                                                   
 			if ( m.InRange( this, 2 ) && Controlled )
 			{               
-				if ( Utility.RandomDouble() < m_SpeakChanceOnMovement && DateTime.Now - m_LastSpoke > m_SpeakingInterval )
+				if ( Utility.RandomDouble() < m_SpeakChanceOnMovement && DateTime.UtcNow - m_LastSpoke > m_SpeakingInterval )
 				{
 					SayRand( m_phrases, this );
-					m_LastSpoke = DateTime.Now;
+					m_LastSpoke = DateTime.UtcNow;
 				}
 			}
 		} 

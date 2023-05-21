@@ -445,7 +445,7 @@ namespace Server.Engines.Quests
 					{
 						DateTime endTime = restartInfo.RestartTime;
 
-						if ( DateTime.Now < endTime )
+						if ( DateTime.UtcNow < endTime )
 						{
 							inRestartPeriod = true;
 							return false;

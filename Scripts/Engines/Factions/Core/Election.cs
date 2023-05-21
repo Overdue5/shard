@@ -24,7 +24,7 @@ namespace Server.Factions
 
 		public List<Candidate> Candidates { get { return m_Candidates; } }
 
-		public ElectionState State{ get{ return m_State; } set{ m_State = value; m_LastStateTime = DateTime.Now; } }
+		public ElectionState State{ get{ return m_State; } set{ m_State = value; m_LastStateTime = DateTime.UtcNow; } }
 		public DateTime LastStateTime{ get{ return m_LastStateTime; } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -45,7 +45,7 @@ namespace Server.Factions
 					case ElectionState.Campaign: period = CampaignPeriod; break;
 				}
 
-				TimeSpan until = (m_LastStateTime + period) - DateTime.Now;
+				TimeSpan until = (m_LastStateTime + period) - DateTime.UtcNow;
 
 				if ( until < TimeSpan.Zero )
 					until = TimeSpan.Zero;
@@ -64,7 +64,7 @@ namespace Server.Factions
 					case ElectionState.Campaign: period = CampaignPeriod; break;
 				}
 
-				m_LastStateTime = DateTime.Now - period + value;
+				m_LastStateTime = DateTime.UtcNow - period + value;
 			}
 		}
 
@@ -278,7 +278,7 @@ namespace Server.Factions
 			{
 				case ElectionState.Pending:
 				{
-					if ( (m_LastStateTime + PendingPeriod) > DateTime.Now )
+					if ( (m_LastStateTime + PendingPeriod) > DateTime.UtcNow )
 						break;
 
 					m_Faction.Broadcast( 1038023 ); // Campaigning for the Faction Commander election has begun.
@@ -290,7 +290,7 @@ namespace Server.Factions
 				}
 				case ElectionState.Campaign:
 				{
-					if ( (m_LastStateTime + CampaignPeriod) > DateTime.Now )
+					if ( (m_LastStateTime + CampaignPeriod) > DateTime.UtcNow )
 						break;
 
 					if ( m_Candidates.Count == 0 )
@@ -330,7 +330,7 @@ namespace Server.Factions
 				}
 				case ElectionState.Election:
 				{
-					if ( (m_LastStateTime + VotingPeriod) > DateTime.Now )
+					if ( (m_LastStateTime + VotingPeriod) > DateTime.UtcNow )
 						break;
 
 					m_Faction.Broadcast( 1038024 ); // The results for the Faction Commander election are in
@@ -443,7 +443,7 @@ namespace Server.Factions
 			else
 				m_Address = IPAddress.None;
 
-			m_Time = DateTime.Now;
+			m_Time = DateTime.UtcNow;
 		}
 
 		public Voter( GenericReader reader, Mobile candidate )

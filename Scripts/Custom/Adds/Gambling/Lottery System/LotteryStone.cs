@@ -53,7 +53,7 @@ namespace Server.Items
         // If you do change this figure, you will need to ALSO make a change in the TIMER code
         // which is near the bottom of this file to match with the change you make here.
 
-        private DateTime m_DateOfNextDraw = DateTime.Now + TimeSpan.FromDays (3);
+        private DateTime m_DateOfNextDraw = DateTime.UtcNow + TimeSpan.FromDays (3);
 
         // ***********************************************************************************
         // ***********************************************************************************
@@ -762,7 +762,7 @@ namespace Server.Items
     [Flipable(0x14ED, 0x14EE)]
     public class LotteryTicket : Item
     {
-        private DateTime m_DateOfDrawOnTickets = DateTime.Now;
+        private DateTime m_DateOfDrawOnTickets = DateTime.UtcNow;
         private int m_TicketNumbers = 0;
         private string m_TicketStatus = "New Ticket";
 
@@ -912,7 +912,7 @@ namespace Server.Items
     public class NumberSelectionGump : Gump
     {
         private readonly int ticknumbr = 0;
-        private readonly DateTime drawdt = DateTime.Now;
+        private readonly DateTime drawdt = DateTime.UtcNow;
 
         private int playerselection1 = 0;
         private int playerselection2 = 1;
@@ -2281,10 +2281,10 @@ namespace Server.Items
                     int splt2 = thislotterystone.Split2; // 10% given to a 2 matching numbers winner
                     int splt1 = thislotterystone.Split1; // 5% given to a 1 matched number winner
 
-                    World.Broadcast(0, true, "System Date/Time : {0}", DateTime.Now);
+                    World.Broadcast(0, true, "System Date/Time : {0}", DateTime.UtcNow);
                     World.Broadcast(0, true, "Lottery Date/Time : {0}", timeofdraw);
 
-                    if (DateTime.Now >= timeofdraw)
+                    if (DateTime.UtcNow >= timeofdraw)
                     {
                         World.Broadcast(0x36, true, "Lottery Draw Time, Generating 5 Random Lottery Numbers...");
 
@@ -2626,7 +2626,7 @@ namespace Server.Items
                         // If you do change this figure, you will need to ALSO make a change in the ITEM code
                         // which is near the top of this file to match with the change you make here.
 
-                        thislotterystone.DateOfNextDraw = DateTime.Now + TimeSpan.FromDays(3);
+                        thislotterystone.DateOfNextDraw = DateTime.UtcNow + TimeSpan.FromDays(3);
 
                         // ***********************************************************************************
                         // ***********************************************************************************
@@ -2688,7 +2688,7 @@ namespace Server.Items
 
     public class NextLottery : Gump
     {
-        private readonly DateTime drawnon = DateTime.Now;
+        private readonly DateTime drawnon = DateTime.UtcNow;
         //private int salesfigure = 0;
         private readonly int win5 = 0;
         private readonly int win4 = 0;

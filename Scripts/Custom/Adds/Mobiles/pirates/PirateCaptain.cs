@@ -239,9 +239,9 @@ namespace Server.Mobiles
 
         #region Pirate Can Say Random Phrases From A [.txt] File
 
-        if (DateTime.Now >= nextAbilityTime && Combatant == null && active == true)
+        if (DateTime.UtcNow >= nextAbilityTime && Combatant == null && active == true)
         {
-            nextAbilityTime = DateTime.Now + TimeSpan.FromSeconds(Utility.RandomMinMax(4, 6));
+            nextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds(Utility.RandomMinMax(4, 6));
 
             if (text == null)
             {
@@ -281,7 +281,7 @@ namespace Server.Mobiles
 		}
 		
 		base.OnThink();
-		if ( DateTime.Now < m_NextPickup )
+		if ( DateTime.UtcNow < m_NextPickup )
 			return;
 
         if (m_PirateShip_Boat == null)
@@ -289,7 +289,7 @@ namespace Server.Mobiles
 			return;
 		} 
 
-		m_NextPickup = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 1, 2 ) );
+		m_NextPickup = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 1, 2 ) );
 
         enemydirection = Direction.North;
 		foreach ( Item enemy in this.GetItemsInRange( 200 ) )

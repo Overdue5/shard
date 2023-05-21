@@ -203,7 +203,7 @@ namespace Server.Items
 					Effects.SendLocationEffect(new Point3D(m.X, m.Y + 1, m.Z), m.Map, 0x3709, 17, effHue, 0);
 					Effects.SendLocationEffect(new Point3D(m.X, m.Y - 1, m.Z), m.Map, 0x3709, 17, effHue, 0);
 					Effects.SendLocationEffect(new Point3D(m.X, m.Y, m.Z), m.Map, 0x3709, 17, effHue, 0);
-					m_Timer = new FireStormTimer(DateTime.Now, m, effHue, 0, 1);
+					m_Timer = new FireStormTimer(DateTime.UtcNow, m, effHue, 0, 1);
 					m_Timer.Start();
 					break;
 				case StoneEffect.FireStorm2: //CEO Using above idea, this one does the firestorm outside->in
@@ -215,7 +215,7 @@ namespace Server.Items
 					Effects.SendLocationEffect(new Point3D(m.X, m.Y - 5, m.Z), m.Map, 0x3709, 17, effHue, 0);
 					Effects.SendLocationEffect(new Point3D(m.X + 5, m.Y - 5, m.Z), m.Map, 0x3709, 17, effHue, 0);
 					Effects.SendLocationEffect(new Point3D(m.X - 5, m.Y + 5, m.Z), m.Map, 0x3709, 17, effHue, 0);
-					m_Timer = new FireStormTimer(DateTime.Now, m, effHue, 5, -1);
+					m_Timer = new FireStormTimer(DateTime.UtcNow, m, effHue, 5, -1);
 					m_Timer.Start();
 					break;
 			}

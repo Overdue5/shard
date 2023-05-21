@@ -393,7 +393,7 @@ namespace Server.Poker
 			if ( nextTurn.RequestLeave )
 			{
 				m_Players.Push( nextTurn );
-				nextTurn.BetStart = DateTime.Now;
+				nextTurn.BetStart = DateTime.UtcNow;
 				nextTurn.Action = PlayerAction.Fold;
 				return nextTurn;
 			}
@@ -401,7 +401,7 @@ namespace Server.Poker
 			if ( nextTurn.IsAllIn )
 			{
 				m_Players.Push( nextTurn );
-				nextTurn.BetStart = DateTime.Now;
+				nextTurn.BetStart = DateTime.UtcNow;
 				nextTurn.Action = PlayerAction.AllIn;
 				return nextTurn;
 			}
@@ -409,7 +409,7 @@ namespace Server.Poker
 			if ( nextTurn.LonePlayer )
 			{
 				m_Players.Push( nextTurn );
-				nextTurn.BetStart = DateTime.Now;
+				nextTurn.BetStart = DateTime.UtcNow;
 				nextTurn.Action = PlayerAction.Check;
 				return nextTurn;
 			}
@@ -424,7 +424,7 @@ namespace Server.Poker
 				canCall = true;
 
 			m_Players.Push( nextTurn );
-			nextTurn.BetStart = DateTime.Now;
+			nextTurn.BetStart = DateTime.UtcNow;
 
 			ResultEntry entry = new ResultEntry( nextTurn );
 			List<Card> bestCards;
@@ -486,14 +486,14 @@ namespace Server.Poker
 							if ( HandRanker.IsBetterThan( results[i], PokerDealer.JackpotWinners.Hand ) == RankResult.Better )
 							{
 								PokerDealer.JackpotWinners = null;
-								PokerDealer.JackpotWinners = new PokerDealer.JackpotInfo( winners, results[i], DateTime.Now );
+								PokerDealer.JackpotWinners = new PokerDealer.JackpotInfo( winners, results[i], DateTime.UtcNow );
 
 								break;
 							}
 						}
 						else
 						{
-							PokerDealer.JackpotWinners = new PokerDealer.JackpotInfo( winners, results[i], DateTime.Now );
+							PokerDealer.JackpotWinners = new PokerDealer.JackpotInfo( winners, results[i], DateTime.UtcNow );
 							break;
 						}
 					}
@@ -912,12 +912,12 @@ namespace Server.Poker
 				if ( m_LastPlayer == null )
 					m_LastPlayer = m_Game.Players.Peek(); //Changed timer from 25.0 and 30.0 to 45.0 and 60.0
 
-				if ( m_LastPlayer.BetStart.AddSeconds( 45.0 ) <= DateTime.Now /*&& m_LastPlayer.Mobile.HasGump( typeof( PokerBetGump ) )*/ && !hasWarned )
+				if ( m_LastPlayer.BetStart.AddSeconds( 45.0 ) <= DateTime.UtcNow /*&& m_LastPlayer.Mobile.HasGump( typeof( PokerBetGump ) )*/ && !hasWarned )
 				{
 					m_LastPlayer.SendMessage( 0x22, "You have 15 seconds left to make a choice. (You will automatically fold if no choice is made)" );
 					hasWarned = true;
 				}
-				else if ( m_LastPlayer.BetStart.AddSeconds( 60.0 ) <= DateTime.Now /*&& m_LastPlayer.Mobile.HasGump( typeof( PokerBetGump ) )*/ )
+				else if ( m_LastPlayer.BetStart.AddSeconds( 60.0 ) <= DateTime.UtcNow /*&& m_LastPlayer.Mobile.HasGump( typeof( PokerBetGump ) )*/ )
 				{
 					PokerPlayer temp = m_LastPlayer;
 					m_LastPlayer = null;

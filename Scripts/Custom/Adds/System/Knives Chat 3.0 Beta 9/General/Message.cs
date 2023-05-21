@@ -36,7 +36,7 @@ namespace Knives.Chat3
 
         public static bool StaffTimeout(Message msg)
         {
-            return (msg.From.AccessLevel > AccessLevel.Player && msg.Received + TimeSpan.FromHours(5) < DateTime.Now);
+            return (msg.From.AccessLevel > AccessLevel.Player && msg.Received + TimeSpan.FromHours(5) < DateTime.UtcNow);
         }
 
         private Mobile c_From;
@@ -73,7 +73,7 @@ namespace Knives.Chat3
             c_Subject = sub;
             c_Type = type;
 
-            c_Received = DateTime.Now;
+            c_Received = DateTime.UtcNow;
         }
 
         public void Save(GenericWriter writer)

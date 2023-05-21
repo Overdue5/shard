@@ -50,7 +50,7 @@ namespace Server.WebServices
                     }
                 }
             }
-            m_LastVendorUpdate = DateTime.Now;
+            m_LastVendorUpdate = DateTime.UtcNow;
             m_NextVendorUpdate = m_LastVendorUpdate + m_WorldSaveInterval;
             Utility.ConsoleWriteLine($"Caching {count} Player Vendors");
         }
@@ -124,7 +124,7 @@ namespace Server.WebServices
 
         public override void Handle(HttpListenerRequest request, HttpListenerResponse response)
         {
-            TimeSpan expires = m_NextVendorUpdate - DateTime.Now;
+            TimeSpan expires = m_NextVendorUpdate - DateTime.UtcNow;
             response.ContentType = "application/json";
 
             SetCacheHeaders(response.Headers, expires);

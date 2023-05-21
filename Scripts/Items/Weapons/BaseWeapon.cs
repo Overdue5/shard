@@ -798,7 +798,7 @@ namespace Server.Items
                     (m as PlayerMobile).WeaponTimerCheck();
 
 				if ( weapon != null && m.Warmode)
-					m.NextCombatTime = DateTime.Now + weapon.GetDelay( m );
+					m.NextCombatTime = DateTime.UtcNow + weapon.GetDelay( m );
 
 				if ( UseSkillMod && m_SkillMod != null )
 				{
@@ -1841,9 +1841,9 @@ namespace Server.Items
 
                     //Autoattack someone if we have if it was a long time since we attacked them
                     //or if our new combat time is far in the future. Auto attacking reacts slower then manual attacking.
-                    if (pm.NextCombatTime > DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds*3) ||
-                        (DateTime.Now - TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds*3)) > pm.NextCombatTime)
-                        pm.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds*3);
+                    if (pm.NextCombatTime > DateTime.UtcNow + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds*3) ||
+                        (DateTime.UtcNow - TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds*3)) > pm.NextCombatTime)
+                        pm.NextCombatTime = DateTime.UtcNow + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds*3);
                 }
             }
             
@@ -2266,8 +2266,8 @@ namespace Server.Items
 
         //                //Autoattack someone if we have if it was a long time since we attacked them
         //                //or if our new combat time is far in the future. Auto attacking reacts slower then manual attacking.
-        //                if (pm.NextCombatTime > DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3) || (DateTime.Now - TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3)) > pm.NextCombatTime)
-        //                    pm.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3);
+        //                if (pm.NextCombatTime > DateTime.UtcNow + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3) || (DateTime.UtcNow - TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3)) > pm.NextCombatTime)
+        //                    pm.NextCombatTime = DateTime.UtcNow + TimeSpan.FromSeconds(GetDelay(pm).TotalSeconds * 3);
         //            }
 
         //            double propertyBonus = 1.0;// (move == null) ? 1.0 : move.GetPropertyBonus(attacker);

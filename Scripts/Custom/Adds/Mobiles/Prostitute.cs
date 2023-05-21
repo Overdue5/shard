@@ -89,24 +89,24 @@ namespace Server.Mobiles
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{                                                   
-			if ( m.InRange( this, 5 ) && InLOS(m) && m is PlayerMobile && !m.Hidden && DateTime.Now - m_LastAnnounced > m_AnnouncingInterval )
+			if ( m.InRange( this, 5 ) && InLOS(m) && m is PlayerMobile && !m.Hidden && DateTime.UtcNow - m_LastAnnounced > m_AnnouncingInterval )
 			{
 				if ( m.Female == true )
 				{
 					SayRand( m_ftalk, this );
-					m_LastAnnounced = DateTime.Now;
+					m_LastAnnounced = DateTime.UtcNow;
 				}
 				else
 				{
 					SayRand( m_mtalk, this );
-					m_LastAnnounced = DateTime.Now;
+					m_LastAnnounced = DateTime.UtcNow;
 				}
 			}
 		}
 
 		public override void OnSpeech( SpeechEventArgs e )
 		{
-			if ( e.Mobile.InRange ( this, 6 ) && InLOS(e.Mobile) && e.Mobile is PlayerMobile && DateTime.Now - m_LastReplied > m_ReplyingInterval )
+			if ( e.Mobile.InRange ( this, 6 ) && InLOS(e.Mobile) && e.Mobile is PlayerMobile && DateTime.UtcNow - m_LastReplied > m_ReplyingInterval )
 			{
 				if ( e.Mobile.Female == true && e.Speech.ToLower().IndexOf( Name.ToLower() ) >= 0 )
 				{
@@ -122,7 +122,7 @@ namespace Server.Mobiles
 						this.Say ( string.Format ( "You have a mirror don't you hun? *giggles*" ));
 					else
 						this.Say ( string.Format ( "*giggles*" ));
-					m_LastReplied = DateTime.Now;
+					m_LastReplied = DateTime.UtcNow;
 				}
 				else if ( e.Speech.ToLower().IndexOf( Name.ToLower() ) >= 0 )
 				{
@@ -138,7 +138,7 @@ namespace Server.Mobiles
 						this.Say ( string.Format ( "*gives a little twirl* You can have it all handsome, for a price!" ));
 					else
 						this.Say ( string.Format ( "Does my bum look okay in this? *flutters eyelashes*" ));
-					m_LastReplied = DateTime.Now;
+					m_LastReplied = DateTime.UtcNow;
 				}
 			}
 		}

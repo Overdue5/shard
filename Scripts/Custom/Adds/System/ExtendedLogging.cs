@@ -45,7 +45,7 @@ namespace Server.Misc
 			{
 				Stream fileStream = File.Open( "Logs/LoginLogout/" + m.Account + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite );
 				StreamWriter writeAdapter = new StreamWriter( fileStream );
-		                writeAdapter.WriteLine(String.Format("{0} {1} logged in as {2} on {3}", m.NetState, m.Account, m.Name, DateTime.Now));
+		                writeAdapter.WriteLine(String.Format("{0} {1} logged in as {2} on {3}", m.NetState, m.Account, m.Name, DateTime.UtcNow));
 				writeAdapter.Close();
 			}
 			catch
@@ -62,7 +62,7 @@ namespace Server.Misc
 				Stream fileStream = File.Open( "Logs/LoginLogout/" + m.Account + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite );
 				StreamWriter writeAdapter = new StreamWriter( fileStream );
 
-				writeAdapter.WriteLine( String.Format( "Disconnected: {0} logged out as {1} on {2}", m.Account, m.Name, DateTime.Now ) );
+				writeAdapter.WriteLine( String.Format( "Disconnected: {0} logged out as {1} on {2}", m.Account, m.Name, DateTime.UtcNow ) );
 				writeAdapter.Close();
 			}
 			catch
@@ -77,7 +77,7 @@ namespace Server.Misc
 		    string name = e.Mobile.Name;
 		    string account = e.Mobile.Account != null ? e.Mobile.Account.ToString() : "[No account]";
 		    string region = e.Mobile.Region.Name;
-		    string datetime = DateTime.Now.ToString();
+		    string datetime = DateTime.UtcNow.ToString();
 
             string text = string.Format("{0} [{1}] [{2}]: <{3}> {4}", datetime, account, region, name, speech );
 
@@ -91,7 +91,7 @@ namespace Server.Misc
             string account = e.Mobile.Account != null ? e.Mobile.Account.ToString() : "[No account]";
             string region = e.Mobile.Region.Name;
             string guild = e.Mobile.Guild.Abbreviation == "none" ? e.Mobile.Guild.Name : e.Mobile.Guild.Abbreviation;
-            string datetime = DateTime.Now.ToString();
+            string datetime = DateTime.UtcNow.ToString();
 
             string text = string.Format("{0} [{1}] [{2}]: Guild[{3}] <{4}> {5}", datetime, account, region, guild, name, speech);
 
@@ -108,7 +108,7 @@ namespace Server.Misc
             string to = e.To == null ? "" : e.To.Name;
             string account = e.From.Account != null ? e.From.Account.ToString() : "[No account]";
             string region = e.From.Region.Name;
-            string datetime = DateTime.Now.ToString();
+            string datetime = DateTime.UtcNow.ToString();
 
             string text;
 
@@ -130,7 +130,7 @@ namespace Server.Misc
             string account = e.Mobile.Account != null ? e.Mobile.Account.ToString() : "[No account]";
             string region = e.Mobile.Region.Name;
             string guild = e.Mobile.Guild.Abbreviation == "none" ? e.Mobile.Guild.Name : e.Mobile.Guild.Abbreviation;
-            string datetime = DateTime.Now.ToString();
+            string datetime = DateTime.UtcNow.ToString();
 
             string text = string.Format("{0} [{1}] [{2}]: Guild[{3}] <{4}> {5}", datetime, account, region, guild, name, speech);
 
@@ -166,7 +166,7 @@ namespace Server.Misc
         {
             try
             {
-                Stream fileStream = File.Open("Logs/Speech/RegularSpeech/" + DateTime.Now.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                Stream fileStream = File.Open("Logs/Speech/RegularSpeech/" + DateTime.UtcNow.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                 StreamWriter writeAdapter = new StreamWriter(fileStream);
 
                 for (int i = 0; i < speechlist.Count; ++i)
@@ -185,7 +185,7 @@ namespace Server.Misc
         {
             try
             {
-                Stream fileStream = File.Open("Logs/Speech/GuildChat/" + DateTime.Now.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                Stream fileStream = File.Open("Logs/Speech/GuildChat/" + DateTime.UtcNow.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                 StreamWriter writeAdapter = new StreamWriter(fileStream);
 
                 for (int i = 0; i < guildchatlist.Count; ++i)
@@ -204,7 +204,7 @@ namespace Server.Misc
         {
             try
             {
-                Stream fileStream = File.Open("Logs/Speech/PartyChat/" + DateTime.Now.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                Stream fileStream = File.Open("Logs/Speech/PartyChat/" + DateTime.UtcNow.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                 StreamWriter writeAdapter = new StreamWriter(fileStream);
 
                 for (int i = 0; i < partychatlist.Count; ++i)
@@ -223,7 +223,7 @@ namespace Server.Misc
         {
             try
             {
-                Stream fileStream = File.Open("Logs/Speech/AllianceChat/" + DateTime.Now.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                Stream fileStream = File.Open("Logs/Speech/AllianceChat/" + DateTime.UtcNow.ToLongDateString() + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                 StreamWriter writeAdapter = new StreamWriter(fileStream);
 
                 for (int i = 0; i < alliancechatlist.Count; ++i)

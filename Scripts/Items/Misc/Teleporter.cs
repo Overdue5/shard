@@ -690,7 +690,7 @@ namespace Server.Items
                             m.SendLocalizedMessage(m_ProgressNumber);
 
                         if (m_ShowTimeRemaining)
-                            m.SendMessage("Time remaining: {0}", FormatTime(m_Table[m].Timer.Next - DateTime.Now));
+                            m.SendMessage("Time remaining: {0}", FormatTime(m_Table[m].Timer.Next - DateTime.UtcNow));
 
                         Timer.DelayCall<Mobile>(TimeSpan.FromSeconds(5), EndLock, m);
                     }

@@ -144,7 +144,7 @@ namespace Server.Commands
             AccountWealth.Sort(delegate(AccountInfo a1, AccountInfo a2) { return a2.GrandTotal.CompareTo(a1.GrandTotal); });
             using (StreamWriter op = new StreamWriter(filename))
             {
-                op.WriteLine("<html><body><strong>Player Wealth report generated on {0}</strong>", DateTime.Now);
+                op.WriteLine("<html><body><strong>Player Wealth report generated on {0}</strong>", DateTime.UtcNow);
                 op.WriteLine("<br/><strong>Total Accounts: {0}</strong>", totalaccounts);
                 op.WriteLine("<br/><strong>Total Characters: {0}</strong>", totalchars);
                 op.WriteLine("<br/><strong>Total Houses: {0}</strong>", totalhomes);

@@ -9,7 +9,7 @@ namespace Server.Items
         [Constructable]
         public NightSightPotion(): base(PotionEffect.Nightsight)
         {
-            cleanupTime = (DateTime.Now + TimeSpan.FromDays(7));
+            cleanupTime = (DateTime.UtcNow + TimeSpan.FromDays(7));
         }
 
         public NightSightPotion(Serial serial)

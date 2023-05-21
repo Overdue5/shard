@@ -13,7 +13,7 @@ namespace Server.Mobiles
         public DateTime NextWoolTime
         {
             get { return m_NextWoolTime; }
-            set { m_NextWoolTime = value; Body = (DateTime.Now >= m_NextWoolTime) ? 0xCF : 0xDF; }
+            set { m_NextWoolTime = value; Body = (DateTime.UtcNow >= m_NextWoolTime) ? 0xCF : 0xDF; }
         }
 
         public void Carve(Mobile from, Item item)
@@ -31,7 +31,7 @@ namespace Server.Mobiles
                 if (Utility.Random(1000) <= 2)
                     AntiMacro.AntiMacroGump.SendGumpThreaded((PlayerMobile)from);
 
-                if (DateTime.Now < m_NextWoolTime)
+                if (DateTime.UtcNow < m_NextWoolTime)
                 {
                     //This sheep is not yet ready to be shorn.
                     PrivateOverheadMessage(MessageType.Regular, 0x3b2, 500449, from.NetState);
@@ -53,7 +53,7 @@ namespace Server.Mobiles
         public override void OnThink()
         {
             base.OnThink();
-            Body = (DateTime.Now >= m_NextWoolTime) ? 0xCF : 0xDF;
+            Body = (DateTime.UtcNow >= m_NextWoolTime) ? 0xCF : 0xDF;
         }
 
         [Constructable]
@@ -153,7 +153,7 @@ namespace Server.Mobiles
                 m_From.SendLocalizedMessage(500452);
                 m_From.AddToBackpack(new Wool(m_From.Map == Map.Felucca ? 2 : 1));
                 
-                m_Sheep.NextWoolTime = DateTime.Now + TimeSpan.FromHours(3.0); // TODO: Proper time delay
+                m_Sheep.NextWoolTime = DateTime.UtcNow + TimeSpan.FromHours(3.0); // TODO: Proper time delay
 
                 if (m_From is PlayerMobile)
                     ((PlayerMobile)m_From).EndPlayerAction();

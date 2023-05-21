@@ -184,7 +184,7 @@ namespace Server.Custom
     {
         private readonly BaseVendor m_Vendor;
         private readonly Mobile m_Player;
-        private static Random m_Random = new Random(DateTime.Now.Millisecond);
+        private static Random m_Random = new Random(DateTime.UtcNow.Millisecond);
 
         public static void Initialize()
         {

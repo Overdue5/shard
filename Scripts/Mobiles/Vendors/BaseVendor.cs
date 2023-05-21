@@ -168,7 +168,7 @@ namespace Server.Mobiles
 			pack = new Backpack {Layer = Layer.ShopResale, Movable = false, Visible = false};
 		    AddItem( pack );
 
-			m_LastRestock = DateTime.Now;
+			m_LastRestock = DateTime.UtcNow;
             m_RestockDelay = GetRestockDelay();
             Timer.DelayCall(TimeSpan.FromSeconds(5), () => { UpdateVendorTables(this); });
         }
@@ -232,7 +232,7 @@ namespace Server.Mobiles
 
 		protected void LoadSBInfo()
 		{
-			m_LastRestock = DateTime.Now;
+			m_LastRestock = DateTime.UtcNow;
 
 			for ( var i = 0; i < m_ArmorBuyInfo.Count; ++i )
 			{
@@ -545,7 +545,7 @@ namespace Server.Mobiles
 
 		public virtual void Restock()
 		{
-			m_LastRestock = DateTime.Now;
+			m_LastRestock = DateTime.UtcNow;
 
 			var buyInfo = GetBuyInfo();
 
@@ -575,7 +575,7 @@ namespace Server.Mobiles
 				return;
 			}
 
-			if ( DateTime.Now - m_LastRestock > RestockDelay )
+			if ( DateTime.UtcNow - m_LastRestock > RestockDelay )
 				Restock();
 
 			UpdateBuyInfo();
@@ -620,7 +620,7 @@ namespace Server.Mobiles
 
 				var item = playerItems[i];
 
-				if ( (item.LastMoved + InventoryDecayTime) <= DateTime.Now )
+				if ( (item.LastMoved + InventoryDecayTime) <= DateTime.UtcNow )
 					item.Delete();
 			}
 
@@ -774,7 +774,7 @@ namespace Server.Mobiles
 			{
                 if (Core.ML)
                 {
-                    if (((PlayerMobile)from).NextBODTurnInTime > DateTime.Now)
+                    if (((PlayerMobile)from).NextBODTurnInTime > DateTime.UtcNow)
                     {
                         SayTo(from, 1079976);	//
                         return false;
@@ -818,7 +818,7 @@ namespace Server.Mobiles
 
                 if (Core.ML)
                 {
-                    ((PlayerMobile)from).NextBODTurnInTime = DateTime.Now + TimeSpan.FromSeconds(10.0);
+                    ((PlayerMobile)from).NextBODTurnInTime = DateTime.UtcNow + TimeSpan.FromSeconds(10.0);
                 }
 
 				dropped.Delete();

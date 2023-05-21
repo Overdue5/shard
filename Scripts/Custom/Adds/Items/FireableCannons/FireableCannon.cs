@@ -130,7 +130,7 @@ namespace Server.Items
         private int m_MinDamage = 10;
         private int m_MaxDamage = 50;
 		private BaseCannon m_cannon;
-		public DateTime NextShot = DateTime.Now;
+		public DateTime NextShot = DateTime.UtcNow;
 		public override bool HandlesOnSpeech{ get{ return true; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -190,7 +190,7 @@ namespace Server.Items
 			string said = e.Speech.ToLower();
 			if( said.IndexOf("hitch") != - 1 && said.IndexOf("unhitch") == - 1)
 			{
-				if( NextShot > DateTime.Now )
+				if( NextShot > DateTime.UtcNow )
 					from.SendMessage("You must wait for the cannon to cool down before you can hitch it.");
 				else
 					from.Target = new InternalTarget1(this);
@@ -286,10 +286,10 @@ namespace Server.Items
                 from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1019045); // I can't reach that.
 				return;
 			}
-			if( NextShot < DateTime.Now )
+			if( NextShot < DateTime.UtcNow )
 				from.Target = new InternalTarget(this);
 			else
-				from.SendMessage( "The cannon is too hot! You must wait {0} seconds before firing again.", (NextShot - DateTime.Now).Seconds );
+				from.SendMessage( "The cannon is too hot! You must wait {0} seconds before firing again.", (NextShot - DateTime.UtcNow).Seconds );
 		}
 		
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
@@ -355,7 +355,7 @@ namespace Server.Items
 					Effects.SendMovingEffect( fro, to, 0xE73, 1, 0, false, true, 0, 0 );
 					Effects.PlaySound(Location,from.Map,519);
 					Explode( from, new Point3D(p), from.Map );
-					NextShot = DateTime.Now + TimeSpan.FromSeconds(10);// 10 seconds to next time you can fire
+					NextShot = DateTime.UtcNow + TimeSpan.FromSeconds(10);// 10 seconds to next time you can fire
 					return true;
 				}
 			    if ( from.Backpack.GetAmount( typeof( CannonBall )) == 0)
@@ -497,7 +497,7 @@ namespace Server.Items
 				{
 					Owner.From.SendLocalizedMessage( 500446 );
 				}
-				else if( m_Cannon.CCom.NextShot > DateTime.Now )
+				else if( m_Cannon.CCom.NextShot > DateTime.UtcNow )
 					Owner.From.SendMessage("You must wait for the cannon to cool down before you can redeed it.");
 				else
 				{

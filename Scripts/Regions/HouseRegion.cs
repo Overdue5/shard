@@ -203,7 +203,7 @@ namespace Server.Regions
 				{
 					AggressorInfo info = m.Aggressed[i];
 
-					if ( info.Defender.Player && (DateTime.Now - info.LastCombatTime) < CombatHeatDelay )
+					if ( info.Defender.Player && (DateTime.UtcNow - info.LastCombatTime) < CombatHeatDelay )
 						return base.GetLogoutDelay( m );
 				}
 
@@ -236,7 +236,7 @@ namespace Server.Regions
                 {
                     from.SendLocalizedMessage(500295); // you are too far away to do that.
                 }
-                else if (DateTime.Now <= m_House.BuiltOn.AddHours(1))
+                else if (DateTime.UtcNow <= m_House.BuiltOn.AddHours(1))
                 {
                     from.SendLocalizedMessage(1080178); // You must wait one hour between each house demolition.
                 }

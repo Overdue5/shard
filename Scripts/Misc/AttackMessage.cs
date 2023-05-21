@@ -47,7 +47,7 @@ namespace Server.Misc
 			{
 				AggressorInfo info = list[i];
 
-				if ( info.Attacker == m2 && DateTime.Now < (info.LastCombatTime + Delay) )
+				if ( info.Attacker == m2 && DateTime.UtcNow < (info.LastCombatTime + Delay) )
 					return true;
 			}
 
@@ -57,7 +57,7 @@ namespace Server.Misc
 			{
 				AggressorInfo info = list[i];
 
-				if ( info.Attacker == m1 && DateTime.Now < (info.LastCombatTime + Delay) )
+				if ( info.Attacker == m1 && DateTime.UtcNow < (info.LastCombatTime + Delay) )
 					return true;
 			}
 

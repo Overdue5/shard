@@ -227,11 +227,11 @@ namespace Server.Items
 
 		//Mobile & timeout
 		private Mobile m_InUseBy = null;
-		private DateTime m_LastPlayed = DateTime.Now;
+		private DateTime m_LastPlayed = DateTime.UtcNow;
 		private TimeSpan m_TimeOut;
 		private readonly TimeSpan m_IdleTimer = TimeSpan.FromMinutes(5); // How long can a person be standing at the machine not playing?
 		private Mobile m_LastWonBy = null;
-		private DateTime m_LastWonByDate = DateTime.Now;
+		private DateTime m_LastWonByDate = DateTime.UtcNow;
 		private int m_LastWonAmount = 0;
 
 		// For Progressive Slots
@@ -293,7 +293,7 @@ namespace Server.Items
 		private bool m_RandomActivated = false;
 		private DateTime m_RandomTimerEnd;
 		private InternalTimer1 m_RandomTimer;
-		private DateTime m_RandomSymbolsTimer = DateTime.Now;
+		private DateTime m_RandomSymbolsTimer = DateTime.UtcNow;
 		private readonly TimeSpan m_RandomSymbolsTimerEnd = TimeSpan.FromHours(4);
 
 		private int m_BlinkCount = 0;
@@ -815,7 +815,7 @@ namespace Server.Items
 			get
 			{
 				if (m_RandomActivated)
-					return m_RandomTimerEnd - DateTime.Now;
+					return m_RandomTimerEnd - DateTime.UtcNow;
 				else
 					return TimeSpan.Zero;
 			}
@@ -1125,7 +1125,7 @@ namespace Server.Items
 				return;
 			}
 
-			m_TimeOut = DateTime.Now - m_LastPlayed;
+			m_TimeOut = DateTime.UtcNow - m_LastPlayed;
 
 			if (m_CardClubOnly && !CarryingClubCard(from))
 			{
@@ -1152,17 +1152,17 @@ namespace Server.Items
 				from.CloseGump(typeof(NewMinerBonusGump));
 				if (m_SlotTheme == SlotThemeType.PowerScrolls)
 				{
-					TimeSpan symtimer = DateTime.Now - m_RandomSymbolsTimer;
+					TimeSpan symtimer = DateTime.UtcNow - m_RandomSymbolsTimer;
 					if (m_RandomSymbolsTimerEnd < symtimer)
 					{
 						RandomScrollSymbols();
-						m_RandomSymbolsTimer = DateTime.Now;
+						m_RandomSymbolsTimer = DateTime.UtcNow;
 						m_ReelOne = m_ReelTwo = m_ReelThree = m_Symbols[0];
 					}
 				}
 				//if (m_PaybackType == PaybackType.Random)
 				SetupOddsTable(m_PaybackType, false);
-				m_LastPlayed = DateTime.Now;
+				m_LastPlayed = DateTime.UtcNow;
 				from.SendGump(new TurboSlotGump(this, m_Symbols));
 			}
 			else
@@ -1950,16 +1950,16 @@ namespace Server.Items
 			if (m_LastWonBy == null || m_LastWonBy.Deleted)
 			{
 				m_LastWonBy = m;
-				m_LastWonByDate = DateTime.Now;
+				m_LastWonByDate = DateTime.UtcNow;
 				m_LastWonAmount = jackpotamount;
 			}
 			else
 			{
-				TimeSpan timespan = DateTime.Now - m_LastWonByDate;
+				TimeSpan timespan = DateTime.UtcNow - m_LastWonByDate;
 				if (m_LastWonAmount <= jackpotamount || r1index == 0 || TimeSpan.FromDays(30) < timespan)
 				{
 					m_LastWonBy = m;
-					m_LastWonByDate = DateTime.Now;
+					m_LastWonByDate = DateTime.UtcNow;
 					m_LastWonAmount = jackpotamount;
 				}
 			}
@@ -4864,7 +4864,7 @@ namespace Server.Items
 		public void DoTimer1(TimeSpan delay)
 		{
 
-			m_RandomTimerEnd = DateTime.Now + delay;
+			m_RandomTimerEnd = DateTime.UtcNow + delay;
 			m_RandomActivated = true;
 
 			if (m_RandomTimer != null)
@@ -5416,7 +5416,7 @@ namespace Server.Items
 #if !RUNUO2RC1
 			this.Name = "Golden Coin Casino Membership Card";
 #endif
-			m_JoinDate = DateTime.Now;
+			m_JoinDate = DateTime.UtcNow;
 		}
 
 #if RUNUO2RC1

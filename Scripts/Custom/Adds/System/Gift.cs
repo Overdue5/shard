@@ -72,7 +72,7 @@ namespace Server.Gumps
                 }
             }
 
-            if (DateTime.Now < validuntil)
+            if (DateTime.UtcNow < validuntil)
             {
                 e.Mobile.CloseGump(typeof (GiftGump));
                 e.Mobile.SendGump(new GiftGump());
@@ -128,7 +128,7 @@ namespace Server.Gumps
             NetState state = e.Mobile.NetState;
             Account a = (Account) e.Mobile.Account;
 
-            if (DateTime.Now > validuntil)
+            if (DateTime.UtcNow > validuntil)
                 return;
 
             if (state == null || a == null)
@@ -223,7 +223,7 @@ namespace Server.Gumps
                         {
                             Stream fileStream = File.Open("Logs/ReceivedGifts.log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                             StreamWriter writeAdapter = new StreamWriter(fileStream);
-                            writeAdapter.WriteLine("[{0}]{1}\t{2}\t{3}\t{4}", state.Account, state.Mobile.Name, state.Address, package, DateTime.Now);
+                            writeAdapter.WriteLine("[{0}]{1}\t{2}\t{3}\t{4}", state.Account, state.Mobile.Name, state.Address, package, DateTime.UtcNow);
                             writeAdapter.Close();
                         }
                         catch

@@ -39,7 +39,7 @@ namespace Knives.Chat3
 
         public static void Report(string error)
         {
-            s_ErrorLog.Add(String.Format("<B>{0}</B><BR>{1}<BR>", DateTime.Now, error));
+            s_ErrorLog.Add(String.Format("<B>{0}</B><BR>{1}<BR>", DateTime.UtcNow, error));
 
             Events.InvokeError(new ErrorEventArgs(error));
 
@@ -50,7 +50,7 @@ namespace Knives.Chat3
 
         public static void Report(string error, Exception e)
         {
-            s_ErrorLog.Add(String.Format("<B>{0}</B><BR>{1}<BR>", DateTime.Now, error));
+            s_ErrorLog.Add(String.Format("<B>{0}</B><BR>{1}<BR>", DateTime.UtcNow, error));
 
             Events.InvokeError(new ErrorEventArgs(error));
 

@@ -54,7 +54,7 @@ namespace Server.Items
 		private int m_SplitAceCount = 0;
 		//Mobile & timeout
 		private Mobile m_InUseBy = null;
-		private DateTime m_LastPlayed = DateTime.Now;
+		private DateTime m_LastPlayed = DateTime.UtcNow;
 		private TimeSpan m_TimeOut;
 		private readonly TimeSpan m_IdleTimer = TimeSpan.FromMinutes(5); // How long can a person be standing at the machine not playing?
 
@@ -936,7 +936,7 @@ namespace Server.Items
 				return;
 			}
 
-			m_TimeOut = DateTime.Now - m_LastPlayed;
+			m_TimeOut = DateTime.UtcNow - m_LastPlayed;
 			string message = null;
 			m_DealerTimer = null;
 			if (m_InUseBy == null || m_InUseBy.Deleted)
@@ -1020,7 +1020,7 @@ namespace Server.Items
 			}
 			if (m_ContinuousShuffle || carddeck.Remaining < 16)
 				carddeck.QuickShuffle();
-			m_LastPlayed = DateTime.Now;
+			m_LastPlayed = DateTime.UtcNow;
 			m_TotalPlays++;
 			m_Won = m_SplitCount = m_SplitAceCount;
 			m_BJInfo.status = GameStatus.PlayerTurn;

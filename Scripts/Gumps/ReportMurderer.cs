@@ -32,14 +32,14 @@ namespace Server.Gumps
                     ai.Reported = true;
                     ai.CanReportMurder = false;
                 }
-                if (ai.Attacker.Player && (DateTime.Now - ai.LastCombatTime) < TimeSpan.FromSeconds(30.0) &&
+                if (ai.Attacker.Player && (DateTime.UtcNow - ai.LastCombatTime) < TimeSpan.FromSeconds(30.0) &&
                     !toGive.Contains(ai.Attacker))
                     toGive.Add(ai.Attacker);
             }
 
 		    foreach ( AggressorInfo ai in m.Aggressed )
 			{
-				if ( ai.Defender.Player && (DateTime.Now - ai.LastCombatTime) < TimeSpan.FromSeconds( 30.0 ) && !toGive.Contains( ai.Defender ) )
+				if ( ai.Defender.Player && (DateTime.UtcNow - ai.LastCombatTime) < TimeSpan.FromSeconds( 30.0 ) && !toGive.Contains( ai.Defender ) )
 					toGive.Add( ai.Defender );
 			}
 

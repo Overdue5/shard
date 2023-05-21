@@ -241,7 +241,7 @@ namespace Server.Custom.Games
         }
 
         [CommandProperty(AccessLevel.Counselor)]
-        public TimeSpan TimeLeft { get { if (Running) return m_Length - (DateTime.Now - m_StartTime); else return Length; } }
+        public TimeSpan TimeLeft { get { if (Running) return m_Length - (DateTime.UtcNow - m_StartTime); else return Length; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D Lobby { get { return m_Lobby; } set { m_Lobby = value; } }
@@ -273,7 +273,7 @@ namespace Server.Custom.Games
                 {
                     m_RunningGames.Add(this);
                     m_GameMaster = from;
-                    m_StartTime = DateTime.Now;
+                    m_StartTime = DateTime.UtcNow;
                 }
                 catch (Exception e)
                 {
@@ -292,7 +292,7 @@ namespace Server.Custom.Games
             {
             m_RunningGames.Add(this);
             m_GameMaster = from;
-            m_StartTime = DateTime.Now;
+            m_StartTime = DateTime.UtcNow;
             }
             catch (Exception e)
             {
@@ -857,33 +857,33 @@ namespace Server.Custom.Games
             {
                 if (m_EndTime == DateTime.MinValue)
                 {
-                    m_EndTime = DateTime.Now + m_Game.Length;
-                    m_NextUpdate = DateTime.Now + TimeSpan.FromSeconds(10);
+                    m_EndTime = DateTime.UtcNow + m_Game.Length;
+                    m_NextUpdate = DateTime.UtcNow + TimeSpan.FromSeconds(10);
                 }
 
-                if (DateTime.Now > m_EndTime)
+                if (DateTime.UtcNow > m_EndTime)
                 {
                     m_Game.EndGameCommand();
                     Stop();
                 }
 
-                if (m_EndTime - DateTime.Now < TimeSpan.FromSeconds(60))
+                if (m_EndTime - DateTime.UtcNow < TimeSpan.FromSeconds(60))
                 {
                     this.Interval = TimeSpan.FromMilliseconds(500);
                 }
 
 
-                if (DateTime.Now >= m_NextUpdate)
+                if (DateTime.UtcNow >= m_NextUpdate)
                 {
                     if (m_Game.m_UseGump)
                     {
                         m_Game.SendGMGump();
                         m_Game.SendPlayerGumps();
                     }
-                    if (m_EndTime - DateTime.Now < TimeSpan.FromSeconds(60))
-                        m_NextUpdate = DateTime.Now + TimeSpan.FromSeconds(1);
+                    if (m_EndTime - DateTime.UtcNow < TimeSpan.FromSeconds(60))
+                        m_NextUpdate = DateTime.UtcNow + TimeSpan.FromSeconds(1);
                     else
-                        m_NextUpdate = DateTime.Now + TimeSpan.FromSeconds(10);
+                        m_NextUpdate = DateTime.UtcNow + TimeSpan.FromSeconds(10);
                 }
             }
         }

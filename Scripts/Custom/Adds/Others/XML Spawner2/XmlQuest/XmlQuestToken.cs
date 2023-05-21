@@ -244,14 +244,14 @@ namespace Server.Items
         public XmlQuestToken()
         {
             //LootType = LootType.Blessed;
-            TimeCreated = DateTime.Now;
+            TimeCreated = DateTime.UtcNow;
         }
 
         public XmlQuestToken(int itemID)
         {
             ItemID = itemID;
             //LootType = LootType.Blessed;
-            TimeCreated = DateTime.Now;
+            TimeCreated = DateTime.UtcNow;
         }
 
         public override void Serialize(GenericWriter writer)
@@ -1357,10 +1357,10 @@ namespace Server.Items
                     /*
                      if(PlayerMade && ((Owner == Creator) || (Owner == null)))
                      {
-                         m_TimeCreated = DateTime.Now;
+                         m_TimeCreated = DateTime.UtcNow;
                      }
                      */
-                    return (m_TimeCreated + TimeSpan.FromHours(m_ExpirationDuration) - DateTime.Now);
+                    return (m_TimeCreated + TimeSpan.FromHours(m_ExpirationDuration) - DateTime.UtcNow);
                 }
                 else
                 {

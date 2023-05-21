@@ -41,7 +41,7 @@ namespace Server.Mobiles
 		public override void OnThink()
 		{
 			base.OnThink();
-			if( NextThink > DateTime.Now )
+			if( NextThink > DateTime.UtcNow )
 				return;
 			if( m_Cannon == null )
 			{
@@ -56,15 +56,15 @@ namespace Server.Mobiles
 			if( Combatant == null )
 				return;
 			
-			NextThink = DateTime.Now + TimeSpan.FromSeconds(2.5);
+			NextThink = DateTime.UtcNow + TimeSpan.FromSeconds(2.5);
 			FireCannon(Combatant);
 		}
 		
 		public virtual void FireCannon(Mobile target)
 		{
-			if( NextFire > DateTime.Now )
+			if( NextFire > DateTime.UtcNow )
 				return;
-			NextFire = DateTime.Now + TimeSpan.FromSeconds(10);
+			NextFire = DateTime.UtcNow + TimeSpan.FromSeconds(10);
 			m_Cannon.CCom.CheckFiringAngle(target.Location,this);
 		}
 		

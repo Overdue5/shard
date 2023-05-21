@@ -140,7 +140,7 @@ namespace Server.Mobiles
             //if (Utility.RandomDouble() <= 0.1)
             //    new Horse().Rider = this;
 
-            NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(1.10);
+            NextCombatTime = DateTime.UtcNow + TimeSpan.FromSeconds(1.10);
             Focus = target;
         }
 

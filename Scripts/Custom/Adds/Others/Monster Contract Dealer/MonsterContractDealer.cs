@@ -132,19 +132,19 @@ namespace Server.Mobiles
 			
 			if(!LastUsers.ContainsKey(asker))
 			{
-				LastUsers.Add(asker,DateTime.Now);
+				LastUsers.Add(asker,DateTime.UtcNow);
 				return true;
 			}
 
 			else
 			{
-				if(DateTime.Now-LastUsers[asker] < Delay)
+				if(DateTime.UtcNow-LastUsers[asker] < Delay)
 				{
 					return false;
 				}
 				else
 				{
-					LastUsers[asker]=DateTime.Now;
+					LastUsers[asker]=DateTime.UtcNow;
 					return true;
 				}
 			}

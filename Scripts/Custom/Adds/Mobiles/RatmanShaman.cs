@@ -55,7 +55,7 @@ namespace Server.Mobiles
 
         public override void OnGotMeleeAttack(Mobile attacker)
         {
-            if (this.Map != null && this.Alive && ((recoverDelay < DateTime.Now && Utility.RandomMinMax(1, 4) == 1) || firstSummoned ))
+            if (this.Map != null && this.Alive && ((recoverDelay < DateTime.UtcNow && Utility.RandomMinMax(1, 4) == 1) || firstSummoned ))
             {
                 Map map = this.Map;
                 if (map == null)
@@ -88,13 +88,13 @@ namespace Server.Mobiles
                     Effects.SendLocationEffect(loc, map, 14170, 16);
                     spawn.Combatant = this.Combatant;
                 }
-                recoverDelay = DateTime.Now + TimeSpan.FromSeconds(30);                
+                recoverDelay = DateTime.UtcNow + TimeSpan.FromSeconds(30);                
             }
         }
 
         public override void OnDamagedBySpell(Mobile attacker)
         {
-            if (this.Map != null && this.Alive && ((recoverDelay < DateTime.Now && Utility.RandomMinMax(1, 4) == 1) || firstSummoned))
+            if (this.Map != null && this.Alive && ((recoverDelay < DateTime.UtcNow && Utility.RandomMinMax(1, 4) == 1) || firstSummoned))
             {
                 Map map = this.Map;
                 if (map == null)
@@ -127,7 +127,7 @@ namespace Server.Mobiles
                     Effects.SendLocationEffect(loc, map, 14170, 16);
                     spawn.Combatant = this.Combatant;
                 }
-                recoverDelay = DateTime.Now + TimeSpan.FromSeconds(30);
+                recoverDelay = DateTime.UtcNow + TimeSpan.FromSeconds(30);
             }
         }
 

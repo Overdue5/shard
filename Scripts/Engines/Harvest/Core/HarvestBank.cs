@@ -13,7 +13,7 @@ namespace Server.Engines.Harvest
 
         public void ResetRespawnTimer()
         {
-            m_NextRespawn = DateTime.Now;
+            m_NextRespawn = DateTime.UtcNow;
         }
 
         public HarvestDefinition Definition
@@ -55,7 +55,7 @@ namespace Server.Engines.Harvest
         public void CheckRespawn()
         {
             // Malik's random veins fix
-            if (m_NextRespawn > DateTime.Now)
+            if (m_NextRespawn > DateTime.UtcNow)
                 return;
             if (m_Current == 0)
             {
@@ -89,7 +89,7 @@ namespace Server.Engines.Harvest
                 if (def.RaceBonus && from.Race == Race.Elf)	//def.RaceBonus = Core.ML
                     minutes *= .75;	//25% off the time.  
 
-                m_NextRespawn = DateTime.Now + TimeSpan.FromMinutes(minutes);
+                m_NextRespawn = DateTime.UtcNow + TimeSpan.FromMinutes(minutes);
             }
             else
             {

@@ -80,13 +80,13 @@ namespace Server.Engines.Apiculture
 				return;
 
 			//make sure it is time for update
-			if ( DateTime.Now < hive.NextCheck )
+			if ( DateTime.UtcNow < hive.NextCheck )
 			{
 				//m_GrowthIndicator = PlantGrowthIndicator.Delay;
 				return;
 			}
 
-			hive.NextCheck = DateTime.Now + CheckDelay; //update check timer
+			hive.NextCheck = DateTime.UtcNow + CheckDelay; //update check timer
 			hive.LastGrowth = HiveGrowthIndicator.None; //reset growth indicator
 			
 			hive.HiveAge++;	//update age of the hive

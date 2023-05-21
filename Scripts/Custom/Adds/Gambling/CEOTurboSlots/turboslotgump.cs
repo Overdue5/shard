@@ -348,7 +348,7 @@ namespace Server.Gumps
                 m_Slot.InUseBy = null;
                 return;
             }
-            m_Slot.LastPlayed = DateTime.Now;
+            m_Slot.LastPlayed = DateTime.UtcNow;
             if (info.ButtonID == 0) // Close
             {
                 if (m_Slot.Won != 0)

@@ -10,7 +10,7 @@ namespace Server.Gumps
 		public JailWarningGump( Mobile from, Mobile m, string why ) : base( 70, 40 )
 		{
 			//from.CloseGump(typeof ( JailWarningGump ));
-			( (Account)m.Account ).Comments.Add( new AccountComment( JailSystem.JSName + "-warning", m.Name + " warned for \"" + why + "\" by:" + from.Name + " on:" + DateTime.Now ) );
+			( (Account)m.Account ).Comments.Add( new AccountComment( JailSystem.JSName + "-warning", m.Name + " warned for \"" + why + "\" by:" + from.Name + " on:" + DateTime.UtcNow ) );
 			Closable = false;
 			Dragable = false;
 			Resizable = false;

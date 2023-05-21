@@ -37,7 +37,7 @@ namespace Server.Items
         {
             private Mobile m_Owner;
             private Item m_bob;
-            private DateTime shutitoff = DateTime.Now + TimeSpan.FromSeconds(6);
+            private DateTime shutitoff = DateTime.UtcNow + TimeSpan.FromSeconds(6);
             public InternalTimer(Mobile m, Item bob)
                 : base(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1))
             {
@@ -47,7 +47,7 @@ namespace Server.Items
 
             protected override void OnTick()
             {
-                if (DateTime.Now < shutitoff)
+                if (DateTime.UtcNow < shutitoff)
                 {
                     m_Owner.CantWalk = true;
                     m_Owner.Direction = m_Owner.GetDirectionTo(m_bob);

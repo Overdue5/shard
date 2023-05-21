@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using Server.Commands;
+using Server.Engines;
 using Server.Engines.Harvest;
 using Server.Engines.Quests.Ambitious;
 using Server.Items;
@@ -14,7 +15,7 @@ namespace Server.Custom.Zed
     public class BaseMine : Item
     {
         public static readonly int TileId = 220;
-        private byte warninglevel;
+        private byte r_WarningLevel;
         public BaseMine() : base()
         {
             Weight = 0.0;
@@ -28,6 +29,8 @@ namespace Server.Custom.Zed
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
+            if ((DateTime.UtcNow - LastMoved) < UtilityWorldTime.MonthTime)
+                r_WarningLevel++;
         }
 
         public override void Deserialize(GenericReader reader)
@@ -253,7 +256,6 @@ namespace Server.Custom.Zed
         public static Dictionary<MineCenter, Hashtable> m_MineItems = new Dictionary<MineCenter, Hashtable>();
         private Mobile m_Owner;
         private Teleporter m_Telepor;
-        private List<Item> m_ZLayer_Item;
         [Constructable]
         public MineCenter() : base(0x1183)
         {

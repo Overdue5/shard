@@ -812,7 +812,7 @@ namespace Server.Items
             ac = new AddonComponent(6918);
             AddComponent(ac, 7, -4, 26);
 
-            m_DeleteTime = DateTime.Now + TimeSpan.FromMinutes(30.0);
+            m_DeleteTime = DateTime.UtcNow + TimeSpan.FromMinutes(30.0);
 
             m_Timer = new DeleteTimer(m_Spawns, m_Items, m_DeleteTime);
             m_Timer.Start();
@@ -838,7 +838,7 @@ namespace Server.Items
             private readonly List<Item> m_Items;
 
             public DeleteTimer(List<Mobile> spawns, List<Item> items, DateTime time)
-                : base(time - DateTime.Now)
+                : base(time - DateTime.UtcNow)
             {
                 m_Items = items;
                 m_Spawns = spawns;

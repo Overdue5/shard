@@ -196,7 +196,7 @@ namespace Server.Items
 
                 if (text.Length > 0)
                 {
-                    BulletinBoardMessage message = new BulletinBoardMessage(DateTime.Now, from, text);
+                    BulletinBoardMessage message = new BulletinBoardMessage(DateTime.UtcNow, from, text);
 
                     if (m_Greeting)
                     {

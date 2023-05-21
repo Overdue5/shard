@@ -37,7 +37,7 @@ namespace Server.Scripts.Custom.Adds.Commands
             if (m_NextUseTime[pm.Account] != null)
                 dt = (DateTime) m_NextUseTime[pm.Account];
 
-            if ( DateTime.Now < dt)
+            if ( DateTime.UtcNow < dt)
                 pm.SendAsciiMessage("There is a 24 hour delay between toggling");
             else
             {
@@ -47,7 +47,7 @@ namespace Server.Scripts.Custom.Adds.Commands
                     {
                         pm.SendAsciiMessage("DISABLED");
                         pm.SendAsciiMessage("You will no longer be able to see the location of other players and vice versa");
-                        m_NextUseTime[pm.Account] = DateTime.Now + TimeSpan.FromHours(24);
+                        m_NextUseTime[pm.Account] = DateTime.UtcNow + TimeSpan.FromHours(24);
                         pm.ShowArriveMsg = false;
                     }
                     else
@@ -59,7 +59,7 @@ namespace Server.Scripts.Custom.Adds.Commands
                     {
                         pm.SendAsciiMessage("ENABLED");
                         pm.SendAsciiMessage("You can now see the location of other players by typing .ShowPlayers or .SP and vice versa");
-                        m_NextUseTime[pm.Account] = DateTime.Now + TimeSpan.FromHours(24);
+                        m_NextUseTime[pm.Account] = DateTime.UtcNow + TimeSpan.FromHours(24);
                         pm.ShowArriveMsg = true;
                     }
                     else

@@ -34,10 +34,10 @@ namespace Server.Commands
 
             try
             {
-                m_Output = new StreamWriter(Path.Combine(directory, String.Format("{0}.log", DateTime.Now.ToLongDateString())), true) { AutoFlush = true };
+                m_Output = new StreamWriter(Path.Combine(directory, String.Format("{0}.log", DateTime.UtcNow.ToLongDateString())), true) { AutoFlush = true };
 
                 m_Output.WriteLine("##############################");
-                m_Output.WriteLine("Log started on {0}", DateTime.Now);
+                m_Output.WriteLine("Log started on {0}", DateTime.UtcNow);
                 m_Output.WriteLine();
             }
             catch
@@ -85,7 +85,7 @@ namespace Server.Commands
                 netstate = from.NetState.ToString();
             }
 
-            string datetime = DateTime.Now.ToString();
+            string datetime = DateTime.UtcNow.ToString();
 
             string msg = string.Format("{0}: {1}: {2}", datetime, netstate, text);
             string name = (from.Account == null ? from.Name : from.Account.Username);

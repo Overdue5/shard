@@ -68,7 +68,7 @@ namespace Server.Mobiles
 
             if (Hits < 2100)
             {
-                if (DateTime.Now > m_NextShift)
+                if (DateTime.UtcNow > m_NextShift)
                 {
                     if (0.20 > Utility.RandomDouble())
                         TurnIntoRandom();
@@ -76,7 +76,7 @@ namespace Server.Mobiles
                     else if (0.10 > Utility.RandomDouble())
                     {
                         TurnIntoAttacker(from);
-                        m_NextShift = DateTime.Now + m_ShiftDelay;
+                        m_NextShift = DateTime.UtcNow + m_ShiftDelay;
                     }
                 }
             }

@@ -13,6 +13,8 @@ using CommandEventArgs = Server.Commands.CommandEventArgs;
 using CommandEventHandler = Server.Commands.CommandEventHandler;
 using Server.Network;
 using MessageType = Server.Network.MessageType;
+using Server.Custom;
+using Server.Gumps;
 
 namespace Scripts.Commands
 {
@@ -36,6 +38,7 @@ namespace Scripts.Commands
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
             CommandSystem.Register("saycheck", AccessLevel.Player, new CommandEventHandler(Say_OnCommand));
+            CommandSystem.Register("tt", AccessLevel.Player, new CommandEventHandler(Gump_OnCommand));
 #endif
 
         }
@@ -49,6 +52,15 @@ namespace Scripts.Commands
                 return $"Now only {count} avatar in Britannia";
             return $"Now {count} avatars in Britannia";
         }
+
+        [Usage("tt")]
+        [Description("test command")]
+        private static void Gump_OnCommand(CommandEventArgs e)
+        {
+            //e.Mobile.SendGump(new VendorParcelGump(e.Mobile, null));
+            //e.Mobile.SendGump(new PlayerGuidegump());
+        }
+
         [Usage("update")]
         [Description("Update server")]
         private static void Update_OnCommand(CommandEventArgs e)

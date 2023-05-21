@@ -90,7 +90,7 @@ namespace Server.Engines.XmlSpawner2
 			writer.Write(m_Word);
 			writer.Write(m_Charges);
 			writer.Write(m_Refractory);
-			writer.Write(m_EndTime - DateTime.Now);
+			writer.Write(m_EndTime - DateTime.UtcNow);
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -111,7 +111,7 @@ namespace Server.Engines.XmlSpawner2
 					Charges = reader.ReadInt();
 					Refractory = reader.ReadTimeSpan();
 					TimeSpan remaining = reader.ReadTimeSpan();
-					m_EndTime = DateTime.Now + remaining;
+					m_EndTime = DateTime.UtcNow + remaining;
 					break;
 			}
 		}
@@ -177,7 +177,7 @@ namespace Server.Engines.XmlSpawner2
 		{
 			if(m == null ) return;
 
-			if(DateTime.Now < m_EndTime) return;
+			if(DateTime.UtcNow < m_EndTime) return;
 
 
 			// play a sound
@@ -222,7 +222,7 @@ namespace Server.Engines.XmlSpawner2
 			} 
 			else
 			{
-				m_EndTime = DateTime.Now + Refractory;
+				m_EndTime = DateTime.UtcNow + Refractory;
 			}
 		}
 	}

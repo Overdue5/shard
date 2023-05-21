@@ -82,7 +82,7 @@ namespace Server.Engines.PartySystem
                 }
 
                 if (Data.LogChat)
-                    Logging.LogChat(String.Format(DateTime.Now + " <Party> {0}: {1}", from.Name, text));
+                    Logging.LogChat(String.Format(DateTime.UtcNow + " <Party> {0}: {1}", from.Name, text));
             }
             else
                 from.SendLocalizedMessage(3000211); // You are not in a party.

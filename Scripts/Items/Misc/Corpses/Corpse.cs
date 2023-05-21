@@ -105,7 +105,7 @@ namespace Server.Items
                 if (!Core.SE)
                     return false;
 
-                return (DateTime.Now < (m_TimeOfDeath + InstancedCorpseTime));
+                return (DateTime.UtcNow < (m_TimeOfDeath + InstancedCorpseTime));
             }
         }
 
@@ -419,7 +419,7 @@ namespace Server.Items
 			if ( m_DecayTimer != null )
 				m_DecayTimer.Stop();
 
-			m_DecayTime = DateTime.Now + delay;
+			m_DecayTime = DateTime.UtcNow + delay;
 
 			m_DecayTimer = new InternalTimer( this, delay, m_Looters, false );
 			m_DecayTimer.Start();
@@ -594,7 +594,7 @@ namespace Server.Items
 
 			m_CorpseName = GetCorpseName( owner );
 
-			m_TimeOfDeath = DateTime.Now;
+			m_TimeOfDeath = DateTime.UtcNow;
 
 			m_AccessLevel = owner.AccessLevel;
 			m_Guild = owner.Guild as Guild;
@@ -621,10 +621,10 @@ namespace Server.Items
 			{
 				AggressorInfo info = owner.Aggressors[i];
 
-				if ( (DateTime.Now - info.LastCombatTime) < lastTime )
+				if ( (DateTime.UtcNow - info.LastCombatTime) < lastTime )
 				{
 					m_Killer = info.Attacker;
-					lastTime = (DateTime.Now - info.LastCombatTime);
+					lastTime = (DateTime.UtcNow - info.LastCombatTime);
 				}
 
                 if (!isBaseCreature && !info.CriminalAggression)
@@ -635,10 +635,10 @@ namespace Server.Items
 			{
 				AggressorInfo info = owner.Aggressed[i];
 
-				if ( (DateTime.Now - info.LastCombatTime) < lastTime )
+				if ( (DateTime.UtcNow - info.LastCombatTime) < lastTime )
 				{
 					m_Killer = info.Defender;
-					lastTime = (DateTime.Now - info.LastCombatTime);
+					lastTime = (DateTime.UtcNow - info.LastCombatTime);
 				}
 
                 if (!isBaseCreature)
@@ -785,7 +785,7 @@ namespace Server.Items
                         }
 
                         if (reader.ReadBool())
-                            BeginDecay(reader.ReadDeltaTime() - DateTime.Now);
+                            BeginDecay(reader.ReadDeltaTime() - DateTime.UtcNow);
 
                         m_Looters = reader.ReadStrongMobileList();
                         m_Killer = reader.ReadMobile();
@@ -833,7 +833,7 @@ namespace Server.Items
 				case 7:
 				{
 					if ( reader.ReadBool() )
-						BeginDecay( reader.ReadDeltaTime() - DateTime.Now );
+						BeginDecay( reader.ReadDeltaTime() - DateTime.UtcNow );
 
 					goto case 6;
 				}
@@ -877,7 +877,7 @@ namespace Server.Items
 				case 0:
 				{
 					if ( version < 10 )
-						m_TimeOfDeath = DateTime.Now;
+						m_TimeOfDeath = DateTime.UtcNow;
 
 					if ( version < 7 )
 						BeginDecay( m_DefaultDecayTime );
@@ -1122,7 +1122,7 @@ namespace Server.Items
                 return false;
             }
 
-            if (DateTime.Now - TimeOfDeath < TimeSpan.FromMinutes(2) && from.AccessLevel == AccessLevel.Player)
+            if (DateTime.UtcNow - TimeOfDeath < TimeSpan.FromMinutes(2) && from.AccessLevel == AccessLevel.Player)
             {
                 //Taran: Young players can only loot corpses that was killed by them or their party unless more than 2 mins have passed
                 if (from is PlayerMobile && ((PlayerMobile) from).Young)
@@ -1208,7 +1208,7 @@ namespace Server.Items
             //Taran: This caused too much annoyance so I removed it
 
             //if (m_ViewedBy != null && from.AccessLevel == AccessLevel.Player && Owner is PlayerMobile && Carved && !m_ViewedBy.Contains(from))
-            //    from.NextActionTime = DateTime.Now + TimeSpan.FromSeconds(1.5);
+            //    from.NextActionTime = DateTime.UtcNow + TimeSpan.FromSeconds(1.5);
 
 			if ( from.AccessLevel > AccessLevel.Player || (from.InRange( GetWorldLocation(), 2 ) && from.InLOS(this)) )
 			{
@@ -1483,7 +1483,7 @@ namespace Server.Items
                 {
                     head.Owner = m_Owner;
                     head.Killer = m_Killer;
-                    head.CreationTime = DateTime.Now;
+                    head.CreationTime = DateTime.UtcNow;
                     head.IsPlayer = true;
                 }
                 //end bounty sytem

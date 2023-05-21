@@ -291,7 +291,7 @@ namespace Server.Misc
 
 				int actual = Notoriety.CanBeAttacked;
 
-				if( DateTime.Now >= (target.TimeOfDeath + Corpse.MonsterLootRightSacrifice) )
+				if( DateTime.UtcNow >= (target.TimeOfDeath + Corpse.MonsterLootRightSacrifice) )
 					return actual;
 
 				Party sourceParty = Party.Get( source );

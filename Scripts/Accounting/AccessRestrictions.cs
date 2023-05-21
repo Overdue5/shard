@@ -29,7 +29,7 @@ namespace Server
 					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Client: {ip}: Past IP limit threshold" );
 
 					using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
-						op.WriteLine( "{0}\tPast IP limit threshold\t{1}", ip, DateTime.Now );
+						op.WriteLine( "{0}\tPast IP limit threshold\t{1}", ip, DateTime.UtcNow );
 	
 					e.AllowConnection = false;
 					return;

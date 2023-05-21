@@ -38,9 +38,9 @@ namespace Server.Misc
 			{
 				Enabled = true;
 				new AutoRestart().Start();
-                m_RestartTime = DateTime.Now;
+                m_RestartTime = DateTime.UtcNow;
                 
-				e.Mobile.SendMessage($"You have initiated server shutdown in {DateTime.Now + RestartDelay}, after {((m_RestartTime + RestartDelay) - DateTime.Now).TotalSeconds} seconds");
+				e.Mobile.SendMessage($"You have initiated server shutdown in {DateTime.UtcNow + RestartDelay}, after {((m_RestartTime + RestartDelay) - DateTime.UtcNow).TotalSeconds} seconds");
             }
 		}
 
@@ -48,15 +48,15 @@ namespace Server.Misc
 		{
 			Priority = TimerPriority.FiveSeconds;
 
-			m_RestartTime = DateTime.Now.Date + RestartTime;
+			m_RestartTime = DateTime.UtcNow.Date + RestartTime;
 
-			if ( m_RestartTime < DateTime.Now )
+			if ( m_RestartTime < DateTime.UtcNow )
 				m_RestartTime += TimeSpan.FromDays( 1.0 );
 		}
 
 		private void Warning_Callback()
         {
-            var time = Utility.LimitMinMax(0, (m_RestartTime + RestartDelay - DateTime.Now).TotalSeconds, RestartDelay.TotalSeconds);
+            var time = Utility.LimitMinMax(0, (m_RestartTime + RestartDelay - DateTime.UtcNow).TotalSeconds, RestartDelay.TotalSeconds);
 
 			World.Broadcast( 0x22, true, $"Britain will soon be out of reach for avatars. {Math.Truncate(time)} seconds remain", m_SendToDiscord);
             m_SendToDiscord = false;
@@ -72,7 +72,7 @@ namespace Server.Misc
 			if ( m_Restarting || !Enabled )
 				return;
 
-			if ( DateTime.Now < m_RestartTime )
+			if ( DateTime.UtcNow < m_RestartTime )
 				return;
 
 			if ( WarningDelay > TimeSpan.Zero )

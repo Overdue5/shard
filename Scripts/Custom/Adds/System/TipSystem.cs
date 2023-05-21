@@ -219,7 +219,7 @@ namespace Server.Scripts.Custom.Adds.System
                 string url = info.GetTextEntry((int)Buttons.Url).Text;
 
                 Tip t = new Tip();
-                t.CreateDate = DateTime.Now.ToShortDateString();
+                t.CreateDate = DateTime.UtcNow.ToShortDateString();
                 t.From = StringUtils.GetString(creator.Trim(), from.Name);
                 t.Text = tip;
                 t.Url = url.Trim();

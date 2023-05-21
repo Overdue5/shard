@@ -205,7 +205,7 @@ namespace Server.Items
 				}
 				else
 				{
-					int daysLeft = (int)Math.Ceiling( ( deed.Stone.Started + deed.Stone.Duration + HouseRaffleStone.ExpirationTime - DateTime.Now ).TotalDays );
+					int daysLeft = (int)Math.Ceiling( ( deed.Stone.Started + deed.Stone.Duration + HouseRaffleStone.ExpirationTime - DateTime.UtcNow ).TotalDays );
 
 					return String.Format(
 						"<bodytextblack>" +

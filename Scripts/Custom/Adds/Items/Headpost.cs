@@ -61,7 +61,7 @@ namespace Server.Items.Custom
 			writer.Write( mountedHead );
 
 			//Calls a method that removes the head from the post 30 secs after the was started
-			if( DateTime.Now >= decayTime && mountedHead != null )
+			if( DateTime.UtcNow >= decayTime && mountedHead != null )
 				Timer.DelayCall( TimeSpan.FromSeconds( 30.0 ), new TimerStateCallback( RemoveHeadCallback ), null );
 		}
 
@@ -176,7 +176,7 @@ namespace Server.Items.Custom
 
 				//Makes sure that the the headposts "knows" it has a head on it and that it starts the decay timer of the head
 				m_Post.mountedHead = head;
-				m_Post.decayTime = ( DateTime.Now + new TimeSpan( 0, headDecayTime, 0 ) );
+				m_Post.decayTime = ( DateTime.UtcNow + new TimeSpan( 0, headDecayTime, 0 ) );
 
 				//Displays a message when mounting
 				m_Post.PublicOverheadMessage( MessageType.Regular, 906, true, string.Format( "{0} has mounted {1}'s head!", from.Name, head.Owner.Name ) );

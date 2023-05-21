@@ -131,7 +131,7 @@ namespace Server.Mobiles
                 return false;
             }
 
-            if (DateTime.Now < m_NextResurrect)
+            if (DateTime.UtcNow < m_NextResurrect)
             {
                 if (!onMovement)
                     this.Say("I need to take a break.");
@@ -155,13 +155,13 @@ namespace Server.Mobiles
                         }
                         else if (CheckResurrect(m))
                         {
-                            m_NextResurrect = DateTime.Now + ResurrectDelay;
+                            m_NextResurrect = DateTime.UtcNow + ResurrectDelay;
                             OfferResurrection(m);
                         }
                     }
                     else
                     {
-                        m_NextResurrect = DateTime.Now + ResurrectDelay;
+                        m_NextResurrect = DateTime.UtcNow + ResurrectDelay;
                         OfferHeal((PlayerMobile)m);
                     }
                 }

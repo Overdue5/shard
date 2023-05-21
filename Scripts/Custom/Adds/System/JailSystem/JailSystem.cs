@@ -141,7 +141,7 @@ namespace Server.Jailing
 
 		public bool jailed
 		{
-			get { return ( ReleaseDate > DateTime.Now ); }
+			get { return ( ReleaseDate > DateTime.UtcNow ); }
 		}
 
 		public int ID
@@ -176,7 +176,7 @@ namespace Server.Jailing
 								return;
 							}
 				if( ( args.Speech.ToLower().Trim() == timeCommand ) || ( args.Speech.ToLower().Trim() == timeCommand + "?" ) ) //time query
-					args.Mobile.SendMessage( "It is currently {0} by the servers clock", DateTime.Now.ToString() );
+					args.Mobile.SendMessage( "It is currently {0} by the servers clock", DateTime.UtcNow.ToString() );
 				else if( args.Speech.ToLower().Trim() == "jailsystem" ) //credit speech
 				{
 					args.Mobile.SendMessage( "This server is running Cat's JailSystem Version:{0}", scriptVersion );
@@ -506,13 +506,13 @@ namespace Server.Jailing
 
 		public static void Jail( Mobile badBoy, TimeSpan ts, string reason, bool releasetoJailing, string jailedBy, AccessLevel l, bool useBoot )
 		{
-			DateTime dt = DateTime.Now.Add( ts );
+			DateTime dt = DateTime.UtcNow.Add( ts );
 			Jail( badBoy, dt, reason, releasetoJailing, jailedBy, l, useBoot );
 		}
 
 		public static void Jail( Mobile badBoy, int days, int hours, int minutes, string reason, bool releasetoJailing, string jailedBy, AccessLevel l )
 		{
-			DateTime dt = DateTime.Now.AddDays( days ).AddHours( hours ).AddMinutes( minutes );
+			DateTime dt = DateTime.UtcNow.AddDays( days ).AddHours( hours ).AddMinutes( minutes );
 			Jail( badBoy, dt, reason, releasetoJailing, jailedBy, l );
 		}
 
@@ -542,13 +542,13 @@ namespace Server.Jailing
 
 		public static void Jail( Mobile badBoy, TimeSpan ts, string reason, bool releasetoJailing, string jailedBy )
 		{
-			DateTime dt = DateTime.Now.Add( ts );
+			DateTime dt = DateTime.UtcNow.Add( ts );
 			Jail( badBoy, dt, reason, releasetoJailing, jailedBy, AccessLevel.Counselor );
 		}
 
 		public static void Jail( Mobile badBoy, int days, int hours, int minutes, string reason, bool releasetoJailing, string jailedBy )
 		{
-			DateTime dt = DateTime.Now.AddDays( days ).AddHours( hours ).AddMinutes( minutes );
+			DateTime dt = DateTime.UtcNow.AddDays( days ).AddHours( hours ).AddMinutes( minutes );
 			Jail( badBoy, dt, reason, releasetoJailing, jailedBy, AccessLevel.Counselor );
 		}
 
@@ -599,7 +599,7 @@ namespace Server.Jailing
 				return;
 			}
 
-			DateTime k = DateTime.Now;
+			DateTime k = DateTime.UtcNow;
 			int i = 0;
 			while( w.ContainsKey( k ) )
 			{
@@ -771,7 +771,7 @@ namespace Server.Jailing
 		public void buildJail()
 		{
 			m_id = m_NextID;
-			m_releaseTime = DateTime.Now.AddDays( 1 );
+			m_releaseTime = DateTime.UtcNow.AddDays( 1 );
 			m_NextID += 1;
 			m_jailings.Add( m_id, this );
 			jailor = JSName;
@@ -786,7 +786,7 @@ namespace Server.Jailing
 
 		public void fillJailReport( Mobile badBoy, int days, int hours, int minutes, string why, bool mreturn, string Jailor )
 		{
-			DateTime dt_unJail = DateTime.Now.Add( new TimeSpan( days, hours, minutes, 0 ) );
+			DateTime dt_unJail = DateTime.UtcNow.Add( new TimeSpan( days, hours, minutes, 0 ) );
 			fillJailReport( badBoy, dt_unJail, why, mreturn, Jailor );
 		}
 
@@ -796,7 +796,7 @@ namespace Server.Jailing
 			m_releaseTime = dt_unJail;
 			reason = why;
 			jailor = Jailor;
-			( (Account)badBoy.Account ).Comments.Add( new AccountComment( JSName + "-jailed", "Jailed for \"" + why + "\" By:" + Jailor + " On:" + DateTime.Now + " Until:" + dt_unJail ) );
+			( (Account)badBoy.Account ).Comments.Add( new AccountComment( JSName + "-jailed", "Jailed for \"" + why + "\" By:" + Jailor + " On:" + DateTime.UtcNow + " Until:" + dt_unJail ) );
 			returnToPoint = mreturn;
 			StartTimer();
 		}
@@ -867,7 +867,7 @@ namespace Server.Jailing
 
 		public void TimerRelease()
 		{
-			if( m_releaseTime <= DateTime.Now )
+			if( m_releaseTime <= DateTime.UtcNow )
 				release();
 			else
 				Console.WriteLine( "JailSystem: A Jail Timer fired but the timer was incorrect so the release was not honored." );
@@ -887,7 +887,7 @@ namespace Server.Jailing
 			{
 				Console.WriteLine( "{0}: access level error, resume release-{1}", JSName, err );
 			}
-			freedBy = releasor.Name + " (At:" + DateTime.Now + ")";
+			freedBy = releasor.Name + " (At:" + DateTime.UtcNow + ")";
 			try
 			{
 				if( autoReleasor != null )
@@ -896,7 +896,7 @@ namespace Server.Jailing
 			catch
 			{
 			}
-			m_releaseTime = DateTime.Now.Subtract( new TimeSpan( 1, 0, 0, 0, 0 ) );
+			m_releaseTime = DateTime.UtcNow.Subtract( new TimeSpan( 1, 0, 0, 0, 0 ) );
 			release();
 		}
 
@@ -956,7 +956,7 @@ namespace Server.Jailing
 		{
 			try
 			{
-				Prisoner.Comments.Add( new AccountComment( JSName + "-jailed", string.Format( "{0} banned this account on {1}.", from.Name, DateTime.Now ) ) );
+				Prisoner.Comments.Add( new AccountComment( JSName + "-jailed", string.Format( "{0} banned this account on {1}.", from.Name, DateTime.UtcNow ) ) );
 				Prisoner.Banned = true;
 				CommandLogging.WriteLine( from, "{0} {1} {3} account {2}", from.AccessLevel, CommandLogging.Format( from ), Prisoner.Username, Prisoner.Banned ? "banning" : "unbanning" );
 				list.Remove( ID );
@@ -1082,13 +1082,13 @@ namespace Server.Jailing
 
 		public void resetReleaseDateOneDay()
 		{
-			m_releaseTime = DateTime.Now.AddDays( 1 );
+			m_releaseTime = DateTime.UtcNow.AddDays( 1 );
 			StartTimer();
 		}
 
 		public void resetReleaseDateNow()
 		{
-			m_releaseTime = DateTime.Now;
+			m_releaseTime = DateTime.UtcNow;
 		}
 
 		public void AddDays( int days )
@@ -1154,7 +1154,7 @@ namespace Server.Jailing
 				return;
 			}
 
-			DateTime k = DateTime.Now;
+			DateTime k = DateTime.UtcNow;
 			int i = 0;
 			while( w.ContainsKey( k ) )
 			{
@@ -1456,7 +1456,7 @@ namespace Server.Jailing
 				{
 					try
 					{
-						( (Account)m.Account ).Comments.Add( new AccountComment( JSName, releasor + "'s release Failed for " + m.Name + "(" + ( (Account)m.Account ).Username + ") at " + DateTime.Now + " to " + location + "(" + map + ")" ) );
+						( (Account)m.Account ).Comments.Add( new AccountComment( JSName, releasor + "'s release Failed for " + m.Name + "(" + ( (Account)m.Account ).Username + ") at " + DateTime.UtcNow + " to " + location + "(" + map + ")" ) );
 					}
 					catch
 					{
@@ -1467,7 +1467,7 @@ namespace Server.Jailing
 				{
 					try
 					{
-						( (Account)m.Account ).Comments.Add( new AccountComment( JSName, releasor + " released " + m.Name + "(" + ( (Account)m.Account ).Username + ") at " + DateTime.Now + " to " + location + "(" + map + ")" ) );
+						( (Account)m.Account ).Comments.Add( new AccountComment( JSName, releasor + " released " + m.Name + "(" + ( (Account)m.Account ).Username + ") at " + DateTime.UtcNow + " to " + location + "(" + map + ")" ) );
 					}
 					catch
 					{
@@ -1481,7 +1481,7 @@ namespace Server.Jailing
 		{
 			public JailSystem Prisoner;
 
-			public JailingTimer( JailSystem js ) : base( js.ReleaseDate.Subtract( DateTime.Now ) )
+			public JailingTimer( JailSystem js ) : base( js.ReleaseDate.Subtract( DateTime.UtcNow ) )
 			{
 				Prisoner = js;
 			}

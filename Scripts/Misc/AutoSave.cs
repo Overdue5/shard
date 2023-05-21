@@ -209,7 +209,7 @@ namespace Server.Misc
 #endif
 
         /*
-        NoIOHour - If datetime.now.hour == NoIOHour, then the saves will be
+        NoIOHour - If DateTime.UtcNow.hour == NoIOHour, then the saves will be
         skipped. This is so that backup processes have a window of time where
         there will not be any disk IO done by AutoSave. 24 hour format. (0=12am,
         12=12pm, 23=11pm) It's like happy hour for backup programs, except
@@ -310,7 +310,7 @@ namespace Server.Misc
             // should world.save be allowed to occur at this time?
             if (NoIOHour != -1)
             {
-                DateTime now = DateTime.Now;
+                DateTime now = DateTime.UtcNow;
 
                 if (now.Hour == NoIOHour)
                 {
@@ -615,7 +615,7 @@ namespace Server.Misc
 
         private static string GetTimeStamp()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
 
             return String.Format("{0}-{1}-{2} {3}-{4:D2}-{5:D2}",
             now.Day,
@@ -638,7 +638,7 @@ namespace Server.Misc
         // One Archive backup per day
         private static string GetArchiveTimeStamp()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
 
             return String.Format("{0}-{1}-{2}",
             now.Year, now.Month, now.Day);
@@ -651,7 +651,7 @@ namespace Server.Misc
             // Two Archive backups per day
             private static string GetArchiveTimeStamp()
             {
-                DateTime now = DateTime.Now;
+                DateTime now = DateTime.UtcNow;
 			
                 string ampm;
                 if ( now.Hour < 12 )

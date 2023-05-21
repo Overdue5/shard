@@ -49,9 +49,9 @@ namespace Server.Items
 
 		public override void OnMovement( Mobile m, Point3D oldLocation ) 
 		{ 
-			if ( DateTime.Now >= m_NextAnim && m.InRange( this, 4 ) ) // check if it's time to animate & mobile in range & in los.
+			if ( DateTime.UtcNow >= m_NextAnim && m.InRange( this, 4 ) ) // check if it's time to animate & mobile in range & in los.
 			{
-				m_NextAnim = DateTime.Now + AnimDelay; // set next animation time
+				m_NextAnim = DateTime.UtcNow + AnimDelay; // set next animation time
 
 				switch ( ItemID ) 
 				{ 

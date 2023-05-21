@@ -25,7 +25,7 @@ namespace Arya.Chess
 
 			m_Winner = winner.Name;
 			m_Looser = looser.Name;
-			m_GameEnd = DateTime.Now;
+			m_GameEnd = DateTime.UtcNow;
 			m_GameTime = gameTime;
 			m_WinnerTime = winnerTime;
 			m_LooserTime = looserTime;
@@ -47,7 +47,7 @@ namespace Arya.Chess
 
             m_Winner = winner.Name;
             m_Looser = looser.Name;
-            m_GameEnd = DateTime.Now;
+            m_GameEnd = DateTime.UtcNow;
             m_GameTime = gameTime;
             m_WinnerTime = winnerTime;
             m_LooserTime = looserTime;

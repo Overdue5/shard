@@ -100,7 +100,7 @@ namespace Server.Mobiles
 			bool result = base.OnMove( d );
 
 			if( Combatant != null && result )
-				NextCombatTime = DateTime.Now;
+				NextCombatTime = DateTime.UtcNow;
 
 			return result;
 		}
