@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Server.Engines;
 using Server.Network;
 
@@ -65,13 +66,21 @@ namespace Server.Commands.GMUtils
 
         public static int ChangeDamage(this Mobile mob, Mobile def, int damage)
         {
-            if (def == null || mob.IsNight == def.IsNight)
+            try
+            {
+                if (def == null || mob == null ||  mob.IsNight == def.IsNight)
+                    return damage;
+                if (mob.IsNight)
+                    return (int)(damage * UtilityWorldTime.NightMultiplier());
+                if (def.IsNight)
+                    return Utility.LimitMin(1, (int)(damage / UtilityWorldTime.NightMultiplier()));
                 return damage;
-            if (mob.IsNight)
-                return (int)(damage * UtilityWorldTime.NightMultiplier());
-            if (def.IsNight)
-                return Utility.LimitMin(1, (int)(damage / UtilityWorldTime.NightMultiplier()));
-            return damage;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return damage;
+            }
         }
 
         public static List<Point3D> GetStaticTileAround(this TileMatrix tm, Point3D loc, int range, HashSet<int> filter)
