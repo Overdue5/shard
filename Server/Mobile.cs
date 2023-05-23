@@ -521,12 +521,12 @@ namespace Server
 #if DEBUG
 		public virtual bool ShowContextMenu { get { return true; } }
 #else
-	    public virtual bool ShowContextMenu { get { return false; } }
+	    public virtual bool ShowContextMenu { get { return true; } }
 #endif
-#endregion
+        #endregion
 
 
-		public virtual bool IsNight => false;
+        public virtual bool IsNight => false;
 
         public virtual int HitsRegen => 1;
         public virtual int ManaRegen => 1;

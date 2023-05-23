@@ -570,6 +570,11 @@ namespace Server.Items
 
         protected override void OnTick()
         {
+            if (m_Book == null || m_Book.Deleted)
+            {
+                Stop();
+            }
+
             if ((m_direction == m_From.Direction && m_moveTime == m_From.LastMoveTime && m_hits <= m_From.Hits && !m_From.Hidden &&
                  !m_From.Meditating) && m_Book.CheckUsage(m_From))
             {
