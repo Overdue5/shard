@@ -15,6 +15,7 @@ using Server.Network;
 using MessageType = Server.Network.MessageType;
 using Server.Custom;
 using Server.Gumps;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Scripts.Commands
 {
@@ -181,9 +182,10 @@ namespace Scripts.Commands
             }
             else if (time < 60 && time > 0)
             {
-                World.Broadcast(33, true, $"Britannia will be unavailable for travelers in {Math.Ceiling(time)} seconds");
+                if (Math.Ceiling(time) % 10 == 0 || time < 5)
+                    World.Broadcast(33, true, $"Britannia will be unavailable for travelers in {Math.Ceiling(time)} seconds");
                 if (time>20)
-                    Timer.DelayCall(TimeSpan.FromSeconds(10), () => { RestartPrepare(restartTime, restart, update); });
+                    Timer.DelayCall(TimeSpan.FromSeconds(1), () => { RestartPrepare(restartTime, restart, update); });
                 else
                     Timer.DelayCall(TimeSpan.FromSeconds(1), () => { RestartPrepare(restartTime, restart, update); });
             }
