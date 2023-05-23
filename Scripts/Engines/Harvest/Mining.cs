@@ -104,7 +104,7 @@ namespace Server.Engines.Harvest
                     new HarvestResource( 97.0, 97.0, 100.0, "You dig some Oceanic ore and put it in your backpack" , typeof( OceanicOre ), typeof( Granite ) ),
                     new HarvestResource( 99.0, 99.0, 100.0, "You dig some Daemon Steel ore and put it in your backpack" , typeof( DaemonSteelOre ), typeof( Granite ) ),
                     new HarvestResource( 99.5, 99.5, 100.0, "You dig some Reactive ore and put it in your backpack", typeof( ReactiveOre ),		typeof( Granite ) ),
-                    //new HarvestResource( 100.0, 100.0, 100.0, "You dig some Adamantium ore and put it in your backpack", typeof( AdamantiumOre ),		typeof( Granite ) ),
+                    new HarvestResource( 100.0, 100.0, 100.0, "You dig some Adamantium ore and put it in your backpack", typeof( AdamantiumOre ),		typeof( Granite ) ),
                     new HarvestResource( 100.0, 100.0, 100.0, "You dig some Sapphire ore and put it in your backpack", typeof( SapphireOre ),		typeof( Granite ) )
                     
 				};
@@ -112,31 +112,31 @@ namespace Server.Engines.Harvest
 			veins = new HarvestVein[]
 				{
 					new HarvestVein( 24.2, 0.0, res[0], null   ), // Iron 
-                    new HarvestVein( 07.5, 0.0, res[1], null   ), // OldCopper
-                    new HarvestVein( 07.5, 0.0, res[2], null   ), // Shadow
-                    new HarvestVein( 06.6, 0.0, res[3], null   ), // Silver
-                    new HarvestVein( 06.6, 0.0, res[4], null   ), // Verite
-                    new HarvestVein( 05.7, 0.0, res[5], null   ), // Rose
-                    new HarvestVein( 05.7, 0.0, res[6], null   ), // Gold
+                    new HarvestVein( 06.5, 0.0, res[1], null   ), // OldCopper
+                    new HarvestVein( 05.7, 0.0, res[2], null   ), // Shadow
+                    new HarvestVein( 05.4, 0.0, res[3], null   ), // Silver
+                    new HarvestVein( 04.8, 0.0, res[4], null   ), // Verite
+                    new HarvestVein( 04.5, 0.0, res[5], null   ), // Rose
+                    new HarvestVein( 04.2, 0.0, res[6], null   ), // Gold
                     //63.8
 
-                    new HarvestVein( 05.1, 0.0, res[7], null   ), // Ice
-                    new HarvestVein( 04.5, 0.0, res[8], null  ), // Amethyst
-                    new HarvestVein( 04.3, 0.0, res[9], null   ), // Valorite
-                    new HarvestVein( 03.9, 0.0, res[10], null   ), // Blood rock
-                    new HarvestVein( 03.1, 0.0, res[11], null   ), // Aqua
-                    new HarvestVein( 03.1, 0.0, res[12], null   ), // Fire
-                    new HarvestVein( 02.6, 0.0, res[13], null   ), // Mytheril
+                    new HarvestVein( 03.1, 0.0, res[7], null   ), // Ice
+                    new HarvestVein( 02.5, 0.0, res[8], null  ), // Amethyst
+                    new HarvestVein( 02.3, 0.0, res[9], null   ), // Valorite
+                    new HarvestVein( 02.1, 0.0, res[10], null   ), // Blood rock
+                    new HarvestVein( 01.9, 0.0, res[11], null   ), // Aqua
+                    new HarvestVein( 01.6, 0.0, res[12], null   ), // Fire
+                    new HarvestVein( 01.6, 0.0, res[13], null   ), // Mytheril
                     //26.6
 
-                    new HarvestVein( 02.6, 0.0, res[14], null   ), // Dwarven
-                    new HarvestVein( 02.1, 0.0, res[15], null   ), // Black diamond
-                    new HarvestVein( 01.6, 0.0, res[16], null   ), // Black Rock
-                    new HarvestVein( 01.2, 0.0, res[17], null   ), // Oceanic
-                    new HarvestVein( 00.9, 0.0, res[18], null   ), // Daemon steel
-                    new HarvestVein( 00.8, 0.0, res[19], null   ), // Reactive 
-                    //new HarvestVein( 00.4, 0.0, res[20], null   ), // Adamantium
-                    new HarvestVein( 00.4, 0.0, res[20], null   ), // Sapphire 
+                    new HarvestVein( 01.5, 0.0, res[14], null   ), // Dwarven
+                    new HarvestVein( 01.1, 0.0, res[15], null   ), // Black diamond
+                    new HarvestVein( 00.9, 0.0, res[16], null   ), // Black Rock
+                    new HarvestVein( 00.8, 0.0, res[17], null   ), // Oceanic
+                    new HarvestVein( 00.5, 0.0, res[18], null   ), // Daemon steel
+                    new HarvestVein( 00.4, 0.0, res[19], null   ), // Reactive 
+                    new HarvestVein( 00.3, 0.0, res[20], null   ), // Adamantium
+                    new HarvestVein( 00.2, 0.0, res[20], null   ), // Sapphire 
                     //9.6
 				};
 

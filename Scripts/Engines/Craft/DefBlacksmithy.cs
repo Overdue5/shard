@@ -843,7 +843,7 @@ namespace Server.Engines.Craft
             AddSubRes(typeof(OceanicIngot), "Oceanic", 97.0, 1044268);
             AddSubRes(typeof(DaemonSteelIngot), "Daemon Steel", 99.0, 1044268);
             AddSubRes(typeof(ReactiveIngot), "Reactive", 99.5, 1044268);
-            //AddSubRes(typeof(AdamantiumIngot), "Adamantium", 100.0, 1044268);
+            AddSubRes(typeof(AdamantiumIngot), "Adamantium", 100.0, 1044268);
             AddSubRes(typeof(SapphireIngot), "Sapphire", 100.0, 1044268);
 
             //Unused
