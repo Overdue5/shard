@@ -127,7 +127,7 @@ namespace Server.Mobiles
 			public int Count 
 			{ 
 				get { return m_Count; } 
-				set	{ m_Count = value; m_Stamp = DateTime.Now; } 
+				set	{ m_Count = value; m_Stamp = DateTime.UtcNow; } 
 			}
 		}
 
@@ -767,7 +767,7 @@ namespace Server.Mobiles
 			set
 			{
 				if( value != null )
-					LastAttackTime = DateTime.Now;
+					LastAttackTime = DateTime.UtcNow;
 
 				base.Combatant = value;
 			}
@@ -1373,13 +1373,13 @@ namespace Server.Mobiles
 
 			if ( pm != null )
 			{
-				pm.m_SessionStart = DateTime.Now;
+				pm.m_SessionStart = DateTime.UtcNow;
 
 				if ( pm.m_Quest != null )
 					pm.m_Quest.StartTimer();
 
 				pm.BedrollLogout = false;
-				pm.LastOnline = DateTime.Now;
+				pm.LastOnline = DateTime.UtcNow;
 			}
 
 			DisguiseTimers.StartTimer(e.Mobile);
@@ -1429,16 +1429,16 @@ namespace Server.Mobiles
 			{
 				pm.AbortCurrentPlayerAction();
 
-				pm.m_GameTime += (DateTime.Now - pm.m_SessionStart);
+				pm.m_GameTime += (DateTime.UtcNow - pm.m_SessionStart);
 
 				if (pm.Guild != null && !pm.Guild.Disbanded)
-					pm.PlayerGuildGameTime += (DateTime.Now - pm.m_SessionStart);
+					pm.PlayerGuildGameTime += (DateTime.UtcNow - pm.m_SessionStart);
 
 				if ( pm.m_Quest != null )
 					pm.m_Quest.StopTimer();
 
 				pm.m_SpeechLog = null;
-				pm.LastOnline = DateTime.Now;
+				pm.LastOnline = DateTime.UtcNow;
 			}
 
 			DisguiseTimers.StopTimer(from);
@@ -2948,7 +2948,7 @@ namespace Server.Mobiles
 					Criminal = true;
 			}
 			/*
-			if ( Kills >= 5 && DateTime.Now >= m_NextJustAward )
+			if ( Kills >= 5 && DateTime.UtcNow >= m_NextJustAward )
 			{
 				var m = FindMostRecentDamager( false );
 
@@ -2975,7 +2975,7 @@ namespace Server.Mobiles
 						m.FixedParticles( 0x375A, 9, 20, 5027, EffectLayer.Waist );
 						m.PlaySound( 0x1F7 );
 
-						m_NextJustAward = DateTime.Now + TimeSpan.FromMinutes( pointsToGain / 3 );
+						m_NextJustAward = DateTime.UtcNow + TimeSpan.FromMinutes( pointsToGain / 3 );
 					}
 				}
 			}
@@ -3095,7 +3095,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_SavagePaintExpiration - DateTime.Now;
+				TimeSpan ts = m_SavagePaintExpiration - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -3104,7 +3104,7 @@ namespace Server.Mobiles
 			}
 			set
 			{
-				m_SavagePaintExpiration = DateTime.Now + value;
+				m_SavagePaintExpiration = DateTime.UtcNow + value;
 			}
 		}
 
@@ -3113,7 +3113,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextSmithBulkOrder - DateTime.Now;
+				TimeSpan ts = m_NextSmithBulkOrder - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -3122,7 +3122,7 @@ namespace Server.Mobiles
 			}
 			set
 			{
-				try{ m_NextSmithBulkOrder = DateTime.Now + value; }
+				try{ m_NextSmithBulkOrder = DateTime.UtcNow + value; }
 				catch{}
 			}
 		}
@@ -3132,7 +3132,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextTailorBulkOrder - DateTime.Now;
+				TimeSpan ts = m_NextTailorBulkOrder - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -3141,7 +3141,7 @@ namespace Server.Mobiles
 			}
 			set
 			{
-				try{ m_NextTailorBulkOrder = DateTime.Now + value; }
+				try{ m_NextTailorBulkOrder = DateTime.UtcNow + value; }
 				catch{}
 			}
 		}
@@ -3665,7 +3665,7 @@ namespace Server.Mobiles
 			CountAndTimeStamp count = (CountAndTimeStamp)tbl[obj];
 			if ( count != null )
 			{
-				if ( count.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.Now )
+				if ( count.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.UtcNow )
 				{
 					count.Count = 1;
 					return true;
@@ -4047,7 +4047,7 @@ namespace Server.Mobiles
 				ArrayList remove = new ArrayList();
 				foreach ( CountAndTimeStamp time in t.Values )
 				{
-					if ( time.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.Now )
+					if ( time.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.UtcNow )
 						remove.Add( time );
 				}
 
@@ -4264,7 +4264,7 @@ namespace Server.Mobiles
 			get
 			{
 				if ( NetState != null )
-					return m_GameTime + (DateTime.Now - m_SessionStart);
+					return m_GameTime + (DateTime.UtcNow - m_SessionStart);
 				return m_GameTime;
 			}
 			set
@@ -4782,16 +4782,16 @@ namespace Server.Mobiles
 			if ( pm.m_NextMovementTime == DateTime.MinValue )
 			{
 				// has not yet moved
-				pm.m_NextMovementTime = DateTime.Now;
+				pm.m_NextMovementTime = DateTime.UtcNow;
 				return true;
 			}
 
-			TimeSpan ts = pm.m_NextMovementTime - DateTime.Now;
+			TimeSpan ts = pm.m_NextMovementTime - DateTime.UtcNow;
 
 			if ( ts < TimeSpan.Zero )
 			{
 				// been a while since we've last moved
-				pm.m_NextMovementTime = DateTime.Now;
+				pm.m_NextMovementTime = DateTime.UtcNow;
 				return true;
 			}
 
@@ -5005,7 +5005,7 @@ namespace Server.Mobiles
 			{
 				if (Region is CustomRegion)
 					return base.GetLogoutDelay();
-				if (LastAttackTime + TimeSpan.FromMinutes(1.0) >= DateTime.Now)
+				if (LastAttackTime + TimeSpan.FromMinutes(1.0) >= DateTime.UtcNow)
 					return TimeSpan.FromMinutes(2.0);
 				return TimeSpan.Zero;
 			}
@@ -5036,9 +5036,9 @@ namespace Server.Mobiles
 			if ( Quest != null && Quest.IgnoreYoungProtection( from ) )
 				return false;
 
-			if ( DateTime.Now - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )
+			if ( DateTime.UtcNow - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )
 			{
-				m_LastYoungMessage = DateTime.Now;
+				m_LastYoungMessage = DateTime.UtcNow;
 				SendLocalizedMessage( 1019067 ); // A monster looks at you menacingly but does not attack.  You would be under attack now if not for your status as a new citizen of Britannia.
 			}
 
@@ -5049,9 +5049,9 @@ namespace Server.Mobiles
 
 		public bool CheckYoungHealTime()
 		{
-			if ( DateTime.Now - m_LastYoungHeal > TimeSpan.FromMinutes( 5.0 ) )
+			if ( DateTime.UtcNow - m_LastYoungHeal > TimeSpan.FromMinutes( 5.0 ) )
 			{
-				m_LastYoungHeal = DateTime.Now;
+				m_LastYoungHeal = DateTime.UtcNow;
 				return true;
 			}
 
@@ -5372,7 +5372,7 @@ namespace Server.Mobiles
 					m_Values[index].Value -= value;
 
 				if( before != m_Values[index].Value )
-					m_Values[index].LastDecay = DateTime.Now;
+					m_Values[index].LastDecay = DateTime.UtcNow;
 			}
 
 			public override string ToString()
@@ -5473,7 +5473,7 @@ namespace Server.Mobiles
 
 				for( int i = 0; i < t.m_Values.Length; i++ )
 				{
-					if( (t.GetLastDecay( i ) + LossDelay) < DateTime.Now )
+					if( (t.GetLastDecay( i ) + LossDelay) < DateTime.UtcNow )
 					{
 						t.Atrophy( i, LossAmount );
 					}
@@ -5926,7 +5926,7 @@ namespace Server.Mobiles
 				}
 
 				BaseWeapon bw = Weapon as BaseWeapon;
-				NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(bw.GetDelay(this).TotalSeconds*3);
+				NextCombatTime = DateTime.UtcNow + TimeSpan.FromSeconds(bw.GetDelay(this).TotalSeconds*3);
 			}
 		}
 
@@ -5958,8 +5958,8 @@ namespace Server.Mobiles
 			//The bandage of death
 			pm.BandageCheck();
 
-			if (pm.Warmode && (pm.NextCombatTime > (DateTime.Now + ((BaseWeapon) pm.Weapon).GetDelay(pm)) || (DateTime.Now - ((BaseWeapon) pm.Weapon).GetDelay(pm)) > pm.NextCombatTime))
-				pm.NextCombatTime = DateTime.Now + ((BaseWeapon) pm.Weapon).GetDelay(pm);
+			if (pm.Warmode && (pm.NextCombatTime > (DateTime.UtcNow + ((BaseWeapon) pm.Weapon).GetDelay(pm)) || (DateTime.UtcNow - ((BaseWeapon) pm.Weapon).GetDelay(pm)) > pm.NextCombatTime))
+				pm.NextCombatTime = DateTime.UtcNow + ((BaseWeapon) pm.Weapon).GetDelay(pm);
 
 			return true;
 		}
@@ -6134,7 +6134,7 @@ namespace Server.Mobiles
 			Mobile from = this;
 			NetState state = NetState;
 
-			if (from.AccessLevel >= AccessLevel.GameMaster || DateTime.Now >= from.NextActionTime)
+			if (from.AccessLevel >= AccessLevel.GameMaster || DateTime.UtcNow >= from.NextActionTime)
 			{
 				if (from.CheckAlive())
 				{
@@ -6286,7 +6286,7 @@ namespace Server.Mobiles
 
 							from.Holding = item;
 
-							from.NextActionTime = DateTime.Now + TimeSpan.FromSeconds(0.4);
+							from.NextActionTime = DateTime.UtcNow + TimeSpan.FromSeconds(0.4);
 
 							if (fixMap != null && shouldFix)
 								fixMap.FixColumn(fixLoc.X, fixLoc.Y);

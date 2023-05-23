@@ -178,6 +178,8 @@ namespace Server.Gumps
                         AddImageTiled(x, y, SetWidth, EntryHeight, SetGumpID);
 
                     AddButton(x + SetOffsetX, y + SetOffsetY, SetButtonID1, SetButtonID2, i + 3, GumpButtonType.Reply, 0);
+                    if (m_List[i] is Item || m_List[i] is Mobile)
+                        AddButton(x + SetOffsetX - 20, y + SetOffsetY, 0x15E0, 0x15E4, i + 3 + 10000, GumpButtonType.Reply, 0);
                 }
             }
         }
@@ -291,6 +293,38 @@ namespace Server.Gumps
                 default:
                     {
                         int index = (m_Page * EntryCount) + (info.ButtonID - 3);
+
+                        if (info.ButtonID > 10000)
+                        {
+                            var obj = m_List[index - 10000];
+                            var loc = Utility.GetWorldObjLocation(obj);
+                            Map map = null;
+                            if (obj is Item item)
+                                map = item.Map;
+                            else if (obj is Mobile mob)
+                                map = mob.Map;
+
+                            if (loc.X == 0)
+                            {
+                                from.SendAsciiMessage("Location not found");
+                            }
+                            else if (map == null)
+                            {
+                                from.SendAsciiMessage("Unknown object, map null");
+                            }
+                            else if (map == Map.Internal)
+                            {
+                                from.SendAsciiMessage("Unknown object, internal map");
+                            }
+                            else
+                            {
+                                from.Location = loc;
+                                from.Map = map;
+                            }
+                            from.SendGump(new SetListGump(from, m_Stack, m_List, m_Page));
+                            //from.SendGump(new SetListGump(from, m_List, m_Object, m_Stack, m_Page, m_ObjectList));
+
+                        }
 
                         if (index >= 0 && index < m_List.Count)
                         {

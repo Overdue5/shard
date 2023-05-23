@@ -249,7 +249,7 @@ namespace Server.Mobiles
             return m_Table[from] != null;
         }
 
-        private DateTime m_NextDrop = DateTime.Now;
+        private DateTime m_NextDrop = DateTime.UtcNow;
 
         public virtual void DropOoze()
         {

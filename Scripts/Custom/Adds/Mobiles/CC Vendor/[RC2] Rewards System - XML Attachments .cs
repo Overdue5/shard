@@ -516,7 +516,7 @@ public class Reward : Item, ICloneable
         if (m_RestockInfo == null)
             return -1;        
 
-        TimeSpan dif = DateTime.Now - m_RestockInfo.LastRestock;
+        TimeSpan dif = DateTime.UtcNow - m_RestockInfo.LastRestock;
         int cycles = 0;
 
         if (dif > (m_RestockInfo.RestockRate) && m_RestockInfo.RestockRate.TotalMinutes > 0)
@@ -648,7 +648,7 @@ public class Reward : Item, ICloneable
             m_RestockAmnt = 0;
             m_Count = 0;
             m_Maximum = null;
-            m_LastRestock = DateTime.Now;
+            m_LastRestock = DateTime.UtcNow;
 
         }
         public RestockInfo(int count) : this()
@@ -661,7 +661,7 @@ public class Reward : Item, ICloneable
             m_Count = count;
             m_RestockAmnt = RestockNum;
             m_Maximum = null;
-            m_LastRestock = DateTime.Now;
+            m_LastRestock = DateTime.UtcNow;
 
         }
         public RestockInfo(int hour, int minute, int count, int RestockNum, int maxNum) : this (hour, minute, count, RestockNum)
@@ -675,7 +675,7 @@ public class Reward : Item, ICloneable
         }
         public bool Restock()
         {
-            m_LastRestock = DateTime.Now;
+            m_LastRestock = DateTime.UtcNow;
 
             if (m_Maximum != null) //Restock to a limit
             {
@@ -704,7 +704,7 @@ public class Reward : Item, ICloneable
         public RestockInfo( GenericReader reader )
         {
             m_RestockRate = reader.ReadTimeSpan();
-            m_LastRestock = DateTime.Now;
+            m_LastRestock = DateTime.UtcNow;
             m_RestockAmnt = reader.ReadInt();
             m_Count = reader.ReadInt();
             

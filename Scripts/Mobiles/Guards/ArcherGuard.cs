@@ -153,7 +153,7 @@ namespace Server.Mobiles
             if (Utility.RandomDouble() <= 0.1)
                 new Horse().Rider = this;
 
-            NextCombatTime = DateTime.Now + TimeSpan.FromSeconds(1.0);
+            NextCombatTime = DateTime.UtcNow + TimeSpan.FromSeconds(1.0);
             Focus = target;
 		}
 
@@ -356,7 +356,7 @@ namespace Server.Mobiles
 
 			private bool TimeToSpare()
 			{
-				return (m_Owner.NextCombatTime - DateTime.Now) > TimeSpan.FromSeconds( 1.0 );
+				return (m_Owner.NextCombatTime - DateTime.UtcNow) > TimeSpan.FromSeconds( 1.0 );
 			}
 
 			private bool OutOfMaxDistance( Mobile target )

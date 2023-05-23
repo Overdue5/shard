@@ -173,7 +173,7 @@ namespace Server.Games.PaintBall
 
 		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
 		{
-			if ( DateTime.Now > (attacker.LastMoveTime + TimeSpan.FromSeconds( 1.0 )) )
+			if ( DateTime.UtcNow > (attacker.LastMoveTime + TimeSpan.FromSeconds( 1.0 )) )
 			{
 				if( defender is PlayerMobile || defender is PBNpc )
 				{

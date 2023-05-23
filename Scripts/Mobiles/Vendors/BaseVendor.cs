@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Custom;
 using Server.Engines.BulkOrders;
 using Server.Factions;
 using Server.Items;
@@ -25,6 +26,8 @@ namespace Server.Mobiles
 
 	public abstract class BaseVendor : BaseCreature, IVendor
     {
+        public static Dictionary<Serial, BaseVendor> Vendors = new Dictionary<Serial, BaseVendor>();
+        public static Dictionary<SkillName, HashSet<BaseVendor>> SkilledVendors = new Dictionary<SkillName, HashSet<BaseVendor>>();
         private const int MaxSell = 999;
 
         protected abstract List<SBInfo> SBInfos { get; }
@@ -165,15 +168,22 @@ namespace Server.Mobiles
 			pack = new Backpack {Layer = Layer.ShopResale, Movable = false, Visible = false};
 		    AddItem( pack );
 
-			m_LastRestock = DateTime.Now;
+			m_LastRestock = DateTime.UtcNow;
             m_RestockDelay = GetRestockDelay();
-		}
+            Timer.DelayCall(TimeSpan.FromSeconds(5), () => { UpdateVendorTables(this); });
+        }
 		
 		public BaseVendor( Serial serial ) : base( serial )
 		{
 		}
 
-		public DateTime LastRestock
+        public override void OnDelete()
+        {
+            base.OnDelete();
+            DeleteVendorTables(this);
+        }
+
+        public DateTime LastRestock
 		{
 			get
 			{
@@ -222,7 +232,7 @@ namespace Server.Mobiles
 
 		protected void LoadSBInfo()
 		{
-			m_LastRestock = DateTime.Now;
+			m_LastRestock = DateTime.UtcNow;
 
 			for ( var i = 0; i < m_ArmorBuyInfo.Count; ++i )
 			{
@@ -535,7 +545,7 @@ namespace Server.Mobiles
 
 		public virtual void Restock()
 		{
-			m_LastRestock = DateTime.Now;
+			m_LastRestock = DateTime.UtcNow;
 
 			var buyInfo = GetBuyInfo();
 
@@ -565,7 +575,7 @@ namespace Server.Mobiles
 				return;
 			}
 
-			if ( DateTime.Now - m_LastRestock > RestockDelay )
+			if ( DateTime.UtcNow - m_LastRestock > RestockDelay )
 				Restock();
 
 			UpdateBuyInfo();
@@ -610,7 +620,7 @@ namespace Server.Mobiles
 
 				var item = playerItems[i];
 
-				if ( (item.LastMoved + InventoryDecayTime) <= DateTime.Now )
+				if ( (item.LastMoved + InventoryDecayTime) <= DateTime.UtcNow )
 					item.Delete();
 			}
 
@@ -764,7 +774,7 @@ namespace Server.Mobiles
 			{
                 if (Core.ML)
                 {
-                    if (((PlayerMobile)from).NextBODTurnInTime > DateTime.Now)
+                    if (((PlayerMobile)from).NextBODTurnInTime > DateTime.UtcNow)
                     {
                         SayTo(from, 1079976);	//
                         return false;
@@ -808,7 +818,7 @@ namespace Server.Mobiles
 
                 if (Core.ML)
                 {
-                    ((PlayerMobile)from).NextBODTurnInTime = DateTime.Now + TimeSpan.FromSeconds(10.0);
+                    ((PlayerMobile)from).NextBODTurnInTime = DateTime.UtcNow + TimeSpan.FromSeconds(10.0);
                 }
 
 				dropped.Delete();
@@ -1372,11 +1382,44 @@ namespace Server.Mobiles
 			writer.WriteEncodedInt( 0 );
 		}
 
-		public override void Deserialize( GenericReader reader )
+        private static void UpdateVendorTables(BaseVendor vendor)
+        {
+            if (!vendor.Deleted)
+            {
+                Vendors[vendor.Serial] = vendor;
+                for (int i = 0; i < vendor.Skills.Length; i++)
+                {
+                    if (vendor.Skills[i].Base >= 30)
+                    {
+                        if (!SkilledVendors.ContainsKey(vendor.Skills[i].SkillName))
+                            SkilledVendors[vendor.Skills[i].SkillName] = new HashSet<BaseVendor>();
+                        SkilledVendors[vendor.Skills[i].SkillName].Add(vendor);
+                    }
+                }
+            }
+        }
+
+        private static void DeleteVendorTables(BaseVendor vendor)
+        {
+            if (Vendors.ContainsKey(vendor.Serial))
+                Vendors.Remove(vendor.Serial);
+            for (int i = 0; i < vendor.Skills.Length; i++)
+            {
+                if (vendor.Skills[i].Base > 80)
+                {
+                    if (SkilledVendors.ContainsKey(vendor.Skills[i].SkillName) && SkilledVendors[vendor.Skills[i].SkillName].Contains(vendor))
+                        SkilledVendors[vendor.Skills[i].SkillName].Remove(vendor);
+                }
+            }
+        }
+
+        public override void Deserialize( GenericReader reader )
 		{
 			base.Deserialize( reader );
 
-			int version = reader.ReadInt();
+            UpdateVendorTables(this);
+
+            int version = reader.ReadInt();
 
 			LoadSBInfo();
 
@@ -1450,6 +1493,9 @@ namespace Server.Mobiles
 
 				if ( IsActiveBuyer )
 					list.Add( new VendorSellEntry( from, this ) );
+#if DEBUG
+				list.Add(new VendorParcelMenu(from, this));
+#endif
 			}
 
 			base.AddCustomContextEntries( from, list );

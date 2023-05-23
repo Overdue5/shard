@@ -17,7 +17,7 @@ namespace Knives.Chat3
 
             try
             {
-                StreamWriter writer = new StreamWriter(Path.Combine(directory, String.Format("Chat-{0}.log", DateTime.Now.ToLongDateString())), true);
+                StreamWriter writer = new StreamWriter(Path.Combine(directory, String.Format("Chat-{0}.log", DateTime.UtcNow.ToLongDateString())), true);
 
                 writer.AutoFlush = true;
                 writer.WriteLine(msg);
@@ -39,7 +39,7 @@ namespace Knives.Chat3
 
             try
             {
-                StreamWriter writer = new StreamWriter(Path.Combine(directory, String.Format("Pm-{0}.log", DateTime.Now.ToLongDateString())), true);
+                StreamWriter writer = new StreamWriter(Path.Combine(directory, String.Format("Pm-{0}.log", DateTime.UtcNow.ToLongDateString())), true);
 
                 writer.AutoFlush = true;
                 writer.WriteLine(msg);

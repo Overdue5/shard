@@ -213,7 +213,7 @@ namespace Server.Misc
 			            state.Send(new DeleteResult(DeleteResultType.CharBeingPlayed));
 			            state.Send(new CharacterListUpdate(acct));
 			        }
-			        else if (RestrictDeletion && DateTime.Now < (m.CreationTime + DeleteDelay))
+			        else if (RestrictDeletion && DateTime.UtcNow < (m.CreationTime + DeleteDelay))
 			        {
 			            state.Send(new DeleteResult(DeleteResultType.CharTooYoung));
 			            state.Send(new CharacterListUpdate(acct));
@@ -332,7 +332,7 @@ namespace Server.Misc
 				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Past IP limit threshold" );
 
 				using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
-					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.Now );
+					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.UtcNow );
 
 				return;
 			}
@@ -373,7 +373,7 @@ namespace Server.Misc
                 {
                     Stream fileStream = File.Open("Logs/LoginLogout/" + un + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                     StreamWriter writeAdapter = new StreamWriter(fileStream);
-                    writeAdapter.WriteLine($"{e.State}: Invalid password for {un} on {DateTime.Now}");
+                    writeAdapter.WriteLine($"{e.State}: Invalid password for {un} on {DateTime.UtcNow}");
                     writeAdapter.Close();
                 }
                 catch
@@ -391,7 +391,7 @@ namespace Server.Misc
                 {
                     Stream fileStream = File.Open("Logs/LoginLogout/" + un + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                     StreamWriter writeAdapter = new StreamWriter(fileStream);
-                    writeAdapter.WriteLine(String.Format("{0}: Banned account: {1} on {2}", e.State, un, DateTime.Now));
+                    writeAdapter.WriteLine(String.Format("{0}: Banned account: {1} on {2}", e.State, un, DateTime.UtcNow));
                     writeAdapter.Close();
                 }
                 catch
@@ -422,7 +422,7 @@ namespace Server.Misc
 				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Login: {e.State}: Past IP limit threshold" );
 
 				using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
-					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.Now );
+					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.UtcNow );
 
 				return;
 			}
@@ -450,7 +450,7 @@ namespace Server.Misc
                 {
                     Stream fileStream = File.Open("Logs/LoginLogout/" + un + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                     StreamWriter writeAdapter = new StreamWriter(fileStream);
-                    writeAdapter.WriteLine(String.Format("{0}: Invalid password for {1} on {2}", e.State, un, DateTime.Now));
+                    writeAdapter.WriteLine(String.Format("{0}: Invalid password for {1} on {2}", e.State, un, DateTime.UtcNow));
                     writeAdapter.Close();
                 }
                 catch
@@ -468,7 +468,7 @@ namespace Server.Misc
                 {
                     Stream fileStream = File.Open("Logs/LoginLogout/" + un + ".log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                     StreamWriter writeAdapter = new StreamWriter(fileStream);
-                    writeAdapter.WriteLine(String.Format("{0}: Banned account: {1} on {2}", e.State, un, DateTime.Now));
+                    writeAdapter.WriteLine(String.Format("{0}: Banned account: {1} on {2}", e.State, un, DateTime.UtcNow));
                     writeAdapter.Close();
                 }
                 catch

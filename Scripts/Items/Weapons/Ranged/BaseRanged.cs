@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using Server.Mobiles;
 using Server.Network;
 
@@ -52,7 +51,7 @@ namespace Server.Items
             WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);
 
             // If you move the swing delay will be reset
-            if (DateTime.Now > (attacker.LastMoveTime + GetDelay(attacker)))
+            if (DateTime.UtcNow > (attacker.LastMoveTime + GetDelay(attacker)))
             {
                 bool canSwing = true;
                 Spells.SpellHelper.Turn(attacker, defender);

@@ -108,7 +108,7 @@ namespace Server.Misc
                 else if (item is NightSightPotion)
                 {
                     NightSightPotion ns = (NightSightPotion) item;
-                    if (DateTime.Now >= ns.cleanupTime)
+                    if (DateTime.UtcNow >= ns.cleanupTime)
                         nightsightpotCleanup.Add(item);
                 }
 

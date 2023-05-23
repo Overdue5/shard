@@ -15,7 +15,7 @@ namespace Scripts.ZTest
 			var result = new SortedDictionary<string, Dictionary<string, object>>();
 			var p = MHelper.GetMobile<PlayerMobile>();
 			int startValue = 0;
-            var rnd = new Random(DateTime.Now.Millisecond);
+            var rnd = new Random(DateTime.UtcNow.Millisecond);
 			for (int cap = 0; cap <= 5; cap++)
 			{
 				p.Skills.Cap = 7000;

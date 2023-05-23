@@ -1,5 +1,4 @@
 using Server.Commands.GMUtils;
-using Server.Network;
 
 namespace Server.Items
 {

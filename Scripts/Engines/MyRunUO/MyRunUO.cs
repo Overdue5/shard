@@ -123,7 +123,7 @@ namespace Server.Engines.MyRunUO
 			m_List = new ArrayList();
 			m_Collecting = new List<IAccount>();
 
-			m_StartTime = DateTime.Now;
+			m_StartTime = DateTime.UtcNow;
 			Console.WriteLine( "MyRunUO: Updating character database" );
 		}
 
@@ -133,10 +133,10 @@ namespace Server.Engines.MyRunUO
 
 			try
 			{
-				shouldExit = Process( DateTime.Now + TimeSpan.FromSeconds( CpuInterval * CpuPercent ) );
+				shouldExit = Process( DateTime.UtcNow + TimeSpan.FromSeconds( CpuInterval * CpuPercent ) );
 
 				if ( shouldExit )
-					Console.WriteLine( "MyRunUO: Database statements compiled in {0:F2} seconds", (DateTime.Now - m_StartTime).TotalSeconds );
+					Console.WriteLine( "MyRunUO: Database statements compiled in {0:F2} seconds", (DateTime.UtcNow - m_StartTime).TotalSeconds );
 			}
 			catch ( Exception e )
 			{
@@ -207,7 +207,7 @@ namespace Server.Engines.MyRunUO
 
 					++m_Index;
 
-					if ( DateTime.Now >= endTime )
+					if ( DateTime.UtcNow >= endTime )
 						break;
 				}
 
@@ -547,7 +547,7 @@ namespace Server.Engines.MyRunUO
 
 				++m_Index;
 
-				if ( DateTime.Now >= endTime )
+				if ( DateTime.UtcNow >= endTime )
 					break;
 			}
 
@@ -623,7 +623,7 @@ namespace Server.Engines.MyRunUO
 
 				++m_Index;
 
-				if ( DateTime.Now >= endTime )
+				if ( DateTime.UtcNow >= endTime )
 					break;
 			}
 

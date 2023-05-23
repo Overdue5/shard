@@ -34,7 +34,7 @@ namespace Server.DuelSystem
 
 					if( FillDataTable() )
 					{
-						lastReset = DateTime.Now;
+						lastReset = DateTime.UtcNow;
 						return true;
 					}
 					else
@@ -51,7 +51,7 @@ namespace Server.DuelSystem
 					return false;
 				}
 			}
-			else if( lastReset + new TimeSpan( 0, 15, 0 ) <= DateTime.Now )
+			else if( lastReset + new TimeSpan( 0, 15, 0 ) <= DateTime.UtcNow )
 			{
 				stoneDbConnecton.Close();
 				stoneDbConnecton = null;

@@ -344,7 +344,7 @@ namespace Server.Custom.Games
 			public ReturnTimer( CTFFlag flag ) : base( TimeSpan.Zero, TimeSpan.FromSeconds( 30.0 ) )
 			{
 				m_Flag = flag;
-				m_Start = DateTime.Now;
+				m_Start = DateTime.UtcNow;
 				Priority = TimerPriority.TwoFiftyMS;
 			}
 
@@ -353,7 +353,7 @@ namespace Server.Custom.Games
 				Mobile owner = m_Flag.RootParent as Mobile;
 				CTFGame game = m_Flag.Game;
 
-				TimeSpan left = MaxFlagHoldTime - (DateTime.Now - m_Start);
+				TimeSpan left = MaxFlagHoldTime - (DateTime.UtcNow - m_Start);
 
 				if ( left >= TimeSpan.FromSeconds( 1.0 ) )
 				{

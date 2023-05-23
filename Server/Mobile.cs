@@ -54,7 +54,7 @@ namespace Server
 		private DateTime m_Expire;
 
 		public TimedSkillMod( SkillName skill, bool relative, double value, TimeSpan delay )
-			: this( skill, relative, value, DateTime.Now + delay )
+			: this( skill, relative, value, DateTime.UtcNow + delay )
 		{
 		}
 
@@ -66,7 +66,7 @@ namespace Server
 
 		public override bool CheckCondition()
 		{
-			return (DateTime.Now < m_Expire);
+			return (DateTime.UtcNow < m_Expire);
 		}
 	}
 
@@ -325,7 +325,7 @@ namespace Server
 			if( m_Duration == TimeSpan.Zero )
 				return false;
 
-			return (DateTime.Now - m_Added) >= m_Duration;
+			return (DateTime.UtcNow - m_Added) >= m_Duration;
 		}
 
 		public StatMod( StatType type, string name, int offset, TimeSpan duration )
@@ -334,7 +334,7 @@ namespace Server
 			m_Name = name;
 			m_Offset = offset;
 			m_Duration = duration;
-			m_Added = DateTime.Now;
+			m_Added = DateTime.UtcNow;
 		}
 	}
 
@@ -350,7 +350,7 @@ namespace Server
 		public Mobile Damager { get { return m_Damager; } }
 		public int DamageGiven { get { return m_DamageGiven; } set { m_DamageGiven = value; } }
 		public DateTime LastDamage { get { return m_LastDamage; } set { m_LastDamage = value; } }
-		public bool HasExpired { get { return (DateTime.Now > (m_LastDamage + m_ExpireDelay)); } }
+		public bool HasExpired { get { return (DateTime.UtcNow > (m_LastDamage + m_ExpireDelay)); } }
 		public List<DamageEntry> Responsible { get { return m_Responsible; } set { m_Responsible = value; } }
 
 		private static TimeSpan m_ExpireDelay = TimeSpan.FromMinutes( 2.0 );
@@ -518,8 +518,13 @@ namespace Server
 			set { m_HasFilter = value; }
 		}
 
-		public virtual bool ShowContextMenu { get { return false; } }
+#if DEBUG
+		public virtual bool ShowContextMenu { get { return true; } }
+#else
+	    public virtual bool ShowContextMenu { get { return true; } }
+#endif
         #endregion
+
 
         public virtual bool IsNight => false;
 
@@ -527,7 +532,7 @@ namespace Server
         public virtual int ManaRegen => 1;
         public virtual int StamRegen => 1;
         
-        #region CompareTo(...)
+#region CompareTo(...)
         public int CompareTo( IEntity other )
 		{
 			if( other == null )
@@ -548,7 +553,7 @@ namespace Server
 
 			throw new ArgumentException();
 		}
-		#endregion
+#endregion
 
 		private static bool m_DragEffects = true;
 
@@ -558,7 +563,7 @@ namespace Server
 			set { m_DragEffects = value; }
 		}
 
-		#region Handlers
+#region Handlers
 
 		private static AllowBeneficialHandler m_AllowBeneficialHandler;
 		private static AllowHarmfulHandler m_AllowHarmfulHandler;
@@ -604,9 +609,9 @@ namespace Server
 			set { m_SkillCheckDirectLocationHandler = value; }
 		}
 
-		#endregion
+#endregion
 
-		#region Regeneration
+#region Regeneration
 
 		private static RegenRateHandler m_HitsRegenRate, m_StamRegenRate, m_ManaRegenRate;
 		private static TimeSpan m_DefaultHitsRate, m_DefaultStamRate, m_DefaultManaRate;
@@ -671,7 +676,7 @@ namespace Server
 				return m_ManaRegenRate( m );
 		}
 
-		#endregion
+#endregion
 
 		private class MovementRecord
 		{
@@ -704,7 +709,7 @@ namespace Server
 
 			public bool Expired()
 			{
-				bool v = (DateTime.Now >= m_End);
+				bool v = (DateTime.UtcNow >= m_End);
 
 				if( v )
 					m_InstancePool.Enqueue( this );
@@ -713,7 +718,7 @@ namespace Server
 			}
 		}
 
-		#region Var declarations
+#region Var declarations
 		private Serial m_Serial;
 		private Map m_Map;
 		private Point3D m_Location;
@@ -801,7 +806,7 @@ namespace Server
 		private DateTime m_LastDexGain;
 		private Race m_Race;
 
-		#endregion
+#endregion
 
 		private static readonly TimeSpan WarmodeSpamCatch = TimeSpan.FromSeconds((Core.SE ? 1.0 : 0.5));
 		private static readonly TimeSpan WarmodeSpamDelay = TimeSpan.FromSeconds((Core.SE ? 4.0 : 2.0));
@@ -1384,7 +1389,7 @@ namespace Server
 			if( m_Warmode == value )
 				return;
 
-			DateTime now = DateTime.Now, next = m_NextWarmodeChange;
+			DateTime now = DateTime.UtcNow, next = m_NextWarmodeChange;
 
 			if( now > next || m_WarmodeChanges == 0 )
 			{
@@ -1902,20 +1907,20 @@ namespace Server
 
 		public virtual void SendSkillMessage()
 		{
-			if( DateTime.Now < m_NextActionMessage )
+			if( DateTime.UtcNow < m_NextActionMessage )
 				return;
 
-			m_NextActionMessage = DateTime.Now + m_ActionMessageDelay;
+			m_NextActionMessage = DateTime.UtcNow + m_ActionMessageDelay;
 
 			SendAsciiMessage("You must wait to perform another action.");
 		}
 
 		public virtual void SendActionMessage()
 		{
-			if( DateTime.Now < m_NextActionMessage )
+			if( DateTime.UtcNow < m_NextActionMessage )
 				return;
 
-			m_NextActionMessage = DateTime.Now + m_ActionMessageDelay;
+			m_NextActionMessage = DateTime.UtcNow + m_ActionMessageDelay;
 
 			SendLocalizedMessage( 500119 ); // You must wait to perform another action.
 		}
@@ -1972,7 +1977,7 @@ namespace Server
 		public virtual bool CanRegenStam { get { return this.Alive; } }
 		public virtual bool CanRegenMana { get { return this.Alive; } }
 
-		#region Timers
+#region Timers
 
 		private class ManaTimer : Timer
 		{
@@ -2135,7 +2140,7 @@ namespace Server
 
 			protected override void OnTick()
 			{
-				if( DateTime.Now > m_Mobile.m_NextCombatTime )
+				if( DateTime.UtcNow > m_Mobile.m_NextCombatTime )
 				{
 					Mobile combatant = m_Mobile.Combatant;
 
@@ -2155,7 +2160,7 @@ namespace Server
 					{
 						weapon.OnBeforeSwing( m_Mobile, combatant );	//OnBeforeSwing for checking in regards to being hidden and whatnot
 						m_Mobile.RevealingAction();
-						m_Mobile.m_NextCombatTime = DateTime.Now + weapon.OnSwing( m_Mobile, combatant );
+						m_Mobile.m_NextCombatTime = DateTime.UtcNow + weapon.OnSwing( m_Mobile, combatant );
 					}
 				}
 			}
@@ -2223,7 +2228,7 @@ namespace Server
 			}
 		}
 
-		#endregion
+#endregion
 
 		private DateTime m_NextCombatTime;
 
@@ -2893,7 +2898,7 @@ namespace Server
 			return true;
 		}
 
-		#region Prompts
+#region Prompts
 		private class SimplePrompt : Prompt
 		{
 			private PromptCallback m_Callback;
@@ -3093,7 +3098,7 @@ namespace Server
 					Send( new UnicodePrompt( newPrompt ) );
 			}
 		}
-		#endregion
+#endregion
 
 		private bool InternalOnMove( Direction d )
 		{
@@ -3175,7 +3180,7 @@ namespace Server
 			if( m_MoveRecords != null && m_MoveRecords.Count > 0 )
 				m_MoveRecords.Clear();
 
-			m_EndQueue = DateTime.Now;
+			m_EndQueue = DateTime.UtcNow;
 		}
 
 		public virtual bool CheckMovement( Direction d, out int newZ )
@@ -3362,14 +3367,14 @@ namespace Server
 						if( m_MoveRecords.Count > 0 )
 							end = m_EndQueue + delay;
 						else
-							end = DateTime.Now + delay;
+							end = DateTime.UtcNow + delay;
 
 						m_MoveRecords.Enqueue( MovementRecord.NewInstance( end ) );
 
 						m_EndQueue = end;
 					}
 
-					m_LastMoveTime = DateTime.Now;
+					m_LastMoveTime = DateTime.UtcNow;
 				}
 				else
 				{
@@ -3608,7 +3613,7 @@ namespace Server
 			{
 				for( int i = 0; i < m_StuckMenuUses.Length; ++i )
 				{
-					if( (DateTime.Now - m_StuckMenuUses[i]) > TimeSpan.FromDays( 1.0 ) )
+					if( (DateTime.UtcNow - m_StuckMenuUses[i]) > TimeSpan.FromDays( 1.0 ) )
 					{
 						return true;
 					}
@@ -4215,7 +4220,7 @@ namespace Server
 			}
 		}
 
-		#region Get*Sound
+#region Get*Sound
 
 		public virtual int GetAngerSound()
 		{
@@ -4265,7 +4270,7 @@ namespace Server
 			}
 		}
 
-		#endregion
+#endregion
 
 		private static char[] m_GhostChars = new char[2] { 'o', 'O' };
 
@@ -4407,7 +4412,7 @@ namespace Server
 			Mobile from = this;
 			NetState state = m_NetState;
 
-			if( from.AccessLevel >= AccessLevel.GameMaster || DateTime.Now >= from.NextActionTime )
+			if( from.AccessLevel >= AccessLevel.GameMaster || DateTime.UtcNow >= from.NextActionTime )
 			{
 				if( from.CheckAlive() )
 				{
@@ -4537,7 +4542,7 @@ namespace Server
 							//if( liftSound != -1 )
 							//	from.Send( new PlaySound( liftSound, from ) );
 
-							from.NextActionTime = DateTime.Now + TimeSpan.FromSeconds( 0.4 );
+							from.NextActionTime = DateTime.UtcNow + TimeSpan.FromSeconds( 0.4 );
 
 							if( fixMap != null && shouldFix )
 								fixMap.FixColumn( fixLoc.m_X, fixLoc.m_Y );
@@ -4869,7 +4874,7 @@ namespace Server
 			}
 		}
 
-		#region Get*InRange
+#region Get*InRange
 
 		public IPooledEnumerable GetItemsInRange( int range )
 		{
@@ -4911,7 +4916,7 @@ namespace Server
 			return map.GetClientsInRange( m_Location, range );
 		}
 
-		#endregion
+#endregion
 
 		private static List<Mobile> m_Hears;
 		private static ArrayList m_OnSpeech;
@@ -5242,7 +5247,7 @@ namespace Server
 				de = new DamageEntry( from );
 
 			de.DamageGiven += amount;
-			de.LastDamage = DateTime.Now;
+			de.LastDamage = DateTime.UtcNow;
 
 			m_DamageEntries.Remove( de );
 			m_DamageEntries.Add( de );
@@ -5273,7 +5278,7 @@ namespace Server
 					list.Add( resp = new DamageEntry( master ) );
 
 				resp.DamageGiven += amount;
-				resp.LastDamage = DateTime.Now;
+				resp.LastDamage = DateTime.UtcNow;
 			}
 
 			return de;
@@ -5517,9 +5522,9 @@ namespace Server
 
 			for( int i = 0; i < m_StuckMenuUses.Length; ++i )
 			{
-				if( (DateTime.Now - m_StuckMenuUses[i]) > TimeSpan.FromDays( 1.0 ) )
+				if( (DateTime.UtcNow - m_StuckMenuUses[i]) > TimeSpan.FromDays( 1.0 ) )
 				{
-					m_StuckMenuUses[i] = DateTime.Now;
+					m_StuckMenuUses[i] = DateTime.UtcNow;
 					return;
 				}
 			}
@@ -6562,7 +6567,7 @@ namespace Server
 			DisruptiveAction(); // Anything that unhides you will also distrupt meditation
 		}
 
-		#region Say/SayTo/Emote/Whisper/Yell
+#region Say/SayTo/Emote/Whisper/Yell
 		public void SayTo( Mobile to, bool ascii, string text )
 		{
 			PrivateOverheadMessage( MessageType.Regular, m_SpeechHue, ascii, text, to.NetState );
@@ -6682,7 +6687,7 @@ namespace Server
 		{
 			PublicOverheadMessage( MessageType.Yell, m_YellHue, number, args );
 		}
-		#endregion
+#endregion
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Blessed
@@ -6770,7 +6775,7 @@ namespace Server
 			}
 		}
 
-		#region Gumps/Menus
+#region Gumps/Menus
 
 		public bool SendHuePicker( HuePicker p ) {
 			return SendHuePicker( p, false );
@@ -6893,7 +6898,7 @@ namespace Server
 			}
 		}
 
-		#endregion
+#endregion
 
 		/// <summary>
 		/// Overridable. Event invoked before the Mobile says something.
@@ -7110,7 +7115,7 @@ namespace Server
 		{
 		}
 
-		#region Beneficial Checks/Actions
+#region Beneficial Checks/Actions
 
 		public virtual bool CanBeBeneficial( Mobile target )
 		{
@@ -7194,9 +7199,9 @@ namespace Server
 			return false;
 		}
 
-		#endregion
+#endregion
 
-		#region Harmful Checks/Actions
+#region Harmful Checks/Actions
 
 		public virtual bool CanBeHarmful( Mobile target )
 		{
@@ -7293,9 +7298,9 @@ namespace Server
 			return false;
 		}
 
-		#endregion
+#endregion
 
-		#region Stats
+#region Stats
 
 		/// <summary>
 		/// Gets a list of all <see cref="StatMod">StatMod's</see> currently active for the Mobile.
@@ -7952,7 +7957,7 @@ namespace Server
 			}
 		}
 
-		#endregion
+#endregion
 
 		public virtual int Luck
 		{
@@ -8710,7 +8715,7 @@ namespace Server
 		{
 		}
 
-		#region Poison/Curing
+#region Poison/Curing
 
 		public Timer PoisonTimer
 		{
@@ -8911,7 +8916,7 @@ namespace Server
 			return false;
 		}
 
-		#endregion
+#endregion
 
 		private ISpawner m_Spawner;
 
@@ -9504,7 +9509,7 @@ namespace Server
 		{
 		}
 
-		#region Hair
+#region Hair
 
 		private HairInfo m_Hair;
 		private FacialHairInfo m_FacialHair;
@@ -9600,7 +9605,7 @@ namespace Server
 			}
 		}
 
-		#endregion
+#endregion
 
 		public bool HasFreeHand()
 		{
@@ -9722,7 +9727,7 @@ namespace Server
 			set { Location = new Point3D( m_Location.m_X, m_Location.m_Y, value ); }
 		}
 
-		#region Effects & Particles
+#region Effects & Particles
 
 		public void MovingEffect( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode )
 		{
@@ -9789,7 +9794,7 @@ namespace Server
 			Effects.SendBoltEffect( this, true, hue );
 		}
 
-		#endregion
+#endregion
 
 		public void SendIncomingPacket()
 		{
@@ -10157,7 +10162,7 @@ namespace Server
 			m_DamageEntries = new List<DamageEntry>();
 
 			m_NextSkillTime = DateTime.MinValue;
-			m_CreationTime = DateTime.Now;
+			m_CreationTime = DateTime.UtcNow;
 		}
 
 		private static Queue<Mobile> m_DeltaQueue = new Queue<Mobile>();
@@ -10182,7 +10187,7 @@ namespace Server
 			Core.Set();
 		}
 
-		#region GetDirectionTo[..]
+#region GetDirectionTo[..]
 
 		public Direction GetDirectionTo( int x, int y )
 		{
@@ -10231,7 +10236,7 @@ namespace Server
 			return GetDirectionTo( p.X, p.Y );
 		}
 
-		#endregion
+#endregion
 
 		public virtual void ProcessDelta()
 		{
@@ -10733,7 +10738,7 @@ namespace Server
 			}
 		}
 
-		#region Overhead messages
+#region Overhead messages
 
 		public void PublicOverheadMessage( MessageType type, int hue, bool ascii, string text )
 		{
@@ -10934,9 +10939,9 @@ namespace Server
 			}
 		}
 
-		#endregion
+#endregion
 
-		#region SendLocalizedMessage
+#region SendLocalizedMessage
 
 		public void SendLocalizedMessage( int number )
 		{
@@ -10990,7 +10995,7 @@ namespace Server
 					ns.Send(new AsciiMessage(Serial.MinusOne, -1, MessageType.Regular, hue, 3, "", string.Format("{0} {1}", string.Format(CliLoc.LocToString(number, args)), affix)));
 		}
 
-		#endregion
+#endregion
 
 		public void LaunchBrowser( string url )
 		{
@@ -10998,7 +11003,7 @@ namespace Server
 				m_NetState.LaunchBrowser( url );
 		}
 
-		#region Send[ASCII]Message
+#region Send[ASCII]Message
 
 		public virtual void SendMessage( string text )
 		{
@@ -11044,9 +11049,9 @@ namespace Server
 			SendAsciiMessage( hue, String.Format( format, args ) );
 		}
 
-		#endregion
+#endregion
 
-		#region InRange
+#region InRange
 
 		public bool InRange( object target, int range )
 		{
@@ -11083,7 +11088,7 @@ namespace Server
 				&& (p.Y >= (m_Location.m_Y - range))
 				&& (p.Y <= (m_Location.m_Y + range));
 		}
-		#endregion
+#endregion
 
         public void InitStats( int str, int dex, int intel )
 		{
@@ -11107,7 +11112,7 @@ namespace Server
 
 		public static bool DisableDismountInWarmode { get { return m_DisableDismountInWarmode; } set { m_DisableDismountInWarmode = value; } }
 
-		#region OnDoubleClick[..]
+#region OnDoubleClick[..]
 
 		/// <summary>
 		/// Overridable. Event invoked when the Mobile is double clicked. By default, this method can either dismount or open the paperdoll.
@@ -11166,7 +11171,7 @@ namespace Server
 				DisplayPaperdollTo( this );
 		}
 
-		#endregion
+#endregion
 
 		private static int m_BodyWeight = 14;
 
@@ -11394,7 +11399,7 @@ namespace Server
 			}
 		}
 
-		#region Armor
+#region Armor
 		public Item ShieldArmor
 		{
 			get
@@ -11468,7 +11473,7 @@ namespace Server
 				return FindItemOnLayer( Layer.Talisman ) as Item;
 			}
 		}
-		#endregion
+#endregion
 
 		/// <summary>
 		/// Gets or sets the maximum attainable value for <see cref="RawStr" />, <see cref="RawDex" />, and <see cref="RawInt" />.

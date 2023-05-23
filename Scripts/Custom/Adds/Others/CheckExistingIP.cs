@@ -120,7 +120,7 @@ namespace Server
                 {
                     Stream fileStream = File.Open("Logs/MultiAccount.log", FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
                     StreamWriter writeAdapter = new StreamWriter(fileStream);
-                    writeAdapter.WriteLine("{0}\t{1}\t[{2}]{3}\talready has another account connected from the same IP and AllowMulti is not set", DateTime.Now, m.NetState.Address, m.NetState.Account, m.NetState.Mobile.Name);
+                    writeAdapter.WriteLine("{0}\t{1}\t[{2}]{3}\talready has another account connected from the same IP and AllowMulti is not set", DateTime.UtcNow, m.NetState.Address, m.NetState.Account, m.NetState.Mobile.Name);
                     writeAdapter.Close();
                 }
                 catch

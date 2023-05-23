@@ -80,19 +80,19 @@ namespace Server.Voting
 		/// <returns>The time that the given Mobile last voted for the given VoteSite object, with extra output information.</returns>
 		public static DateTime GetLastVoteTime(Mobile m, VoteSite voteSite, out bool canVote, out TimeSpan timeLeft)
 		{
-			DateTime now = DateTime.Now;
+			DateTime now = DateTime.UtcNow;
 			DateTime lastVoteTime = now.Subtract(voteSite.CoolDown);
 
 			canVote = true;
 			timeLeft = TimeSpan.Zero;
 
 			if (m == null || m.Deleted)
-				return DateTime.Now;
+				return DateTime.UtcNow;
 
 			Account a = (Account)m.Account;
 
 			if (a == null)
-				return DateTime.Now;
+				return DateTime.UtcNow;
 
 			string tag = a.GetTag("VS_LAST_VOTE_" + voteSite.Name.ToUpper());
 
@@ -148,7 +148,7 @@ namespace Server.Voting
 			if (a == null)
 				return;
 
-			DateTime now = DateTime.Now;
+			DateTime now = DateTime.UtcNow;
 
 			string tag = now.ToString();
 

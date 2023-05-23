@@ -332,7 +332,7 @@ namespace Server.Items
 
             if (t != null)
             {
-                t.Delay = t.Next - DateTime.Now;
+                t.Delay = t.Next - DateTime.UtcNow;
                 t.Stop();
             }
 
@@ -358,7 +358,7 @@ namespace Server.Items
 
             if (t != null)
             {
-                return t.Next - DateTime.Now;
+                return t.Next - DateTime.UtcNow;
             }
 
             return TimeSpan.Zero;

@@ -248,7 +248,7 @@ namespace Server.Items
 		{
 			private Mobile m_Owner;
 			private Item m_Body;
-			private DateTime shutitoff = DateTime.Now + TimeSpan.FromSeconds(300); 
+			private DateTime shutitoff = DateTime.UtcNow + TimeSpan.FromSeconds(300); 
 			public InternalTimer( Mobile m, Item body ) : base( TimeSpan.FromSeconds(10),TimeSpan.FromSeconds(10) )
 			{
 				
@@ -257,7 +257,7 @@ namespace Server.Items
 			}
 			protected override void OnTick() 
 			{ 
-				if (DateTime.Now < shutitoff)
+				if (DateTime.UtcNow < shutitoff)
 				{
 					if(m_Body != null)
 						m_Body.PublicOverheadMessage(0,m_Owner.SpeechHue,false,"zZz"); 

@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using Discord;
 using Server;
 using Server.Commands;
 using Server.Mobiles;
@@ -13,14 +11,10 @@ using Server.Misc;
 using Server.Targeting;
 using CommandEventArgs = Server.Commands.CommandEventArgs;
 using CommandEventHandler = Server.Commands.CommandEventHandler;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
-using System.Diagnostics;
-using System.IO;
-using static Server.Games.PaintBall.PBGameItem;
-using static System.Net.Mime.MediaTypeNames;
-using System.Xml.Linq;
 using Server.Network;
 using MessageType = Server.Network.MessageType;
+using Server.Custom;
+using Server.Gumps;
 
 namespace Scripts.Commands
 {
@@ -40,10 +34,12 @@ namespace Scripts.Commands
             CommandSystem.Register("restart", AccessLevel.GameMaster, new CommandEventHandler(Restart_OnCommand));
             CommandSystem.Register("update", AccessLevel.GameMaster, new CommandEventHandler(Update_OnCommand));
             CommandSystem.Register("shutdown", AccessLevel.GameMaster, new CommandEventHandler(ShutDown_OnCommand));
+            CommandSystem.Register("DeleteType", AccessLevel.GameMaster, new CommandEventHandler(DeleteType_OnCommand));
             EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
             CommandSystem.Register("saycheck", AccessLevel.Player, new CommandEventHandler(Say_OnCommand));
+            CommandSystem.Register("tt", AccessLevel.Player, new CommandEventHandler(Gump_OnCommand));
 #endif
 
         }
@@ -57,6 +53,47 @@ namespace Scripts.Commands
                 return $"Now only {count} avatar in Britannia";
             return $"Now {count} avatars in Britannia";
         }
+
+        [Usage("DeleteType")]
+        [Description("Delete items by typename")]
+        private static void DeleteType_OnCommand(CommandEventArgs e)
+        {
+            try
+            {
+                if (e.Length == 0)
+                {
+                    e.Mobile.SendMessage("Usage DeleteType typename");
+                    return;
+                }
+
+                int count = 0;
+                var t = ScriptCompiler.FindTypeByName(e.GetString(0));
+                var listToDelete = new ArrayList();
+                foreach (var item in World.Items.Values)
+                {
+                    if (item.GetType() == t) listToDelete.Add(item);
+                }
+
+                foreach (Item item in listToDelete)
+                {
+                    item.Delete();
+                }
+                e.Mobile.SendMessage($"Totally deleted {listToDelete.Count} items");
+            }
+            catch (Exception exception)
+            {
+                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, exception.Message);
+            }
+        }
+
+        [Usage("tt")]
+        [Description("test command")]
+        private static void Gump_OnCommand(CommandEventArgs e)
+        {
+            //e.Mobile.SendGump(new VendorParcelGump(e.Mobile, null));
+            //e.Mobile.SendGump(new PlayerGuidegump());
+        }
+
         [Usage("update")]
         [Description("Update server")]
         private static void Update_OnCommand(CommandEventArgs e)

@@ -26,7 +26,7 @@ namespace Server.Misc.ErrorLog
         public void Log()
         {
             string filename = "\\CustomLog ";
-            filename += DateTime.Now.ToString();
+            filename += DateTime.UtcNow.ToString();
             filename += ".txt";
 
             FileInfo fI = new FileInfo(runUOPath + filename);

@@ -9,7 +9,7 @@ namespace Server.Gumps
 	{
 		private readonly Mobile badBoy;
 		private readonly Mobile jailor;
-		private readonly DateTime issued = DateTime.Now;
+		private readonly DateTime issued = DateTime.UtcNow;
 		private readonly UAResponseTimer myTimer;
 		private readonly int tbutton = 2;
 		private bool caughtFired = false;
@@ -21,7 +21,7 @@ namespace Server.Gumps
 				tbutton = 1;
 			if( tbutton > 6 )
 				tbutton = 6;
-			( (Account)m.Account ).Comments.Add( new AccountComment( JailSystem.JSName + "-warning", from.Name + " checked to see if " + m.Name + " was macroing unattended on: " + DateTime.Now ) );
+			( (Account)m.Account ).Comments.Add( new AccountComment( JailSystem.JSName + "-warning", from.Name + " checked to see if " + m.Name + " was macroing unattended on: " + DateTime.UtcNow ) );
 			jailor = from;
 			badBoy = m;
 			Closable = false;
@@ -55,7 +55,7 @@ namespace Server.Gumps
 				myTimer.Stop();
 			if( tbutton == info.ButtonID )
 			{
-				string mtemp = string.Format( "{0} responded to the unattended macroing check in {1} seconds.", from.Name, DateTime.Now.Subtract( issued ).Seconds );
+				string mtemp = string.Format( "{0} responded to the unattended macroing check in {1} seconds.", from.Name, DateTime.UtcNow.Subtract( issued ).Seconds );
 				( (Account)badBoy.Account ).Comments.Add( new AccountComment( JailSystem.JSName + "-warning", mtemp ) );
 				jailor.SendMessage( mtemp );
 			}

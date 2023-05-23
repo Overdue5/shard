@@ -247,7 +247,7 @@ namespace Server.Engines.OrbRemoteServer
 				if(m_Clients.ContainsKey(clientInfo.ClientID))
 					m_Clients.Remove(clientInfo.ClientID);
 
-				m_Clients.Add(clientInfo.ClientID, new OrbClientState(clientInfo, account, DateTime.Now));
+				m_Clients.Add(clientInfo.ClientID, new OrbClientState(clientInfo, account, DateTime.UtcNow));
 			}
 
 			return code;

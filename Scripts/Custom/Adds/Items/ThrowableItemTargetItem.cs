@@ -17,7 +17,7 @@ namespace Server.Items
         {
             Movable = false;
 
-            m_Created = DateTime.Now;
+            m_Created = DateTime.UtcNow;
             Duration = duration;
             ItemID = itemid;
 
@@ -32,7 +32,7 @@ namespace Server.Items
 
         private void OnTick()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan age = now - m_Created;
 
             if (age > Duration)

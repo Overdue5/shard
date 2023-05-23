@@ -223,7 +223,7 @@ namespace Server.Custom.Games
 		    public BombTimer(BombermanBomb bomb) : base( TimeSpan.Zero, TimeSpan.FromSeconds( 1.0 ) )
 			{
 				m_Bomb = bomb;
-			    m_Start = DateTime.Now;
+			    m_Start = DateTime.UtcNow;
 				Priority = TimerPriority.TwoFiftyMS;
 			}
 			
@@ -231,7 +231,7 @@ namespace Server.Custom.Games
 			{
                 if (m_Bomb != null && !m_Bomb.Deleted)
                 {
-                    TimeSpan left = detonateTime - (DateTime.Now - m_Start);
+                    TimeSpan left = detonateTime - (DateTime.UtcNow - m_Start);
                     if (left <= TimeSpan.FromSeconds(0.0))
                     {
                         m_Bomb.detonate();

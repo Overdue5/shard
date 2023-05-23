@@ -20,7 +20,7 @@ namespace Arya.Chess
 			m_Timer = new InternalTimer( this );
 			m_Timer.Start();
 
-			m_GameStart = DateTime.Now;
+			m_GameStart = DateTime.UtcNow;
 		}
 
 		public void Stop()
@@ -43,7 +43,7 @@ namespace Arya.Chess
 			if ( m_GameStart != DateTime.MaxValue )
 			{
 				// Still starting the game
-				if ( ( DateTime.Now - m_GameStart ) >= ChessConfig.GameStartTimeOut )
+				if ( ( DateTime.UtcNow - m_GameStart ) >= ChessConfig.GameStartTimeOut )
 				{
 					m_Game.Cleanup();
 				}
@@ -51,7 +51,7 @@ namespace Arya.Chess
 
 			if ( m_EndGame != DateTime.MaxValue )
 			{
-				if ( ( DateTime.Now - m_EndGame ) >= ChessConfig.EndGameTimerOut )
+				if ( ( DateTime.UtcNow - m_EndGame ) >= ChessConfig.EndGameTimerOut )
 				{
 					m_Game.Cleanup();
 				}
@@ -62,9 +62,9 @@ namespace Arya.Chess
 			if ( m_LastMove != DateTime.MaxValue )
 			{
 				// Now playing
-				if ( ( DateTime.Now - m_LastMove ) >= ChessConfig.MoveTimeOut )
+				if ( ( DateTime.UtcNow - m_LastMove ) >= ChessConfig.MoveTimeOut )
 				{
-					m_EndGame = DateTime.Now;
+					m_EndGame = DateTime.UtcNow;
 					m_Game.OnMoveTimeout();
 					return;
 				}
@@ -73,7 +73,7 @@ namespace Arya.Chess
 			if ( m_Disconnect != DateTime.MaxValue )
 			{
 				// A player has been disconnected
-				if ( ( DateTime.Now - m_Disconnect ) >= ChessConfig.DisconnectTimeOut )
+				if ( ( DateTime.UtcNow - m_Disconnect ) >= ChessConfig.DisconnectTimeOut )
 				{
 					m_Game.Cleanup();
 				}
@@ -83,19 +83,19 @@ namespace Arya.Chess
 		public void OnGameStart()
 		{
 			m_GameStart = DateTime.MaxValue;
-			m_LastMove = DateTime.Now;
+			m_LastMove = DateTime.UtcNow;
 		}
 
 		public void OnMoveMade()
 		{
-			m_LastMove = DateTime.Now;
+			m_LastMove = DateTime.UtcNow;
 			m_EndGame = DateTime.MaxValue;
 		}
 
 		public void OnPlayerDisconnected()
 		{
 			if ( m_Disconnect == DateTime.MaxValue )
-				m_Disconnect = DateTime.Now;
+				m_Disconnect = DateTime.UtcNow;
 		}
 
 		public void OnPlayerConnected()
@@ -105,7 +105,7 @@ namespace Arya.Chess
 
 		public void OnGameOver()
 		{
-			m_EndGame = DateTime.Now;
+			m_EndGame = DateTime.UtcNow;
 		}
 
 		private class InternalTimer : Timer

@@ -446,7 +446,7 @@ namespace Server
 
 					for (i = 0; i < m_Timers.Length; i++)
 					{
-						now = DateTime.Now;
+						now = DateTime.UtcNow;
 						if (now < m_NextPriorities[i])
 							break;
 
@@ -501,7 +501,7 @@ namespace Server
 
 					if (tce.m_IsAdd)
 					{
-						timer.m_Next = DateTime.Now + timer.m_Delay;
+						timer.m_Next = DateTime.UtcNow + timer.m_Delay;
 						timer.m_Index = 0;
 					}
 

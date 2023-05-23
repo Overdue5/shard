@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Server.Engines;
-using Server.Engines.XmlSpawner2;
-using Server.Ethics;
-using Server.Mobiles;
 using Server.Network;
 
 namespace Server.Commands.GMUtils
@@ -72,13 +66,36 @@ namespace Server.Commands.GMUtils
 
         public static int ChangeDamage(this Mobile mob, Mobile def, int damage)
         {
-            if (mob.IsNight == def.IsNight)
+            if (def == null || mob == null ||  mob.IsNight == def.IsNight)
                 return damage;
             if (mob.IsNight)
                 return (int)(damage * UtilityWorldTime.NightMultiplier());
             if (def.IsNight)
                 return Utility.LimitMin(1, (int)(damage / UtilityWorldTime.NightMultiplier()));
             return damage;
+        }
+
+        public static List<Point3D> GetStaticTileAround(this TileMatrix tm, Point3D loc, int range, HashSet<int> filter)
+        {
+            var res = new List<Point3D>();
+            for (int x = loc.X - range; x <= loc.X + range; x++)
+            {
+                for (int y = loc.Y - range; y <= loc.Y + range; y++)
+                {
+                    var items = tm.Owner.Tiles.GetStaticTiles(x, y);
+                    foreach (var staticTile in items)
+                    {
+                        if (filter == null)
+                            res.Add(new Point3D(x, y, staticTile.Z));
+                        else if (filter.Contains(staticTile.ID))
+                        {
+                            res.Add(new Point3D(x, y, staticTile.Z));
+                        }
+                    }
+                }
+            }
+
+            return res;
         }
     }
 }

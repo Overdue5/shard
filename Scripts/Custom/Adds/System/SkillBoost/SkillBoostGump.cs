@@ -343,7 +343,7 @@ namespace Server.Gumps
             if (timer == null || !timer.Running) 
                 return "12";
             
-            int timeLeft = (int)(TimeSpan.FromHours(timer.Delay.TotalHours) - (DateTime.Now - SkillBoost.StartedOn)).TotalHours;
+            int timeLeft = (int)(TimeSpan.FromHours(timer.Delay.TotalHours) - (DateTime.UtcNow - SkillBoost.StartedOn)).TotalHours;
 
             if (timeLeft < 0)
                 timeLeft = 0;
@@ -402,7 +402,7 @@ namespace Server.Gumps
 
                 if (m_Success)
                 {
-                    SkillBoost.StartedOn = DateTime.Now;
+                    SkillBoost.StartedOn = DateTime.UtcNow;
                     SkillBoost.ResetValuesTimer = Timer.DelayCall(TimeSpan.FromHours(m_Value), new TimerCallback(SkillBoost.Stop));
                     SkillBoost.Running = true;
                     CommandLogging.WriteLine(m_From, "{0} {1} enabled skillboost for {2} hours", m_From.AccessLevel, CommandLogging.Format(m_From), SkillBoost.ResetValuesTimer.Delay.TotalHours);

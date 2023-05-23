@@ -33,14 +33,14 @@ namespace Server.Custom.Games
             staffmember = staff;
             interval = TimeSpan.FromSeconds(inter);
             endtime = end;
-            nextevent = DateTime.Now + interval;
+            nextevent = DateTime.UtcNow + interval;
         }
 
         public void Announce()
         {
             if (message.Contains("{REMAINING}"))
             {
-                int remainingseconds = (endtime - DateTime.Now).Seconds;
+                int remainingseconds = (endtime - DateTime.UtcNow).Seconds;
                 if (remainingseconds > 3600)
                     message = message.Replace("{REMAINING}", remainingseconds / 3600 + " hours");
                 else if (remainingseconds > 60)
@@ -626,7 +626,7 @@ namespace Server.Custom.Games
         protected override void OnTick()
         {
             base.OnTick();
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             foreach (Announcement announcement in Events.m_Announcements)
             {
                 if (announcement.nextevent < now)

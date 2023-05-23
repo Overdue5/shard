@@ -456,14 +456,14 @@ namespace Server.Custom.Games
 			private readonly Mobile m_Mob;
             private readonly DateTime m_Res;
             private CustomGumpItem m_GumpItem;
-            private DateTime m_LastSecond = DateTime.Now;
+            private DateTime m_LastSecond = DateTime.UtcNow;
 
 			public DeathTimer( Mobile m, CTFTeam t, CTFGame g, TimeSpan DeathDelay ) : base( TimeSpan.Zero, TimeSpan.FromMilliseconds(250) )
 			{
 				m_Mob = m;
 				m_Team = t;
                 m_Game = g;
-                m_Res = DateTime.Now + DeathDelay;
+                m_Res = DateTime.UtcNow + DeathDelay;
 
                 if (m is PlayerMobile)
                 {
@@ -475,13 +475,13 @@ namespace Server.Custom.Games
 
 			protected override void OnTick()
 			{
-                TimeSpan delay = m_Res - DateTime.Now;
-                if (DateTime.Now - m_LastSecond > TimeSpan.FromSeconds(1))
+                TimeSpan delay = m_Res - DateTime.UtcNow;
+                if (DateTime.UtcNow - m_LastSecond > TimeSpan.FromSeconds(1))
                 {
                     m_GumpItem.Message = delay.Hours + ":" + delay.Minutes + ":" + delay.Seconds;
-                    m_LastSecond = DateTime.Now;
+                    m_LastSecond = DateTime.UtcNow;
                 }
-                if (DateTime.Now > m_Res)
+                if (DateTime.UtcNow > m_Res)
                 {
                     if (m_Mob.Corpse != null && !m_Mob.Corpse.Deleted)
                         m_Mob.Corpse.Delete();

@@ -513,7 +513,7 @@ namespace Server.Misc
                 PlayerMobile pm = from as PlayerMobile;
 
                 if (from is PlayerMobile)
-                    if (pm != null && skill.SkillName == pm.AcceleratedSkill && pm.AcceleratedStart > DateTime.Now)
+                    if (pm != null && skill.SkillName == pm.AcceleratedSkill && pm.AcceleratedStart > DateTime.UtcNow)
                         toGain *= Utility.RandomMinMax(2, 5);
 #endregion
                 */
@@ -636,10 +636,10 @@ namespace Server.Misc
 
 		public static void GainStat( Mobile from, Stat stat )
 		{
-			if( ( from.LastStatGain + m_StatGainDelay ) >= DateTime.Now )
+			if( ( from.LastStatGain + m_StatGainDelay ) >= DateTime.UtcNow )
 				return;
 
-			from.LastStatGain = DateTime.Now;
+			from.LastStatGain = DateTime.UtcNow;
 
 			bool atrophy = ( ( from.RawStatTotal / (double)from.StatCap ) >= Utility.RandomDouble() );
 

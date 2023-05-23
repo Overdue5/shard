@@ -32,7 +32,7 @@ namespace Server.SkillHandlers
                 if (m.Mana >= m.ManaMax)
                     m.SendLocalizedMessage(501846); // You are at peace.
 
-                else if (badCombat || m.Warmode || (m is PlayerMobile && (((PlayerMobile)m).LastAttackTime + TimeSpan.FromSeconds(5.0)) >= DateTime.Now))
+                else if (badCombat || m.Warmode || (m is PlayerMobile && (((PlayerMobile)m).LastAttackTime + TimeSpan.FromSeconds(5.0)) >= DateTime.UtcNow))
                     m.SendAsciiMessage("You are preoccupied with thoughts of battle.");
 
                 else
@@ -95,7 +95,7 @@ namespace Server.SkillHandlers
                         releaseLock = true;
                     }
 
-                    else if (m_From.Combatant != null || m_From.Warmode || (m_From is PlayerMobile && (((PlayerMobile)m_From).LastAttackTime + TimeSpan.FromSeconds(5.0)) >= DateTime.Now))
+                    else if (m_From.Combatant != null || m_From.Warmode || (m_From is PlayerMobile && (((PlayerMobile)m_From).LastAttackTime + TimeSpan.FromSeconds(5.0)) >= DateTime.UtcNow))
                     {
                         m_From.SendAsciiMessage("You are preoccupied with thoughts of battle.");
                         releaseLock = true;

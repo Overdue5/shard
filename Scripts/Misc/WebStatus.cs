@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Text;
 using Server.Guilds;
@@ -58,7 +56,7 @@ namespace Server.Misc
             if (!Directory.Exists(c_StatusDir))
                 Directory.CreateDirectory(c_StatusDir);
 
-            string time = DateTime.Now.Year + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00");
+            string time = DateTime.UtcNow.Year + "-" + DateTime.UtcNow.Month.ToString("00") + "-" + DateTime.UtcNow.Day.ToString("00") + " " + DateTime.UtcNow.Hour.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00");
 
             using (StreamWriter op = new StreamWriter(c_FullPath))
             {

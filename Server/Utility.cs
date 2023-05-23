@@ -28,7 +28,6 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
-using Server.Network;
 
 namespace Server
 {
@@ -1145,6 +1144,10 @@ namespace Server
         public static T RandomList<T>(params T[] list)
         {
             return list[m_Random.Next(list.Length)];
+        }
+        public static T RandomList<T>(List<T> list)
+        {
+            return list[m_Random.Next(list.Count)];
         }
 
         public static bool RandomBool()

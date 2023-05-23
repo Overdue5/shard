@@ -119,7 +119,7 @@ namespace Server.Gumps
                 from.SendGump(new TurboSlotGump(m_Slot, m_Symbols));
                 return;
             }
-            m_Slot.LastPlayed = DateTime.Now;
+            m_Slot.LastPlayed = DateTime.UtcNow;
             if (info.ButtonID == 0)
             {
                 from.CloseGump(typeof(TurboSlotGump));

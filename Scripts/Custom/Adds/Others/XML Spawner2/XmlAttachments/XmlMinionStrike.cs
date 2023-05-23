@@ -85,7 +85,7 @@ namespace Server.Engines.XmlSpawner2
 		{
 
 			// if it is still refractory then return
-			if(DateTime.Now < m_EndTime) return;
+			if(DateTime.UtcNow < m_EndTime) return;
 
 			if(m_Chance <= 0 || Utility.Random(100) > m_Chance)
 				return;
@@ -127,7 +127,7 @@ namespace Server.Engines.XmlSpawner2
 					Delete();
 				}
 
-				m_EndTime = DateTime.Now + Refractory;
+				m_EndTime = DateTime.UtcNow + Refractory;
 			}
 		}
         
@@ -161,7 +161,7 @@ namespace Server.Engines.XmlSpawner2
 			writer.Write(m_Chance);
 			writer.Write(m_Minion);
 			writer.Write(m_Refractory);
-			writer.Write(m_EndTime - DateTime.Now);
+			writer.Write(m_EndTime - DateTime.UtcNow);
 			writer.Write(MinionList.Count);
 			foreach(BaseCreature b in MinionList)
 				writer.Write(b);
@@ -178,7 +178,7 @@ namespace Server.Engines.XmlSpawner2
 			m_Minion = reader.ReadString();
 			Refractory = reader.ReadTimeSpan();
 			TimeSpan remaining = reader.ReadTimeSpan();
-			m_EndTime = DateTime.Now + remaining;
+			m_EndTime = DateTime.UtcNow + remaining;
 			int nminions = reader.ReadInt();
 			for(int i = 0;i<nminions;i++)
 			{

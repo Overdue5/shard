@@ -80,10 +80,10 @@ namespace Server.AntiMacro
         {
             if (info.ButtonID != m_CorrectChoice)
             {
-                if (m_GumpOwner.AntiMacroTimeCheck < (DateTime.Now - TimeSpan.FromHours(24)))
+                if (m_GumpOwner.AntiMacroTimeCheck < (DateTime.UtcNow - TimeSpan.FromHours(24)))
                 {
                     m_GumpOwner.AntiMacroFailed = 1;
-                    m_GumpOwner.AntiMacroTimeCheck = DateTime.Now;
+                    m_GumpOwner.AntiMacroTimeCheck = DateTime.UtcNow;
                 }
                 else
                     m_GumpOwner.AntiMacroFailed++;
@@ -148,10 +148,10 @@ namespace Server.AntiMacro
 
             protected override void OnTick()
             {
-                if (m_From.AntiMacroTimeCheck < (DateTime.Now - TimeSpan.FromHours(24)))
+                if (m_From.AntiMacroTimeCheck < (DateTime.UtcNow - TimeSpan.FromHours(24)))
                 {
                     m_From.AntiMacroFailed = 1;
-                    m_From.AntiMacroTimeCheck = DateTime.Now;
+                    m_From.AntiMacroTimeCheck = DateTime.UtcNow;
                 }
                 else
                     m_From.AntiMacroFailed++;

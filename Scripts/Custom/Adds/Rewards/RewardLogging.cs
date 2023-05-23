@@ -32,12 +32,12 @@ namespace Server.IN.Logging
 
 			try
 			{
-				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", DateTime.Now.ToLongDateString() ) ), true );
+				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", DateTime.UtcNow.ToLongDateString() ) ), true );
 
 				m_Output.AutoFlush = true;
 
 				m_Output.WriteLine( "##############################" );
-				m_Output.WriteLine( "Log started on {0}", DateTime.Now );
+				m_Output.WriteLine( "Log started on {0}", DateTime.UtcNow );
 				m_Output.WriteLine();
 			}
 			catch
@@ -47,7 +47,7 @@ namespace Server.IN.Logging
 
 		public static void WriteLine( Mobile from, SkillInfo theSkill, string theName, int theHue )
 		{
-			m_Output.WriteLine( "{0}: Account - {1}: Character - {2} : Skill - {3} : Name - {4} : Hue - {5}", DateTime.Now, ( (Account)from.Account ).Username, from.Name, theSkill.Name, theName, theHue );
+			m_Output.WriteLine( "{0}: Account - {1}: Character - {2} : Skill - {3} : Name - {4} : Hue - {5}", DateTime.UtcNow, ( (Account)from.Account ).Username, from.Name, theSkill.Name, theName, theHue );
 		}
 
 		/*

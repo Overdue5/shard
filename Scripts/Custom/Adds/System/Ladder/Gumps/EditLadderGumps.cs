@@ -620,7 +620,7 @@ namespace Server.Ladder
             //Event 	Type 	Winner 	Second 	Third 	Hoster 	Participants 	Date
             int first = 0, second = 0, third = 0;
             int first2 = 0, second2 = 0, third2 = 0;
-            string time = "'" + DateTime.Now.Year + "-" + DateTime.Now.Month.ToString("00") + "-" + DateTime.Now.Day.ToString("00") + " " + DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + "'";
+            string time = "'" + DateTime.UtcNow.Year + "-" + DateTime.UtcNow.Month.ToString("00") + "-" + DateTime.UtcNow.Day.ToString("00") + " " + DateTime.UtcNow.Hour.ToString("00") + ":" + DateTime.UtcNow.Minute.ToString("00") + "'";
 
             if (current_SWG.m_First[0] != null)
                 first = m_First[0].Serial;

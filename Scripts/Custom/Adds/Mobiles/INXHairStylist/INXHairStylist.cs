@@ -887,7 +887,7 @@ namespace Server.INXHairStylist
             private Point3D m_LastLocation;
             private Direction m_LastDirection;
             private readonly bool m_BaldCustomer;
-            private DateTime m_NextCutAnim = DateTime.Now;
+            private DateTime m_NextCutAnim = DateTime.UtcNow;
 
             public CutTimer(Mobile customer, INXHairStylist hairStylist, List<Item> styles, int ticks)  : base(TimeSpan.Zero, TimeSpan.FromMilliseconds(250.0), ticks)
             {
@@ -968,8 +968,8 @@ namespace Server.INXHairStylist
 
                 //Display the cutting animations if "it has passed x amount of time since last cutting interval" 
                 //or if "we are on the last tick and there is less than 1/4th left to next interval"
-                if ((DateTime.Now > m_NextCutAnim && m_HairStylist.m_CutAnimInterval != TimeSpan.Zero ) 
-                    || (m_CurrentTick == m_MaxTicks && m_NextCutAnim < (DateTime.Now + TimeSpan.FromMilliseconds(m_HairStylist.m_CutAnimInterval.TotalMilliseconds * 0.001))))
+                if ((DateTime.UtcNow > m_NextCutAnim && m_HairStylist.m_CutAnimInterval != TimeSpan.Zero ) 
+                    || (m_CurrentTick == m_MaxTicks && m_NextCutAnim < (DateTime.UtcNow + TimeSpan.FromMilliseconds(m_HairStylist.m_CutAnimInterval.TotalMilliseconds * 0.001))))
                 {
                     //Display cutting anitmations if "you are not bald" or if "cutting animations are enabled for bald people"
                     //or if "you are bald and both cutting anitmations for bald people and hair extentions are disabled"
@@ -993,7 +993,7 @@ namespace Server.INXHairStylist
                     else
                         m_HairStylist.Speak(m_HairStylist.m_ErrorMessage);
 
-                    m_NextCutAnim = DateTime.Now + m_HairStylist.m_CutAnimInterval;
+                    m_NextCutAnim = DateTime.UtcNow + m_HairStylist.m_CutAnimInterval;
                 }
 
                 //Cut the hair and stop the timer if "this is the last time the timer is ran"

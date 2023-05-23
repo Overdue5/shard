@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Server.Commands;
-using Server.WebServices;
 
 namespace Server.Misc.EConnect
 {

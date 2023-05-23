@@ -70,7 +70,7 @@ namespace Server.Items
 
         //Last Win info
         private Mobile m_LastWonBy = null;
-        private DateTime m_LastWonByDate = DateTime.Now;
+        private DateTime m_LastWonByDate = DateTime.UtcNow;
         private int m_LastWonAmount = 0;
 
         //ATM Stuff
@@ -301,7 +301,7 @@ namespace Server.Items
                 if (m_LastWonBy == null)
                 {
                     m_LastWonAmount = 0;
-                    m_LastWonByDate = DateTime.Now;
+                    m_LastWonByDate = DateTime.UtcNow;
                 }
             }
         }
@@ -961,7 +961,7 @@ namespace Server.Items
                 Selected[TPicks[i]] = 1;
             from.CloseGump(typeof(KenoGump));
             from.SendGump(new KenoGump(this, from, player, false, (int)PayTable, GetPayTable((int)PayTable, player.Cost, TotalSelected), 2, TotalSelected, false, Selected, TotalSelected, MachinePicks));
-            player.LastPlayed = DateTime.Now;
+            player.LastPlayed = DateTime.UtcNow;
         }
 
 
@@ -1149,7 +1149,7 @@ namespace Server.Items
                 player = (PlayerInfo)PlayerList[i];
                 if (player.mobile == from)
                 {
-                    player.LastPlayed = DateTime.Now;
+                    player.LastPlayed = DateTime.UtcNow;
                     return true;
                 }
             }
@@ -1170,7 +1170,7 @@ namespace Server.Items
                 if (p.mobile == null)
                 {
                     p.mobile = from;
-                    p.LastPlayed = DateTime.Now;
+                    p.LastPlayed = DateTime.UtcNow;
                     p.OnCredit = 0;
                     p.Cost = 1;
                     m_TotalPlayers++;
@@ -1180,7 +1180,7 @@ namespace Server.Items
             }
             PlayerInfo player = new PlayerInfo();
             player.mobile = from;
-            player.LastPlayed = DateTime.Now;
+            player.LastPlayed = DateTime.UtcNow;
             player.OnCredit = 0;
             InvalidateProperties();
             player.Cost = 1;
@@ -1224,16 +1224,16 @@ namespace Server.Items
             if (m_LastWonBy == null || m_LastWonBy.Deleted)
             {
                 m_LastWonBy = m;
-                m_LastWonByDate = DateTime.Now;
+                m_LastWonByDate = DateTime.UtcNow;
                 m_LastWonAmount = winamount;
             }
             else
             {
-                TimeSpan timespan = DateTime.Now - m_LastWonByDate;
+                TimeSpan timespan = DateTime.UtcNow - m_LastWonByDate;
                 if (m_LastWonAmount <= winamount || TimeSpan.FromDays(30) < timespan)
                 {
                     m_LastWonBy = m;
-                    m_LastWonByDate = DateTime.Now;
+                    m_LastWonByDate = DateTime.UtcNow;
                     m_LastWonAmount = winamount;
                 }
             }
@@ -1247,7 +1247,7 @@ namespace Server.Items
             {
                 PlayerInfo player = (PlayerInfo)PlayerList[i];
 
-                if (player != null && !player.mobile.Deleted && DateTime.Now - player.LastPlayed > m_IdleTimeout)
+                if (player != null && !player.mobile.Deleted && DateTime.UtcNow - player.LastPlayed > m_IdleTimeout)
                 {
                     player.mobile.CloseGump(typeof(KenoGump));
                     player.mobile.CloseGump(typeof(KenoPayTableGump));
@@ -1394,7 +1394,7 @@ namespace Server.Items
                 player.mobile.SendMessage("You must select some numbers on the Keno card before profiling!");
                 return;
             }
-            DateTime startdt = DateTime.Now;
+            DateTime startdt = DateTime.UtcNow;
             Console.WriteLine("Begin-Date/Time: {0}", startdt);
             Console.WriteLine("Profiling Keno Board. Theme: {0}", m_Theme);
             for (int o = 0; o < 3; o++)
@@ -1417,7 +1417,7 @@ namespace Server.Items
                     IncrementStats(totalhit);
                 }
             }
-            DateTime enddt = DateTime.Now;
+            DateTime enddt = DateTime.UtcNow;
             TimeSpan elapsed = enddt - startdt;
             Console.WriteLine("Done-Date/Time: {0}  Elapsed: {1}", enddt, elapsed);
 #endif
@@ -1449,7 +1449,7 @@ namespace Server.Items
                     list.Add(1060658, "Status\tAvailable");
             }
             list.Add(1060659, "Total Players\t{0}", m_TotalPlayers);
-            list.Add(1060660, "Game Number\t{0}", (int)(DateTime.Now.TimeOfDay.TotalMinutes / m_GameSpeed) + 1);
+            list.Add(1060660, "Game Number\t{0}", (int)(DateTime.UtcNow.TimeOfDay.TotalMinutes / m_GameSpeed) + 1);
             if (m_LastWonBy != null)
             {
                 list.Add(1060661, "Last Big Win\t{0}", m_LastWonBy.Name);

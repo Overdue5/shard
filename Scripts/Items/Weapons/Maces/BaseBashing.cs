@@ -1,5 +1,3 @@
-using Server.Engines.Craft;
-
 namespace Server.Items
 {
 	public abstract class BaseBashing : BaseMeleeWeapon

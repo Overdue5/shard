@@ -1,14 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
-using Discord;
-using Server.Engines.Harvest;
-using Server.Misc;
 
 namespace Server.Items.Construction.Chairs
 {
@@ -55,6 +46,16 @@ namespace Server.Items.Construction.Chairs
         public override void OnMovement(Mobile m, Point3D oldLocation)
         {
             base.OnMovement(m, oldLocation);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
         }
 
         public class SittingTimer : Timer
@@ -153,6 +154,7 @@ namespace Server.Items.Construction.Chairs
                     timer.Interval = m_waitTimer;
                 }
             }
+
         }
     }
 }

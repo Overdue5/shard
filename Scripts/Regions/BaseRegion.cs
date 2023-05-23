@@ -493,7 +493,7 @@ namespace Server.Regions
                     dt = (DateTime)m_NextDisplayTime[from];
                 }
 
-                if (DateTime.Now > dt)
+                if (DateTime.UtcNow > dt)
                 {
                     from.SendAsciiMessage("You have arrived in " + Name);
 
@@ -515,7 +515,7 @@ namespace Server.Regions
                         if (pm.ShowArriveMsg && pm != from)
                         {
                             pm.SendAsciiMessage(33, string.Format("{0} has arrived in {1}", m.Name, Name));
-                            m_NextDisplayTime[from] = DateTime.Now + TimeSpan.FromSeconds(15);
+                            m_NextDisplayTime[from] = DateTime.UtcNow + TimeSpan.FromSeconds(15);
                         }
                     }
                 }

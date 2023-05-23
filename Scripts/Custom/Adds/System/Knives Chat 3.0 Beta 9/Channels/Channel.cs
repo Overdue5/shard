@@ -390,7 +390,7 @@ namespace Knives.Chat3
             Events.InvokeChat(new ChatEventArgs(m, this, msg));
 			var toLog = $"<{c_Name}{(c_Style == ChatStyle.Regional && m.Region != null ? " - " + m.Region.Name : "")}> {m.RawName}: {msg}";
 			if (Data.LogChat)
-                Logging.LogChat($"{DateTime.Now} {toLog}");
+                Logging.LogChat($"{DateTime.UtcNow} {toLog}");
 			if (DiscordChannel!=BaseDiscord.Channel.None && !(m is DiscordChatMobile))
 				BaseDiscord.Bot.SendToDiscord(DiscordChannel, toLog);
 			

@@ -389,7 +389,7 @@ namespace Server.Gumps
                 from.Hidden = false;
                 from.SendMessage("Playing {0} reveals you!", m_Keno.Name);
             }
-            m_Player.LastPlayed = DateTime.Now;
+            m_Player.LastPlayed = DateTime.UtcNow;
             if (info.ButtonID == 999 && (from.AccessLevel >= AccessLevel.GameMaster))
             {
 #if XMLSPAWNER

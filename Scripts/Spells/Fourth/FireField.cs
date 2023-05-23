@@ -243,7 +243,7 @@ namespace Server.Spells.Fourth
 
 				m_Caster = caster;
 
-				m_End = DateTime.Now + duration;
+				m_End = DateTime.UtcNow + duration;
 
                 int timespan = Utility.Random(60, 120);
 
@@ -360,7 +360,7 @@ namespace Server.Spells.Fourth
 							Effects.SendLocationParticles( EffectItem.Create( m_Item.Location, m_Item.Map, EffectItem.DefaultDuration ), 0x376A, 9, 10, 5029 );
 						}
 					}
-					else if ( DateTime.Now > m_Item.m_End )
+					else if ( DateTime.UtcNow > m_Item.m_End )
 					{
 						m_Item.Delete();
 						Stop();

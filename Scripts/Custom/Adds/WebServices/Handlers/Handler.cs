@@ -31,7 +31,7 @@ namespace Server.WebServices
          * Added cache headers for the expiration time */
         protected void SetCacheHeaders(WebHeaderCollection headers, TimeSpan expires)
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             DateTime nextUpdate = now + expires;
             headers["Cache-Control"] = "public, max-age=" + expires.TotalSeconds;
             headers["Expires"] = nextUpdate.ToLongDateString() + " " + nextUpdate.ToLongTimeString();

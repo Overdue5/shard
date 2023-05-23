@@ -263,7 +263,7 @@ namespace Server.Items
 					if ( m_Item != null && value == null )
 					{
 						int delay = Utility.RandomMinMax( Entry.MinDelay, Entry.MaxDelay );
-						NextRespawn = DateTime.Now + TimeSpan.FromMinutes( delay );
+						NextRespawn = DateTime.UtcNow + TimeSpan.FromMinutes( delay );
 					}
 
 					if ( Instance != null )
@@ -281,7 +281,7 @@ namespace Server.Items
 
 		    public DateTime NextRespawn { get; set; }
 
-		    public StealableInstance( StealableEntry entry ) : this( entry, null, DateTime.Now )
+		    public StealableInstance( StealableEntry entry ) : this( entry, null, DateTime.UtcNow )
 			{
 			}
 
@@ -297,7 +297,7 @@ namespace Server.Items
 				if ( Item != null && ( Item.Deleted || Item.Movable || Item.Parent != null ) )
 					Item = null;
 
-				if ( Item == null && DateTime.Now >= NextRespawn )
+				if ( Item == null && DateTime.UtcNow >= NextRespawn )
 				{
 					Item = Entry.CreateInstance();
 				}

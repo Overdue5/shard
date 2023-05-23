@@ -23,7 +23,7 @@ namespace Server
                 return true;
             }
 
-            TimeSpan TimePassed = (DateTime.Now.Subtract(from.WopLock.WopList[0]));
+            TimeSpan TimePassed = (DateTime.UtcNow.Subtract(from.WopLock.WopList[0]));
 
             if ((TimePassed.Subtract(TimeSpan.FromSeconds(TIME_SPAN)).TotalSeconds < 0 && (from.WopLock.WopList.Count >= ALLOWED_WOPS)))
             {
@@ -40,7 +40,7 @@ namespace Server
         // Player used wop
         public void UsedWop(PlayerMobile from)
         {
-            WopList.Add(DateTime.Now);
+            WopList.Add(DateTime.UtcNow);
             if (WopList.Count > ALLOWED_WOPS)
                 WopList.RemoveAt(0);
         }

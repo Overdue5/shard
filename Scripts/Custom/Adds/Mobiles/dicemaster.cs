@@ -144,7 +144,7 @@ namespace Server.Mobiles
 						m_guthaben = m_guthaben + einsatz;
 					}
 
-					m_NextPlapper = DateTime.Now + TimeSpan.FromSeconds(200);
+					m_NextPlapper = DateTime.UtcNow + TimeSpan.FromSeconds(200);
 				}
 				else
 				{
@@ -162,27 +162,27 @@ namespace Server.Mobiles
 			if (m is PlayerMobile && this.InLOS(m) && this.CanSee(m))
 				this.Direction = GetDirectionTo(m.Location);
 
-			if (m.InRange(this, 4) && DateTime.Now >= m_NextPlapper && this.InLOS(m) && this.CanSee(m) &&
+			if (m.InRange(this, 4) && DateTime.UtcNow >= m_NextPlapper && this.InLOS(m) && this.CanSee(m) &&
 			    m is PlayerMobile && this.Combatant == null)
 			{
 				this.CurrentSpeed = this.ActiveSpeed;
 
 
-				m_NextPlapper = DateTime.Now + m_NextPlapperDelay;
+				m_NextPlapper = DateTime.UtcNow + m_NextPlapperDelay;
 
 				switch (Utility.Random(3))
 				{
 					case 0:
-						m_NextPlapper = DateTime.Now + m_NextPlapperDelay;
+						m_NextPlapper = DateTime.UtcNow + m_NextPlapperDelay;
 						PublicOverheadMessage(Server.Network.MessageType.Label, 0, false, "Want to try your luck?");
 						break;
 					case 1:
-						m_NextPlapper = DateTime.Now + m_NextPlapperDelay;
+						m_NextPlapper = DateTime.UtcNow + m_NextPlapperDelay;
 						PublicOverheadMessage(Server.Network.MessageType.Label, 0, false,
 							"Hey, would you like to win some gold?");
 						break;
 					case 2:
-						m_NextPlapper = DateTime.Now + m_NextPlapperDelay;
+						m_NextPlapper = DateTime.UtcNow + m_NextPlapperDelay;
 						PublicOverheadMessage(Server.Network.MessageType.Label, 0, false,
 							"Pst.  Up for some friendly gambling?");
 						break;
@@ -210,13 +210,13 @@ namespace Server.Mobiles
 			{
 				PublicOverheadMessage(Server.Network.MessageType.Label, 0, false, "Nothing ventured, nothing gained.");
 				this.CurrentSpeed = this.PassiveSpeed;
-				m_NextPlapper = DateTime.Now + TimeSpan.FromSeconds(120);
+				m_NextPlapper = DateTime.UtcNow + TimeSpan.FromSeconds(120);
 			}
 
 			if (gesagt.IndexOf(this.Name.ToLower()) >= 0)
 			{
 				PublicOverheadMessage(Server.Network.MessageType.Label, 0, false, "Huh?");
-				m_NextPlapper = DateTime.Now + TimeSpan.FromSeconds(120);
+				m_NextPlapper = DateTime.UtcNow + TimeSpan.FromSeconds(120);
 			}
 		}
 

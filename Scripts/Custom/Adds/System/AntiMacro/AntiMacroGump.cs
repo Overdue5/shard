@@ -62,7 +62,7 @@ namespace Server.AntiMacro
         {
             //Don't show the gump if we cant conncet to the SQL - Might be an idea
             //to insert the old anti macro code here, though i doubt this will happend a lot
-            if (!MySQLManager.InsertToSQL(m_Owner, m_Seed, DateTime.Now.Subtract(m_LinuxTime).TotalSeconds + c_MaxTime.TotalSeconds))
+            if (!MySQLManager.InsertToSQL(m_Owner, m_Seed, DateTime.UtcNow.Subtract(m_LinuxTime).TotalSeconds + c_MaxTime.TotalSeconds))
             {
                 m_Owner.SendGump(new OldAntiMacroGump(m_Owner));
                 return;

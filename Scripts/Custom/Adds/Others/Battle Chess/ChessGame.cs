@@ -353,7 +353,7 @@ namespace Arya.Chess
             if (m_Timer == null)
                 return;
 
-			m_GameStart = DateTime.Now;
+			m_GameStart = DateTime.UtcNow;
 
     	    m_Timer.OnGameStart();
 
@@ -365,7 +365,7 @@ namespace Arya.Chess
 
 			m_Board = new BChessboard( m_Black, m_White, m_Z, m_Bounds, this, m_Parent.ChessSet, m_Parent.WhiteHue, m_Parent.BlackHue, m_Parent.WhiteMinorHue, m_Parent.BlackMinorHue, m_Parent.OverrideMinorHue );
 
-			m_MoveTime = DateTime.Now;
+			m_MoveTime = DateTime.UtcNow;
 
             Rectangle3D m_NewBounds = Server.Region.ConvertTo3D(m_Bounds);
 
@@ -645,16 +645,16 @@ namespace Arya.Chess
 
 			if ( m_Status == GameStatus.BlackMoving || m_Status == GameStatus.BlackPromotion )
 			{
-				m_BlackTime += ( DateTime.Now.Subtract( m_MoveTime ) );
+				m_BlackTime += ( DateTime.UtcNow.Subtract( m_MoveTime ) );
 				m_Status = GameStatus.WhiteToMove;
 			}
 			else if ( m_Status == GameStatus.WhiteMoving || m_Status == GameStatus.WhitePromotion )
 			{
-				m_WhiteTime += ( DateTime.Now.Subtract( m_MoveTime ) );
+				m_WhiteTime += ( DateTime.UtcNow.Subtract( m_MoveTime ) );
 				m_Status = GameStatus.BlackToMove;
 			}
 
-			m_MoveTime = DateTime.Now;
+			m_MoveTime = DateTime.UtcNow;
 
 			SendAllGumps( null, null );
 		}
@@ -813,7 +813,7 @@ namespace Arya.Chess
             if (winner == null || looser == null)
                 return;
 
-            WinnerPaper paper = new WinnerPaper(winner, looser, DateTime.Now - m_GameStart, winTime, looseTime, winnerScore, looserScore, true);
+            WinnerPaper paper = new WinnerPaper(winner, looser, DateTime.UtcNow - m_GameStart, winTime, looseTime, winnerScore, looserScore, true);
 
             if (winner.Backpack != null)
                 winner.Backpack.AddItem(paper);
@@ -912,7 +912,7 @@ namespace Arya.Chess
 			if ( winner == null || looser == null )
 				return;
 
-			WinnerPaper paper = new WinnerPaper( winner, looser, DateTime.Now - m_GameStart, winTime, looseTime, winnerScore, looserScore, false );
+			WinnerPaper paper = new WinnerPaper( winner, looser, DateTime.UtcNow - m_GameStart, winTime, looseTime, winnerScore, looserScore, false );
 
 			if ( to.Backpack != null )
 				to.Backpack.AddItem( paper );

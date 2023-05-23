@@ -149,7 +149,7 @@ namespace Server.Gumps
 					break;
 				case 1:
 				{
-					DateTime dt_unJail = DateTime.Now;
+					DateTime dt_unJail = DateTime.UtcNow;
 					string m_Error = "";
 					int i_days = 0;
 					int i_weeks = 0;
@@ -232,7 +232,7 @@ namespace Server.Gumps
 							dt_unJail = dt_unJail.AddMinutes( i_minutes );
 						if( i_hours > 0 )
 							dt_unJail = dt_unJail.AddHours( i_hours );
-						if( dt_unJail.Ticks <= DateTime.Now.Ticks )
+						if( dt_unJail.Ticks <= DateTime.UtcNow.Ticks )
 						{
 							m_Error = "Calculated date is in the past. Adjust your entries.";
 							from.SendGump( new JailGump( js, from, badBoy, m_page, m_Error, info.TextEntries[0].Text, i_months.ToString(), i_weeks.ToString(), i_days.ToString(), i_hours.ToString(), i_minutes.ToString(), m_return ) );
@@ -243,7 +243,7 @@ namespace Server.Gumps
 					{
 						//page isn’t the time span
 						dt_unJail = dt_unJail.AddYears( 1 );
-						if( dt_unJail.Ticks <= DateTime.Now.Ticks )
+						if( dt_unJail.Ticks <= DateTime.UtcNow.Ticks )
 						{
 							m_Error = "Calculated date is in the past. Adjust your entries.";
 							from.SendGump( new JailGump( js, from, badBoy, m_page, m_Error, info.TextEntries[0].Text, "12", "0", "0", "0", "0", m_return ) );

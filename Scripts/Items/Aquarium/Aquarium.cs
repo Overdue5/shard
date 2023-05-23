@@ -337,7 +337,7 @@ namespace Server.Items
 			if ( m_Timer != null )
 				writer.Write( m_Timer.Next );
 			else
-				writer.Write( DateTime.Now + TimeSpan.FromHours( 24 ) );
+				writer.Write( DateTime.UtcNow + TimeSpan.FromHours( 24 ) );
 			
 			// version 0			
 			writer.Write( (int) m_LiveCreatures );			
@@ -365,10 +365,10 @@ namespace Server.Items
 				case 1: 				
 					DateTime next = reader.ReadDateTime();
 					
-					if ( next < DateTime.Now )
-						next = DateTime.Now;												
+					if ( next < DateTime.UtcNow )
+						next = DateTime.UtcNow;												
 				
-					m_Timer = Timer.DelayCall( next - DateTime.Now, TimeSpan.FromHours( 24 ), new TimerCallback( Evaluate ) );				
+					m_Timer = Timer.DelayCall( next - DateTime.UtcNow, TimeSpan.FromHours( 24 ), new TimerCallback( Evaluate ) );				
 						
 					goto case 0;					
 				case 0:			

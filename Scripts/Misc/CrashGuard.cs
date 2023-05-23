@@ -188,7 +188,7 @@ namespace Server.Misc
 					op.WriteLine( "RunUO Version {0}.{1}, Build {2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision );
 					op.WriteLine( "Operating System: {0}", Environment.OSVersion );
 					op.WriteLine( ".NET Framework: {0}", Environment.Version );
-					op.WriteLine( "Time: {0}", DateTime.Now );
+					op.WriteLine( "Time: {0}", DateTime.UtcNow );
 
 					try { op.WriteLine( "Mobiles: {0}", World.Mobiles.Count ); }
 					catch {}
@@ -222,7 +222,7 @@ namespace Server.Misc
 							Mobile m = state.Mobile;
 
 							if ( m != null )
-								op.Write( " (mobile = 0x{0:X} '{1}')", m.Serial.Value, m.Name );
+								op.Write( $" (mobile = 0x{0:m.Serial.Value}, '{m.Name}, X:{m.X},Y:{m.Y},Z:{m.Z}',M:{m.Map})");
 
 							op.WriteLine();
 						}
@@ -246,7 +246,7 @@ namespace Server.Misc
 
 		private static string GetTimeStamp()
 		{
-			DateTime now = DateTime.Now;
+			DateTime now = DateTime.UtcNow;
 
 			return String.Format( "{0}-{1}-{2}-{3}-{4}-{5}",
 					now.Day,

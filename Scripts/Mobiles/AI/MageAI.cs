@@ -60,7 +60,7 @@ namespace Server.Mobiles
 
 				m_Mobile.Combatant = m_Mobile.FocusMob;
 				Action = ActionType.Combat;
-				m_NextCastTime = DateTime.Now;
+				m_NextCastTime = DateTime.UtcNow;
 			}
 			else if ( SmartAI && m_Mobile.Mana < m_Mobile.ManaMax )
 			{
@@ -100,7 +100,7 @@ namespace Server.Mobiles
 
 			if ( m_Mobile.Controlled )
 			{
-				if ( DateTime.Now < m_NextHealTime )
+				if ( DateTime.UtcNow < m_NextHealTime )
 					return null;
 			}
 
@@ -143,7 +143,7 @@ namespace Server.Mobiles
 			else
 				delay = Math.Sqrt( 600 - m_Mobile.Int );
 
-			m_NextHealTime = DateTime.Now + TimeSpan.FromSeconds( delay );
+			m_NextHealTime = DateTime.UtcNow + TimeSpan.FromSeconds( delay );
 
 			return spell;
 		}
@@ -663,7 +663,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if ( m_Mobile.Spell == null && DateTime.Now > m_NextCastTime && m_Mobile.InRange( c, 12 ) )
+			if ( m_Mobile.Spell == null && DateTime.UtcNow > m_NextCastTime && m_Mobile.InRange( c, 12 ) )
 			{
 				// We are ready to cast a spell
 
@@ -713,7 +713,7 @@ namespace Server.Mobiles
 				if ( spell != null )
 					spell.Cast();
 
-                m_NextCastTime = DateTime.Now + GetDelay(spell);
+                m_NextCastTime = DateTime.UtcNow + GetDelay(spell);
 			}
 			else if ( m_Mobile.Spell == null || !m_Mobile.Spell.IsCasting )
 			{
@@ -738,7 +738,7 @@ namespace Server.Mobiles
                 {
                     m_LastTarget = null;
                 }
-                else if (m_Mobile.Spell == null && DateTime.Now > m_NextCastTime)
+                else if (m_Mobile.Spell == null && DateTime.UtcNow > m_NextCastTime)
                 {
                     m_Mobile.DebugSay("I am going to reveal my last target");
 
@@ -748,7 +748,7 @@ namespace Server.Mobiles
                     if (spell.Cast())
                         m_LastTarget = null; // only do it once
 
-                    m_NextCastTime = DateTime.Now + GetDelay(spell);
+                    m_NextCastTime = DateTime.UtcNow + GetDelay(spell);
                 }
             }
 			if ( AcquireFocusMob( m_Mobile.RangePerception, m_Mobile.FightMode, false, false, true ) )
@@ -1028,7 +1028,7 @@ namespace Server.Mobiles
                 targ.Invoke(m_Mobile, m_RevealTarget);
 
                 if (SmartAI)
-                    m_Mobile.NextReacquireTime = DateTime.Now;
+                    m_Mobile.NextReacquireTime = DateTime.UtcNow;
             }
 			else if ( isTeleport && toTarget != null )
 			{
