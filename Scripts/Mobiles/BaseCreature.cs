@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms.VisualStyles;
 using Server.ContextMenus;
 using Server.Engines;
 using Server.Engines.Quests;
@@ -3122,7 +3123,7 @@ namespace Server.Mobiles
                 case TeachResult.KnowsMoreThanMe:
                     {
                         Say(string.Format("You know more about {0} than I do.", skill));
-
+                        CraftBook.PrintBooksLocation(this, skill);
                         //Say ( 501508 ); // I cannot teach thee, for thou knowest more than I!
                         break;
                     }

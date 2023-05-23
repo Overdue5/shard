@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using Server.Commands.GMUtils;
 using Server.Engines;
+using Server.Network;
 
 namespace Server.Items
 {
@@ -21,11 +22,15 @@ namespace Server.Items
         private double m_MinSkill;
         private double m_MaxSkill;
 
+        private static DateTime m_LastHelpInfo = DateTime.MinValue; 
+        private static string m_cityName = "$City$";
+        private static string m_SkillName = "$Skill$";
         private static int m_MaxVendorRange = 10;
         private static string m_UnknownBook = "Unknown book";
         private static Dictionary<SkillName, HashSet<CraftBook>> m_Books = new Dictionary<SkillName, HashSet<CraftBook>>();
         private static Dictionary<SkillName, string[]> m_BookNames = new Dictionary<SkillName, string[]>();
         private static List<CraftBook> m_AllCraftBooks = new List<CraftBook>();
+        private static List<string> m_CraftBooksLocation;
 
         private static HashSet<int> m_TableTypes = new HashSet<int>()
         {
@@ -60,8 +65,8 @@ namespace Server.Items
                     {
                         try
                         {
-                            string[] split = line.Split(':');
-                            m_BookNames[(SkillName)Enum.Parse(typeof(SkillName), split[0], true)] = split[1].Split(',');
+                            string[] split = line.Split('$');
+                            m_BookNames[(SkillName)Enum.Parse(typeof(SkillName), split[0], true)] = split[1].Split(';');
                         }
                         catch
                         {
@@ -83,6 +88,18 @@ namespace Server.Items
                     m_Books[cf.SkillToLearn] = new HashSet<CraftBook>();
                 m_Books[cf.SkillToLearn].Add(cf);
             }
+
+            m_CraftBooksLocation = new List<string>
+            {
+                "Unveiling the arcane mysteries of $Skill$, a selection of tomes awaits your perusal, with one nestled among the hallowed halls of the city of $City$.",
+                "Amidst the vast realm of knowledge, volumes dedicated to the art of $Skill$ beckon, revealing their secrets to those who dare delve within, with one such tome residing in the illustrious city of $City$.",
+                "Embark on a quest for knowledge as you explore the realm's diverse tomes on the subject of $Skill$, with a particular volume awaiting your discovery in the city of $City$.",
+                "Discover the secrets of $Skill$ within the hallowed pages of books, including one located in the city of $City$",
+                "Unleash the power of $Skill$ through the sacred knowledge contained within books, with a tome of great wisdom awaiting you in the city of $City$.",
+                "\r\nBooks on $Skill$ abound,\r\n$City$'s treasure holds one close,\r\nKnowledge, waiting, grows."
+            };
+
+            Timer.DelayCall(TimeSpan.FromDays(1), TimeSpan.FromDays(1), CraftBook.CraftBookRespawn);
         }
 
         [Usage("CraftBookInfo")]
@@ -140,8 +157,13 @@ namespace Server.Items
         [Description("Change Craftbooks location on the world")]
         private static void CraftBookRespawn_onCommand(CommandEventArgs e)
         {
+            CraftBookRespawn();
+        }
+
+        private static void CraftBookRespawn()
+        {
             var count = 0;
-            e.Mobile.SendAsciiMessage("Respawn started");
+            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Books respawn started");
             foreach (var book in m_AllCraftBooks)
             {
                 if (book.CanChangePlace())
@@ -152,7 +174,7 @@ namespace Server.Items
                         book.ChangePlace();
                         if (--count == 0)
                         {
-                            e.Mobile.SendAsciiMessage("Respawn finished");
+                            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Books respawn completed");
                         }
                     });
                 }
@@ -163,29 +185,30 @@ namespace Server.Items
         {
             var items = vendor.GetObjectsInRange(m_MaxVendorRange);
             var places = new List<Point3D>();
+            var allItems = new List<Point3D>();
             foreach (object item in items)
             {
-                if (item is Item it && !it.Movable && m_TableTypes.Contains(it.ItemID))
+                if (item is Item it  && !it.Movable)
                 {
-                    if (m_AllCraftBooks.Count(m => m.Location.X == it.X && m.Location.Y == it.Y) == 0)
-                        places.Add(new Point3D(it.X, it.Y, it.Z + 2));
+                    if (m_TableTypes.Contains(it.ItemID) && m_AllCraftBooks.Count(m => m.Location.X == it.X && m.Location.Y == it.Y) == 0)
+                        places.Add(new Point3D(it.X, it.Y, it.Z + 7));
+                    allItems.Add(it.Location);
                 }
-
             }
             items.Free();
             if (places.Count > 0)
                 return Utility.RandomList(places);
             var locs = vendor.Map.Tiles.GetStaticTileAround(vendor.Location, m_MaxVendorRange, m_TableTypes);
             if (locs.Count == 0) return Point3D.Zero;
-            int i = 0;
             Point3D val;
-            do
+            for (int j = 0; j < 5; j++)
             {
                 val = Utility.RandomList(locs);
-                val.Z += 7;
-            } while (i++ < 3 && m_AllCraftBooks.Count(m => m.Location.X == val.X && m.Location.Y == val.Y) > 0);
+                val.Z += 6;
+                if (allItems.Count(m => m.X == val.X && m.Y == val.Y && Math.Abs(m.Z-val.Z)<10) == 0 && m_AllCraftBooks.Count(m => m.Location.X == val.X && m.Location.Y == val.Y) == 0) return val;
+            }
 
-            return val;
+            return Point3D.Zero;
         }
 
         private void ChangePlace()
@@ -240,6 +263,35 @@ namespace Server.Items
             return m_UnknownBook;
         }
 
+        public static void FindDublicates(Mobile mob)
+        {
+            for (int x = 0; x < Books.Count - 1; x++)
+            {
+                for (int y = x+1; y < Books.Count; y++)
+                {
+                    if (Books[x].X == Books[y].X && Books[x].Y == Books[y].Y)
+                    {
+                        mob.SendAsciiMessage("Found");
+                    }
+                }
+
+            }
+        }
+
+        public static void PrintBooksLocation(Mobile vendor, SkillName skill)
+        {
+            if (DateTime.UtcNow < m_LastHelpInfo + TimeSpan.FromMinutes(1)) return;
+            m_LastHelpInfo = DateTime.UtcNow;
+            var books = Books.Where(m => m.Map == vendor.Map && m.SkillToLearn == skill && m.IsActive && !String.IsNullOrEmpty(Region.Find(m.Location, m.Map).Name)).Select(m => Region.Find(m.Location, m.Map).Name).Distinct().ToArray();
+            if (!books.Any()) return;
+            var city = Utility.RandomList(books);
+            var text =  Utility.RandomList(m_CraftBooksLocation).Replace(m_cityName, city.ToString()).Replace(m_SkillName, skill.ToString());
+            Timer.DelayCall(TimeSpan.FromMilliseconds(500), () =>
+            {
+                vendor.PublicOverheadMessage(MessageType.Emote, 1510, false, text);
+            });
+
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public static List<CraftBook> Books
@@ -419,6 +471,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile m_From)
         {
+            FindDublicates(m_From);
             m_From.RevealingAction();
             m_From.Direction = m_From.GetDirectionTo(this.Location);
             if (CheckUsage(m_From))

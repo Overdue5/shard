@@ -191,7 +191,7 @@ namespace Server.Custom
         
         }
 
-        public VendorParcelMenu(Mobile from, BaseVendor vendor) : base(6209, 8)
+        public VendorParcelMenu(Mobile from, BaseVendor vendor) : base(6146, 8)
         {
             m_Vendor = vendor;
             m_Player = from;
