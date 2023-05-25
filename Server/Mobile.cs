@@ -9198,7 +9198,7 @@ namespace Server
 
 			if( m_Map == map )
 			{
-				SetLocation( newLocation, true );
+                SetLocation( newLocation, true );
 				return;
 			}
 
@@ -9686,7 +9686,9 @@ namespace Server
 			}
 		}
 
-		public virtual bool KeepsItemsOnDeath { get { return m_AccessLevel > AccessLevel.Player; } }
+        public bool BackpackExists => Backpack != null;
+
+        public virtual bool KeepsItemsOnDeath { get { return m_AccessLevel > AccessLevel.Player; } }
 
 		public Item FindItemOnLayer( Layer layer )
 		{
@@ -9853,7 +9855,7 @@ namespace Server
 			return AddToBackpack(item, true);
 		}
 
-		public bool AddToBackpack( Item item, bool sound )
+        public bool AddToBackpack( Item item, bool sound )
 		{
 			if( item.Deleted )
 				return false;

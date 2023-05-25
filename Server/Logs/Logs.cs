@@ -17,6 +17,21 @@
             }
         }
 
+        private static BaseLogs m_QuestsLogs;
+        public static BaseLogs QuestLog
+        {
+            get
+            {
+                if (m_QuestsLogs == null)
+                {
+                    m_QuestsLogs = new BaseLogs("Logs", "QuestLog");
+                    m_QuestsLogs.Enabled = true;
+                }
+
+                return m_QuestsLogs;
+            }
+        }
+
         private Logs(string dirLocation, string logName) : base(dirLocation, logName)
         {
         }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Server.Engines;
+using Server.Items;
+using Server.Mobiles;
 using Server.Network;
 
 namespace Server.Commands.GMUtils
@@ -16,6 +18,40 @@ namespace Server.Commands.GMUtils
             PainFeel = 25,
             HappyFeel = 26,
             BoringFeel = 77
+        }
+
+        public static bool AddGoldToBackPack(this Mobile mob, int amount)
+        {
+            var listItems = new HashSet<Gold>();
+            int maxGold = 65000;
+            while (amount > 0)
+            {
+                var toAdd = 0;
+                if (amount >= maxGold)
+                {
+                    toAdd = maxGold;
+                    amount -= toAdd;
+                }
+                else
+                {
+                    toAdd = amount;
+                    amount = 0;
+                }
+                var item = new Gold(toAdd);
+                listItems.Add(item);
+                if (!mob.AddToBackpack(item, true))
+                {
+                    foreach (var gold in listItems)
+                    {
+                        gold.Delete();
+                    }
+
+                    return false;
+                    break;
+                }
+
+            }
+            return true;
         }
 
         public static void SayAction(this Mobile mob, EmotionalTextHue emote, string text, string self="")

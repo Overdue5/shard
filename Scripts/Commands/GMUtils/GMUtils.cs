@@ -66,8 +66,6 @@ namespace Scripts.Commands
                     e.Mobile.SendMessage("Usage DeleteType typename");
                     return;
                 }
-
-                int count = 0;
                 var t = ScriptCompiler.FindTypeByName(e.GetString(0));
                 var listToDelete = new ArrayList();
                 foreach (var item in World.Items.Values)
