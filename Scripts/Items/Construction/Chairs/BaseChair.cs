@@ -110,6 +110,7 @@ namespace Server.Items.Construction.Chairs
                         m_Delete.Add(mob);
                     }
                 }
+                m_Chair.LastMoved = DateTime.UtcNow;
                 
                 foreach (var mob in m_Delete)
                 {
@@ -142,7 +143,7 @@ namespace Server.Items.Construction.Chairs
                     mob.Mana += stat.Mana;
                     usage = true;
                 }
-
+                
                 if (usage)
                 {
                     timer.Interval = m_usageTimer;
