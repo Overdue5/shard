@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
@@ -111,7 +112,7 @@ namespace Server.Engines.Harvest
 
 			veins = new HarvestVein[]
 				{
-					new HarvestVein( 24.2, 0.0, res[0], null   ), // Iron 
+					new HarvestVein( 48.1, 0.0, res[0], null   ), // Iron 
                     new HarvestVein( 06.5, 0.0, res[1], null   ), // OldCopper
                     new HarvestVein( 05.7, 0.0, res[2], null   ), // Shadow
                     new HarvestVein( 05.4, 0.0, res[3], null   ), // Silver
@@ -139,10 +140,9 @@ namespace Server.Engines.Harvest
                     new HarvestVein( 00.2, 0.0, res[20], null   ), // Sapphire 
                     //9.6
 				};
-
+			
 			oreAndStone.Resources = res;
 			oreAndStone.Veins = veins;
-
             if (Core.ML)
             {
                 oreAndStone.BonusResources = new BonusHarvestResource[]

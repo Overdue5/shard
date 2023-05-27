@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Commands;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -65,11 +66,25 @@ namespace Server
         protected string LogsName { get; set; }
         protected Dictionary<Serial, List<LogInfo>> LogDict;
         protected List<LogInfo> LogData;
+        private static HashSet<Action> allLogs = new HashSet<Action>();
 
-        protected string LogFileName
+        public static void Initialize()
         {
-            get { return $"{DateTime.UtcNow.ToString($"[yyyy-MM-dd]")}_{LogsName}.log"; }
+            CommandSystem.Register("SaveLogs", AccessLevel.GameMaster, new CommandEventHandler(SaveLogs_OnCommand));
         }
+
+        private static void SaveLogs_OnCommand(CommandEventArgs e)
+        {
+            e.Mobile.SendAsciiMessage("SaveLogs Started");
+            
+            foreach (var action in allLogs)
+            {
+                action.Invoke();
+            }
+            e.Mobile.SendAsciiMessage("SaveLogs Completed");
+        }
+
+        protected string LogFileName => $"{DateTime.UtcNow.ToString($"[yyyy-MM-dd]")}_{LogsName}.log";
 
         public BaseLogs(string dirLocation, string logName)
         {
@@ -97,6 +112,7 @@ namespace Server
             }
             EventSink.WorldSave += new WorldSaveEventHandler(SaveLog);
             EventSink.Crashed += new CrashedEventHandler(SaveLog);
+            allLogs.Add(SaveLog);
         }
 
         public virtual void SaveLog(EventArgs e)

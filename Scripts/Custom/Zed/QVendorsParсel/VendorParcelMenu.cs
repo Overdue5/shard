@@ -4,47 +4,197 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
+using Server.Commands.GMUtils;
 using Server.Engines;
 using Server.Gumps;
+using Server.Items;
 using Server.Network;
 
 namespace Server.Custom
 {
+    public static class VendorLogs
+    {
+        public static void Write(string text)
+        {
+            Logs.QuestLog.WriteLine($"QVendorParcel: {text}");
+        }
+    }
+
     public class VendorParcel : Item
     {
-        private BaseVendor m_Source;
-        private BaseVendor m_Recipient;
-        private WorldDateTime m_BeginTime;
+        private Mobile m_Carrier;
+        private Mobile m_Source;
+        private Mobile m_Recipient;
+        private DateTime m_DateTime;
+        private int m_Dist;
         private int m_Debt;
+        private int m_TextId;
+        private bool m_IsBroken;
+        private bool m_IsIland;
+        private static HashSet<string> m_Ilands = new HashSet<string> { "Magincia", "Ocllo", "Jhelom", "Jhelom Island", "Skara Brae", "Buccaneer's Den", "Nujel'm", "Moonglow" };
 
-        public VendorParcel(BaseVendor source, BaseVendor recipient, int debt = 0):base(0x2DF3)
+        [CommandProperty(AccessLevel.Counselor)]
+        public Mobile Carrier
         {
-            Name = $"Parcel to {recipient.Name} from {recipient.Region.Name}";
-            m_Source = source;
-            m_Recipient = recipient;
-            m_Debt = debt;
-            Weight = 100;
-            m_BeginTime = WorldDateTime.Now;
+            get => m_Carrier;
+            set => m_Carrier = value;
         }
 
+        [CommandProperty(AccessLevel.Counselor)]
+        public Mobile Source
+        {
+            get => m_Source;
+            set => m_Source = value;
+        }
+
+        [CommandProperty(AccessLevel.Counselor)]
+        public Mobile Recipient
+        {
+            get => m_Recipient;
+            set => m_Recipient = value;
+        }
+
+        [CommandProperty(AccessLevel.Counselor)]
+        public int Dist => m_Dist;
+
+        [CommandProperty(AccessLevel.Counselor)]
+        public bool IsBroken
+        {
+            get => m_IsBroken;
+            set => m_IsBroken = value;
+        }
+
+        [CommandProperty(AccessLevel.Counselor)]
+        public int Debt
+        {
+            get => m_Debt;
+            set => m_Debt = value;
+        }
+
+        public VendorParcel(Mobile carrier, Mobile source, Mobile recipient, int debt, int textId):base(0x2DF3)
+        {
+            m_Carrier = carrier;
+            m_IsBroken = false;
+            m_Source = source;
+            m_Recipient = recipient;
+            m_IsIland = (m_Ilands.Contains(m_Source.Region.Name) || m_Ilands.Contains(m_Recipient.Region.Name));
+            Name = $"A package bound for {recipient.Name} from the far reaches of {recipient.Region.Name} arrives, carried by {m_Carrier.Name}.";
+            m_Debt = debt;
+            Weight = 100;
+            m_DateTime = DateTime.UtcNow;
+            m_TextId = textId;
+            m_Dist = Math.Abs(source.X - recipient.X) + Math.Abs(source.Y - recipient.Y);
+            VendorLogs.Write($"{m_Carrier}:0x{Serial.Value:X8},L:{m_Carrier.Location}: From {source.Name} - {source.Region.Name} - Loc:{source.Location} to " +
+                             $"{recipient.Name} - {recipient.Region.Name} - Loc:{recipient.Location}, dist:{m_Dist}, debt:{m_Debt}, IsIland:{m_IsIland}");
+        }
+
+        public static void CheckTeleportedItems(Mobile mob)
+        {
+            bool broke = false;
+            foreach (var item in mob.Backpack.Items)
+            {
+                if (item is VendorParcel vp)
+                {
+                    vp.m_IsBroken = true;
+                    broke = true;
+                    mob.Virtues.Honesty -= 5;
+                    VendorLogs.Write($"0x{vp.Serial.Value:X8} was broken in portal by {mob}, {mob.Location}");
+                }
+            }
+
+            if (mob.Holding is VendorParcel vp1) 
+            {
+                vp1.m_IsBroken = true;
+                mob.Virtues.Honesty -= 5;
+                broke = true;
+                VendorLogs.Write($"0x{vp1.Serial.Value:X8} was broken in portal by {mob}, {mob.Location}");
+            }
+            if (broke)
+            {
+                mob.SendAsciiMessage("You hear an unsettling clatter emanating from the parcel, as if something within has shattered.");
+            }
+        }
         public VendorParcel(Serial serial):base(serial)
         {
         }
-
+        
         public override bool OnDroppedToMobile(Mobile from, Mobile target)
         {
             if (target.Serial != m_Recipient.Serial) return false;
+            int summ = CalculateCost();
+            if (m_IsBroken)
+            {
+                target.Say($"Inside is a mess, brave {from.Name}. You have been entrusted with handling them with care.");
+                if (m_Debt>0)
+                    target.Say("Unfortunately, I will not be able to return the full amount of the deposit.");
+                from.AddGoldToBackPack(summ);
+                VendorLogs.Write($"0x{this.Serial.Value:X8} finished with broken item, {from} earn {summ} ");
+                Delete();
+            }
+            else
+            {
+                from.Virtues.Honesty += 10;
+                from.AddToBackpack(new Gold(summ));
+                if (!VendorParcelText.VendorTexts.ContainsKey(m_TextId) || string.IsNullOrEmpty(VendorParcelText.VendorTexts[m_TextId].After))
+                    target.Say("Delivery complete. You've earned a moment of rest. Take it easy, and keep on delivering");
+                else
+                {
+                    target.Say(VendorParcelText.VendorTexts[m_TextId].PrepareStringA(from, target));
+                }
+
+                VendorLogs.Write($"0x{this.Serial.Value:X8} finished. {from} earn {summ}, distance {m_Dist},  delivery time:{(DateTime.UtcNow - m_DateTime).TotalSeconds}");
+                Delete();
+            }
             return true;
+        }
+
+        private int CalculateCost()
+        {
+            var multi = 1;
+            if (m_IsIland)
+                multi = 2;
+            if (m_IsBroken)
+                return multi * 200 + m_Debt/2;
+            var duration = (int)(1+ (DateTime.UtcNow - m_DateTime).TotalSeconds);
+            return m_Debt + multi * Utility.LimitMinMax(200, m_Dist * 3 + m_Dist - duration * 3, m_Dist * 2);
+        }
+
+
+        public override bool OnDroppedInto(Mobile from, Container target, Point3D p)
+        {
+            if (target == from.Backpack) return base.OnDroppedInto(from, target, p);
+            return false;
         }
 
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-        }
+            writer.Write(1);
+            writer.WriteMobile(m_Carrier);
+            writer.WriteMobile(m_Source);
+            writer.WriteMobile(m_Recipient);
+            writer.Write(m_DateTime);
+            writer.Write(m_Dist);
+            writer.Write(m_Debt);
+            writer.Write(m_TextId);
+            writer.Write(m_IsBroken);
+            writer.Write(m_IsIland);
+    }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
+            _ = reader.ReadInt();
+            m_Carrier = reader.ReadMobile();
+            m_Source = reader.ReadMobile();
+            m_Recipient = reader.ReadMobile();
+            m_DateTime = reader.ReadDateTime();
+            m_Dist = reader.ReadInt();
+            m_Debt = reader.ReadInt();
+            m_TextId = reader.ReadInt();
+            m_IsBroken = reader.ReadBool();
+            m_IsIland = reader.ReadBool();
         }
     }
 
@@ -72,7 +222,7 @@ namespace Server.Custom
                                    "a bond of trust between us, where your honor shines brighter than the sun's rays.");
             LowHonestyMessages.Add("As your avatar graces our realm, we embark on a journey together, " +
                                    "yet your virtues are yet to echo in our lands. In light of this uncertainty, " +
-                                   "I beseech thee to provide a deposit of $gold$ gp, safeguarding the precious cargo's path. " +
+                                   "I beseech thee to provide a deposit of $Gold$ gp, safeguarding the precious cargo's path. " +
                                    "Worry not, for upon the triumphant delivery, the deposit shall return to thee like a phoenix reborn. " +
                                    "May this act cement the foundations of trust, where thy virtuous aura illuminates our shared path, " +
                                    "and prosperity dances in the wake of thy valorous steps");
@@ -162,19 +312,19 @@ namespace Server.Custom
             After = a;
         }
 
-        public string PrepareStringQ(Mobile player, BaseVendor vendor, int gold)
+        public string PrepareStringQ(Mobile player, Mobile vendor, int gold)
         {
             var result = PrepareString(player, vendor, Quest);
             if (gold > 0)
                 result = $"{result}\n{Utility.RandomList(LowHonestyMessages).Replace(m_Gold, gold.ToString())}";
             return $"{result}\n{Utility.RandomList(NoRecallMessages).Replace(m_playerName, player.Name)}";
         }
-        public string PrepareStringA(Mobile player, BaseVendor vendor)
+        public string PrepareStringA(Mobile player, Mobile vendor)
         {
             return PrepareString(player, vendor, After);
         }
 
-        private static string PrepareString(Mobile player, BaseVendor vendor, string text)
+        private static string PrepareString(Mobile player, Mobile vendor, string text)
         {
             return text.Replace(m_playerName, player.Name).Replace(m_RecipName, vendor.Name).Replace(m_RecipCity, vendor.Region.Name);
         }
@@ -185,60 +335,83 @@ namespace Server.Custom
         private readonly BaseVendor m_Vendor;
         private readonly Mobile m_Player;
         private static Random m_Random = new Random(DateTime.UtcNow.Millisecond);
+        private static Dictionary<Serial, DateTime> ParcelHistory = new Dictionary<Serial, DateTime>();
 
         public static void Initialize()
         {
         
         }
 
-        public VendorParcelMenu(Mobile from, BaseVendor vendor) : base(6146, 8)
+        public VendorParcelMenu(Mobile from, BaseVendor vendor) : base(1024, 8)
         {
             m_Vendor = vendor;
             m_Player = from;
-            Enabled = vendor.CheckVendorAccess(from);
+            if (ParcelHistory.ContainsKey(vendor.Serial) && ParcelHistory[vendor.Serial] > DateTime.UtcNow)
+                Enabled = false;
+            else
+                Enabled = vendor.CheckVendorAccess(from) && m_Player.Backpack != null;
         }
 
         public override void OnClick()
         {
-            var recipient = GetRecipient();
-            m_Player.SendGump(new VendorParcelGump(m_Player, m_Vendor, recipient));
+            if (m_Player.Virtues.Honesty < -1000)
+            {
+                m_Vendor.Say("Thy reputation precedes thee, and whispers of dishonesty shroud thy name. I shan't partake in thy ventures.");
+                return;
+            }
+
+            VendorParcel parcel = m_Player.Backpack.Items.FirstOrDefault(m => m is VendorParcel vp && vp.Recipient == m_Vendor) as VendorParcel;
+            if (parcel != null)
+            {
+                parcel.OnDroppedToMobile(m_Player, m_Vendor);
+            }
+            else
+            {
+                var recipient = GetRecipient();
+                if (recipient != null)
+                {
+                    ParcelHistory[m_Vendor.Serial] = DateTime.UtcNow + UtilityWorldTime.DayTime;
+                    m_Player.SendGump(new VendorParcelGump(m_Player, m_Vendor, recipient));
+                }
+            }
         }
 
         private BaseVendor GetRecipient()
         {
 
-            return BaseVendor.Vendors.Values.Where(m => m.Map == m_Vendor.Map && m.Alive && !m.Deleted && !m.Criminal && !m.Warmode && !String.IsNullOrEmpty(m.Region.Name) && 
-                                                        (Math.Abs(m.X - m_Vendor.X) + Math.Abs(m.Y - m_Vendor.Y) > 1000)).OrderBy( _ => m_Random.Next()).FirstOrDefault();
+            return BaseVendor.Vendors.Values.Where(m => m.Map == m_Vendor.Map && m.Alive && !m.Deleted && !m.Criminal && !m.Warmode && m.Fame >= 0 && m.Karma >= 0
+                                                        && !String.IsNullOrEmpty(m.Region.Name) && !m.Region.Name.Contains("Custom") && !m.Region.Name.Contains("Territory") &&
+                                                        (Math.Abs(m.X - m_Vendor.X) + Math.Abs(m.Y - m_Vendor.Y) > 1000)).OrderBy( _ => Utility.RandomCnt.Next()).FirstOrDefault();
         }
     }
 
     public class VendorParcelGump : Gump
     {
-        private Mobile m_Player;
-        private BaseVendor m_Vendor;
-        private BaseVendor m_Recipient;
-        private int m_deposit;
-        private int textId;
+        private readonly Mobile m_Player;
+        private readonly Mobile m_Vendor;
+        private readonly Mobile m_Recipient;
+        private readonly int m_Deposit;
+        private readonly int m_TextId;
         public VendorParcelGump(Mobile m, BaseVendor vendor, BaseVendor recipient) : base(0, 0)
         {
             m_Vendor = vendor;
             m_Player = m;
             m_Recipient = recipient;
-            m_deposit = GenerateDebt();
+            m_Deposit = GenerateDebt();
+            m_TextId = Utility.Random(VendorParcelText.VendorTexts.Count);
 
             Dragable = true;
             Closable = true;
             Resizable = false;
             Disposable = false;
-            textId = Utility.Random(VendorParcelText.VendorTexts.Count);
             AddPage(0);
             AddBackground(285, 50, 462, 374, 3500);
             AddImage(300, 90, 5536);
             AddButton(520, 380, 238, 239, (int)Buttons.ButtonOk, GumpButtonType.Reply, 0);
             AddButton(610, 380, 241, 242, (int)Buttons.ButtonCancel, GumpButtonType.Reply, 0);
 
-            AddHtml(400, 90, 328, 273, $"{VendorParcelText.VendorTexts[textId].PrepareStringQ(m_Player, m_Recipient, m_deposit)}", true, true);
-            AddLabel(310, 60, 0, $"Delivery {m_Vendor.Name} to {m_Recipient.Name} from {m_Recipient.Region.Name}");
+            AddHtml(400, 90, 328, 273, $"{VendorParcelText.VendorTexts[m_TextId].PrepareStringQ(m_Player, m_Recipient, m_Deposit)}", true, true);
+            AddLabel(310, 60, 0, $"Delivery {m_Vendor.Name} to {m_Recipient.Title} {m_Recipient.Name} from {m_Recipient.Region.Name}");
             AddImage(320, 330, 9005);
         }
 
@@ -247,19 +420,25 @@ namespace Server.Custom
             switch (info.ButtonID)
             {
                 case 1:
-                    if (!BaseVendor.ConsumeBackpackAndBankGold(m_Player, m_deposit))
+                    if (!m_Player.Alive || m_Player.Backpack == null ) return;
+
+                    if (m_Vendor.Map == m_Player.Map && m_Recipient.Map == m_Player.Map && m_Player.Map != Map.Internal &&
+                        m_Player.GetDistanceToSqrt(m_Vendor) > 100)
                     {
-                        m_Player.Virtues.Honesty--;
-                        m_Player.SendAsciiMessage($"You don't have {m_deposit} gp for deposit");
+                        m_Player.Virtues.Honesty -= 500;
+                        VendorLogs.Write($"!!! {m_Player} location:{m_Player.Location} assert quest between {m_Vendor} {m_Vendor.Location} and {m_Recipient} {m_Recipient} location");
+                    }
+
+                    if (!BaseVendor.ConsumeBackpackAndBankGold(m_Player, m_Deposit))
+                    {
+                        m_Player.SendAsciiMessage($"You don't have {m_Deposit} gp for deposit");
                         return;
                     }
-                    var item = new VendorParcel(m_Vendor, m_Recipient, m_deposit);
+                    var item = new VendorParcel(m_Player, m_Vendor, m_Recipient, m_Deposit, m_TextId);
                     if (!item.DropToItem(m_Player, m_Player.Backpack, Point3D.Zero))
                     {
                         item.DropToWorld(m_Player, m_Player.Location);
                     }
-                    break;
-                default:
                     break;
             }        
         }
@@ -270,7 +449,7 @@ namespace Server.Custom
             int positiveHonestyFee = 50;
             int negativeHonestyFee = 200;
             if (m_Player.Virtues.Honesty < 0)
-                return Utility.LimitMinMax(100, negativeHonestyFee * Math.Abs(m_Player.Virtues.Honesty) + positiveHonestyFee * minHonestyVal, 20000);
+                return Utility.LimitMinMax(100, negativeHonestyFee * Math.Abs(m_Player.Virtues.Honesty) + positiveHonestyFee * minHonestyVal, 30000);
             else if (m_Player.Virtues.Honesty >=0 && m_Player.Virtues.Honesty < minHonestyVal)
                 return Utility.Max(100, positiveHonestyFee * (minHonestyVal - m_Player.Virtues.Honesty));
             return 0;
@@ -280,11 +459,6 @@ namespace Server.Custom
         {
             ButtonOk = 1,
             ButtonCancel = 2,
-        }
-
-        public enum Inputs
-        {
-            TextEntry1 = 1,
         }
     }
 

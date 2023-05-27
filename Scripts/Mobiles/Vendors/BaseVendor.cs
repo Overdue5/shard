@@ -1493,9 +1493,7 @@ namespace Server.Mobiles
 
 				if ( IsActiveBuyer )
 					list.Add( new VendorSellEntry( from, this ) );
-#if DEBUG
 				list.Add(new VendorParcelMenu(from, this));
-#endif
 			}
 
 			base.AddCustomContextEntries( from, list );

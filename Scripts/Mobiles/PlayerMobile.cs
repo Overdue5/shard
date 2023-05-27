@@ -5,6 +5,7 @@ using Scripts.SpecialSystems;
 using Server.Accounting;
 using Server.Commands.GMUtils;
 using Server.ContextMenus;
+using Server.Custom;
 using Server.Custom.PvpToolkit;
 using Server.Custom.PvpToolkit.Tournament;
 using Server.DuelSystem;
@@ -1849,8 +1850,10 @@ namespace Server.Mobiles
 		public override void MoveToWorld( Point3D loc, Map map )
 		{
 			base.MoveToWorld( loc, map );
-
-			RecheckTownProtection();
+            
+            if (map == this.Map && map != Map.Internal) VendorParcel.CheckTeleportedItems(this);
+            
+            RecheckTownProtection();
 		}
 
 		public override void SetLocation( Point3D loc, bool isTeleport )
@@ -3054,7 +3057,10 @@ namespace Server.Mobiles
 
 			if (IsInEvent && c is Corpse)
 				c.EventItem = true; //So that other players in events can loot your body if configured that way
-		}
+
+            ClearScreen();
+            SendEverything();
+        }
 
 		private static void ResetItemID(object state)
 		{
@@ -4337,6 +4343,7 @@ namespace Server.Mobiles
 
 			#region GhostVision
 
+            if (this.AccessLevel > AccessLevel.Player) return true;
 			if (!this.Alive)
             {
                 if (m.Hidden)
