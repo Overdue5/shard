@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using Server.Commands.GMUtils;
 using Server.Engines;
 using Server.Gumps;
@@ -334,7 +333,6 @@ namespace Server.Custom
     {
         private readonly BaseVendor m_Vendor;
         private readonly Mobile m_Player;
-        private static Random m_Random = new Random(DateTime.UtcNow.Millisecond);
         private static Dictionary<Serial, DateTime> ParcelHistory = new Dictionary<Serial, DateTime>();
 
         public static void Initialize()

@@ -32,6 +32,21 @@
             }
         }
 
+        private static BaseLogs m_EventsLogs;
+        public static BaseLogs EventsLog
+        {
+            get
+            {
+                if (m_EventsLogs == null)
+                {
+                    m_EventsLogs = new BaseLogs("Logs", "EventsLog");
+                    m_EventsLogs.Enabled = true;
+                }
+
+                return m_EventsLogs;
+            }
+        }
+
         private Logs(string dirLocation, string logName) : base(dirLocation, logName)
         {
         }
