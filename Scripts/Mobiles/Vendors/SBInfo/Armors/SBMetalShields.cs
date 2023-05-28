@@ -29,12 +29,12 @@ namespace Server.Mobiles
 		{
 			public InternalSellInfo()
 			{
-				Add( typeof( Buckler ), 25 );
-				Add( typeof( BronzeShield ), 33 );
-				Add( typeof( MetalShield ), 60 );
-				Add( typeof( MetalKiteShield ), 62 );
-				Add( typeof( HeaterShield ), 115 );
-				Add( typeof( WoodenKiteShield ), 35 );
+				Add( typeof( Buckler ), 4 );
+				Add( typeof( BronzeShield ), 6 );
+				Add( typeof( MetalShield ), 5 );
+				Add( typeof( MetalKiteShield ), 4 );
+				Add( typeof( HeaterShield ), 3 );
+				Add( typeof( WoodenKiteShield ), 7 );
 			}
 		}
 	}
