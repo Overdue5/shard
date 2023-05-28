@@ -47,7 +47,6 @@ namespace Server.Commands.GMUtils
                     }
 
                     return false;
-                    break;
                 }
 
             }
