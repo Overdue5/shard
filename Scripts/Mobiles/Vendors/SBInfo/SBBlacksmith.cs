@@ -121,28 +121,28 @@ namespace Server.Mobiles
 				Add( typeof( Tongs ), 7 ); 
 				Add( typeof( IronIngot ), 4 ); 
 
-				Add( typeof( Buckler ), 25 );
-				Add( typeof( BronzeShield ), 33 );
-				Add( typeof( MetalShield ), 60 );
-				Add( typeof( MetalKiteShield ), 62 );
-				Add( typeof( HeaterShield ), 115 );
-				Add( typeof( WoodenKiteShield ), 35 );
+				Add( typeof( Buckler ), 16 );
+				Add( typeof( BronzeShield ), 14 );
+				Add( typeof( MetalShield ), 15 );
+				Add( typeof( MetalKiteShield ), 12 );
+				Add( typeof( HeaterShield ), 14 );
+				Add( typeof( WoodenKiteShield ), 12 );
 
 				Add( typeof( WoodenShield ), 15 );
 
-				Add( typeof( PlateArms ), 94 );
-				Add( typeof( PlateChest ), 121 );
-				Add( typeof( PlateGloves ), 72 );
-				Add( typeof( PlateGorget ), 52 );
-				Add( typeof( PlateLegs ), 109 );
+				Add( typeof( PlateArms ), 12 );
+				Add( typeof( PlateChest ), 16 );
+				Add( typeof( PlateGloves ), 12 );
+				Add( typeof( PlateGorget ), 13 );
+				Add( typeof( PlateLegs ), 15 );
 
-				Add( typeof( FemalePlateChest ), 113 );
-				Add( typeof( FemaleLeatherChest ), 18 );
-				Add( typeof( FemaleStuddedChest ), 25 );
+				Add( typeof( FemalePlateChest ), 14 );
+				Add( typeof( FemaleLeatherChest ), 13 );
+				Add( typeof( FemaleStuddedChest ), 12 );
 				Add( typeof( LeatherShorts ), 14 );
 				Add( typeof( LeatherSkirt ), 11 );
 				Add( typeof( LeatherBustierArms ), 11 );
-				Add( typeof( StuddedBustierArms ), 27 );
+				Add( typeof( StuddedBustierArms ), 9 );
 
 				Add( typeof( Bascinet ), 9 );
 				Add( typeof( CloseHelm ), 9 );
@@ -154,13 +154,13 @@ namespace Server.Mobiles
 				Add( typeof( ChainChest ), 71 );
 				Add( typeof( ChainLegs ), 74 );
 
-				Add( typeof( RingmailArms ), 42 );
-				Add( typeof( RingmailChest ), 60 );
-				Add( typeof( RingmailGloves ), 26 );
-				Add( typeof( RingmailLegs ), 45 );
+				Add( typeof( RingmailArms ), 12 );
+				Add( typeof( RingmailChest ), 4 );
+				Add( typeof( RingmailGloves ), 6 );
+				Add( typeof( RingmailLegs ), 8 );
 
 				Add( typeof( BattleAxe ), 13 );
-				Add( typeof( DoubleAxe ), 26 );
+				Add( typeof( DoubleAxe ), 12 );
 				Add( typeof( ExecutionersAxe ), 15 );
 				Add( typeof( LargeBattleAxe ),16 );
 				Add( typeof( Pickaxe ), 11 );
