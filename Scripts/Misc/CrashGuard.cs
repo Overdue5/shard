@@ -81,13 +81,14 @@ namespace Server.Misc
 			Console.Write( "Crash: Restarting..." );
 
 			try
-			{
-				Process.Start( Core.ExePath, Core.Arguments );
-				Console.WriteLine( "done" );
+            {
+                Core.Kill(restart: true, update: false);
+                //Process.Start( Core.ExePath, Core.Arguments );
+                //Console.WriteLine( "done" );
 
-				e.Close = true;
+                //e.Close = true;
                 //Core.Process.Kill(); //Taran: Tested a fix for server not shutting down properly on crash, but seemed to prohibit finishing crashlog etc.
-			}
+            }
 			catch
 			{
 				Console.WriteLine( "failed" );
@@ -222,7 +223,7 @@ namespace Server.Misc
 							Mobile m = state.Mobile;
 
 							if ( m != null )
-								op.Write( $" (mobile = 0x{0:m.Serial.Value}, '{m.Name}, X:{m.X},Y:{m.Y},Z:{m.Z}',M:{m.Map})");
+								op.Write( $" (mobile = 0x{m.Serial}, {m.Name}, X:{m.X},Y:{m.Y},Z:{m.Z}',M:{m.Map})");
 
 							op.WriteLine();
 						}

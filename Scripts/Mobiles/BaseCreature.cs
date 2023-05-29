@@ -2958,7 +2958,7 @@ namespace Server.Mobiles
 
             public override void OnClick()
             {
-                if (Owner == null || Owner.From == null || !Owner.From.CheckAlive())
+                if (Owner?.From == null || !Owner.From.CheckAlive())
                     return;
 
                 Owner.From.TargetLocked = true;

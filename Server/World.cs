@@ -44,8 +44,18 @@ namespace Server {
 		public static bool Saving { get { return m_Saving; } }
 		public static bool Loaded { get { return m_Loaded; } }
 		public static bool Loading { get { return m_Loading; } }
+		public static string CustomDataPath
+        {
+            get
+            {
+                var path = Path.Combine("Saves", "Custom");
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                return path;
+            }
+        }
 
-		public readonly static string MobileIndexPath = Path.Combine( "Saves/Mobiles/", "Mobiles.idx" );
+        public readonly static string MobileIndexPath = Path.Combine( "Saves/Mobiles/", "Mobiles.idx" );
 		public readonly static string MobileTypesPath = Path.Combine( "Saves/Mobiles/", "Mobiles.tdb" );
 		public readonly static string MobileDataPath = Path.Combine( "Saves/Mobiles/", "Mobiles.bin" );
 
@@ -55,7 +65,7 @@ namespace Server {
 
 		public readonly static string GuildIndexPath = Path.Combine( "Saves/Guilds/", "Guilds.idx" );
 		public readonly static string GuildDataPath = Path.Combine( "Saves/Guilds/", "Guilds.bin" );
-
+        
         public static void NotifyDiskWriteComplete()
         {
             if (m_DiskWriteHandle.Set())
