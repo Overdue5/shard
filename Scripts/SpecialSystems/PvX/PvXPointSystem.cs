@@ -178,6 +178,7 @@ namespace Server
 			int winChange = 0;
 			int looseChange = 0;
 			CalculateStat(attStat.TotalPoints / 10, defStat.TotalPoints / 10, out winChange, out looseChange);
+            Logs.PvXLog.WriteLine($"PvPStat. Attacker:{attacker}- winChange {winChange}, Defender: {defender} - looseChange {looseChange}");
 			if (defStat.TotalPoints >= 0)
 			{
 				defStat.TotalPointsLost += looseChange;
