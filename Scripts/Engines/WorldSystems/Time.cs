@@ -4,6 +4,8 @@ using Server.Network;
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using static System.Windows.Forms.AxHost;
+using System.Reflection;
 
 namespace Server.Engines
 {
@@ -579,9 +581,31 @@ namespace Server.Engines
 			}
 
 			SendNowDate(mobile, false);
-		}
+            UpdateLight(mobile);
 
-#endregion Private Methods
+        }
+
+        private static void UpdateLight(Mobile mobile)
+        {
+            WorldDateTime date = WorldDateTime.Now;
+
+            GlobalLightLevel packetLight = GlobalLightLevel.Instantiate(m_NowLightLevel);
+
+            if (mobile?.NetState == null)
+                return;
+            var state = mobile.NetState;
+
+            if ((mobile.Region != null ? mobile.Region.Light : mobile.Map.Light) < 0)
+			{
+				if (mobile.LightLevel == 0 && (mobile.AccessLevel == AccessLevel.Player || !m_AutoChangeLightLevelList.Contains(mobile.Serial)))
+					state.Send(packetLight);
+			}
+            var season = date.Season;
+            state.Send(SeasonChange.Instantiate(season, true));
+            int lightlevel = GetLightLevel(date);
+        }
+
+        #endregion Private Methods
 
 #region Private Classes
 
