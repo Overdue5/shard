@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Server.Custom.Zed;
 using Server.Items;
 using Server.Mobiles;
@@ -169,7 +170,7 @@ namespace Server.Engines.Harvest
 			HarvestVein vein = bank.Vein;
 
 			if ( vein != null )
-				vein = MutateVein( from, tool, def, bank, toHarvest, vein );
+				vein = MutateVein( from, tool, def, bank, toHarvest, MutateVeinNext(from,def, vein) );
 
 			if ( vein == null )
 				return;
@@ -181,10 +182,10 @@ namespace Server.Engines.Harvest
 			HarvestResource fallback = vein.FallbackResource;
 			HarvestResource resource = MutateResource( from, tool, def, map, loc, vein, primary, fallback );
 
-			double skillBase = from.Skills[def.Skill].Base;
+            double skillBase = from.Skills[def.Skill].Base;
 			double skillValue = from.Skills[def.Skill].Value;
 
-			Type type = null;
+            Type type = null;
 
             //Gain the skill
             from.CheckSkill(def.Skill, resource.MinSkill, resource.MaxSkill);
@@ -321,7 +322,27 @@ namespace Server.Engines.Harvest
 			return vein;
 		}
 
-		public virtual void SendSuccessTo( Mobile from, Item item, HarvestResource resource )
+        public virtual HarvestVein MutateVeinNext(Mobile from, HarvestDefinition def, HarvestVein vein)
+        {
+            if (from.IsCursed())
+            {
+                int veinIndex = Array.IndexOf(def.Veins, vein);
+                if (veinIndex >= 1)
+                    return def.Veins[Utility.Random(2)];
+            }
+
+            if (UtilityWorldTime.IsDark(from))
+            {
+                if (Utility.RandomDouble() > 0.9)
+                    from.SendAsciiMessage("Dimness clouds your vision, making it hard to see.");
+                int veinIndex = Array.IndexOf(def.Veins, vein);
+				if (veinIndex >= 1)
+                    return def.Veins[Utility.LimitMinMax(0, veinIndex - Utility.Random(1, 4), veinIndex - 1)];
+            }
+            return vein;
+        }
+
+        public virtual void SendSuccessTo( Mobile from, Item item, HarvestResource resource )
 		{
 			resource.SendSuccessTo( from );
 		}

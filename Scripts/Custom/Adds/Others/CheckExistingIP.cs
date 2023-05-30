@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using Server.Accounting;
+using Server.Custom.Zed;
 using Server.Mobiles;
 using Server.Network;
 
@@ -176,14 +177,19 @@ namespace Server
                 foreach (KeyValuePair<IPAddress, List<Mobile>> keyValuePair in ipDictionary)
                 {
                     List<Mobile> mobileList = keyValuePair.Value;
-
+                    
                     if (mobileList.Count > CheckExistingIP.CharPerIp)
                     {
                         stopTimer = false;
                         string multiEntry = string.Format("Staff warning message: {0}", mobileList[0].Name);
 
                         for (int i = 0; i < mobileList.Count; i++)
-                            mobileList[i].SendAsciiMessage(34, "There is currently another account connected with your IP. You are only allowed to own one account per person. Staff has been notified of this and will come see you soon to verify that you are not just one person.");
+                        {
+                            mobileList[i].SendAsciiMessage(34,
+                                "Beware! Another avatar emerges, entwined in your virtual realm. Sacred law permits only three accounts per being. Watchful overseers are alerted and will punish rule-breakers in Britannia.");
+                            CurseOfGods.AddMobileWithLimit(mobileList[i]);
+                            mobileList[i].Virtues.Honesty--;
+                        }
 
                         for (int i = 1; i < mobileList.Count; i++)
                             multiEntry += string.Format(" and {0}", mobileList[i].Name);
