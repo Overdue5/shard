@@ -1660,6 +1660,10 @@ namespace Server
             {
                 get
                 {
+                    if (m_CurrentIndex >= m_CurrentList.Count)
+                    {
+                    }
+
                     return m_CurrentList[m_CurrentIndex];
                     /*try
                     {
@@ -1690,7 +1694,7 @@ namespace Server
                 {
                     ++m_CurrentIndex;
 
-                    if (m_CurrentIndex == m_CurrentList.Count)
+                    if (m_CurrentIndex >= m_CurrentList.Count)
                     {
                         ++m_ySector;
 
