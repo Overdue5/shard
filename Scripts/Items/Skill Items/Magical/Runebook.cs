@@ -109,7 +109,8 @@ namespace Server.Items
 			m_DefaultIndex = -1;
 
 			m_Level = SecureLevel.CoOwners;
-		}
+            m_MaxRunes = 16;
+        }
 
 		[Constructable]
 		public Runebook() : this( Core.SE ? 12 : 6 )
@@ -193,8 +194,7 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 
-			LootType = LootType.Blessed;
-            if( Core.SE && Weight == 3.0 )
+			if( Core.SE && Weight == 3.0 )
 				Weight = 1.0;
 
 			int version = reader.ReadInt();
@@ -242,7 +242,7 @@ namespace Server.Items
 					    break;
 				    }
             }
-		}
+        }
 
 		public void DropRune( Mobile from, RunebookEntry e, int index )
 		{
@@ -566,9 +566,10 @@ namespace Server.Items
 
     public class YRuneBook : Runebook
     {
+        private static readonly int m_YMaxRune = 3;
         public YRuneBook(Mobile mob) : base(0)
         {
-            MaxRunes = 3;
+            MaxRunes = m_YMaxRune;
             Hue = 54;
 			SetBlessedFor(mob);
             LootType = LootType.Regular;
@@ -599,6 +600,12 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             _ = reader.ReadInt();
+            LootType = LootType.Regular;
+            if (Entries.Count > m_YMaxRune)
+                BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"YRuneBook {this} contains {Entries.Count} runes, more that {m_YMaxRune} rune");
+            if (MaxRunes > m_YMaxRune)
+                BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"YRuneBook {this}, MaxRunes {MaxRunes} values more that expected {m_YMaxRune}");
+
         }
 
         [Usage("addyoungrunebook")]

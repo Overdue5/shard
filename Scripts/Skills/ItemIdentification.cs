@@ -219,9 +219,11 @@ namespace Server.Items
 
                     if (m_Targeted.LootType == LootType.Blessed || m_Targeted.LootType == LootType.Newbied)
                         m_From.SendAsciiMessage("You see Divine Aura around this item.");
-                    if (m_Targeted.BlessedFor != null && m_Targeted.BlessedFor.Name != null)
+                    if (m_Targeted.BlessedFor?.Name != null)
                     {
-                        m_From.SendAsciiMessage($"You see Divine Aura between {m_Targeted.BlessedFor.Name} and {m_Targeted.CalculateName()}.");
+                        m_From.SendAsciiMessage(m_From == m_Targeted.BlessedFor
+                            ? $"You see Divine Aura between your and this item."
+                            : $"You see Divine Aura between {m_Targeted.BlessedFor.Name} and this item.");
                     }
                 }
                 else
