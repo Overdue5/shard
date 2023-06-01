@@ -222,7 +222,7 @@ namespace Server.Items
                     if (m_Targeted.BlessedFor?.Name != null)
                     {
                         m_From.SendAsciiMessage(m_From == m_Targeted.BlessedFor
-                            ? $"You see Divine Aura between your and this item."
+                            ? $"You see Divine Aura between you and this item."
                             : $"You see Divine Aura between {m_Targeted.BlessedFor.Name} and this item.");
                     }
                 }

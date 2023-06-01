@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Server.Custom.Games;
+using Server.Custom.Zed;
 using Server.Factions;
 using Server.Guilds;
 using Server.Items;
@@ -417,7 +418,10 @@ namespace Server.Misc
                 return stone1 == stone2 ? Notoriety.Enemy : Notoriety.Invulnerable;
 		    }
 
-		    //Capture the Flag / Color Wars / Double Dom games
+            if (CheckNotorietyForEvents.PlayersInEvents(source, target))
+                return Notoriety.Enemy;
+
+//Capture the Flag / Color Wars / Double Dom games
             if (source is PlayerMobile && target is PlayerMobile)
             {
                 PlayerMobile src = source as PlayerMobile;
