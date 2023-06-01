@@ -90,7 +90,7 @@ namespace Server.Gumps
 			// List of entries
             List<RunebookEntry> entries = m_Book.Entries;
 
-			for ( int i = 0; i < 16; ++i )
+			for ( int i = 0; i < m_Book.MaxRunes; ++i )
 			{
 				string desc;
 				int hue;

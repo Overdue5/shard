@@ -35,6 +35,7 @@ namespace Server.Misc
             PackItem(new KeyRing());
             PackItem(new PlayerGuide());
             PackItem(new Scissors());
+            PackItem(new YRuneBook(m));
             //Region Ethy (Method used to hue item on creation)
             //EtherealHorse mount = new EtherealHorse();
 			//mount.Hue = (Utility.RandomMetalHue());

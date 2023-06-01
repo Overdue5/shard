@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Server.Commands;
 using Server.ContextMenus;
 using Server.Engines.Craft;
 using Server.Gumps;
+using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
 using Solaris.CliLocHandler;
@@ -24,7 +27,7 @@ namespace Server.Items
 
         private List<RunebookEntry> m_Entries;
 		private string m_Description;
-		private int m_CurCharges, m_MaxCharges;
+		private int m_CurCharges, m_MaxCharges, m_MaxRunes;
 		private int m_DefaultIndex;
 		private SecureLevel m_Level;
 		private Mobile m_Crafter;
@@ -70,6 +73,13 @@ namespace Server.Items
 			get { return m_MaxCharges; }
 			set { m_MaxCharges = value; }
 		}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int MaxRunes
+        {
+            get { return m_MaxRunes; }
+            set { m_MaxRunes = value; }
+        }
 
         public Point3D LastUsedLocation
         {
@@ -151,7 +161,9 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( 4 );
+			writer.Write( 5 );
+
+			writer.Write(m_MaxRunes);
 
             //version 4
             writer.Write((byte)m_Quality);	
@@ -182,19 +194,22 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			LootType = LootType.Blessed;
-
-			if( Core.SE && Weight == 3.0 )
+            if( Core.SE && Weight == 3.0 )
 				Weight = 1.0;
 
 			int version = reader.ReadInt();
 
 			switch ( version )
 			{
+                case 5:
+                    m_MaxRunes = reader.ReadInt();
+                    goto case 4;
                 case 4:
-                    {
-                        m_Quality = (BookQuality)reader.ReadByte();
-                        goto case 3;
-                    }
+                {
+                    if (m_MaxRunes == 0) m_MaxRunes = 16;
+                    m_Quality = (BookQuality)reader.ReadByte();
+                    goto case 3;
+                }
                 case 3:
                     {
                         m_LastUsedLocation = reader.ReadPoint3D();
@@ -374,7 +389,7 @@ namespace Server.Items
 				{
 					from.SendLocalizedMessage( 1005571 ); // You cannot place objects in the book while viewing the contents.
 				}
-				else if ( m_Entries.Count < 16 )
+				else if ( m_Entries.Count < MaxRunes )
 				{
 					RecallRune rune = (RecallRune)dropped;
 
@@ -548,4 +563,60 @@ namespace Server.Items
             writer.Write(m_ChargesLeft);
 		}
 	}
+
+    public class YRuneBook : Runebook
+    {
+        public YRuneBook(Mobile mob) : base(0)
+        {
+            MaxRunes = 3;
+            Hue = 54;
+			SetBlessedFor(mob);
+            LootType = LootType.Regular;
+        }
+
+        public YRuneBook(Serial serial) : base(serial)
+        {
+        }
+		
+        private void SetBlessedFor(Mobile mob)
+        {
+            BlessedFor = mob;
+            Name = $"{mob.Name} young runebook";
+        }
+
+        public static void Initialize()
+        {
+            CommandSystem.Register("addyoungrunebook", AccessLevel.Owner, new CommandEventHandler(YoungRunBook_OnCommand));
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+			base.Serialize(writer);
+            writer.Write(0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            _ = reader.ReadInt();
+        }
+
+        [Usage("addyoungrunebook")]
+        [Description("add young runebooks")]
+        private static void YoungRunBook_OnCommand(CommandEventArgs e)
+        {
+            e.Mobile.SendAsciiMessage("Started");
+            int count = 0;
+            foreach (PlayerMobile pm in World.Mobiles.Values.Where(x=>x.Player && x.Backpack!=null))
+            {
+                var book = new YRuneBook(pm);
+				pm.Backpack.AddItem(book);
+                count++;
+            }
+            e.Mobile.SendAsciiMessage($"Finished, {count} book added");
+			
+        }
+
+
+    }
 }
