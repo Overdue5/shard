@@ -31,11 +31,6 @@ namespace Server.Mobiles
 		public override bool IsActiveVendor{ get{ return true; } }
 		public override bool IsInvulnerable{ get{ return false; } }
 
-		public override void InitSBInfo()
-		{
-			SBInfos.Add( new SBHealer() );
-		}
-
 		public override bool CheckResurrect( Mobile m )
 		{
 			if ( m.Criminal )

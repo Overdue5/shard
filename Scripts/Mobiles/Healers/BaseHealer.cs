@@ -15,8 +15,16 @@ namespace Server.Mobiles
 		public override bool IsInvulnerable{ get{ return false; } }
 
 		public override void InitSBInfo()
-		{
-		}
+        {
+            if (this.Criminal || !(this.Region is GuardedRegion gr && !gr.Disabled) || this.AlwaysMurderer)
+            {
+                SBInfos.Add(new SBHealerRich());
+            }
+            else
+            {
+                SBInfos.Add(new SBHealer());
+            }
+        }
 
 	    public BaseHealer() : base( null )
 		{

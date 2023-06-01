@@ -1,3 +1,5 @@
+using Server.Regions;
+
 namespace Server.Mobiles
 {
 	public class EvilHealer : BaseHealer
@@ -29,11 +31,6 @@ namespace Server.Mobiles
 
 		public override bool AlwaysMurderer{ get{ return true; } }
 		public override bool IsActiveVendor{ get{ return true; } }
-
-		public override void InitSBInfo()
-		{
-			SBInfos.Add( new SBHealer() );
-		}
 
 		public override bool CheckResurrect( Mobile m )
 		{
