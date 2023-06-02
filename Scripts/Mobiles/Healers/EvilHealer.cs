@@ -1,5 +1,3 @@
-using Server.Regions;
-
 namespace Server.Mobiles
 {
 	public class EvilHealer : BaseHealer

@@ -1,13 +1,9 @@
 ﻿using Server.Commands;
 using Server.Commands.Generic;
-using Server.Items;
-using Server.Spells;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Server.Mobiles;
 
 namespace Server.Custom.Zed
@@ -20,7 +16,7 @@ namespace Server.Custom.Zed
             {
                 AccessLevel = AccessLevel.Owner;
                 Supports = CommandSupport.Simple;
-                Commands = new string[] { "SetCurse"};
+                Commands = new[] { "SetCurse"};
                 ObjectTypes = ObjectTypes.Mobiles;
                 Usage = "SetCurse";
                 Description = "Curse bad avatars";
@@ -46,7 +42,7 @@ namespace Server.Custom.Zed
             {
                 AccessLevel = AccessLevel.Owner;
                 Supports = CommandSupport.Simple;
-                Commands = new string[] { "DelCurse" };
+                Commands = new[] { "DelCurse" };
                 ObjectTypes = ObjectTypes.Mobiles;
                 Usage = "DelCurse";
                 Description = "Remove the curse from a reformed avatars";
@@ -71,7 +67,7 @@ namespace Server.Custom.Zed
         {
             public DateTime EndCurseTime;
             public DateTime NextAnnouncement;
-            private static TimeSpan m_AnnouncementLimet = TimeSpan.FromDays(1);
+            private static readonly TimeSpan m_AnnouncementLimit = TimeSpan.FromDays(1);
 
             public TimeLimits()
             {
@@ -81,7 +77,7 @@ namespace Server.Custom.Zed
 
             public void UpdAnnouncement()
             {
-                NextAnnouncement = DateTime.UtcNow + m_AnnouncementLimet;
+                NextAnnouncement = DateTime.UtcNow + m_AnnouncementLimit;
             }
 
             public bool IsCursed => EndCurseTime > DateTime.UtcNow;

@@ -13,9 +13,6 @@ using CommandEventArgs = Server.Commands.CommandEventArgs;
 using CommandEventHandler = Server.Commands.CommandEventHandler;
 using Server.Network;
 using MessageType = Server.Network.MessageType;
-using Server.Custom;
-using Server.Gumps;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Scripts.Commands
 {
