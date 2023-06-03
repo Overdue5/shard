@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Server.Logging;
 
 namespace Server.Items
 {
@@ -36,7 +37,7 @@ namespace Server.Items
                         }
                         catch
                         {
-                            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Error parse row:{line}");
+                            ConsoleLog.Write.Error($"Error parse row:{line}");
                             throw;
                         }
                     }
@@ -44,7 +45,7 @@ namespace Server.Items
             }
             else
             {
-                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Error load file:{filePath}");
+                ConsoleLog.Write.Error($"Error load file:{filePath}");
                 throw new Exception("File not found");
             }
 
@@ -185,7 +186,7 @@ namespace Server.Items
         private static void CraftBookRespawn()
         {
             var count = 0;
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Books respawn started");
+            ConsoleLog.Write.Information("Books respawn started");
             foreach (var book in m_AllCraftBooks)
             {
                 if (book.CanChangePlace())
@@ -196,7 +197,7 @@ namespace Server.Items
                         book.ChangePlace();
                         if (--count == 0)
                         {
-                            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Books respawn completed");
+                            ConsoleLog.Write.Information("Books respawn completed");
                         }
                     });
                 }
@@ -240,14 +241,14 @@ namespace Server.Items
             bool moved = false;
             if (!BaseVendor.SkilledVendors.ContainsKey(SkillToLearn))
             {
-                Console.WriteLine($"Vendors with {SkillToLearn} skill not found in {Map.Name}");
+                ConsoleLog.Write.Information($"Vendors with {SkillToLearn} skill not found in {Map.Name}");
                 return;
             }
 
             var vendors = BaseVendor.SkilledVendors[SkillToLearn].Where(m => m.Map == Map).ToArray();
             if (!vendors.Any())
             {
-                Console.WriteLine($"Vendors with {SkillToLearn} skill not found in {Map.Name}");
+                ConsoleLog.Write.Information($"Vendors with {SkillToLearn} skill not found in {Map.Name}");
                 return;
             }
 
@@ -270,7 +271,7 @@ namespace Server.Items
 
             if (!moved)
             {
-                Console.WriteLine($"Can't move book with skill {SkillToLearn}");
+                ConsoleLog.Write.Information($"Can't move book with skill {SkillToLearn}");
             }
         }
 

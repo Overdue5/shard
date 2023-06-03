@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Knives.Chat3
 {
-	public class Logging
+	public class ChatLogging
 	{
         public static void LogChat(string msg)
         {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using Server.Logging;
 
 namespace Server
 {
@@ -44,7 +45,7 @@ namespace Server
 
         static BaseDiscord()
         {
-            foreach (Channel ch in (Channel[]) Enum.GetValues(typeof(Channel)))
+            foreach (Channel ch in (Channel[])Enum.GetValues(typeof(Channel)))
             {
                 Channels[ch] = new ChannelsInfo();
             }
@@ -53,7 +54,7 @@ namespace Server
         public enum Channel : ulong
         {
             //Test = 876407848941281320,
-			None = 0,
+            None = 0,
 
 #if (!DEBUG)
 			Console = 1104380028558508187,
@@ -93,34 +94,33 @@ namespace Server
                 MsgLength = Config.Get("Discord.MsgLength", 1000);
                 discord = new DiscordSocketClient();
                 discord.MessageReceived += Bot.CommandsHandler;
-                discord.Log += Bot.Log;
                 await discord.LoginAsync(TokenType.Bot, token);
                 await discord.StartAsync();
-                DTimer = Timer.DelayCall(TimeSpan.FromSeconds(5), ()=>Bot.SendMsg());
+                DTimer = Timer.DelayCall(TimeSpan.FromSeconds(5), () => Bot.StartSending());
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                ConsoleLog.Write.Warning("Discord exceptin:", e);
             }
         }
 
         public static async void CheckAndRestart()
         {
-	        if (discord == null || discord.ConnectionState != ConnectionState.Connected)
-	        {
-		        await StopAsync();
-		        await MainAsync();
-	        }
+            if (discord == null || discord.ConnectionState != ConnectionState.Connected)
+            {
+                await StopAsync();
+                await MainAsync();
+            }
         }
 
-        public virtual async void SendToDiscord(Channel ch, string msg)
+        internal virtual async void SendMessageToDiscord(Channel ch, string msg)
         {
             if (!Enabled)
                 return;
             if (ch == Channel.None)
             {
-	            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"!Send to None channel.{new StackTrace()}");
-	            return;
+                ConsoleLog.Write.Error($"!Send to None channel.{new StackTrace()}");
+                return;
             }
 
             try
@@ -130,16 +130,16 @@ namespace Server
                     Channels[ch].Msg.Add(msg);
                 }
 
-                await Task.Run(SendMsg);
+                await Task.Run(StartSending);
             }
             catch (Exception e)
             {
-                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
+                ConsoleLog.Write.Error(
                     $"Discord Error: {e.ToString()} for channel {ch}");
             }
         }
 
-        public virtual void SendMsg()
+        public virtual void StartSending()
         {
             if (discord == null)
                 return;
@@ -160,7 +160,7 @@ namespace Server
                 while (info.Msg.Count > 0)
                 {
                     if (info.DChannel == null)
-                        info.DChannel = (IMessageChannel) discord.GetChannel((ulong) ch);
+                        info.DChannel = (IMessageChannel)discord.GetChannel((ulong)ch);
                     if (info.DChannel == null)
                         return;
 
@@ -171,13 +171,13 @@ namespace Server
                         msgArray = info.Msg.ToArray();
                     }
 
-                    toSend.AppendLine("");
+                    toSend.AppendLine("\n");
                     var mcount = 0;
                     foreach (var mInfo in msgArray)
                     {
                         if (toSend.Length + mInfo.Length > MsgLength)
                         {
-                            if (toSend.Length < 10 )
+                            if (toSend.Length < 10)
                             {
                                 mcount++;
                                 toSend.AppendLine(mInfo.Substring(0, MsgLength));
@@ -210,20 +210,19 @@ namespace Server
                             sendTask = info.DChannel.SendMessageAsync(toSend.ToString());
                             fcount++;
                         }
+
                         count++;
                     }
 
                     if (count >= 5)
                     {
-                        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, 
-	                        $"!Error send messages to discord.Len:{toSend.Length}.fcount:{fcount}\n" +
-	                        $"sendtask.Result:{sendTask.Result}");
+                        ConsoleLog.Write.Error($"!Error send messages to discord.Len:{toSend.Length}.fcount:{fcount} sendtask.Result:{sendTask.Result}", sendToDiscord:false);
                     }
                 }
             }
             catch (Exception e)
             {
-                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Discord sending critical error: {e.Message}");
+                ConsoleLog.Write.Error($"Discord sending critical error: {e.Message}");
             }
             finally
             {
@@ -236,10 +235,10 @@ namespace Server
             return Task.CompletedTask;
         }
 
-        protected virtual Task Log(LogMessage msg)
-        {
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"!{msg.ToString()}");
-            return Task.CompletedTask;
-        }
-	}
+        //protected virtual Task Log(LogMessage msg)
+        //{
+        //    ConsoleLog.Write.Information($"!{msg.ToString()}");
+        //    return Task.CompletedTask;
+        //}
+    }
 }

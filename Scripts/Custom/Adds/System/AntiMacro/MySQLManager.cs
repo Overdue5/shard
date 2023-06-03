@@ -1,6 +1,7 @@
 using System.Data;
 using System.Data.Odbc;
 using System;
+using Server.Logging;
 
 namespace Server.AntiMacro
 {
@@ -50,7 +51,7 @@ namespace Server.AntiMacro
             }
             catch
             {
-                Console.WriteLine("Cannot connect to the MySQL server, using the old anti macro system.");
+                ConsoleLog.Write.Warning("Cannot connect to the MySQL server, using the old anti macro system.");
                 m_MySQLConnection = null;
                 return false;
             }

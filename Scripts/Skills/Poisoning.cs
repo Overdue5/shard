@@ -1,6 +1,7 @@
 using System;
 using Server.Games.PaintBall;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
@@ -425,7 +426,7 @@ namespace Server.SkillHandlers
 								else
 								{
 									m_From.SendAsciiMessage("Unknown ammo type");
-									Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Unknown ammo type for poisoning");
+									ConsoleLog.Write.Error("Unknown ammo type for poisoning");
 									return;
 								}
 

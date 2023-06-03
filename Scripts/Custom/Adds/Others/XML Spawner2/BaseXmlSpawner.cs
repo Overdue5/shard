@@ -9,6 +9,7 @@ using Server.Commands;
 using Server.Engines.XmlSpawner2;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 using Server.Spells;
 using CPA = Server.CommandPropertyAttribute;
@@ -1578,7 +1579,7 @@ namespace Server.Mobiles
             }
             catch
             {
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"GetProperties error with type {type}");
+				ConsoleLog.Write.Error($"GetProperties error with type {type}");
                 return null;
             }
 

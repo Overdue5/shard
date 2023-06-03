@@ -7,6 +7,7 @@ using Server.Commands;
 using Server.ContextMenus;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 using Server.Regions;
@@ -244,7 +245,7 @@ namespace Server.Jailing
 
 		public static void onLoad()
 		{
-			Utility.ConsoleWriteLine("Loading Jailings" );
+			ConsoleLog.Write.Information("Loading Jailings" );
 			FileStream idxFileStream;
 			FileStream binFileStream;
 			//BinaryReader idxReader;
@@ -301,9 +302,9 @@ namespace Server.Jailing
 			else
 			{
 				defaultSettings();
-				Utility.ConsoleWriteLine($"{JSName}: No prior Jailsystem save, using default settings" );
+				ConsoleLog.Write.Information($"{JSName}: No prior Jailsystem save, using default settings" );
 			}
-			Utility.ConsoleWriteLine($"{JailCount} Jailings Loaded:{list.Count}" );
+			ConsoleLog.Write.Information($"{JailCount} Jailings Loaded:{list.Count}" );
 		}
 
 		public static void OnLoginJail( LoginEventArgs e )
@@ -321,9 +322,9 @@ namespace Server.Jailing
 					}
 					catch( Exception err )
 					{
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,$"Restarting the Jail timer load process:{err.Message}");
+						ConsoleLog.Write.Error($"Restarting the Jail timer load process:{err.Message}");
 					}
-				Utility.ConsoleWriteLine("The Jail timer load process has finished" );
+				ConsoleLog.Write.Information("The Jail timer load process has finished" );
 			}
 			if( e.Mobile == null )
 				return;
@@ -338,7 +339,7 @@ namespace Server.Jailing
 
 		public static void onSave( WorldSaveEventArgs e )
 		{
-			Utility.ConsoleWriteLine("Saving Jailings" );
+			ConsoleLog.Write.Information("Saving Jailings" );
 			if( !Directory.Exists( jailDirectory ) )
 				Directory.CreateDirectory( jailDirectory );
 			GenericWriter idxWriter;
@@ -370,7 +371,7 @@ namespace Server.Jailing
 					}
 					catch( Exception err )
 					{
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,$"{err.Message}, {err.TargetSite} serialize" );
+						ConsoleLog.Write.Error($"{err.Message}, {err.TargetSite} serialize" );
 					}
 					idxWriter.Write( (int)( binWriter.Position - tPos ) );
 				}
@@ -378,11 +379,11 @@ namespace Server.Jailing
 			}
 			catch( Exception er )
 			{
-				Console.WriteLine( "{0}, {1}", er.Message, er.TargetSite );
+				ConsoleLog.Write.Information( "{0}, {1}", er.Message, er.TargetSite );
 			}
 			idxWriter.Close();
 			binWriter.Close();
-			Utility.ConsoleWriteLine("Jailings Saved" );
+			ConsoleLog.Write.Information("Jailings Saved" );
 		}
 		#endregion
 
@@ -489,7 +490,7 @@ namespace Server.Jailing
 			}
 			catch
 			{
-				Console.WriteLine( "{0}: Lockup call failed on-{1}", JSName, m.Name );
+				ConsoleLog.Write.Information( "{0}: Lockup call failed on-{1}", JSName, m.Name );
 				return null;
 			}
 		}
@@ -569,7 +570,7 @@ namespace Server.Jailing
 		{
 			bool hotSteppen = PlayerMobile.MovementThrottle_Callback( ns );
 			if( !hotSteppen )
-				//Console.WriteLine( "Client: {0}: Fast movement detected (name={1})", ns, ns.Mobile.Name );
+				//ConsoleLog.Write.Information( "Client: {0}: Fast movement detected (name={1})", ns, ns.Mobile.Name );
 				if( warnspeedy )
 					fWalkWarn( ns.Mobile );
 			return hotSteppen;
@@ -578,7 +579,7 @@ namespace Server.Jailing
 		public static void OnFastWalk( FastWalkEventArgs e )
 		{
 			e.Blocked = true; //disallow this fastwalk
-			//Console.WriteLine( "Client: {0}: Fast movement detected 2(name={1}) in jail system", e.NetState, e.NetState.Mobile.Name );
+			//ConsoleLog.Write.Information( "Client: {0}: Fast movement detected 2(name={1}) in jail system", e.NetState, e.NetState.Mobile.Name );
 
 			if( warnspeedy )
 				fWalkWarn( e.NetState.Mobile );
@@ -636,7 +637,7 @@ namespace Server.Jailing
 				catch
 				{
 					defaultSettings();
-					Console.WriteLine( "{0}: settings not found in save file, using default settings.", JSName );
+					ConsoleLog.Write.Information( "{0}: settings not found in save file, using default settings.", JSName );
 					return;
 				}
 				switch( version )
@@ -699,7 +700,7 @@ namespace Server.Jailing
 						catch
 						{
 							defaultSettings();
-							Console.WriteLine( "{0}: settings not found in save file, using default settings.", JSName );
+							ConsoleLog.Write.Information( "{0}: settings not found in save file, using default settings.", JSName );
 							return;
 						}
 						break;
@@ -707,14 +708,14 @@ namespace Server.Jailing
 						defaultSettings();
 						break;
 					default:
-						Console.WriteLine( "{0} warning:{1}-{2}", JSName, "Loading-", "Unknown version" );
+						ConsoleLog.Write.Information( "{0} warning:{1}-{2}", JSName, "Loading-", "Unknown version" );
 						break;
 				}
 			}
 			catch
 			{
 				defaultSettings();
-				Console.WriteLine( "{0}: settings not found in save file, using default settings:", JSName );
+				ConsoleLog.Write.Information( "{0}: settings not found in save file, using default settings:", JSName );
 				return;
 			}
 		}
@@ -857,7 +858,7 @@ namespace Server.Jailing
 				default:
 					break;
 			}
-			//Console.WriteLine( "Loaded Jail object:{0} releases:{1}", m_name, imax );
+			//ConsoleLog.Write.Information( "Loaded Jail object:{0} releases:{1}", m_name, imax );
 		}
 
 		public override string ToString()
@@ -870,7 +871,7 @@ namespace Server.Jailing
 			if( m_releaseTime <= DateTime.UtcNow )
 				release();
 			else
-				Console.WriteLine( "JailSystem: A Jail Timer fired but the timer was incorrect so the release was not honored." );
+				ConsoleLog.Write.Information( "JailSystem: A Jail Timer fired but the timer was incorrect so the release was not honored." );
 		}
 
 		public void forceRelease( Mobile releasor )
@@ -885,7 +886,7 @@ namespace Server.Jailing
 			}
 			catch( Exception err )
 			{
-				Console.WriteLine( "{0}: access level error, resume release-{1}", JSName, err );
+				ConsoleLog.Write.Information( "{0}: access level error, resume release-{1}", JSName, err );
 			}
 			freedBy = releasor.Name + " (At:" + DateTime.UtcNow + ")";
 			try
@@ -918,7 +919,7 @@ namespace Server.Jailing
 				}
 				catch( Exception err )
 				{
-					Console.WriteLine( "{0}: {1} Mobile not released", JSName, err );
+					ConsoleLog.Write.Information( "{0}: {1} Mobile not released", JSName, err );
 					return;
 				}
 				releaseLoc rl;
@@ -937,11 +938,11 @@ namespace Server.Jailing
 			}
 			catch( Exception err )
 			{
-				Console.WriteLine( "{0}: {1}", JSName, err );
+				ConsoleLog.Write.Information( "{0}: {1}", JSName, err );
 			}
 			if( releasePoints.Count == 0 )
 			{
-				Console.WriteLine( "Jailing removed for account {0}", Name );
+				ConsoleLog.Write.Information( "Jailing removed for account {0}", Name );
 				try
 				{
 					list.Remove( ID );
@@ -984,7 +985,7 @@ namespace Server.Jailing
 			}
 			catch( Exception err )
 			{
-				Console.WriteLine( "{0}: auto releasor not found-{1}", JSName, err );
+				ConsoleLog.Write.Information( "{0}: auto releasor not found-{1}", JSName, err );
 			}
 			try
 			{
@@ -992,7 +993,7 @@ namespace Server.Jailing
 			}
 			catch( Exception err )
 			{
-				Console.WriteLine( "{0}: Verify Mobiles failed-{1}", JSName, err );
+				ConsoleLog.Write.Information( "{0}: Verify Mobiles failed-{1}", JSName, err );
 			}
 			try
 			{
@@ -1002,13 +1003,13 @@ namespace Server.Jailing
 			}
 			catch( Exception err )
 			{
-				Console.WriteLine( "{0}: Release failed-{1} **The most common occurance of this is when an account has been deleted while in jail ***Use the adminjail command to cycle through the jailings and automaticly remove them.", JSName, err );
+				ConsoleLog.Write.Information( "{0}: Release failed-{1} **The most common occurance of this is when an account has been deleted while in jail ***Use the adminjail command to cycle through the jailings and automaticly remove them.", JSName, err );
 			}
 			if( releasePoints.Count == 0 )
 				try
 				{
 					list.Remove( ID );
-					Console.WriteLine( "Jailing removed for account {0}", Name );
+					ConsoleLog.Write.Information( "Jailing removed for account {0}", Name );
 				}
 				catch
 				{
@@ -1430,7 +1431,7 @@ namespace Server.Jailing
 				Mobile m = World.FindMobile( mobile );
 				if( m == null )
 				{
-					Console.WriteLine( "release location error, Mobile not found." );
+					ConsoleLog.Write.Information( "release location error, Mobile not found." );
 					return false;
 				}
 				if( !returnToPoint )

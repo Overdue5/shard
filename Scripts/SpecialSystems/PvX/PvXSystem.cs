@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Server;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Scripts.SpecialSystems
@@ -164,7 +165,7 @@ namespace Scripts.SpecialSystems
 			if (value < 0)
 			{
 				Logs.PvXLog.WriteLine(mob, $"TotalPointsSpent more than TotalWins in {xtype}");
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"TotalPointsSpent more than TotalWins in {xtype} for {mob.Name}");
+				ConsoleLog.Write.Error($"TotalPointsSpent more than TotalWins in {xtype} for {mob.Name}");
 			}
 			return value;
 		}
@@ -311,7 +312,7 @@ namespace Scripts.SpecialSystems
 			});
 			OnCalculateStat();
 			watch.Stop();
-			Console.WriteLine($"PvX stats save complete, duration:{watch.Elapsed.TotalMilliseconds} ms");
+			ConsoleLog.Write.Information($"PvX stats save complete, duration:{watch.Elapsed.TotalMilliseconds} ms");
 		}
 
 		#endregion Private Methods
@@ -540,8 +541,7 @@ namespace Scripts.SpecialSystems
 				}
 			}
 
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
-				$"Something wrong with Get{PvXType}Rank for {(Owner == null ? "null" : Owner.Name)}");
+			ConsoleLog.Write.Error($"Something wrong with Get{PvXType}Rank for {(Owner == null ? "null" : Owner.Name)}");
 		}
 
 		#endregion Public Methods

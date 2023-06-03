@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Server.Logging;
 
 namespace Server.Diagnostics
 {
@@ -55,7 +56,7 @@ namespace Server.Diagnostics
 
 		public static void LogException(Exception e)
 		{
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Caught Exception, ex:{e.ToString()}");
+			ConsoleLog.Write.Error($"Caught Exception, ex:{e.ToString()}");
 			Output.WriteLine("Exception Caught: {0}", DateTime.UtcNow);
 			Output.WriteLine(e);
 			Output.WriteLine();
@@ -63,7 +64,7 @@ namespace Server.Diagnostics
 
 		public static void LogException(Exception e, string arg)
 		{
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Caught Exception, args:{arg} ex:{e.ToString()}");
+			ConsoleLog.Write.Error($"Caught Exception, args:{arg} ex:{e.ToString()}");
 
 			Output.WriteLine("Exception Caught: {0}", DateTime.UtcNow);
 			Output.WriteLine(e);

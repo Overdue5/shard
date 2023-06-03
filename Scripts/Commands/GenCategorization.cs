@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 using Server.Items;
+using Server.Logging;
 
 namespace Server.Commands
 {
@@ -357,7 +358,7 @@ namespace Server.Commands
                 Type type = ScriptCompiler.FindTypeByName(split[i].Trim());
 
                 if (type == null)
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Match type not found ('{split[i].Trim()}')");
+					ConsoleLog.Write.Warning($"Match type not found ('{split[i].Trim()}')");
                 else
                     list.Add(type);
             }

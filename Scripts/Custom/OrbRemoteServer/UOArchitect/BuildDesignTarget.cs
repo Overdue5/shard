@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Mobiles;
 using UOArchitectInterface;
 using System.Collections;
+using Server.Logging;
 
 namespace Server.Engines.UOArchitect
 {
@@ -65,7 +66,7 @@ namespace Server.Engines.UOArchitect
 					}
 					catch(Exception e)
 					{
-						Console.WriteLine("Unable to import item: " + e.Message);
+						ConsoleLog.Write.Warning("Unable to import item: " + e.Message);
 					}
 				}
 			}

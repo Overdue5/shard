@@ -1,6 +1,7 @@
 using System;
 using Server.Commands;
 using Server.Items;
+using Server.Logging;
 using Server.PathAlgorithms;
 using Server.PathAlgorithms.FastAStar;
 using Server.PathAlgorithms.SlowAStar;
@@ -158,7 +159,7 @@ namespace Server
             }
 			catch ( Exception e )
 			{
-				Console.WriteLine( "Warning: {0}: Pathing error from {1} to {2}", e.GetType().Name, start, goal );
+				ConsoleLog.Write.Warning( "Warning: {0}: Pathing error from {1} to {2}", e.GetType().Name, start, goal );
 			}
 		}
 	}

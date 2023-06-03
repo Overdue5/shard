@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using Server.Network;
 using Server.Items;
 using Server.ContextMenus;
+using Server.Logging;
 using Solaris.CliLocHandler;
 
 namespace Server
@@ -3063,14 +3064,14 @@ namespace Server
 			}
 			else if ( item == this )
 			{
-				Console.WriteLine( "Warning: Adding item to itself: [0x{0:X} {1}].AddItem( [0x{2:X} {3}] )", this.Serial.Value, this.GetType().Name, item.Serial.Value, item.GetType().Name );
-				Console.WriteLine( new System.Diagnostics.StackTrace() );
+				ConsoleLog.Write.Warning( "Warning: Adding item to itself: [0x{0:X} {1}].AddItem( [0x{2:X} {3}] )", this.Serial.Value, this.GetType().Name, item.Serial.Value, item.GetType().Name );
+				ConsoleLog.Write.Warning( new System.Diagnostics.StackTrace().ToString() );
 				return;
 			}
 			else if ( IsChildOf( item ) )
 			{
-				Console.WriteLine( "Warning: Adding parent item to child: [0x{0:X} {1}].AddItem( [0x{2:X} {3}] )", this.Serial.Value, this.GetType().Name, item.Serial.Value, item.GetType().Name );
-				Console.WriteLine( new System.Diagnostics.StackTrace() );
+				ConsoleLog.Write.Warning( "Warning: Adding parent item to child: [0x{0:X} {1}].AddItem( [0x{2:X} {3}] )", this.Serial.Value, this.GetType().Name, item.Serial.Value, item.GetType().Name );
+				ConsoleLog.Write.Warning( new System.Diagnostics.StackTrace().ToString() );
 				return;
 			}
 			else if ( item.m_Parent is Mobile )
@@ -3929,7 +3930,7 @@ namespace Server
 						InvalidateProperties();
 
 					if ( !Stackable && m_Amount > 1 )
-						Console.WriteLine( "Warning: 0x{0:X}: Amount changed for non-stackable item '{2}'. ({1})", m_Serial.Value, m_Amount, GetType().Name );
+						ConsoleLog.Write.Warning( "Warning: 0x{0:X}: Amount changed for non-stackable item '{2}'. ({1})", m_Serial.Value, m_Amount, GetType().Name );
 				}
 			}
 		}

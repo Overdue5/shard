@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Web.UI;
+using Server.Logging;
 using HtmlTag = System.Web.UI.HtmlTextWriterTag;
 using HtmlAttr = System.Web.UI.HtmlTextWriterAttribute;
 
@@ -61,14 +62,14 @@ namespace Server.Engines.Reports
 
 		public void Render()
 		{
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Reports: {m_Title}: Render started" );
+			ConsoleLog.Write.Information($"Reports: {m_Title}: Render started" );
 
 			RenderFull();
 
 			for ( int i = 0; i < m_Objects.Count; ++i )
 				RenderSingle( m_Objects[i] );
 
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Reports: {m_Title}: Render complete" );
+			ConsoleLog.Write.Information($"Reports: {m_Title}: Render complete" );
 		}
 
 		private static readonly string FtpHost = null;
@@ -84,7 +85,7 @@ namespace Server.Engines.Reports
 			if ( FtpHost == null )
 				return;
 
-			Utility.ConsoleWriteLine( $"Reports: {m_Title}: Upload started" );
+            ConsoleLog.Write.Information($"Reports: {m_Title}: Upload started" );
 
 			string filePath = Path.Combine( m_OutputDirectory, "upload.ftp" );
 
@@ -121,7 +122,7 @@ namespace Server.Engines.Reports
 			{
 			}
 
-			Utility.ConsoleWriteLine( $"Reports: {m_Title}: Upload complete" );
+            ConsoleLog.Write.Information($"Reports: {m_Title}: Upload complete" );
 
 			try{ File.Delete( filePath ); }
 			catch{}

@@ -6,6 +6,7 @@ using System.Xml.Linq;
 
 using Server.Commands;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 using Server.Util;
@@ -150,7 +151,7 @@ namespace Server.Scripts.Custom.Adds.System
             }
             catch
             {
-                Console.WriteLine("Error Loading tips.xml, Tips will not be enabled");
+                ConsoleLog.Write.Error("Error Loading tips.xml, Tips will not be enabled");
             }
 
             if (Tips.Count > 0)

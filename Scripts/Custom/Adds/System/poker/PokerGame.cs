@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Server.Poker
@@ -797,10 +798,8 @@ namespace Server.Poker
 				{
 					if ( from.BankBox == null ) //Should NEVER happen, but JUST IN CASE!
 					{
-						Utility.PushColor( ConsoleColor.Red );
-						Console.WriteLine( "WARNING: Player \"{0}\" with account \"{1}\" had null bankbox while trying to deposit {2} gold. Player will NOT recieve their gold.", from.Name, ( from.Account == null ? "(-null-)" : from.Account.Username ), player.Gold );
-						Utility.PopColor();
-
+						ConsoleLog.Write.Warning("WARNING: Player \"{0}\" with account \"{1}\" had null bankbox while trying to deposit {2} gold. Player will NOT recieve their gold.", from.Name, ( from.Account == null ? "(-null-)" : from.Account.Username ), player.Gold );
+						
 						try
 						{
 							using ( System.IO.StreamWriter op = new System.IO.StreamWriter( "poker_error.log", true ) )

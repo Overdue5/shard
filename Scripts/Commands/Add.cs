@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Server.Items;
+using Server.Logging;
 using Server.Targeting;
 using CPA = Server.CommandPropertyAttribute;
 
@@ -377,7 +378,7 @@ namespace Server.Commands
             }
             catch (Exception ex)
             {
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, ex.ToString());
+				ConsoleLog.Write.Error(ex.ToString());
                 return 0;
             }
         }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Server.Commands;
 using Server.Items;
+using Server.Logging;
 using CPA = Server.CommandPropertyAttribute;
 
 namespace Server.Mobiles
@@ -863,7 +864,7 @@ namespace Server.Mobiles
             {
                 try
                 {
-                    Console.WriteLine("Warning: {0} bad spawns detected, logged: 'badspawn.log'", m_List.Count);
+                    ConsoleLog.Write.Warning("Warning: {0} bad spawns detected, logged: 'badspawn.log'", m_List.Count);
 
                     using (StreamWriter op = new StreamWriter("badspawn.log", true))
                     {

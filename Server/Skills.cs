@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using Server.Logging;
 using Server.Network;
 
 namespace Server
@@ -156,7 +157,7 @@ namespace Server
 
 			if ( m_Lock < SkillLock.Up || m_Lock > SkillLock.Locked )
 			{
-				Console.WriteLine( "Bad skill lock -> {0}.{1}", owner.Owner, m_Lock );
+				ConsoleLog.Write.Information( "Bad skill lock -> {0}.{1}", owner.Owner, m_Lock );
 				m_Lock = SkillLock.Up;
 			}
 		}

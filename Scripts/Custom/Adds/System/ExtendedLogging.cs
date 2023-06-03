@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Server.Logging;
 
 namespace Server.Misc
 {
@@ -50,7 +51,7 @@ namespace Server.Misc
 			}
 			catch
 			{
-				Console.WriteLine( "Record Error... {0} Login", m.Account );
+				ConsoleLog.Write.Information( "Record Error... {0} Login", m.Account );
 			}
 		}
 
@@ -67,7 +68,7 @@ namespace Server.Misc
 			}
 			catch
 			{
-				Console.WriteLine( "Record Error... {0} Logout", m.Account );
+				ConsoleLog.Write.Information( "Record Error... {0} Logout", m.Account );
 			}
 		}
         
@@ -177,7 +178,7 @@ namespace Server.Misc
             }
             catch
             {
-                Console.WriteLine("Record Error..." );
+                ConsoleLog.Write.Information("Record Error..." );
             }
         }
         /*
@@ -196,7 +197,7 @@ namespace Server.Misc
             }
             catch
             {
-                Console.WriteLine("Record Error...");
+                ConsoleLog.Write.Information("Record Error...");
             }
         }
         
@@ -215,7 +216,7 @@ namespace Server.Misc
             }
             catch
             {
-                Console.WriteLine("Record Error...");
+                ConsoleLog.Write.Information("Record Error...");
             }
         }
         
@@ -234,7 +235,7 @@ namespace Server.Misc
             }
             catch
             {
-                Console.WriteLine("Record Error...");
+                ConsoleLog.Write.Information("Record Error...");
             }
         }
         */

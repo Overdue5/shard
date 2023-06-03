@@ -101,10 +101,10 @@ namespace Knives.Chat3
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Email failed to send.");
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Source);
-                Console.WriteLine(ex.StackTrace);
+                ConsoleLog.Write.Information("Email failed to send.");
+                ConsoleLog.Write.Information(ex.Message);
+                ConsoleLog.Write.Information(ex.Source);
+                ConsoleLog.Write.Information(ex.StackTrace);
             }
         }
         */

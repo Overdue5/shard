@@ -1,4 +1,5 @@
 using System;
+using Server.Logging;
 using Server.Mobiles;
 using CalcMoves = Server.Movement.Movement;
 using MoveImpl = Server.Movement.MovementImpl;
@@ -129,7 +130,7 @@ namespace Server.PathAlgorithms.SlowAStar
 
 						if ( !found )
 						{
-							Console.WriteLine( "bugaboo.." );
+							ConsoleLog.Write.Information( "bugaboo.." );
 							return null;
 						}
 

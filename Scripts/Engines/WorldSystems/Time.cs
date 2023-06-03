@@ -4,6 +4,7 @@ using Server.Network;
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Logging;
 
 namespace Server.Engines
 {
@@ -215,7 +216,7 @@ namespace Server.Engines
 			}
 			catch (Exception exception)
 			{
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, exception.Message);
+				ConsoleLog.Write.Error(exception.Message);
 				throw;
 			}
 		}

@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using Server.Accounting;
 using System.Threading;
+using Server.Logging;
 
 namespace Server.Engines.OrbRemoteServer
 {
@@ -57,7 +58,7 @@ namespace Server.Engines.OrbRemoteServer
 			}
 			catch(Exception e)
 			{
-				Console.WriteLine("Exception occurred for OrbServer command {0}\nMessage: {1}", alias, e.Message);
+				ConsoleLog.Write.Information("Exception occurred for OrbServer command {0}\nMessage: {1}", alias, e.Message);
 			}
 		}
 
@@ -92,7 +93,7 @@ namespace Server.Engines.OrbRemoteServer
 			}
 			catch(Exception e)
 			{
-				Console.WriteLine("Exception occurred for OrbServer request {0}\nMessage: {1}", alias, e.Message);
+				ConsoleLog.Write.Information("Exception occurred for OrbServer request {0}\nMessage: {1}", alias, e.Message);
 			}
 
 			return response;
@@ -113,7 +114,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 					catch(Exception e)
 					{
-						Console.WriteLine("OrbServer Exception: " + e.Message);
+						ConsoleLog.Write.Information("OrbServer Exception: " + e.Message);
 					}
 				}
 			}
@@ -136,7 +137,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 					catch(Exception e)
 					{
-						Console.WriteLine("OrbServer Exception: " + e.Message);
+						ConsoleLog.Write.Information("OrbServer Exception: " + e.Message);
 					}
 				}
 			}
@@ -173,11 +174,11 @@ namespace Server.Engines.OrbRemoteServer
 		{
 			if(!type.IsSubclassOf(typeof(OrbRequest)) && !type.IsSubclassOf(typeof(OrbCommand)) )
 			{
-				Console.WriteLine("OrbRemoteServer Error: The type {0} isn't a subclass of the OrbCommand or OrbRequest classes.", type.FullName); 
+				ConsoleLog.Write.Information("OrbRemoteServer Error: The type {0} isn't a subclass of the OrbCommand or OrbRequest classes.", type.FullName); 
 			}
 			else if(m_Registry.ContainsKey(alias))
 			{	
-				Console.WriteLine("OrbRemoteServer Error: The type {0} has been assigned a duplicate alias.", type.FullName); 
+				ConsoleLog.Write.Information("OrbRemoteServer Error: The type {0} has been assigned a duplicate alias.", type.FullName); 
 			}
 			else
 			{
@@ -192,7 +193,7 @@ namespace Server.Engines.OrbRemoteServer
 		public static void Run(object o)
 		{
 			try{
-			Console.WriteLine("\n{0} {1} is listening on port {2}", SERVER_NAME, SERVER_VERSION, SERVER_PORT);
+			ConsoleLog.Write.Information("\n{0} {1} is listening on port {2}", SERVER_NAME, SERVER_VERSION, SERVER_PORT);
 			// Create Tcp channel using the selected Port number
 			TcpChannel chan = new TcpChannel(SERVER_PORT);
 			ChannelServices.RegisterChannel(chan, false);	//register channel
@@ -218,7 +219,7 @@ namespace Server.Engines.OrbRemoteServer
 		{
 			LoginCodes code = LoginCodes.Success;
 
-			//Console.WriteLine("OnValidateAccount");
+			//ConsoleLog.Write.Information("OnValidateAccount");
 			IAccount account = Accounts.GetAccount(clientInfo.UserName);
 
 			if(account == null || account.CheckPassword(password) == false)
@@ -239,7 +240,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 				}
 				
-				Console.WriteLine("{0} connected to the Orb Script Server", account.Username);
+				ConsoleLog.Write.Information("{0} connected to the Orb Script Server", account.Username);
 			}
 
 			if(code == LoginCodes.Success)

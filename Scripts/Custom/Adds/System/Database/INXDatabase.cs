@@ -6,17 +6,17 @@ namespace Server.Scripts.Custom.Adds.System.Database
 {
     public static class INXDatabase
     {
-        private static MySQLDriver db;
+        private static MySqlDriver db;
 
         public static void Initialize()
         {
-            db = new MySQLDriver("localhost", "database", "user", "password");
+            //db = new MySqlDriver("localhost", "database", "user", "password");
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static bool CheckMobile(PlayerMobile mob)
         {
-            Resource resource = db.query("SELECT count(*) FROM playermobiles WHERE id = " + (int)mob.Serial, MySQLDriver.AdapterCommandType.Select);
+            Resource resource = db.Query("SELECT count(*) FROM playermobiles WHERE id = " + (int)mob.Serial, MySqlDriver.AdapterCommandType.Select);
             if (db.Connected)
             {
                 DataRow row = resource.nextRow();
@@ -36,7 +36,7 @@ namespace Server.Scripts.Custom.Adds.System.Database
         [MethodImpl(MethodImplOptions.Synchronized)]
         public static void InsertNewMobile(PlayerMobile mob)
         {
-            db.query("INSERT INTO playermobiles (id, name, rating, tournamentrating) VALUES (" + (int)mob.Serial + ", '" + mob.Name + "', " + mob.Rating + ", " + mob.TournamentRating + ");", MySQLDriver.AdapterCommandType.Insert);
+            db.Query("INSERT INTO playermobiles (id, name, rating, tournamentrating) VALUES (" + (int)mob.Serial + ", '" + mob.Name + "', " + mob.Rating + ", " + mob.TournamentRating + ");", MySqlDriver.AdapterCommandType.Insert);
         }
 
         public static void ResetDatabase()
@@ -45,9 +45,9 @@ namespace Server.Scripts.Custom.Adds.System.Database
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static Resource Query(string query, MySQLDriver.AdapterCommandType commandType)
+        public static Resource Query(string query, MySqlDriver.AdapterCommandType commandType)
         {
-            return db.query(query, commandType);
+            return db.Query(query, commandType);
         }
     }
 }

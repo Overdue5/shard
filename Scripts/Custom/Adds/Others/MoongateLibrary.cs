@@ -640,7 +640,7 @@ namespace Server.Items
 				string bookdesc = runebook.Description == null ? "No Description" : runebook.Description;
 				bookdesc.Trim();
 				string[] keywordargs = ParseString(bookdesc, 15, ":");
-				//Console.WriteLine("Args={0} len={1}", keywordargs.Length, bookdesc.Length);
+				//ConsoleLog.Write.Information("Args={0} len={1}", keywordargs.Length, bookdesc.Length);
 				string booksecurity = null;
 				if (keywordargs != null && keywordargs.Length > 1)
 				{
@@ -658,7 +658,7 @@ namespace Server.Items
 					else
 						bookdesc = bookdesc.Substring(0, 20);
 				}
-				//Console.WriteLine("bookdesc={0}", bookdesc);
+				//ConsoleLog.Write.Information("bookdesc={0}", bookdesc);
 				if (AccessAllowed(booksecurity, m_Mobile))
 				{
 					if (selected == -1)
@@ -753,7 +753,7 @@ namespace Server.Items
 
 		private bool AccessAllowed(string securitystring, Mobile m)
 		{
-			//Console.WriteLine("AccessString={0}, {1}", securitystring, m.AccessLevel);\
+			//ConsoleLog.Write.Information("AccessString={0}, {1}", securitystring, m.AccessLevel);\
 			if (securitystring == null || m.AccessLevel > AccessLevel.Player || myGate)
 				return true;
 			if (Insensitive.Contains(securitystring, "NOREDS") && (m.Kills > 4))
@@ -795,7 +795,7 @@ namespace Server.Items
 				if (locationtext == null || locationtext.Length < 1)
 					locationtext = String.Format("({0}, {1}, {2})", entry.Location.X, entry.Location.Y, entry.Location.Z);
 				string[] keywordargs = ParseString(locationtext, 15, ":");
-				//Console.WriteLine("Args={0}", keywordargs.Length);
+				//ConsoleLog.Write.Information("Args={0}", keywordargs.Length);
 				string runesecurity = null;
 				if (keywordargs != null && keywordargs.Length > 1)
 				{
@@ -938,7 +938,7 @@ namespace Server.Items
 			RunebookEntry entry = runebook.Entries[location] as RunebookEntry;
 			// Validate security one more time incase they are trying to spoof gump buttons with Razor/etc...
 			string[] keywordargs = ParseString(runebook.Description, 15, ":");
-			//Console.WriteLine("keywordargs = {0} Runebook={1} Entry={2}", keywordargs, runebook.Description, entry.Description);
+			//ConsoleLog.Write.Information("keywordargs = {0} Runebook={1} Entry={2}", keywordargs, runebook.Description, entry.Description);
 			if (keywordargs != null && keywordargs.Length > 1)
 			{
 				if (!AccessAllowed(keywordargs[1], m_Mobile))

@@ -1,5 +1,6 @@
 using System;
 using System.Xml;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Regions;
 
@@ -34,7 +35,7 @@ namespace Server.Engines.Quests
 				}
 				catch ( Exception ex )
 				{
-					Console.WriteLine( "Error creating quest {0}: {1}", m_Quest, ex );
+					ConsoleLog.Write.Error( "Error creating quest {0}: {1}", m_Quest, ex );
 				}
 			}
 		}

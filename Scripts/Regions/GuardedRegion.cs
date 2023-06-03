@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 using Server.Commands;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Server.Regions
@@ -139,7 +140,7 @@ namespace Server.Regions
 			{
 				if ( !typeof( Mobile ).IsAssignableFrom( m_GuardType ) )
 				{
-					Console.WriteLine( "Invalid guard type for region '{0}'", this );
+					ConsoleLog.Write.Information( "Invalid guard type for region '{0}'", this );
 				    m_GuardType = DefaultGuardType;
 				}
 			}

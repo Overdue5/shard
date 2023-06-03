@@ -1,7 +1,7 @@
-using System;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Server.Logging;
 
 namespace Server.Misc
 {
@@ -70,9 +70,9 @@ namespace Server.Misc
             MailMessage message = (MailMessage)state;
 
             if (Send(message))
-                Console.WriteLine("Sent e-mail '{0}' to '{1}'.", message.Subject, message.To);
+                ConsoleLog.Write.Information("Sent e-mail '{0}' to '{1}'.", message.Subject, message.To);
             else
-                Console.WriteLine("Failure sending e-mail '{0}' to '{1}'.", message.Subject, message.To);
+                ConsoleLog.Write.Information("Failure sending e-mail '{0}' to '{1}'.", message.Subject, message.To);
         }
     }
 }

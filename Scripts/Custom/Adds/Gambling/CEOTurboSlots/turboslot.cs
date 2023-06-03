@@ -3939,19 +3939,19 @@ namespace Server.Items
 			decimal payout;
 #if PROFILE
 			if (m_Profile)
-				Console.WriteLine("/*\nProfiling: Theme:{0}  Payout Table:{1}  Cost:{2}", m_SlotTheme, m_PaybackType, m_Cost);
+				ConsoleLog.Write.Information("/*\nProfiling: Theme:{0}  Payout Table:{1}  Cost:{2}", m_SlotTheme, m_PaybackType, m_Cost);
 			if (m_Profile && !m_ProfileAll)
 			{
-				Console.WriteLine("\nDistribution Tables:\n");
+				ConsoleLog.Write.Information("\nDistribution Tables:\n");
 				for (int h = 0; h < 3; h++)
 				{
 					for (int i = 0; i < m_TotalSymbols - 1; i++)
 					{
 						Console.Write("{0},", distTable[h, i]);
 					}
-					Console.WriteLine("{0}", distTable[h, m_TotalSymbols - 1]);
+					ConsoleLog.Write.Information("{0}", distTable[h, m_TotalSymbols - 1]);
 				}
-				Console.WriteLine("\nIndividual jackpot odds:");
+				ConsoleLog.Write.Information("\nIndividual jackpot odds:");
 			}
 #endif
 			for (int i = 0; i < m_TotalSymbols; i++)
@@ -3974,7 +3974,7 @@ namespace Server.Items
 				odds = odds + payoutpercentage;
 #if PROFILE
 				if (m_Profile && !m_ProfileAll)
-					Console.WriteLine("*{0:0.00000}={1:0.00000} \tcumulative odds:{2:0.00000}", payout, payoutpercentage, odds);
+					ConsoleLog.Write.Information("*{0:0.00000}={1:0.00000} \tcumulative odds:{2:0.00000}", payout, payoutpercentage, odds);
 #endif
 			}
 
@@ -4021,7 +4021,7 @@ namespace Server.Items
 				odds = odds + payoutpercentage;
 #if PROFILE
 				if (m_Profile & !m_ProfileAll)
-					Console.WriteLine("\nAny 3: ({0}*{1}*{2}/{3})={4:#.000##}-{5:#.000##}={6:#.000##}*{7}={8:#.000##}", tbars[0], tbars[1], tbars[2], rolls, percentage, anybarminus, percentage - anybarminus, payout, payoutpercentage);
+					ConsoleLog.Write.Information("\nAny 3: ({0}*{1}*{2}/{3})={4:#.000##}-{5:#.000##}={6:#.000##}*{7}={8:#.000##}", tbars[0], tbars[1], tbars[2], rolls, percentage, anybarminus, percentage - anybarminus, payout, payoutpercentage);
 #endif
 			}
 			//Scatter 
@@ -4067,7 +4067,7 @@ namespace Server.Items
 						Console.Write("{0}*{1}*{2}", tscatters[0], tscatters[1], m_MaxRoll);
 						Console.Write("/{0})-{1:0.000##}={2:0.000##}", rolls, scatterjackpotpercent, percentage - scatterjackpotpercent);
 					}
-					Console.WriteLine("*{0:0.000##}={1:0.000##}", payout, payoutpercentage);
+					ConsoleLog.Write.Information("*{0:0.000##}={1:0.000##}", payout, payoutpercentage);
 				}
 #endif
 				if (m_ScatterPay == ScatterType.Any)
@@ -4103,13 +4103,13 @@ namespace Server.Items
 					{
 						Console.Write("{0}*{1}*{2}/{3})-{4:0.000##}={5:0.000##}", tscatters[0], m_MaxRoll, m_MaxRoll, rolls, (scatterjackpotpercent + scat2percent), (percentage - scat2percent));
 					}
-					Console.WriteLine("*{0:0.000##}={1:0.000##}", payout, payoutpercentage);
+					ConsoleLog.Write.Information("*{0:0.000##}={1:0.000##}", payout, payoutpercentage);
 				}
 #endif
 			}
 #if PROFILE
 			if (m_Profile)
-				Console.WriteLine("\nStatistical payout odds for this slot machine is : {0:0.000##}%\n", odds * 100m);
+				ConsoleLog.Write.Information("\nStatistical payout odds for this slot machine is : {0:0.000##}%\n", odds * 100m);
 #endif
 			return (float)odds * 100;
 		}
@@ -4168,7 +4168,7 @@ namespace Server.Items
 				Console.Write("\nPay Table:");
 				for (int i = 0; i < 11; i++)
 					Console.Write("{0},", m_jackpotmultiplier[i]);
-				Console.WriteLine("\n");
+				ConsoleLog.Write.Information("\n");
 			}
 			int spins = 20000000;
 			int[] progressivelist = new int[] { 0, 5, 10, 15, 20 };
@@ -4216,11 +4216,11 @@ namespace Server.Items
 						m_TotalWon += m_Cost;
 				}
 				if (progressivelist[h] == 0)
-					Console.WriteLine("@ {3} million spins:\t Low: {0:##0.00}% High: {1:##0.00}%  Actual: {2:##0.00}%\n", m_ProfPercentagelow, m_ProfPercentagehigh, WinningPercentage, spins / 1000000);
+					ConsoleLog.Write.Information("@ {3} million spins:\t Low: {0:##0.00}% High: {1:##0.00}%  Actual: {2:##0.00}%\n", m_ProfPercentagelow, m_ProfPercentagehigh, WinningPercentage, spins / 1000000);
 				else
-					Console.WriteLine("Progressive @ {3}%:\t Low: {0:##0.00}% High: {1:##0.00}%  Actual: {2:##0.00}%", m_ProfPercentagelow, m_ProfPercentagehigh, WinningPercentage, progressivelist[h]);
+					ConsoleLog.Write.Information("Progressive @ {3}%:\t Low: {0:##0.00}% High: {1:##0.00}%  Actual: {2:##0.00}%", m_ProfPercentagelow, m_ProfPercentagehigh, WinningPercentage, progressivelist[h]);
 			}
-			Console.WriteLine("*/");
+			ConsoleLog.Write.Information("*/");
 			m_isProgMaster = progmaster;
 			m_ProgressivePercent = progpercent;
 			Mobile from = m_InUseBy;

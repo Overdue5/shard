@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Server.Logging;
+
 #endregion
 
 namespace Server
@@ -131,7 +133,7 @@ namespace Server
 			}
 			catch (DirectoryNotFoundException)
 			{
-				Console.WriteLine("Warning: No configuration files found!");
+				ConsoleLog.Write.Warning("Warning: No configuration files found!");
 				return;
 			}
 
@@ -143,17 +145,13 @@ namespace Server
 				}
 				catch (Exception e)
 				{
-					Console.WriteLine("Warning: Failed to load configuration file:");
-					Console.WriteLine(path);
-					Utility.PushColor(ConsoleColor.Red);
-					Console.WriteLine(e.Message);
-					Utility.PopColor();
-
+                    ConsoleLog.Write.Warning($"Warning: Failed to load configuration file:{path}",e);
+					
 					ConsoleKey key;
 
 					do
 					{
-						Console.WriteLine("Ignore this warning? (y/n)");
+						ConsoleLog.Write.Information("Ignore this warning? (y/n)");
 
 						key = Console.ReadKey(true).Key;
 					}
@@ -161,7 +159,7 @@ namespace Server
 
 					if (key != ConsoleKey.Y)
 					{
-						Console.WriteLine("Press any key to exit...");
+						ConsoleLog.Write.Information("Press any key to exit...");
 						Console.ReadKey();
 
 						Core.Kill(false);
@@ -173,15 +171,12 @@ namespace Server
 
 			if (Core.Debug)
 			{
-				Console.WriteLine();
 
 				foreach (var e in _Entries.Values)
 				{
-					Console.WriteLine(e);
+					ConsoleLog.Write.Debug(e.ToString());
 				}
-
-				Console.WriteLine();
-			}
+            }
 
             EventSink.WorldSave += Config.OnSave;
         }
@@ -298,12 +293,8 @@ namespace Server
 				}
 				catch (Exception e)
 				{
-					Console.WriteLine("Warning: Failed to save configuration file:");
-					Console.WriteLine(g.Key);
-					Utility.PushColor(ConsoleColor.Red);
-					Console.WriteLine(e.Message);
-					Utility.PopColor();
-				}
+                    ConsoleLog.Write.Warning($"Warning: Failed to save configuration file:{g.Key}", e);
+                }
 			}
 		}
 
@@ -474,7 +465,7 @@ namespace Server
 
 		private static void Warn<T>(string key)
 		{
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Config: Warning, '{typeof(T)}' invalid value for '{key}'");
+			ConsoleLog.Write.Warning($"Config: Warning, '{typeof(T)}' invalid value for '{key}'");
 		}
 
 		private static string InternalGet(string key)
@@ -490,7 +481,7 @@ namespace Server
 				return e.UseDefault ? null : e.Value;
 			}
 
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Config: Warning, using default value for {key}");
+			ConsoleLog.Write.Warning($"Config: Warning, using default value for {key}");
 			return null;
 		}
 

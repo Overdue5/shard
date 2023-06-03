@@ -72,7 +72,7 @@ namespace Server
 
 				dataFile.Write(memBuffer, 0, memLength);	//The buffer contains the data from many items.
 
-				//Console.WriteLine("Writing {0} bytes starting at {1}, with {2} things", memLength, actualPosition, _orderedIndexInfo.Count);
+				//ConsoleLog.Write.Information("Writing {0} bytes starting at {1}, with {2} things", memLength, actualPosition, _orderedIndexInfo.Count);
 
 				byte[] indexBuffer = new byte[20];
 

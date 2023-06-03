@@ -7,6 +7,7 @@ using System.Text;
 using Server.Commands.Generic;
 using Server.Engines.BulkOrders;
 using Server.Items;
+using Server.Logging;
 
 namespace Server.Commands
 {
@@ -22,7 +23,7 @@ namespace Server.Commands
 		private static void DocGen_OnCommand( CommandEventArgs e )
 		{
 			World.Broadcast( 0x35, true, "Documentation is being generated, please wait." );
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Documentation is being generated, please wait." );
+			ConsoleLog.Write.Information("Documentation is being generated, please wait." );
 
 			Network.NetState.FlushAll();
 			Network.NetState.Pause();
@@ -38,12 +39,12 @@ namespace Server.Commands
 			if( generated )
 			{
 				World.Broadcast( 0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds );
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Documentation complete." );
+				ConsoleLog.Write.Information("Documentation complete." );
 			}
 			else
 			{
 				World.Broadcast( 0x35, true, "Docmentation failed: Documentation directories are locked and in use. Please close all open files and directories and try again." );
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Documentation failed." );
+				ConsoleLog.Write.Error("Documentation failed." );
 			}
 		}
 
@@ -178,7 +179,7 @@ namespace Server.Commands
 
 				FormatGeneric( m_Type, ref m_TypeName, ref m_FileName, ref m_LinkName );
 
-				//				Console.WriteLine( ">> inline typeinfo: "+m_TypeName );
+				//				ConsoleLog.Write.Information( ">> inline typeinfo: "+m_TypeName );
 				//				m_TypeName = GetGenericTypeName( m_Type );
 				//				m_FileName = Docs.GetFileName( "docs/types/", GetGenericTypeName( m_Type, "-", "-" ), ".html" );
 				//				m_Writer = Docs.GetWriter( "docs/types/", m_FileName );
@@ -377,7 +378,7 @@ namespace Server.Commands
 			}
 
 			string retval = String.Concat( prepend, aliased, append, name );
-			//Console.WriteLine(">> getpair: "+retval);
+			//ConsoleLog.Write.Information(">> getpair: "+retval);
 			return retval;
 		}
 
@@ -2489,7 +2490,7 @@ namespace Server.Commands
 			}
 			else linkName = link;
 
-			//Console.WriteLine( typeName+":"+fileName+":"+linkName );
+			//ConsoleLog.Write.Information( typeName+":"+fileName+":"+linkName );
 		}
 
 		public static string SanitizeType( string name )

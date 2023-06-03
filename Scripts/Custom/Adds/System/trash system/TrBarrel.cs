@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Logging;
 using Server.Multis;
 using Xanthos.ShrinkSystem;
 
@@ -437,7 +438,7 @@ namespace Server.Items
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine(String.Format("Trashcan error:" + e));
+                                    ConsoleLog.Write.Warning(String.Format("Trashcan error:" + e));
                                 }
                             }
                         }

@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using Server.Network;
 using Server.Accounting;
+using Server.Logging;
 
 namespace Server.RemoteAdmin
 {
@@ -33,7 +33,7 @@ namespace Server.RemoteAdmin
 		{
 			if ( m_Handlers[command] == null )
 			{
-				Console.WriteLine( "ADMIN: Invalid packet 0x{0:X2} from {1}, disconnecting", command, state );
+				ConsoleLog.Write.Information( "ADMIN: Invalid packet 0x{0:X2} from {1}, disconnecting", command, state );
 				return false;
 			}
 			else

@@ -7,6 +7,7 @@ using Server.Commands;
 using Server.Mobiles;
 using Server.Engines.Harvest;
 using Server.Items;
+using Server.Logging;
 using Server.Misc;
 using Server.Targeting;
 using CommandEventArgs = Server.Commands.CommandEventArgs;
@@ -33,7 +34,7 @@ namespace Scripts.Commands
             CommandSystem.Register("update", AccessLevel.GameMaster, new CommandEventHandler(Update_OnCommand));
             CommandSystem.Register("shutdown", AccessLevel.GameMaster, new CommandEventHandler(ShutDown_OnCommand));
             CommandSystem.Register("DeleteType", AccessLevel.GameMaster, new CommandEventHandler(DeleteType_OnCommand));
-            EventSink.WorldSave += args => { BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, GetOnlineReport()); };
+            EventSink.WorldSave += args => { DiscordBot.Send.WoldChat(GetOnlineReport()); };
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
             CommandSystem.Register("saycheck", AccessLevel.Player, new CommandEventHandler(Say_OnCommand));
@@ -78,7 +79,7 @@ namespace Scripts.Commands
             }
             catch (Exception exception)
             {
-                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, exception.Message);
+                ConsoleLog.Write.Error(exception.Message);
             }
         }
 
@@ -285,7 +286,7 @@ namespace Scripts.Commands
 	        }
 	        catch
 	        {
-		        Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Restart discord finished with error.{e}");
+		        ConsoleLog.Write.Error($"Restart discord finished with error.{e}");
 	        }
         }
 

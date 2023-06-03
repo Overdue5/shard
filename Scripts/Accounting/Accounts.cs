@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using Server.Logging;
 
 namespace Server.Accounting
 {
@@ -109,7 +110,7 @@ namespace Server.Accounting
                 }
                 catch
                 {
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, "Account instance load failed");
+					ConsoleLog.Write.Warning("Account instance load failed");
                 }
             }
         }

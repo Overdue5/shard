@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using Server.Logging;
 
 namespace Server
 {
@@ -73,8 +74,7 @@ namespace Server
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "Warning: Exception caught loading name lists:" );
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning( "Warning: Exception caught loading name lists:", e );
 			}
 		}
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Server.ContextMenus;
 using Server.Engines.Craft;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Items
@@ -159,7 +160,7 @@ namespace Server.Items
             }
             catch( Exception ex )
             {
-                Console.WriteLine( ex.ToString() );
+                ConsoleLog.Write.Warning(ex);
             }
 
             return false;

@@ -4,6 +4,7 @@ using System.Threading;
 using System.IO;
 using Server;
 using Server.Guilds;
+using Server.Logging;
 using Server.Network;
 
 namespace Knives.Chat3
@@ -149,9 +150,9 @@ namespace Knives.Chat3
             catch(Exception e)
             { 
                 Errors.Report(General.Local(266), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -390,9 +391,9 @@ namespace Knives.Chat3
             catch (Exception e)
             { 
                 Errors.Report(General.Local(267), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Message);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Message);
             }
         }
 
@@ -434,9 +435,9 @@ namespace Knives.Chat3
             catch (Exception e)
             {
                 Errors.Report(General.Local(268), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
     }

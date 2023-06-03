@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -113,8 +114,7 @@ namespace Server.Misc
 
             if (Required != null)
             {
-                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning,
-	                $"Restricting client version to {Required}. Action to be taken: {m_OldClientResponse}");
+                ConsoleLog.Write.Information($"Restricting client version to {Required}. Action to be taken: {m_OldClientResponse}");
             }
         }
 
@@ -168,7 +168,7 @@ namespace Server.Misc
                 {
                     if (state.Socket != null)
                     {
-                        Console.WriteLine($"Client: {state}: Disconnecting, bad version");
+                        ConsoleLog.Write.Information($"Client: {state}: Disconnecting, bad version");
                         state.Dispose();
                     }
                 });

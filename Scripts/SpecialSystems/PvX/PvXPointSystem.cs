@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Scripts.SpecialSystems;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Server
@@ -256,7 +257,7 @@ namespace Server
 			if (attacker.Player && defender.Player)
 			{
 				if (attacker.AccessLevel==AccessLevel.Player && defender.AccessLevel == AccessLevel.Player)
-				    BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.PvP, Utility.RandomList(m_DeathMessage).Replace(m_WinName, attacker.Name).Replace(m_LooseName, defender.Name));
+                    DiscordBot.Send.PvP(Utility.RandomList(m_DeathMessage).Replace(m_WinName, attacker.Name).Replace(m_LooseName, defender.Name));
 				CalculatePvPStat(attacker as PlayerMobile, defender as PlayerMobile);
             }
 			else

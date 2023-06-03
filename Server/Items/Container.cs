@@ -23,6 +23,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Server.Logging;
 using Server.Network;
 using Solaris.CliLocHandler;
 
@@ -1816,7 +1817,7 @@ namespace Server.Items
 
 									if ( m_Table.ContainsKey( id ) )
 									{
-										Console.WriteLine( @"Warning: double ItemID entry in Data\containers.cfg" );
+										ConsoleLog.Write.Warning( @"Warning double ItemID entry in Data\containers.cfg" );
 									}
 									else
 									{

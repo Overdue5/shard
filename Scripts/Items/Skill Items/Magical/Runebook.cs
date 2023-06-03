@@ -5,6 +5,7 @@ using Server.Commands;
 using Server.ContextMenus;
 using Server.Engines.Craft;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
@@ -602,9 +603,9 @@ namespace Server.Items
             _ = reader.ReadInt();
             LootType = LootType.Regular;
             if (Entries.Count > m_YMaxRune)
-                BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"YRuneBook {this} contains {Entries.Count} runes, more that {m_YMaxRune} rune");
+                DiscordBot.Send.ConsoleImportant($"YRuneBook {this} contains {Entries.Count} runes, more that {m_YMaxRune} rune");
             if (MaxRunes > m_YMaxRune)
-                BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"YRuneBook {this}, MaxRunes {MaxRunes} values more that expected {m_YMaxRune}");
+                DiscordBot.Send.ConsoleImportant($"YRuneBook {this}, MaxRunes {MaxRunes} values more that expected {m_YMaxRune}");
 
         }
 

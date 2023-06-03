@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Server.Commands;
+using Server.Logging;
 
 namespace Server.Misc.EConnect
 {
@@ -18,7 +19,7 @@ namespace Server.Misc.EConnect
 			}
 			catch (Exception e)
 			{
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Error discord init:{e.Message}");
+				ConsoleLog.Write.Error($"Error discord init:{e.Message}");
 			}
 		}
 
@@ -101,23 +102,23 @@ namespace Server.Misc.EConnect
 
 		public override void SendAsciiMessage(string text)
 		{
-			Discord.Bot.SendToDiscord(m_Channel, text);
+			DiscordBot.Send.ToCh(m_Channel, text);
 		}
 
 		public override void SendAsciiMessage(int hue, string text)
 		{
-			Discord.Bot.SendToDiscord(m_Channel, text);
-		}
+            DiscordBot.Send.ToCh(m_Channel, text);
+        }
 
 		public override void SendMessage(string text)
 		{
-			Discord.Bot.SendToDiscord(m_Channel, text);
-		}
+            DiscordBot.Send.ToCh(m_Channel, text);
+        }
 
 		public override void SendMessage(int hue, string text)
 		{
-			Discord.Bot.SendToDiscord(m_Channel, text);
-		}
+            DiscordBot.Send.ToCh(m_Channel, text);
+        }
 
 		public override void Serialize(GenericWriter writer)
 		{

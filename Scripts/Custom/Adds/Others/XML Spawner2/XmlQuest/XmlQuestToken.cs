@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using Server.Engines.XmlSpawner2;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -1652,7 +1653,7 @@ namespace Server.Items
                 fs.Close();
                 if (fileerror)
                 {
-                    Console.WriteLine("XmlQuestToken: Error in XML config file '{0}'", filename);
+                    ConsoleLog.Write.Information("XmlQuestToken: Error in XML config file '{0}'", filename);
                     return;
                 }
                 // Check that at least a single table was loaded

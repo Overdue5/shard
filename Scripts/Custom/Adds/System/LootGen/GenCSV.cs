@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Server.Commands;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Server.Scripts.Custom.Adds.System.LootGen
@@ -20,14 +21,14 @@ namespace Server.Scripts.Custom.Adds.System.LootGen
         {
             LoadBaseCreatureTypes();
 
-            Console.WriteLine("*** Generating BaseCreature Info ***");
+            ConsoleLog.Write.Information("*** Generating BaseCreature Info ***");
             e.Mobile.SendMessage("Generating BaseCreature Info...");
             for (int i = 1; i <= 1; i++) //TODO: Multiple tests? I don't think it needs to be perfect.
             {
                 GenerateCSV("output/statistics/", "basecreatures_" + i + ".csv");
             }
             e.Mobile.SendMessage("Generating BaseCreature Info... Done.");
-            Console.WriteLine("*** Done Generating BaseCreature Info ***");
+            ConsoleLog.Write.Information("*** Done Generating BaseCreature Info ***");
         }
 
         private static void LoadBaseCreatureTypes()
@@ -117,7 +118,7 @@ namespace Server.Scripts.Custom.Adds.System.LootGen
                     bc.Delete();
                 }
                 catch {
-                    //Console.WriteLine(e);
+                    //ConsoleLog.Write.Information(e);
                 }
             }
             writer.Close();

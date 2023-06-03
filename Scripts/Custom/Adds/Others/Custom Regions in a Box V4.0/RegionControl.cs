@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Gumps;
+using Server.Logging;
 using Server.Regions;
 using Server.Spells;
 
@@ -415,9 +416,9 @@ namespace Server.Items
                 if (Map != null)// && !RegionNameTaken(value))
                     m_RegionName = value;
                 //else if (Map != null)
-                //    Console.WriteLine("RegionName not changed for {0}, {1} already has a Region with the name of {2}", this, Map, value);
+                //    ConsoleLog.Write.Information("RegionName not changed for {0}, {1} already has a Region with the name of {2}", this, Map, value);
                 else// if(Map == null)
-                    Console.WriteLine("RegionName not changed for {0} to {1}, its Map value was null", this, value);
+                    ConsoleLog.Write.Information("RegionName not changed for {0} to {1}, its Map value was null", this, value);
 
                 UpdateRegion();
             }

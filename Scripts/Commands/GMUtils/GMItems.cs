@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Server.Gumps;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Commands
@@ -382,7 +383,7 @@ namespace Server.Commands
 				}
 				catch (Exception e)
 				{
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, e.Message);
+					ConsoleLog.Write.Error(e.Message);
 				}
 			}
 		}

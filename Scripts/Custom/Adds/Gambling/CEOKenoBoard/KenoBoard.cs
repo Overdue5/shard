@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Gumps;
+using Server.Logging;
 
 /*
 Package Name: CEOKenoBoard
@@ -601,7 +602,7 @@ namespace Server.Items
 
         public float[] GetPayTable(int method, int Cost, int totalselected)
         {
-            //Console.WriteLine("(GetPayTable) method={0} totalselected={1}", method, totalselected);
+            //ConsoleLog.Write.Information("(GetPayTable) method={0} totalselected={1}", method, totalselected);
             float[] paytable = new float[21];
             if (totalselected == 0) return paytable; // Return zeroed table when nothing is selected
             PayMethod paymethod = (PayMethod)method;
@@ -1190,7 +1191,7 @@ namespace Server.Items
             /*for (int i = 0; i < PlayerList.Count; i++)
             {
                 PlayerInfo tplayer = (PlayerInfo) PlayerList[i];
-                //Console.WriteLine("(AddNewPlayer) Added/{0}/{1}", i, tplayer.mobile);
+                //ConsoleLog.Write.Information("(AddNewPlayer) Added/{0}/{1}", i, tplayer.mobile);
             }*/
             return player;
         }
@@ -1270,7 +1271,7 @@ namespace Server.Items
                 PlayerInfo player = (PlayerInfo)PlayerList[i];
                 if (player.OnCredit < 0)
                 {
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"{Name} has an invalidate credit amount for {player.mobile.Name}({player.OnCredit}). Set to 0.");
+					ConsoleLog.Write.Information($"{Name} has an invalidate credit amount for {player.mobile.Name}({player.OnCredit}). Set to 0.");
                     player.OnCredit = 0;
                 }
                 if (player.OnCredit != 0)
@@ -1395,8 +1396,8 @@ namespace Server.Items
                 return;
             }
             DateTime startdt = DateTime.UtcNow;
-            Console.WriteLine("Begin-Date/Time: {0}", startdt);
-            Console.WriteLine("Profiling Keno Board. Theme: {0}", m_Theme);
+            ConsoleLog.Write.Information("Begin-Date/Time: {0}", startdt);
+            ConsoleLog.Write.Information("Profiling Keno Board. Theme: {0}", m_Theme);
             for (int o = 0; o < 3; o++)
             {
                 for (int p = 0; p < 1000000; p++)
@@ -1419,7 +1420,7 @@ namespace Server.Items
             }
             DateTime enddt = DateTime.UtcNow;
             TimeSpan elapsed = enddt - startdt;
-            Console.WriteLine("Done-Date/Time: {0}  Elapsed: {1}", enddt, elapsed);
+            ConsoleLog.Write.Information("Done-Date/Time: {0}  Elapsed: {1}", enddt, elapsed);
 #endif
         }
 
@@ -1489,7 +1490,7 @@ namespace Server.Items
             }
             if (SearchForPlayer(from, out player))
             {
-                //Console.WriteLine("Player Found");
+                //ConsoleLog.Write.Information("Player Found");
                 ClearBoard(from, player);
                 string text = String.Format("Adding(e): {0}.", player.mobile.Name);
                 SecurityCamera(0, text);

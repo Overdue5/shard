@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 using System;
+using System.Collections.Generic;
 using Server.Network;
 
 namespace Server.Items
@@ -27,7 +28,7 @@ namespace Server.Items
 	{
 		private Mobile m_Owner;
 		private bool m_Open;
-
+        public static List<BankBox> AllBank = new List<BankBox>();
 		public override int DefaultMaxWeight
 		{
 			get
@@ -112,8 +113,9 @@ namespace Server.Items
 			}
 
 			if ( this.ItemID == 0xE41 )
-				this.ItemID = 0xE7C;
-		}
+				this.ItemID = 0xE7C; 
+            AllBank.Add(this);
+        }
 
 		private static bool m_SendRemovePacket;
 

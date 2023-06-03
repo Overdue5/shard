@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using Server.Logging;
 
 namespace Server.WebServices
 {
@@ -64,7 +65,7 @@ namespace Server.WebServices
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error in HttpServer: " + e.Message);
+                ConsoleLog.Write.Error("Error in HttpServer: " + e.Message);
             }
         }
 
@@ -96,7 +97,7 @@ namespace Server.WebServices
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error in HttpServer: " + e.Message);
+                ConsoleLog.Write.Error("Error in HttpServer: " + e.Message);
             }
         }
 

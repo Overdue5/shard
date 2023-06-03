@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Xml;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -164,7 +165,7 @@ namespace Server.Gumps
 
 				}
 				} catch (Exception ex){
-                    Console.WriteLine("XmlCategorizedAddGump: Corrupted Data/objects.xml file detected. Not all XmlCAG objects loaded. {0}", ex); 
+                    ConsoleLog.Write.Information("XmlCategorizedAddGump: Corrupted Data/objects.xml file detected. Not all XmlCAG objects loaded. {0}", ex); 
                 }
 
 

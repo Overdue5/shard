@@ -6,6 +6,7 @@ using System.Text;
 using Server.Accounting;
 using Server.Commands;
 using Server.Guilds;
+using Server.Logging;
 using Server.Misc;
 using Server.Mobiles;
 
@@ -124,7 +125,7 @@ namespace Server.Engines.MyRunUO
 			m_Collecting = new List<IAccount>();
 
 			m_StartTime = DateTime.UtcNow;
-			Console.WriteLine( "MyRunUO: Updating character database" );
+			ConsoleLog.Write.Information( "MyRunUO: Updating character database" );
 		}
 
 		protected override void OnTick()
@@ -136,12 +137,11 @@ namespace Server.Engines.MyRunUO
 				shouldExit = Process( DateTime.UtcNow + TimeSpan.FromSeconds( CpuInterval * CpuPercent ) );
 
 				if ( shouldExit )
-					Console.WriteLine( "MyRunUO: Database statements compiled in {0:F2} seconds", (DateTime.UtcNow - m_StartTime).TotalSeconds );
+					ConsoleLog.Write.Information( "MyRunUO: Database statements compiled in {0:F2} seconds", (DateTime.UtcNow - m_StartTime).TotalSeconds );
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "MyRunUO: {0}: Exception cought while processing", m_Stage );
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning("MyRunUO: {0}: Exception cought while processing", m_Stage, e );
 				shouldExit = true;
 			}
 

@@ -18,7 +18,7 @@
  *
  ***************************************************************************/
 
-using System;
+using Server.Logging;
 using System.IO;
 
 namespace Server
@@ -120,7 +120,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Warning: Multi data files not found" );
+				ConsoleLog.Write.Warning( "Warning: Multi data files not found" );
 
 				m_Components = new MultiComponentList[0];
 			}

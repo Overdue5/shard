@@ -24,6 +24,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server;
+using Server.Logging;
 using Server.Misc.EConnect;
 
 namespace Knives.Chat3
@@ -115,9 +116,9 @@ namespace Knives.Chat3
             catch (Exception e)
             {
                 Errors.Report(General.Local(187));
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -160,9 +161,9 @@ namespace Knives.Chat3
             catch(Exception e)
             {
                 Errors.Report(General.Local(186));
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -390,9 +391,9 @@ namespace Knives.Chat3
             Events.InvokeChat(new ChatEventArgs(m, this, msg));
 			var toLog = $"<{c_Name}{(c_Style == ChatStyle.Regional && m.Region != null ? " - " + m.Region.Name : "")}> {m.RawName}: {msg}";
 			if (Data.LogChat)
-                Logging.LogChat($"{DateTime.UtcNow} {toLog}");
+                ChatLogging.LogChat($"{DateTime.UtcNow} {toLog}");
 			if (DiscordChannel!=BaseDiscord.Channel.None && !(m is DiscordChatMobile))
-				BaseDiscord.Bot.SendToDiscord(DiscordChannel, toLog);
+                DiscordBot.Send.ToCh(DiscordChannel, toLog);
 			
             Data.TotalChats++;
             Data.GetData(m).Karma++;

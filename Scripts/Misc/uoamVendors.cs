@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server.Commands;
+using Server.Logging;
 using Server.Mobiles;
 
 // Version 0.8
@@ -229,7 +230,7 @@ namespace Server
 							case "+town:":
 								break;
 							/*default:
-								Console.WriteLine(split[0]);
+								ConsoleLog.Write.Information(split[0]);
 								break;*/
 						}
 					}
@@ -270,7 +271,7 @@ namespace Server
 					MakeSpawner( types, x, y, Map.Malas );
 					break;
 				default:
-					Console.WriteLine( "UOAM Vendor Parser: Warning, unknown map {0}", map );
+					ConsoleLog.Write.Information( "UOAM Vendor Parser: Warning, unknown map {0}", map );
 					break;
 			}
 		}

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Knives.Chat3
@@ -80,8 +81,8 @@ namespace Knives.Chat3
             DateTime time = DateTime.UtcNow;
             if (Data.Debug)
             {
-                Console.WriteLine("");
-                Console.WriteLine(General.Local(241));
+                ConsoleLog.Write.Information("");
+                ConsoleLog.Write.Information(General.Local(241));
             }
 
             Data.Save();
@@ -97,7 +98,7 @@ namespace Knives.Chat3
             if (Data.Debug)
             {
                 TimeSpan elapsed = DateTime.UtcNow - time;
-                Console.WriteLine(General.Local(240) + " {0}", (elapsed.Minutes != 0 ? elapsed.Minutes + " minutes" : "") + (elapsed.Seconds != 0 ? elapsed.Seconds + " seconds" : "") + elapsed.Milliseconds + " milliseconds");
+                ConsoleLog.Write.Information(General.Local(240) + " {0}", (elapsed.Minutes != 0 ? elapsed.Minutes + " minutes" : "") + (elapsed.Seconds != 0 ? elapsed.Seconds + " seconds" : "") + elapsed.Milliseconds + " milliseconds");
             }
         }
 

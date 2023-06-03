@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Logging;
 
 namespace Knives.TownHouses
 {
@@ -170,10 +171,10 @@ namespace Knives.TownHouses
             catch(Exception e)
             {
                 Errors.Report("Error occured in IsInside().  More information on the console.");
-                Console.WriteLine("Info:{0}, {1}, {2}", Map, sector, Region, sector != null ? "" + sector.Multis : "**");
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information("Info:{0}, {1}, {2}", Map, sector, Region, sector != null ? "" + sector.Multis : "**");
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.StackTrace);
                 return false;
             }
         }

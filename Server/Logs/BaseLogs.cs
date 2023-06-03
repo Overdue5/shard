@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Server.Logging;
 
 namespace Server
 {
@@ -108,7 +109,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error init log for {LogsName}. Ex:{e.Message}");
+                ConsoleLog.Write.Error($"Error init log for {LogsName}. Ex:{e.Message}");
             }
             EventSink.WorldSave += new WorldSaveEventHandler(SaveLog);
             EventSink.Crashed += new CrashedEventHandler(SaveLog);

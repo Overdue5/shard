@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -186,7 +187,7 @@ namespace Server.Engines.Help
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning( e );
 			}
 		}
 
@@ -226,7 +227,7 @@ namespace Server.Engines.Help
 				}
 				catch ( Exception e )
 				{
-					Console.WriteLine( e );
+					ConsoleLog.Write.Warning( e );
 				}
 			}
 
@@ -594,7 +595,7 @@ namespace Server.Engines.Help
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine(e);
+				ConsoleLog.Write.Warning(e);
 			}
 		}
 

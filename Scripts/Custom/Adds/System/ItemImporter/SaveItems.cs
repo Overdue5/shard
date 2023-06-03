@@ -3,6 +3,7 @@ using System.Collections;
 using System.Data;
 using System.IO;
 using Server.Commands;
+using Server.Logging;
 
 namespace Server
 {
@@ -106,7 +107,7 @@ namespace Server
 			}
 			catch( Exception e )
 			{
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning( e );
 				ok = false;
 			}
 

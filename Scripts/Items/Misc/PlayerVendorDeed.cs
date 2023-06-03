@@ -1,4 +1,5 @@
 using System;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Regions;
@@ -85,7 +86,7 @@ namespace Server.Items
                     }
                     catch (Exception e)
                     {
-                    	Console.WriteLine(e.ToString());
+                    	ConsoleLog.Write.Warning(e);
                     }
                 }
 				else if ( house == null )

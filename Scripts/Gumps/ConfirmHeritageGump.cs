@@ -1,5 +1,6 @@
 ﻿using System;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Gumps
@@ -52,8 +53,8 @@ namespace Server.Gumps
 						}
 						catch ( Exception ex )
 						{
-							Console.WriteLine( ex.Message );
-							Console.WriteLine( ex.StackTrace );
+							ConsoleLog.Write.Information( ex.Message );
+							ConsoleLog.Write.Information( ex.StackTrace );
 						}				
 
 						if ( item != null )

@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using Server;
 using Server.Accounting;
+using Server.Logging;
 
 namespace Knives.Chat3
 {
@@ -106,9 +107,9 @@ namespace Knives.Chat3
             catch (Exception e)
             {
                 Errors.Report(General.Local(199));
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
 		}
 
@@ -165,9 +166,9 @@ namespace Knives.Chat3
             catch (Exception e)
             {
                 Errors.Report(General.Local(198));
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Error(e.Message);
+                ConsoleLog.Write.Error(e.Source);
+                ConsoleLog.Write.Error(e.StackTrace);
             }
 		}
 

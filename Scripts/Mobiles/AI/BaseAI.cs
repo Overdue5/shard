@@ -8,6 +8,7 @@ using Server.Engines.Quests;
 using Server.Engines.Quests.Necro;
 using Server.Factions;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 using Server.Regions;
 using Server.Spells;
@@ -2143,7 +2144,7 @@ namespace Server.Mobiles
 
             if (TransformMoveDelay(m_Mobile.CurrentSpeed) == double.NaN)
             {
-                Console.WriteLine("CurrentSpeed is NaN");
+                ConsoleLog.Write.Information("CurrentSpeed is NaN");
                 return MoveResult.BadState;
             }
 
@@ -2158,7 +2159,7 @@ namespace Server.Mobiles
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                ConsoleLog.Write.Warning(e);
             }
 
             m_Mobile.Pushing = false;

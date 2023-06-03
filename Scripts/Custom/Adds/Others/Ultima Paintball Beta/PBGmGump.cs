@@ -755,13 +755,13 @@ namespace Server.Games.PaintBall
 				{
 					if ( props[i].CanRead && props[i].CanWrite )
 					{
-						//Console.WriteLine( "Setting {0} = {1}", props[i].Name, props[i].GetValue( src, null ) );
+						//ConsoleLog.Write.Information( "Setting {0} = {1}", props[i].Name, props[i].GetValue( src, null ) );
 						props[i].SetValue( dest, props[i].GetValue( src, null ), null );
 					}
 				}
 				catch
 				{
-					//Console.WriteLine( "Denied" );
+					//ConsoleLog.Write.Information( "Denied" );
 				}
 			}
 		}

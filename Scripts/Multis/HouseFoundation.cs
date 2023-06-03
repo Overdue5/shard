@@ -6,6 +6,7 @@ using System.Threading;
 using Server.Commands;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
@@ -2390,7 +2391,7 @@ namespace Server.Multis
 
 				if( ce != ZLibError.Okay )
 				{
-					Console.WriteLine( "ZLib error: {0} (#{1})", ce, (int)ce );
+					ConsoleLog.Write.Information( "ZLib error: {0} (#{1})", ce, (int)ce );
 					deflatedLength = 0;
 					size = 0;
 				}
@@ -2424,7 +2425,7 @@ namespace Server.Multis
 
 				if( ce != ZLibError.Okay )
 				{
-					Console.WriteLine( "ZLib error: {0} (#{1})", ce, (int)ce );
+					ConsoleLog.Write.Information( "ZLib error: {0} (#{1})", ce, (int)ce );
 					deflatedLength = 0;
 					size = 0;
 				}
@@ -2534,7 +2535,7 @@ namespace Server.Multis
 					}
 					catch( Exception e )
 					{
-						Console.WriteLine( e );
+						ConsoleLog.Write.Warning( e );
 
 						try
 						{

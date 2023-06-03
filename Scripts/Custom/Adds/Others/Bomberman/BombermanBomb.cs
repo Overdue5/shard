@@ -126,7 +126,7 @@ namespace Server.Custom.Games
 			
 			protected override void OnTick()
 			{
-                //Console.WriteLine( "tick" );
+                //ConsoleLog.Write.Information( "tick" );
                 int x = m_Bomb.X;
                 int y = m_Bomb.Y;
                 int z = m_Bomb.Z;
@@ -192,11 +192,11 @@ namespace Server.Custom.Games
                         if (((Mobile)tokill[i]).CanBeDamaged())
                         {
                             /*if(m_Game == null)
-                                Console.WriteLine("game");
+                                ConsoleLog.Write.Information("game");
                             if(tokill[i] == null)
-                                Console.WriteLine("tokill");
+                                ConsoleLog.Write.Information("tokill");
                             if(m_Owner == null)
-                                Console.WriteLine("owner");*/
+                                ConsoleLog.Write.Information("owner");*/
                             if (tokill[i] == m_Owner)
                             {
                                 m_Game.AnnounceToPlayers(2593, (m_Owner.Name + " has killed himself"));

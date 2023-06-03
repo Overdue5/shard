@@ -33,6 +33,7 @@ using System.Threading.Tasks;
 using Server.Network;
 using System.Runtime;
 using System.Threading.Tasks;
+using Server.Logging;
 
 namespace Server
 {
@@ -46,7 +47,8 @@ namespace Server
     public static class Core
     {
 	    public static readonly string DateFormat = "[MMMM dd HH:mm:ss.f]: ";
-		private static bool m_Crashed;
+        private static readonly ILogger m_Logger = LogFactory.GetLogger(typeof(Core));
+        private static bool m_Crashed;
 		private static Thread timerThread;
 		private static string m_BaseDirectory;
 		private static string m_ExePath;
@@ -150,7 +152,7 @@ namespace Server
 
 				fullPath = null;
 			}
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Ultima Online directory:" + fullPath);
+            ConsoleLog.Write.Information("Ultima Online directory:" + fullPath);
             return fullPath;
 		}
 
@@ -249,9 +251,7 @@ namespace Server
 
 		private static void CurrentDomain_UnhandledException( object sender, UnhandledExceptionEventArgs e )
 		{
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning,  e.IsTerminating ? "Error:" : "Warning:" );
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, e.ExceptionObject.ToString() );
-
+            ConsoleLog.Write.Warning(e.IsTerminating ? "Error:" : "Warning:", e );
 			if( e.IsTerminating )
 			{
 				m_Crashed = true;
@@ -285,11 +285,11 @@ namespace Server
                     
                     if (m_Service)
                     {
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "This exception is fatal.");
+						ConsoleLog.Write.Error("This exception is fatal.");
                     }
                     else
                     {
-	                    Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,"This exception is fatal, press return to exit");
+	                    ConsoleLog.Write.Error("This exception is fatal, press return to exit");
                         Console.ReadLine();
                     }
 				}
@@ -379,7 +379,7 @@ namespace Server
                 };
                 var process = System.Diagnostics.Process.Start(startInfo);
                 string output = process.StandardOutput.ReadToEnd();
-                Console.WriteLine(output);
+                ConsoleLog.Write.Information(output);
                 process.WaitForExit();
                 Environment.Exit((int)ExitCode.PullAndRebuild);
             }
@@ -393,7 +393,7 @@ namespace Server
 
 			m_Closing = true;
 
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Exiting..." );
+			ConsoleLog.Write.Information("Exiting..." );
 
             World.WaitForWriteCompletion();
 
@@ -402,7 +402,7 @@ namespace Server
 
 			Timer.TimerThread.Set();
 
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "done" );
+			ConsoleLog.Write.Information("done" );
 		}
 
 		private static AutoResetEvent m_Signal = new AutoResetEvent( true );
@@ -410,7 +410,7 @@ namespace Server
 
 		public static void Main( string[] args )
 		{
-			AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler( CurrentDomain_UnhandledException );
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler( CurrentDomain_UnhandledException );
 			AppDomain.CurrentDomain.ProcessExit += new EventHandler( CurrentDomain_ProcessExit );
 			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 			for ( int i = 0; i < args.Length; ++i )
@@ -471,14 +471,14 @@ namespace Server
 
 			Version ver = m_Assembly.GetName().Version;
 
-			// Added to help future code support on forums, as a 'check' people can ask for to it see if they recompiled core or not
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"RunUO - [www.runuo.com] Version {ver.Major}.{ver.Minor}, Build {ver.Build}.{ver.Revision}" );
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Core: Running on .NET Framework Version {Environment.Version.Major}.{Environment.Version.Minor}.{Environment.Version.Build}" );
+            // Added to help future code support on forums, as a 'check' people can ask for to it see if they recompiled core or not
+            ConsoleLog.Write.Information($"RunUO - [www.runuo.com] Version {ver.Major}.{ver.Minor}, Build {ver.Build}.{ver.Revision}" );
+			ConsoleLog.Write.Information($"Core: Running on .NET Framework Version {Environment.Version.Major}.{Environment.Version.Minor}.{Environment.Version.Build}" );
 
 			string s = Arguments;
 
 			if( s.Length > 0 )
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Core: Running with arguments: {s}" );
+				ConsoleLog.Write.Information($"Core: Running with arguments: {s}" );
 
             m_ProcessorCount = Environment.ProcessorCount;
 
@@ -486,12 +486,12 @@ namespace Server
                 m_MultiProcessor = true;
 
             if (m_MultiProcessor || Is64Bit)
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Core: Optimizing for {m_ProcessorCount} {(Is64Bit ? "64-bit " : "")}processor{(m_ProcessorCount == 1 ? "" : "s")}");
+				ConsoleLog.Write.Information($"Core: Optimizing for {m_ProcessorCount} {(Is64Bit ? "64-bit " : "")}processor{(m_ProcessorCount == 1 ? "" : "s")}");
 
             int platform = (int)Environment.OSVersion.Platform;
             if (platform == 4 || platform == 128) { // MS 4, MONO 128
                 m_Unix = true;
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Core: Unix environment detected");
+				ConsoleLog.Write.Information("Core: Unix environment detected");
             }
             else {
                 m_ConsoleEventHandler = new ConsoleEventHandler(OnConsoleEvent);
@@ -499,18 +499,18 @@ namespace Server
             }
 
             if (GCSettings.IsServerGC)
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Core: Server garbage collection mode enabled");
+				ConsoleLog.Write.Information("Core: Server garbage collection mode enabled");
 
             if (!m_NoCompile || !ScriptCompiler.LoadPrecompiledAssembly())
             {
                 while (!ScriptCompiler.Compile(m_Debug, m_Cache))
                 {
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Scripts: One or more scripts failed to compile or no script files were found.");
+					ConsoleLog.Write.Error("Scripts: One or more scripts failed to compile or no script files were found.");
 
                     if (m_Service)
                         return;
 
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, " - Press return to exit, or R to try again.");
+					ConsoleLog.Write.Information(" - Press return to exit, or R to try again.");
 
                     if (Console.ReadKey(true).Key != ConsoleKey.R)
                         return;
@@ -691,12 +691,12 @@ namespace Server
 
                     if (warningSb != null && warningSb.Length > 0)
                     {
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"{t}\n{warningSb}");
+						ConsoleLog.Write.Warning($"{t}\n{warningSb}");
 	                }
                 }
                 catch
                 {
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Exception in serialization verification of type {t}");
+					ConsoleLog.Write.Information($"Exception in serialization verification of type {t}");
                 }
             }
         }
@@ -761,12 +761,12 @@ namespace Server
 
                     if (warningSb != null && warningSb.Length > 0)
                     {
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"{t}\n{warningSb.ToString()}");
+						ConsoleLog.Write.Warning($"{t}\n{warningSb.ToString()}");
                     }
                 }
                 catch
                 {
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, $"Exception in serialization verification of type {t}");
+					ConsoleLog.Write.Warning($"Exception in serialization verification of type {t}");
                 }
             }
         }
@@ -887,12 +887,12 @@ namespace Server
 			if (wline.Length > 0)
 			{
 				wline.Append(line);
-				BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Console, $"{wline.ToString()}");
+				BaseDiscord.Bot.SendMessageToDiscord(Server.BaseDiscord.Channel.Console, $"{wline.ToString()}");
 				wline.Clear();
 			}
 			else
 			{
-				BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Console, $"{line}");
+				BaseDiscord.Bot.SendMessageToDiscord(Server.BaseDiscord.Channel.Console, $"{line}");
 			}
 		}
 

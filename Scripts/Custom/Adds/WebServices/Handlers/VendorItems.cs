@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Caching;
 
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Regions;
 using Server.Util;
@@ -52,7 +53,7 @@ namespace Server.WebServices
             }
             m_LastVendorUpdate = DateTime.UtcNow;
             m_NextVendorUpdate = m_LastVendorUpdate + m_WorldSaveInterval;
-            Utility.ConsoleWriteLine($"Caching {count} Player Vendors");
+            ConsoleLog.Write.Information($"Caching {count} Player Vendors");
         }
 
         private static void processContainer(PlayerVendor vendor, Container container)

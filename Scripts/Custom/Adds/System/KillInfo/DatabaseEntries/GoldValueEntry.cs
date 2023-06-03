@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Logging;
 
 namespace Server.Scripts.Custom.Adds.System.KillInfo.DatabaseEntries
 {
@@ -82,7 +83,7 @@ namespace Server.Scripts.Custom.Adds.System.KillInfo.DatabaseEntries
                 }
             }
             catch {
-                Console.WriteLine(lastIndex);
+                ConsoleLog.Write.Warning(lastIndex.ToString());
             }
         }
     }

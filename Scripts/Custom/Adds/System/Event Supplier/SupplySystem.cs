@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Server.Custom.Games;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 using Solaris.CliLocHandler;
 using Server.Mobiles;
@@ -441,7 +442,7 @@ namespace Server
             }
             catch
             {
-                Console.WriteLine("SupplySystem error, cannot create {0}, no parameterless constructor defined?", toCopy.GetType());
+                ConsoleLog.Write.Warning("SupplySystem error, cannot create {0}, no parameterless constructor defined?", toCopy.GetType());
             }
 
             if (newItem == null)

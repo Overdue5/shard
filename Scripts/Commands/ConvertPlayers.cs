@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -51,7 +52,7 @@ namespace Server.Commands
 				NetState.ProcessDisposedQueue();
 				World.Save();
 
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"{count} players have been converted to PlayerMobile. {(Core.Service ? "The server is now restarting" : "Press any key to restart the server")}.");
+				ConsoleLog.Write.Information($"{count} players have been converted to PlayerMobile. {(Core.Service ? "The server is now restarting" : "Press any key to restart the server")}.");
 
                 if (!Core.Service)
                     Console.ReadKey(true);

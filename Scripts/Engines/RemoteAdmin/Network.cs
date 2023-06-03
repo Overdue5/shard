@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections;
 using Server.Accounting;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.RemoteAdmin
@@ -132,7 +133,7 @@ namespace Server.RemoteAdmin
 			}
 			else if ( !IsAuth( state ) )
 			{
-				Console.WriteLine( "ADMIN: Unauthorized packet from {0}, disconnecting", state );
+				ConsoleLog.Write.Information( "ADMIN: Unauthorized packet from {0}, disconnecting", state );
 				Disconnect( state );
 			}
 			else
@@ -162,30 +163,30 @@ namespace Server.RemoteAdmin
 			if ( a == null )
 			{
 				state.Send( new Login( LoginResponse.NoUser ) );
-				Console.WriteLine( "ADMIN: Invalid username '{0}' from {1}", user, state );
+				ConsoleLog.Write.Information( "ADMIN: Invalid username '{0}' from {1}", user, state );
 				DelayedDisconnect( state );
 			}
 			else if ( !a.HasAccess( state ) )
 			{
 				state.Send( new Login( LoginResponse.BadIP ) );
-				Console.WriteLine( "ADMIN: Access to '{0}' from {1} denied.", user, state );
+				ConsoleLog.Write.Information( "ADMIN: Access to '{0}' from {1} denied.", user, state );
 				DelayedDisconnect( state );
 			}
 			else if ( !a.CheckPassword( pw ) )
 			{
 				state.Send( new Login( LoginResponse.BadPass ) );
-				Console.WriteLine( "ADMIN: Invalid password for user '{0}' from {1}", user, state );
+				ConsoleLog.Write.Information( "ADMIN: Invalid password for user '{0}' from {1}", user, state );
 				DelayedDisconnect( state );
 			}
 			else if ( a.AccessLevel < AccessLevel.Administrator || a.Banned )
 			{
-				Console.WriteLine( "ADMIN: Account '{0}' does not have admin access. Connection Denied.", user );
+				ConsoleLog.Write.Information( "ADMIN: Account '{0}' does not have admin access. Connection Denied.", user );
 				state.Send( new Login( LoginResponse.NoAccess ) ); 
 				DelayedDisconnect( state );
 			}
 			else
 			{
-				Console.WriteLine( "ADMIN: Access granted to '{0}' from {1}", user, state );
+				ConsoleLog.Write.Information( "ADMIN: Access granted to '{0}' from {1}", user, state );
 				state.Account = a;
 				a.LogAccess( state );
 				a.LastLogin = DateTime.UtcNow;
@@ -229,7 +230,7 @@ namespace Server.RemoteAdmin
 
 				if ( error != ZLibError.Okay )
 				{
-					Console.WriteLine( "WARNING: Unable to compress admin packet, zlib error: {0}", error );
+					ConsoleLog.Write.Warning( "Warning: Unable to compress admin packet, zlib error: {0}", error );
 					return p;
 				}
 				else

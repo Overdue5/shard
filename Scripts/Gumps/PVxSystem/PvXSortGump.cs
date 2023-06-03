@@ -1,6 +1,7 @@
 ﻿using Server.Network;
 using Scripts.SpecialSystems;
 using Server.Items;
+using Server.Logging;
 
 namespace Server.Gumps
 {
@@ -19,7 +20,7 @@ namespace Server.Gumps
                case PvXCounterType.TotalResKills: return "View top players with most overall res killed.";
                default:
                {
-                   Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Unknown PvXCounterType in PvXSortGump");
+                   ConsoleLog.Write.Error("Unknown PvXCounterType in PvXSortGump");
                    return "Unknown pvx counter";
                }
             }

@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 #if RC2
 #endif
@@ -2496,7 +2497,7 @@ namespace Server.Gumps
 				return;
 			else if (info.ButtonID == 0) // CashOut
 			{
-                Console.WriteLine("Closing");
+                ConsoleLog.Write.Information("Closing");
 				m_CEOBlackJack.RemovePlayer(from);
 				return;
 			}

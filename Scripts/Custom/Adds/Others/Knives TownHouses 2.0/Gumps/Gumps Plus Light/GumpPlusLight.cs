@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Gumps;
+using Server.Logging;
 using Server.Network;
 
 namespace Knives.TownHouses
@@ -238,10 +239,10 @@ namespace Knives.TownHouses
             {
                 Errors.Report("An error occured during a gump response.  More information can be found on the console.");
                 if (name != "")
-                    Console.WriteLine("{0} gump name triggered an error.", name);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                    ConsoleLog.Write.Error("{0} gump name triggered an error.", name);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
     }

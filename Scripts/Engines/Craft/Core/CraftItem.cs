@@ -6,6 +6,7 @@ using Server.Commands;
 using Server.Commands.GMUtils;
 using Server.Factions;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 using Solaris.CliLocHandler;
@@ -209,7 +210,7 @@ namespace Server.Engines.Craft
 		{
 			if (m_Recipe != null)
 			{
-				Console.WriteLine(@"Warning: Attempted add of recipe #{0} to the crafting of {1} in CraftSystem {2}.", id, m_Type.Name, system);
+				ConsoleLog.Write.Warning(@"Warning Attempted add of recipe #{0} to the crafting of {1} in CraftSystem {2}.", id, m_Type.Name, system);
 				return;
 			}
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Scripts.Custom.Adds.System.KillInfo.DatabaseEntries;
 
@@ -24,18 +25,18 @@ namespace Server.Scripts.Custom.Adds.System.KillInfo
         /// </summary>
         public static void PrintResults()
         {
-            Console.WriteLine(m_KillEntries.Count);
+            ConsoleLog.Write.Information(m_KillEntries.Count.ToString());
             try
             {
                 foreach (KillEntry entry in m_KillEntries)
                 {
-                    Console.WriteLine(entry);
+                    ConsoleLog.Write.Information(entry.ToString());
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error, resetting results.");
-                Console.WriteLine(ex.StackTrace);
+                ConsoleLog.Write.Error("Error, resetting results.");
+                ConsoleLog.Write.Error(ex.StackTrace);
                 ResetResults();
             }
         }

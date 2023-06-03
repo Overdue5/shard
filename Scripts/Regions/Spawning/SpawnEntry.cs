@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Logging;
 
 namespace Server.Regions
 {
@@ -73,7 +74,7 @@ namespace Server.Regions
             m_Running = false;
 
             if (m_Table.Contains(id))
-                Console.WriteLine("Warning: double SpawnEntry ID '{0}'", id);
+                ConsoleLog.Write.Warning("Warning: double SpawnEntry ID '{0}'", id);
             else
                 m_Table[id] = this;
         }

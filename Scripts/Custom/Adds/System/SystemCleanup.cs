@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Server.Scripts.Custom.Adds.System
@@ -56,7 +57,7 @@ namespace Server.Scripts.Custom.Adds.System
             }
 
             int oldItems = World.Items.Values.Count;
-            Utility.ConsoleWriteLine($"Attempting to clean up {+m_ValidTypes.Count} item types in {containerList.Count} containers.");
+            ConsoleLog.Write.Information($"Attempting to clean up {+m_ValidTypes.Count} item types in {containerList.Count} containers.");
             foreach (Container container in containerList)
             {
                 foreach (Type type in m_ValidTypes.Keys)
@@ -94,7 +95,7 @@ namespace Server.Scripts.Custom.Adds.System
                 }
             }
 
-			Utility.ConsoleWriteLine($"Items deleted:{(oldItems - World.Items.Values.Count)} | " +
+			ConsoleLog.Write.Information($"Items deleted:{(oldItems - World.Items.Values.Count)} | " +
 			                         $"Total containers:{containerList.Count} | Excluded containers:{excluded} | " +
 			                         $"Items left:{World.Items.Values.Count}");
         }

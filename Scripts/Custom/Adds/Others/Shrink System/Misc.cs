@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Security;
 using Server;
 using Server.Commands;
+using Server.Logging;
 
 namespace Xanthos.Utilities
 {
@@ -85,7 +86,7 @@ namespace Xanthos.Utilities
 			}
 			catch ( SecurityException exc )
 			{
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"SecurityException: {exc.Message}");
+				ConsoleLog.Write.Error($"SecurityException: {exc.Message}");
 			}
 			return result;
 		}

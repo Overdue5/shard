@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Server;
+using Server.Logging;
 
 namespace Knives.Chat3
 {
@@ -49,14 +50,14 @@ namespace Knives.Chat3
             try
             {
                 c_Server = true;
-                //Console.WriteLine("CM Close Slave");
+                //ConsoleLog.Write.Information("CM Close Slave");
                 CloseSlave();
 
                 c_Master = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 c_Master.Bind(new IPEndPoint(IPAddress.Any, Data.MultiPort));
                 c_Master.Listen(4);
                 c_Master.BeginAccept(new AsyncCallback(OnClientConnect), null);
-                //Console.WriteLine("Started");
+                //ConsoleLog.Write.Information("Started");
 
                 c_Connecting = false;
                 c_Connected = true;
@@ -64,8 +65,8 @@ namespace Knives.Chat3
             catch
             {
                 c_Server = false;
-                //Console.WriteLine(e.Message);
-                //Console.WriteLine(e.StackTrace);
+                //ConsoleLog.Write.Information(e.Message);
+                //ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -103,8 +104,8 @@ namespace Knives.Chat3
             catch(Exception e)
             {
                 BroadcastSystem(General.Local(288));
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Error(e.Message);
+                ConsoleLog.Write.Error(e.StackTrace);
                 return;
             }
 
@@ -133,15 +134,15 @@ namespace Knives.Chat3
             catch
             {
                 Errors.Report("Error opening stream for slave.");
-                //Console.WriteLine(e.Message);
-                //Console.WriteLine(e.StackTrace);
+                //ConsoleLog.Write.Information(e.Message);
+                //ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
         private void HandleInput(string str)
         {
             Broadcast(str);
-            //Console.WriteLine(str);
+            //ConsoleLog.Write.Information(str);
         }
 
         public void CloseSlave()
@@ -164,9 +165,9 @@ namespace Knives.Chat3
             catch
             {
                 Errors.Report("Error disconnecting slave.");
-                //Console.WriteLine(e.Message);
-                //Console.WriteLine(e.Source);
-                //Console.WriteLine(e.StackTrace);
+                //ConsoleLog.Write.Information(e.Message);
+                //ConsoleLog.Write.Information(e.Source);
+                //ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -174,7 +175,7 @@ namespace Knives.Chat3
         {
             try
             {
-                //Console.WriteLine("Connection Made");
+                //ConsoleLog.Write.Information("Connection Made");
                 Socket sok = c_Master.EndAccept(asyn);
                 c_Clients.Add(sok);
                 //sok.Close();
@@ -182,9 +183,9 @@ namespace Knives.Chat3
             }
             catch
             {
-                //Console.WriteLine("Connection Died");
-                //Console.WriteLine(e.Message);
-                //Console.WriteLine(e.StackTrace);
+                //ConsoleLog.Write.Information("Connection Died");
+                //ConsoleLog.Write.Information(e.Message);
+                //ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -194,7 +195,7 @@ namespace Knives.Chat3
             {
                 MultiPacket pak = new MultiPacket();
                 pak.Socket = sok;
-                //Console.WriteLine("Waiting for input.");
+                //ConsoleLog.Write.Information("Waiting for input.");
                 sok.BeginReceive(pak.Buffer, 0, pak.Buffer.Length, SocketFlags.None, new AsyncCallback(OnDataReceived), pak);
             }
             catch
@@ -226,7 +227,7 @@ namespace Knives.Chat3
                 System.Text.Encoding.ASCII.GetDecoder().GetChars(buffer, 0, count, chars, 0);
                 string input = new System.String(chars).Trim();
 
-                //Console.WriteLine(pak.Socket + " " + input);
+                //ConsoleLog.Write.Information(pak.Socket + " " + input);
 
                 if (c_Server)
                 {
@@ -255,8 +256,8 @@ namespace Knives.Chat3
                 else
                     CloseSlave();
 
-                //Console.WriteLine(e.Message);
-                //Console.WriteLine(e.StackTrace);
+                //ConsoleLog.Write.Information(e.Message);
+                //ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -296,7 +297,7 @@ namespace Knives.Chat3
 
         public void SendMessage(Mobile m, string str)
         {
-            //Console.WriteLine("Sending: {0} {1}", c_Server, str);
+            //ConsoleLog.Write.Information("Sending: {0} {1}", c_Server, str);
 
             if(c_Server)
             {
@@ -307,7 +308,7 @@ namespace Knives.Chat3
             {
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes("    <" + Server.Misc.ServerList.ServerName + "> " + m.RawName + ": " + str);
 
-                //Console.WriteLine("Sending to Master: <" + Server.Misc.ServerList.ServerName + "> " + m.RawName + ": " + str);
+                //ConsoleLog.Write.Information("Sending to Master: <" + Server.Misc.ServerList.ServerName + "> " + m.RawName + ": " + str);
                 c_Slave.Send(msg, 0, msg.Length, SocketFlags.None);
             }
         }

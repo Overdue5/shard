@@ -71,7 +71,7 @@ namespace Server.Gumps
 
 					AddCheck(40, 55 + ( 45 * itemsThisPage ), 210, 211, ba[i], i + ((t == RestrictType.Spells) ? 100 : 500) );
 					//checkbox -> ID = 100 + i for spells,    500 + i for skills
-					//Console.WriteLine( ary[i].GetType().ToString() );
+					//ConsoleLog.Write.Information( ary[i].GetType().ToString() );
 					AddLabel(70, 55 + ( 45 * itemsThisPage ) , 0, ((t == RestrictType.Spells) ? ((Type)(ary[i])).Name : ((SkillInfo)(ary[i])).Name ));
 	
 					itemsThisPage++;                    

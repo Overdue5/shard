@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Logging;
+using System;
 using System.Collections;
 
 namespace Server.Scripts.Custom.Adds.System
@@ -21,7 +22,7 @@ namespace Server.Scripts.Custom.Adds.System
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                ConsoleLog.Write.Warning(e);
             }
 
         }
@@ -34,7 +35,7 @@ namespace Server.Scripts.Custom.Adds.System
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                ConsoleLog.Write.Warning(e);
                 return default(TValue);
             }
         }

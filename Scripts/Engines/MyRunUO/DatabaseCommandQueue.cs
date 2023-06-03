@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Data.Odbc;
 using System.Threading;
+using Server.Logging;
 
 namespace Server.Engines.MyRunUO
 {
@@ -89,18 +90,16 @@ namespace Server.Engines.MyRunUO
 									try{ transact.Commit(); }
 									catch ( Exception commitException )
 									{
-										Console.WriteLine( "MyRunUO: Exception caught when committing transaction" );
-										Console.WriteLine( commitException );
-
+										ConsoleLog.Write.Warning( "MyRunUO: Exception caught when committing transaction", commitException );
+										
 										try
 										{
 											transact.Rollback();
-											Console.WriteLine( "MyRunUO: Transaction has been rolled back" );
+											ConsoleLog.Write.Information( "MyRunUO: Transaction has been rolled back" );
 										}
 										catch ( Exception rollbackException )
 										{
-											Console.WriteLine( "MyRunUO: Exception caught when rolling back transaction" );
-											Console.WriteLine( rollbackException );
+											ConsoleLog.Write.Warning( "MyRunUO: Exception caught when rolling back transaction", rollbackException );
 										}
 									}
 								}
@@ -117,7 +116,7 @@ namespace Server.Engines.MyRunUO
 								try{ m_Sync.Close(); }
 								catch{}
 
-								Console.WriteLine( m_CompletionString, (DateTime.UtcNow - start).TotalSeconds );
+								ConsoleLog.Write.Information( m_CompletionString, (DateTime.UtcNow - start).TotalSeconds );
 								m_HasCompleted = true;
 
 								return;
@@ -154,8 +153,7 @@ namespace Server.Engines.MyRunUO
 									try{ m_Sync.Close(); }
 									catch{}
 
-									Console.WriteLine( "MyRunUO: Unable to connect to the database" );
-									Console.WriteLine( e );
+									ConsoleLog.Write.Warning( "MyRunUO: Unable to connect to the database", e );
 									m_HasCompleted = true;
 									return;
 								}
@@ -183,8 +181,7 @@ namespace Server.Engines.MyRunUO
 					{
 						if ( shouldWriteException )
 						{
-							Console.WriteLine( "MyRunUO: Exception caught in database thread" );
-							Console.WriteLine( e );
+							ConsoleLog.Write.Warning( "MyRunUO: Exception caught in database thread", e );
 							shouldWriteException = false;
 						}
 					}

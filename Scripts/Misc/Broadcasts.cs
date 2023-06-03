@@ -1,3 +1,5 @@
+using Server.Logging;
+
 namespace Server.Misc
 {
 	public class Broadcasts
@@ -14,7 +16,7 @@ namespace Server.Misc
 			try
 			{
 			    World.Broadcast(0x35, true, "Deluxe: Communication with the Britannia cut off");
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.ConsoleImportant, $"Deluxe: The server has crashed, attempting to restart automatically...");
+                DiscordBot.Send.ConsoleImportant($"Deluxe: The server has crashed, attempting to restart automatically...");
             }
 			catch
 			{
@@ -26,7 +28,7 @@ namespace Server.Misc
             try
             {
                 World.Broadcast(0x35, true, "Britannia is available again");
-                BaseDiscord.Bot.SendToDiscord(Server.BaseDiscord.Channel.Announcement, $"Deluxe: Britannia is available again");
+                DiscordBot.Send.Announcement($"Deluxe: Britannia is available again");
             }
             catch
             {

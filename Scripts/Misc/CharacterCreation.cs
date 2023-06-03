@@ -2,6 +2,7 @@ using System;
 using Server.Accounting;
 using Server.Factions;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -646,7 +647,7 @@ namespace Server.Misc
 
 			if( newChar == null )
 			{
-                Console.WriteLine("Login: {0}: Character creation failed, account full", state);
+                ConsoleLog.Write.Information("Login: {0}: Character creation failed, account full", state);
                 return;
 			}
 
@@ -768,9 +769,9 @@ namespace Server.Misc
 			else if( pm != null )
 				pm.UseUnicodeSpeech = true;
 
-            Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
-            Console.WriteLine(" - Character: {0} (serial={1})", newChar.Name, newChar.Serial);
-			Console.WriteLine( " - Started: {0} {1} in {2}", city.City, city.Location, city.Map );
+            ConsoleLog.Write.Information("Login: {0}: New character being created (account={1})", state, args.Account.Username);
+            ConsoleLog.Write.Information(" - Character: {0} (serial={1})", newChar.Name, newChar.Serial);
+			ConsoleLog.Write.Information( " - Started: {0} {1} in {2}", city.City, city.Location, city.Map );
 
 //			BetaChar( newChar );
 //			new WelcomeTimer( newChar ).Start();

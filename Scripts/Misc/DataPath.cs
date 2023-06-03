@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Microsoft.Win32;
+using Server.Logging;
 
 namespace Server.Misc
 {
@@ -51,7 +52,7 @@ namespace Server.Misc
 
             if (Core.DataDirectories.Count == 0 && !Core.Service)
             {
-                Console.WriteLine("Enter the Ultima Online directory:");
+                ConsoleLog.Write.Information("Enter the Ultima Online directory:");
                 Console.Write("> ");
 
                 Core.DataDirectories.Add(Console.ReadLine());

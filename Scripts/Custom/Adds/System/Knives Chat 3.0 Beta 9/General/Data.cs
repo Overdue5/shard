@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using Server;
 using Server.Accounting;
+using Server.Logging;
 
 namespace Knives.Chat3
 {
@@ -19,49 +20,49 @@ namespace Knives.Chat3
             catch (Exception e)
             {
                 Errors.Report(General.Local(175), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { SavePlayerOptions(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(228), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { SaveFriends(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(230), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { SaveIgnores(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(232), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { SaveGlobalListens(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(234), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { SaveMsgs(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(236), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 
@@ -71,49 +72,49 @@ namespace Knives.Chat3
             catch (Exception e)
             {
                 Errors.Report(General.Local(174), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { LoadPlayerOptions(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(227), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { LoadFriends(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(229), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { LoadIgnores(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(231), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { LoadGlobalListens(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(233), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
             try { LoadMsgs(); }
             catch (Exception e)
             {
                 Errors.Report(General.Local(235), e);
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Information(e.Message);
+                ConsoleLog.Write.Information(e.Source);
+                ConsoleLog.Write.Information(e.StackTrace);
             }
         }
 

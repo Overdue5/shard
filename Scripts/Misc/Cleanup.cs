@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Multis;
 
@@ -130,9 +131,9 @@ namespace Server.Misc
             if (items.Count > 0)
             {
                 if (boxes > 0)
-	                Utility.ConsoleWriteLine($"Cleanup: Detected {items.Count} inaccessible items, including {boxes} bank boxes, removing..");
+	                ConsoleLog.Write.Information($"Cleanup: Detected {items.Count} inaccessible items, including {boxes} bank boxes, removing..");
                 else
-	                Utility.ConsoleWriteLine($"Cleanup: Detected {items.Count} inaccessible items, removing..");
+	                ConsoleLog.Write.Information($"Cleanup: Detected {items.Count} inaccessible items, removing..");
 
                 for (int i = 0; i < items.Count; ++i)
                     items[i].Delete();
@@ -140,7 +141,7 @@ namespace Server.Misc
 
             if (hairCleanup.Count > 0)
             {
-	            Utility.ConsoleWriteLine($"Cleanup: Detected {hairCleanup.Count} hair and facial hair items being worn, converting to their virtual counterparts..");
+	            ConsoleLog.Write.Information($"Cleanup: Detected {hairCleanup.Count} hair and facial hair items being worn, converting to their virtual counterparts..");
 
                 for (int i = 0; i < hairCleanup.Count; i++)
                     hairCleanup[i].ConvertHair();
@@ -148,7 +149,7 @@ namespace Server.Misc
 
             if (nightsightpotCleanup.Count > 0)
             {
-	            Utility.ConsoleWriteLine($"Cleanup: Removed {nightsightpotCleanup.Count} night sight potions");
+	            ConsoleLog.Write.Information($"Cleanup: Removed {nightsightpotCleanup.Count} night sight potions");
 
                 for (int i = 0; i < nightsightpotCleanup.Count; i++)
                     nightsightpotCleanup[i].Delete();

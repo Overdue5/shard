@@ -20,6 +20,7 @@
 
 using System;
 using System.IO;
+using Server.Logging;
 
 namespace Server
 {
@@ -65,8 +66,8 @@ namespace Server
 						}
 						else
 						{
-							Console.WriteLine( "Warning: Invalid bodyTable entry:" );
-							Console.WriteLine( line );
+							ConsoleLog.Write.Warning( "Warning: Invalid bodyTable entry:" );
+							ConsoleLog.Write.Information( line );
 						}
 #else
                         try
@@ -79,8 +80,8 @@ namespace Server
                         }
                         catch
                         {
-                            Console.WriteLine("Warning: Invalid bodyTable entry:");
-                            Console.WriteLine(line);
+                            ConsoleLog.Write.Warning("Warning: Invalid bodyTable entry:");
+                            ConsoleLog.Write.Information(line);
                         }
 #endif
 					}
@@ -88,7 +89,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Warning: Data/bodyTable.cfg does not exist" );
+				ConsoleLog.Write.Warning( "Warning: Data/bodyTable.cfg does not exist" );
 
 				m_Types = new BodyType[0];
 			}

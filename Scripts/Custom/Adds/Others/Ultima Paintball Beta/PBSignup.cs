@@ -13,6 +13,7 @@ using System.IO;
 using Server.Gumps;
 using Server.Network;
 using Server.Games.PaintBall;
+using Server.Logging;
 
 namespace Server.Games.Paintball
 {
@@ -35,7 +36,7 @@ namespace Server.Games.Paintball
 			}
 			catch ( Exception e )
 			{
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Warning: Exception caught loading name lists:{e}" );
+				ConsoleLog.Write.Error($"Warning: Exception caught loading name lists:{e}" );
 			}
 			//mob.SendGump( new Motd() );
 		}

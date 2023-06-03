@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Server.Logging;
 
 namespace Server
 {
@@ -446,7 +447,7 @@ namespace Server
             {
                 if (DateTime.UtcNow >= m_NextStaticWarning)
                 {
-                    Console.WriteLine("Warning: Static EOS for {0} ({1}, {2})", m_Owner, x, y);
+                    ConsoleLog.Write.Warning("Warning: Static EOS for {0} ({1}, {2})", m_Owner, x, y);
                     m_NextStaticWarning = DateTime.UtcNow + TimeSpan.FromMinutes(1.0);
                 }
 
@@ -486,7 +487,7 @@ namespace Server
             {
                 if (DateTime.UtcNow >= m_NextLandWarning)
                 {
-                    Console.WriteLine("Warning: Land EOS for {0} ({1}, {2})", m_Owner, x, y);
+                    ConsoleLog.Write.Warning("Warning: Land EOS for {0} ({1}, {2})", m_Owner, x, y);
                     m_NextLandWarning = DateTime.UtcNow + TimeSpan.FromMinutes(1.0);
                 }
 

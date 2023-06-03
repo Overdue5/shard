@@ -96,7 +96,7 @@ namespace Server.Voting
 
 		public void Serialize()
 		{
-			//Console.WriteLine("[Vote System]: Saving Config...");
+			//ConsoleLog.Write.Information("[Vote System]: Saving Config...");
 
 			FileInfo info = new FileInfo("Data\\VoteSystem.cfg");
 
@@ -118,12 +118,12 @@ namespace Server.Voting
 				bin.Close();
 			}
 
-			//Console.WriteLine("[Vote System]: Done.");
+			//ConsoleLog.Write.Information("[Vote System]: Done.");
 		}
 
 		public void Deserialize()
 		{
-			//Console.WriteLine("[Vote System]: Loading Config...");
+			//ConsoleLog.Write.Information("[Vote System]: Loading Config...");
 
 			FileInfo info = new FileInfo("Data\\VoteSystem.cfg");
 
@@ -154,7 +154,7 @@ namespace Server.Voting
 				bin.Close();
 			}
 
-			//Console.WriteLine("[Vote System]: Done.");
+			//ConsoleLog.Write.Information("[Vote System]: Done.");
 		}
 	}
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Misc
@@ -86,7 +87,7 @@ namespace Server.Misc
 				}
 
 				e.AddServer( ServerName, new IPEndPoint( localAddress, localPort ) );
-                Console.WriteLine($"{ServerName}:{new IPEndPoint(localAddress, localPort)}");
+                ConsoleLog.Write.Information($"{ServerName}:{new IPEndPoint(localAddress, localPort)}");
 }
 			catch
 			{
@@ -104,23 +105,20 @@ namespace Server.Misc
         {
             if (!HasPublicIPAddress())
             {
-                Utility.PushColor(ConsoleColor.Yellow);
-                Console.WriteLine("ServerList: Auto-detecting public IP address...");
+                ConsoleLog.Write.Information("ServerList: Auto-detecting public IP address...");
 
                 _PublicAddress = FindPublicAddress(IPServices);
 
                 if (_PublicAddress != null)
                 {
-                    Console.WriteLine("ServerList: Done: '{0}'", _PublicAddress);
+                    ConsoleLog.Write.Information("ServerList: Done: '{0}'", _PublicAddress);
                 }
                 else
                 {
                     _PublicAddress = IPAddress.Any;
 
-                    Console.WriteLine("ServerList: Failed: reverting to private IP address...");
+                    ConsoleLog.Write.Information("ServerList: Failed: reverting to private IP address...");
                 }
-
-                Utility.PopColor();
             }
         }
 
@@ -148,14 +146,14 @@ namespace Server.Misc
                 {
                     uri = new Uri(service);
 
-                    Console.WriteLine("ServerList: >>> {0}", uri.Host);
+                    ConsoleLog.Write.Information("ServerList: >>> {0}", uri.Host);
 
                     using (WebClient client = new WebClient())
                     {
                         data = client.DownloadString(uri);
                     }
 
-                    Console.WriteLine("ServerList: <<< {0}", data);
+                    ConsoleLog.Write.Information("ServerList: <<< {0}", data);
 
                     match = _AddressPattern.Match(data);
 
@@ -166,7 +164,7 @@ namespace Server.Misc
                 }
                 catch (UriFormatException)
                 {
-                    Console.WriteLine("ServerList: Invalid IP service Uri '{0}'", service);
+                    ConsoleLog.Write.Information("ServerList: Invalid IP service Uri '{0}'", service);
 
                     ip = null;
                 }

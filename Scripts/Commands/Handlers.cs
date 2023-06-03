@@ -8,6 +8,7 @@ using Server.Commands.Generic;
 using Server.Engines.Help;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 using Server.Menus.ItemLists;
 using Server.Menus.Questions;
 using Server.Misc;
@@ -972,7 +973,7 @@ namespace Server.Commands
             if (mob != null)
                 message = string.Format("{0} {1}", GetStaffTag(mob), message);
 			if (ac>AccessLevel.Player)
-			    BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant,message);
+                DiscordBot.Send.ConsoleImportant(message);
             foreach (NetState state in NetState.Instances)
             {
                 Mobile m = state.Mobile;

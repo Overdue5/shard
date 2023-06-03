@@ -141,7 +141,7 @@ namespace Server.Scripts.Commands
                     }
                     catch
                     {
-                        //Console.WriteLine( "Denied" );
+                        //ConsoleLog.Write.Information( "Denied" );
                     }
 
                     // BaseArmor, BaseClothing, BaseJewel, BaseWeapon: copy nested classes
@@ -262,7 +262,7 @@ namespace Server.Scripts.Commands
                     }
                     catch
                     {
-                        //Console.WriteLine( "Denied" );
+                        //ConsoleLog.Write.Information( "Denied" );
                     }
                 }
             }

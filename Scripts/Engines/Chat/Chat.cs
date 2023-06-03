@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Server.Accounting;
+using Server.Logging;
 using Server.Misc;
 using Server.Network;
 
@@ -162,12 +163,12 @@ namespace Server.Engines.Chat
 				}
 				else
 				{
-					Console.WriteLine( "Client: {0}: Unknown chat action 0x{1:X}: {2}", state, actionID, param );
+					ConsoleLog.Write.Information( "Client: {0}: Unknown chat action 0x{1:X}: {2}", state, actionID, param );
 				}
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning( e );
 			}
 		}
 	}

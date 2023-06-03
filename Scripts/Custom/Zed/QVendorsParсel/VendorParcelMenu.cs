@@ -8,6 +8,7 @@ using Server.Commands.GMUtils;
 using Server.Engines;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Custom
@@ -300,7 +301,7 @@ namespace Server.Custom
             }
             else
             {
-                Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, $"Error load file:{filePath}");
+                ConsoleLog.Write.Error($"Error load file:{filePath}");
                 throw new Exception("File not found");
             }
         }

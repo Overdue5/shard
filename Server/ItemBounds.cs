@@ -20,6 +20,7 @@
 
 using System;
 using System.IO;
+using Server.Logging;
 
 namespace Server
 {
@@ -62,7 +63,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Warning: Data/Binary/Bounds.bin does not exist" );
+				ConsoleLog.Write.Warning( "Warning: Data/Binary/Bounds.bin does not exist" );
 			}
 		}
 	}

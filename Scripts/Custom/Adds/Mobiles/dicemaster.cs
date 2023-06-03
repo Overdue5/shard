@@ -2,6 +2,7 @@ using System;
 using Server.Items;
 using Server.Network;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -313,7 +314,7 @@ namespace Server.Gumps
 							}
 							catch
 							{
-								Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "gamble convert-crash abgefangen");
+								ConsoleLog.Write.Error("gamble convert-crash abgefangen");
 							}
 						}
 

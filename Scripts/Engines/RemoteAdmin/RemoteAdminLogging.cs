@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Server.Accounting;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.RemoteAdmin
@@ -43,9 +44,7 @@ namespace Server.RemoteAdmin
 			}
 			catch
 			{
-				Utility.PushColor( ConsoleColor.Red );
-				Console.WriteLine( "RemoteAdminLogging: Failed to initialize LogWriter." );
-				Utility.PopColor();
+                ConsoleLog.Write.Warning("RemoteAdminLogging: Failed to initialize LogWriter." );
 				m_Enabled = false;
 			}
 		}

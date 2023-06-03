@@ -39,6 +39,7 @@ using Server.Spells.Spellweaving;
 using Server.Custom.Games;
 using Server.Poker;
 using Server.Engines.PartySystem;
+using Server.Logging;
 
 namespace Server.Mobiles
 {
@@ -1330,7 +1331,7 @@ namespace Server.Mobiles
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning( "ValidationEq:", e);
 			}
 			finally
 			{

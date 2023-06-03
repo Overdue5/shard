@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Mail;
 using Server.Accounting;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Misc
@@ -50,9 +51,9 @@ namespace Server.Misc
 			message.Attachments.Add( new Attachment( filePath ) );
 
 			if ( Email.Send( message ) )
-				Console.WriteLine( "done" );
+				ConsoleLog.Write.Information( "done" );
 			else
-				Console.WriteLine( "failed" );
+				ConsoleLog.Write.Information( "failed" );
 		}
 
 		private static string GetRoot()
@@ -83,14 +84,14 @@ namespace Server.Misc
             {
                 Core.Kill(restart: true, update: false);
                 //Process.Start( Core.ExePath, Core.Arguments );
-                //Console.WriteLine( "done" );
+                //ConsoleLog.Write.Information( "done" );
 
                 //e.Close = true;
                 //Core.Process.Kill(); //Taran: Tested a fix for server not shutting down properly on crash, but seemed to prohibit finishing crashlog etc.
             }
 			catch
 			{
-				Console.WriteLine( "failed" );
+				ConsoleLog.Write.Information( "failed" );
 			}
 		}
 
@@ -157,11 +158,11 @@ namespace Server.Misc
 				CopyFile( rootOrigin, rootBackup, "Regions/Regions.bin" );
 				CopyFile( rootOrigin, rootBackup, "Regions/Regions.idx" );
 
-				Console.WriteLine( "done" );
+				ConsoleLog.Write.Information( "done" );
 			}
 			catch
 			{
-				Console.WriteLine( "failed" );
+				ConsoleLog.Write.Information( "failed" );
 			}
 		}
 
@@ -233,14 +234,14 @@ namespace Server.Misc
 					}
 				}
 
-				Console.WriteLine( "done" );
+				ConsoleLog.Write.Information( "done" );
 
 				if ( Email.CrashAddresses != null )
 					SendEmail( filePath );
 			}
 			catch
 			{
-				Console.WriteLine( "failed" );
+				ConsoleLog.Write.Information( "failed" );
 			}
 		}
 

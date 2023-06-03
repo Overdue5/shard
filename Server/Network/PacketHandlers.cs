@@ -31,6 +31,7 @@ using Server.Prompts;
 using Server.HuePickers;
 using Server.ContextMenus;
 using Server.Diagnostics;
+using Server.Logging;
 using CV = Server.ClientVersion;
 
 namespace Server.Network
@@ -297,7 +298,7 @@ namespace Server.Network
 			{
 				if ( ph.Ingame && state.Mobile == null )
 				{
-					Console.WriteLine( "Client: {0}: Sent ingame packet (0xD7x{1:X2}) before having been attached to a mobile", state, packetID );
+					ConsoleLog.Write.Information( "Client: {0}: Sent ingame packet (0xD7x{1:X2}) before having been attached to a mobile", state, packetID );
 					state.Dispose();
 				}
 				else if ( ph.Ingame && state.Mobile.Deleted )
@@ -483,9 +484,9 @@ namespace Server.Network
 				int type = pvSrc.ReadByte();
 				int num1 = pvSrc.ReadInt32();
 
-				Console.WriteLine( "God Client: {0}: Game central moniter", state );
-				Console.WriteLine( " - Type: {0}", type );
-				Console.WriteLine( " - Number: {0}", num1 );
+				ConsoleLog.Write.Information( "God Client: {0}: Game central moniter", state );
+				ConsoleLog.Write.Information( " - Type: {0}", type );
+				ConsoleLog.Write.Information( " - Number: {0}", num1 );
 
 				pvSrc.Trace( state );
 			}
@@ -495,7 +496,7 @@ namespace Server.Network
 		{
 			if ( VerifyGC( state ) )
 			{
-				Console.WriteLine( "God Client: {0}: Godview query 0x{1:X}", state, pvSrc.ReadByte() );
+				ConsoleLog.Write.Information( "God Client: {0}: Godview query 0x{1:X}", state, pvSrc.ReadByte() );
 			}
 		}
 
@@ -599,7 +600,7 @@ namespace Server.Network
 				int y = pvSrc.ReadInt16();
 				int z = pvSrc.ReadSByte();
 
-				Console.WriteLine( "God Client: {0}: Change Z ({1}, {2}, {3})", state, x, y, z );
+				ConsoleLog.Write.Information( "God Client: {0}: Change Z ({1}, {2}, {3})", state, x, y, z );
 			}
 		}
 
@@ -630,7 +631,7 @@ namespace Server.Network
 				int z = pvSrc.ReadSByte();
 				int hue = pvSrc.ReadUInt16();
 
-				Console.WriteLine( "God Client: {0}: Edit {6} ({1}, {2}, {3}) 0x{4:X} (0x{5:X})", state, x, y, z, id, hue, type );
+				ConsoleLog.Write.Information( "God Client: {0}: Edit {6} ({1}, {2}, {3}) 0x{4:X} (0x{5:X})", state, x, y, z, id, hue, type );
 			}
 		}
 
@@ -643,7 +644,7 @@ namespace Server.Network
 				int z = pvSrc.ReadInt16();
 				int id = pvSrc.ReadUInt16();
 
-				Console.WriteLine( "God Client: {0}: Delete Static ({1}, {2}, {3}) 0x{4:X}", state, x, y, z, id );
+				ConsoleLog.Write.Information( "God Client: {0}: Delete Static ({1}, {2}, {3}) 0x{4:X}", state, x, y, z, id );
 			}
 		}
 
@@ -651,7 +652,7 @@ namespace Server.Network
 		{
 			if ( VerifyGC( state ) )
 			{
-				Console.WriteLine( "God Client: {0}: New tile animation", state );
+				ConsoleLog.Write.Information( "God Client: {0}: New tile animation", state );
 
 				pvSrc.Trace( state );
 			}
@@ -667,7 +668,7 @@ namespace Server.Network
 				int width = pvSrc.ReadInt16();
 				int height = pvSrc.ReadInt16();
 
-				Console.WriteLine( "God Client: {0}: New Terrain ({1}, {2})+({3}, {4}) 0x{5:X4}", state, x, y, width, height, id );
+				ConsoleLog.Write.Information( "God Client: {0}: New Terrain ({1}, {2})+({3}, {4}) 0x{5:X4}", state, x, y, width, height, id );
 			}
 		}
 
@@ -690,7 +691,7 @@ namespace Server.Network
 				int dungeon = pvSrc.ReadByte();
 				int light = pvSrc.ReadInt16();
 
-				Console.WriteLine( "God Client: {0}: New Region '{1}' ('{2}')", state, name, desc );
+				ConsoleLog.Write.Information( "God Client: {0}: New Region '{1}' ('{2}')", state, name, desc );
 			}
 		}
 
@@ -703,7 +704,7 @@ namespace Server.Network
 			if ( state.Mobile == null || state.Mobile.AccessLevel <= AccessLevel.Counselor )
 			{
 				if ( state.Running )
-					Console.WriteLine( "Warning: {0}: Player using godclient, disconnecting", state );
+					ConsoleLog.Write.Warning( "Warning: {0}: Player using godclient, disconnecting", state );
 
 				state.Dispose();
 				return false;
@@ -818,7 +819,7 @@ namespace Server.Network
 				}
 				default:
 				{
-					Console.WriteLine( "Client: {0}: Unknown text-command type 0x{1:X2}: {2}", state, type, command );
+					ConsoleLog.Write.Information( "Client: {0}: Unknown text-command type 0x{1:X2}: {2}", state, type, command );
 					break;
 				}
 			}
@@ -1534,7 +1535,7 @@ namespace Server.Network
 			{
 				if ( ph.Ingame && state.Mobile == null )
 				{
-					Console.WriteLine( "Client: {0}: Sent ingame packet (0xBFx{1:X2}) before having been attached to a mobile", state, packetID );
+					ConsoleLog.Write.Information( "Client: {0}: Sent ingame packet (0xBFx{1:X2}) before having been attached to a mobile", state, packetID );
 					state.Dispose();
 				}
 				else if ( ph.Ingame && state.Mobile.Deleted )
@@ -1858,7 +1859,7 @@ namespace Server.Network
 					case 0x00: // Unknown, sent by godclient
 					{
 						if ( VerifyGC( state ) )
-							Console.WriteLine( "God Client: {0}: Query 0x{1:X2} on {2} '{3}'", state, type, m.Serial, m.Name );
+							ConsoleLog.Write.Information( "God Client: {0}: Query 0x{1:X2} on {2} '{3}'", state, type, m.Serial, m.Name );
 
 						break;
 					}
@@ -1935,7 +1936,7 @@ namespace Server.Network
 
 					if ( check != null && check.Map != Map.Internal && check != m )
 					{
-						Console.WriteLine( "Login: {0}: Account in use", state );
+						ConsoleLog.Write.Information( "Login: {0}: Account in use", state );
 						state.Send( new PopupMessage( PMMessage.CharInWorld ) );
 						return;
 					}
@@ -2120,7 +2121,7 @@ namespace Server.Network
 
 					if ( check != null && check.Map != Map.Internal )
 					{
-						Console.WriteLine( "Login: {0}: Account in use", state );
+						ConsoleLog.Write.Information( "Login: {0}: Account in use", state );
 						state.Send( new PopupMessage( PMMessage.CharInWorld ) );
 						return;
 					}
@@ -2240,7 +2241,7 @@ namespace Server.Network
 
                     if (check != null && check.Map != Map.Internal)
                     {
-                        Console.WriteLine("Login: {0}: Account in use", state);
+                        ConsoleLog.Write.Information("Login: {0}: Account in use", state);
                         state.Send(new PopupMessage(PMMessage.CharInWorld));
                         return;
                     }
@@ -2367,20 +2368,20 @@ namespace Server.Network
             }
             else if (m_ClientVerification)
             {
-                Console.WriteLine("Login: {0}: Invalid client detected, disconnecting", state);
+                ConsoleLog.Write.Information("Login: {0}: Invalid client detected, disconnecting", state);
                 state.Dispose();
                 return;
             }
 
             if (state.m_AuthID != 0 && authID != state.m_AuthID)
 			{
-				Console.WriteLine( "Login: {0}: Invalid client detected, disconnecting", state );
+				ConsoleLog.Write.Information( "Login: {0}: Invalid client detected, disconnecting", state );
 				state.Dispose();
 				return;
 			}
 			else if ( state.m_AuthID == 0 && authID != state.m_Seed )
 			{
-				Console.WriteLine( "Login: {0}: Invalid client detected, disconnecting", state );
+				ConsoleLog.Write.Information( "Login: {0}: Invalid client detected, disconnecting", state );
 				state.Dispose();
 				return;
 			}
@@ -2442,7 +2443,7 @@ namespace Server.Network
 
             if (state.m_Seed == 0)
             {
-                Console.WriteLine("Login: {0}: Invalid client detected, disconnecting", state);
+                ConsoleLog.Write.Information("Login: {0}: Invalid client detected, disconnecting", state);
                 state.Dispose();
                 return;
             }

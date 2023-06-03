@@ -35,6 +35,7 @@ using Server.Prompts;
 using Server.HuePickers;
 using Server.ContextMenus;
 using Server.Diagnostics;
+using Server.Logging;
 using Solaris.CliLocHandler;
 
 namespace Server.Network
@@ -1001,7 +1002,7 @@ namespace Server.Network
 			}
 			else
 			{
-				Console.WriteLine( "Warning: EquipUpdate on item with !(parent is Mobile)" );
+				ConsoleLog.Write.Warning( "Warning: EquipUpdate on item with !(parent is Mobile)" );
 				parentSerial = Serial.Zero;
 			}
 
@@ -1756,7 +1757,7 @@ namespace Server.Network
 			}
 			else
 			{
-				Console.WriteLine( "Warning: ContainerContentUpdate on item with !(parent is Item)" );
+				ConsoleLog.Write.Warning( "Warning: ContainerContentUpdate on item with !(parent is Item)" );
 				parentSerial = Serial.Zero;
 			}
 
@@ -1783,7 +1784,7 @@ namespace Server.Network
 			}
 			else
 			{
-				Console.WriteLine( "Warning: ContainerContentUpdate on item with !(parent is Item)" );
+				ConsoleLog.Write.Warning("Warning: ContainerContentUpdate on item with !(parent is Item)" );
 				parentSerial = Serial.Zero;
 			}
 
@@ -4304,7 +4305,7 @@ namespace Server.Network
 			{
 				int diff = (int)m_Stream.Length - m_Length;
 
-				Console.WriteLine( "Packet: 0x{0:X2}: Bad packet length! ({1}{2} bytes)", m_PacketID, diff >= 0 ? "+" : "", diff );
+				ConsoleLog.Write.Information( "Packet: 0x{0:X2}: Bad packet length! ({1}{2} bytes)", m_PacketID, diff >= 0 ? "+" : "", diff );
 			}
 
 			MemoryStream ms = m_Stream.UnderlyingStream;
@@ -4321,7 +4322,7 @@ namespace Server.Network
 			
 				if ( m_CompiledBuffer == null )
 				{
-					Console.WriteLine( "Warning: Compression buffer overflowed on packet 0x{0:X2} ('{1}') (length={2})", m_PacketID, GetType().Name, length );
+					ConsoleLog.Write.Warning( "Warning: Compression buffer overflowed on packet 0x{0:X2} ('{1}') (length={2})", m_PacketID, GetType().Name, length );
 					using ( StreamWriter op = new StreamWriter( "compression_overflow.log", true ) )
 					{
 						op.WriteLine( "{0} Warning: Compression buffer overflowed on packet 0x{1:X2} ('{2}') (length={3})", DateTime.UtcNow, m_PacketID, GetType().Name, length );

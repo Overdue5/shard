@@ -311,7 +311,7 @@ namespace Server.Regions
                 }
             }
 
-            //Console.WriteLine( m_Controller.GetRegistryNumber( s ) );
+            //ConsoleLog.Write.Information( m_Controller.GetRegistryNumber( s ) );
 
             //return base.OnBeginSpellCast( from, s );
             return true;	//Let users customize spells, not rely on weather it's guarded or not.

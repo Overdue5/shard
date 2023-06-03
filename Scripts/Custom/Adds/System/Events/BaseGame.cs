@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Items;
+using Server.Logging;
 
 namespace Server.Custom.Games
 {
@@ -277,7 +278,7 @@ namespace Server.Custom.Games
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.ToString());
+                    ConsoleLog.Write.Information(e.ToString());
                 }
             }
             if (!Open)
@@ -296,7 +297,7 @@ namespace Server.Custom.Games
             }
             catch (Exception e)
             {
-            	Console.WriteLine(e.ToString());
+            	ConsoleLog.Write.Information(e.ToString());
         	}
 
             if (m_GameTimer != null)

@@ -6,6 +6,7 @@ using System.Net.Mail;
 using Server.Accounting;
 using Server.Commands;
 using Server.Engines.Reports;
+using Server.Logging;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
@@ -329,7 +330,7 @@ namespace Server.Engines.Help
 			m_KeyedBySender[entry.Sender] = entry;
 
 			bool isStaffOnline = false;
-            BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.ConsoleImportant, $"New messaged in PageQueue\n{entry.Sender.Name}:{entry.Message}");
+            DiscordBot.Send.ConsoleImportant($"New messaged in PageQueue\n{entry.Sender.Name}:{entry.Message}");
             foreach ( NetState ns in NetState.Instances )
 			{
 				Mobile m = ns.Mobile;

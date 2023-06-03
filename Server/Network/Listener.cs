@@ -27,6 +27,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
+using Server.Logging;
 
 namespace Server.Network
 {
@@ -107,7 +108,7 @@ namespace Server.Network
 
                     if (se.ErrorCode == 10048)
                     { // WSAEADDRINUSE
-                        Console.WriteLine("Listener Failed: {0}:{1} (In Use)... shutting down other instances and trying again", ipep.Address, ipep.Port);
+                        ConsoleLog.Write.Warning("Listener Failed: {0}:{1} (In Use)... shutting down other instances and trying again", ipep.Address, ipep.Port);
 
                         #region mgwilt - ensure port is open
 
@@ -132,12 +133,11 @@ namespace Server.Network
                     }
                     else if (se.ErrorCode == 10049)
                     { // WSAEADDRNOTAVAIL
-                        Console.WriteLine("Listener Failed: {0}:{1} (Unavailable)", ipep.Address, ipep.Port);
+                        ConsoleLog.Write.Warning("Listener Failed: {0}:{1} (Unavailable)", ipep.Address, ipep.Port);
                     }
                     else
                     {
-                        Console.WriteLine("Listener Exception:");
-                        Console.WriteLine(e);
+                        ConsoleLog.Write.Warning("Listener Exception:", e);
                     }
                 }
 
@@ -161,23 +161,23 @@ namespace Server.Network
                     foreach (IPAddressInformation unicast in properties.UnicastAddresses)
                     {
                         if (ipep.AddressFamily == unicast.Address.AddressFamily)
-                            Utility.ConsoleWriteLine($"Listening: {unicast.Address}:{ipep.Port}");
+                            ConsoleLog.Write.Information($"Listening: {unicast.Address}:{ipep.Port}");
                     }
                 }
                 /*
                 try {
-                    Console.WriteLine( "Listening: {0}:{1}", IPAddress.Loopback, ipep.Port );
+                    ConsoleLog.Write.Information( "Listening: {0}:{1}", IPAddress.Loopback, ipep.Port );
                     IPHostEntry iphe = Dns.GetHostEntry( Dns.GetHostName() );
                     IPAddress[] ip = iphe.AddressList;
                     for ( int i = 0; i < ip.Length; ++i )
-                        Console.WriteLine( "Listening: {0}:{1}", ip[i], ipep.Port );
+                        ConsoleLog.Write.Information( "Listening: {0}:{1}", ip[i], ipep.Port );
                 }
                 catch { }
                 */
             }
             else
             {
-	            Utility.ConsoleWriteLine($"Listening: {ipep.Address}:{ipep.Port}");
+	            ConsoleLog.Write.Information($"Listening: {ipep.Address}:{ipep.Port}");
             }
         }
 

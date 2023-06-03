@@ -31,140 +31,122 @@ using Server.Gumps;
 using Server.Menus;
 using Server.HuePickers;
 using Server.Diagnostics;
+using Server.Logging;
 
-namespace Server.Network {
-	public interface IPacketEncoder {
-		void EncodeOutgoingPacket( NetState to, ref byte[] buffer, ref int length );
-		void DecodeIncomingPacket( NetState from, ref byte[] buffer, ref int length );
-	}
+namespace Server.Network
+{
+    public interface IPacketEncoder
+    {
+        void EncodeOutgoingPacket(NetState to, ref byte[] buffer, ref int length);
+        void DecodeIncomingPacket(NetState from, ref byte[] buffer, ref int length);
+    }
 
-	public delegate void NetStateCreatedCallback( NetState ns );
+    public delegate void NetStateCreatedCallback(NetState ns);
 
-	public class NetState {
-		private Socket m_Socket;
-		private IPAddress m_Address;
-		private ByteQueue m_Buffer;
-		private byte[] m_RecvBuffer;
-		private SendQueue m_SendQueue;
-		private bool m_Seeded;
-		private bool m_Running;
+    public class NetState
+    {
+        private Socket m_Socket;
+        private IPAddress m_Address;
+        private ByteQueue m_Buffer;
+        private byte[] m_RecvBuffer;
+        private SendQueue m_SendQueue;
+        private bool m_Seeded;
+        private bool m_Running;
 
 #if NewAsyncSockets
 		private SocketAsyncEventArgs m_ReceiveEventArgs, m_SendEventArgs;
 #else
         private AsyncCallback m_OnReceive, m_OnSend;
 #endif
-       
+
         private MessagePump m_MessagePump;
-		private ServerInfo[] m_ServerInfo;
-		private IAccount m_Account;
-		private Mobile m_Mobile;
-		private CityInfo[] m_CityInfo;
-		private List<Gump> m_Gumps;
-		private List<HuePicker> m_HuePickers;
-		private List<IMenu> m_Menus;
-		private List<SecureTrade> m_Trades;
-		private int m_Sequence;
-		private bool m_CompressionEnabled;
-		private string m_ToString;
-		private ClientVersion m_Version;
-		private bool m_SentFirstPacket;
-		private bool m_BlockAllPackets;
+        private ServerInfo[] m_ServerInfo;
+        private IAccount m_Account;
+        private Mobile m_Mobile;
+        private CityInfo[] m_CityInfo;
+        private List<Gump> m_Gumps;
+        private List<HuePicker> m_HuePickers;
+        private List<IMenu> m_Menus;
+        private List<SecureTrade> m_Trades;
+        private int m_Sequence;
+        private bool m_CompressionEnabled;
+        private string m_ToString;
+        private ClientVersion m_Version;
+        private bool m_SentFirstPacket;
+        private bool m_BlockAllPackets;
 
-		private DateTime m_ConnectedOn;
+        private DateTime m_ConnectedOn;
 
-		public DateTime ConnectedOn {
-			get {
-				return m_ConnectedOn;
-			}
-		}
+        public DateTime ConnectedOn
+        {
+            get { return m_ConnectedOn; }
+        }
 
-		public TimeSpan ConnectedFor {
-			get {
-				return ( DateTime.UtcNow - m_ConnectedOn );
-			}
-		}
+        public TimeSpan ConnectedFor
+        {
+            get { return (DateTime.UtcNow - m_ConnectedOn); }
+        }
 
-		internal int m_Seed;
-		internal int m_AuthID;
+        internal int m_Seed;
+        internal int m_AuthID;
 
-		public IPAddress Address {
-			get {
-				return m_Address;
-			}
-		}
+        public IPAddress Address
+        {
+            get { return m_Address; }
+        }
 
         private ClientFlags m_Flags;
 
-		private static bool m_Paused;
+        private static bool m_Paused;
 
-		[Flags]
-		private enum AsyncState {
-			Pending = 0x01,
-			Paused = 0x02
-		}
+        [Flags]
+        private enum AsyncState
+        {
+            Pending = 0x01,
+            Paused = 0x02
+        }
 
-		private AsyncState m_AsyncState;
-		private object m_AsyncLock = new object();
+        private AsyncState m_AsyncState;
+        private object m_AsyncLock = new object();
 
 
-		private IPacketEncoder m_Encoder = null;
+        private IPacketEncoder m_Encoder = null;
 
-		public IPacketEncoder PacketEncoder {
-			get {
-				return m_Encoder;
-			}
-			set {
-				m_Encoder = value;
-			}
-		}
+        public IPacketEncoder PacketEncoder
+        {
+            get { return m_Encoder; }
+            set { m_Encoder = value; }
+        }
 
-		private static NetStateCreatedCallback m_CreatedCallback;
+        private static NetStateCreatedCallback m_CreatedCallback;
 
-		public static NetStateCreatedCallback CreatedCallback {
-			get {
-				return m_CreatedCallback;
-			}
-			set {
-				m_CreatedCallback = value;
-			}
-		}
+        public static NetStateCreatedCallback CreatedCallback
+        {
+            get { return m_CreatedCallback; }
+            set { m_CreatedCallback = value; }
+        }
 
-		public bool SentFirstPacket {
-			get {
-				return m_SentFirstPacket;
-			}
-			set {
-				m_SentFirstPacket = value;
-			}
-		}
+        public bool SentFirstPacket
+        {
+            get { return m_SentFirstPacket; }
+            set { m_SentFirstPacket = value; }
+        }
 
-		public bool BlockAllPackets {
-			get {
-				return m_BlockAllPackets;
-			}
-			set {
-				m_BlockAllPackets = value;
-			}
-		}
+        public bool BlockAllPackets
+        {
+            get { return m_BlockAllPackets; }
+            set { m_BlockAllPackets = value; }
+        }
 
         public ClientFlags Flags
         {
-            get
-            {
-				return m_Flags;
-			}
-			set {
-				m_Flags = value;
-			}
-		}
+            get { return m_Flags; }
+            set { m_Flags = value; }
+        }
 
         public ClientVersion Version
         {
-            get
-            {
-                return m_Version;
-            }
+            get { return m_Version; }
             set
             {
                 m_Version = value;
@@ -257,271 +239,340 @@ namespace Server.Network {
             Version70160 = Version70130 | NewCharacterCreation
         }
 
-        public bool NewSpellbook { get { return ((_ProtocolChanges & ProtocolChanges.NewSpellbook) != 0); } }
-        public bool DamagePacket { get { return ((_ProtocolChanges & ProtocolChanges.DamagePacket) != 0); } }
-        public bool Unpack { get { return ((_ProtocolChanges & ProtocolChanges.Unpack) != 0); } }
-        public bool BuffIcon { get { return ((_ProtocolChanges & ProtocolChanges.BuffIcon) != 0); } }
-        public bool NewHaven { get { return ((_ProtocolChanges & ProtocolChanges.NewHaven) != 0); } }
-        public bool ContainerGridLines { get { return ((_ProtocolChanges & ProtocolChanges.ContainerGridLines) != 0); } }
-        public bool ExtendedSupportedFeatures { get { return ((_ProtocolChanges & ProtocolChanges.ExtendedSupportedFeatures) != 0); } }
-        public bool StygianAbyss { get { return ((_ProtocolChanges & ProtocolChanges.StygianAbyss) != 0); } }
-        public bool HighSeas { get { return ((_ProtocolChanges & ProtocolChanges.HighSeas) != 0); } }
-        public bool NewCharacterList { get { return ((_ProtocolChanges & ProtocolChanges.NewCharacterList) != 0); } }
-        public bool NewCharacterCreation { get { return ((_ProtocolChanges & ProtocolChanges.NewCharacterCreation) != 0); } }
+        public bool NewSpellbook
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.NewSpellbook) != 0); }
+        }
+
+        public bool DamagePacket
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.DamagePacket) != 0); }
+        }
+
+        public bool Unpack
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.Unpack) != 0); }
+        }
+
+        public bool BuffIcon
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.BuffIcon) != 0); }
+        }
+
+        public bool NewHaven
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.NewHaven) != 0); }
+        }
+
+        public bool ContainerGridLines
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.ContainerGridLines) != 0); }
+        }
+
+        public bool ExtendedSupportedFeatures
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.ExtendedSupportedFeatures) != 0); }
+        }
+
+        public bool StygianAbyss
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.StygianAbyss) != 0); }
+        }
+
+        public bool HighSeas
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.HighSeas) != 0); }
+        }
+
+        public bool NewCharacterList
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.NewCharacterList) != 0); }
+        }
+
+        public bool NewCharacterCreation
+        {
+            get { return ((_ProtocolChanges & ProtocolChanges.NewCharacterCreation) != 0); }
+        }
 
         public bool IsUOTDClient
         {
-            get
-            {
-                return ((m_Flags & ClientFlags.UOTD) != 0 || (m_Version != null && m_Version.Type == ClientType.UOTD));
-            }
+            get { return ((m_Flags & ClientFlags.UOTD) != 0 || (m_Version != null && m_Version.Type == ClientType.UOTD)); }
         }
 
         public bool IsSAClient
         {
-            get
+            get { return (m_Version != null && m_Version.Type == ClientType.SA); }
+        }
+
+        public List<SecureTrade> Trades
+        {
+            get { return m_Trades; }
+        }
+
+        public void ValidateAllTrades()
+        {
+            for (int i = m_Trades.Count - 1; i >= 0; --i)
             {
-                return (m_Version != null && m_Version.Type == ClientType.SA);
+                if (i >= m_Trades.Count)
+                {
+                    continue;
+                }
+
+                SecureTrade trade = m_Trades[i];
+
+                if (trade.From.Mobile.Deleted || trade.To.Mobile.Deleted || !trade.From.Mobile.Alive || !trade.To.Mobile.Alive ||
+                    !trade.From.Mobile.InRange(trade.To.Mobile, 2) || trade.From.Mobile.Map != trade.To.Mobile.Map)
+                {
+                    trade.Cancel();
+                }
             }
         }
 
-		public List<SecureTrade> Trades {
-			get {
-				return m_Trades;
-			}
-		}
+        public void CancelAllTrades()
+        {
+            for (int i = m_Trades.Count - 1; i >= 0; --i)
+            {
+                if (i < m_Trades.Count)
+                {
+                    m_Trades[i].Cancel();
+                }
+            }
+        }
 
-		public void ValidateAllTrades() {
-			for ( int i = m_Trades.Count - 1; i >= 0; --i ) {
-				if ( i >= m_Trades.Count ) {
-					continue;
-				}
+        public void RemoveTrade(SecureTrade trade)
+        {
+            m_Trades.Remove(trade);
+        }
 
-				SecureTrade trade = m_Trades[i];
+        public SecureTrade FindTrade(Mobile m)
+        {
+            for (int i = 0; i < m_Trades.Count; ++i)
+            {
+                SecureTrade trade = m_Trades[i];
 
-				if ( trade.From.Mobile.Deleted || trade.To.Mobile.Deleted || !trade.From.Mobile.Alive || !trade.To.Mobile.Alive || !trade.From.Mobile.InRange( trade.To.Mobile, 2 ) || trade.From.Mobile.Map != trade.To.Mobile.Map ) {
-					trade.Cancel();
-				}
-			}
-		}
+                if (trade.From.Mobile == m || trade.To.Mobile == m)
+                {
+                    return trade;
+                }
+            }
 
-		public void CancelAllTrades() {
-			for ( int i = m_Trades.Count - 1; i >= 0; --i ) {
-				if ( i < m_Trades.Count ) {
-					m_Trades[i].Cancel();
-				}
-			}
-		}
+            return null;
+        }
 
-		public void RemoveTrade( SecureTrade trade ) {
-			m_Trades.Remove( trade );
-		}
+        public SecureTradeContainer FindTradeContainer(Mobile m)
+        {
+            for (int i = 0; i < m_Trades.Count; ++i)
+            {
+                SecureTrade trade = m_Trades[i];
 
-		public SecureTrade FindTrade( Mobile m ) {
-			for ( int i = 0; i < m_Trades.Count; ++i ) {
-				SecureTrade trade = m_Trades[i];
+                SecureTradeInfo from = trade.From;
+                SecureTradeInfo to = trade.To;
 
-				if ( trade.From.Mobile == m || trade.To.Mobile == m ) {
-					return trade;
-				}
-			}
+                if (from.Mobile == m_Mobile && to.Mobile == m)
+                {
+                    return from.Container;
+                }
+                else if (from.Mobile == m && to.Mobile == m_Mobile)
+                {
+                    return to.Container;
+                }
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		public SecureTradeContainer FindTradeContainer( Mobile m ) {
-			for ( int i = 0; i < m_Trades.Count; ++i ) {
-				SecureTrade trade = m_Trades[i];
+        public SecureTradeContainer AddTrade(NetState state)
+        {
+            SecureTrade newTrade = new SecureTrade(m_Mobile, state.m_Mobile);
 
-				SecureTradeInfo from = trade.From;
-				SecureTradeInfo to = trade.To;
+            m_Trades.Add(newTrade);
+            state.m_Trades.Add(newTrade);
 
-				if ( from.Mobile == m_Mobile && to.Mobile == m ) {
-					return from.Container;
-				} else if ( from.Mobile == m && to.Mobile == m_Mobile ) {
-					return to.Container;
-				}
-			}
+            return newTrade.From.Container;
+        }
 
-			return null;
-		}
+        public bool CompressionEnabled
+        {
+            get { return m_CompressionEnabled; }
+            set { m_CompressionEnabled = value; }
+        }
 
-		public SecureTradeContainer AddTrade( NetState state ) {
-			SecureTrade newTrade = new SecureTrade( m_Mobile, state.m_Mobile );
+        public int Sequence
+        {
+            get { return m_Sequence; }
+            set { m_Sequence = value; }
+        }
 
-			m_Trades.Add( newTrade );
-			state.m_Trades.Add( newTrade );
+        public IEnumerable<Gump> Gumps
+        {
+            get { return m_Gumps; }
+        }
 
-			return newTrade.From.Container;
-		}
+        public IEnumerable<HuePicker> HuePickers
+        {
+            get { return m_HuePickers; }
+        }
 
-		public bool CompressionEnabled {
-			get {
-				return m_CompressionEnabled;
-			}
-			set {
-				m_CompressionEnabled = value;
-			}
-		}
+        public IEnumerable<IMenu> Menus
+        {
+            get { return m_Menus; }
+        }
 
-		public int Sequence {
-			get {
-				return m_Sequence;
-			}
-			set {
-				m_Sequence = value;
-			}
-		}
+        private static int m_GumpCap = 512, m_HuePickerCap = 512, m_MenuCap = 512;
 
-		public IEnumerable<Gump> Gumps {
-			get {
-				return m_Gumps;
-			}
-		}
+        public static int GumpCap
+        {
+            get { return m_GumpCap; }
+            set { m_GumpCap = value; }
+        }
 
-		public IEnumerable<HuePicker> HuePickers {
-			get {
-				return m_HuePickers;
-			}
-		}
+        public static int HuePickerCap
+        {
+            get { return m_HuePickerCap; }
+            set { m_HuePickerCap = value; }
+        }
 
-		public IEnumerable<IMenu> Menus {
-			get {
-				return m_Menus;
-			}
-		}
+        public static int MenuCap
+        {
+            get { return m_MenuCap; }
+            set { m_MenuCap = value; }
+        }
 
-		private static int m_GumpCap = 512, m_HuePickerCap = 512, m_MenuCap = 512;
+        public void WriteConsole(string text)
+        {
+            ConsoleLog.Write.Information($"Client: {this}: {text}");
+        }
 
-		public static int GumpCap {
-			get {
-				return m_GumpCap;
-			}
-			set {
-				m_GumpCap = value;
-			}
-		}
+        public void WriteConsole(string format, params object[] args)
+        {
+            ConsoleLog.Write.Information(format, args);
+        }
 
-		public static int HuePickerCap {
-			get {
-				return m_HuePickerCap;
-			}
-			set {
-				m_HuePickerCap = value;
-			}
-		}
+        public void AddMenu(IMenu menu)
+        {
+            if (m_Menus == null)
+            {
+                m_Menus = new List<IMenu>();
+            }
 
-		public static int MenuCap {
-			get {
-				return m_MenuCap;
-			}
-			set {
-				m_MenuCap = value;
-			}
-		}
+            if (m_Menus.Count < m_MenuCap)
+            {
+                m_Menus.Add(menu);
+            }
+            else
+            {
+                WriteConsole("Exceeded menu cap, disconnecting...");
+                Dispose();
+            }
+        }
 
-		public void WriteConsole( string text ) 
-		{
-			Utility.ConsoleWriteLine($"Client: {this}: {text}" );
-		}
+        public void RemoveMenu(IMenu menu)
+        {
+            if (m_Menus != null)
+            {
+                m_Menus.Remove(menu);
+            }
+        }
 
-		public void WriteConsole( string format, params object[] args ) 
-		{
-			Utility.ConsoleWriteLine(String.Format( format, args ) );
-		}
+        public void RemoveMenu(int index)
+        {
+            if (m_Menus != null)
+            {
+                m_Menus.RemoveAt(index);
+            }
+        }
 
-		public void AddMenu( IMenu menu ) {
-			if ( m_Menus == null ) {
-				m_Menus = new List<IMenu>();
-			}
+        public void ClearMenus()
+        {
+            if (m_Menus != null)
+            {
+                m_Menus.Clear();
+            }
+        }
 
-			if ( m_Menus.Count < m_MenuCap ) {
-				m_Menus.Add( menu );
-			} else {
-				WriteConsole( "Exceeded menu cap, disconnecting..." );
-				Dispose();
-			}
-		}
+        public void AddHuePicker(HuePicker huePicker)
+        {
+            if (m_HuePickers == null)
+            {
+                m_HuePickers = new List<HuePicker>();
+            }
 
-		public void RemoveMenu( IMenu menu ) {
-			if ( m_Menus != null ) {
-				m_Menus.Remove( menu );
-			}
-		}
+            if (m_HuePickers.Count < m_HuePickerCap)
+            {
+                m_HuePickers.Add(huePicker);
+            }
+            else
+            {
+                WriteConsole("Exceeded hue picker cap, disconnecting...");
+                Dispose();
+            }
+        }
 
-		public void RemoveMenu( int index ) {
-			if ( m_Menus != null ) {
-				m_Menus.RemoveAt( index );
-			}
-		}
+        public void RemoveHuePicker(HuePicker huePicker)
+        {
+            if (m_HuePickers != null)
+            {
+                m_HuePickers.Remove(huePicker);
+            }
+        }
 
-		public void ClearMenus() {
-			if ( m_Menus != null ) {
-				m_Menus.Clear();
-			}
-		}
+        public void RemoveHuePicker(int index)
+        {
+            if (m_HuePickers != null)
+            {
+                m_HuePickers.RemoveAt(index);
+            }
+        }
 
-		public void AddHuePicker( HuePicker huePicker ) {
-			if ( m_HuePickers == null ) {
-				m_HuePickers = new List<HuePicker>();
-			}
+        public void ClearHuePickers()
+        {
+            if (m_HuePickers != null)
+            {
+                m_HuePickers.Clear();
+            }
+        }
 
-			if ( m_HuePickers.Count < m_HuePickerCap ) {
-				m_HuePickers.Add( huePicker );
-			} else {
-				WriteConsole( "Exceeded hue picker cap, disconnecting..." );
-				Dispose();
-			}
-		}
+        public void AddGump(Gump gump)
+        {
+            if (m_Gumps == null)
+            {
+                m_Gumps = new List<Gump>();
+            }
 
-		public void RemoveHuePicker( HuePicker huePicker ) {
-			if ( m_HuePickers != null ) {
-				m_HuePickers.Remove( huePicker );
-			}
-		}
+            if (m_Gumps.Count < m_GumpCap)
+            {
+                m_Gumps.Add(gump);
+            }
+            else
+            {
+                WriteConsole("Exceeded gump cap, disconnecting...");
+                Dispose();
+            }
+        }
 
-		public void RemoveHuePicker( int index ) {
-			if ( m_HuePickers != null ) {
-				m_HuePickers.RemoveAt( index );
-			}
-		}
+        public void RemoveGump(Gump gump)
+        {
+            if (m_Gumps != null)
+            {
+                m_Gumps.Remove(gump);
+            }
+        }
 
-		public void ClearHuePickers() {
-			if ( m_HuePickers != null ) {
-				m_HuePickers.Clear();
-			}
-		}
+        public void RemoveGump(int index)
+        {
+            if (m_Gumps != null)
+            {
+                m_Gumps.RemoveAt(index);
+            }
+        }
 
-		public void AddGump( Gump gump ) {
-			if ( m_Gumps == null ) {
-				m_Gumps = new List<Gump>();
-			}
-
-			if ( m_Gumps.Count < m_GumpCap ) {
-				m_Gumps.Add( gump );
-			} else {
-				WriteConsole( "Exceeded gump cap, disconnecting..." );
-				Dispose();
-			}
-		}
-
-		public void RemoveGump( Gump gump ) {
-			if ( m_Gumps != null ) {
-				m_Gumps.Remove( gump );
-			}
-		}
-
-		public void RemoveGump( int index ) {
-			if ( m_Gumps != null ) {
-				m_Gumps.RemoveAt( index );
-			}
-		}
-
-		public void ClearGumps() {
-			if ( m_Gumps != null ) {
-				m_Gumps.Clear();
-			}
-		}
+        public void ClearGumps()
+        {
+            if (m_Gumps != null)
+            {
+                m_Gumps.Clear();
+            }
+        }
 
         public void LaunchBrowser(string url)
         {
@@ -529,125 +580,125 @@ namespace Server.Network {
             Send(new LaunchBrowser(url));
         }
 
-		public CityInfo[] CityInfo {
-			get {
-				return m_CityInfo;
-			}
-			set {
-				m_CityInfo = value;
-			}
-		}
+        public CityInfo[] CityInfo
+        {
+            get { return m_CityInfo; }
+            set { m_CityInfo = value; }
+        }
 
-		public Mobile Mobile {
-			get {
-				return m_Mobile;
-			}
-			set {
-				m_Mobile = value;
-			}
-		}
+        public Mobile Mobile
+        {
+            get { return m_Mobile; }
+            set { m_Mobile = value; }
+        }
 
-		public ServerInfo[] ServerInfo {
-			get {
-				return m_ServerInfo;
-			}
-			set {
-				m_ServerInfo = value;
-			}
-		}
+        public ServerInfo[] ServerInfo
+        {
+            get { return m_ServerInfo; }
+            set { m_ServerInfo = value; }
+        }
 
-		public IAccount Account {
-			get {
-				return m_Account;
-			}
-			set {
-				m_Account = value;
-			}
-		}
+        public IAccount Account
+        {
+            get { return m_Account; }
+            set { m_Account = value; }
+        }
 
-		public override string ToString() {
-			return m_ToString;
-		}
+        public override string ToString()
+        {
+            return m_ToString;
+        }
 
-		private static List<NetState> m_Instances = new List<NetState>();
+        private static List<NetState> m_Instances = new List<NetState>();
 
-		public static List<NetState> Instances {
-			get {
-				return m_Instances;
-			}
-		}
+        public static List<NetState> Instances
+        {
+            get { return m_Instances; }
+        }
 
-		private static BufferPool m_ReceiveBufferPool = new BufferPool( "Receive", 2048, 2048 );
+        private static BufferPool m_ReceiveBufferPool = new BufferPool("Receive", 2048, 2048);
 
-		public NetState( Socket socket, MessagePump messagePump )
-		{
-			m_Socket = socket;
-			m_Buffer = new ByteQueue();
-			m_Seeded = false;
-			m_Running = false;
-			m_RecvBuffer = m_ReceiveBufferPool.AcquireBuffer();
-			m_MessagePump = messagePump;
-			m_Gumps = new List<Gump>();
-			m_HuePickers = new List<HuePicker>();
-			m_Menus = new List<IMenu>();
-			m_Trades = new List<SecureTrade>();
+        public NetState(Socket socket, MessagePump messagePump)
+        {
+            m_Socket = socket;
+            m_Buffer = new ByteQueue();
+            m_Seeded = false;
+            m_Running = false;
+            m_RecvBuffer = m_ReceiveBufferPool.AcquireBuffer();
+            m_MessagePump = messagePump;
+            m_Gumps = new List<Gump>();
+            m_HuePickers = new List<HuePicker>();
+            m_Menus = new List<IMenu>();
+            m_Trades = new List<SecureTrade>();
 
-			m_SendQueue = new SendQueue();
+            m_SendQueue = new SendQueue();
 
-			//m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 0.5 );
+            //m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 0.5 );
 
-			m_Instances.Add( this );
+            m_Instances.Add(this);
 
-			try {
-				m_Address = Utility.Intern( ( ( IPEndPoint ) m_Socket.RemoteEndPoint ).Address );
-				m_ToString = m_Address.ToString();
-			} catch ( Exception ex ) {
-				TraceException( ex );
-				m_Address = IPAddress.None;
-				m_ToString = "(error)";
-			}
+            try
+            {
+                m_Address = Utility.Intern(((IPEndPoint)m_Socket.RemoteEndPoint).Address);
+                m_ToString = m_Address.ToString();
+            }
+            catch (Exception ex)
+            {
+                TraceException(ex);
+                m_Address = IPAddress.None;
+                m_ToString = "(error)";
+            }
 
-			m_ConnectedOn = DateTime.UtcNow;
+            m_ConnectedOn = DateTime.UtcNow;
 
-			if ( m_CreatedCallback != null )
-			{
-				m_CreatedCallback( this );
-			}
-		}
+            if (m_CreatedCallback != null)
+            {
+                m_CreatedCallback(this);
+            }
+        }
 
-		public virtual void Send( Packet p ) {
-			if ( m_Socket == null || m_BlockAllPackets ) {
-				p.OnSend();
-				return;
-			}
+        public virtual void Send(Packet p)
+        {
+            if (m_Socket == null || m_BlockAllPackets)
+            {
+                p.OnSend();
+                return;
+            }
 
-			PacketSendProfile prof = PacketSendProfile.Acquire( p.GetType() );
+            PacketSendProfile prof = PacketSendProfile.Acquire(p.GetType());
 
-			int length;
-			byte[] buffer = p.Compile( m_CompressionEnabled, out length );
+            int length;
+            byte[] buffer = p.Compile(m_CompressionEnabled, out length);
 
-			if ( buffer != null ) {
-				if ( buffer.Length <= 0 || length <= 0 ) {
-					p.OnSend();
-					return;
-				}
+            if (buffer != null)
+            {
+                if (buffer.Length <= 0 || length <= 0)
+                {
+                    p.OnSend();
+                    return;
+                }
 
-				if ( prof != null ) {
-					prof.Start();
-				}
+                if (prof != null)
+                {
+                    prof.Start();
+                }
 
-				if ( m_Encoder != null ) {
-					m_Encoder.EncodeOutgoingPacket( this, ref buffer, ref length );
-				}
+                if (m_Encoder != null)
+                {
+                    m_Encoder.EncodeOutgoingPacket(this, ref buffer, ref length);
+                }
 
-				try {
-					SendQueue.Gram gram;
+                try
+                {
+                    SendQueue.Gram gram;
 
-					lock ( m_SendQueue ) {
-						gram = m_SendQueue.Enqueue( buffer, length );
-					}
+                    lock (m_SendQueue)
+                    {
+                        gram = m_SendQueue.Enqueue(buffer, length);
+                    }
 
-					if ( gram != null ) {
+                    if (gram != null)
+                    {
 #if NewAsyncSockets
 						m_SendEventArgs.SetBuffer( gram.Buffer, 0, gram.Length );
 						Send_Start();
@@ -663,26 +714,32 @@ namespace Server.Network {
                         }
 #endif
                     }
-				} catch ( CapacityExceededException ) {
-					Console.WriteLine( "Client: {0}: Too much data pending, disconnecting...", this );
-					Dispose( false );
-				}
+                }
+                catch (CapacityExceededException)
+                {
+                    ConsoleLog.Write.Information("Client: {0}: Too much data pending, disconnecting...", this);
+                    Dispose(false);
+                }
 
-				p.OnSend();
+                p.OnSend();
 
-				if ( prof != null ) {
-					prof.Finish( length );
-				}
-			} else {
-				Console.WriteLine( "Client: {0}: null buffer send, disconnecting...", this );
-				using ( StreamWriter op = new StreamWriter( "null_send.log", true ) )
-				{
-					op.WriteLine( "{0} Client: {1}: null buffer send, disconnecting...", DateTime.UtcNow, this );
-					op.WriteLine( new System.Diagnostics.StackTrace() );
-				}
-				Dispose();
-			}
-		}
+                if (prof != null)
+                {
+                    prof.Finish(length);
+                }
+            }
+            else
+            {
+                ConsoleLog.Write.Information("Client: {0}: null buffer send, disconnecting...", this);
+                using (StreamWriter op = new StreamWriter("null_send.log", true))
+                {
+                    op.WriteLine("{0} Client: {1}: null buffer send, disconnecting...", DateTime.UtcNow, this);
+                    op.WriteLine(new System.Diagnostics.StackTrace());
+                }
+
+                Dispose();
+            }
+        }
 
 #if NewAsyncSockets
 		public void Start() {
@@ -1096,15 +1153,10 @@ namespace Server.Network {
 
         public static int CoalesceSleep
         {
-            get
-            {
-                return m_CoalesceSleep;
-            }
-            set
-            {
-                m_CoalesceSleep = value;
-            }
+            get { return m_CoalesceSleep; }
+            set { m_CoalesceSleep = value; }
         }
+
         /*
         private DateTime m_NextCheckActivity;
         
@@ -1118,67 +1170,82 @@ namespace Server.Network {
                 return true;
             }
 
-            //Console.WriteLine("Client: {0}: Disconnecting due to inactivity...", this);
+            //ConsoleLog.Write.Information("Client: {0}: Disconnecting due to inactivity...", this);
 
             //Dispose();
             return false;
         }*/
-		public static void TraceException( Exception ex ) {
-			try {
-				using ( StreamWriter op = new StreamWriter( "network-errors.log", true ) ) {
-					op.WriteLine( "# {0}", DateTime.UtcNow );
+        public static void TraceException(Exception ex)
+        {
+            try
+            {
+                using (StreamWriter op = new StreamWriter("network-errors.log", true))
+                {
+                    op.WriteLine("# {0}", DateTime.UtcNow);
 
-					op.WriteLine( ex );
+                    op.WriteLine(ex);
 
-					op.WriteLine();
-					op.WriteLine();
-				}
-			} catch {
-			}
+                    op.WriteLine();
+                    op.WriteLine();
+                }
+            }
+            catch
+            {
+            }
 
-			try {
-				Console.WriteLine( ex );
-			} catch {
-			}
-		}
+            try
+            {
+                ConsoleLog.Write.Warning("TraceExceptionL", ex.ToString());
+            }
+            catch
+            {
+            }
+        }
 
-		private bool m_Disposing;
+        private bool m_Disposing;
 
         public void Dispose()
         {
             Dispose(true);
         }
 
-		public virtual void Dispose( bool flush ) {
-			if ( m_Socket == null || m_Disposing ) {
-				return;
-			}
+        public virtual void Dispose(bool flush)
+        {
+            if (m_Socket == null || m_Disposing)
+            {
+                return;
+            }
 
-			m_Disposing = true;
+            m_Disposing = true;
 
-			if ( flush )
-				flush = Flush();
+            if (flush)
+                flush = Flush();
 
-			try {
-				m_Socket.Shutdown( SocketShutdown.Both );
-			} catch ( SocketException ex ) {
-				TraceException( ex );
-			}
+            try
+            {
+                m_Socket.Shutdown(SocketShutdown.Both);
+            }
+            catch (SocketException ex)
+            {
+                TraceException(ex);
+            }
 
-			try {
-				m_Socket.Close();
+            try
+            {
+                m_Socket.Close();
+            }
+            catch (SocketException ex)
+            {
+                TraceException(ex);
+            }
 
-			} catch ( SocketException ex ) {
-				TraceException( ex );
-			}
+            if (m_RecvBuffer != null)
+                m_ReceiveBufferPool.ReleaseBuffer(m_RecvBuffer);
 
-			if ( m_RecvBuffer != null )
-				m_ReceiveBufferPool.ReleaseBuffer( m_RecvBuffer );
+            m_Socket = null;
 
-			m_Socket = null;
-
-			m_Buffer = null;
-			m_RecvBuffer = null;
+            m_Buffer = null;
+            m_RecvBuffer = null;
 
 #if NewAsyncSockets
 			m_ReceiveEventArgs = null;
@@ -1187,16 +1254,18 @@ namespace Server.Network {
             m_OnReceive = null;
             m_OnSend = null;
 #endif
-            
+
             m_Running = false;
 
-			m_Disposed.Enqueue( this );
+            m_Disposed.Enqueue(this);
 
-			if ( /*!flush &&*/ !m_SendQueue.IsEmpty ) {
-				lock ( m_SendQueue )
-					m_SendQueue.Clear();
-			}
-		}
+            if ( /*!flush &&*/ !m_SendQueue.IsEmpty)
+            {
+                lock (m_SendQueue)
+                    m_SendQueue.Clear();
+            }
+        }
+
         /*
 		public static void Initialize() {
 			Timer.DelayCall( TimeSpan.FromMinutes( 1.0 ), TimeSpan.FromMinutes( 1.5 ), new TimerCallback( CheckAllAlive ) );
@@ -1212,109 +1281,115 @@ namespace Server.Network {
 			}
 		}
         */
-		private static Queue m_Disposed = Queue.Synchronized( new Queue() );
+        private static Queue m_Disposed = Queue.Synchronized(new Queue());
 
-		public static void ProcessDisposedQueue() {
-			int breakout = 0;
+        public static void ProcessDisposedQueue()
+        {
+            int breakout = 0;
 
-			while ( breakout < 200 && m_Disposed.Count > 0 ) {
-				++breakout;
+            while (breakout < 200 && m_Disposed.Count > 0)
+            {
+                ++breakout;
 
-				NetState ns = ( NetState ) m_Disposed.Dequeue();
+                NetState ns = (NetState)m_Disposed.Dequeue();
 
-				Mobile m = ns.m_Mobile;
-				IAccount a = ns.m_Account;
+                Mobile m = ns.m_Mobile;
+                IAccount a = ns.m_Account;
 
-				if ( m != null ) {
-					m.NetState = null;
-					ns.m_Mobile = null;
-				}
+                if (m != null)
+                {
+                    m.NetState = null;
+                    ns.m_Mobile = null;
+                }
 
-				ns.m_Gumps.Clear();
-				ns.m_Menus.Clear();
-				ns.m_HuePickers.Clear();
-				ns.m_Account = null;
-				ns.m_ServerInfo = null;
-				ns.m_CityInfo = null;
+                ns.m_Gumps.Clear();
+                ns.m_Menus.Clear();
+                ns.m_HuePickers.Clear();
+                ns.m_Account = null;
+                ns.m_ServerInfo = null;
+                ns.m_CityInfo = null;
 
-				m_Instances.Remove( ns );
+                m_Instances.Remove(ns);
 
-				if ( a != null ) {
-					ns.WriteConsole( "Disconnected. [{0} Online] [{1}]", m_Instances.Count, a );
-				} else {
-					ns.WriteConsole( "Disconnected. [{0} Online]", m_Instances.Count );
-				}
-			}
-		}
+                if (a != null)
+                {
+                    ns.WriteConsole("Disconnected. [{0} Online] [{1}]", m_Instances.Count, a);
+                }
+                else
+                {
+                    ns.WriteConsole("Disconnected. [{0} Online]", m_Instances.Count);
+                }
+            }
+        }
 
-		public bool Running {
-			get {
-				return m_Running;
-			}
-		}
+        public bool Running
+        {
+            get { return m_Running; }
+        }
 
-		public bool Seeded {
-			get {
-				return m_Seeded;
-			}
-			set {
-				m_Seeded = value;
-			}
-		}
+        public bool Seeded
+        {
+            get { return m_Seeded; }
+            set { m_Seeded = value; }
+        }
 
-		public Socket Socket {
-			get {
-				return m_Socket;
-			}
-		}
+        public Socket Socket
+        {
+            get { return m_Socket; }
+        }
 
-		public ByteQueue Buffer {
-			get {
-				return m_Buffer;
-			}
-		}
+        public ByteQueue Buffer
+        {
+            get { return m_Buffer; }
+        }
 
-		public ExpansionInfo ExpansionInfo {
-			get {
-				for ( int i = ExpansionInfo.Table.Length - 1; i >= 0; i-- ) {
-					ExpansionInfo info = ExpansionInfo.Table[i];
+        public ExpansionInfo ExpansionInfo
+        {
+            get
+            {
+                for (int i = ExpansionInfo.Table.Length - 1; i >= 0; i--)
+                {
+                    ExpansionInfo info = ExpansionInfo.Table[i];
 
                     if ((info.RequiredClient != null && this.Version >= info.RequiredClient) || ((this.Flags & info.ClientFlags) != 0))
                     {
                         return info;
-					}
-				}
+                    }
+                }
 
-				return ExpansionInfo.GetInfo( Expansion.None );
-			}
-		}
+                return ExpansionInfo.GetInfo(Expansion.None);
+            }
+        }
 
-		public Expansion Expansion {
-			get {
-				return ( Expansion ) this.ExpansionInfo.ID;
-			}
-		}
+        public Expansion Expansion
+        {
+            get { return (Expansion)this.ExpansionInfo.ID; }
+        }
 
-		public bool SupportsExpansion( ExpansionInfo info, bool checkCoreExpansion ) {
-			if ( info == null || ( checkCoreExpansion && ( int ) Core.Expansion < info.ID ) )
-				return false;
+        public bool SupportsExpansion(ExpansionInfo info, bool checkCoreExpansion)
+        {
+            if (info == null || (checkCoreExpansion && (int)Core.Expansion < info.ID))
+                return false;
 
-			if ( info.RequiredClient != null )
-				return ( this.Version >= info.RequiredClient );
+            if (info.RequiredClient != null)
+                return (this.Version >= info.RequiredClient);
 
             return ((this.Flags & info.ClientFlags) != 0);
         }
 
-		public bool SupportsExpansion( Expansion ex, bool checkCoreExpansion ) {
-			return SupportsExpansion( ExpansionInfo.GetInfo( ex ), checkCoreExpansion );
-		}
+        public bool SupportsExpansion(Expansion ex, bool checkCoreExpansion)
+        {
+            return SupportsExpansion(ExpansionInfo.GetInfo(ex), checkCoreExpansion);
+        }
 
-		public bool SupportsExpansion( Expansion ex ) {
-			return SupportsExpansion( ex, true );
-		}
+        public bool SupportsExpansion(Expansion ex)
+        {
+            return SupportsExpansion(ex, true);
+        }
 
-		public bool SupportsExpansion( ExpansionInfo info ) {
-			return SupportsExpansion( info, true );
-		}
-	}
+        public bool SupportsExpansion(ExpansionInfo info)
+        {
+            return SupportsExpansion(info, true);
+        }
+    }
 }

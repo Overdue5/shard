@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Threading;
 using Server.Accounting;
 using Server.Engines.Help;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Misc
@@ -18,7 +19,7 @@ namespace Server.Misc
 		public static void EventSink_ServerStarted()
 		{
 			ThreadPool.QueueUserWorkItem( new WaitCallback( ConsoleListen ) );
-			Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "CC initialized..." );
+			ConsoleLog.Write.Information("CC initialized..." );
 		}
 
 		#endregion
@@ -53,10 +54,10 @@ namespace Server.Misc
 				}
 				catch
 				{
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "Thats not a number,try again." );
+					ConsoleLog.Write.Error("Thats not a number,try again." );
 					goto up;
 				}
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Type your response" );
+				ConsoleLog.Write.Information("Type your response" );
 				object[] ob = new object[] { 2, paG };
 				ThreadPool.QueueUserWorkItem( new WaitCallback( PageResp ), ob );
 			}
@@ -67,7 +68,7 @@ namespace Server.Misc
 				m_List = (PageEntry[])list.ToArray( typeof( PageEntry ) );
 				if( m_List.Length > 0 )
 					if( pag > m_List.Length )
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Warning, "Error: Not a valid page number" );
+						ConsoleLog.Write.Warning("Error: Not a valid page number" );
 					else
 						for( int i = 0; i < m_List.Length; ++i )
 						{
@@ -76,11 +77,11 @@ namespace Server.Misc
 							{
 								e.Sender.SendGump( new MessageSentGump( e.Sender, "Admin", resp, true ) );
 								PageQueue.Remove( e );
-								Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Message Sent..." );
+								ConsoleLog.Write.Information("Message Sent..." );
 							}
 						}
 				else
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "There are no pages to display." );
+					ConsoleLog.Write.Information("There are no pages to display." );
 			}
 			paging = false;
 			ThreadPool.QueueUserWorkItem( new WaitCallback( ConsoleListen ) );
@@ -103,20 +104,20 @@ namespace Server.Misc
 			{
 				string imput = input.Replace( "bc", "" );
 				BroadcastMessage( AccessLevel.Player, 0x35, String.Format( "[Admin] {0}", imput ) );
-				Console.WriteLine( "Players will see: {0}", imput );
+				ConsoleLog.Write.Information( "Players will see: {0}", imput );
 			}
 			else if( input.StartsWith( "sc" ) )
 			{
 				string imput = input.Replace( "staff", "" );
 				BroadcastMessage( AccessLevel.Counselor, 0x32, String.Format( "[Admin] {0}", imput ) );
-				Console.WriteLine( "Staff will see: {0}", imput );
+				ConsoleLog.Write.Information( "Staff will see: {0}", imput );
 			}
 			else if( input.StartsWith( "ban" ) )
 			{
 				string imput = input.Replace( "ban", "" );
 				List<NetState> states = NetState.Instances;
 				if( states.Count == 0 )
-					Console.WriteLine( "There are no players online." );
+					ConsoleLog.Write.Information( "There are no players online." );
 				for( int i = 0; i < states.Count; ++i )
 				{
 					Account a = states[i].Account as Account;
@@ -129,10 +130,10 @@ namespace Server.Misc
 					if( m.Name.ToLower() == innput.Trim() )
 					{
 						NetState m_ns = m.NetState;
-						Console.WriteLine( "Mobile name: '{0}' Account name: '{1}'", m.Name, a.Username );
+						ConsoleLog.Write.Information( "Mobile name: '{0}' Account name: '{1}'", m.Name, a.Username );
 						a.Banned = true;
 						m_ns.Dispose();
-						Console.WriteLine( "Banning complete." );
+						ConsoleLog.Write.Information( "Banning complete." );
 					}
 				}
 			}
@@ -141,7 +142,7 @@ namespace Server.Misc
 				string imput = input.Replace( "kick", "" );
 				List<NetState> states = NetState.Instances;
 				if( states.Count == 0 )
-					Console.WriteLine( "There are no players online." );
+					ConsoleLog.Write.Information( "There are no players online." );
 				for( int i = 0; i < states.Count; ++i )
 				{
 					Account a = states[i].Account as Account;
@@ -154,9 +155,9 @@ namespace Server.Misc
 					if( m.Name.ToLower() == innput.Trim() )
 					{
 						NetState m_ns = m.NetState;
-						Console.WriteLine( "Mobile name: '{0}' Account name: '{1}'", m.Name, a.Username );
+						ConsoleLog.Write.Information( "Mobile name: '{0}' Account name: '{1}'", m.Name, a.Username );
 						m_ns.Dispose();
-						Console.WriteLine( "Kicking complete." );
+						ConsoleLog.Write.Information( "Kicking complete." );
 					}
 				}
 			}
@@ -174,7 +175,7 @@ namespace Server.Misc
 					{
 						List<NetState> states = NetState.Instances;
 						if( states.Count == 0 )
-							Console.WriteLine( "There are no users online at this time." );
+							ConsoleLog.Write.Information( "There are no users online at this time." );
 						for( int i = 0; i < states.Count; ++i )
 						{
 							Account a = states[i].Account as Account;
@@ -182,7 +183,7 @@ namespace Server.Misc
 								continue;
 							Mobile m = states[i].Mobile;
 							if( m != null )
-								Console.WriteLine( "- Account: {0}, Name: {1}, IP: {2}", a.Username, m.Name, states[i] );
+								ConsoleLog.Write.Information( "- Account: {0}, Name: {1}, IP: {2}", a.Username, m.Name, states[i] );
 						}
 						break;
 					}
@@ -209,18 +210,18 @@ namespace Server.Misc
 							{
 								e = m_List[i];
 								string type = PageQueue.GetPageTypeName( e.Type );
-								Console.WriteLine( "--------------Page Number: " + i + " --------------------" );
-								Console.WriteLine( "Player   :" + e.Sender.Name );
-								Console.WriteLine( "Catagory :" + type );
-								Console.WriteLine( "Message  :" + e.Message );
+								ConsoleLog.Write.Information( "--------------Page Number: " + i + " --------------------" );
+								ConsoleLog.Write.Information( "Player   :" + e.Sender.Name );
+								ConsoleLog.Write.Information( "Catagory :" + type );
+								ConsoleLog.Write.Information( "Message  :" + e.Message );
 							}
-							Console.WriteLine( "Type the number of the page to respond to." );
+							ConsoleLog.Write.Information( "Type the number of the page to respond to." );
 							object[] oj = new object[] { 1, 2 };
 							ThreadPool.QueueUserWorkItem( new WaitCallback( PageResp ), oj );
 						}
 						else
 						{
-							Console.WriteLine( "No pages to display." );
+							ConsoleLog.Write.Information( "No pages to display." );
 							paging = false;
 						}
 						break;
@@ -232,23 +233,23 @@ namespace Server.Misc
 					case "list": //Credit to HomeDaddy for this wonderful list!
 					default:
 					{
-						Console.WriteLine( " " );
-						Console.WriteLine( "Commands:" );
-						Console.WriteLine( "shutdown nosave - Shuts down the server without saving." );
-						Console.WriteLine( "restart nosave  - Restarts the server without saving." );
-						Console.WriteLine( "online          - Shows a list of every person online:" );
-                        Console.WriteLine( "save            - Performs a forced save.");
-                        Console.WriteLine( "                      Account, Char Name, IP." );
-						Console.WriteLine( "bc <message>    - Type this command and your message after it. It will then be" );
-						Console.WriteLine( "                      sent to all players." );
-						Console.WriteLine( "sc <message>    - Type this command and your message after it.It will then be " );
-						Console.WriteLine( "                      sent to all staff." );
-						Console.WriteLine( "pages           - Shows all the pages in the page queue,you type the page" );
-						Console.WriteLine( "                      number ,then you type your response to the player." );
-						Console.WriteLine( "ban <playername>- Kicks and bans the users account." );
-						Console.WriteLine( "kick <playername>- Kicks the user." );
-						Console.WriteLine( "list or help    - Shows this list." );
-						Console.WriteLine( " " );
+						ConsoleLog.Write.Information( " " );
+						ConsoleLog.Write.Information( "Commands:" );
+						ConsoleLog.Write.Information( "shutdown nosave - Shuts down the server without saving." );
+						ConsoleLog.Write.Information( "restart nosave  - Restarts the server without saving." );
+						ConsoleLog.Write.Information( "online          - Shows a list of every person online:" );
+                        ConsoleLog.Write.Information( "save            - Performs a forced save.");
+                        ConsoleLog.Write.Information( "                      Account, Char Name, IP." );
+						ConsoleLog.Write.Information( "bc <message>    - Type this command and your message after it. It will then be" );
+						ConsoleLog.Write.Information( "                      sent to all players." );
+						ConsoleLog.Write.Information( "sc <message>    - Type this command and your message after it.It will then be " );
+						ConsoleLog.Write.Information( "                      sent to all staff." );
+						ConsoleLog.Write.Information( "pages           - Shows all the pages in the page queue,you type the page" );
+						ConsoleLog.Write.Information( "                      number ,then you type your response to the player." );
+						ConsoleLog.Write.Information( "ban <playername>- Kicks and bans the users account." );
+						ConsoleLog.Write.Information( "kick <playername>- Kicks the user." );
+						ConsoleLog.Write.Information( "list or help    - Shows this list." );
+						ConsoleLog.Write.Information( " " );
 						break;
 					}
 				}

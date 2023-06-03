@@ -26,6 +26,7 @@ using System.Threading;
 using System.Diagnostics;
 using Server.Network;
 using Server.Guilds;
+using Server.Logging;
 
 namespace Server {
 	public static class World {
@@ -70,7 +71,7 @@ namespace Server {
         {
             if (m_DiskWriteHandle.Set())
             {
-                Console.WriteLine("Closing Save Files. ");
+                ConsoleLog.Write.Information("Closing Save Files. ");
             }
         }
 
@@ -121,7 +122,7 @@ namespace Server {
 			p.Release();
             NetState.FlushAll();
 			if (toDiscord)
-                BaseDiscord.Bot.SendToDiscord(BaseDiscord.Channel.WorldChat, text);
+                BaseDiscord.Bot.SendMessageToDiscord(BaseDiscord.Channel.WorldChat, text);
         }
 
 		public static void Broadcast( int hue, bool ascii, string format, params object[] args ) {
@@ -303,11 +304,11 @@ namespace Server {
 
 				if (t == null)
 				{
-					Console.WriteLine("failed");
+					ConsoleLog.Write.Information("failed");
 
 					if (!Core.Service)
 					{
-						Console.WriteLine("Error: Type '{0}' was not found. Delete all of those types? (y/n)", typeName);
+						ConsoleLog.Write.Error("Error: Type '{0}' was not found. Delete all of those types? (y/n)", typeName);
 
 						if (Console.ReadKey(true).Key == ConsoleKey.Y)
 						{
@@ -316,11 +317,11 @@ namespace Server {
 							continue;
 						}
 
-						Console.WriteLine("Types will not be deleted. An exception will be thrown.");
+						ConsoleLog.Write.Information("Types will not be deleted. An exception will be thrown.");
 					}
 					else
 					{
-						Console.WriteLine("Error: Type '{0}' was not found.", typeName);
+						ConsoleLog.Write.Error("Error: Type '{0}' was not found.", typeName);
 					}
 
 					throw new Exception(String.Format("Bad type '{0}'", typeName));
@@ -599,17 +600,17 @@ namespace Server {
 			}
 
 			if ( failedItems || failedMobiles || failedGuilds ) {
-				Console.WriteLine( "An error was encountered while loading a saved object" );
+				ConsoleLog.Write.Information( "An error was encountered while loading a saved object" );
 
-				Console.WriteLine( " - Type: {0}", failedType );
-				Console.WriteLine( " - Serial: {0}", failedSerial );
+				ConsoleLog.Write.Information( " - Type: {0}", failedType );
+				ConsoleLog.Write.Information( " - Serial: {0}", failedSerial );
 
 				if ( !Core.Service ) {
-					Console.WriteLine( "Delete the object? (y/n)" );
+					ConsoleLog.Write.Information( "Delete the object? (y/n)" );
 
 					if ( Console.ReadKey( true ).Key == ConsoleKey.Y ) {
 						if ( failedType != typeof( BaseGuild ) ) {
-							Console.WriteLine( "Delete all objects of that type? (y/n)" );
+							ConsoleLog.Write.Information( "Delete all objects of that type? (y/n)" );
 
 							if ( Console.ReadKey( true ).Key == ConsoleKey.Y ) {
 								if ( failedMobiles ) {
@@ -635,10 +636,10 @@ namespace Server {
 						SaveIndex<GuildEntry>( guilds, GuildIndexPath );
 					}
 
-					Console.WriteLine( "After pressing return an exception will be thrown and the server will terminate." );
+					ConsoleLog.Write.Information( "After pressing return an exception will be thrown and the server will terminate." );
 					Console.ReadLine();
 				} else {
-					Console.WriteLine( "An exception will be thrown and the server will terminate." );
+					ConsoleLog.Write.Information( "An exception will be thrown and the server will terminate." );
 				}
 
 				throw new Exception( String.Format( "Load failed (items={0}, mobiles={1}, guilds={2}, type={3}, serial={4})", failedItems, failedMobiles, failedGuilds, failedType, failedSerial ), failed );
@@ -666,7 +667,7 @@ namespace Server {
 
 			watch.Stop();
 
-			Console.WriteLine( "done ({1} items, {2} mobiles) ({0:F2} seconds)", watch.Elapsed.TotalSeconds, m_Items.Count, m_Mobiles.Count );
+			ConsoleLog.Write.Information( "done ({1} items, {2} mobiles) ({0:F2} seconds)", watch.Elapsed.TotalSeconds, m_Items.Count, m_Mobiles.Count );
 		}
 #else
         private static List<object[]> ReadTypes(BinaryReader tdbReader)
@@ -683,11 +684,11 @@ namespace Server {
 
                 if (t == null)
                 {
-                    Console.WriteLine("failed");
+                    ConsoleLog.Write.Information("failed");
 
                     if (!Core.Service)
                     {
-                        Console.WriteLine("Error: Type '{0}' was not found. Delete all of those types? (y/n)", typeName);
+                        ConsoleLog.Write.Error("Error: Type '{0}' was not found. Delete all of those types? (y/n)", typeName);
 
                         if (Console.ReadKey(true).Key == ConsoleKey.Y)
                         {
@@ -696,14 +697,14 @@ namespace Server {
                             continue;
                         }
 
-                        Console.WriteLine("Types will not be deleted. An exception will be thrown.");
+                        ConsoleLog.Write.Error("Types will not be deleted. An exception will be thrown.");
                     }
                     else
                     {
-                        Console.WriteLine("Error: Type '{0}' was not found.", typeName);
+                        ConsoleLog.Write.Error("Error: Type '{0}' was not found.", typeName);
                     }
 
-                    throw new Exception(String.Format("Bad type '{0}'", typeName));
+                    throw new Exception($"Bad type '{typeName}'");
                 }
 
                 ConstructorInfo ctor = t.GetConstructor(m_SerialTypeArray);
@@ -714,7 +715,7 @@ namespace Server {
                 }
                 else
                 {
-                    throw new Exception(String.Format("Type '{0}' does not have a serialization constructor", t));
+                    throw new Exception($"Type '{t}' does not have a serialization constructor");
                 }
             }
 
@@ -1025,20 +1026,20 @@ namespace Server {
 
             if (failedItems || failedMobiles || failedGuilds)
             {
-                Console.WriteLine("An error was encountered while loading a saved object");
+                ConsoleLog.Write.Information("An error was encountered while loading a saved object");
 
-                Console.WriteLine(" - Type: {0}", failedType);
-                Console.WriteLine(" - Serial: {0}", failedSerial);
+                ConsoleLog.Write.Information(" - Type: {0}", failedType);
+                ConsoleLog.Write.Information(" - Serial: {0}", failedSerial);
 
                 if (!Core.Service)
                 {
-                    Console.WriteLine("Delete the object? (y/n)");
+                    ConsoleLog.Write.Information("Delete the object? (y/n)");
 
                     if (Console.ReadKey(true).Key == ConsoleKey.Y)
                     {
                         if (failedType != typeof(BaseGuild))
                         {
-                            Console.WriteLine("Delete all objects of that type? (y/n)");
+                            ConsoleLog.Write.Information("Delete all objects of that type? (y/n)");
 
                             if (Console.ReadKey(true).Key == ConsoleKey.Y)
                             {
@@ -1070,12 +1071,12 @@ namespace Server {
                         SaveIndex<GuildEntry>(guilds, GuildIndexPath);
                     }
 
-                    Console.WriteLine("After pressing return an exception will be thrown and the server will terminate.");
+                    ConsoleLog.Write.Information("After pressing return an exception will be thrown and the server will terminate.");
                     Console.ReadLine();
                 }
                 else
                 {
-                    Console.WriteLine("An exception will be thrown and the server will terminate.");
+                    ConsoleLog.Write.Information("An exception will be thrown and the server will terminate.");
                 }
 
                 throw new Exception(String.Format("Load failed (items={0}, mobiles={1}, guilds={2}, type={3}, serial={4})", failedItems, failedMobiles, failedGuilds, failedType, failedSerial), failed);
@@ -1105,7 +1106,7 @@ namespace Server {
 
             watch.Stop();
 
-            Console.WriteLine("done ({1} items, {2} mobiles) ({0:F2} seconds)", watch.Elapsed.TotalSeconds, m_Items.Count, m_Mobiles.Count);
+            ConsoleLog.Write.Information("done ({1} items, {2} mobiles) ({0:F2} seconds)", watch.Elapsed.TotalSeconds, m_Items.Count, m_Mobiles.Count);
             EventSink.InvokeAfterWorldLoad();
         }
 #endif
@@ -1157,7 +1158,7 @@ namespace Server {
 				action, entity
 			);
 
-			Console.WriteLine( message );
+			ConsoleLog.Write.Information( message );
 
 			try {
 				using ( StreamWriter op = new StreamWriter( "world-save-errors.log", true ) ) {
@@ -1215,7 +1216,7 @@ namespace Server {
             }
             catch (Exception e)
             {
-                Console.WriteLine("World Before Save event threw an exception.  " + e);
+                ConsoleLog.Write.Information("World Before Save event threw an exception.  " + e);
             }
             NetState.FlushAll();
 			NetState.Pause();
@@ -1230,7 +1231,7 @@ namespace Server {
 				Broadcast( 906, true, "World save has been initiated...", false );
 
 			SaveStrategy strategy = SaveStrategy.Acquire();
-			Console.WriteLine( "Core: Using {0} save strategy", strategy.Name.ToLowerInvariant() );
+			ConsoleLog.Write.Information( "Core: Using {0} save strategy", strategy.Name.ToLowerInvariant() );
 
 			Console.Write( "World: Saving..." );
 
@@ -1265,7 +1266,7 @@ namespace Server {
 
 			strategy.ProcessDecay();
 
-            Console.WriteLine("Save done in {0:F2} seconds.", watch.Elapsed.TotalSeconds);
+            ConsoleLog.Write.Information("Save done in {0:F2} seconds.", watch.Elapsed.TotalSeconds);
 
 			if ( message )
 				Broadcast( 906, true, "World save complete.", false );

@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml;
 using Server.Commands;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -180,7 +181,7 @@ namespace Server.Engines.XmlSpawner2
 
 			if(xf == null)
 			{
-				Console.WriteLine("Error: unable to save XML quest leaderboard to {0}", dirname);
+				ConsoleLog.Write.Error("Error: unable to save XML quest leaderboard to {0}", dirname);
 				return;
 			}
 
@@ -291,7 +292,7 @@ namespace Server.Engines.XmlSpawner2
 
 			if(sw == null)
 			{
-				Console.WriteLine("Error: unable to save HTML quest leaderboard to {0}", dirname);
+				ConsoleLog.Write.Error("Error: unable to save HTML quest leaderboard to {0}", dirname);
 				return;
 			}
 			sw.WriteLine("<TABLE border=\"1\" summary=\"This table gives quest leaderboard stats\"> ");

@@ -162,6 +162,7 @@ to check disk space before an Automatic backup.
 using System;
 using System.IO;
 using Server.Commands;
+using Server.Logging;
 
 namespace Server.Misc
 {
@@ -315,7 +316,7 @@ namespace Server.Misc
                 if (now.Hour == NoIOHour)
                 {
                     // DEBUG
-                    Console.WriteLine("AutoSave.cs : NoIOHour : Saving not allowed during hour {0}.", NoIOHour);
+                    ConsoleLog.Write.Information("AutoSave.cs : NoIOHour : Saving not allowed during hour {0}.", NoIOHour);
 
                     return;
                 }
@@ -358,9 +359,9 @@ namespace Server.Misc
                 totalBytes = 1000000000;  // 1 gig
 
             // DEBUG
-            //Console.WriteLine( "\n\nrootdrive: {0}", rootdrive );
-            //Console.WriteLine( "freeBytesAvailable: {0:n}", freeBytesAvailable );
-            //Console.WriteLine( "savesize: {0:n}\n\n", savesize );
+            //ConsoleLog.Write.Information( "\n\nrootdrive: {0}", rootdrive );
+            //ConsoleLog.Write.Information( "freeBytesAvailable: {0:n}", freeBytesAvailable );
+            //ConsoleLog.Write.Information( "savesize: {0:n}\n\n", savesize );
 
 
             // m_Archive may point to a different drive than the one RunUO is on...
@@ -398,8 +399,8 @@ namespace Server.Misc
                 }
 
                 // DEBUG
-                //Console.WriteLine( "arootdrive: {0}", arootdrive );
-                //Console.WriteLine( "atotalBytes: {0:n}\n\n", atotalBytes );
+                //ConsoleLog.Write.Information( "arootdrive: {0}", arootdrive );
+                //ConsoleLog.Write.Information( "atotalBytes: {0:n}\n\n", atotalBytes );
             }
 
 
@@ -411,13 +412,13 @@ namespace Server.Misc
                 if (m_Archive != null)
                 {
                     try { Archive(); }
-                    catch { Console.WriteLine("AutoSave.cs : Save() : try Archive() :\n Archive attempt failed!"); }
+                    catch { ConsoleLog.Write.Information("AutoSave.cs : Save() : try Archive() :\n Archive attempt failed!"); }
                 }
 #if CHECKFREEDISK
             }
             else if (m_Archive != null)
             {
-                Console.WriteLine("Error! Not enough free disk space left on {0} to Archive!", arootdrive);
+                ConsoleLog.Write.Error("Error! Not enough free disk space left on {0} to Archive!", arootdrive);
                 CommandHandlers.BroadcastMessage(m_Notify, 33, String.Format("[AutoSave.cs] Error! Not enough free disk space left on {0} to Archive!", arootdrive));
             }
 
@@ -436,12 +437,12 @@ namespace Server.Misc
             //	{
 #endif
             try { Backup(); }
-            catch { Console.WriteLine("AutoSave.cs : Save() : try Backup() :\n Backup attempt failed!"); }
+            catch { ConsoleLog.Write.Information("AutoSave.cs : Save() : try Backup() :\n Backup attempt failed!"); }
 #if CHECKFREEDISK
             //	}
             //	else
             //	{
-            //		Console.WriteLine( "Error! Not enough free disk space left on {0} to Backup!", rootdrive );
+            //		ConsoleLog.Write.Error( "Error! Not enough free disk space left on {0} to Backup!", rootdrive );
             //		CommandHandlers.BroadcastMessage( m_Notify, 33, String.Format( "[AutoSave.cs] Error! Not enough free disk space left on {0} to Backup!", rootdrive ) );
             //	}
 
@@ -456,7 +457,7 @@ namespace Server.Misc
             }
             else
             {
-                Console.WriteLine("Error! Not enough free disk space left on {0} to Save!", rootdrive);
+                ConsoleLog.Write.Error("Error! Not enough free disk space left on {0} to Save!", rootdrive);
                 CommandHandlers.BroadcastMessage(m_Notify, 33, String.Format("[AutoSave.cs] Error! Not enough free disk space left on {0} to Save!", rootdrive));
             }
 #endif
@@ -564,13 +565,13 @@ namespace Server.Misc
                     if (timeStamp != null)
                     {
                         try { dir.MoveTo(FormatDirectory(root, m_Backups[i - 1], timeStamp)); }
-                        catch { Console.WriteLine("AutoSave.cs : Backup() : try dir.MoveTo failed!"); }
+                        catch { ConsoleLog.Write.Information("AutoSave.cs : Backup() : try dir.MoveTo failed!"); }
                     }
                 }
                 else
                 {
                     try { dir.Delete(true); }
-                    catch { Console.WriteLine("AutoSave.cs : Backup() : try dir.Delete failed!"); }
+                    catch { ConsoleLog.Write.Information("AutoSave.cs : Backup() : try dir.Delete failed!"); }
                 }
             }
 
@@ -687,12 +688,12 @@ namespace Server.Misc
                     try { copyDirectory(saves, archiveDir); }
                     catch
                     {
-                        Console.WriteLine("AutoSave.cs : Archive() : try copyDirectory :\n Archive copyDirectory failed!");
+                        ConsoleLog.Write.Information("AutoSave.cs : Archive() : try copyDirectory :\n Archive copyDirectory failed!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("AutoSave.cs : Archive() : Directory.Exists( saves ) :\n Error! Archive did not occur because Saves directory did not exist!");
+                    ConsoleLog.Write.Information("AutoSave.cs : Archive() : Directory.Exists( saves ) :\n Error! Archive did not occur because Saves directory did not exist!");
                 }
             }
         }

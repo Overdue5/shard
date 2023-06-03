@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
+using Server.Logging;
 using Server.Network;
 using Server.Targeting;
 
@@ -320,7 +321,7 @@ namespace Server
 			m_Registered = false;
 
 			if (m_Children.Count > 0)
-				Console.WriteLine("Warning: Unregistering region '{0}' with children", this);
+				ConsoleLog.Write.Warning("Warning: Unregistering region '{0}' with children", this);
 
 			if (m_Parent != null)
 			{
@@ -940,7 +941,7 @@ namespace Server
 		{
 			if (!System.IO.File.Exists("Data/Regions.xml"))
 			{
-				Console.WriteLine("Error: Data/Regions.xml does not exist");
+				ConsoleLog.Write.Error("Error: Data/Regions.xml does not exist");
 				return;
 			}
 
@@ -953,7 +954,7 @@ namespace Server
 
 			if (root == null)
 			{
-				Console.WriteLine("Could not find root element 'ServerRegions' in Regions.xml");
+				ConsoleLog.Write.Information("Could not find root element 'ServerRegions' in Regions.xml");
 			}
 			else
 			{
@@ -963,14 +964,14 @@ namespace Server
 					if (ReadMap(facet, "name", ref map))
 					{
 						if (map == Map.Internal)
-							Console.WriteLine("Invalid internal map in a facet element");
+							ConsoleLog.Write.Information("Invalid internal map in a facet element");
 						else
 							LoadRegions(facet, map, null);
 					}
 				}
 			}
 
-			Console.WriteLine("done");
+			ConsoleLog.Write.Information("done");
 		}
 
 		private static void LoadRegions(XmlElement xml, Map map, Region parent)
@@ -983,7 +984,7 @@ namespace Server
 
 				if (!typeof(Region).IsAssignableFrom(type))
 				{
-					Console.WriteLine("Invalid region type '{0}' in regions.xml", type.FullName);
+					ConsoleLog.Write.Information("Invalid region type '{0}' in regions.xml", type.FullName);
 					continue;
 				}
 
@@ -994,7 +995,7 @@ namespace Server
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine("Error during the creation of region type '{0}': {1}", type.FullName, ex);
+					ConsoleLog.Write.Error("Error during the creation of region type '{0}': {1}", type.FullName, ex);
 					continue;
 				}
 
@@ -1044,7 +1045,7 @@ namespace Server
 			m_Area = area.ToArray();
 
 			if (m_Area.Length == 0)
-				Console.WriteLine("Empty area for region '{0}'", this);
+				ConsoleLog.Write.Information("Empty area for region '{0}'", this);
 
 			if (!ReadPoint3D(xml["go"], map, ref m_GoLocation, false) && m_Area.Length > 0)
 			{
@@ -1079,7 +1080,7 @@ namespace Server
 			if (xml == null)
 			{
 				if (mandatory)
-					Console.WriteLine("Missing element for attribute '{0}'", attribute);
+					ConsoleLog.Write.Information("Missing element for attribute '{0}'", attribute);
 
 				return null;
 			}
@@ -1090,7 +1091,7 @@ namespace Server
 			else
 			{
 				if (mandatory)
-					Console.WriteLine("Missing attribute '{0}' in element '{1}'", attribute, xml.Name);
+					ConsoleLog.Write.Information("Missing attribute '{0}' in element '{1}'", attribute, xml.Name);
 
 				return null;
 			}
@@ -1130,7 +1131,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse integer attribute '{0}' in element '{1}'", attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse integer attribute '{0}' in element '{1}'", attribute, xml.Name);
 				return false;
 			}
 
@@ -1155,7 +1156,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse boolean attribute '{0}' in element '{1}'", attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse boolean attribute '{0}' in element '{1}'", attribute, xml.Name);
 				return false;
 			}
 
@@ -1180,7 +1181,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse DateTime attribute '{0}' in element '{1}'", attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse DateTime attribute '{0}' in element '{1}'", attribute, xml.Name);
 				return false;
 			}
 
@@ -1205,7 +1206,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse TimeSpan attribute '{0}' in element '{1}'", attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse TimeSpan attribute '{0}' in element '{1}'", attribute, xml.Name);
 				return false;
 			}
 
@@ -1235,7 +1236,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Could not parse {0} enum attribute '{1}' in element '{2}'", type, attribute, xml.Name );
+				ConsoleLog.Write.Information( "Could not parse {0} enum attribute '{1}' in element '{2}'", type, attribute, xml.Name );
 				return false;
 			}
 #else
@@ -1245,7 +1246,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse {0} enum attribute '{1}' in element '{2}'", type, attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse {0} enum attribute '{1}' in element '{2}'", type, attribute, xml.Name);
 				return false;
 			}
 
@@ -1271,7 +1272,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse Map attribute '{0}' in element '{1}'", attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse Map attribute '{0}' in element '{1}'", attribute, xml.Name);
 				return false;
 			}
 
@@ -1297,13 +1298,13 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine("Could not parse Type attribute '{0}' in element '{1}'", attribute, xml.Name);
+				ConsoleLog.Write.Information("Could not parse Type attribute '{0}' in element '{1}'", attribute, xml.Name);
 				return false;
 			}
 
 			if (type == null)
 			{
-				Console.WriteLine("Could not find Type '{0}'", s);
+				ConsoleLog.Write.Information("Could not find Type '{0}'", s);
 				return false;
 			}
 

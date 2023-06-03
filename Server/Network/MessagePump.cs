@@ -18,12 +18,12 @@
  *
  ***************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Server.Diagnostics;
+using Server.Logging;
 
 namespace Server.Network
 {
@@ -52,7 +52,7 @@ namespace Server.Network
                 }
 
                 if (!success) {
-                    Console.WriteLine("Retrying...");
+                    ConsoleLog.Write.Information("Retrying...");
                     Thread.Sleep(10000);
                 }
             } while (!success);
@@ -93,7 +93,7 @@ namespace Server.Network
 					ns.Start();
 
 					if ( ns.Running )
-						Console.WriteLine( $"Client: {ns}: Connected. [{NetState.Instances.Count} Online]" );
+						ConsoleLog.Write.Information( $"Client: {ns}: Connected. [{NetState.Instances.Count} Online]" );
 				}
 			}
 		}
@@ -162,7 +162,7 @@ namespace Server.Network
 
 						if ( seed == 0 )
 						{
-							Console.WriteLine( "Login: {0}: Invalid client detected, disconnecting", ns );
+							ConsoleLog.Write.Information( "Login: {0}: Invalid client detected, disconnecting", ns );
 							ns.Dispose();
 							return false;
 						}
@@ -184,7 +184,7 @@ namespace Server.Network
 
                     if (!ns.SentFirstPacket && packetID != 0xF0 && packetID != 0xF1 && packetID != 0xCF && packetID != 0x80 && packetID != 0x91 && packetID != 0xA4 && packetID != 0xEF)
                     {
-						Console.WriteLine( "Client: {0}: Encrypted client detected, disconnecting", ns );
+						ConsoleLog.Write.Information( "Client: {0}: Encrypted client detected, disconnecting", ns );
 						ns.Dispose();
 						break;
 					}
@@ -225,7 +225,7 @@ namespace Server.Network
 					{
 						if ( handler.Ingame && ns.Mobile == null )
 						{
-							Console.WriteLine( "Client: {0}: Sent ingame packet (0x{1:X2}) before having been attached to a mobile", ns, packetID );
+							ConsoleLog.Write.Information( "Client: {0}: Sent ingame packet (0x{1:X2}) before having been attached to a mobile", ns, packetID );
 							ns.Dispose();
 							break;
 						}

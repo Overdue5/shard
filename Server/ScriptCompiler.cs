@@ -32,6 +32,7 @@ using System.Security.Cryptography;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
 using System.Diagnostics;
+using Server.Logging;
 
 namespace Server
 {
@@ -171,10 +172,10 @@ namespace Server
 
             m_Assemblies = new List<Assembly> { assembly }.ToArray();
 
-            Console.WriteLine("Scripts: Loaded without compiling...");
+            ConsoleLog.Write.Information("Scripts: Loaded without compiling...");
             Console.Write("Scripts: Verifying...");
             Core.VerifySerialization();
-            Console.WriteLine("done ({0} items, {1} mobiles)", Core.ScriptItems, Core.ScriptMobiles);
+            ConsoleLog.Write.Information("done ({0} items, {1} mobiles)", Core.ScriptItems, Core.ScriptMobiles);
 
             List<MethodInfo> invoke = new List<MethodInfo>();
 
@@ -242,7 +243,7 @@ namespace Server
                         m_AdditionalReferences.Add(assembly.Location);
                     }
 
-                    Console.WriteLine("done");
+                    ConsoleLog.Write.Information("done");
 
                     return true;
                 }
@@ -256,7 +257,7 @@ namespace Server
 
             if (files.Length == 0)
             {
-                Console.WriteLine("no files found.");
+                ConsoleLog.Write.Information("no files found.");
                 assembly = null;
                 return true;
             }
@@ -297,7 +298,7 @@ namespace Server
                                             m_AdditionalReferences.Add(assembly.Location);
                                         }
 
-                                        Console.WriteLine("done (cached)");
+                                        ConsoleLog.Write.Information("done (cached)");
 
                                         return true;
                                     }
@@ -400,7 +401,7 @@ namespace Server
 
             if (files.Length == 0)
             {
-                Console.WriteLine("no files found.");
+                ConsoleLog.Write.Information("no files found.");
                 assembly = null;
                 return true;
             }
@@ -441,7 +442,7 @@ namespace Server
                                             m_AdditionalReferences.Add(assembly.Location);
                                         }
 
-                                        Console.WriteLine("done (cached)");
+                                        ConsoleLog.Write.Information("done (cached)");
 
                                         return true;
                                     }
@@ -523,7 +524,7 @@ namespace Server
                     // Ridiculous. FileName is null if the warning/error is internally generated in csc.
                     if (string.IsNullOrEmpty(file))
                     {
-                        Console.WriteLine("ScriptCompiler: {0}: {1}", e.ErrorNumber, e.ErrorText);
+                        ConsoleLog.Write.Information("ScriptCompiler: {0}: {1}", e.ErrorNumber, e.ErrorText);
                         continue;
                     }
 
@@ -539,17 +540,15 @@ namespace Server
                 }
 
                 if (errors.Count > 0)
-                    Console.WriteLine("failed ({0} errors, {1} warnings)", errors.Count, warnings.Count);
+                    ConsoleLog.Write.Information("failed ({0} errors, {1} warnings)", errors.Count, warnings.Count);
                 else
-                    Console.WriteLine("done ({0} errors, {1} warnings)", errors.Count, warnings.Count);
+                    ConsoleLog.Write.Information("done ({0} errors, {1} warnings)", errors.Count, warnings.Count);
 
                 string scriptRoot = Path.GetFullPath(Path.Combine(Core.BaseDirectory, "Scripts" + Path.DirectorySeparatorChar));
                 Uri scriptRootUri = new Uri(scriptRoot);
 
-                Utility.PushColor(ConsoleColor.Yellow);
-
                 if (warnings.Count > 0)
-                    Console.WriteLine("Warnings:");
+                    ConsoleLog.Write.Warning("Warnings found {warnings.Count}");
 
                 foreach (KeyValuePair<string, List<CompilerError>> kvp in warnings)
                 {
@@ -559,22 +558,15 @@ namespace Server
                     string fullPath = Path.GetFullPath(fileName);
                     string usedPath = Uri.UnescapeDataString(scriptRootUri.MakeRelativeUri(new Uri(fullPath)).OriginalString);
 
-                    Console.WriteLine(" + {0}:", usedPath);
-
-                    Utility.PushColor(ConsoleColor.DarkYellow);
+                    ConsoleLog.Write.Warning(" + {0}:", usedPath);
 
                     foreach (CompilerError e in list)
-                        Console.WriteLine("    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText);
+                        ConsoleLog.Write.Warning("    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText);
 
-                    Utility.PopColor();
                 }
 
-                Utility.PopColor();
-
-                Utility.PushColor(ConsoleColor.Red);
-
                 if (errors.Count > 0)
-                    Console.WriteLine("Errors:");
+                    ConsoleLog.Write.Error($"Errors found :{errors.Count}");
 
                 foreach (KeyValuePair<string, List<CompilerError>> kvp in errors)
                 {
@@ -584,21 +576,16 @@ namespace Server
                     string fullPath = Path.GetFullPath(fileName);
                     string usedPath = Uri.UnescapeDataString(scriptRootUri.MakeRelativeUri(new Uri(fullPath)).OriginalString);
 
-                    Console.WriteLine(" + {0}:", usedPath);
+                    ConsoleLog.Write.Error(" + {0}:", usedPath);
 
-                    Utility.PushColor(ConsoleColor.DarkRed);
-
+                    
                     foreach (CompilerError e in list)
-                        Console.WriteLine("    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText);
-
-                    Utility.PopColor();
+                        ConsoleLog.Write.Error("    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText);
                 }
-
-                Utility.PopColor();
             }
             else
             {
-                Console.WriteLine("done (0 errors, 0 warnings)");
+                ConsoleLog.Write.Information("done (0 errors, 0 warnings)");
             }
         }
 
@@ -651,7 +638,7 @@ namespace Server
 
             Assemblies = assemblies.ToArray();
 
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, "Scripts: Verifying...");
+            ConsoleLog.Write.Information("Scripts: Verifying...");
             
 
             var watch = Stopwatch.StartNew();
@@ -660,7 +647,7 @@ namespace Server
 
             watch.Stop();
 
-            Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, 
+            ConsoleLog.Write.Information(
                 $"Finished ({Core.ScriptItems} items, {Core.ScriptMobiles} mobiles, {Core.ScriptCustoms} customs) ({watch.Elapsed.TotalSeconds:F2} seconds)");
             
             return true;
@@ -708,7 +695,7 @@ namespace Server
             }
             else
             {
-                Console.WriteLine("Scripts: Skipping VB.NET Scripts...done (use -vb to enable)");
+                ConsoleLog.Write.Information("Scripts: Skipping VB.NET Scripts...done (use -vb to enable)");
             }
 
             if (assemblies.Count == 0)
@@ -726,7 +713,7 @@ namespace Server
 
             watch.Stop();
 
-            Console.WriteLine("done ({0} items, {1} mobiles) ({2:F2} seconds)", Core.ScriptItems, Core.ScriptMobiles, watch.Elapsed.TotalSeconds);
+            ConsoleLog.Write.Information("done ({0} items, {1} mobiles) ({2:F2} seconds)", Core.ScriptItems, Core.ScriptMobiles, watch.Elapsed.TotalSeconds);
 
             return true;
         }

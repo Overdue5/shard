@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Scripts.SpecialSystems;
 using Server.Gumps;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 
@@ -161,8 +162,7 @@ namespace Server.Items
 							{
 								m_mob.SendMessage($"The gods did not answer your request.");
 								Logs.PvXLog.WriteLine(m_mob, $"Error get:{infoR}");
-								Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
-									$"Error create item:{infoR} for player:{m_mob}");
+								ConsoleLog.Write.Error($"Error create item:{infoR} for player:{m_mob}");
 								return;
 							}
 
@@ -255,7 +255,7 @@ namespace Server.Items
                     }
 					catch
 					{
-						Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error,
+						ConsoleLog.Write.Error(
 							$"Error parse {value} for {pvx.ToString()} in PvXRewardStone, ignoring");
 					}
 				}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Solaris.CliLocHandler;
 
@@ -73,7 +74,7 @@ namespace Server.Commands
                 }
                 catch (Exception exception)
                 {
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, exception.ToString());
+					ConsoleLog.Write.Error(exception.ToString());
                     //throw new ArgumentException();
                 }
             }

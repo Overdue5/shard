@@ -1,6 +1,8 @@
 ﻿#region References
 using System;
 using System.IO;
+using Server.Logging;
+
 #endregion
 
 namespace Server
@@ -180,7 +182,7 @@ namespace Server
                 }
                 catch (Exception e)
                 {
-                    Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, "[Persistence]: An error was encountered while loading a saved object");
+                    ConsoleLog.Write.Error("[Persistence]: An error was encountered while loading a saved object");
 
                     throw new Exception(String.Format("[Persistence]: {0}", e));
                 }

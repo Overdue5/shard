@@ -22,6 +22,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+using Server.Logging;
 
 namespace Server.Network
 {
@@ -80,7 +81,7 @@ namespace Server.Network
 					}
 					catch
 					{
-						Console.WriteLine( "net error" );
+						ConsoleLog.Write.Information( "net error" );
 					}
 				}
 			}
@@ -202,7 +203,7 @@ namespace Server.Network
 		{
 			if ( value == null )
 			{
-				Console.WriteLine( "Network: Attempted to WriteAsciiFixed() with null value" );
+				ConsoleLog.Write.Information( "Network: Attempted to WriteAsciiFixed() with null value" );
 				value = String.Empty;
 			}
 
@@ -238,7 +239,7 @@ namespace Server.Network
 		{
 			if ( value == null )
 			{
-				Console.WriteLine( "Network: Attempted to WriteAsciiNull() with null value" );
+				ConsoleLog.Write.Information( "Network: Attempted to WriteAsciiNull() with null value" );
 				value = String.Empty;
 			}
 
@@ -262,7 +263,7 @@ namespace Server.Network
 		{
 			if ( value == null )
 			{
-				Console.WriteLine( "Network: Attempted to WriteLittleUniNull() with null value" );
+				ConsoleLog.Write.Information( "Network: Attempted to WriteLittleUniNull() with null value" );
 				value = String.Empty;
 			}
 
@@ -289,7 +290,7 @@ namespace Server.Network
 		{
 			if ( value == null )
 			{
-				Console.WriteLine( "Network: Attempted to WriteLittleUniFixed() with null value" );
+				ConsoleLog.Write.Information( "Network: Attempted to WriteLittleUniFixed() with null value" );
 				value = String.Empty;
 			}
 
@@ -329,7 +330,7 @@ namespace Server.Network
 		{
 			if ( value == null )
 			{
-				Console.WriteLine( "Network: Attempted to WriteBigUniNull() with null value" );
+				ConsoleLog.Write.Information( "Network: Attempted to WriteBigUniNull() with null value" );
 				value = String.Empty;
 			}
 
@@ -356,7 +357,7 @@ namespace Server.Network
 		{
 			if ( value == null )
 			{
-				Console.WriteLine( "Network: Attempted to WriteBigUniFixed() with null value" );
+				ConsoleLog.Write.Information( "Network: Attempted to WriteBigUniFixed() with null value" );
 				value = String.Empty;
 			}
 

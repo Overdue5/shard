@@ -1,9 +1,10 @@
 //CliLocDAO.cs - the data access object used to read/write cliloc files
-using System;
+
 using System.Collections;
 using System.IO;
 //needed for ConstructorInfo
 using Server;
+using Server.Logging;
 
 
 namespace Solaris.CliLocHandler
@@ -121,7 +122,7 @@ namespace Solaris.CliLocHandler
 			}
 			else
 			{
-				Console.WriteLine( "CliLoc load error: file doesn't exist" );
+				ConsoleLog.Write.Error( "CliLoc load error: file doesn't exist" );
 				return null;
 			}
 			

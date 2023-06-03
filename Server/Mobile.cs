@@ -29,6 +29,7 @@ using Server.Guilds;
 using Server.Gumps;
 using Server.HuePickers;
 using Server.Items;
+using Server.Logging;
 using Server.Menus;
 using Server.Mobiles;
 using Server.Network;
@@ -3574,7 +3575,7 @@ namespace Server
 			set
 			{
 				if( m_Spell != null && value != null )
-					Console.WriteLine( "Warning: Spell has been overwritten" );
+					ConsoleLog.Write.Warning( "Warning: Spell has been overwritten" );
 
 				m_Spell = value;
 			}
@@ -4592,7 +4593,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine( "Warning: 0x{0:X}: Item must have a zero paramater constructor to be separated from a stack. '{1}'.", oldItem.Serial.Value, oldItem.GetType().Name );
+				ConsoleLog.Write.Warning( "Warning: 0x{0:X}: Item must have a zero paramater constructor to be separated from a stack. '{1}'.", oldItem.Serial.Value, oldItem.GetType().Name );
 				return null;
 			}
 			item.Visible = oldItem.Visible;

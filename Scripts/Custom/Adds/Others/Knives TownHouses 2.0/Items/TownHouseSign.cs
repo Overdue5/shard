@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Multis;
 
@@ -545,9 +546,9 @@ namespace Knives.TownHouses
             catch(Exception e)
             {
                 Errors.Report(String.Format("An error occurred during home purchasing.  More information available on the console."));
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                Console.WriteLine(e.StackTrace);
+                ConsoleLog.Write.Error(e.Message);
+                ConsoleLog.Write.Error(e.Source);
+                ConsoleLog.Write.Error(e.StackTrace);
             }
         }
 
@@ -637,7 +638,7 @@ namespace Knives.TownHouses
 
 			if ( door is Server.Gumps.ISecurable )
 			{
-                Console.WriteLine("Convert Door 1");
+                ConsoleLog.Write.Information("Convert Door 1");
 				door.Locked = false;
 				c_House.Doors.Add( door );
                 door.KeyValue = k;
@@ -664,7 +665,7 @@ namespace Knives.TownHouses
 					newdoor.Link = (BaseDoor)inneritem;
 				}
             */
-            Console.WriteLine("Convert Door 2");
+            ConsoleLog.Write.Information("Convert Door 2");
             c_House.Doors.Add(newdoor);
 		}
 

@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Logging;
 using Server.Targeting;
 
 namespace Arya.Chess
@@ -61,7 +62,7 @@ namespace Arya.Chess
 				}
 				catch ( Exception err )
 				{
-					Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Error, err.ToString() );
+					ConsoleLog.Write.Error(err.ToString() );
 				}
 			}
 		}

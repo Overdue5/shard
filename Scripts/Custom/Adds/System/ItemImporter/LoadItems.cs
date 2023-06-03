@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.IO;
 using Server.Commands;
+using Server.Logging;
 
 namespace Server
 {
@@ -29,7 +30,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine( "Could not open file" );
+				ConsoleLog.Write.Information( "Could not open file" );
 			}
 
 			if( fs == null )
@@ -70,7 +71,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine("Type loading failed");
+							ConsoleLog.Write.Information("Type loading failed");
 						}
 
 						if( type == null )
@@ -83,7 +84,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine("Type creation failed.");
+							ConsoleLog.Write.Information("Type creation failed.");
 							continue;
 						}
 
@@ -96,7 +97,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "ItemID loading failed" );
+							ConsoleLog.Write.Information( "ItemID loading failed" );
 						}
 
 						try
@@ -105,7 +106,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Amount loading failed" );
+							ConsoleLog.Write.Information( "Amount loading failed" );
 							item.Amount = 1;
 						}
 
@@ -124,7 +125,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Movable loading failed" );
+							ConsoleLog.Write.Information( "Movable loading failed" );
 							item.Movable = false;
 						}
 
@@ -162,7 +163,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Direction loading failed" );
+							ConsoleLog.Write.Information( "Direction loading failed" );
 						}
 
 						try
@@ -171,7 +172,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Hue loading failed" );
+							ConsoleLog.Write.Information( "Hue loading failed" );
 						}
 
 						try
@@ -282,7 +283,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Layer loading failed" );
+							ConsoleLog.Write.Information( "Layer loading failed" );
 						}
 
 						try
@@ -463,7 +464,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Light loading failed" );
+							ConsoleLog.Write.Information( "Light loading failed" );
 						}
 
 						try
@@ -487,7 +488,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "LootType loading failed" );
+							ConsoleLog.Write.Information( "LootType loading failed" );
 						}
 
 						try
@@ -496,7 +497,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Name loading failed" );
+							ConsoleLog.Write.Information( "Name loading failed" );
 						}
 
 						try
@@ -514,7 +515,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Stackable loading failed" );
+							ConsoleLog.Write.Information( "Stackable loading failed" );
 						}
 
 						try
@@ -523,7 +524,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Weight loading failed" );
+							ConsoleLog.Write.Information( "Weight loading failed" );
 						}
 
 						try
@@ -541,7 +542,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Visible loading failed" );
+							ConsoleLog.Write.Information( "Visible loading failed" );
 						}
 
 						try
@@ -550,7 +551,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "X loading failed" );
+							ConsoleLog.Write.Information( "X loading failed" );
 						}
 
 						try
@@ -559,7 +560,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Y loading failed" );
+							ConsoleLog.Write.Information( "Y loading failed" );
 						}
 
 						try
@@ -568,7 +569,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Z loading failed" );
+							ConsoleLog.Write.Information( "Z loading failed" );
 						}
 
 						try
@@ -599,7 +600,7 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Map loading failed" );
+							ConsoleLog.Write.Information( "Map loading failed" );
 						}
 					}
 					World.Broadcast( 0x35, false, "Items should now populate the shard...");

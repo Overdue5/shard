@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Commands;
+using Server.Logging;
 using Server.Network;
 
 namespace Server.Engines.MyRunUO
@@ -40,7 +41,7 @@ namespace Server.Engines.MyRunUO
 				return;
 
 			DateTime start = DateTime.UtcNow;
-			Console.WriteLine( "MyRunUO: Updating status database" );
+			ConsoleLog.Write.Information( "MyRunUO: Updating status database" );
 
 			try
 			{
@@ -61,8 +62,7 @@ namespace Server.Engines.MyRunUO
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "MyRunUO: Error updating status database" );
-				Console.WriteLine( e );
+				ConsoleLog.Write.Warning( "MyRunUO: Error updating status database", e );
 			}
 
 			if ( m_Command != null )

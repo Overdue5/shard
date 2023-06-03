@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Server.Logging;
 
 namespace Server.Misc.ErrorLog
 {
@@ -14,12 +15,12 @@ namespace Server.Misc.ErrorLog
             {
                 ErrorLog eL = new ErrorLog();
                 eL.exception = e;
-                Console.WriteLine("Error log created.\n");
+                ConsoleLog.Write.Error("Error log created.\n");
                 eL.Log();
             }
             catch(Exception inter)
             {
-                Console.WriteLine(inter + "\n");
+                ConsoleLog.Write.Information(inter + "\n");
             }
         }
 

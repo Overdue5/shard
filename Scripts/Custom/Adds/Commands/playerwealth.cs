@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using Server.Accounting;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Multis;
 
@@ -167,7 +168,7 @@ namespace Server.Commands
             if (m != null)
                 m.SendMessage("Total accounts processed: {0}", totalaccounts);
             else
-				Utility.ConsoleWriteLine(Utility.ConsoleMsgType.Info, $"Player wealth report generated. Total accounts: {totalaccounts}");
+				ConsoleLog.Write.Information($"Player wealth report generated. Total accounts: {totalaccounts}");
         }
 
         public static WealthInfo SearchContainer(Container pack, WealthInfo w)

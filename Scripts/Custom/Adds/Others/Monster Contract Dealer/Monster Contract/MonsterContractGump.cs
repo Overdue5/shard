@@ -7,8 +7,8 @@
  *    > Peut revendiquer les corps tués par ses créatures, summoned ou tamed
  * * */
 
-using System;
 using Server.Items;
+using Server.Logging;
 using Server.Network;
 using Server.Mobiles;
 using Server.Targeting;
@@ -85,7 +85,7 @@ namespace Server.Gumps
 		{
             if ( MCparent == null || from == null || o == null )
             {
-                Console.WriteLine( "MonsterContract: Sa bug !! Mais où, on sait pas :p" );
+                ConsoleLog.Write.Information( "MonsterContract: Sa bug !! Mais où, on sait pas :p" );
                 return;
             }
 			if ( o is Corpse )
@@ -113,7 +113,7 @@ namespace Server.Gumps
 			else
 			{
 				try{from.SendMessage("This is not a corpse.");}
-				catch{Console.WriteLine("Crash sur monstercontractgump from == null");}
+				catch{ConsoleLog.Write.Information("Crash sur monstercontractgump from == null");}
 			}
 		}
 		

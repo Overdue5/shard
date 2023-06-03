@@ -4,6 +4,7 @@ using System.IO;
 using Server.Accounting;
 using Server.Commands;
 using Server.Items;
+using Server.Logging;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
@@ -216,7 +217,7 @@ namespace Server.Gumps
                         addresses.Add(state.Address.ToString());
                         accounts.Add(state.Account.ToString());
 
-                        Console.WriteLine("{0} received a gift", state.Mobile.Name);
+                        ConsoleLog.Write.Information("{0} received a gift", state.Mobile.Name);
 
                         //*****Logging attempt*****
                         try
