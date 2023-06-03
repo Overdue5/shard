@@ -17,15 +17,9 @@ namespace Server.Items
 	public class SleeperFutonNSAddon: BaseAddon, IChopable
 	{
 
-      public override BaseAddonDeed Deed
-        {
-            get
-            {
-                return new SleeperFutonNSAddonDeed ();
-            }
-        }
+      public override BaseAddonDeed Deed => new SleeperFutonNSAddonDeed ();
 
-		public SleeperFutonNSAddon( Serial serial ) : base( serial )
+      public SleeperFutonNSAddon( Serial serial ) : base( serial )
 		{
 		}
 
@@ -51,36 +45,30 @@ namespace Server.Items
 		private int wtry;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Point3D Bed
-		{
-			get{ return m_Location; }
-		}
+		public Point3D Bed => m_Location;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public bool Debug
 		{
-			get{ return m_Debug; }
-			set{ m_Debug = value; }
-		}
+			get => m_Debug;
+            set => m_Debug = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get{ return m_Active; }
-			set{ m_Active = value; InvalidateProperties(); }
+			get => m_Active;
+            set{ m_Active = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Asleep
-		{
-			get{ return m_Sleeping; }
-		}
+		public bool Asleep => m_Sleeping;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Mobile
 		{
-			get{ return m_Player; }
-			set
+			get => m_Player;
+            set
 			{ 
 				if( value == null )
 					m_Active = false;
@@ -97,8 +85,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SleeperFutonNSAddon Sleeper
 		{
-			get{ return m_Sleeper; }
-			set{}
+			get => m_Sleeper;
+            set{}
 		}
 
 		private void Sleep()
@@ -275,13 +263,7 @@ namespace Server.Items
 	}
   public class SleeperFutonNSAddonDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon
-        {
-            get
-            {
-                return new SleeperFutonNSAddon ();
-            }
-        }
+        public override BaseAddon Addon => new SleeperFutonNSAddon ();
 
         [Constructable]
         public SleeperFutonNSAddonDeed ()

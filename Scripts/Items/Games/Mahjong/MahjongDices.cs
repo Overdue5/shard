@@ -6,11 +6,11 @@ namespace Server.Engines.Mahjong
 		private int m_First;
 		private int m_Second;
 
-		public MahjongGame Game { get { return m_Game; } }
-		public int First { get { return m_First; } }
-		public int Second { get { return m_Second; } }
+		public MahjongGame Game => m_Game;
+        public int First => m_First;
+        public int Second => m_Second;
 
-		public MahjongDices( MahjongGame game )
+        public MahjongDices( MahjongGame game )
 		{
 			m_Game = game;
 			m_First = Utility.Random( 1, 6 );

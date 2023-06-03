@@ -10,10 +10,10 @@ namespace Knives.Chat3
 		private static ArrayList s_ErrorLog = new ArrayList();
 		private static ArrayList s_Checked = new ArrayList();
 
-		public static ArrayList ErrorLog{ get{ return s_ErrorLog; } }
-		public static ArrayList Checked{ get{ return s_Checked; } }
+		public static ArrayList ErrorLog => s_ErrorLog;
+        public static ArrayList Checked => s_Checked;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
             RUOVersion.AddCommand("ChatErrors", AccessLevel.Counselor, new ChatCommandHandler(OnErrors));
             RUOVersion.AddCommand("ce", AccessLevel.Counselor, new ChatCommandHandler(OnErrors));

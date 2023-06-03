@@ -74,12 +74,9 @@ namespace Server.Items
 			}
 		}
 
-		public Item Deed
-		{
-			get{ return new MistletoeDeed( Hue ); }
-		}
+		public Item Deed => new MistletoeDeed( Hue );
 
-		public override void OnDoubleClick( Mobile from )
+        public override void OnDoubleClick( Mobile from )
 		{
 			BaseHouse house = BaseHouse.FindHouseAt( this );
 
@@ -168,7 +165,7 @@ namespace Server.Items
 	[Flipable( 0x14F0, 0x14EF )]
 	public class MistletoeDeed : Item
 	{
-		public override int LabelNumber{ get{ return 1070882; } } // Mistletoe Deed
+		public override int LabelNumber => 1070882; // Mistletoe Deed
 
 		[Constructable]
 		public MistletoeDeed() : this( 0 )

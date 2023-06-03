@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		public override int AosStrengthReq{ get{ return 20; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 17; } }
-		public override int AosSpeed{ get{ return 33; } }
+		public override int AosStrengthReq => 20;
+        public override int AosMinDamage => 15;
+        public override int AosMaxDamage => 17;
+        public override int AosSpeed => 33;
 
-		public override int OldStrengthReq{ get{ return 20; } }
-		public override int OldMinDamage{ get{ return 14; } }
-		public override int OldMaxDamage{ get{ return 33; } }
-		public override int OldSpeed{ get{ return 392; } }
+        public override int OldStrengthReq => 20;
+        public override int OldMinDamage => 14;
+        public override int OldMaxDamage => 33;
+        public override int OldSpeed => 392;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 50; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 50;
 
-		[Constructable]
+        [Constructable]
 		public GnarledStaff() : base( 0x13F8 )
 		{
 			Weight = 3.0;

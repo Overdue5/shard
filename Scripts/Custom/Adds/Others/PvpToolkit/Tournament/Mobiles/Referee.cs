@@ -47,45 +47,21 @@ namespace Server.Mobiles
         {
         }
 
-        public override bool ParalyzeImmune
-        {
-            get { return true; }
-        }
+        public override bool ParalyzeImmune => true;
 
-        public override bool IgnoreYoungProtection
-        {
-            get { return true; }
-        }
+        public override bool IgnoreYoungProtection => true;
 
-        public override bool DeleteCorpseOnDeath
-        {
-            get { return true; }
-        }
+        public override bool DeleteCorpseOnDeath => true;
 
-        public override bool AlwaysMurderer
-        {
-            get { return true; }
-        }
+        public override bool AlwaysMurderer => true;
 
-        public override double DispelDifficulty
-        {
-            get { return 200.0; }
-        }
+        public override double DispelDifficulty => 200.0;
 
-        public override double DispelFocus
-        {
-            get { return 200.0; }
-        }
+        public override double DispelFocus => 200.0;
 
-        public override bool BleedImmune
-        {
-            get { return true; }
-        }
+        public override bool BleedImmune => true;
 
-        public override Poison PoisonImmune
-        {
-            get { return Poison.Lethal; }
-        }
+        public override Poison PoisonImmune => Poison.Lethal;
 
         public override double GetFightModeRanking(Mobile m, FightMode acqType, bool bPlayerOnly)
         {

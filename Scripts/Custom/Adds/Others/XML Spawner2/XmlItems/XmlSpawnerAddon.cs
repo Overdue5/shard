@@ -8,9 +8,9 @@ namespace Server.Engines.XmlSpawner2
 	public class XmlSpawnerAddon : BaseAddon
 	{
 
-		public override bool ShareHue { get { return false; } }
+		public override bool ShareHue => false;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public virtual int PartialVisibility 
 		{
 			get 
@@ -235,15 +235,9 @@ namespace Server.Engines.XmlSpawner2
 			}
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return null;
-			}
-		}
+		public override BaseAddonDeed Deed => null;
 
-		public XmlSpawnerAddon()
+        public XmlSpawnerAddon()
 		{
 		}
 

@@ -9,7 +9,7 @@ namespace Server.Mobiles
 	public class Shapeshifter : BaseCreature
 	{
 
-		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Wisp; } }
+		public override InhumanSpeech SpeechType => InhumanSpeech.Wisp;
         private readonly TimeSpan m_ShiftDelay = TimeSpan.FromSeconds(45);
 	    private DateTime m_NextShift = DateTime.MinValue;
 
@@ -310,13 +310,13 @@ namespace Server.Mobiles
             }
 		}
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool BardImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool AutoDispel => true;
+        public override bool AlwaysMurderer => true;
+        public override bool BardImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
 
-		public Shapeshifter( Serial serial ) : base( serial )
+        public Shapeshifter( Serial serial ) : base( serial )
 		{
 		}
 

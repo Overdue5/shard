@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class CraftysFishingHat : BaseHat
 	{		
-		public override int LabelNumber{ get{ return 1074572; } } // Crafty's Fishing Hat
+		public override int LabelNumber => 1074572; // Crafty's Fishing Hat
 		
 		[Constructable]
 		public CraftysFishingHat() : base( 0x1713 )

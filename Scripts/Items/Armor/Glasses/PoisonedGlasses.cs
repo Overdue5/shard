@@ -2,18 +2,18 @@ namespace Server.Items
 {
 	public class PoisonedGlasses : ElvenGlasses
 	{
-		public override int LabelNumber{ get{ return 1073376; } } //Poisoned Reading Glasses
+		public override int LabelNumber => 1073376; //Poisoned Reading Glasses
 
-		public override int BasePhysicalResistance{ get{ return 10; } }
-		public override int BaseFireResistance{ get{ return 10; } }
-		public override int BaseColdResistance{ get{ return 10; } }
-		public override int BasePoisonResistance{ get{ return 30; } }
-		public override int BaseEnergyResistance{ get{ return 10; } }
+		public override int BasePhysicalResistance => 10;
+        public override int BaseFireResistance => 10;
+        public override int BaseColdResistance => 10;
+        public override int BasePoisonResistance => 30;
+        public override int BaseEnergyResistance => 10;
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public PoisonedGlasses()
 		{
 			Attributes.BonusStam = 3;

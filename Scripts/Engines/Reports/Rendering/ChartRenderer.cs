@@ -36,9 +36,9 @@ namespace Server.Engines.Reports
 
 		public ChartItemsCollection DataPoints
 		{
-			get{ return _dataPoints; }
-			set{ _dataPoints = value; }
-		}
+			get => _dataPoints;
+            set => _dataPoints = value;
+        }
 
 		public void SetColor(int index, Color NewColor)
 		{

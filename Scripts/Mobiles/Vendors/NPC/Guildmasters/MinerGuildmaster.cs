@@ -2,9 +2,9 @@ namespace Server.Mobiles
 {
 	public class MinerGuildmaster : BaseGuildmaster
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.MinersGuild; } }
+		public override NpcGuild NpcGuild => NpcGuild.MinersGuild;
 
-		[Constructable]
+        [Constructable]
 		public MinerGuildmaster() : base( "miner" )
 		{
 			SetSkill( SkillName.ItemID, 60.0, 83.0 );

@@ -1,8 +1,9 @@
 using System.Collections.Generic;using Server.Items;
 using Server.ContextMenus;using Server.Gumps;
 using Server.Network;namespace Server.Mobiles
-{[CorpseName( "Marrow's Corpse" )]public class Marrow : Mobile{public virtual bool IsInvulnerable{ get{ return true; } }
-[Constructable]public Marrow(){
+{[CorpseName( "Marrow's Corpse" )]public class Marrow : Mobile{public virtual bool IsInvulnerable => true;
+
+    [Constructable]public Marrow(){
 
 InitStats( 100, 100, 100 );
 
@@ -33,7 +34,8 @@ AddItem( pack );
 }
 
 public Marrow( Serial serial ) : base( serial ){}
-public override bool ShowContextMenu { get { return true; } }
+public override bool ShowContextMenu => true;
+
 public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
 { base.GetContextMenuEntries( from, list ); list.Add( new MarrowEntry( from, this ) ); } 
 public override void Serialize( GenericWriter writer ){base.Serialize( writer );writer.Write( (int) 0 );}

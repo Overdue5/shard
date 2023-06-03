@@ -12,16 +12,10 @@ namespace Arya.Chess
 			return color == ChessColor.Black ? 2342 : 2335;
 		}
 
-		public override int Power
-		{
-			get
-			{
-				return 3;
-			}
-		}
+		public override int Power => 3;
 
 
-		public Knight( BChessboard board, ChessColor color, Point2D position ) : base( board, color, position )
+        public Knight( BChessboard board, ChessColor color, Point2D position ) : base( board, color, position )
 		{
 		}
 

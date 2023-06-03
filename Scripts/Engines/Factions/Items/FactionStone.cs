@@ -10,8 +10,8 @@ namespace Server.Factions
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
 		public Faction Faction
 		{
-			get{ return m_Faction; }
-			set
+			get => m_Faction;
+            set
 			{
 				m_Faction = value;
 
@@ -19,9 +19,9 @@ namespace Server.Factions
 			}
 		}
 
-		public override string DefaultName { get { return "faction stone"; } }
+		public override string DefaultName => "faction stone";
 
-		[Constructable]
+        [Constructable]
 		public FactionStone() : this( null )
 		{
 		}

@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class GoldCanopySetAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new GoldCanopySetAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new GoldCanopySetAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public GoldCanopySetAddon()
 		{
 			AddonComponent ac = null;
@@ -278,15 +272,9 @@ namespace Server.Items
 
 	public class GoldCanopySetAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new GoldCanopySetAddon();
-			}
-		}
+		public override BaseAddon Addon => new GoldCanopySetAddon();
 
-		[Constructable]
+        [Constructable]
 		public GoldCanopySetAddonDeed()
 		{
 			Name = "Gold Canopy Set";

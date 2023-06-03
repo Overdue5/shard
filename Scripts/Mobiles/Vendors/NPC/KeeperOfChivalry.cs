@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	public class KeeperOfChivalry : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public KeeperOfChivalry() : base( "the Keeper of Chivalry" )
 		{
 			SetSkill( SkillName.Fencing, 75.0, 85.0 );

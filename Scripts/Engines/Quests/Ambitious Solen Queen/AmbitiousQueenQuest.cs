@@ -22,22 +22,14 @@ namespace Server.Engines.Quests.Ambitious
 				typeof( GetRewardObjective )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// Ambitious Solen Queen Quest
-				return 1054146;
-			}
-		}
+        public override object Name =>
+            // Ambitious Solen Queen Quest
+            1054146;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>The Solen queen considers you eagerly for a moment then says,</I><BR><BR>
+        public override object OfferMessage =>
+            /* <I>The Solen queen considers you eagerly for a moment then says,</I><BR><BR>
 				 * 
 				 * Yes. Yes, I think you could be of use. Normally, of course, I would handle
 				 * these things on my own, but these are busy times. Much to do, much to do.
@@ -61,20 +53,18 @@ namespace Server.Engines.Quests.Ambitious
 				 * 
 				 * Will you accept my offer?
 				 */
-				return 1054060;
-			}
-		}
+            1054060;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.Zero; } }
-		public override bool IsTutorial{ get{ return false; } }
+        public override TimeSpan RestartDelay => TimeSpan.Zero;
+        public override bool IsTutorial => false;
 
-		public override int Picture{ get{ return 0x15C9; } }
+        public override int Picture => 0x15C9;
 
-		private bool m_RedSolen;
+        private bool m_RedSolen;
 
-		public bool RedSolen{ get{ return m_RedSolen; } }
+		public bool RedSolen => m_RedSolen;
 
-		public AmbitiousQueenQuest( PlayerMobile from, bool redSolen ) : base( from )
+        public AmbitiousQueenQuest( PlayerMobile from, bool redSolen ) : base( from )
 		{
 			m_RedSolen = redSolen;
 		}

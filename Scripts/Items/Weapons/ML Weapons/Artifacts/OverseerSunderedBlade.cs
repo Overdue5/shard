@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class OverseerSunderedBlade : RadiantScimitar
 	{
-		public override int LabelNumber{ get{ return 1072920; } } // Overseer Sundered Blade
+		public override int LabelNumber => 1072920; // Overseer Sundered Blade
 
 		[Constructable]
 		public OverseerSunderedBlade()

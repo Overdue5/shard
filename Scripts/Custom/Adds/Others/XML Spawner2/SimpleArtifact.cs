@@ -8,8 +8,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int ArtifactRarity
 		{ 
-			get{ return m_ArtifactRarity; }
-			set {m_ArtifactRarity = value; InvalidateProperties();}
+			get => m_ArtifactRarity;
+            set {m_ArtifactRarity = value; InvalidateProperties();}
 		}
 
 		[Constructable]

@@ -13,8 +13,8 @@ namespace Server.Custom.SkillBoost
 
         public static Dictionary<int, double> SkillBoostValues
         {
-            get { return m_SkillBoostValues; }
-            set { m_SkillBoostValues = value; }
+            get => m_SkillBoostValues;
+            set => m_SkillBoostValues = value;
         }
 
         public static void DefaultValues()

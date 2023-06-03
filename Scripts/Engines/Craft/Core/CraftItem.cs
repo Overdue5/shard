@@ -123,18 +123,15 @@ namespace Server.Engines.Craft
 
 		public bool ForceNonExceptional
 		{
-			get { return m_ForceNonExceptional; }
-			set { m_ForceNonExceptional = value; }
-		}
+			get => m_ForceNonExceptional;
+            set => m_ForceNonExceptional = value;
+        }
 
 	    public Expansion RequiredExpansion { get; set; }
 
-	    public Recipe Recipe
-		{
-			get { return m_Recipe; }
-		}
+	    public Recipe Recipe => m_Recipe;
 
-	    public int Mana { get; set; }
+        public int Mana { get; set; }
 
 	    public int Hits { get; set; }
 
@@ -142,66 +139,45 @@ namespace Server.Engines.Craft
 
 	    public bool UseSubRes2
 		{
-			get { return m_UseSubRes2; }
-			set { m_UseSubRes2 = value; }
-		}
+			get => m_UseSubRes2;
+            set => m_UseSubRes2 = value;
+        }
 
 	    public bool UseAllRes { get; set; }
 
 	    public bool NeedHeat
 		{
-			get { return m_NeedHeat; }
-			set { m_NeedHeat = value; }
-		}
+			get => m_NeedHeat;
+            set => m_NeedHeat = value;
+        }
 
 		public bool NeedOven
 		{
-			get { return m_NeedOven; }
-			set { m_NeedOven = value; }
-		}
+			get => m_NeedOven;
+            set => m_NeedOven = value;
+        }
 
 		public bool NeedMill
 		{
-			get { return m_NeedMill; }
-			set { m_NeedMill = value; }
-		}
+			get => m_NeedMill;
+            set => m_NeedMill = value;
+        }
 
-		public Type ItemType
-		{
-			get { return m_Type; }
-		}
+		public Type ItemType => m_Type;
 
-		public string GroupNameString
-		{
-			get { return m_GroupNameString; }
-		}
+        public string GroupNameString => m_GroupNameString;
 
-		public int GroupNameNumber
-		{
-			get { return m_GroupNameNumber; }
-		}
+        public int GroupNameNumber => m_GroupNameNumber;
 
-		public string NameString
-		{
-			get { return m_NameString; }
-		}
+        public string NameString => m_NameString;
 
-		public int NameNumber
-		{
-			get { return m_NameNumber; }
-		}
+        public int NameNumber => m_NameNumber;
 
-        public CraftResCol Resources
-        {
-			get { return m_arCraftRes; }
-		}
+        public CraftResCol Resources => m_arCraftRes;
 
-		public CraftSkillCol Skills
-		{
-			get { return m_arCraftSkill; }
-		}
+        public CraftSkillCol Skills => m_arCraftSkill;
 
-		public object GetCS()
+        public object GetCS()
 		{
 			return m_System;
 		}

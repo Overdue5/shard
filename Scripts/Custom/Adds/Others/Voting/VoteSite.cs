@@ -13,18 +13,17 @@ namespace Server.Voting
 		/// Gets the VoteItem object that holds this VoteSite object.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public VoteItem Parent
-		{ get { return _Parent; } }
+		public VoteItem Parent => _Parent;
 
-		private string _Name = VoteConfig.Instance.DefaultName;
+        private string _Name = VoteConfig.Instance.DefaultName;
 		/// <summary>
 		/// Gets or Sets the Name of this VoteSite object.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Name
 		{
-			get { return _Name; }
-			set
+			get => _Name;
+            set
 			{
 				_Name = value;
 				InvalidateProperties();
@@ -38,8 +37,8 @@ namespace Server.Voting
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string URL
 		{
-			get { return _URL; }
-			set
+			get => _URL;
+            set
 			{
 				_URL = value;
 				InvalidateProperties();
@@ -54,8 +53,8 @@ namespace Server.Voting
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan CoolDown
 		{
-			get { return _CoolDown; }
-			set
+			get => _CoolDown;
+            set
 			{
 				_CoolDown = value;
 				InvalidateProperties();
@@ -63,12 +62,9 @@ namespace Server.Voting
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool Valid
-		{
-			get { return VoteHelper.IsValidURL(_URL); }
-		}
+		public bool Valid => VoteHelper.IsValidURL(_URL);
 
-		public VoteSite(VoteItem parent)
+        public VoteSite(VoteItem parent)
 		{
 			_Parent = parent;
 		}

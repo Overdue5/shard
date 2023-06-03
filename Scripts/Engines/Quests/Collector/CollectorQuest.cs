@@ -52,22 +52,14 @@ namespace Server.Engines.Quests.Collector
 				typeof( MakeRoomObjective )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				//return 1020549; // This localized message seems broken...
-				return "Collector's Quest";
-			}
-		}
+        public override object Name =>
+            //return 1020549; // This localized message seems broken...
+            "Collector's Quest";
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>Elwood greets you warmly, like an old friend he's not
+        public override object OfferMessage =>
+            /* <I>Elwood greets you warmly, like an old friend he's not
 				 * quite sure he ever had.</I><BR><BR>
 				 * 
 				 * Hello. Yes. Sit down. Please. Good. Okay, stand. Up to you.<BR><BR>
@@ -85,16 +77,14 @@ namespace Server.Engines.Quests.Collector
 				 * So what do you think? The fee will be the same as always. I'm a fair
 				 * man. You know that. So what do you say?
 				 */
-				return 1055081;
-			}
-		}
+            1055081;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.Zero; } }
-		public override bool IsTutorial{ get{ return false; } }
+        public override TimeSpan RestartDelay => TimeSpan.Zero;
+        public override bool IsTutorial => false;
 
-		public override int Picture{ get{ return 0x15A9; } }
+        public override int Picture => 0x15A9;
 
-		public CollectorQuest( PlayerMobile from ) : base( from )
+        public CollectorQuest( PlayerMobile from ) : base( from )
 		{
 		}
 

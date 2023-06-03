@@ -6,9 +6,9 @@ namespace Server.Mobiles
 {
 	public class TinkerGuildmaster : BaseGuildmaster
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.TinkersGuild; } }
+		public override NpcGuild NpcGuild => NpcGuild.TinkersGuild;
 
-		[Constructable]
+        [Constructable]
 		public TinkerGuildmaster() : base( "tinker" )
 		{
 			SetSkill( SkillName.Lockpicking, 65.0, 88.0 );

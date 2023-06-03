@@ -10,10 +10,10 @@ namespace Server.Engines.BulkOrders
 		private readonly int m_Points;
 		private readonly Type[] m_Types;
 
-		public int Points{ get{ return m_Points; } }
-		public Type[] Types{ get{ return m_Types; } }
+		public int Points => m_Points;
+        public Type[] Types => m_Types;
 
-		public RewardType( int points, params Type[] types )
+        public RewardType( int points, params Type[] types )
 		{
 			m_Points = points;
 			m_Types = types;
@@ -37,11 +37,11 @@ namespace Server.Engines.BulkOrders
 		private readonly ConstructCallback m_Constructor;
 		private readonly int m_Type;
 
-		public int Weight{ get{ return m_Weight; } }
-		public ConstructCallback Constructor{ get{ return m_Constructor; } }
-		public int Type{ get{ return m_Type; } }
+		public int Weight => m_Weight;
+        public ConstructCallback Constructor => m_Constructor;
+        public int Type => m_Type;
 
-		public RewardItem( int weight, ConstructCallback constructor ) : this( weight, constructor, 0 )
+        public RewardItem( int weight, ConstructCallback constructor ) : this( weight, constructor, 0 )
 		{
 		}
 
@@ -64,10 +64,10 @@ namespace Server.Engines.BulkOrders
 		private readonly int m_Points;
 		private readonly RewardItem[] m_Items;
 
-		public int Points{ get{ return m_Points; } }
-		public RewardItem[] Items{ get{ return m_Items; } }
+		public int Points => m_Points;
+        public RewardItem[] Items => m_Items;
 
-		public RewardGroup( int points, params RewardItem[] items )
+        public RewardGroup( int points, params RewardItem[] items )
 		{
 			m_Points = points;
 			m_Items = items;
@@ -105,7 +105,9 @@ namespace Server.Engines.BulkOrders
 	{
 		private RewardGroup[] m_Groups;
 
-		public RewardGroup[] Groups{ get{ return m_Groups; } set{ m_Groups = value; } }
+		public RewardGroup[] Groups{ get => m_Groups;
+            set => m_Groups = value;
+        }
 
 		public abstract int ComputePoints( int quantity, bool exceptional, BulkMaterialType material, int itemCount, Type type );
 		public abstract int ComputeGold( int quantity, bool exceptional, BulkMaterialType material, int itemCount, Type type );

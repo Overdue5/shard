@@ -23,14 +23,8 @@ namespace Server.Engines.Reports
         /// </summary>
         public PersistableObject this[int index]
         {
-            get
-            {
-                return ((PersistableObject)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
+            get => ((PersistableObject)(List[index]));
+            set => List[index] = value;
         }
         
         /// <summary>

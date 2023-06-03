@@ -50,9 +50,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 2 );
             PackGold(200);
 		}
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool BleedImmune => true;
 
-		public IceElemental( Serial serial ) : base( serial )
+        public IceElemental( Serial serial ) : base( serial )
 		{
 		}
 

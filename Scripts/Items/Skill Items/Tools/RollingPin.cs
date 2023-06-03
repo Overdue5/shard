@@ -4,9 +4,9 @@ namespace Server.Items
 {
 	public class RollingPin : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefCooking.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefCooking.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public RollingPin() : base( 0x1043 )
 		{
 			Weight = 1.0;

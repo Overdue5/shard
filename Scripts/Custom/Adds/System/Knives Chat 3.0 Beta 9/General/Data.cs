@@ -496,38 +496,84 @@ namespace Knives.Chat3
         private static string s_IrcNick = Server.Misc.ServerList.ServerName;
         private static string s_MultiServer = "127.0.0.1";
 
-        public static Hashtable Datas { get { return s_Datas; } }
-        public static ArrayList Notifications { get { return s_Notifications; } }
-        public static ArrayList MultiBlocks { get { return s_MultiBlocks; } }
-        public static ArrayList Filters { get { return s_Filters; } }
-        public static ArrayList IrcList { get { return s_IrcList; } }
-        public static FilterPenalty FilterPenalty { get { return s_FilterPenalty; } set { s_FilterPenalty = value; } }
-        public static MacroPenalty MacroPenalty { get { return s_MacroPenalty; } set { s_MacroPenalty = value; } }
-        public static int MaxMsgs { get { return s_MaxMsgs; } set { s_MaxMsgs = value; } }
-        public static int ChatSpam { get { return s_ChatSpam; } set { s_ChatSpam = value; } }
-        public static int MsgSpam { get { return s_MsgSpam; } set { s_MsgSpam = value; } }
-        public static int RequestSpam { get { return s_RequestSpam; } set { s_RequestSpam = value; } }
-        public static int FilterBanLength { get { return s_FilterBanLength; } set { s_FilterBanLength = value; } }
-        public static int FilterWarnings { get { return s_FilterWarnings; } set { s_FilterWarnings = value; } }
-        public static int AntiMacroDelay { get { return s_AntiMacroDelay; } set { s_AntiMacroDelay = value; } }
-        public static int IrcPort { get { return s_IrcPort; } set { s_IrcPort = value; } }
-        public static int IrcMaxAttempts { get { return s_IrcMaxAttempts; } set { s_IrcMaxAttempts = value; } }
-        public static int MultiPort { get { return s_MultiPort; } set { s_MultiPort = value; } }
-        public static ulong TotalChats { get { return s_TotalChats; } set { s_TotalChats = value; } }
-        public static bool IrcAutoConnect { get { return s_IrcAutoConnect; } set { s_IrcAutoConnect = value; } }
-        public static bool IrcAutoReconnect { get { return s_IrcAutoReconnect; } set { s_IrcAutoReconnect = value; } }
-        public static bool FilterSpeech { get { return s_FilterSpeech; } set { s_FilterSpeech = value; } }
-        public static bool FilterMsg { get { return s_FilterMsg; } set { s_FilterMsg = value; } }
-        public static bool Debug { get { return s_Debug; } set { s_Debug = value; } }
-        public static bool LogChat { get { return s_LogChat; } set { s_LogChat = value; } }
-        public static bool LogPms { get { return s_LogPms; } set { s_LogPms = value; } }
-        public static string IrcServer { get { return s_IrcServer; } set { s_IrcServer = value; } }
-        public static string IrcNick { get { return s_IrcNick; } set { s_IrcNick = value; } }
-        public static string MultiServer { get { return s_MultiServer; } set { s_MultiServer = value; } }
+        public static Hashtable Datas => s_Datas;
+        public static ArrayList Notifications => s_Notifications;
+        public static ArrayList MultiBlocks => s_MultiBlocks;
+        public static ArrayList Filters => s_Filters;
+        public static ArrayList IrcList => s_IrcList;
+        public static FilterPenalty FilterPenalty { get => s_FilterPenalty;
+            set => s_FilterPenalty = value;
+        }
+        public static MacroPenalty MacroPenalty { get => s_MacroPenalty;
+            set => s_MacroPenalty = value;
+        }
+        public static int MaxMsgs { get => s_MaxMsgs;
+            set => s_MaxMsgs = value;
+        }
+        public static int ChatSpam { get => s_ChatSpam;
+            set => s_ChatSpam = value;
+        }
+        public static int MsgSpam { get => s_MsgSpam;
+            set => s_MsgSpam = value;
+        }
+        public static int RequestSpam { get => s_RequestSpam;
+            set => s_RequestSpam = value;
+        }
+        public static int FilterBanLength { get => s_FilterBanLength;
+            set => s_FilterBanLength = value;
+        }
+        public static int FilterWarnings { get => s_FilterWarnings;
+            set => s_FilterWarnings = value;
+        }
+        public static int AntiMacroDelay { get => s_AntiMacroDelay;
+            set => s_AntiMacroDelay = value;
+        }
+        public static int IrcPort { get => s_IrcPort;
+            set => s_IrcPort = value;
+        }
+        public static int IrcMaxAttempts { get => s_IrcMaxAttempts;
+            set => s_IrcMaxAttempts = value;
+        }
+        public static int MultiPort { get => s_MultiPort;
+            set => s_MultiPort = value;
+        }
+        public static ulong TotalChats { get => s_TotalChats;
+            set => s_TotalChats = value;
+        }
+        public static bool IrcAutoConnect { get => s_IrcAutoConnect;
+            set => s_IrcAutoConnect = value;
+        }
+        public static bool IrcAutoReconnect { get => s_IrcAutoReconnect;
+            set => s_IrcAutoReconnect = value;
+        }
+        public static bool FilterSpeech { get => s_FilterSpeech;
+            set => s_FilterSpeech = value;
+        }
+        public static bool FilterMsg { get => s_FilterMsg;
+            set => s_FilterMsg = value;
+        }
+        public static bool Debug { get => s_Debug;
+            set => s_Debug = value;
+        }
+        public static bool LogChat { get => s_LogChat;
+            set => s_LogChat = value;
+        }
+        public static bool LogPms { get => s_LogPms;
+            set => s_LogPms = value;
+        }
+        public static string IrcServer { get => s_IrcServer;
+            set => s_IrcServer = value;
+        }
+        public static string IrcNick { get => s_IrcNick;
+            set => s_IrcNick = value;
+        }
+        public static string MultiServer { get => s_MultiServer;
+            set => s_MultiServer = value;
+        }
 
         public static bool IrcEnabled
         {
-            get { return s_IrcEnabled; }
+            get => s_IrcEnabled;
             set
             {
                 s_IrcEnabled = value;
@@ -541,7 +587,7 @@ namespace Knives.Chat3
 
         public static bool MultiMaster
         {
-            get { return s_MultiMaster; }
+            get => s_MultiMaster;
             set
             {
                 s_MultiMaster = value;
@@ -555,7 +601,7 @@ namespace Knives.Chat3
 
         public static IrcColor IrcStaffColor
         {
-            get { return s_IrcStaffColor; }
+            get => s_IrcStaffColor;
             set
             {
                 if ((int)value > 15)
@@ -578,7 +624,7 @@ namespace Knives.Chat3
 
         public static string IrcRoom
         {
-            get { return s_IrcRoom; }
+            get => s_IrcRoom;
             set
             {
                 s_IrcRoom = value;
@@ -604,50 +650,115 @@ namespace Knives.Chat3
         private string c_AwayMsg, c_Signature;
         private DateTime c_BannedUntil, c_LastKarma;
 
-        public Mobile Mobile { get { return c_Mobile; } }
-        public Channel CurrentChannel { get { return c_CurrentChannel; } set { c_CurrentChannel = value; } }
-        public OnlineStatus Status { get { return c_Status; } set { c_Status = value; } }
-        public Skin MenuSkin { get { return c_MenuSkin; } set { c_MenuSkin = value; } }
-        public object Recording{ get{ return c_Recording; } set{ c_Recording = value; } }
-        public ArrayList Friends { get { return c_Friends; } }
-        public ArrayList Ignores { get { return c_Ignores; } }
-        public ArrayList Messages { get { return c_Messages; } }
-        public ArrayList GIgnores { get { return c_GIgnores; } }
-        public ArrayList GListens { get { return c_GListens; } }
-        public ArrayList IrcIgnores { get { return c_IrcIgnores; } }
-        public bool Global { get { return c_Global; } set { c_Global = value; } }
-        public bool GlobalM { get { return c_GlobalM && c_Global; } set { c_GlobalM = value; } }
-        public bool GlobalC { get { return c_GlobalC && c_Global; } set { c_GlobalC = value; } }
-        public bool GlobalG { get { return c_GlobalG && c_Global; } set { c_GlobalG = value; } }
-        public bool GlobalF { get { return c_GlobalF && c_Global; } set { c_GlobalF = value; } }
-        public bool GlobalW { get { return c_GlobalW && c_Global; } set { c_GlobalW = value; } }
-        public bool FriendsOnly { get { return c_FriendsOnly; } set { c_FriendsOnly = value; } }
-        public bool MsgSound { get { return c_MsgSound; } set { c_MsgSound = value; } }
-        public bool ByRequest { get { return c_ByRequest; } set { c_ByRequest = value; } }
-        public bool FriendAlert { get { return c_FriendAlert; } set { c_FriendAlert = value; } }
-        public bool SevenDays { get { return c_SevenDays; } set { c_SevenDays = value; } }
-        public bool WhenFull { get { return c_WhenFull; } set { c_WhenFull = value; } }
-        public bool ReadReceipt { get { return c_ReadReceipt; } set { c_ReadReceipt = value; } }
-        public bool IrcRaw { get { return c_IrcRaw; } set { c_IrcRaw = value; } }
-        public bool QuickBar { get { return c_QuickBar; } set { c_QuickBar = value; } }
-        public bool ExtraPm { get { return c_ExtraPm; } set { c_ExtraPm = value; } }
-        public int GlobalMC { get { return c_GlobalMC; } set { c_GlobalMC = value; } }
-        public int GlobalCC { get { return c_GlobalCC; } set { c_GlobalCC = value; } }
-        public int GlobalGC { get { return c_GlobalGC; } set { c_GlobalGC = value; } }
-        public int GlobalFC { get { return c_GlobalFC; } set { c_GlobalFC = value; } }
-        public int GlobalWC { get { return c_GlobalWC; } set { c_GlobalWC = value; } }
-        public int SystemC { get { return c_SystemC; } set { c_SystemC = value; } }
-        public int MultiC { get { return c_MultiC; } set { c_MultiC = value; } }
-        public int MsgC { get { return c_MsgC; } set { c_MsgC = value; } }
-        public int StaffC { get { return c_StaffC; } set { c_StaffC = value; } }
-        public int Avatar { get { return c_Avatar; } set { c_Avatar = value; } }
-        public int Warnings { get { return c_Warnings; } set { c_Warnings = value; } }
-        public string AwayMsg { get { return c_AwayMsg; } set { c_AwayMsg = value; } }
-        public string Signature { get { return c_Signature; } set { c_Signature = value; c_Mobile.SendMessage(c_SystemC, General.Local(246));} }
+        public Mobile Mobile => c_Mobile;
+        public Channel CurrentChannel { get => c_CurrentChannel;
+            set => c_CurrentChannel = value;
+        }
+        public OnlineStatus Status { get => c_Status;
+            set => c_Status = value;
+        }
+        public Skin MenuSkin { get => c_MenuSkin;
+            set => c_MenuSkin = value;
+        }
+        public object Recording{ get => c_Recording;
+            set => c_Recording = value;
+        }
+        public ArrayList Friends => c_Friends;
+        public ArrayList Ignores => c_Ignores;
+        public ArrayList Messages => c_Messages;
+        public ArrayList GIgnores => c_GIgnores;
+        public ArrayList GListens => c_GListens;
+        public ArrayList IrcIgnores => c_IrcIgnores;
+        public bool Global { get => c_Global;
+            set => c_Global = value;
+        }
+        public bool GlobalM { get => c_GlobalM && c_Global;
+            set => c_GlobalM = value;
+        }
+        public bool GlobalC { get => c_GlobalC && c_Global;
+            set => c_GlobalC = value;
+        }
+        public bool GlobalG { get => c_GlobalG && c_Global;
+            set => c_GlobalG = value;
+        }
+        public bool GlobalF { get => c_GlobalF && c_Global;
+            set => c_GlobalF = value;
+        }
+        public bool GlobalW { get => c_GlobalW && c_Global;
+            set => c_GlobalW = value;
+        }
+        public bool FriendsOnly { get => c_FriendsOnly;
+            set => c_FriendsOnly = value;
+        }
+        public bool MsgSound { get => c_MsgSound;
+            set => c_MsgSound = value;
+        }
+        public bool ByRequest { get => c_ByRequest;
+            set => c_ByRequest = value;
+        }
+        public bool FriendAlert { get => c_FriendAlert;
+            set => c_FriendAlert = value;
+        }
+        public bool SevenDays { get => c_SevenDays;
+            set => c_SevenDays = value;
+        }
+        public bool WhenFull { get => c_WhenFull;
+            set => c_WhenFull = value;
+        }
+        public bool ReadReceipt { get => c_ReadReceipt;
+            set => c_ReadReceipt = value;
+        }
+        public bool IrcRaw { get => c_IrcRaw;
+            set => c_IrcRaw = value;
+        }
+        public bool QuickBar { get => c_QuickBar;
+            set => c_QuickBar = value;
+        }
+        public bool ExtraPm { get => c_ExtraPm;
+            set => c_ExtraPm = value;
+        }
+        public int GlobalMC { get => c_GlobalMC;
+            set => c_GlobalMC = value;
+        }
+        public int GlobalCC { get => c_GlobalCC;
+            set => c_GlobalCC = value;
+        }
+        public int GlobalGC { get => c_GlobalGC;
+            set => c_GlobalGC = value;
+        }
+        public int GlobalFC { get => c_GlobalFC;
+            set => c_GlobalFC = value;
+        }
+        public int GlobalWC { get => c_GlobalWC;
+            set => c_GlobalWC = value;
+        }
+        public int SystemC { get => c_SystemC;
+            set => c_SystemC = value;
+        }
+        public int MultiC { get => c_MultiC;
+            set => c_MultiC = value;
+        }
+        public int MsgC { get => c_MsgC;
+            set => c_MsgC = value;
+        }
+        public int StaffC { get => c_StaffC;
+            set => c_StaffC = value;
+        }
+        public int Avatar { get => c_Avatar;
+            set => c_Avatar = value;
+        }
+        public int Warnings { get => c_Warnings;
+            set => c_Warnings = value;
+        }
+        public string AwayMsg { get => c_AwayMsg;
+            set => c_AwayMsg = value;
+        }
+        public string Signature { get => c_Signature;
+            set { c_Signature = value; c_Mobile.SendMessage(c_SystemC, General.Local(246));} }
 
         public int Karma
         {
-            get { return c_Karma; }
+            get => c_Karma;
             set
             {
                 if (c_LastKarma + TimeSpan.FromHours(24) > DateTime.UtcNow)
@@ -660,7 +771,7 @@ namespace Knives.Chat3
 
         public int PerPage
         {
-            get { return c_PerPage; }
+            get => c_PerPage;
             set
             {
                 c_PerPage = value;
@@ -674,7 +785,7 @@ namespace Knives.Chat3
 
         public int DefaultSound
         {
-            get { return c_DefaultSound; }
+            get => c_DefaultSound;
             set
             {
                 foreach (Mobile m in c_Sounds.Keys)
@@ -690,7 +801,7 @@ namespace Knives.Chat3
 
         public bool GlobalAccess
         {
-            get { return c_GlobalAccess || c_Mobile.AccessLevel >= AccessLevel.GameMaster; }
+            get => c_GlobalAccess || c_Mobile.AccessLevel >= AccessLevel.GameMaster;
             set
             {
                 c_GlobalAccess = value;
@@ -704,7 +815,7 @@ namespace Knives.Chat3
 
         public bool Banned
         {
-            get{ return c_Banned; }
+            get => c_Banned;
             set
             {
                 c_Banned = value;

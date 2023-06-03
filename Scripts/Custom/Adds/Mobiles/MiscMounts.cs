@@ -44,7 +44,7 @@
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public GiantToadMount(Serial serial)
             : base(serial)
@@ -113,7 +113,7 @@ namespace Server.Mobiles
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public GorillaMount(Serial serial)
             : base(serial)
@@ -182,7 +182,7 @@ namespace Server.Mobiles
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public WalrusMount(Serial serial)
             : base(serial)
@@ -251,7 +251,7 @@ namespace Server.Mobiles
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public CowMount(Serial serial)
             : base(serial)
@@ -320,7 +320,7 @@ namespace Server.Mobiles
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public AntLionMount(Serial serial)
             : base(serial)
@@ -389,7 +389,7 @@ namespace Server.Mobiles
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public RedSolenQueenMount(Serial serial)
             : base(serial)
@@ -458,7 +458,7 @@ namespace Server.Mobiles
             MinTameSkill = 90.6;
         }
 
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public GazerMount(Serial serial)
             : base(serial)

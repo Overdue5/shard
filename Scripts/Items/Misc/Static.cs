@@ -47,13 +47,13 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Number
 		{
-			get{ return m_LabelNumber; }
-			set{ m_LabelNumber = value; InvalidateProperties(); }
+			get => m_LabelNumber;
+            set{ m_LabelNumber = value; InvalidateProperties(); }
 		}
 
-		public override int LabelNumber{ get{ return m_LabelNumber; } }
+		public override int LabelNumber => m_LabelNumber;
 
-		[Constructable]
+        [Constructable]
         public LocalizedStatic(int itemID) : this(itemID, itemID < 0x4000 ? 1020000 + itemID : 1078872 + itemID)
         {
 		}

@@ -2,9 +2,10 @@ namespace Server.Items
 {
     public class GreaterHealPotion : BaseHealPotion
 	{
-		public override int MinHeal { get { return 35; } }
-		public override int MaxHeal { get { return 50; } }
-		//public override double Delay{ get{ return 13.0; } }
+		public override int MinHeal => 35;
+
+        public override int MaxHeal => 50;
+        //public override double Delay{ get{ return 13.0; } }
 
 		[Constructable]
 		public GreaterHealPotion() :this(1)
@@ -22,7 +23,8 @@ namespace Server.Items
 		{
 		}
 
-        public override double PotionDelay { get { return 13.0; } }
+        public override double PotionDelay => 13.0;
+
         /*
         //Maka - unstacking pots on death, stacking on resurrection
         public override void OnAdded(object parent)

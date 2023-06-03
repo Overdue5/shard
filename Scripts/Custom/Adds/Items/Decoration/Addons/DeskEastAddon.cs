@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new DeskEastAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new DeskEastAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public DeskEastAddon()
 		{
 
@@ -73,15 +67,9 @@ namespace Server.Items
 
 	public class DeskEastAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new DeskEastAddon();
-			}
-		}
+		public override BaseAddon Addon => new DeskEastAddon();
 
-		[Constructable]
+        [Constructable]
 		public DeskEastAddonDeed()
 		{
 			Name = "DeskEast";

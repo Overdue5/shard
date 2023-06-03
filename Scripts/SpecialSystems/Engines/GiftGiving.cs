@@ -55,9 +55,9 @@ namespace Server.Misc
 
 	public abstract class GiftGiver
 	{
-		public virtual TimeSpan MinimumAge{ get{ return TimeSpan.FromDays( 30.0 ); } }
+		public virtual TimeSpan MinimumAge => TimeSpan.FromDays( 30.0 );
 
-		public abstract DateTime Start{ get; }
+        public abstract DateTime Start{ get; }
 		public abstract DateTime Finish{ get; }
 		public abstract void GiveGift( Mobile mob );
 

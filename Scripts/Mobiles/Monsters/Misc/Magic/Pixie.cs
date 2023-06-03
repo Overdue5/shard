@@ -3,9 +3,9 @@ namespace Server.Mobiles
 	[CorpseName( "a pixie corpse" )]
 	public class Pixie : BaseCreature
 	{
-		public override bool InitialInnocent{ get{ return true; } }
+		public override bool InitialInnocent => true;
 
-		[Constructable]
+        [Constructable]
 		public Pixie() : base( AIType.AI_SphereMage, FightMode.Evil, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "pixie" );
@@ -48,20 +48,17 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 2 );
 		}
 
-        public override HideType HideType { get { return HideType.Regular; } }
-		public override int Hides{ get{ return 5; } }
-		public override int Meat{ get{ return 1; } }
+        public override HideType HideType => HideType.Regular;
+        public override int Hides => 5;
+        public override int Meat => 1;
 
-		public Pixie( Serial serial ) : base( serial )
+        public Pixie( Serial serial ) : base( serial )
 		{
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 );

@@ -6,10 +6,10 @@ namespace Server.Spells.Fifth
 {
     public class MindBlastSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 0x213; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 0x213;
 
-        public override int ManaCost { get { return 17; } } //Loki edit
+        public override int ManaCost => 17; //Loki edit
 
         private static readonly SpellInfo m_Info = new SpellInfo(
                 "Mind Blast", "Por Corp Wis",
@@ -69,7 +69,7 @@ namespace Server.Spells.Fifth
             }
         }
 
-        public override bool DelayedDamage { get { return !Core.AOS; } }
+        public override bool DelayedDamage => !Core.AOS;
 
         public void Target(Mobile m)
         {

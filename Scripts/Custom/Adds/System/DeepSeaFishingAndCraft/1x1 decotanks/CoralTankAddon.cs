@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class CoralTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new CoralTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new CoralTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public CoralTankAddon()
 		{
 			AddonComponent ac = null;
@@ -155,15 +149,9 @@ namespace Server.Items
 
 	public class CoralTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new CoralTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new CoralTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public CoralTankAddonDeed()
 		{
 			Name = "a Coral Tank";

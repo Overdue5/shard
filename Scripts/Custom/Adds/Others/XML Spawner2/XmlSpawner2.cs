@@ -270,16 +270,21 @@ namespace Server.Mobiles
         #region Property Overrides
 
         // does not decay
-        public override bool Decays { get { return false; } }
+        public override bool Decays => false;
+
         // is not counted in the normal item count
-        public override bool IsVirtualItem { get { return true; } }
+        public override bool IsVirtualItem => true;
 
         #endregion
 
         #region Properties
 
-        public TimerPriority BasePriority { get { return m_BasePriority; } set { m_BasePriority = value; } }
-        public TimerPriority InactivePriority { get { return m_InactivePriority; } set { m_InactivePriority = value; } }
+        public TimerPriority BasePriority { get => m_BasePriority;
+            set => m_BasePriority = value;
+        }
+        public TimerPriority InactivePriority { get => m_InactivePriority;
+            set => m_InactivePriority = value;
+        }
 
         public bool DebugThis { get; set; }
 
@@ -305,8 +310,8 @@ namespace Server.Mobiles
 
         public Point3D MostRecentSpawnPosition
         {
-            get { return mostRecentSpawnPosition; }
-            set { mostRecentSpawnPosition = value; }
+            get => mostRecentSpawnPosition;
+            set => mostRecentSpawnPosition = value;
         }
 
         public TimeSpan GameTOD
@@ -321,37 +326,27 @@ namespace Server.Mobiles
             }
         }
 
-        public TimeSpan RealTOD { get { return DateTime.UtcNow.TimeOfDay; } }
+        public TimeSpan RealTOD => DateTime.UtcNow.TimeOfDay;
 
-        public int RealDay { get { return DateTime.UtcNow.Day; } }
+        public int RealDay => DateTime.UtcNow.Day;
 
-        public int RealMonth { get { return DateTime.UtcNow.Month; } }
+        public int RealMonth => DateTime.UtcNow.Month;
 
-        public DayOfWeek RealDayOfWeek { get { return DateTime.UtcNow.DayOfWeek; } }
+        public DayOfWeek RealDayOfWeek => DateTime.UtcNow.DayOfWeek;
 
-        public MoonPhase MoonPhase
-        {
-            get
-            {
-                return Clock.GetMoonPhase(Map, Location.X, Location.Y);
-            }
-
-        }
+        public MoonPhase MoonPhase => Clock.GetMoonPhase(Map, Location.X, Location.Y);
 
         public XmlSpawnerGump SpawnerGump
         {
-            get { return m_SpawnerGump; }
-            set
-            {
-                m_SpawnerGump = value;
-            }
+            get => m_SpawnerGump;
+            set => m_SpawnerGump = value;
         }
 
         public bool Debug { get; set; }
 
         public bool DoDefrag
         {
-            get { return false; }
+            get => false;
             set
             {
                 if (value)
@@ -364,7 +359,7 @@ namespace Server.Mobiles
         private bool sectorIsActive = false;
         private bool UseSectorActivate = false;
 
-        public bool SingleSector { get { return UseSectorActivate; } }
+        public bool SingleSector => UseSectorActivate;
 
         /*
         public override void OnSectorDeactivate()
@@ -643,16 +638,13 @@ namespace Server.Mobiles
             }
         }
 
-        public int SecCount { get { return seccount; } }
+        public int SecCount => seccount;
 
 
         public bool IsInactivated
         {
-            get { return m_IsInactivated; }
-            set
-            {
-                m_IsInactivated = value;
-            }
+            get => m_IsInactivated;
+            set => m_IsInactivated = value;
         }
 
 
@@ -665,20 +657,14 @@ namespace Server.Mobiles
             }
         }
 
-        public DateTime FirstModified
-        {
-            get { return m_FirstModified; }
-        }
+        public DateTime FirstModified => m_FirstModified;
 
-        public DateTime LastModified
-        {
-            get { return m_LastModified; }
-        }
+        public DateTime LastModified => m_LastModified;
 
         public bool PlayerCreated
         {
-            get { return m_PlayerCreated; }
-            set { m_PlayerCreated = value; }
+            get => m_PlayerCreated;
+            set => m_PlayerCreated = value;
         }
 
         public bool OnHold
@@ -701,13 +687,13 @@ namespace Server.Mobiles
                 // no hold flags were set
                 return false;
             }
-            set { m_OnHold = value; }
+            set => m_OnHold = value;
         }
 
 
         public string AddSpawn
         {
-            get { return null; }
+            get => null;
             set
             {
                 if (value.Length > 0)
@@ -764,22 +750,16 @@ namespace Server.Mobiles
             }
         }
 
-        public string UniqueId
-        {
-            get { return m_UniqueId; }
-        }
+        public string UniqueId => m_UniqueId;
 
         // does not perform a defrag, so less accurate but can be used while looping through world object enums
-        public int SafeCurrentCount
-        {
-            get { return SafeTotalSpawnedObjects; }
-        }
+        public int SafeCurrentCount => SafeTotalSpawnedObjects;
 
 
         public bool FreeRun
         {
-            get { return m_FreeRun; }
-            set { m_FreeRun = value; }
+            get => m_FreeRun;
+            set => m_FreeRun = value;
         }
 
         public bool CanFreeSpawn
@@ -801,7 +781,7 @@ namespace Server.Mobiles
 
         public SpawnObject[] SpawnObjects
         {
-            get { return (SpawnObject[])m_SpawnObjects.ToArray(typeof(SpawnObject)); }
+            get => (SpawnObject[])m_SpawnObjects.ToArray(typeof(SpawnObject));
             set
             {
                 if ((value != null) && (value.Length > 0))
@@ -863,7 +843,7 @@ namespace Server.Mobiles
                 return false;
 
             }
-            set { m_HoldSequence = value; }
+            set => m_HoldSequence = value;
         }
 
         public bool CanSpawn
@@ -969,7 +949,7 @@ namespace Server.Mobiles
 
         public Region SpawnRegion
         {
-            get { return m_Region; }
+            get => m_Region;
             set
             {
                 // force a re-update of the smart spawning sector list the next time it is accessed
@@ -992,10 +972,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public string RegionName
         {
-            get
-            {
-                return m_RegionName;
-            }
+            get => m_RegionName;
             set
             {
                 // force a re-update of the smart spawning sector list the next time it is accessed
@@ -1031,7 +1008,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D X1_Y1
         {
-            get { return new Point3D(m_X, m_Y, Z); }
+            get => new Point3D(m_X, m_Y, Z);
             set
             {
                 // X1 and Y1 will initiate region specification
@@ -1059,7 +1036,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int SpawnRange
         {
-            get { return (m_SpawnRange); }
+            get => (m_SpawnRange);
             set
             {
                 if (value < 0) return;
@@ -1095,7 +1072,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ShowBounds
         {
-            get { return (m_ShowBoundsItems != null && m_ShowBoundsItems.Count > 0); }
+            get => (m_ShowBoundsItems != null && m_ShowBoundsItems.Count > 0);
             set
             {
                 if (value && (ShowBounds == false))
@@ -1141,7 +1118,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D X2_Y2
         {
-            get { return new Point3D((m_X + m_Width), (m_Y + m_Height), Z); }
+            get => new Point3D((m_X + m_Width), (m_Y + m_Height), Z);
             set
             {
                 int X2;
@@ -1225,7 +1202,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int MaxCount
         {
-            get { return m_Count; }
+            get => m_Count;
             set
             {
                 m_Count = value;
@@ -1234,36 +1211,33 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int CurrentCount
-        {
-            get { return TotalSpawnedObjects; }
-        }
+        public int CurrentCount => TotalSpawnedObjects;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public WayPoint WayPoint
         {
-            get { return m_WayPoint; }
-            set { m_WayPoint = value; }
+            get => m_WayPoint;
+            set => m_WayPoint = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ExternalTriggering
         {
-            get { return m_ExternalTriggering; }
-            set { m_ExternalTriggering = value; }
+            get => m_ExternalTriggering;
+            set => m_ExternalTriggering = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ExtTrigState
         {
-            get { return m_ExternalTrigger; }
-            set { m_ExternalTrigger = value; }
+            get => m_ExternalTrigger;
+            set => m_ExternalTrigger = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Running
         {
-            get { return m_Running; }
+            get => m_Running;
             set
             {
                 // Don't start the spawner unless the height and width are valid
@@ -1281,33 +1255,33 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int HomeRange
         {
-            get { return m_HomeRange; }
+            get => m_HomeRange;
             set { m_HomeRange = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool HomeRangeIsRelative
         {
-            get { return m_HomeRangeIsRelative; }
-            set { m_HomeRangeIsRelative = value; }
+            get => m_HomeRangeIsRelative;
+            set => m_HomeRangeIsRelative = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Team
         {
-            get { return m_Team; }
+            get => m_Team;
             set { m_Team = value; InvalidateProperties(); }
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public int StackAmount
         {
-            get { return m_StackAmount; }
-            set { m_StackAmount = value; }
+            get => m_StackAmount;
+            set => m_StackAmount = value;
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan MinDelay
         {
-            get { return m_MinDelay; }
+            get => m_MinDelay;
             set
             {
                 m_MinDelay = value;
@@ -1320,7 +1294,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan MaxDelay
         {
-            get { return m_MaxDelay; }
+            get => m_MaxDelay;
             set
             {
                 m_MaxDelay = value;
@@ -1333,36 +1307,36 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int KillCount
         {
-            get { return m_killcount; }
-            set { m_killcount = value; }
+            get => m_killcount;
+            set => m_killcount = value;
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public int KillReset
         {
-            get { return m_KillReset; }
-            set { m_KillReset = value; }
+            get => m_KillReset;
+            set => m_KillReset = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public double TriggerProbability
         {
-            get { return m_TriggerProbability; }
-            set { m_TriggerProbability = value; }
+            get => m_TriggerProbability;
+            set => m_TriggerProbability = value;
         }
 
         //added refractory period support
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan RefractMin
         {
-            get { return m_MinRefractory; }
-            set { m_MinRefractory = value; }
+            get => m_MinRefractory;
+            set => m_MinRefractory = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan RefractMax
         {
-            get { return m_MaxRefractory; }
-            set { m_MaxRefractory = value; }
+            get => m_MaxRefractory;
+            set => m_MaxRefractory = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1375,32 +1349,27 @@ namespace Server.Mobiles
                 else
                     return TimeSpan.FromSeconds(0);
             }
-            set
-            {
-                DoTimer3(value);
-            }
+            set => DoTimer3(value);
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public string TriggerOnCarried
         {
-            get { return m_ItemTriggerName; }
-            set { m_ItemTriggerName = value; }
-
+            get => m_ItemTriggerName;
+            set => m_ItemTriggerName = value;
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public string NoTriggerOnCarried
         {
-            get { return m_NoItemTriggerName; }
-            set { m_NoItemTriggerName = value; }
-
+            get => m_NoItemTriggerName;
+            set => m_NoItemTriggerName = value;
         }
 
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string TriggerObjectProp
         {
-            get { return m_ObjectPropertyName; }
-            set { m_ObjectPropertyName = value; }
+            get => m_ObjectPropertyName;
+            set => m_ObjectPropertyName = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1416,8 +1385,8 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Item TriggerObject
         {
-            get { return m_ObjectPropertyItem; }
-            set { m_ObjectPropertyItem = value; }
+            get => m_ObjectPropertyItem;
+            set => m_ObjectPropertyItem = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1433,25 +1402,22 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Item SetItem
         {
-            get
-            {
-                return m_SetPropertyItem;
-            }
-            set { m_SetPropertyItem = value; }
+            get => m_SetPropertyItem;
+            set => m_SetPropertyItem = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string MobTriggerProp
         {
-            get { return m_MobPropertyName; }
-            set { m_MobPropertyName = value; }
+            get => m_MobPropertyName;
+            set => m_MobPropertyName = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string MobTriggerName
         {
-            get { return m_MobTriggerName; }
-            set { m_MobTriggerName = value; }
+            get => m_MobTriggerName;
+            set => m_MobTriggerName = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1478,25 +1444,23 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public string PlayerTriggerProp
         {
-            get { return m_PlayerPropertyName; }
-            set { m_PlayerPropertyName = value; }
+            get => m_PlayerPropertyName;
+            set => m_PlayerPropertyName = value;
         }
 
         // time of day activation
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan TODStart
         {
-            get { return m_TODStart; }
-            set { m_TODStart = value; }
-
+            get => m_TODStart;
+            set => m_TODStart = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan TODEnd
         {
-            get { return m_TODEnd; }
-            set { m_TODEnd = value; }
-
+            get => m_TODEnd;
+            set => m_TODEnd = value;
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan TOD
@@ -1521,8 +1485,8 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public TODModeType TODMode
         {
-            get { return m_TODMode; }
-            set { m_TODMode = value; }
+            get => m_TODMode;
+            set => m_TODMode = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1577,14 +1541,14 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan DespawnTime
         {
-            get { return m_DespawnTime; }
-            set { m_DespawnTime = value; }
+            get => m_DespawnTime;
+            set => m_DespawnTime = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan Duration
         {
-            get { return m_Duration; }
+            get => m_Duration;
             set
             {
                 m_Duration = value;
@@ -1601,16 +1565,13 @@ namespace Server.Mobiles
                 else
                     return TimeSpan.FromSeconds(0);
             }
-            set
-            {
-                DoTimer2(value);
-            }
+            set => DoTimer2(value);
         }
         // proximity range parameter
         [CommandProperty(AccessLevel.GameMaster)]
         public int ProximityRange
         {
-            get { return m_ProximityRange; }
+            get => m_ProximityRange;
             set
             {
                 m_ProximityRange = value;
@@ -1623,7 +1584,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ProximityActivated
         {
-            get { return m_proximityActivated; }
+            get => m_proximityActivated;
             set
             {
 
@@ -1641,29 +1602,29 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int ProximitySound
         {
-            get { return m_ProximityTriggerSound; }
-            set { m_ProximityTriggerSound = value; }
+            get => m_ProximityTriggerSound;
+            set => m_ProximityTriggerSound = value;
         }
 
         // proximity trigger message parameter
         [CommandProperty(AccessLevel.GameMaster)]
         public string ProximityMsg
         {
-            get { return m_ProximityTriggerMessage; }
-            set { m_ProximityTriggerMessage = value; }
+            get => m_ProximityTriggerMessage;
+            set => m_ProximityTriggerMessage = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string SpeechTrigger
         {
-            get { return m_SpeechTrigger; }
-            set { m_SpeechTrigger = value; }
+            get => m_SpeechTrigger;
+            set => m_SpeechTrigger = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string SkillTrigger
         {
-            get { return m_SkillTrigger; }
+            get => m_SkillTrigger;
             set
             {
 
@@ -1766,29 +1727,29 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool SpawnOnTrigger
         {
-            get { return m_SpawnOnTrigger; }
-            set { m_SpawnOnTrigger = value; }
+            get => m_SpawnOnTrigger;
+            set => m_SpawnOnTrigger = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Group
         {
-            get { return m_Group; }
+            get => m_Group;
             set { m_Group = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string GumpState
         {
-            get { return m_GumpState; }
-            set { m_GumpState = value; }
+            get => m_GumpState;
+            set => m_GumpState = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int SequentialSpawn
         {
-            get { return m_SequentialSpawning; }
-            set { m_SequentialSpawning = value; }
+            get => m_SequentialSpawning;
+            set => m_SequentialSpawning = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1801,24 +1762,21 @@ namespace Server.Mobiles
                 else
                     return TimeSpan.FromSeconds(0);
             }
-            set
-            {
-                m_SeqEnd = DateTime.UtcNow + value;
-            }
+            set => m_SeqEnd = DateTime.UtcNow + value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public AccessLevel TriggerAccessLevel
         {
-            get { return m_TriggerAccessLevel; }
-            set { m_TriggerAccessLevel = value; }
+            get => m_TriggerAccessLevel;
+            set => m_TriggerAccessLevel = value;
         }
 
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DoRespawn
         {
-            get { return false; }
+            get => false;
             set
             {
                 // need to determine whether this is being set by the spawner during processing of a respawn entry
@@ -1833,50 +1791,50 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DoReset
         {
-            get { return false; }
+            get => false;
             set { if (value) Reset(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool AllowGhostTrig
         {
-            get { return m_AllowGhostTriggering; }
-            set { m_AllowGhostTriggering = value; }
+            get => m_AllowGhostTriggering;
+            set => m_AllowGhostTriggering = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool AllowNPCTrig
         {
-            get { return m_AllowNPCTriggering; }
-            set { m_AllowNPCTriggering = value; }
+            get => m_AllowNPCTriggering;
+            set => m_AllowNPCTriggering = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string ConfigFile
         {
-            get { return m_ConfigFile; }
-            set { m_ConfigFile = value; }
+            get => m_ConfigFile;
+            set => m_ConfigFile = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool LoadConfig
         {
-            get { return false; }
+            get => false;
             set { if (value) LoadXmlConfig(ConfigFile); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile TriggerMob
         {
-            get { return m_mob_who_triggered; }
-            set { m_mob_who_triggered = value; }
+            get => m_mob_who_triggered;
+            set => m_mob_who_triggered = value;
         }
 
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string FirstModifiedBy
         {
-            get { return m_FirstModifiedBy; }
+            get => m_FirstModifiedBy;
             set
             {
                 m_FirstModifiedBy = value;
@@ -1887,7 +1845,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public string LastModifiedBy
         {
-            get { return m_LastModifiedBy; }
+            get => m_LastModifiedBy;
             set
             {
                 m_LastModifiedBy = value;
@@ -1898,7 +1856,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool SmartSpawning
         {
-            get { return m_SmartSpawning; }
+            get => m_SmartSpawning;
             set
             {
                 m_SmartSpawning = value;
@@ -1923,9 +1881,9 @@ namespace Server.Mobiles
 
         #region ISpawner interface support
 
-        public bool UnlinkOnTaming { get { return false; } }
-        public Point3D HomeLocation { get { return Location; } }
-        public int Range { get { return HomeRange; } }
+        public bool UnlinkOnTaming => false;
+        public Point3D HomeLocation => Location;
+        public int Range => HomeRange;
 
         public void Remove(ISpawnable spawn)
         {
@@ -2828,13 +2786,7 @@ public static void _TraceEnd(int index)
             return ((m.Player || m_AllowNPCTriggering) && (m.AccessLevel <= TriggerAccessLevel) && (m.AccessLevel < AccessLevel.Administrator) && ((!m.Body.IsGhost && !m_AllowGhostTriggering) || (m.Body.IsGhost && m_AllowGhostTriggering)));
         }
 
-        private bool AllowTriggering
-        {
-            get
-            {
-                return m_Running && !m_refractActivated && TODInRange && CanSpawn;
-            }
-        }
+        private bool AllowTriggering => m_Running && !m_refractActivated && TODInRange && CanSpawn;
 
         private void ActivateTrigger()
         {
@@ -3050,7 +3002,7 @@ public static void _TraceEnd(int index)
             }
         }
 
-        public bool HandlesOnSkillUse { get { return (m_Running && m_SkillTrigger != null && m_SkillTrigger.Length > 0); } }
+        public bool HandlesOnSkillUse => (m_Running && m_SkillTrigger != null && m_SkillTrigger.Length > 0);
 
         // this is the handler for skill use
         public void OnSkillUse(Mobile m, Skill skill, bool success)
@@ -3079,7 +3031,7 @@ public static void _TraceEnd(int index)
         }
 
 
-        public override bool HandlesOnSpeech { get { return (m_Running && m_SpeechTrigger != null && m_SpeechTrigger.Length > 0); } }
+        public override bool HandlesOnSpeech => (m_Running && m_SpeechTrigger != null && m_SpeechTrigger.Length > 0);
 
         public override void OnSpeech(SpeechEventArgs e)
         {
@@ -3103,13 +3055,7 @@ public static void _TraceEnd(int index)
         }
 
 
-        public override bool HandlesOnMovement
-        {
-            get
-            {
-                return (m_Running && m_ProximityRange >= 0);
-            }
-        }
+        public override bool HandlesOnMovement => (m_Running && m_ProximityRange >= 0);
 
 
         public void AddToMovementList(Mobile m)
@@ -9354,7 +9300,7 @@ public static void _TraceEnd(int index)
 
         public bool CheckRegionAssignment
         {
-            get { return false; }
+            get => false;
             set
             {
                 if (value)
@@ -12236,29 +12182,38 @@ public static void _TraceEnd(int index)
                         return m_MaxCount;
                     }
                 }
-                set
-                {
-                    m_MaxCount = value;
-                }
+                set => m_MaxCount = value;
             }
-            public int ActualMaxCount { get { return m_MaxCount; } set { m_MaxCount = value; } }
+            public int ActualMaxCount { get => m_MaxCount;
+                set => m_MaxCount = value;
+            }
             public int SubGroup { get; set; }
 
-            public int SpawnsPerTick { get { return m_SpawnsPerTick; } set { m_SpawnsPerTick = value; } }
+            public int SpawnsPerTick { get => m_SpawnsPerTick;
+                set => m_SpawnsPerTick = value;
+            }
             public int SequentialResetTo { get; set; }
 
             public int KillsNeeded { get; set; }
 
             public bool RestrictKillsToSubgroup { get; set; }
 
-            public bool ClearOnAdvance { get { return m_ClearOnAdvance; } set { m_ClearOnAdvance = value; } }
-            public double MinDelay { get { return m_MinDelay; } set { m_MinDelay = value; } }
-            public double MaxDelay { get { return m_MaxDelay; } set { m_MaxDelay = value; } }
+            public bool ClearOnAdvance { get => m_ClearOnAdvance;
+                set => m_ClearOnAdvance = value;
+            }
+            public double MinDelay { get => m_MinDelay;
+                set => m_MinDelay = value;
+            }
+            public double MaxDelay { get => m_MaxDelay;
+                set => m_MaxDelay = value;
+            }
             public bool Disabled { get; set; }
 
             public bool Ignore { get; set; }
 
-            public int PackRange { get { return m_PackRange; } set { m_PackRange = value; } }
+            public int PackRange { get => m_PackRange;
+                set => m_PackRange = value;
+            }
 
 
             // command loggable constructor

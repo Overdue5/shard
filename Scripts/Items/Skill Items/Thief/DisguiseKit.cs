@@ -12,7 +12,7 @@ namespace Server.Items
 {
     public class DisguiseKit : Item
     {
-        public override int LabelNumber { get { return 1041078; } } // a disguise kit
+        public override int LabelNumber => 1041078; // a disguise kit
 
         [Constructable]
         public DisguiseKit()
@@ -366,9 +366,6 @@ namespace Server.Items
 
         private static Hashtable m_Timers = new Hashtable();
 
-        public static Hashtable Timers
-        {
-            get { return m_Timers; }
-        }
+        public static Hashtable Timers => m_Timers;
     }
 }

@@ -4,9 +4,9 @@ namespace Server.Items
 {
 	public class ElvenSpinningwheelSouthAddon : BaseAddon, ISpinningWheel
 	{
-		public override BaseAddonDeed Deed{ get{ return new ElvenSpinningwheelSouthDeed(); } }
+		public override BaseAddonDeed Deed => new ElvenSpinningwheelSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public ElvenSpinningwheelSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x2DDA ), 0, 0, 0 );
@@ -43,9 +43,9 @@ namespace Server.Items
 			}
 		}
 
-		public bool Spinning{ get{ return m_Timer != null; } }
+		public bool Spinning => m_Timer != null;
 
-		public void BeginSpin( SpinCallback callback, Mobile from, int hue )
+        public void BeginSpin( SpinCallback callback, Mobile from, int hue )
 		{
 			m_Timer = new SpinTimer( this, callback, from, hue );
 			m_Timer.Start();
@@ -109,8 +109,8 @@ namespace Server.Items
 
 	public class ElvenSpinningwheelSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new ElvenSpinningwheelSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1072878; } } // spinning wheel (south)
+		public override BaseAddon Addon => new ElvenSpinningwheelSouthAddon();
+        public override int LabelNumber => 1072878; // spinning wheel (south)
 
 		[Constructable]
 		public ElvenSpinningwheelSouthDeed()

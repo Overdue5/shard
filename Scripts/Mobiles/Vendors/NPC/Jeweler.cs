@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class Jeweler : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Jeweler() : base( "the jeweler" )
 		{
 			SetSkill( SkillName.ItemID, 64.0, 100.0 );

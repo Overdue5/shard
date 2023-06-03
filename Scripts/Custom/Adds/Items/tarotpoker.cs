@@ -18,8 +18,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsNoisy
         {
-            get { return m_IsNoisy; }
-            set { m_IsNoisy = value; }
+            get => m_IsNoisy;
+            set => m_IsNoisy = value;
         }
 
         [Constructable]

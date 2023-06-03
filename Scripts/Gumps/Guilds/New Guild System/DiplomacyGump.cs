@@ -14,8 +14,9 @@ namespace Server.Guilds
 
 	public class GuildDiplomacyGump : BaseGuildListGump<Guild>
 	{
-		protected virtual bool AllowAdvancedSearch{ get{ return true; } }
-		#region Comparers
+		protected virtual bool AllowAdvancedSearch => true;
+
+        #region Comparers
 		private class NameComparer : IComparer<Guild>
 		{
 			public static readonly IComparer<Guild> Instance = new NameComparer();

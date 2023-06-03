@@ -6,12 +6,12 @@ namespace Server.Spells.Eighth
 {
     public class EarthquakeSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Eighth; } }
-        public override int Sound { get { return 525; } }
+        public override SpellCircle Circle => SpellCircle.Eighth;
+        public override int Sound => 525;
 
-        public override bool HasNoTarget { get { return true; } }
+        public override bool HasNoTarget => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Earthquake", "In Vas Por",
 				233,
                 9012,
@@ -26,9 +26,9 @@ namespace Server.Spells.Eighth
 		{
 		}
 
-		public override bool DelayedDamage{ get{ return !Core.AOS; } }
+		public override bool DelayedDamage => !Core.AOS;
 
-		public override void OnCast()
+        public override void OnCast()
 		{
 			if ( CheckSequence() )
 			{

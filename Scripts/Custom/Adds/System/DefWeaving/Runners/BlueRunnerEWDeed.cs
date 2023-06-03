@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class BlueRunnerEWAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new BlueRunnerEWDeed(); } }
+		public override BaseAddonDeed Deed => new BlueRunnerEWDeed();
 
-		[Constructable]
+        [Constructable]
 		public BlueRunnerEWAddon()
 		{
 			AddComponent( new AddonComponent( 0x0AC3 ), -1, -1, 0 );
@@ -36,9 +36,9 @@ namespace Server.Items
 
 	public class BlueRunnerEWDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new BlueRunnerEWAddon(); } }
+		public override BaseAddon Addon => new BlueRunnerEWAddon();
 
-		[Constructable]
+        [Constructable]
 		public BlueRunnerEWDeed()
 		{
 			Name = "Blue Runner Deed - E/W";

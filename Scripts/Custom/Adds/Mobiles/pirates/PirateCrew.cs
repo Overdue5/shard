@@ -99,11 +99,11 @@ namespace Server.Mobiles
 			    AddLoot( LootPack.Rich );
 		    }
     
-            public override bool IsScaredOfScaryThings { get { return false; } }
-            public override bool AlwaysMurderer{ get{ return true; } }
-		    public override bool CanRummageCorpses{ get{ return true; } }
-            public override bool PlayerRangeSensitive { get { return false; } }
-            
+            public override bool IsScaredOfScaryThings => false;
+            public override bool AlwaysMurderer => true;
+            public override bool CanRummageCorpses => true;
+            public override bool PlayerRangeSensitive => false;
+
             public PirateCrew( Serial serial ) : base( serial )
 		    {
 		    }

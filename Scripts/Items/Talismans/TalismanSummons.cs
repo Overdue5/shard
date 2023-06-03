@@ -11,11 +11,11 @@ namespace Server.Mobiles
 {
 	public class BaseTalismanSummon : BaseCreature
 	{
-		public override bool Commandable{ get{ return false; } }
-		public override bool InitialInnocent{ get{ return true; } }
-		public virtual bool IsInvulnerable{ get{ return true; } }
-	
-		public BaseTalismanSummon() : base( AIType.AI_Melee, FightMode.None, 10, 1, 0.2, 0.4 )
+		public override bool Commandable => false;
+        public override bool InitialInnocent => true;
+        public virtual bool IsInvulnerable => true;
+
+        public BaseTalismanSummon() : base( AIType.AI_Melee, FightMode.None, 10, 1, 0.2, 0.4 )
 		{
 		}
 

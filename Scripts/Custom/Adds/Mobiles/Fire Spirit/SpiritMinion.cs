@@ -8,9 +8,9 @@ namespace Server.Mobiles
 				"Fire Sprite",
 				"Fire Fly"
 			};
-		public override bool InitialInnocent{ get{ return true; } }
-        
-		[Constructable]
+		public override bool InitialInnocent => true;
+
+        [Constructable]
 		public SpiritMinion() : base( AIType.AI_SphereMage, FightMode.Evil, 10, 1, 0.2, 0.4 )
 		{
             Name = m_Names[Utility.Random(m_Names.Length)];
@@ -52,21 +52,18 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-        public override HideType HideType { get { return HideType.Regular; } }
+        public override HideType HideType => HideType.Regular;
 
-		public override int Hides{ get{ return 5; } }
-		public override int Meat{ get{ return 1; } }
+        public override int Hides => 5;
+        public override int Meat => 1;
 
-		public SpiritMinion( Serial serial ) : base( serial )
+        public SpiritMinion( Serial serial ) : base( serial )
 		{
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 );

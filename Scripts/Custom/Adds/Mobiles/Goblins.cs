@@ -50,32 +50,17 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override InhumanSpeech SpeechType
-		{
-			get { return InhumanSpeech.Orc; }
-		}
+		public override InhumanSpeech SpeechType => InhumanSpeech.Orc;
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+        public override bool CanRummageCorpses => true;
 
-		public override int TreasureMapLevel
-		{
-			get { return 1; }
-		}
+        public override int TreasureMapLevel => 1;
 
-		public override int Meat
-		{
-			get { return 1; }
-		}
+        public override int Meat => 1;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get { return OppositionGroup.SavagesAndOrcs; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.SavagesAndOrcs;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
 			AddLoot( LootPack.LowScrolls );
@@ -184,32 +169,17 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override InhumanSpeech SpeechType
-		{
-			get { return InhumanSpeech.Orc; }
-		}
+		public override InhumanSpeech SpeechType => InhumanSpeech.Orc;
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+        public override bool CanRummageCorpses => true;
 
-		public override int TreasureMapLevel
-		{
-			get { return 1; }
-		}
+        public override int TreasureMapLevel => 1;
 
-		public override int Meat
-		{
-			get { return 1; }
-		}
+        public override int Meat => 1;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get { return OppositionGroup.SavagesAndOrcs; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.SavagesAndOrcs;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			//AddLoot( LootPack.Meager );
 			AddLoot( LootPack.Average );
@@ -322,27 +292,15 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override InhumanSpeech SpeechType
-		{
-			get { return InhumanSpeech.Orc; }
-		}
+		public override InhumanSpeech SpeechType => InhumanSpeech.Orc;
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+        public override bool CanRummageCorpses => true;
 
-		public override int Meat
-		{
-			get { return 1; }
-		}
+        public override int Meat => 1;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get { return OppositionGroup.SavagesAndOrcs; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.SavagesAndOrcs;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Meager );
             PackGold(150);
@@ -464,32 +422,17 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override InhumanSpeech SpeechType
-		{
-			get { return InhumanSpeech.Orc; }
-		}
+		public override InhumanSpeech SpeechType => InhumanSpeech.Orc;
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+        public override bool CanRummageCorpses => true;
 
-		public override int TreasureMapLevel
-		{
-			get { return 1; }
-		}
+        public override int TreasureMapLevel => 1;
 
-		public override int Meat
-		{
-			get { return 1; }
-		}
+        public override int Meat => 1;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get { return OppositionGroup.SavagesAndOrcs; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.SavagesAndOrcs;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Meager );
 		}

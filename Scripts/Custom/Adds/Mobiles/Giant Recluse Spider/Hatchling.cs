@@ -49,11 +49,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Rich );
 		}
 
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override Poison HitPoison{ get{ return Poison.Lethal; } }
-		public override int TreasureMapLevel{ get{ return 3; } }
+		public override Poison PoisonImmune => Poison.Lethal;
+        public override Poison HitPoison => Poison.Lethal;
+        public override int TreasureMapLevel => 3;
 
-                public override void OnDeath( Container c )
+        public override void OnDeath( Container c )
                 {
                   base.OnDeath( c );
                   c.AddItem( new SpidersSilk( 8 ) );

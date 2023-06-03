@@ -26,12 +26,9 @@ namespace Server
 	{
 		private static IComparer m_Comparer = CaseInsensitiveComparer.Default;
 
-		public static IComparer Comparer
-		{
-			get{ return m_Comparer; }
-		}
+		public static IComparer Comparer => m_Comparer;
 
-		public static int Compare( string a, string b )
+        public static int Compare( string a, string b )
 		{
 			return m_Comparer.Compare( a, b );
 		}

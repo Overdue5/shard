@@ -87,8 +87,12 @@ namespace Server.Mobiles
         private string m_Message;
         private string m_Keyword;
 
-        public string Message { get { return m_Message; } set { m_Message = value; } }
-        public string Keyword { get { return m_Keyword; } set { m_Keyword = value; } }
+        public string Message { get => m_Message;
+            set => m_Message = value;
+        }
+        public string Keyword { get => m_Keyword;
+            set => m_Keyword = value;
+        }
 
         public BarkeeperRumor(string message, string keyword)
         {
@@ -148,13 +152,13 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Owner
         {
-            get { return m_Owner; }
-            set { m_Owner = value; }
+            get => m_Owner;
+            set => m_Owner = value;
         }
 
         public BaseHouse House
         {
-            get { return m_House; }
+            get => m_House;
             set
             {
                 if (m_House != null)
@@ -170,19 +174,19 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public string TipMessage
         {
-            get { return m_TipMessage; }
-            set { m_TipMessage = value; }
+            get => m_TipMessage;
+            set => m_TipMessage = value;
         }
 
-        public override bool IsActiveBuyer { get { return false; } }
-        public override bool IsActiveSeller { get { return (m_SBInfos.Count > 0); } }
+        public override bool IsActiveBuyer => false;
+        public override bool IsActiveSeller => (m_SBInfos.Count > 0);
 
-        public override bool DisallowAllMoves { get { return true; } }
-        public override bool NoHouseRestrictions { get { return true; } }
+        public override bool DisallowAllMoves => true;
+        public override bool NoHouseRestrictions => true;
 
-        public BarkeeperRumor[] Rumors { get { return m_Rumors; } }
+        public BarkeeperRumor[] Rumors => m_Rumors;
 
-        public override VendorShoeType ShoeType { get { return Utility.RandomBool() ? VendorShoeType.ThighBoots : VendorShoeType.Boots; } }
+        public override VendorShoeType ShoeType => Utility.RandomBool() ? VendorShoeType.ThighBoots : VendorShoeType.Boots;
 
         public override bool GetGender()
         {
@@ -495,7 +499,7 @@ namespace Server.Mobiles
         }
 
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
         public override void InitSBInfo()
         {

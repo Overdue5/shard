@@ -11,9 +11,9 @@ namespace Server.Mobiles
 			return Utility.RandomBool() ? WeaponAbility.ConcussionBlow : WeaponAbility.CrushingBlow;
 		}
 
-		public override bool IgnoreYoungProtection { get { return Core.ML; } }
+		public override bool IgnoreYoungProtection => Core.ML;
 
-		[Constructable]
+        [Constructable]
 		public ShadowKnight() : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "shadow knight" );
@@ -58,12 +58,9 @@ namespace Server.Mobiles
             PackGold(2000, 3500);
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		/*public override void OnDeath( Container c )
+        /*public override void OnDeath( Container c )
 		{
 			base.OnDeath( c );
 
@@ -167,14 +164,14 @@ namespace Server.Mobiles
 			base.OnThink();
 		}
 
-		public override bool BardImmune{ get{ return true; } }
-		public override bool Unprovokable{ get{ return true; } }
-		public override bool AreaPeaceImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool BardImmune => true;
+        public override bool Unprovokable => true;
+        public override bool AreaPeaceImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override int TreasureMapLevel{ get{ return 5; } }
+        public override int TreasureMapLevel => 5;
 
-		public ShadowKnight( Serial serial ) : base( serial )
+        public ShadowKnight( Serial serial ) : base( serial )
 		{
 		}
 

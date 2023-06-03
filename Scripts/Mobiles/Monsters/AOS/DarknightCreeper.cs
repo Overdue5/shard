@@ -3,9 +3,9 @@ namespace Server.Mobiles
 	[CorpseName( "a darknight creeper corpse" )]
 	public class DarknightCreeper : BaseCreature
 	{
-		public override bool IgnoreYoungProtection { get { return Core.ML; } }
+		public override bool IgnoreYoungProtection => Core.ML;
 
-		[Constructable]
+        [Constructable]
 		public DarknightCreeper() : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "darknight creeper" );
@@ -59,16 +59,16 @@ namespace Server.Mobiles
 				DemonKnight.DistributeArtifact( this );
 		}*/
 
-		public override bool BardImmune{ get{ return !Core.SE; } }
-		public override bool Unprovokable{ get{ return Core.SE; } }
-		public override bool AreaPeaceImmune { get { return Core.SE; } }
-		public override bool BleedImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override Poison HitPoison{ get{ return Poison.Lethal; } }
+		public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
+        public override bool AreaPeaceImmune => Core.SE;
+        public override bool BleedImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override Poison HitPoison => Poison.Lethal;
 
-		public override int TreasureMapLevel{ get{ return 4; } }
+        public override int TreasureMapLevel => 4;
 
-		public DarknightCreeper( Serial serial ) : base( serial )
+        public DarknightCreeper( Serial serial ) : base( serial )
 		{
 		}
 

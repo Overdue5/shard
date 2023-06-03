@@ -8,9 +8,9 @@ namespace Server.Spells.Fourth
 {
     public class ManaDrainSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 0x1F8; } }
-        public override int ManaCost { get { return 9; } } //Loki edit
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 0x1F8;
+        public override int ManaCost => 9; //Loki edit
 
 		private static readonly SpellInfo m_Info = new SpellInfo(
 				"Mana Drain", "Ort Rel",

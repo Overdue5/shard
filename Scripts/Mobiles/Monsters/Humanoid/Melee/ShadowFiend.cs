@@ -5,9 +5,9 @@ namespace Server.Mobiles
 {
 	public class ShadowFiend : BaseCreature
 	{
-		public override bool DeleteCorpseOnDeath{ get{ return true; } }
+		public override bool DeleteCorpseOnDeath => true;
 
-		private UnhideTimer m_Timer;
+        private UnhideTimer m_Timer;
 
 		[Constructable]
 		public ShadowFiend() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
@@ -75,9 +75,9 @@ namespace Server.Mobiles
 			return 0x380;
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses => true;
 
-		public override bool OnBeforeDeath()
+        public override bool OnBeforeDeath()
 		{
 			if ( Backpack != null )
 				Backpack.Destroy();

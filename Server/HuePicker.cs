@@ -29,23 +29,11 @@ namespace Server.HuePickers
 		private int m_Serial;
 		private int m_ItemID;
 
-		public int Serial
-		{
-			get
-			{
-				return m_Serial;
-			}
-		}
+		public int Serial => m_Serial;
 
-		public int ItemID
-		{
-			get
-			{
-				return m_ItemID;
-			}
-		}
+        public int ItemID => m_ItemID;
 
-		public HuePicker( int itemID )
+        public HuePicker( int itemID )
 		{
 			do
 			{

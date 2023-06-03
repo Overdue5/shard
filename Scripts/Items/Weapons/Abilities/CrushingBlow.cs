@@ -9,11 +9,11 @@ namespace Server.Items
 		{
 		}
 
-		public override int BaseMana{ get{ return 25; } }
-		public override double DamageScalar{ get{ return 1.5; } }
+		public override int BaseMana => 25;
+        public override double DamageScalar => 1.5;
 
 
-		public override void OnHit( Mobile attacker, Mobile defender, int damage )
+        public override void OnHit( Mobile attacker, Mobile defender, int damage )
 		{
 			if ( !Validate( attacker ) || !CheckMana( attacker, true ) )
 				return;

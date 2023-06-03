@@ -55,9 +55,9 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(3));
 		}
 
-		public override int TreasureMapLevel{ get{ return 5; } }
+		public override int TreasureMapLevel => 5;
 
-		public BloodElemental( Serial serial ) : base( serial )
+        public BloodElemental( Serial serial ) : base( serial )
 		{
 		}
 

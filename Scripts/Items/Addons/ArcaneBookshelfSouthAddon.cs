@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class ArcaneBookshelfSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new ArcaneBookshelfSouthDeed(); } }
+		public override BaseAddonDeed Deed => new ArcaneBookshelfSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public ArcaneBookshelfSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x3087 ), 0, 0, 0 );
@@ -32,8 +32,8 @@ namespace Server.Items
 
 	public class ArcaneBookshelfSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new ArcaneBookshelfSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1072871; } } // arcane bookshelf (south)
+		public override BaseAddon Addon => new ArcaneBookshelfSouthAddon();
+        public override int LabelNumber => 1072871; // arcane bookshelf (south)
 
 		[Constructable]
 		public ArcaneBookshelfSouthDeed()

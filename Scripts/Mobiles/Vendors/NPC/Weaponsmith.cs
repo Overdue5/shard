@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	public class Weaponsmith : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Weaponsmith() : base( "the weaponsmith" )
 		{
 			SetSkill( SkillName.ArmsLore, 64.0, 100.0 );
@@ -27,12 +27,9 @@ namespace Server.Mobiles
 				m_SBInfos.Add( new SBSEWeapons() );
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return Utility.RandomBool() ? VendorShoeType.Boots : VendorShoeType.ThighBoots; }
-		}
+		public override VendorShoeType ShoeType => Utility.RandomBool() ? VendorShoeType.Boots : VendorShoeType.ThighBoots;
 
-		public override int GetShoeHue()
+        public override int GetShoeHue()
 		{
 			return 0;
 		}

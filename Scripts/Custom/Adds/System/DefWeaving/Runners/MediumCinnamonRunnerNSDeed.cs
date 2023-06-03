@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class MediumCinnamonRunnerNSAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new MediumCinnamonRunnerNSDeed(); } }
+		public override BaseAddonDeed Deed => new MediumCinnamonRunnerNSDeed();
 
-		[Constructable]
+        [Constructable]
 		public MediumCinnamonRunnerNSAddon()
 		{
 			AddComponent( new AddonComponent( 0x0AE4 ),  0, -2, 0 );
@@ -40,9 +40,9 @@ namespace Server.Items
 
 	public class MediumCinnamonRunnerNSDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new MediumCinnamonRunnerNSAddon(); } }
+		public override BaseAddon Addon => new MediumCinnamonRunnerNSAddon();
 
-		[Constructable]
+        [Constructable]
 		public MediumCinnamonRunnerNSDeed()
 		{
 			Name = "Medium Cinnamon Runner Deed - N/S";

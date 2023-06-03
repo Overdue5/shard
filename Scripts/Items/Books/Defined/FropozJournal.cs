@@ -141,9 +141,9 @@ namespace Server.Items
 				)
 			);
 
-		public override BookContent DefaultContent{ get{ return Content; } }
+		public override BookContent DefaultContent => Content;
 
-		[Constructable]
+        [Constructable]
 		public FropozJournal() : base( false )
 		{
 		}

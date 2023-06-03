@@ -2,16 +2,16 @@ namespace Server.Items
 {
 	public class TheRobeOfBritanniaAri : BaseOuterTorso
 	{
-		public override int LabelNumber{ get{ return 1094931; } } // The Robe of Britannia "Ari" [Replica]
+		public override int LabelNumber => 1094931; // The Robe of Britannia "Ari" [Replica]
 
-		public override int BasePhysicalResistance{ get{ return 10; } }
+		public override int BasePhysicalResistance => 10;
 
-		public override int InitMinHits{ get{ return 150; } }
-		public override int InitMaxHits{ get{ return 150; } }
+        public override int InitMinHits => 150;
+        public override int InitMaxHits => 150;
 
-		public override bool CanFortify{ get{ return false; } }
+        public override bool CanFortify => false;
 
-		[Constructable]
+        [Constructable]
 		public TheRobeOfBritanniaAri() : base( 0x2684 )
 		{
 			Hue = 0x48b;

@@ -3,21 +3,21 @@ namespace Server.Items
 	[Flipable( 0x1410, 0x1417 )]
 	public class PlateArms : BaseArmor
 	{
-		public override int BasePhysicalResistance{ get{ return 5; } }
-		public override int BaseFireResistance{ get{ return 3; } }
-		public override int BaseColdResistance{ get{ return 2; } }
-		public override int BasePoisonResistance{ get{ return 3; } }
-		public override int BaseEnergyResistance{ get{ return 2; } }
+		public override int BasePhysicalResistance => 5;
+        public override int BaseFireResistance => 3;
+        public override int BaseColdResistance => 2;
+        public override int BasePoisonResistance => 3;
+        public override int BaseEnergyResistance => 2;
 
-		public override int InitMinHits{ get{ return 50; } }
-		public override int InitMaxHits{ get{ return 65; } }
+        public override int InitMinHits => 50;
+        public override int InitMaxHits => 65;
 
-		public override int AosStrReq{ get{ return 80; } }
-		public override int OldStrReq{ get{ return 40; } }
+        public override int AosStrReq => 80;
+        public override int OldStrReq => 40;
 
-		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Plate; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Plate;
 
-		[Constructable]
+        [Constructable]
 		public PlateArms() : base( 0x1410 )
 		{
 			Weight = 5.0;

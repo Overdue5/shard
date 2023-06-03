@@ -6,14 +6,14 @@ namespace Server.Mobiles
 	[CorpseName( "a unicorn corpse" )]
 	public class Unicorn : BaseMount
 	{
-		public override bool AllowMaleRider{ get{ return false; } }
-		public override bool AllowMaleTamer{ get{ return false; } }
+		public override bool AllowMaleRider => false;
+        public override bool AllowMaleTamer => false;
 
-		public override bool InitialInnocent{ get{ return true; } }
+        public override bool InitialInnocent => true;
 
-		public override TimeSpan MountAbilityDelay { get { return TimeSpan.FromHours( 1.0 ); } }
+        public override TimeSpan MountAbilityDelay => TimeSpan.FromHours( 1.0 );
 
-		public override void OnDisallowedRider( Mobile m )
+        public override void OnDisallowedRider( Mobile m )
 		{
 			m.SendLocalizedMessage( 1042318 ); // The unicorn refuses to allow you to ride it.
 		}
@@ -98,18 +98,15 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Potions );
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override int Meat{ get{ return 3; } }
-		public override int Hides{ get{ return 10; } }
-		public override HideType HideType{ get{ return HideType.Regular; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override int Meat => 3;
+        public override int Hides => 10;
+        public override HideType HideType => HideType.Regular;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public Unicorn( Serial serial ) : base( serial )
+        public Unicorn( Serial serial ) : base( serial )
 		{
 		}
 

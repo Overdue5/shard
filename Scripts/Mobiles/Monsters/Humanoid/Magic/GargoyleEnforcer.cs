@@ -55,9 +55,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MedScrolls );
 		}
 
-		public override int Meat{ get{ return 1; } }
+		public override int Meat => 1;
 
-		public GargoyleEnforcer( Serial serial ) : base( serial )
+        public GargoyleEnforcer( Serial serial ) : base( serial )
 		{
 		}
 

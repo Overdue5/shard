@@ -31,15 +31,15 @@ namespace Server.Spells.Ninjitsu
 			9002
 			);
 
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.0 ); } }
+		public override TimeSpan CastDelayBase => TimeSpan.FromSeconds( 1.0 );
 
-		public override double RequiredSkill{ get{ return 0.0; } }
-		public override int RequiredMana{ get{ return (Core.ML ? 10 : 0); } }
-		public override int CastRecoveryBase{ get { return (Core.ML ? 10 : base.CastRecoveryBase); } }
+        public override double RequiredSkill => 0.0;
+        public override int RequiredMana => (Core.ML ? 10 : 0);
+        public override int CastRecoveryBase => (Core.ML ? 10 : base.CastRecoveryBase);
 
-		public override bool BlockedByAnimalForm{ get{ return false; } }
+        public override bool BlockedByAnimalForm => false;
 
-		public AnimalForm( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+        public AnimalForm( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
 
@@ -291,17 +291,19 @@ namespace Server.Spells.Ninjitsu
 			private bool m_StealthBonus;
 			private bool m_SpeedBoost;
 
-			public Type Type{ get{ return m_Type; } }
-			public TextDefinition Name{ get{ return m_Name; } }
-			public int ItemID{ get{ return m_ItemID; } }
-			public int Hue{ get{ return m_Hue; } }
-			public int Tooltip{ get{ return m_Tooltip; } }
-			public double ReqSkill{ get{ return m_ReqSkill; } }
-			public int BodyMod{ get{ return m_BodyMod; } }
-			public int HueMod{ get{ return m_HueMod; } }
-			public bool StealthBonus{ get{ return m_StealthBonus; } }
-			public bool SpeedBoost{ get{ return m_SpeedBoost; } }
-			/*
+			public Type Type => m_Type;
+            public TextDefinition Name => m_Name;
+            public int ItemID => m_ItemID;
+            public int Hue => m_Hue;
+            public int Tooltip => m_Tooltip;
+            public double ReqSkill => m_ReqSkill;
+            public int BodyMod => m_BodyMod;
+            public int HueMod => m_HueMod;
+            public bool StealthBonus => m_StealthBonus;
+
+            public bool SpeedBoost => m_SpeedBoost;
+
+            /*
 			private AnimalFormCallback m_TransformCallback;
 			private AnimalFormCallback m_UntransformCallback;
 			private AnimalFormRequirementCallback m_RequirementCallback;
@@ -342,9 +344,9 @@ namespace Server.Spells.Ninjitsu
 				new AnimalFormEntry( typeof( Rabbit ),       1028485,  8485, 2309, 1070805,  20.0, 0xCD,  true, false )
 			};
 
-		public static AnimalFormEntry[] Entries{ get{ return m_Entries; } }
+		public static AnimalFormEntry[] Entries => m_Entries;
 
-		public class AnimalFormGump : Gump
+        public class AnimalFormGump : Gump
 		{
 			//TODO: Convert this for ML to the BaseImageTileButtonsgump
 			private Mobile m_Caster;
@@ -447,12 +449,12 @@ namespace Server.Spells.Ninjitsu
 		private bool m_SpeedBoost;
 		private Type m_Type;
 
-		public Timer Timer{ get{ return m_Timer; } }
-		public SkillMod Mod{ get{ return m_Mod; } }
-		public bool SpeedBoost{ get{ return m_SpeedBoost; } }
-		public Type Type{ get{ return m_Type; } }
+		public Timer Timer => m_Timer;
+        public SkillMod Mod => m_Mod;
+        public bool SpeedBoost => m_SpeedBoost;
+        public Type Type => m_Type;
 
-		public AnimalFormContext( Timer timer, SkillMod mod, bool speedBoost, Type type )
+        public AnimalFormContext( Timer timer, SkillMod mod, bool speedBoost, Type type )
 		{
 			m_Timer = timer;
 			m_Mod = mod;

@@ -16,10 +16,7 @@ namespace Server.Engines.Harvest
             m_NextRespawn = DateTime.UtcNow;
         }
 
-        public HarvestDefinition Definition
-        {
-            get { return m_Definition; }
-        }
+        public HarvestDefinition Definition => m_Definition;
 
         public int Current
         {
@@ -37,10 +34,7 @@ namespace Server.Engines.Harvest
                 CheckRespawn();
                 return m_Vein;
             }
-            set
-            {
-                m_Vein = m_DefaultVein = value;
-            }
+            set => m_Vein = m_DefaultVein = value;
         }
 
         public HarvestVein DefaultVein

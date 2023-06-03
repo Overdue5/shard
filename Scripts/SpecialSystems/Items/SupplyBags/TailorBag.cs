@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class BetaBag : Bag
 	{
-		public override string DefaultName
-		{
-			get { return "a Beta Tester bag"; }
-		}
+		public override string DefaultName => "a Beta Tester bag";
 
-		[Constructable]
+        [Constructable]
 		public BetaBag() : this( 1 )
 		{
 			Movable = true;

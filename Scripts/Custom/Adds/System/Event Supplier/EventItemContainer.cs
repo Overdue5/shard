@@ -12,20 +12,11 @@ namespace Server.Items
 	{
         private AcceptedTypes m_AcceptedType;
 
-        public override int DefaultMaxWeight
-        {
-            get { return 0; }
-        }
+        public override int DefaultMaxWeight => 0;
 
-        public override int DefaultMaxItems
-        {
-            get { return 0; }
-        }
+        public override int DefaultMaxItems => 0;
 
-        public AcceptedTypes AcceptsType
-        {
-            get { return m_AcceptedType; }
-        }
+        public AcceptedTypes AcceptsType => m_AcceptedType;
 
         public EventItemContainer(AcceptedTypes acceptedType)
         {

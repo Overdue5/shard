@@ -10,12 +10,12 @@ namespace Server.Spells.Fifth
 {
     public class PoisonFieldSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 550; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 550;
 
-        public override bool CanTargetGround { get { return true; } }
+        public override bool CanTargetGround => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Poison Field", "In Nox Grav",
 				263,
                 9052,
@@ -206,7 +206,7 @@ namespace Server.Spells.Fifth
             private DateTime m_End;
             private Mobile m_Caster;
 
-            public override bool BlocksFit { get { return true; } }
+            public override bool BlocksFit => true;
 
             public InternalItem(int itemID, Point3D loc, Mobile caster, Map map, TimeSpan duration, int val)
                 : base(itemID)

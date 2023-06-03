@@ -63,10 +63,7 @@ namespace Server.Items
 	{
         private static List<RegionControl> m_AllControls = new List<RegionControl>();
 
-        public static List<RegionControl> AllControls
-        {
-            get { return m_AllControls; }
-        }
+        public static List<RegionControl> AllControls => m_AllControls;
 
         #region Adds
 
@@ -87,8 +84,8 @@ namespace Server.Items
         
         public RegionFlag Flags
         {
-            get { return m_Flags; }
-            set { m_Flags = value; }
+            get => m_Flags;
+            set => m_Flags = value;
         }
         
         public bool GetFlag(RegionFlag flag)
@@ -177,7 +174,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsGuarded
         {
-            get { return m_IsGuarded; }
+            get => m_IsGuarded;
             set
             {
                 m_IsGuarded = value;
@@ -215,7 +212,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool MoveNPCOnDeath
         {
-            get { return m_MoveNPCOnDeath; }
+            get => m_MoveNPCOnDeath;
             set
             {
                 if (MoveNPCToMap == null || MoveNPCToMap == Map.Internal || MoveNPCToLoc == Point3D.Zero)
@@ -228,7 +225,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool MovePlayerOnDeath
         {
-            get { return m_MovePlayerOnDeath; }
+            get => m_MovePlayerOnDeath;
             set
             {
                 if (MovePlayerToMap == null || MovePlayerToMap == Map.Internal || MovePlayerToLoc == Point3D.Zero)
@@ -247,7 +244,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D GoLocation
         {
-            get { return m_GoLocation; }
+            get => m_GoLocation;
             set
             {
                 m_GoLocation = value;
@@ -305,7 +302,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool LogoutMove
         {
-            get { return m_LogoutMove; }
+            get => m_LogoutMove;
             set
             {
                 if (m_LogoutLoc == Point3D.Zero || LogoutMap == null || LogoutMap == Map.Internal)
@@ -318,7 +315,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Map LogoutMap
         {
-            get { return m_LogoutMap; }
+            get => m_LogoutMap;
             set
             {
                 if (value != Map.Internal)
@@ -339,15 +336,9 @@ namespace Server.Items
         private BitArray m_RestrictedSpells;
         private BitArray m_RestrictedSkills;
 
-        public BitArray RestrictedSpells
-        {
-            get { return m_RestrictedSpells; }
-        }
+        public BitArray RestrictedSpells => m_RestrictedSpells;
 
-        public BitArray RestrictedSkills
-        {
-            get { return m_RestrictedSkills; }
-        }
+        public BitArray RestrictedSkills => m_RestrictedSkills;
 
         # endregion
 
@@ -357,16 +348,13 @@ namespace Server.Items
         private CustomRegion m_Region;
         private Rectangle3D[] m_RegionArea;
 
-        public CustomRegion Region
-        {
-            get { return m_Region; }
-        }
+        public CustomRegion Region => m_Region;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Rectangle3D[] RegionArea
         {
-            get { return m_RegionArea; }
-            set { m_RegionArea = value; }
+            get => m_RegionArea;
+            set => m_RegionArea = value;
         }
 
         # endregion
@@ -379,7 +367,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Active
         {
-            get { return m_Active; }
+            get => m_Active;
             set
             {
                 if (m_Active != value)
@@ -410,7 +398,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string RegionName
         {
-            get { return m_RegionName; }
+            get => m_RegionName;
             set 
             {
                 if (Map != null)// && !RegionNameTaken(value))
@@ -427,7 +415,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int RegionPriority
         {
-            get { return m_RegionPriority; }
+            get => m_RegionPriority;
             set 
             { 
                 m_RegionPriority = value;
@@ -438,7 +426,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public MusicName Music
         {
-            get { return m_Music; }
+            get => m_Music;
             set
             {
                 m_Music = value;
@@ -449,8 +437,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan PlayerLogoutDelay
 		{
-			get{ return m_PlayerLogoutDelay; }
-			set
+			get => m_PlayerLogoutDelay;
+            set
             { 
                 m_PlayerLogoutDelay = value;
                 UpdateRegion();
@@ -460,7 +448,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int LightLevel
         {
-            get { return m_LightLevel; }
+            get => m_LightLevel;
             set 
             { 
                 m_LightLevel = value;
@@ -471,7 +459,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Map MoveNPCToMap
         {
-            get { return m_MoveNPCToMap; }
+            get => m_MoveNPCToMap;
             set
             {
                 if (value != Map.Internal)
@@ -484,7 +472,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D MoveNPCToLoc
         {
-            get { return m_MoveNPCToLoc; }
+            get => m_MoveNPCToLoc;
             set
             {
                 if (value != Point3D.Zero)
@@ -497,7 +485,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Map MovePlayerToMap
         {
-            get { return m_MovePlayerToMap; }
+            get => m_MovePlayerToMap;
             set
             {
                 if (value != Map.Internal)
@@ -510,7 +498,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D MovePlayerToLoc
         {
-            get { return m_MovePlayerToLoc; }
+            get => m_MovePlayerToLoc;
             set
             {
                 if (value != Point3D.Zero)

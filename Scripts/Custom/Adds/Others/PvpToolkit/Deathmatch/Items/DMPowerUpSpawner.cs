@@ -20,10 +20,7 @@ namespace Server.Custom.PvpToolkit.DMatch.Items
         [CommandProperty( AccessLevel.GameMaster )]
         public PowerUpType PowerUp
         {
-            get
-            {
-                return m_PowerUp;
-            }
+            get => m_PowerUp;
             set
             {
                 switch( value )

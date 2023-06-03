@@ -38,9 +38,9 @@ namespace Server.Spells
 		private static readonly Dictionary<Type, Int32> m_IDsFromTypes = new Dictionary<Type, Int32>( m_Types.Length );
 		
 		private static readonly Dictionary<Int32, SpecialMove> m_SpecialMoves = new Dictionary<Int32, SpecialMove>();
-		public static Dictionary<Int32, SpecialMove> SpecialMoves { get { return m_SpecialMoves; } }
+		public static Dictionary<Int32, SpecialMove> SpecialMoves => m_SpecialMoves;
 
-		public static int GetRegistryNumber( ISpell s )
+        public static int GetRegistryNumber( ISpell s )
 		{
 			return GetRegistryNumber( s.GetType() );
 		}

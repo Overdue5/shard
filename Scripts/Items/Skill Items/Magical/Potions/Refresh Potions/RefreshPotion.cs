@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class RefreshPotion : BaseRefreshPotion
 	{
-		public override int Refresh{ get{ return 18; } }
+		public override int Refresh => 18;
 
-		[Constructable]
+        [Constructable]
 		public RefreshPotion() : base( PotionEffect.Refresh )
 		{
             Name = "Refresh Potion";

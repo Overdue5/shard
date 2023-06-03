@@ -53,16 +53,13 @@ namespace Server.Mobiles
 			AddLoot( LootPack.FilthyRich );
 		}
 
-		public override bool BardImmune{ get{ return !Core.AOS; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override int Meat{ get{ return 2; } }
+		public override bool BardImmune => !Core.AOS;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override int Meat => 2;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.SavagesAndOrcs; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.SavagesAndOrcs;
 
-		public override bool IsEnemy( Mobile m )
+        public override bool IsEnemy( Mobile m )
 		{
 			if ( m.Player && m.FindItemOnLayer( Layer.Helm ) is OrcishKinMask )
 				return false;
@@ -85,10 +82,10 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override bool AutoDispel{ get{ return true; } }
+		public override bool CanRummageCorpses => true;
+        public override bool AutoDispel => true;
 
-		public override void OnDamagedBySpell( Mobile caster )
+        public override void OnDamagedBySpell( Mobile caster )
 		{
 			if ( caster == this )
 				return;

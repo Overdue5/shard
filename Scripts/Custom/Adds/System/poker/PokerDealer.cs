@@ -32,30 +32,50 @@ namespace Server.Poker
         private Map m_ExitMap;
 
         private static int m_Jackpot;
-        public static int Jackpot { get { return m_Jackpot; } set { m_Jackpot = value; } }
+        public static int Jackpot { get => m_Jackpot;
+            set => m_Jackpot = value;
+        }
 
         [CommandProperty(AccessLevel.Seer)]
-        public bool TournamentMode { get { return m_TournamentMode; } set { m_TournamentMode = value; } }
+        public bool TournamentMode { get => m_TournamentMode;
+            set => m_TournamentMode = value;
+        }
         [CommandProperty(AccessLevel.Administrator)]
-        public bool ClearSeats { get { return false; } set { m_Seats.Clear(); } }
+        public bool ClearSeats { get => false;
+            set => m_Seats.Clear();
+        }
         [CommandProperty(AccessLevel.Administrator)]
-        public int RakeMax { get { return m_RakeMax; } set { m_RakeMax = value; } }
+        public int RakeMax { get => m_RakeMax;
+            set => m_RakeMax = value;
+        }
         [CommandProperty(AccessLevel.Seer)]
-        public int MinBuyIn { get { return m_MinBuyIn; } set { m_MinBuyIn = value; } }
+        public int MinBuyIn { get => m_MinBuyIn;
+            set => m_MinBuyIn = value;
+        }
         [CommandProperty(AccessLevel.Seer)]
-        public int MaxBuyIn { get { return m_MaxBuyIn; } set { m_MaxBuyIn = value; } }
+        public int MaxBuyIn { get => m_MaxBuyIn;
+            set => m_MaxBuyIn = value;
+        }
         [CommandProperty(AccessLevel.Seer)]
-        public int SmallBlind { get { return m_SmallBlind; } set { m_SmallBlind = value; } }
+        public int SmallBlind { get => m_SmallBlind;
+            set => m_SmallBlind = value;
+        }
         [CommandProperty(AccessLevel.Seer)]
-        public int BigBlind { get { return m_BigBlind; } set { m_BigBlind = value; } }
+        public int BigBlind { get => m_BigBlind;
+            set => m_BigBlind = value;
+        }
         [CommandProperty(AccessLevel.Administrator)]
-        public Point3D ExitLocation { get { return m_ExitLocation; } set { m_ExitLocation = value; } }
+        public Point3D ExitLocation { get => m_ExitLocation;
+            set => m_ExitLocation = value;
+        }
         [CommandProperty(AccessLevel.Administrator)]
-        public Map ExitMap { get { return m_ExitMap; } set { m_ExitMap = value; } }
+        public Map ExitMap { get => m_ExitMap;
+            set => m_ExitMap = value;
+        }
         [CommandProperty(AccessLevel.Administrator)]
         public double Rake
         {
-            get { return m_Rake; }
+            get => m_Rake;
             set
             {
                 if (value > 1)
@@ -69,7 +89,7 @@ namespace Server.Poker
         [CommandProperty(AccessLevel.Seer)]
         public int MaxPlayers
         {
-            get { return m_MaxPlayers; }
+            get => m_MaxPlayers;
             set
             {
                 if (value > 22) m_MaxPlayers = 22;
@@ -80,14 +100,12 @@ namespace Server.Poker
 
         // tissemand edit, helps a bit while debugging :|
         [CommandProperty(AccessLevel.Counselor)]
-        public int CurrentSeatCount
-        {
-            get { return m_Seats.Count; }
-        }
+        public int CurrentSeatCount => m_Seats.Count;
+
         [CommandProperty(AccessLevel.Seer)]
         public bool Active
         {
-            get { return m_Active; }
+            get => m_Active;
             set
             {
                 List<PokerPlayer> toRemove = new List<PokerPlayer>();
@@ -107,8 +125,12 @@ namespace Server.Poker
             }
         }
 
-        public PokerGame Game { get { return m_Game; } set { m_Game = value; } }
-        public List<Point3D> Seats { get { return m_Seats; } set { m_Seats = value; } }
+        public PokerGame Game { get => m_Game;
+            set => m_Game = value;
+        }
+        public List<Point3D> Seats { get => m_Seats;
+            set => m_Seats = value;
+        }
 
         [Constructable]
         public PokerDealer()
@@ -167,7 +189,9 @@ namespace Server.Poker
         }
 
         private static JackpotInfo m_JackpotWinners;
-        public static JackpotInfo JackpotWinners { get { return m_JackpotWinners; } set { m_JackpotWinners = value; } }
+        public static JackpotInfo JackpotWinners { get => m_JackpotWinners;
+            set => m_JackpotWinners = value;
+        }
 
         public static void AwardJackpot()
         {
@@ -428,9 +452,9 @@ namespace Server.Poker
             private ResultEntry m_Hand;
             private DateTime m_Date;
 
-            public List<PokerPlayer> Winners { get { return m_Winners; } }
-            public ResultEntry Hand { get { return m_Hand; } }
-            public DateTime Date { get { return m_Date; } }
+            public List<PokerPlayer> Winners => m_Winners;
+            public ResultEntry Hand => m_Hand;
+            public DateTime Date => m_Date;
 
             public JackpotInfo(List<PokerPlayer> winners, ResultEntry hand, DateTime date)
             {

@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class RedRunnerNSAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new RedRunnerNSDeed(); } }
+		public override BaseAddonDeed Deed => new RedRunnerNSDeed();
 
-		[Constructable]
+        [Constructable]
 		public RedRunnerNSAddon() 
 		{
 			AddComponent( new AddonComponent( 0x0ACA ),  0, -1, 0 );
@@ -36,9 +36,9 @@ namespace Server.Items
 
 	public class RedRunnerNSDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new RedRunnerNSAddon(); } }
+		public override BaseAddon Addon => new RedRunnerNSAddon();
 
-		[Constructable]
+        [Constructable]
 		public RedRunnerNSDeed()
 		{
 			Name = "Red Runner Deed - N/S";

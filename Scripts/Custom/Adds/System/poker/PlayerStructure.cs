@@ -9,18 +9,24 @@ namespace Server.Poker
 		private List<PokerPlayer> m_Turn;
 		private PokerGame m_Game;
 
-		public List<PokerPlayer> Players { get { return m_Players; } set { m_Players = value; } }
-		public List<PokerPlayer> Round { get { return m_Round; } set { m_Round = value; } }
-		public List<PokerPlayer> Turn { get { return m_Turn; } set { m_Turn = value; } }
-		public PokerGame Game { get { return m_Game; } }
+		public List<PokerPlayer> Players { get => m_Players;
+            set => m_Players = value;
+        }
+		public List<PokerPlayer> Round { get => m_Round;
+            set => m_Round = value;
+        }
+		public List<PokerPlayer> Turn { get => m_Turn;
+            set => m_Turn = value;
+        }
+		public PokerGame Game => m_Game;
 
-		public int Count { get { return m_Players.Count; } }
+        public int Count => m_Players.Count;
 
-		public PokerPlayer this[int index]
+        public PokerPlayer this[int index]
 		{
-			get { return m_Players[index]; }
-			set { m_Players[index] = value; }
-		}
+			get => m_Players[index];
+            set => m_Players[index] = value;
+        }
 
 		public PlayerStructure( PokerGame game )
 		{

@@ -6,9 +6,9 @@ namespace Server.Spells.Fourth
 {
     public class LightningSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 0x29; } }
-        public override int ManaCost { get { return 10; } } //Loki edit
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 0x29;
+        public override int ManaCost => 10; //Loki edit
 
 		private static readonly SpellInfo m_Info = new SpellInfo(
 				"Lightning", "Por Ort Grav",
@@ -46,9 +46,9 @@ namespace Server.Spells.Fourth
 			Caster.Target = new InternalTarget( this );
 		}
 
-		public override bool DelayedDamage{ get{ return false; } }
+		public override bool DelayedDamage => false;
 
-		public void Target( Mobile m )
+        public void Target( Mobile m )
 		{
 			if ( !Caster.CanSee( m ) )
 			{

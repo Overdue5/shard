@@ -11,10 +11,10 @@ namespace Server.Items
 		private Mobile m_Owner;
 		private BaseHouse m_House;
 
-        public override double DefaultWeight { get { return 100; } }
-        public override int LabelNumber { get { return 1023712; } }
+        public override double DefaultWeight => 100;
+        public override int LabelNumber => 1023712;
 
-		public StrongBox( Mobile owner, BaseHouse house ) : base( 0xE80 )
+        public StrongBox( Mobile owner, BaseHouse house ) : base( 0xE80 )
 		{
 			m_Owner = owner;
 			m_House = house;
@@ -25,20 +25,17 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get
-			{
-				return m_Owner;
-			}
-			set
+			get => m_Owner;
+            set
 			{
 				m_Owner = value;
 				InvalidateProperties();
 			}
 		}
 
-		public override int DefaultMaxWeight{ get{ return 0; } }
+		public override int DefaultMaxWeight => 0;
 
-		public StrongBox( Serial serial ) : base(serial)
+        public StrongBox( Serial serial ) : base(serial)
 		{
 		}
 
@@ -92,15 +89,9 @@ namespace Server.Items
 			}
 		}
 
-		public override TimeSpan DecayTime
-		{
-			get
-			{
-				return TimeSpan.FromMinutes( 30.0 );
-			}
-		}
+		public override TimeSpan DecayTime => TimeSpan.FromMinutes( 30.0 );
 
-		public override void AddNameProperty( ObjectPropertyList list )
+        public override void AddNameProperty( ObjectPropertyList list )
 		{
 			if ( m_Owner != null )
 				list.Add( 1042887, m_Owner.Name ); // a strong box owned by ~1_OWNER_NAME~

@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class HolySword : Longsword
 	{
-		public override int LabelNumber{ get{ return 1062921; } } // The Holy Sword
+		public override int LabelNumber => 1062921; // The Holy Sword
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public HolySword()
 		{
 			Hue = 0x482;

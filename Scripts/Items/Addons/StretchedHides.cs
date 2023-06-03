@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class SmallStretchedHideEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new SmallStretchedHideEastDeed(); } }
+		public override BaseAddonDeed Deed => new SmallStretchedHideEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public SmallStretchedHideEastAddon()
 		{
 			AddComponent( new AddonComponent( 0x1069 ), 0, 0, 0 );
@@ -31,8 +31,8 @@ namespace Server.Items
 
 	public class SmallStretchedHideEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new SmallStretchedHideEastAddon(); } }
-		public override int LabelNumber{ get{ return 1049401; } } // a small stretched hide deed facing east
+		public override BaseAddon Addon => new SmallStretchedHideEastAddon();
+        public override int LabelNumber => 1049401; // a small stretched hide deed facing east
 
 		[Constructable]
 		public SmallStretchedHideEastDeed()
@@ -60,9 +60,9 @@ namespace Server.Items
 
 	public class SmallStretchedHideSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new SmallStretchedHideSouthDeed(); } }
+		public override BaseAddonDeed Deed => new SmallStretchedHideSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public SmallStretchedHideSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x107A ), 0, 0, 0 );
@@ -89,8 +89,8 @@ namespace Server.Items
 
 	public class SmallStretchedHideSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new SmallStretchedHideSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1049402; } } // a small stretched hide deed facing south
+		public override BaseAddon Addon => new SmallStretchedHideSouthAddon();
+        public override int LabelNumber => 1049402; // a small stretched hide deed facing south
 
 		[Constructable]
 		public SmallStretchedHideSouthDeed()
@@ -118,9 +118,9 @@ namespace Server.Items
 
 	public class MediumStretchedHideEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new MediumStretchedHideEastDeed(); } }
+		public override BaseAddonDeed Deed => new MediumStretchedHideEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public MediumStretchedHideEastAddon()
 		{
 			AddComponent( new AddonComponent( 0x106B ), 0, 0, 0 );
@@ -147,8 +147,8 @@ namespace Server.Items
 
 	public class MediumStretchedHideEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new MediumStretchedHideEastAddon(); } }
-		public override int LabelNumber{ get{ return 1049403; } } // a medium stretched hide deed facing east
+		public override BaseAddon Addon => new MediumStretchedHideEastAddon();
+        public override int LabelNumber => 1049403; // a medium stretched hide deed facing east
 
 		[Constructable]
 		public MediumStretchedHideEastDeed()
@@ -176,9 +176,9 @@ namespace Server.Items
 
 	public class MediumStretchedHideSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new MediumStretchedHideSouthDeed(); } }
+		public override BaseAddonDeed Deed => new MediumStretchedHideSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public MediumStretchedHideSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x107C ), 0, 0, 0 );
@@ -205,8 +205,8 @@ namespace Server.Items
 
 	public class MediumStretchedHideSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new MediumStretchedHideSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1049404; } } // a medium stretched hide deed facing south
+		public override BaseAddon Addon => new MediumStretchedHideSouthAddon();
+        public override int LabelNumber => 1049404; // a medium stretched hide deed facing south
 
 		[Constructable]
 		public MediumStretchedHideSouthDeed()

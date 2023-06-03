@@ -5,7 +5,9 @@ namespace Knives.Chat3
     public class ChannelGump : GumpPlus
     {
         private Channel c_Channel;
-        protected Channel Channel { get { return c_Channel; } set { c_Channel = value; } }
+        protected Channel Channel { get => c_Channel;
+            set => c_Channel = value;
+        }
 
         public ChannelGump(Mobile m)
             : this(m, null)

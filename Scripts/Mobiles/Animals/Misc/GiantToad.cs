@@ -53,11 +53,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Poor );
 		}
 
-		public override int Hides{ get{ return 12; } }
-        public override HideType HideType { get { return HideType.Regular; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish | FoodType.Meat; } }
+		public override int Hides => 12;
+        public override HideType HideType => HideType.Regular;
+        public override FoodType FavoriteFood => FoodType.Fish | FoodType.Meat;
 
-		public GiantToad(Serial serial) : base(serial)
+        public GiantToad(Serial serial) : base(serial)
 		{
 		}
 

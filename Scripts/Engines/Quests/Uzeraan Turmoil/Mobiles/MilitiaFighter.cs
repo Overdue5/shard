@@ -53,9 +53,9 @@ namespace Server.Engines.Quests.Haven
 			SetSkill( SkillName.Swords, 20.0 );
 		}
 
-		public override bool ClickTitle { get { return false; } }
+		public override bool ClickTitle => false;
 
-		public override bool IsEnemy( Mobile m )
+        public override bool IsEnemy( Mobile m )
 		{
 			if ( m.Player || m is BaseVendor )
 				return false;

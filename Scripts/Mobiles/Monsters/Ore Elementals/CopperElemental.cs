@@ -51,11 +51,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 2 );
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
-		public override bool AutoDispel{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
+		public override bool BleedImmune => true;
+        public override bool AutoDispel => true;
+        public override int TreasureMapLevel => 1;
 
-		public override void CheckReflect( Mobile caster, ref bool reflect )
+        public override void CheckReflect( Mobile caster, ref bool reflect )
 		{
 			reflect = true; // Every spell is reflected back to the caster
 		}

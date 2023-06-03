@@ -34,9 +34,9 @@ namespace Server.Mobiles
 			Fame = 0;
 		}
 
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override Poison PoisonImmune => Poison.Lethal;
 
-		public SkeletalMount( Serial serial ) : base( serial )
+        public SkeletalMount( Serial serial ) : base( serial )
 		{
 		}
 

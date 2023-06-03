@@ -44,10 +44,10 @@ namespace Server.Mobiles
 			MinTameSkill = 29.1;
 		}
 
-		public override int Meat{ get{ return 2; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+		public override int Meat => 2;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public Boar(Serial serial) : base(serial)
+        public Boar(Serial serial) : base(serial)
 		{
 		}
 

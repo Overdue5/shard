@@ -328,10 +328,14 @@ namespace Server.Custom.Games
         }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-        public bool DeathPoint { get { return m_DeathPoint; } set { m_DeathPoint = value; } }
+        public bool DeathPoint { get => m_DeathPoint;
+            set => m_DeathPoint = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public TimeSpan DeathDelay { get { return m_DeathDelay; } set { m_DeathDelay = value; } }
+        public TimeSpan DeathDelay { get => m_DeathDelay;
+            set => m_DeathDelay = value;
+        }
 
 		public override void EndGame()
 		{

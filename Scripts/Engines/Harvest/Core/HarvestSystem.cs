@@ -13,9 +13,9 @@ namespace Server.Engines.Harvest
 	{
 		private readonly List<HarvestDefinition> m_Definitions;
 
-		public List<HarvestDefinition> Definitions { get { return m_Definitions; } }
+		public List<HarvestDefinition> Definitions => m_Definitions;
 
-		public HarvestSystem()
+        public HarvestSystem()
 		{
 			m_Definitions = new List<HarvestDefinition>();
 		}

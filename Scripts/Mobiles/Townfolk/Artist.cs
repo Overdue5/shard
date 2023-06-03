@@ -4,9 +4,9 @@ namespace Server.Mobiles
 {
 	public class Artist : BaseCreature
 	{
-		public override bool CanTeach { get { return true; } }
+		public override bool CanTeach => true;
 
-		[Constructable]
+        [Constructable]
 		public Artist()
 			: base( AIType.AI_Animal, FightMode.None, 10, 1, 0.2, 0.4 )
 		{
@@ -46,10 +46,10 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-		public override bool ClickTitle { get { return false; } }
+		public override bool ClickTitle => false;
 
 
-		public Artist( Serial serial )
+        public Artist( Serial serial )
 			: base( serial )
 		{
 		}

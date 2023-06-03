@@ -19,13 +19,13 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Placer
 		{
-			get{ return m_Placer; }
-			set{ m_Placer = value; }
-		}
+			get => m_Placer;
+            set => m_Placer = value;
+        }
 
 		private class Ornament : Item
 		{
-			public override int LabelNumber{ get{ return 1041118; } } // a tree ornament
+			public override int LabelNumber => 1041118; // a tree ornament
 
 			public Ornament( int itemID ) : base( itemID )
 			{
@@ -55,7 +55,7 @@ namespace Server.Items
 		{
 			private HolidayTree m_Tree;
 
-			public override int LabelNumber{ get{ return 1041117; } } // a tree for the holidays
+			public override int LabelNumber => 1041117; // a tree for the holidays
 
 			public TreeTrunk( HolidayTree tree, int itemID ) : base( itemID )
 			{
@@ -105,7 +105,7 @@ namespace Server.Items
 			}
 		}
 
-		public override int LabelNumber{ get{ return 1041117; } } // a tree for the holidays
+		public override int LabelNumber => 1041117; // a tree for the holidays
 
 		public HolidayTree( Mobile from, HolidayTreeType type, Point3D loc ) : base( 1 )
 		{
@@ -213,12 +213,9 @@ namespace Server.Items
             return map.CanFit((Point3D)p, 20);
         }
 
-        Item IAddon.Deed
-        {
-            get { return new HolidayTreeDeed(); }
-        }
+        Item IAddon.Deed => new HolidayTreeDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

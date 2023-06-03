@@ -22,12 +22,9 @@ namespace Server.Engines.OrbRemoteServer
 
 		private static bool m_IsRunning = false;
 
-		public static bool IsRunning
-		{
-			get{ return m_IsRunning; }
-		}
+		public static bool IsRunning => m_IsRunning;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
 		}
 
@@ -329,16 +326,10 @@ namespace Server.Engines.OrbRemoteServer
 				RequiresLogin = requiresLogin;
 			}
 
-			public bool IsCommand
-			{
-				get{ return Type.IsSubclassOf(typeof(OrbCommand)); }
-			}
+			public bool IsCommand => Type.IsSubclassOf(typeof(OrbCommand));
 
-			public bool IsRequest
-			{
-				get{ return Type.IsSubclassOf(typeof(OrbRequest)); }
-			}
-		}
+            public bool IsRequest => Type.IsSubclassOf(typeof(OrbRequest));
+        }
 
 		class RequestSyncTimer : Timer
 		{
@@ -397,19 +388,10 @@ namespace Server.Engines.OrbRemoteServer
 			m_LoginTime = loginTime;
 		}
 
-        internal IAccount Account
-		{
-			get{ return m_Account; }
-		}
+        internal IAccount Account => m_Account;
 
-		internal Mobile OnlineMobile
-		{
-			get{ return OrbServer.GetOnlineMobile(m_Account); }
-		}
+        internal Mobile OnlineMobile => OrbServer.GetOnlineMobile(m_Account);
 
-		internal DateTime LoginTime
-		{
-			get{ return m_LoginTime; }
-		}
-	}
+        internal DateTime LoginTime => m_LoginTime;
+    }
 }

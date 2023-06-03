@@ -22,25 +22,39 @@ namespace Server.Engines.XmlSpawner2
 		public string nameFilter;
         
 
-		public ArrayList QuestList { get{ return m_QuestList; } set { m_QuestList = value; }}
+		public ArrayList QuestList { get => m_QuestList;
+            set => m_QuestList = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Rank { get{ return m_Rank; } set { m_Rank = value; } }
+		public int Rank { get => m_Rank;
+            set => m_Rank = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int DeltaRank { get{ return m_DeltaRank; } set { m_DeltaRank = value; } }
+		public int DeltaRank { get => m_DeltaRank;
+            set => m_DeltaRank = value;
+        }
         
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime WhenRanked { get{ return m_WhenRanked; } set { m_WhenRanked = value; } }
+		public DateTime WhenRanked { get => m_WhenRanked;
+            set => m_WhenRanked = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Points { get{ return m_Points; } set { m_Points = value; } }
+		public int Points { get => m_Points;
+            set => m_Points = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Credits { get{ return m_Credits; } set { m_Credits = value; } }
+		public int Credits { get => m_Credits;
+            set => m_Credits = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int QuestsCompleted { get{ return m_Completed; } set { m_Completed = value; } }
+		public int QuestsCompleted { get => m_Completed;
+            set => m_Completed = value;
+        }
 
 		public class QuestEntry
 		{

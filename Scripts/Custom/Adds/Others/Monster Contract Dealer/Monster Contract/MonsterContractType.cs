@@ -50,23 +50,23 @@ namespace Server.Items
 		private Type m_Type;
 		public Type Type
 		{
-			get { return m_Type;}
-			set { m_Type = value;}
-		}
+			get => m_Type;
+            set => m_Type = value;
+        }
 		
 		private string m_Name;
 		public string Name
 		{
-			get { return m_Name;}
-			set { m_Name = value;}
-		}
+			get => m_Name;
+            set => m_Name = value;
+        }
 		
 		private int m_Rarety;
 		public int Rarety
 		{
-			get { return m_Rarety;}
-			set { m_Rarety = value;}
-		}
+			get => m_Rarety;
+            set => m_Rarety = value;
+        }
 		
 		public MonsterContractType(Type type, string name, int rarety)
 		{

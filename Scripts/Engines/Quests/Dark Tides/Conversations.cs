@@ -4,11 +4,8 @@ namespace Server.Engines.Quests.Necro
 {
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I><U>Important Quest Information</U></I><BR><BR>
+		public override object Message =>
+            /* <I><U>Important Quest Information</U></I><BR><BR>
 				 * 
 				 * During your quest, any important information that a
 				 * <a href = "?ForceTopic31">NPC</a> gives you, will appear in a
@@ -30,11 +27,9 @@ namespace Server.Engines.Quests.Necro
 				 * you options to cancel your quest and review various quest
 				 * information.<BR><BR>
 				 */
-				return 1049092;
-			}
-		}
+            1049092;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			Container bag = BaseQuester.GetNewContainer();
 
@@ -48,11 +43,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class ReanimateMaabusConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Excellent choice, young apprentice of evil!<BR><BR>
+		public override object Message =>
+            /* Excellent choice, young apprentice of evil!<BR><BR>
 				 * 
 				 * I will not waste our time with pleasantries.  There is much work
 				 * to be done – especially in light of the recent Paladin ambushes
@@ -88,20 +80,18 @@ namespace Server.Engines.Quests.Necro
 				 * 
 				 * Good luck friend.
 				 */
-				return 1060099;
-			}
-		}
+            1060099;
 
-		private static readonly QuestItemInfo[] m_Info = new QuestItemInfo[]
+        private static readonly QuestItemInfo[] m_Info = new QuestItemInfo[]
 			{
 				new QuestItemInfo( 1026153, 6178 ), // teleporter
 				new QuestItemInfo( 1049117, 4036 ), // Horn of Retreat
 				new QuestItemInfo( 1048032, 3702 )  // a bag
 			};
 
-		public override QuestItemInfo[] Info{ get{ return m_Info; } }
+		public override QuestItemInfo[] Info => m_Info;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindMaabusTombObjective() );
 		}
@@ -109,11 +99,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class MaabasConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Maabus emits an ear-crawling screech as his body reanimates.
+		public override object Message =>
+            /* <I>Maabus emits an ear-crawling screech as his body reanimates.
 				 * He turns and angrily screams at you</I>:<BR><BR>
 				 * 
 				 * YOU INFIDEL!  HOW DARE YOU AWAKEN MAABUS!?!<BR><BR>
@@ -137,18 +124,16 @@ namespace Server.Engines.Quests.Necro
 				 * 
 				 * <I>Maabus' body slumps back into the coffinas your magic expires</I>.
 				 */
-				return 1060103;
-			}
-		}
+            1060103;
 
-		private static readonly QuestItemInfo[] m_Info = new QuestItemInfo[]
+        private static readonly QuestItemInfo[] m_Info = new QuestItemInfo[]
 			{
 				new QuestItemInfo( 1026153, 6178 ) // teleporter
 			};
 
-		public override QuestItemInfo[] Info{ get{ return m_Info; } }
+		public override QuestItemInfo[] Info => m_Info;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindCrystalCaveObjective() );
 		}
@@ -156,11 +141,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class HorusConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>An old man, dressed in slightly tattered armor, whom you recognize
+		public override object Message =>
+            /* <I>An old man, dressed in slightly tattered armor, whom you recognize
 				 * to be a Paladin stands before the Crystal Cave staring blankly into
 				 * the space in front of him.  As he begins to speak to you, you realize
 				 * this man is blind.  You attempt to persuade the blind man that you are
@@ -184,11 +166,9 @@ namespace Server.Engines.Quests.Necro
 				 * since Necromancers cannot enter the Vault due to powerful protective magic that
 				 * the brotherhood has blessed the vault with.
 				 */
-				return 1060105;
-			}
-		}
+            1060105;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindMardothAboutVaultObjective() );
 		}
@@ -196,11 +176,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class MardothVaultConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Mardoth looks at you expectantly until you tell him that you failed
+		public override object Message =>
+            /* <I>Mardoth looks at you expectantly until you tell him that you failed
 				 * to retrieve the scroll...</I><BR><BR>
 				 * 
 				 * You failed?  Very unfortunate...  So now you must find your way into
@@ -219,11 +196,9 @@ namespace Server.Engines.Quests.Necro
 				 * to the Paladin city of Light.  Once you have arrived in the city, follow
 				 * the road of glowing runes to the Vault of Secrets.  You know what to do.
 				 */
-				return 1060107;
-			}
-		}
+            1060107;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindCityOfLightObjective() );
 		}
@@ -231,11 +206,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class VaultOfSecretsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have arrived in the Vault of Secrets.  You can feel the
+		public override object Message =>
+            /* You have arrived in the Vault of Secrets.  You can feel the
 				 * protective magic in this place restricting you, making you
 				 * feel nearly claustrophobic.<BR><BR>
 				 * 
@@ -250,18 +222,16 @@ namespace Server.Engines.Quests.Necro
 				 * 
 				 * Summon your familiar with the <a href="?ForceTopic127">Summon Familiar</a> spell.
 				 */
-				return 1060110;
-			}
-		}
+            1060110;
 
-		private static readonly QuestItemInfo[] m_Info = new QuestItemInfo[]
+        private static readonly QuestItemInfo[] m_Info = new QuestItemInfo[]
 			{
 				new QuestItemInfo( 1023643, 8787 ) // spellbook
 			};
 
-		public override QuestItemInfo[] Info{ get{ return m_Info; } }
+		public override QuestItemInfo[] Info => m_Info;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FetchAbraxusScrollObjective() );
 		}
@@ -269,11 +239,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class ReadAbraxusScrollConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have obtained the Scroll of Abraxus, which contains the secret
+		public override object Message =>
+            /* You have obtained the Scroll of Abraxus, which contains the secret
 				 * password needed to gain passage into the Crystal Cave where the
 				 * Scroll of Calling is kept.  Read the scroll (double click) and
 				 * figure out the password.<BR><BR>
@@ -284,11 +251,9 @@ namespace Server.Engines.Quests.Necro
 				 * If you do not know the way to the Crystal Cave from the Paladin City,
 				 * you can use the magic teleporter located just outside of the vault.
 				 */
-				return 1060114;
-			}
-		}
+            1060114;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReadAbraxusScrollObjective() );
 		}
@@ -296,11 +261,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class SecondHorusConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Very well Paladin, you have proven to me your identity.
+		public override object Message =>
+            /* Very well Paladin, you have proven to me your identity.
 				 * I grant thee passage.<BR><BR>
 				 * 
 				 * Be careful, however – I’ve heard that the cave has been
@@ -318,11 +280,9 @@ namespace Server.Engines.Quests.Necro
 				 * Crystal Cave.   Take care honorable Paladin soul.
 				 * Walk in the light my friend.
 				 */
-				return 1060118;
-			}
-		}
+            1060118;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindCallingScrollObjective() );
 		}
@@ -330,11 +290,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class HealConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You've just slain a creature.  Now is a good time to learn how
+		public override object Message =>
+            /* You've just slain a creature.  Now is a good time to learn how
 				 * to heal yourself as a Necromancer.<BR><BR>
 				 * 
 				 * As a follower of the dark path, you are able to recover lost
@@ -342,30 +299,23 @@ namespace Server.Engines.Quests.Necro
 				 * <a href="?ForceTopic133">Spirit Speak</a>.  Learn more about it now,
 				 * <a href="?ForceTopic73">in the codex of Wisdom</a>.
 				 */
-				return 1061610;
-			}
-		}
-	}
+            1061610;
+    }
 
 	public class HorusRewardConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* I thank you for going out of your way to clean out some
+		public override object Message =>
+            /* I thank you for going out of your way to clean out some
 				 * of the vermin in that cave – here is your reward: a bag
 				 * containing 500 gold coins plus a strange and magical artifact
 				 * that should come in handy in your travels.<BR><BR>
 				 * 
 				 * Take care young Paladin!
 				 */
-				return 1060717;
-			}
-		}
+            1060717;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class LostCallingScrollConversation : QuestConversation
 	{
@@ -396,9 +346,9 @@ namespace Server.Engines.Quests.Necro
 			}
 		}
 
-		public override bool Logged{ get{ return false; } }
+		public override bool Logged => false;
 
-		public LostCallingScrollConversation( bool fromMardoth )
+        public LostCallingScrollConversation( bool fromMardoth )
 		{
 			m_FromMardoth = fromMardoth;
 		}
@@ -425,11 +375,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class MardothKronusConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have returned with the scroll!  I knew I could count on you.
+		public override object Message =>
+            /* You have returned with the scroll!  I knew I could count on you.
 				 * You can now perform the rite of calling at the Well of Tears.
 				 * This ritual will help charge the Well to prepare for the coming
 				 * of Kronus.   You are prepared to do your part young Necromancer!<BR><BR>
@@ -443,11 +390,9 @@ namespace Server.Engines.Quests.Necro
 				 * Once you have completed the ritual, return here for your
 				 * promised reward.
 				 */
-				return 1060121;
-			}
-		}
+            1060121;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindWellOfTearsObjective() );
 		}
@@ -455,11 +400,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class MardothEndConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have done as I asked... I knew I could count on you from
+		public override object Message =>
+            /* You have done as I asked... I knew I could count on you from
 				 * the moment you walked in here!<BR><BR>
 				 * 
 				 * The forces of evil are strong within you.  You will become
@@ -482,11 +424,9 @@ namespace Server.Engines.Quests.Necro
 				 * 
 				 * Farewell, and stay true to the ways of the shadow...
 				 */
-				return 1060133;
-			}
-		}
+            1060133;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindBankObjective() );
 		}
@@ -494,11 +434,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class BankerConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The banker smiles at you and greets you in a loud and robust voice...</I><BR><BR>
+		public override object Message =>
+            /* <I>The banker smiles at you and greets you in a loud and robust voice...</I><BR><BR>
 				 * 
 				 * Well hello there adventurer! I see you've learned how to cash checks. Wonderful!
 				 * Let me tell you a bit about the banks in this world...<BR><BR>
@@ -515,11 +452,9 @@ namespace Server.Engines.Quests.Necro
 				 * with the spoils of your adventures.<BR><BR>Farewell adventurer, you are now free to
 				 * explore the world on your own.
 				 */
-				return 1060137;
-			}
-		}
+            1060137;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}
@@ -527,11 +462,8 @@ namespace Server.Engines.Quests.Necro
 
 	public class RadarConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* If you are leaving the tower, you should learn about the Radar Map.<BR><BR>
+		public override object Message =>
+            /* If you are leaving the tower, you should learn about the Radar Map.<BR><BR>
 				 * 
 				 * The Radar Map (or Overhead View) can be opened by pressing 'ALT-R'
 				 * on your keyboard. It shows your immediate surroundings from a bird's
@@ -539,10 +471,8 @@ namespace Server.Engines.Quests.Necro
 				 * little. Use the Radar Map often as you travel throughout the world
 				 * to familiarize yourself with your surroundings.
 				 */
-				return 1061692;
-			}
-		}
+            1061692;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 }

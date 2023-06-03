@@ -4,11 +4,8 @@ namespace Server.Engines.Quests.Doom
 {
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have accepted Victoria's help.  She requires 1000 Daemon
+		public override object Message =>
+            /* You have accepted Victoria's help.  She requires 1000 Daemon
 				 * bones to summon the devourer.<BR><BR>
 				 * 
 				 * You may hand Victoria the bones as you collect them and she
@@ -19,11 +16,9 @@ namespace Server.Engines.Quests.Doom
 				 * 
 				 * Good luck.
 				 */
-				return 1050027;
-			}
-		}
+            1050027;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new CollectBonesObjective() );
 		}
@@ -31,19 +26,14 @@ namespace Server.Engines.Quests.Doom
 
 	public class VanquishDaemonConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Well done brave soul.   I shall summon the beast to the circle
+		public override object Message =>
+            /* Well done brave soul.   I shall summon the beast to the circle
 				 * of stones just South-East of here.  Take great care - the beast
 				 * takes many forms.  Now hurry...
 				 */
-				return 1050021;
-			}
-		}
+            1050021;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			Victoria victoria = ((TheSummoningQuest)System).Victoria;
 

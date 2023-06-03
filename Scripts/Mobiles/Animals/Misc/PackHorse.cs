@@ -7,9 +7,9 @@ namespace Server.Mobiles
 	[CorpseName( "a horse corpse" )]
 	public class PackHorse : BaseCreature
 	{
-        public override bool CanUseMoonGates { get { return true; } }
+        public override bool CanUseMoonGates => true;
 
-		[Constructable]
+        [Constructable]
 		public PackHorse() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Pack Horse";
@@ -58,11 +58,11 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-		public override int Meat{ get{ return 3; } }
-		public override int Hides{ get{ return 5; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+		public override int Meat => 3;
+        public override int Hides => 5;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public PackHorse( Serial serial ) : base( serial )
+        public PackHorse( Serial serial ) : base( serial )
 		{
 		}
 

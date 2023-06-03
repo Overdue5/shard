@@ -31,7 +31,9 @@ namespace Server.Voting
 		/// Gets or Sets a value indecating whether messages should be sent to a vote request sender on various events.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool Messages { get { return _Messages; } set { _Messages = value; } }
+		public bool Messages { get => _Messages;
+            set => _Messages = value;
+        }
 
 		private VoteSite _VoteSite;
 		/// <summary>
@@ -41,8 +43,8 @@ namespace Server.Voting
 		[CommandProperty(AccessLevel.GameMaster)]
 		public VoteSite VoteSite
 		{
-			get { return _VoteSite ?? (_VoteSite = new VoteSite(this)); }
-		    set
+			get => _VoteSite ?? (_VoteSite = new VoteSite(this));
+            set
 			{
 				_VoteSite = value;
 				InvalidateProperties();

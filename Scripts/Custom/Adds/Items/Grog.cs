@@ -39,23 +39,23 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int minDamage
 		{
-			get { return m_minDamage; }
-			set { m_minDamage = value; }
-		}
+			get => m_minDamage;
+            set => m_minDamage = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int maxDamage
 		{
-			get { return m_maxDamage; }
-			set { m_maxDamage = value; }
-		}
+			get => m_maxDamage;
+            set => m_maxDamage = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int PercentToHit
 		{
-			get { return m_PercentToHit; }
-			set { m_PercentToHit = value; }
-		}
+			get => m_PercentToHit;
+            set => m_PercentToHit = value;
+        }
 
 		public override void Serialize( GenericWriter writer )
 		{

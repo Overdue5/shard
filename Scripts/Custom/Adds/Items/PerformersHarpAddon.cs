@@ -6,15 +6,9 @@ namespace Server.Items
 {
 	public class PerformersHarpAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new PerformersHarpAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new PerformersHarpAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public PerformersHarpAddon()
 		{
 			AddonComponent ac;
@@ -100,15 +94,9 @@ namespace Server.Items
 
 	public class PerformersHarpAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new PerformersHarpAddon();
-			}
-		}
+		public override BaseAddon Addon => new PerformersHarpAddon();
 
-		[Constructable]
+        [Constructable]
 		public PerformersHarpAddonDeed()
 		{
 			Name = "Performer's Harp";

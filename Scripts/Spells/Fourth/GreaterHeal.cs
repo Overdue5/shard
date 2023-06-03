@@ -9,8 +9,8 @@ namespace Server.Spells.Fourth
 {
     public class GreaterHealSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 0x202; } }
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 0x202;
 
         private static readonly SpellInfo m_Info = new SpellInfo(
 				"Greater Heal", "In Vas Mani",

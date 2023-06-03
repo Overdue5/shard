@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class LargeBedEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new LargeBedEastDeed(); } }
+		public override BaseAddonDeed Deed => new LargeBedEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public LargeBedEastAddon()
 		{
 			AddComponent( new AddonComponent( 0xA7D ), 0, 0, 0 );
@@ -34,8 +34,8 @@ namespace Server.Items
 
 	public class LargeBedEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new LargeBedEastAddon(); } }
-		public override int LabelNumber{ get{ return 1044324; } } // large bed (east)
+		public override BaseAddon Addon => new LargeBedEastAddon();
+        public override int LabelNumber => 1044324; // large bed (east)
 
 		[Constructable]
 		public LargeBedEastDeed()

@@ -136,11 +136,11 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomMinMax(2, 3)));
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
-        public override bool Unprovokable { get { return true; } }
-        public override Poison PoisonImmune { get { return Poison.Lethal; } }
-        public override bool BardImmune { get { return true; } }
-        public override bool Uncalmable { get { return true; } }
+		public override bool BleedImmune => true;
+        public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override bool BardImmune => true;
+        public override bool Uncalmable => true;
 
         public override WeaponAbility GetWeaponAbility()
         {
@@ -156,12 +156,9 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 );

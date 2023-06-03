@@ -28,22 +28,13 @@ namespace Server.Custom.Games
 
         public String Label
         {
-            get
-            {
-                return m_Label;
-            }
-            set
-            {
-                m_Label = value;
-            }
+            get => m_Label;
+            set => m_Label = value;
         }
 
         public String Message
         {
-            get
-            {
-                return m_Message;
-            }
+            get => m_Message;
             set
             {
                 m_Message = value;
@@ -63,26 +54,14 @@ namespace Server.Custom.Games
 
         public BaseGame Game
         {
-            get
-            {
-                return m_Game;
-            }
-            set
-            {
-                m_Game = value;
-            }
+            get => m_Game;
+            set => m_Game = value;
         }
 
         public PlayerMobile Player
         {
-            get
-            {
-                return m_Player;
-            }
-            set
-            {
-                m_Player = value;
-            }
+            get => m_Player;
+            set => m_Player = value;
         }
 
         public override string ToString()

@@ -38,15 +38,15 @@ namespace Server
 
 		public string Name
 		{
-			get{ return m_Name; }
-			set{ m_Name = value; }
-		}
+			get => m_Name;
+            set => m_Name = value;
+        }
 
 		public TileFlag Flags
 		{
-			get{ return m_Flags; }
-			set{ m_Flags = value; }
-		}
+			get => m_Flags;
+            set => m_Flags = value;
+        }
 	}
 
 	public struct ItemData
@@ -72,20 +72,20 @@ namespace Server
 
 		public string Name
 		{
-			get{ return m_Name; }
-			set{ m_Name = value; }
-		}
+			get => m_Name;
+            set => m_Name = value;
+        }
 
 		public TileFlag Flags
 		{
-			get{ return m_Flags; }
-			set{ m_Flags = value; }
-		}
+			get => m_Flags;
+            set => m_Flags = value;
+        }
 
 		public bool Bridge
 		{
-			get{ return (m_Flags & TileFlag.Bridge) != 0; }
-			set
+			get => (m_Flags & TileFlag.Bridge) != 0;
+            set
 			{
 				if ( value )
 					m_Flags |= TileFlag.Bridge;
@@ -96,8 +96,8 @@ namespace Server
 
 		public bool Impassable
 		{
-			get{ return (m_Flags & TileFlag.Impassable) != 0; }
-			set
+			get => (m_Flags & TileFlag.Impassable) != 0;
+            set
 			{
 				if ( value )
 					m_Flags |= TileFlag.Impassable;
@@ -108,8 +108,8 @@ namespace Server
 
 		public bool Surface
 		{
-			get{ return (m_Flags & TileFlag.Surface) != 0; }
-			set
+			get => (m_Flags & TileFlag.Surface) != 0;
+            set
 			{
 				if ( value )
 					m_Flags |= TileFlag.Surface;
@@ -120,33 +120,33 @@ namespace Server
 
 		public int Weight
 		{
-			get{ return m_Weight; }
-			set{ m_Weight = (byte)value; }
-		}
+			get => m_Weight;
+            set => m_Weight = (byte)value;
+        }
 
 		public int Quality
 		{
-			get{ return m_Quality; }
-			set{ m_Quality = (byte)value; }
-		}
+			get => m_Quality;
+            set => m_Quality = (byte)value;
+        }
 
 		public int Quantity
 		{
-			get{ return m_Quantity; }
-			set{ m_Quantity = (byte)value; }
-		}
+			get => m_Quantity;
+            set => m_Quantity = (byte)value;
+        }
 
 		public int Value
 		{
-			get{ return m_Value; }
-			set{ m_Value = (byte)value; }
-		}
+			get => m_Value;
+            set => m_Value = (byte)value;
+        }
 
 		public int Height
 		{
-			get{ return m_Height; }
-			set{ m_Height = (byte)value; }
-		}
+			get => m_Height;
+            set => m_Height = (byte)value;
+        }
 
 		public int CalcHeight
 		{
@@ -203,36 +203,18 @@ namespace Server
 		private static LandData[] m_LandData;
 		private static ItemData[] m_ItemData;
 
-		public static LandData[] LandTable
-		{
-			get
-			{
-				return m_LandData;
-			}
-		}
+		public static LandData[] LandTable => m_LandData;
 
-		public static ItemData[] ItemTable
-		{
-			get
-			{
-				return m_ItemData;
-			}
-		}
+        public static ItemData[] ItemTable => m_ItemData;
 
         private static int m_MaxLandValue;
         private static int m_MaxItemValue;
 
-        public static int MaxLandValue
-        {
-            get { return m_MaxLandValue; }
-        }
+        public static int MaxLandValue => m_MaxLandValue;
 
-        public static int MaxItemValue
-        {
-            get { return m_MaxItemValue; }
-        }
+        public static int MaxItemValue => m_MaxItemValue;
 
-		private static byte[] m_StringBuffer = new byte[20];
+        private static byte[] m_StringBuffer = new byte[20];
 
 		private static string ReadNameString( BinaryReader bin )
 		{

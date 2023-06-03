@@ -9,12 +9,12 @@ namespace Server.Items
         public SkillMod m_SkillMod;
         public int m_Charges;
         public int m_MaxCharges;
-        public virtual HarvestSystem HarvestSystem { get { return Fishing.System; } }
+        public virtual HarvestSystem HarvestSystem => Fishing.System;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Charges
         {
-            get { return m_Charges; }
+            get => m_Charges;
             set
             {
                 if (value > MaxCharges)
@@ -29,9 +29,9 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MaxCharges { get { return 100; } }
+        public int MaxCharges => 100;
 
-        public string DeepSeaFishingPoleItemName { get { return "Deep sea fishing pole"; } }
+        public string DeepSeaFishingPoleItemName => "Deep sea fishing pole";
 
         [Constructable]
         public DeepSeaFishingPole()

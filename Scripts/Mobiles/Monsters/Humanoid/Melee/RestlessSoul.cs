@@ -46,10 +46,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Poor );
 		}
 
-		public override bool AlwaysAttackable{ get{ return true; } }
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool AlwaysAttackable => true;
+        public override bool BleedImmune => true;
 
-		public override void DisplayPaperdollTo(Mobile to)
+        public override void DisplayPaperdollTo(Mobile to)
 		{
 		}
 

@@ -14,9 +14,9 @@ namespace Server.Engines.Harvest
 
 	    public double MaxSkill { get; set; }
 
-	    public object SuccessMessage{ get{ return m_SuccessMessage; } }
+	    public object SuccessMessage => m_SuccessMessage;
 
-		public void SendSuccessTo( Mobile m )
+        public void SendSuccessTo( Mobile m )
 		{
 			if ( m_SuccessMessage is int )
 				m.SendLocalizedMessage( (int)m_SuccessMessage );

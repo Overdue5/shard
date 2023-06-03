@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	public class Cook : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Cook() : base( "the cook" )
 		{
 			SetSkill( SkillName.Cooking, 90.0, 100.0 );
@@ -23,12 +23,9 @@ namespace Server.Mobiles
 				m_SBInfos.Add( new SBSECook() );
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return Utility.RandomBool() ? VendorShoeType.Sandals : VendorShoeType.Shoes; }
-		}
+		public override VendorShoeType ShoeType => Utility.RandomBool() ? VendorShoeType.Sandals : VendorShoeType.Shoes;
 
-		public override void InitOutfit()
+        public override void InitOutfit()
 		{
 			base.InitOutfit();
 

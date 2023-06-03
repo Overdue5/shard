@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class IolosLute : Lute
 	{
-		public override int LabelNumber{ get{ return 1063479; } }
+		public override int LabelNumber => 1063479;
 
-		public override int InitMinUses{ get{ return 1600; } }
-		public override int InitMaxUses{ get{ return 1600; } }
+        public override int InitMinUses => 1600;
+        public override int InitMaxUses => 1600;
 
-		[Constructable]
+        [Constructable]
 		public IolosLute()
 		{
 			Hue = 0x47E;

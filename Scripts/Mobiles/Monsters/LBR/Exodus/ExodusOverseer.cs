@@ -6,13 +6,13 @@ namespace Server.Mobiles
 	public class ExodusOverseer : BaseCreature
 	{
 		private bool m_FieldActive;
-		public bool FieldActive{ get{ return m_FieldActive; } }
-		public bool CanUseField{ get{ return Hits >= HitsMax * 9 / 10; } } // TODO: an OSI bug prevents to verify this
+		public bool FieldActive => m_FieldActive;
+        public bool CanUseField => Hits >= HitsMax * 9 / 10; // TODO: an OSI bug prevents to verify this
 
-		public override bool IsScaredOfScaryThings{ get{ return false; } }
-		public override bool IsScaryToPets{ get{ return true; } }
+		public override bool IsScaredOfScaryThings => false;
+        public override bool IsScaryToPets => true;
 
-		[Constructable]
+        [Constructable]
 		public ExodusOverseer() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Exodus Overseer";
@@ -56,11 +56,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.FilthyRich );
 		}
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool BardImmune{ get{ return !Core.AOS; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool AutoDispel => true;
+        public override bool BardImmune => !Core.AOS;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override int GetIdleSound()
+        public override int GetIdleSound()
 		{
 			return 0xFD;
 		}

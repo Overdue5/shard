@@ -72,14 +72,8 @@ namespace Server.Custom.Games
         #region Script only
         public Rectangle2D GameArea
         {
-            set
-            {
-                m_GameArea = value;
-            }
-            get
-            {
-                return m_GameArea;
-            }
+            set => m_GameArea = value;
+            get => m_GameArea;
         }
         #endregion
 
@@ -87,40 +81,22 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Point2D GameAreaStartPoint
         {
-            set
-            {
-                m_GameArea.Start = value;
-            }
-            get
-            {
-                return m_GameArea.Start;
-            }
+            set => m_GameArea.Start = value;
+            get => m_GameArea.Start;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point2D GameAreaEndPoint
         {
-            set
-            {
-                m_GameArea.End = value;
-            }
-            get
-            {
-                return m_GameArea.End;
-            }
+            set => m_GameArea.End = value;
+            get => m_GameArea.End;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D WinnerLocation
         {
-            set
-            {
-                m_WinnerLocation = value;
-            }
-            get
-            {
-                return m_WinnerLocation;
-            }
+            set => m_WinnerLocation = value;
+            get => m_WinnerLocation;
         }
         #endregion
 
@@ -330,7 +306,7 @@ namespace Server.Custom.Games
             }
         }
 
-        public override bool Decays { get { return false; } }
+        public override bool Decays => false;
 
         public override void OnDoubleClick(Mobile from)
         {

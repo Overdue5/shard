@@ -53,12 +53,9 @@ namespace Server.Voting
 		}
 
 		private static VoteConfig _Instance = new VoteConfig();
-		public static VoteConfig Instance
-		{
-			get { return _Instance ?? (_Instance = new VoteConfig()); }
-		}
+		public static VoteConfig Instance => _Instance ?? (_Instance = new VoteConfig());
 
-		public VoteConfig()
+        public VoteConfig()
 		{
 			_Instance = this;
 		}
@@ -68,16 +65,18 @@ namespace Server.Voting
 		/// The default VoteSite Name to use on new VoteSite Profiles
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public string DefaultName { get { return _DefaultName; } set { _DefaultName = value; } }
+		public string DefaultName { get => _DefaultName;
+            set => _DefaultName = value;
+        }
 
 		private string _DefaultURL = __DefaultURL;
 		/// <summary>
 		/// The default URL to launch in the request senders' browser.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public string DefaultURL { get 
-			{ return _DefaultURL; } 
-			set { _DefaultURL = value; } }
+		public string DefaultURL { get => _DefaultURL;
+            set => _DefaultURL = value;
+        }
 
 		private TimeSpan _DefaultCoolDown = __DefaultCoolDown;
 		/// <summary>
@@ -85,14 +84,18 @@ namespace Server.Voting
 		/// A new request will be rejected if the request sender has previously made a vote request within this amount of time.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public TimeSpan DefaultCoolDown { get { return _DefaultCoolDown; } set { _DefaultCoolDown = value; } }
+		public TimeSpan DefaultCoolDown { get => _DefaultCoolDown;
+            set => _DefaultCoolDown = value;
+        }
 
         private int _DefaultGold = __DefaultGold;
         /// <summary>
         /// The default amount of gold voters get.
         /// </summary>
         [CommandProperty(AccessLevel.GameMaster)]
-        public int DefaultGold { get { return _DefaultGold; } set { _DefaultGold = value; } }
+        public int DefaultGold { get => _DefaultGold;
+            set => _DefaultGold = value;
+        }
 
 		public void Serialize()
 		{

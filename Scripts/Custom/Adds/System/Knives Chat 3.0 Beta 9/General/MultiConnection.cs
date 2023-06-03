@@ -13,7 +13,7 @@ namespace Knives.Chat3
     public class MultiConnection
     {
         private static MultiConnection s_Connection = new MultiConnection();
-        public static MultiConnection Connection { get { return s_Connection; } }
+        public static MultiConnection Connection => s_Connection;
 
         private Socket c_Master, c_Slave;
         private ArrayList c_Clients = new ArrayList();
@@ -23,9 +23,9 @@ namespace Knives.Chat3
         private bool c_Connecting, c_Connected;
         //private Server.Timer c_ConnectTimer;
 
-        public Hashtable Names { get { return c_Names; } }
-        public bool Connecting { get { return c_Connecting; } }
-        public bool Connected { get { return c_Connected; } }
+        public Hashtable Names => c_Names;
+        public bool Connecting => c_Connecting;
+        public bool Connected => c_Connected;
 
         public MultiConnection()
         {

@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class RedRunnerEWAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new RedRunnerEWDeed(); } }
+		public override BaseAddonDeed Deed => new RedRunnerEWDeed();
 
-		[Constructable]
+        [Constructable]
 		public RedRunnerEWAddon() 
 		{
 			AddComponent( new AddonComponent( 0x0ACA ), -1, -1, 0 );
@@ -36,9 +36,9 @@ namespace Server.Items
 
 	public class RedRunnerEWDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new RedRunnerEWAddon(); } }
+		public override BaseAddon Addon => new RedRunnerEWAddon();
 
-		[Constructable]
+        [Constructable]
 		public RedRunnerEWDeed()
 		{
 			Name = "Red Runner Deed - E/W";

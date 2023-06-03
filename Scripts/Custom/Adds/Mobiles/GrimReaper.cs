@@ -37,17 +37,11 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override Poison PoisonImmune
-		{
-			get { return Poison.Lethal; }
-		}
+		public override Poison PoisonImmune => Poison.Lethal;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Poor );
 			PackItem( Loot.RandomWeapon() );

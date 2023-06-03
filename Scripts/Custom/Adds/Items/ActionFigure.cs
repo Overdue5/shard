@@ -35,7 +35,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string Phrase1
         {
-            get { return m_Phrase1; }
+            get => m_Phrase1;
             set
             {
                 m_Phrase1 = value;
@@ -46,7 +46,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Sound1
         {
-            get { return m_Sound1; }
+            get => m_Sound1;
             set
             {
                 m_Sound1 = value;
@@ -57,7 +57,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string Phrase2
         {
-            get { return m_Phrase2; }
+            get => m_Phrase2;
             set
             {
                 m_Phrase2 = value;
@@ -68,7 +68,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Sound2
         {
-            get { return m_Sound2; }
+            get => m_Sound2;
             set
             {
                 m_Sound2 = value;
@@ -79,7 +79,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string Phrase3
         {
-            get { return m_Phrase3; }
+            get => m_Phrase3;
             set
             {
                 m_Phrase3 = value;
@@ -90,7 +90,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Sound3
         {
-            get { return m_Sound3; }
+            get => m_Sound3;
             set
             {
                 m_Sound3 = value;
@@ -101,7 +101,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string Phrase4
         {
-            get { return m_Phrase4; }
+            get => m_Phrase4;
             set
             {
                 m_Phrase4 = value;
@@ -112,7 +112,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Sound4
         {
-            get { return m_Sound4; }
+            get => m_Sound4;
             set
             {
                 m_Sound4 = value;
@@ -123,7 +123,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string Phrase5
         {
-            get { return m_Phrase5; }
+            get => m_Phrase5;
             set
             {
                 m_Phrase5 = value;
@@ -134,7 +134,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Sound5
         {
-            get { return m_Sound5; }
+            get => m_Sound5;
             set
             {
                 m_Sound5 = value;

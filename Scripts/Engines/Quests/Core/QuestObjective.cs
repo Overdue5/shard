@@ -14,40 +14,34 @@ namespace Server.Engines.Quests
 
 		public abstract object Message{ get; }
 
-		public virtual int MaxProgress{ get{ return 1; } }
-		public virtual QuestItemInfo[] Info{ get{ return null; } }
+		public virtual int MaxProgress => 1;
+        public virtual QuestItemInfo[] Info => null;
 
-	    public QuestSystem System { get; set; }
+        public QuestSystem System { get; set; }
 
 	    public bool HasBeenRead
 		{
-			get{ return m_HasBeenRead; }
-			set{ m_HasBeenRead = value; }
-		}
+			get => m_HasBeenRead;
+            set => m_HasBeenRead = value;
+        }
 
 		public int CurProgress
 		{
-			get{ return m_CurProgress; }
-			set{ m_CurProgress = value; CheckCompletionStatus(); }
+			get => m_CurProgress;
+            set{ m_CurProgress = value; CheckCompletionStatus(); }
 		}
 
 		public bool HasCompleted
 		{
-			get{ return m_HasCompleted; }
-			set{ m_HasCompleted = value; }
-		}
+			get => m_HasCompleted;
+            set => m_HasCompleted = value;
+        }
 
-		public virtual bool Completed
-		{
-			get{ return m_CurProgress >= MaxProgress; }
-		}
+		public virtual bool Completed => m_CurProgress >= MaxProgress;
 
-		public bool IsSingleObjective
-		{
-			get{ return ( MaxProgress == 1 ); }
-		}
+        public bool IsSingleObjective => ( MaxProgress == 1 );
 
-	    public virtual void BaseDeserialize( GenericReader reader )
+        public virtual void BaseDeserialize( GenericReader reader )
 		{
 			int version = reader.ReadEncodedInt();
 

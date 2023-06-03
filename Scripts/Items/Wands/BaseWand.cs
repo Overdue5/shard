@@ -5,22 +5,22 @@ namespace Server.Items
 {
 	public abstract class BaseWand : BaseBashing
 	{
-        public override int OldStrengthReq { get { return 0; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 6; } }
-        public override int OldSpeed { get { return 200; } }
+        public override int OldStrengthReq => 0;
+        public override int OldMinDamage => 2;
+        public override int OldMaxDamage => 6;
+        public override int OldSpeed => 200;
 
-        public override int InitMinHits { get { return 31; } }
-        public override int InitMaxHits { get { return 110; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 110;
 
-		private int m_Charges;
+        private int m_Charges;
 	    private int m_MaxCharges;
 	    private bool m_UsedAfterReCharged;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges
 		{
-			get{ return m_Charges; }
+			get => m_Charges;
             set
             {
                 if (value > 9)
@@ -32,7 +32,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int MaxCharges
         {
-            get { return m_MaxCharges; }
+            get => m_MaxCharges;
             set { m_MaxCharges = value; InvalidateProperties(); }
         }
 

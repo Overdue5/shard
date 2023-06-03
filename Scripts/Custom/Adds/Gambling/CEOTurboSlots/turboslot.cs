@@ -309,8 +309,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Active
 		{
-			get { return m_Active; }
-			set
+			get => m_Active;
+            set
 			{
 				if (!m_Active && value)
 				{
@@ -339,22 +339,22 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ErrorCode
 		{
-			get { return m_ErrorCode; }
-			set { m_ErrorCode = value; InvalidateProperties(); }
+			get => m_ErrorCode;
+            set { m_ErrorCode = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool FreeSpin
 		{
-			get { return m_FreeSpin; }
-			set { m_FreeSpin = value; }
-		}
+			get => m_FreeSpin;
+            set => m_FreeSpin = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public SlotThemeType SlotTheme
 		{
-			get { return m_SlotTheme; }
-			set
+			get => m_SlotTheme;
+            set
 			{
 				bool currentstate = m_Active;
 				m_ErrorCode = 0;
@@ -595,13 +595,10 @@ namespace Server.Items
 #endif
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public float w_Percentage
-		{
-			get { return m_ProfPercentage; }
-			//set { m_ProfPercentage = value; }
-		}
+		public float w_Percentage => m_ProfPercentage;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        //set { m_ProfPercentage = value; }
+        [CommandProperty(AccessLevel.GameMaster)]
 		public bool AnyBars
 		{
 			get { return m_AnyBars; }
@@ -613,8 +610,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public JackpotRewardType JackpotRewards
 		{
-			get { return m_Rewards; }
-			set
+			get => m_Rewards;
+            set
 			{
 				m_Rewards = value;
 				SetupTheme(m_SlotTheme, false);
@@ -625,23 +622,23 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool MembershipCard
 		{
-			get { return m_MembershipCard; }
-			set { m_MembershipCard = value; }
-		}
+			get => m_MembershipCard;
+            set => m_MembershipCard = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool CardClubOnly
 		{
-			get { return m_CardClubOnly; }
-			set { m_CardClubOnly = value; InvalidateProperties(); }
+			get => m_CardClubOnly;
+            set { m_CardClubOnly = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool PlayerSounds
 		{
-			get { return m_PlayerSounds; }
-			set { m_PlayerSounds = value; }
-		}
+			get => m_PlayerSounds;
+            set => m_PlayerSounds = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public BonusRoundType BonusRound
@@ -655,43 +652,43 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CreditCashOutAt
 		{
-			get { return m_CreditCashOut; }
-			set { m_CreditCashOut = value; }
-		}
+			get => m_CreditCashOut;
+            set => m_CreditCashOut = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CreditATMLimit
 		{
-			get { return m_CreditATMLimit; }
-			set { m_CreditATMLimit = value; }
-		}
+			get => m_CreditATMLimit;
+            set => m_CreditATMLimit = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CreditATMIncrements
 		{
-			get { return m_CreditATMIncrements; }
-			set { m_CreditATMIncrements = value; }
-		}
+			get => m_CreditATMIncrements;
+            set => m_CreditATMIncrements = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool AnnounceJackpots
 		{
-			get { return m_AnnounceJackpot; }
-			set { m_AnnounceJackpot = value; }
-		}
+			get => m_AnnounceJackpot;
+            set => m_AnnounceJackpot = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ShowPayback
 		{
-			get { return m_ShowPayback; }
-			set { m_ShowPayback = value; }
-		}
+			get => m_ShowPayback;
+            set => m_ShowPayback = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public PaybackType SlotPaybackOdds
 		{
-			get { return m_PaybackType; }
-			set
+			get => m_PaybackType;
+            set
 			{
 				m_PaybackType = value;
 				SetupOddsTable(m_PaybackType, true);
@@ -699,31 +696,28 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public PaybackType CurrentPayback
-		{
-			get { return m_CurrentPaybackType; }
-		}
+		public PaybackType CurrentPayback => m_CurrentPaybackType;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public int ProgJackpot
 		{
-			get { return m_ProgressiveJackpot; }
-			set { m_ProgressiveJackpot = value; }
-		}
+			get => m_ProgressiveJackpot;
+            set => m_ProgressiveJackpot = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ProgJackpotStart
 		{
-			get { return m_DefaultStartProgressive; }
-			set { m_DefaultStartProgressive = value; }
-		}
+			get => m_DefaultStartProgressive;
+            set => m_DefaultStartProgressive = value;
+        }
 
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ResetTotals
 		{
-			get { return m_ResetTotals; }
-			set
+			get => m_ResetTotals;
+            set
 			{
 				if (value)
 				{
@@ -740,8 +734,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ProgPercent
 		{
-			get { return m_ProgressivePercent; }
-			set
+			get => m_ProgressivePercent;
+            set
 			{
 				int newvalue = value;
 				if (value < 0)
@@ -755,8 +749,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ProgIsMaster
 		{
-			get { return m_isProgMaster; }
-			set
+			get => m_isProgMaster;
+            set
 			{
 				if (m_ProgressiveMaster != null)
 				{
@@ -770,8 +764,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item ProgSlotMaster
 		{
-			get { return m_ProgressiveMaster; }
-			set
+			get => m_ProgressiveMaster;
+            set
 			{
 				if (m_isProgMaster)
 					return;
@@ -798,16 +792,16 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan RandomMin
 		{
-			get { return m_RandomMin; }
-			set { m_RandomMin = value; }
-		}
+			get => m_RandomMin;
+            set => m_RandomMin = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan RandomMax
 		{
-			get { return m_RandomMax; }
-			set { m_RandomMax = value; }
-		}
+			get => m_RandomMax;
+            set => m_RandomMax = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan RandomOver
@@ -819,18 +813,15 @@ namespace Server.Items
 				else
 					return TimeSpan.Zero;
 			}
-			set
-			{
-				DoTimer1(value);
-			}
-		}
+			set => DoTimer1(value);
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Cost
 		{
-			get { return m_Cost; }
+			get => m_Cost;
 
-			set
+            set
 			{
 				if (value < 5)
 					m_Cost = 5;
@@ -871,17 +862,14 @@ namespace Server.Items
 
 		public int SlotWon
 		{
-			get { return m_Won; }
-			set { m_Won = (value >= 0) ? value : 0; }
-		}
+			get => m_Won;
+            set => m_Won = (value >= 0) ? value : 0;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int TotalNetProfit
-		{
-			get { return m_TotalCollected - m_TotalWon; }
-		}
+		public int TotalNetProfit => m_TotalCollected - m_TotalWon;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public int TotalCollected
 		{
 			get { return m_TotalCollected; }
@@ -891,42 +879,36 @@ namespace Server.Items
 		}
 		public int SlotTotalCollected
 		{
-			get { return m_TotalCollected; }
-			set { m_TotalCollected = value; }
-		}
+			get => m_TotalCollected;
+            set => m_TotalCollected = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int TotalWon
-		{
-			get { return m_TotalWon; }
-		}
+		public int TotalWon => m_TotalWon;
 
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int TotalSpins
-		{
-			get { return m_TotalSpins; }
-		}
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int TotalSpins => m_TotalSpins;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public DateTime LastPlayed
 		{
-			get { return m_LastPlayed; }
-			set { m_LastPlayed = value; }
-		}
+			get => m_LastPlayed;
+            set => m_LastPlayed = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile InUseBy
 		{
-			get { return m_InUseBy; }
-			set { m_InUseBy = value; InvalidateProperties(); }
+			get => m_InUseBy;
+            set { m_InUseBy = value; InvalidateProperties(); }
 
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile LastWonBy
 		{
-			get { return m_LastWonBy; }
-			set
+			get => m_LastWonBy;
+            set
 			{
 				m_LastWonBy = value;
 				if (m_LastWonBy == null)
@@ -935,114 +917,80 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public DateTime LastWonByDate
-		{
-			get { return m_LastWonByDate; }
-		}
+		public DateTime LastWonByDate => m_LastWonByDate;
 
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int LastWonAmount
-		{
-			get { return m_LastWonAmount; }
-		}
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int LastWonAmount => m_LastWonAmount;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public int LastPay
 		{
-			get { return m_LastPay; }
-			set { m_LastPay = value; }
-		}
+			get => m_LastPay;
+            set => m_LastPay = value;
+        }
 		#endregion
 		#region Jackpot Statistics
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats0
-		{
-			get { return m_jackpotStats[0]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats1
-		{
-			get { return m_jackpotStats[1]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats2
-		{
-			get { return m_jackpotStats[2]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats3
-		{
-			get { return m_jackpotStats[3]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats4
-		{
-			get { return m_jackpotStats[4]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats5
-		{
-			get { return m_jackpotStats[5]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats6
-		{
-			get { return m_jackpotStats[6]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats7
-		{
-			get { return m_jackpotStats[7]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStats8
-		{
-			get { return m_jackpotStats[8]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStatsS1
-		{
-			get { return m_jackpotStats[9]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zJackpotStatsS2
-		{
-			get { return m_jackpotStats[10]; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zReelOne
-		{
-			get { return m_ReelOne; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zReelTwo
-		{
-			get { return m_ReelTwo; }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int zReelThree
-		{
-			get { return m_ReelThree; }
-		}
-		#endregion
+		public int zJackpotStats0 => m_jackpotStats[0];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats1 => m_jackpotStats[1];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats2 => m_jackpotStats[2];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats3 => m_jackpotStats[3];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats4 => m_jackpotStats[4];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats5 => m_jackpotStats[5];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats6 => m_jackpotStats[6];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats7 => m_jackpotStats[7];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStats8 => m_jackpotStats[8];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStatsS1 => m_jackpotStats[9];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zJackpotStatsS2 => m_jackpotStats[10];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zReelOne => m_ReelOne;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zReelTwo => m_ReelTwo;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int zReelThree => m_ReelThree;
+
+        #endregion
 
 		public int ReelOne
 		{
-			get { return m_ReelOne; }
-			set { m_ReelOne = value; }
-		}
+			get => m_ReelOne;
+            set => m_ReelOne = value;
+        }
 
 		public int ReelTwo
 		{
-			get { return m_ReelTwo; }
-			set { m_ReelTwo = value; }
-		}
+			get => m_ReelTwo;
+            set => m_ReelTwo = value;
+        }
 
 		public int ReelThree
 		{
-			get { return m_ReelThree; }
-			set { m_ReelThree = value; }
-		}
+			get => m_ReelThree;
+            set => m_ReelThree = value;
+        }
 
 		private int GetInt(string intstr)
 		{
@@ -5002,7 +4950,7 @@ namespace Server.Items
 			}
 		}
 
-		public override bool HandlesOnMovement { get { return (m_InUseBy != null && m_Active); } }// Tell the core that we implement OnMovement
+		public override bool HandlesOnMovement => (m_InUseBy != null && m_Active); // Tell the core that we implement OnMovement
 
 		public override void Serialize(GenericWriter writer)
 		{
@@ -5152,7 +5100,7 @@ namespace Server.Items
 		}
 
 #if RUNUO2RC1
-		public override string DefaultName { get { return "Lady Luck Robe"; } }
+		public override string DefaultName => "Lady Luck Robe";
 #endif
 
 		public override bool Dye(Mobile from, DyeTub sender)
@@ -5204,7 +5152,7 @@ namespace Server.Items
 
 
 #if RUNUO2RC1
-		public override string DefaultName { get { return "Lady Luck Cloak"; } }
+		public override string DefaultName => "Lady Luck Cloak";
 #endif
 		public LadyLuckCloak(Serial serial)
 			: base(serial)
@@ -5255,7 +5203,7 @@ namespace Server.Items
 		}
 
 #if RUNUO2RC1
-		public override string DefaultName { get { return "Lady Luck Sash"; } }
+		public override string DefaultName => "Lady Luck Sash";
 #endif
 		public LadyLuckSash(Serial serial)
 			: base(serial)
@@ -5369,7 +5317,7 @@ namespace Server.Items
 		}
 
 #if RUNUO2RC1
-		public override string DefaultName { get { return "Casino Token"; } }
+		public override string DefaultName => "Casino Token";
 #endif
 		public CasinoToken(Serial serial)
 			: base(serial)
@@ -5420,36 +5368,36 @@ namespace Server.Items
 		}
 
 #if RUNUO2RC1
-		public override string DefaultName { get { return "Golden Coin Casino Membership Card"; } }
+		public override string DefaultName => "Golden Coin Casino Membership Card";
 #endif
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile ClubMember
 		{
-			get { return m_Member; }
-			set { m_Member = value; }
-		}
+			get => m_Member;
+            set => m_Member = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public DateTime JoinDate
 		{
-			get { return m_JoinDate; }
-			set { m_JoinDate = value; }
-		}
+			get => m_JoinDate;
+            set => m_JoinDate = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public String Game
 		{
-			get { return m_Game; }
-			set { m_Game = value; }
-		}
+			get => m_Game;
+            set => m_Game = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Jackpot
 		{
-			get { return m_Jackpot; }
-			set { m_Jackpot = value; }
-		}
+			get => m_Jackpot;
+            set => m_Jackpot = value;
+        }
 
 		public CasinoMembershipCard(Serial serial)
 			: base(serial)

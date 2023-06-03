@@ -28,8 +28,8 @@ namespace Server.Mobiles
 
 		private bool m_Valid;
 
-		public Item Item{ get{ return m_Item; } }
-		public int Price{ get{ return m_Price; } }
+		public Item Item => m_Item;
+        public int Price => m_Price;
 
         public string FormattedPrice
         {
@@ -44,8 +44,8 @@ namespace Server.Mobiles
 
 		public string Description
 		{
-			get{ return m_Description; }
-			set
+			get => m_Description;
+            set
 			{
 				if ( value != null )
 					m_Description = value;
@@ -57,14 +57,14 @@ namespace Server.Mobiles
 			}
 		}
 
-		public DateTime Created{ get{ return m_Created; } }
+		public DateTime Created => m_Created;
 
-		public bool IsForSale{ get{ return Price >= 0; } }
-		public bool IsForFree{ get{ return Price == 0; } }
+        public bool IsForSale => Price >= 0;
+        public bool IsForFree => Price == 0;
 
-		public bool Valid{ get{ return m_Valid; } }
+        public bool Valid => m_Valid;
 
-		public VendorItem( Item item, int price, string description, DateTime created )
+        public VendorItem( Item item, int price, string description, DateTime created )
 		{
 			m_Item = item;
 			m_Price = price;
@@ -93,9 +93,9 @@ namespace Server.Mobiles
 			Weight = 1.0;
 		}
 
-		public override int DefaultMaxWeight{ get{ return 0; } }
+		public override int DefaultMaxWeight => 0;
 
-		public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
+        public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
 			if ( !base.CheckHold( m, item, message, checkItems, plusItems, plusWeight ) )
 				return false;
@@ -176,9 +176,9 @@ namespace Server.Mobiles
 				m_Item = item;
 			}
 
-			public override bool NonLocalUse{ get{ return true; } }
+			public override bool NonLocalUse => true;
 
-			public override void OnClick()
+            public override void OnClick()
 			{
 				if ( m_Item.Deleted )
 					return;
@@ -505,29 +505,29 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int BankAccount
 		{
-			get{ return m_BankAccount; }
-			set{ m_BankAccount = value; }
-		}
+			get => m_BankAccount;
+            set => m_BankAccount = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int HoldGold
 		{
-			get{ return m_HoldGold; }
-			set{ m_HoldGold = value; }
-		}
+			get => m_HoldGold;
+            set => m_HoldGold = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string ShopName
 		{
-			get{ return m_ShopName; }
-			set
+			get => m_ShopName;
+            set
 			{
 				if ( value == null )
 					m_ShopName = "";
@@ -539,17 +539,14 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime NextPayTime
-		{
-			get{ return m_NextPayTime; }
-		}
+		public DateTime NextPayTime => m_NextPayTime;
 
-	    public PlayerVendorPlaceholder Placeholder { get; set; }
+        public PlayerVendorPlaceholder Placeholder { get; set; }
 
 	    public BaseHouse House
 		{
-			get{ return m_House; }
-			set
+			get => m_House;
+            set
 			{
 				if ( m_House != null )
 					m_House.PlayerVendors.Remove( this );
@@ -1673,9 +1670,9 @@ namespace Server.Mobiles
 		private readonly ExpireTimer m_Timer;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public PlayerVendor Vendor{ get{ return m_Vendor; } }
+		public PlayerVendor Vendor => m_Vendor;
 
-		public PlayerVendorPlaceholder( PlayerVendor vendor ) : base( 0x1F28 )
+        public PlayerVendorPlaceholder( PlayerVendor vendor ) : base( 0x1F28 )
 		{
 			Hue = 0x672;
 			Movable = false;

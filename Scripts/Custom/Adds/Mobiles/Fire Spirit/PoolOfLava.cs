@@ -19,11 +19,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Drying
 		{
-			get
-			{
-				return m_Drying;
-			}
-			set
+			get => m_Drying;
+            set
 			{
 				m_Drying = value;
 
@@ -36,16 +33,15 @@ namespace Server.Items
 
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan Duration{ get{ return m_Duration; } set{ m_Duration = value; } }
+		public TimeSpan Duration{ get => m_Duration;
+            set => m_Duration = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MinDamage
 		{
-			get
-			{
-				return m_MinDamage;
-			}
-			set
+			get => m_MinDamage;
+            set
 			{
 				if ( value < 1 )
 					value = 1;
@@ -57,11 +53,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxDamage
 		{
-			get
-			{
-				return m_MaxDamage;
-			}
-			set
+			get => m_MaxDamage;
+            set
 			{
 				if ( value < 1 )
 					value = 1;
@@ -78,9 +71,9 @@ namespace Server.Items
 		{
 		}
 
-		public override string DefaultName { get { return "lava"; } }
+		public override string DefaultName => "lava";
 
-		[Constructable]
+        [Constructable]
 		public PoolOfLava( TimeSpan duration, int minDamage, int maxDamage )
 			: base( 0x122A )
 		{

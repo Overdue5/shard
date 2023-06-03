@@ -6,12 +6,12 @@ namespace Server.Spells.Third
 {
     public class TeleportSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Third; } }
-        public override int Sound { get { return 0x1FE; } }
-        
-        public override bool CanTargetGround { get { return true; } }
+        public override SpellCircle Circle => SpellCircle.Third;
+        public override int Sound => 0x1FE;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override bool CanTargetGround => true;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Teleport", "Rel Por",
 				263,
 				9031,

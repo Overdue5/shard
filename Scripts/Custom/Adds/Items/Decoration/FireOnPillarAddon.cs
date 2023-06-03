@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class FireOnPillarAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new FireOnPillarAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new FireOnPillarAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public FireOnPillarAddon()
 		{
 			AddonComponent ac = null;
@@ -49,15 +43,9 @@ namespace Server.Items
 
 	public class FireOnPillarAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new FireOnPillarAddon();
-			}
-		}
+		public override BaseAddon Addon => new FireOnPillarAddon();
 
-		[Constructable]
+        [Constructable]
 		public FireOnPillarAddonDeed()
 		{
 			Name = "FireOnPillar";

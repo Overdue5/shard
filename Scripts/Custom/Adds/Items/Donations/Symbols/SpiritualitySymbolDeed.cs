@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class SpiritualitySymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new SpiritualitySymbolDeed(); } }
+		public override BaseAddonDeed Deed => new SpiritualitySymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public SpiritualitySymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14C3 ), 0, 0, 0 ); //N
@@ -35,9 +35,9 @@ namespace Server.Items
 
 	public class SpiritualitySymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new SpiritualitySymbolAddon(); } }
+		public override BaseAddon Addon => new SpiritualitySymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public SpiritualitySymbolDeed()
 		{
             Name = "Spirituality symbol deed";

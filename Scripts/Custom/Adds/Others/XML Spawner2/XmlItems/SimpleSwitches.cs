@@ -41,16 +41,16 @@ namespace Server.Items
 	    [CommandProperty(AccessLevel.GameMaster)]
 		public bool Disabled
 		{
-			set { m_Disabled = value; }
-			get { return m_Disabled; }
-		}
+			set => m_Disabled = value;
+            get => m_Disabled;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Link
 		{
-			set { m_LinkedItem = value; }
-			get { return m_LinkedItem; }
-		}
+			set => m_LinkedItem = value;
+            get => m_LinkedItem;
+        }
 
 		[Constructable]
 		public SimpleLever()
@@ -68,8 +68,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int LeverState
 		{
-			get { return m_LeverState; }
-			set
+			get => m_LeverState;
+            set
 			{
 				// prevent infinite recursion 
 				if (!already_being_activated)
@@ -86,8 +86,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int LeverSound
 		{
-			get { return m_LeverSound; }
-			set
+			get => m_LeverSound;
+            set
 			{
 				m_LeverSound = value;
 				InvalidateProperties();
@@ -97,8 +97,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public leverType LeverType
 		{
-			get { return m_LeverType; }
-			set
+			get => m_LeverType;
+            set
 			{
 				m_LeverType = value; LeverState = 0;
 				InvalidateProperties();
@@ -108,8 +108,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		new public virtual Direction Direction
 		{
-			get { return base.Direction; }
-			set { 
+			get => base.Direction;
+            set { 
 				base.Direction = value; 
 				SetLeverStatic(); 
 				InvalidateProperties(); 
@@ -119,14 +119,14 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Target0Item
 		{
-			get { return m_TargetItem0; }
-			set { m_TargetItem0 = value; InvalidateProperties(); }
+			get => m_TargetItem0;
+            set { m_TargetItem0 = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target0Property
 		{
-			get { return m_TargetProperty0; }
-			set { m_TargetProperty0 = value; InvalidateProperties(); }
+			get => m_TargetProperty0;
+            set { m_TargetProperty0 = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target0ItemName
@@ -143,14 +143,14 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Target1Item
 		{
-			get { return m_TargetItem1; }
-			set { m_TargetItem1 = value; InvalidateProperties(); }
+			get => m_TargetItem1;
+            set { m_TargetItem1 = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target1Property
 		{
-			get { return m_TargetProperty1; }
-			set { m_TargetProperty1 = value; InvalidateProperties(); }
+			get => m_TargetProperty1;
+            set { m_TargetProperty1 = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target1ItemName
@@ -168,15 +168,15 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Target2Item
 		{
-			get { return m_TargetItem2; }
-			set { m_TargetItem2 = value; InvalidateProperties(); }
+			get => m_TargetItem2;
+            set { m_TargetItem2 = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target2Property
 		{
-			get { return m_TargetProperty2; }
-			set { m_TargetProperty2 = value; InvalidateProperties(); }
+			get => m_TargetProperty2;
+            set { m_TargetProperty2 = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
@@ -407,16 +407,16 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Disabled
 		{
-			set { m_Disabled = value; }
-			get { return m_Disabled; }
-		}
+			set => m_Disabled = value;
+            get => m_Disabled;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Link
 		{
-			set { m_LinkedItem = value; }
-			get { return m_LinkedItem; }
-		}
+			set => m_LinkedItem = value;
+            get => m_LinkedItem;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SwitchState
@@ -433,8 +433,8 @@ namespace Server.Items
 
 				InvalidateProperties();
 			}
-			get { return m_SwitchState; }
-		}
+			get => m_SwitchState;
+        }
 
 		[Constructable]
 		public SimpleSwitch()
@@ -452,8 +452,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SwitchSound
 		{
-			get { return m_SwitchSound; }
-			set
+			get => m_SwitchSound;
+            set
 			{
 				m_SwitchSound = value;
 				InvalidateProperties();
@@ -463,8 +463,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		new public virtual Direction Direction
 		{
-			get { return base.Direction; }
-			set
+			get => base.Direction;
+            set
 			{
 				base.Direction = value;
 				SetSwitchStatic();
@@ -475,8 +475,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Target0Item
 		{
-			get { return m_TargetItem0; }
-			set
+			get => m_TargetItem0;
+            set
 			{
 				m_TargetItem0 = value;
 				InvalidateProperties();
@@ -486,8 +486,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target0Property
 		{
-			get { return m_TargetProperty0; }
-			set
+			get => m_TargetProperty0;
+            set
 			{
 				m_TargetProperty0 = value;
 				InvalidateProperties();
@@ -509,14 +509,14 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Target1Item
 		{
-			get { return m_TargetItem1; }
-			set { m_TargetItem1 = value; InvalidateProperties(); }
+			get => m_TargetItem1;
+            set { m_TargetItem1 = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Target1Property
 		{
-			get { return m_TargetProperty1; }
-			set
+			get => m_TargetProperty1;
+            set
 			{
 				m_TargetProperty1 = value;
 				InvalidateProperties();
@@ -779,8 +779,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Combination
 		{
-			get { return m_Combination; }
-			set
+			get => m_Combination;
+            set
 			{
 				m_Combination = value;
 				if (m_Combination < 0) m_Combination = 0;
@@ -792,142 +792,134 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit0Object
 		{
-			get { return m_Digit0Object; }
-			set { m_Digit0Object = value; InvalidateProperties(); }
+			get => m_Digit0Object;
+            set { m_Digit0Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit0Property
 		{
-			get { return m_Digit0Property; }
-			set { m_Digit0Property = value; InvalidateProperties(); }
+			get => m_Digit0Property;
+            set { m_Digit0Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit0
-		{ get { return (CheckDigit(m_Digit0Object, m_Digit0Property)); } }
+		public int Digit0 => (CheckDigit(m_Digit0Object, m_Digit0Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit1Object
 		{
-			get { return m_Digit1Object; }
-			set { m_Digit1Object = value; InvalidateProperties(); }
+			get => m_Digit1Object;
+            set { m_Digit1Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit1Property
 		{
-			get { return m_Digit1Property; }
-			set { m_Digit1Property = value; InvalidateProperties(); }
+			get => m_Digit1Property;
+            set { m_Digit1Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit1
-		{ get { return (CheckDigit(m_Digit1Object, m_Digit1Property)); } }
+		public int Digit1 => (CheckDigit(m_Digit1Object, m_Digit1Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit2Object
 		{
-			get { return m_Digit2Object; }
-			set { m_Digit2Object = value; InvalidateProperties(); }
+			get => m_Digit2Object;
+            set { m_Digit2Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit2Property
 		{
-			get { return m_Digit2Property; }
-			set { m_Digit2Property = value; InvalidateProperties(); }
+			get => m_Digit2Property;
+            set { m_Digit2Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit2
-		{ get { return (CheckDigit(m_Digit2Object, m_Digit2Property)); } }
+		public int Digit2 => (CheckDigit(m_Digit2Object, m_Digit2Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit3Object
 		{
-			get { return m_Digit3Object; }
-			set { m_Digit3Object = value; InvalidateProperties(); }
+			get => m_Digit3Object;
+            set { m_Digit3Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit3Property
 		{
-			get { return m_Digit3Property; }
-			set { m_Digit3Property = value; InvalidateProperties(); }
+			get => m_Digit3Property;
+            set { m_Digit3Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit3
-		{ get { return (CheckDigit(m_Digit3Object, m_Digit3Property)); } }
+		public int Digit3 => (CheckDigit(m_Digit3Object, m_Digit3Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit4Object
 		{
-			get { return m_Digit4Object; }
-			set { m_Digit4Object = value; InvalidateProperties(); }
+			get => m_Digit4Object;
+            set { m_Digit4Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit4Property
 		{
-			get { return m_Digit4Property; }
-			set { m_Digit4Property = value; InvalidateProperties(); }
+			get => m_Digit4Property;
+            set { m_Digit4Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit4
-		{ get { return (CheckDigit(m_Digit4Object, m_Digit4Property)); } }
+		public int Digit4 => (CheckDigit(m_Digit4Object, m_Digit4Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit5Object
 		{
-			get { return m_Digit5Object; }
-			set { m_Digit5Object = value; InvalidateProperties(); }
+			get => m_Digit5Object;
+            set { m_Digit5Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit5Property
 		{
-			get { return m_Digit5Property; }
-			set { m_Digit5Property = value; InvalidateProperties(); }
+			get => m_Digit5Property;
+            set { m_Digit5Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit5
-		{ get { return (CheckDigit(m_Digit5Object, m_Digit5Property)); } }
+		public int Digit5 => (CheckDigit(m_Digit5Object, m_Digit5Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit6Object
 		{
-			get { return m_Digit6Object; }
-			set { m_Digit6Object = value; InvalidateProperties(); }
+			get => m_Digit6Object;
+            set { m_Digit6Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit6Property
 		{
-			get { return m_Digit6Property; }
-			set { m_Digit6Property = value; InvalidateProperties(); }
+			get => m_Digit6Property;
+            set { m_Digit6Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit6
-		{ get { return (CheckDigit(m_Digit6Object, m_Digit6Property)); } }
+		public int Digit6 => (CheckDigit(m_Digit6Object, m_Digit6Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item Digit7Object
 		{
-			get { return m_Digit7Object; }
-			set { m_Digit7Object = value; InvalidateProperties(); }
+			get => m_Digit7Object;
+            set { m_Digit7Object = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string Digit7Property
 		{
-			get { return m_Digit7Property; }
-			set { m_Digit7Property = value; InvalidateProperties(); }
+			get => m_Digit7Property;
+            set { m_Digit7Property = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int Digit7
-		{ get { return (CheckDigit(m_Digit7Object, m_Digit7Property)); } }
+		public int Digit7 => (CheckDigit(m_Digit7Object, m_Digit7Property));
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public Item TargetItem
 		{
-			get { return m_TargetItem; }
-			set { m_TargetItem = value; InvalidateProperties(); }
+			get => m_TargetItem;
+            set { m_TargetItem = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string TargetProperty
 		{
-			get { return m_TargetProperty; }
-			set { m_TargetProperty = value; InvalidateProperties(); }
+			get => m_TargetProperty;
+            set { m_TargetProperty = value; InvalidateProperties(); }
 		}
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string TargetItemName
@@ -936,8 +928,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CombinationSound
 		{
-			get { return m_CombinationSound; }
-			set
+			get => m_CombinationSound;
+            set
 			{
 				m_CombinationSound = value;
 				InvalidateProperties();
@@ -945,11 +937,9 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public bool Matched
-		{
-			get { return (m_Combination == CurrentValue); }
-		}
-		[CommandProperty(AccessLevel.GameMaster)]
+		public bool Matched => (m_Combination == CurrentValue);
+
+        [CommandProperty(AccessLevel.GameMaster)]
 
 		public int CurrentValue
 		{

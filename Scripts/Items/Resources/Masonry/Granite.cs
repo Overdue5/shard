@@ -7,14 +7,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CraftResource Resource
 		{
-			get{ return m_Resource; }
-			set{ m_Resource = value; InvalidateProperties(); }
+			get => m_Resource;
+            set{ m_Resource = value; InvalidateProperties(); }
 		}
 		
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
@@ -43,10 +43,7 @@ namespace Server.Items
                 Stackable = Core.ML;
 		}
 
-		public override double DefaultWeight
-		{
-            get { return Core.ML ? 1.0 : 5.0; } // Pub 57
-        }
+		public override double DefaultWeight => Core.ML ? 1.0 : 5.0; // Pub 57
 
         public BaseGranite( CraftResource resource ) : this( resource, 1 )
 		{
@@ -71,7 +68,7 @@ namespace Server.Items
             LabelTo(from, string.Format("{0} {1} granite{2}", Amount > 1 ? Amount.ToString() : "", CraftResources.GetName(m_Resource).ToLower(), Amount > 1 ? "s" : ""));
         }
 
-		public override int LabelNumber{ get{ return 1044607; } } // high quality granite
+		public override int LabelNumber => 1044607; // high quality granite
 
 		public override void GetProperties( ObjectPropertyList list )
 		{

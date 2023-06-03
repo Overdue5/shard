@@ -9,24 +9,21 @@ namespace Server.Spells.Spellweaving
 		public abstract double RequiredSkill { get; }
 		public abstract int RequiredMana { get; }
 
-		public override SkillName CastSkill { get { return SkillName.Spellweaving; } }
-		public override SkillName DamageSkill { get { return SkillName.Spellweaving; } }
+		public override SkillName CastSkill => SkillName.Spellweaving;
+        public override SkillName DamageSkill => SkillName.Spellweaving;
 
-		public override bool ClearHandsOnCast { get { return false; } }
+        public override bool ClearHandsOnCast => false;
 
-		private int m_CastTimeFocusLevel;
+        private int m_CastTimeFocusLevel;
 
 		public ArcanistSpell( Mobile caster, Item scroll, SpellInfo info )
 			: base( caster, scroll, info )
 		{
 		}
 
-		public virtual int FocusLevel
-		{
-			get { return m_CastTimeFocusLevel; }
-		}
+		public virtual int FocusLevel => m_CastTimeFocusLevel;
 
-		public static int GetFocusLevel( Mobile from )
+        public static int GetFocusLevel( Mobile from )
 		{
 			ArcaneFocus focus = FindArcaneFocus( from );
 

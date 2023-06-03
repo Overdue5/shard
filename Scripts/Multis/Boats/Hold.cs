@@ -86,12 +86,9 @@ namespace Server.Items
 			}
 		}
 
-		public override bool IsDecoContainer
-		{
-			get{ return false; }
-		}
+		public override bool IsDecoContainer => false;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

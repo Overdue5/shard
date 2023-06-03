@@ -60,11 +60,11 @@ namespace Server.Mobiles
             return true;
         }
 
-        public override int Meat { get { return 8; } }
-        public override int Hides { get { return 6; } }
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override int Meat => 8;
+        public override int Hides => 6;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public GoodMustang( Serial serial ) : base( serial )
+        public GoodMustang( Serial serial ) : base( serial )
 		{
 		}
 

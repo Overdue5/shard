@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class WisteriaTreeAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new WisteriaTreeAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new WisteriaTreeAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public WisteriaTreeAddon()
 		{
 			AddonComponent ac = null;
@@ -68,15 +62,9 @@ namespace Server.Items
 
 	public class WisteriaTreeAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new WisteriaTreeAddon();
-			}
-		}
+		public override BaseAddon Addon => new WisteriaTreeAddon();
 
-		[Constructable]
+        [Constructable]
 		public WisteriaTreeAddonDeed()
 		{
 			Name = "WisteriaTree";

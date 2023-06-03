@@ -50,11 +50,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-		public override bool HasBreath{ get{ return true; } } // fire breath enabled
-		public override int Hides{ get{ return 12; } }
-        public override HideType HideType { get { return HideType.Regular; } }
+		public override bool HasBreath => true; // fire breath enabled
+		public override int Hides => 12;
+        public override HideType HideType => HideType.Regular;
 
-		public LavaLizard(Serial serial) : base(serial)
+        public LavaLizard(Serial serial) : base(serial)
 		{
 		}
 

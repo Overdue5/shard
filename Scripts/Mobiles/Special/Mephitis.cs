@@ -6,7 +6,7 @@ namespace Server.Mobiles
 {
 	public class Mephitis : BaseChampion
 	{
-		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Venom; } }
+		public override ChampionSkullType SkullType => ChampionSkullType.Venom;
 
         public override Type[] UniqueList { get { return new Type[] { typeof(Calm) }; } }
         public override Type[] SharedList { get { return new Type[] { typeof(OblivionsNeedle), typeof(ANecromancerShroud), typeof(EmbroideredOakLeafCloak), typeof(TheMostKnowledgePerson) }; } }
@@ -66,10 +66,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.UltraRich, 4 );
 		}
 
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override Poison HitPoison{ get{ return Poison.Lethal; } }
+		public override Poison PoisonImmune => Poison.Lethal;
+        public override Poison HitPoison => Poison.Lethal;
 
-		public override void OnGotMeleeAttack( Mobile attacker )
+        public override void OnGotMeleeAttack( Mobile attacker )
 		{
 			base.OnGotMeleeAttack( attacker );
 

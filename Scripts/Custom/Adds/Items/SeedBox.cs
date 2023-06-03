@@ -26,8 +26,8 @@ namespace Server.Items
 		/// </summary>
 		public int Stored
 		{
-			get { return m_Stored; }
-			set
+			get => m_Stored;
+            set
 			{
 				m_Stored = value;
 				Weight = 3 + m_Stored * 0.03;
@@ -38,20 +38,14 @@ namespace Server.Items
 		/// <summary>
 		/// Seeds, that are showing their type
 		/// </summary>
-		public ArrayList KnownStorage
-		{
-			get { return m_KnownStorage; }
-		}
+		public ArrayList KnownStorage => m_KnownStorage;
 
-		/// <summary>
+        /// <summary>
 		/// Seeds, that are not showing their type
 		/// </summary>
-		public ArrayList UnknownStorage
-		{
-			get { return m_UnknownStorage; }
-		}
+		public ArrayList UnknownStorage => m_UnknownStorage;
 
-		/*#region ISecurable Members
+        /*#region ISecurable Members
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		/*public SecureLevel Level

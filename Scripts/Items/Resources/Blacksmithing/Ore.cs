@@ -12,14 +12,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CraftResource Resource
 		{
-			get{ return m_Resource; }
-			set{ m_Resource = value; InvalidateProperties(); }
+			get => m_Resource;
+            set{ m_Resource = value; InvalidateProperties(); }
 		}
 
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		public abstract BaseIngot GetIngot();
+        public abstract BaseIngot GetIngot();
 
         public override void OnSingleClick(Mobile from)
         {

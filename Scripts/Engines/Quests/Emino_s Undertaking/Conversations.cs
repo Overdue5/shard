@@ -2,11 +2,8 @@ namespace Server.Engines.Quests.Ninja
 {
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I><U>Important Quest Information</U></I><BR><BR>
+		public override object Message =>
+            /* <I><U>Important Quest Information</U></I><BR><BR>
 				 * 
 				 * During your quest, any important information that a
 				 * <a href = "?ForceTopic31">NPC</a> gives you, will appear in a
@@ -28,11 +25,9 @@ namespace Server.Engines.Quests.Ninja
 				 * you options to cancel your quest and review various quest
 				 * information.<BR><BR>
 				 */
-				return 1049092;
-			}
-		}
+            1049092;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindEminoBeginObjective() );
 		}
@@ -40,11 +35,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class FindZoelConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Ah, another fledgling unfurls its wings. Welcome to my 
+		public override object Message =>
+            /* Ah, another fledgling unfurls its wings. Welcome to my 
 				 * home young one. <BR><BR>
 				 * 
 				 * I am Daimyo Emino, a passionate collector of sorts. 
@@ -59,11 +51,9 @@ namespace Server.Engines.Quests.Ninja
 				 * further when you arrive at your destination. You 
 				 * should speak to him before exploring the yard or cave entrance.
 				 */
-				return 1063175;
-			}
-		}
+            1063175;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindZoelObjective() );
 		}
@@ -71,11 +61,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class RadarConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* To view the surrounding area, you should learn about the Radar Map.<BR><BR>
+		public override object Message =>
+            /* To view the surrounding area, you should learn about the Radar Map.<BR><BR>
 				 * 
 				 * The Radar Map (or Overhead View) can be opened by pressing 'ALT-R'
 				 * on your keyboard. It shows your immediate surroundings from a
@@ -85,20 +72,15 @@ namespace Server.Engines.Quests.Ninja
 				 * Use the Radar Map often as you travel throughout the world
 				 * to familiarize yourself with your surroundings.
 				 * */
-				return 1063033;
-			}
-		}
+            1063033;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class EnterCaveConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Zoel studies your face as you approach him. Wryly, he says:</I><BR><BR>
+		public override object Message =>
+            /* <I>Zoel studies your face as you approach him. Wryly, he says:</I><BR><BR>
 				 * 
 				 * Daimyo Emino has sent another already? The stains from the 
 				 * last have not yet dried! <BR><BR>
@@ -116,11 +98,9 @@ namespace Server.Engines.Quests.Ninja
 				 * 
 				 * Now go.
 				 */
-				return 1063177;
-			}
-		}
+            1063177;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new EnterCaveObjective() );
 		}
@@ -128,11 +108,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class SneakPastGuardiansConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* A glowing archway stands before you. <BR><BR>
+		public override object Message =>
+            /* A glowing archway stands before you. <BR><BR>
 				 * 
 				 * To either side of its frame are mounted demon heads, 
 				 * breathing fire and watching your every move. <BR><BR>
@@ -140,11 +117,9 @@ namespace Server.Engines.Quests.Ninja
 				 * To pass through, you must first vanish from the demons’ 
 				 * sight. Only then can you slowly traverse the entryway.
 				 */
-				return 1063180;
-			}
-		}
+            1063180;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new SneakPastGuardiansObjective() );
 		}
@@ -152,11 +127,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class NeedToHideConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You’ll need to hide in order to pass through the door. <BR><BR>
+		public override object Message =>
+            /* You’ll need to hide in order to pass through the door. <BR><BR>
 				 * 
 				 * To find out how to use active skills, visit the 
 				 * <a href = "?ForceTopic73">Codex of Wisdom</a>. 
@@ -166,29 +138,22 @@ namespace Server.Engines.Quests.Ninja
 				 * successfully hidden, you may move slowly through the door.
 				 * 
 				 */
-				return 1063181;
-			}
-		}
-	}
+            1063181;
+    }
 
 	public class UseTeleporterConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/*
+		public override object Message =>
+            /*
 				 * Through the door lies a short passageway. 
 				 * The path ends abruptly at a strange tile on the floor.  
 				 * The special tile is known as a teleporter.  
 				 * Step on the teleporter tile and you will be transported 
 				 * to a new location.
 				 */
-				return 1063182;
-			}
-		}
+            1063182;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new UseTeleporterObjective() );
 		}
@@ -196,11 +161,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class GiveZoelNoteConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Daimyo Emino smiles as you approach him:</I> <BR><BR>
+		public override object Message =>
+            /* <I>Daimyo Emino smiles as you approach him:</I> <BR><BR>
 				 * 
 				 * I see that you have survived both the first trial and Zoel’s temper. <BR><BR>
 				 * 
@@ -212,11 +174,9 @@ namespace Server.Engines.Quests.Ninja
 				 * Another trial must be met. Off to Zoel you go. 
 				 * Bring him this note so he knows we have spoken.
 				 */
-				return 1063184;
-			}
-		}
+            1063184;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new GiveZoelNoteObjective() );
 		}
@@ -224,25 +184,17 @@ namespace Server.Engines.Quests.Ninja
 
 	public class LostNoteConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				// You have lost my note? I will scribe another for you. Try not to lose this one.
-				return 1063187;
-			}
-		}
+		public override object Message =>
+            // You have lost my note? I will scribe another for you. Try not to lose this one.
+            1063187;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class GainInnInformationConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Zoel quickly grabs the scroll from your
+		public override object Message =>
+            /* <I>Zoel quickly grabs the scroll from your
 				 * hand and reads the note:</i> <BR><BR>
 				 * 
 				 * Still alive then? You’ll have to impress me 
@@ -265,11 +217,9 @@ namespace Server.Engines.Quests.Ninja
 				 * ...And take care to tread softly. There
 				 * is no greater traitor than a heavy footfall upon a path.
 				 */
-				return 1063189;
-			}
-		}
+            1063189;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new GainInnInformationObjective() );
 		}
@@ -277,11 +227,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class ReturnFromInnConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You quietly approach the door and see 
+		public override object Message =>
+            /* You quietly approach the door and see 
 				 * a woman named Jedah Entille speaking 
 				 * to a shady figure in dark clothing. 
 				 * You move closer so you can overhear 
@@ -301,11 +248,9 @@ namespace Server.Engines.Quests.Ninja
 				 * this trial. You must immediately tell 
 				 * Daimyo Emino what you have learned.
 				 * */
-				return 1063196;
-			}
-		}
+            1063196;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnFromInnObjective() );
 		}
@@ -313,11 +258,8 @@ namespace Server.Engines.Quests.Ninja
 
 	public class SearchForSwordConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Daimyo Emino frowns as you relay the information. 
+		public override object Message =>
+            /* <I>Daimyo Emino frowns as you relay the information. 
 				 * He pauses for a moment before speaking to you:</i> <BR><BR>
 				 * 
 				 * Jedah was once one of my most promising students, 
@@ -349,11 +291,9 @@ namespace Server.Engines.Quests.Ninja
 				 * 
 				 * Thank you.
 				 */
-				return 1063199;
-			}
-		}
+            1063199;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new SearchForSwordObjective() );
 		}
@@ -361,21 +301,16 @@ namespace Server.Engines.Quests.Ninja
 
 	public class HallwayWalkConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* A narrow hallway greets the teleporter. 
+		public override object Message =>
+            /* A narrow hallway greets the teleporter. 
 				 * The enclosed space is the perfect setting 
 				 * for dangerous traps. Walk through the 
 				 * hallway being careful to avoid the traps. 
 				 * You may be able to time the traps to avoid injury.
 				 */
-				return 1063201;
-			}
-		}
+            1063201;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new HallwayWalkObjective() );
 		}
@@ -383,22 +318,17 @@ namespace Server.Engines.Quests.Ninja
 
 	public class ReturnSwordConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* The lid of the chest refuses to budge at first, 
+		public override object Message =>
+            /* The lid of the chest refuses to budge at first, 
 				 * but slowly you are able to pry the lid open. <BR><BR>
 				 * 
 				 * Inside lies the sword you have been in search of.  
 				 * You quickly take the sword and stash it in your backpack.  
 				 * Bring the sword back to Daimyo Emino.
 				 */
-				return 1063203;
-			}
-		}
+            1063203;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnSwordObjective() );
 		}
@@ -406,22 +336,17 @@ namespace Server.Engines.Quests.Ninja
 
 	public class SlayHenchmenConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Screams echo through the chamber as you walk 
+		public override object Message =>
+            /* Screams echo through the chamber as you walk 
 				 * away from the chest. Jedah’s Henchmen have 
 				 * become cognizant of your presence. <BR><BR>
 				 * 
 				 * It is time for your Ninja Spirit to come alive. 
 				 * Slay 3 of the Henchmen before returning to Daimyo Emino. 
 				 */
-				return 1063205;
-			}
-		}
+            1063205;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new SlayHenchmenObjective() );
 		}
@@ -429,33 +354,23 @@ namespace Server.Engines.Quests.Ninja
 
 	public class ContinueSlayHenchmenConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				// Continue killing the henchmen!
-				return 1063208;
-			}
-		}
+		public override object Message =>
+            // Continue killing the henchmen!
+            1063208;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class GiveEminoSwordConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Go to Daimyo Emino. Go back through the chamber the way you came.<BR><BR>
+		public override object Message =>
+            /* Go to Daimyo Emino. Go back through the chamber the way you came.<BR><BR>
 				 * 
 				 * Give Daimyo Emino the sword when you've returned to his side.
 				 */
-				return 1063211;
-			}
-		}
+            1063211;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new GiveEminoSwordObjective() );
 		}
@@ -463,25 +378,17 @@ namespace Server.Engines.Quests.Ninja
 
 	public class LostSwordConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				// What? You have returned without the sword? You need to go back and get it again!
-				return 1063212;
-			}
-		}
+		public override object Message =>
+            // What? You have returned without the sword? You need to go back and get it again!
+            1063212;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class EarnGiftsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Beyond this path lies Zento City, your future home.
+		public override object Message =>
+            /* Beyond this path lies Zento City, your future home.
 				 * To the right of the cave entrance you will find a luminous oval
 				 * object known as a Moongate, step through it and you'll
 				 * find yourself in Zento.<BR><BR>
@@ -491,11 +398,9 @@ namespace Server.Engines.Quests.Ninja
 				 * Please accept the gifts I have placed in your pack. You
 				 * have earned them. Farewell for now.
 				 */
-				return 1063216;
-			}
-		}
+            1063216;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}
@@ -503,21 +408,16 @@ namespace Server.Engines.Quests.Ninja
 
 	public class EarnLessGiftsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have earned these gifts for returning the sword.
+		public override object Message =>
+            /* You have earned these gifts for returning the sword.
 				 * For that I thank you. <BR><BR>
 				 * 
 				 * However, your reward has been lessened by your greed
 				 * in the treasure room.  Do not think I did not notice your full pockets.
 				 */
-				return 1063217;
-			}
-		}
+            1063217;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}

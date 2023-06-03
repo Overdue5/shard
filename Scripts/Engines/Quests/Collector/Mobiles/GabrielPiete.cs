@@ -5,8 +5,9 @@ namespace Server.Engines.Quests.Collector
 {
 	public class GabrielPiete : BaseQuester
 	{
-        public override bool ClickTitle { get { return true; } }
-		[Constructable]
+        public override bool ClickTitle => true;
+
+        [Constructable]
 		public GabrielPiete() : base( "the renowned minstrel" )
 		{
 		}
@@ -51,7 +52,7 @@ namespace Server.Engines.Quests.Collector
 				|| qs.IsObjectiveInProgress( typeof( ReturnSheetMusicObjective ) )
 				|| qs.IsObjectiveInProgress( typeof( ReturnAutographObjective ) ) );
 		}
-        public override bool ShowContextMenu { get { return true; } }//
+        public override bool ShowContextMenu => true; //
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			QuestSystem qs = player.Quest;

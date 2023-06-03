@@ -20,24 +20,24 @@ namespace Server.Factions
 		private readonly Point3D m_Monolith;
 		private readonly Point3D m_FactionTownStone;
 
-		public int Sort{ get{ return m_Sort; } }
-		public int SigilID{ get{ return m_SigilID; } }
+		public int Sort => m_Sort;
+        public int SigilID => m_SigilID;
 
-		public string Region{ get{ return m_Region; } }
-		public string FriendlyName{ get{ return m_FriendlyName; } }
+        public string Region => m_Region;
+        public string FriendlyName => m_FriendlyName;
 
-		public TextDefinition TownName{ get{ return m_TownName; } }
-		public TextDefinition FactionTownStoneHeader{ get{ return m_FactionTownStoneHeader; } }
-		public TextDefinition StrongholdMonolithName{ get{ return m_StrongholdMonolithName; } }
-		public TextDefinition TownMonolithName{ get{ return m_TownMonolithName; } }
-		public TextDefinition FactionTownStoneName{ get{ return m_FactionTownStoneName; } }
-		public TextDefinition SigilName{ get{ return m_SigilName; } }
-		public TextDefinition CorruptedSigilName{ get{ return m_CorruptedSigilName; } }
+        public TextDefinition TownName => m_TownName;
+        public TextDefinition FactionTownStoneHeader => m_FactionTownStoneHeader;
+        public TextDefinition StrongholdMonolithName => m_StrongholdMonolithName;
+        public TextDefinition TownMonolithName => m_TownMonolithName;
+        public TextDefinition FactionTownStoneName => m_FactionTownStoneName;
+        public TextDefinition SigilName => m_SigilName;
+        public TextDefinition CorruptedSigilName => m_CorruptedSigilName;
 
-		public Point3D Monolith{ get{ return m_Monolith; } }
-		public Point3D FactionTownStone{ get{ return m_FactionTownStone; } }
+        public Point3D Monolith => m_Monolith;
+        public Point3D FactionTownStone => m_FactionTownStone;
 
-		public TownDefinition( int sort, int sigilID, string region, string friendlyName, TextDefinition townName, TextDefinition FactionTownStoneHeader, TextDefinition strongholdMonolithName, TextDefinition townMonolithName, TextDefinition FactionTownStoneName, TextDefinition sigilName, TextDefinition corruptedSigilName, Point3D monolith, Point3D FactionTownStone )
+        public TownDefinition( int sort, int sigilID, string region, string friendlyName, TextDefinition townName, TextDefinition FactionTownStoneHeader, TextDefinition strongholdMonolithName, TextDefinition townMonolithName, TextDefinition FactionTownStoneName, TextDefinition sigilName, TextDefinition corruptedSigilName, Point3D monolith, Point3D FactionTownStone )
 		{
 			m_Sort = sort;
 			m_SigilID = sigilID;

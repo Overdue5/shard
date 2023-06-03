@@ -13,12 +13,9 @@ namespace Server.Items
 		{
 		}
 
-		public override string DefaultName
-		{
-			get { return "a resource stone"; }
-		}
+		public override string DefaultName => "a resource stone";
 
-		public override void OnDoubleClick( Mobile from )
+        public override void OnDoubleClick( Mobile from )
 		{
 			BagOfReagents regBag = new BagOfReagents( 50 );
 

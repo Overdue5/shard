@@ -9,10 +9,14 @@ namespace Server.Engines.XmlSpawner2
 		private string m_Condition;    // condition string
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public string Action { get { return m_Action; } set { m_Action = value; } }
+		public string Action { get => m_Action;
+            set => m_Action = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public string Condition { get { return m_Condition; } set { m_Condition = value; } }
+		public string Condition { get => m_Condition;
+            set => m_Condition = value;
+        }
 
 		// These are the various ways in which the message attachment can be constructed.  
 		// These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.
@@ -77,9 +81,9 @@ namespace Server.Engines.XmlSpawner2
 
 		}
 
-		public override bool HandlesOnKilled { get { return true; } }
+		public override bool HandlesOnKilled => true;
 
-		public override void OnKilled(Mobile killed, Mobile killer)
+        public override void OnKilled(Mobile killed, Mobile killer)
 		{
 			base.OnKilled(killed, killer);
 

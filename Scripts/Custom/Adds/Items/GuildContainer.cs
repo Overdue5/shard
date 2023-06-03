@@ -26,7 +26,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int GuildID
         {
-            get { return m_Guild; }
+            get => m_Guild;
             set
             {
                 m_Guild = value;

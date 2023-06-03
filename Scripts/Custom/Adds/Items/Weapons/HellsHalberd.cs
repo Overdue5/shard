@@ -26,10 +26,7 @@ namespace Server.Items
         {
         }
 
-        public override int OldStrengthReq
-        {
-            get { return 90; }
-        }
+        public override int OldStrengthReq => 90;
 
         public override void OnSingleClick(Mobile from)
         {

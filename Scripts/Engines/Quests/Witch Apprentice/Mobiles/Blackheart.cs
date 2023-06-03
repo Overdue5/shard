@@ -7,8 +7,9 @@ namespace Server.Engines.Quests.Hag
 {
 	public class Blackheart : BaseQuester
 	{
-        public override bool ShowContextMenu { get { return true; } }
-		[Constructable]
+        public override bool ShowContextMenu => true;
+
+        [Constructable]
 		public Blackheart() : base( "the Drunken Pirate" )
 		{
 		}

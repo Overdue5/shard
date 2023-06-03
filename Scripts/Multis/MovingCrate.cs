@@ -13,7 +13,7 @@ namespace Server.Multis
 		public static readonly int HorizontalSpacing = 25;
 		public static readonly int VerticalSpacing = 25;
 
-		public override int LabelNumber{ get{ return 1061690; } } // Packing Crate
+		public override int LabelNumber => 1061690; // Packing Crate
 
 		private BaseHouse m_House;
 
@@ -21,14 +21,14 @@ namespace Server.Multis
 
 		public BaseHouse House
 		{
-			get{ return m_House; }
-			set{ m_House = value; }
-		}
+			get => m_House;
+            set => m_House = value;
+        }
 
-		public override int DefaultMaxItems{ get{ return 0; } }
-		public override int DefaultMaxWeight{ get{ return 0; } }
+		public override int DefaultMaxItems => 0;
+        public override int DefaultMaxWeight => 0;
 
-		public MovingCrate( BaseHouse house ) : base( 0xE3D )
+        public MovingCrate( BaseHouse house ) : base( 0xE3D )
 		{
 			Hue = 0x8A5;
 			Movable = false;
@@ -142,12 +142,9 @@ namespace Server.Multis
 			return Point3D.Zero;
 		}
 
-		public override bool IsDecoContainer
-		{
-			get{ return false; }
-		}
+		public override bool IsDecoContainer => false;
 
-		public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
+        public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
 			if ( m.AccessLevel < AccessLevel.GameMaster )
 			{
@@ -274,20 +271,17 @@ namespace Server.Multis
 
 	public class PackingBox : BaseContainer
 	{
-		public override int LabelNumber{ get{ return 1061690; } } // Packing Crate
+		public override int LabelNumber => 1061690; // Packing Crate
 
-        public override int DefaultGumpID { get { return 0x4B; } }
-        public override int DefaultDropSound { get { return 0x42; } }
+        public override int DefaultGumpID => 0x4B;
+        public override int DefaultDropSound => 0x42;
 
-        public override Rectangle2D Bounds
-        {
-            get { return new Rectangle2D(16, 51, 168, 73); }
-        }
+        public override Rectangle2D Bounds => new Rectangle2D(16, 51, 168, 73);
 
-		public override int DefaultMaxItems{ get{ return 0; } }
-		public override int DefaultMaxWeight{ get{ return 0; } }
+        public override int DefaultMaxItems => 0;
+        public override int DefaultMaxWeight => 0;
 
-		public PackingBox() : base( 0x9A8 )
+        public PackingBox() : base( 0x9A8 )
 		{
 			Movable = false;
 		}

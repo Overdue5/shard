@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class BetaStone : Item
 	{
-		public override string DefaultName
-		{
-			get { return "a Beta Tester Supply Stone"; }
-		}
+		public override string DefaultName => "a Beta Tester Supply Stone";
 
-		[Constructable]
+        [Constructable]
 		public BetaStone() : base( 0xED4 )
 		{
 			Movable = false;

@@ -14,36 +14,25 @@ namespace Server.Engines.Quests.Doom
 				typeof( VanquishDaemonObjective )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		private Victoria m_Victoria;
+        private Victoria m_Victoria;
 		private bool m_WaitForSummon;
 
-		public Victoria Victoria
-		{
-			get{ return m_Victoria; }
-		}
+		public Victoria Victoria => m_Victoria;
 
-		public bool WaitForSummon
+        public bool WaitForSummon
 		{
-			get{ return m_WaitForSummon; }
-			set{ m_WaitForSummon = value; }
-		}
+			get => m_WaitForSummon;
+            set => m_WaitForSummon = value;
+        }
 
-		public override object Name
-		{
-			get
-			{
-				// The Summoning
-				return 1050025;
-			}
-		}
+		public override object Name =>
+            // The Summoning
+            1050025;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>Victoria turns to you and smiles...</I><BR><BR>
+        public override object OfferMessage =>
+            /* <I>Victoria turns to you and smiles...</I><BR><BR>
 				 * 
 				 * Chyloth, eh?  He is the ferry man of lake <I>Mortis</I>, beyond which lies
 				 * the nest of the <I>The Dark Father</I> - the fountainhead of all the evil
@@ -68,15 +57,13 @@ namespace Server.Engines.Quests.Doom
 				 * 
 				 * Do you accept?
 				 */
-				return 1050020;
-			}
-		}
+            1050020;
 
-		public override bool IsTutorial{ get{ return false; } }
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.Zero; } }
-		public override int Picture{ get{ return 0x15B5; } }
+        public override bool IsTutorial => false;
+        public override TimeSpan RestartDelay => TimeSpan.Zero;
+        public override int Picture => 0x15B5;
 
-		// NOTE: Quest not entirely OSI-accurate: some changes made to prevent numerous OSI bugs
+        // NOTE: Quest not entirely OSI-accurate: some changes made to prevent numerous OSI bugs
 
 		public override void Slice()
 		{

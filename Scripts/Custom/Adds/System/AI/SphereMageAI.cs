@@ -40,12 +40,9 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual bool SmartAI
-		{
-            get{ return false; }
-		}
+		public virtual bool SmartAI => false;
 
-		private const double HealChance = 0.0; // 10% chance to heal at gm magery
+        private const double HealChance = 0.0; // 10% chance to heal at gm magery
 		private const double TeleportChance = 0.0; // 5% chance to teleport at gm magery
 		private const double DispelChance = 0.0; // 75% chance to dispel at gm magery
 

@@ -46,12 +46,12 @@ namespace Server.Mobiles
 			return 1.0;
 		}
 
-		public override int Meat{ get{ return 1; } }
-		public override int Hides{ get{ return 12; } }
-        public override HideType HideType { get { return HideType.Regular; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+		public override int Meat => 1;
+        public override int Hides => 12;
+        public override HideType HideType => HideType.Regular;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public Ridgeback( Serial serial ) : base( serial )
+        public Ridgeback( Serial serial ) : base( serial )
 		{
 		}
 

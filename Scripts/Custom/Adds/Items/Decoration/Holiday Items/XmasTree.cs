@@ -11,7 +11,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Seer)]
         public int XmasList
         {
-            get { return m_XmasList; }
+            get => m_XmasList;
             set
             {
                 m_XmasList = value;

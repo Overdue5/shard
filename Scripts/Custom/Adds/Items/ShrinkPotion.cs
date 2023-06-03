@@ -22,9 +22,9 @@ namespace Server.Items
 		#region IShrinkTool Members
 		public int ShrinkCharges
 		{
-			get { return shrinkCharges; }
-			set { shrinkCharges = value; }
-		}
+			get => shrinkCharges;
+            set => shrinkCharges = value;
+        }
 		#endregion
 
 		public override void Drink( Mobile from )

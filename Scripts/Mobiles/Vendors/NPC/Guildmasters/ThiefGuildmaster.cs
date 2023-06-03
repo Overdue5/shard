@@ -5,11 +5,11 @@ namespace Server.Mobiles
 {
 	public class ThiefGuildmaster : BaseGuildmaster
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.ThievesGuild; } }
+		public override NpcGuild NpcGuild => NpcGuild.ThievesGuild;
 
-		public override TimeSpan JoinAge{ get{ return TimeSpan.FromDays( 7.0 ); } }
+        public override TimeSpan JoinAge => TimeSpan.FromDays( 7.0 );
 
-		[Constructable]
+        [Constructable]
 		public ThiefGuildmaster() : base( "thief" )
 		{
 			SetSkill( SkillName.DetectHidden, 75.0, 98.0 );

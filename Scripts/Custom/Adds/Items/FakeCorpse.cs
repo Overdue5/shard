@@ -7,12 +7,9 @@ namespace Server.Items
 {
 	public class FakeCorpse : Container, ICarvable
 	{
-        public override TimeSpan DecayTime { get { return TimeSpan.FromSeconds(3.0); } }
+        public override TimeSpan DecayTime => TimeSpan.FromSeconds(3.0);
 
-        public override bool IsDecoContainer
-        {
-            get { return false; }
-        }
+        public override bool IsDecoContainer => false;
 
         private Timer m_DecayTimer;
 
@@ -88,7 +85,7 @@ namespace Server.Items
             return string.Empty;
 		}
 
-		public override bool IsPublicContainer{ get{ return true; } }
+		public override bool IsPublicContainer => true;
 
         public FakeCorpse(Serial serial)
             : base(serial)
@@ -184,9 +181,9 @@ namespace Server.Items
 			return false;
 		}
 
-		public override bool DisplaysContent{ get{ return false; } }
+		public override bool DisplaysContent => false;
 
-		public override void AddNameProperty( ObjectPropertyList list )
+        public override void AddNameProperty( ObjectPropertyList list )
 		{
 
 		}

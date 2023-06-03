@@ -4,9 +4,9 @@ namespace Server.Mobiles
 {
 	public class BrigandArcher : BaseCreature
 	{
-		public override bool ClickTitle{ get{ return false; } }
+		public override bool ClickTitle => false;
 
-		[Constructable]
+        [Constructable]
 		public BrigandArcher() : base( AIType.AI_Archer, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			SpeechHue = 0;
@@ -59,9 +59,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public BrigandArcher( Serial serial ) : base( serial )
+        public BrigandArcher( Serial serial ) : base( serial )
 		{
 		}
 

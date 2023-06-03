@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class SpecialBeardDye : Item
 	{
-		public override int LabelNumber{ get{ return 1041087; } } // Special Beard Dye
+		public override int LabelNumber => 1041087; // Special Beard Dye
 
 		[Constructable]
 		public SpecialBeardDye() : base( 0xE26 )
@@ -56,31 +56,13 @@ namespace Server.Items
 			private readonly int m_HueStart;
 			private readonly int m_HueCount;
 
-			public string Name
-			{
-				get
-				{
-					return m_Name;
-				}
-			}
+			public string Name => m_Name;
 
-			public int HueStart
-			{
-				get
-				{
-					return m_HueStart;
-				}
-			}
+            public int HueStart => m_HueStart;
 
-			public int HueCount
-			{
-				get
-				{
-					return m_HueCount;
-				}
-			}
+            public int HueCount => m_HueCount;
 
-			public SpecialBeardDyeEntry( string name, int hueStart, int hueCount )
+            public SpecialBeardDyeEntry( string name, int hueStart, int hueCount )
 			{
 				m_Name = name;
 				m_HueStart = hueStart;

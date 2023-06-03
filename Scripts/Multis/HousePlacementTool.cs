@@ -11,7 +11,7 @@ namespace Server.Items
 {
 	public class HousePlacementTool : Item
 	{
-		public override int LabelNumber{ get{ return 1060651; } } // a house placement tool
+		public override int LabelNumber => 1060651; // a house placement tool
 
 		[Constructable]
 		public HousePlacementTool() : base( 0x14F6 )
@@ -283,18 +283,18 @@ namespace Server.Items
 		private readonly int m_MultiID;
 		private Point3D m_Offset;
 
-		public Type Type{ get{ return m_Type; } }
+		public Type Type => m_Type;
 
-		public int Description{ get{ return m_Description; } }
-		public int Storage{ get{ return BaseHouse.NewVendorSystem ? m_NewStorage : m_Storage; } }
-		public int Lockdowns{ get{ return BaseHouse.NewVendorSystem ? m_NewLockdowns : m_Lockdowns; } }
-		public int Vendors{ get{ return m_Vendors; } }
-		public int Cost{ get{ return m_Cost; } }
+        public int Description => m_Description;
+        public int Storage => BaseHouse.NewVendorSystem ? m_NewStorage : m_Storage;
+        public int Lockdowns => BaseHouse.NewVendorSystem ? m_NewLockdowns : m_Lockdowns;
+        public int Vendors => m_Vendors;
+        public int Cost => m_Cost;
 
-		public int MultiID{ get{ return m_MultiID; } }
-		public Point3D Offset{ get{ return m_Offset; } }
+        public int MultiID => m_MultiID;
+        public Point3D Offset => m_Offset;
 
-		public HousePlacementEntry( Type type, int description, int storage, int lockdowns, int newStorage, int newLockdowns, int vendors, int cost, int xOffset, int yOffset, int zOffset, int multiID )
+        public HousePlacementEntry( Type type, int description, int storage, int lockdowns, int newStorage, int newLockdowns, int vendors, int cost, int xOffset, int yOffset, int zOffset, int multiID )
 		{
 			m_Type = type;
 			m_Description = description;
@@ -668,13 +668,10 @@ namespace Server.Items
 				new HousePlacementEntry( typeof( Castle ),				1011314,	4076,	2038,	4688,	2344,	78,	1022800,		0, 16,	0,	0x007E	)
 			};
 
-		public static HousePlacementEntry[] ClassicHouses{ get{ return m_ClassicHouses; } }
+		public static HousePlacementEntry[] ClassicHouses => m_ClassicHouses;
 
 
-
-
-
-		private static readonly HousePlacementEntry[] m_TwoStoryFoundations = new HousePlacementEntry[]
+        private static readonly HousePlacementEntry[] m_TwoStoryFoundations = new HousePlacementEntry[]
 			{
 				new HousePlacementEntry( typeof( HouseFoundation ),		1060241,	425,	212,	489,	244,	10,	30500,		0,	4,	0,	0x13EC	), // 7x7 2-Story Customizable House
 				new HousePlacementEntry( typeof( HouseFoundation ),		1060242,	580,	290,	667,	333,	14,	34500,		0,	5,	0,	0x13ED	), // 7x8 2-Story Customizable House
@@ -725,13 +722,10 @@ namespace Server.Items
 				new HousePlacementEntry( typeof( HouseFoundation ),		1060319,	1300,	650,	1495,	747,	28,	96500,		0,	7,	0,	0x143A	)  // 13x13 2-Story Customizable House
 			};
 
-		public static HousePlacementEntry[] TwoStoryFoundations{ get{ return m_TwoStoryFoundations; } }
+		public static HousePlacementEntry[] TwoStoryFoundations => m_TwoStoryFoundations;
 
 
-
-
-
-		private static readonly HousePlacementEntry[] m_ThreeStoryFoundations = new HousePlacementEntry[]
+        private static readonly HousePlacementEntry[] m_ThreeStoryFoundations = new HousePlacementEntry[]
 			{
 				new HousePlacementEntry( typeof( HouseFoundation ),		1060272,	1150,	575,	1323,	661,	24,	73500,		0,	8,	0,	0x140B	), // 9x14 3-Story Customizable House
 				new HousePlacementEntry( typeof( HouseFoundation ),		1060284,	1200,	600,	1380,	690,	26,	81000,		0,	8,	0,	0x1417	), // 10x14 3-Story Customizable House
@@ -790,6 +784,6 @@ namespace Server.Items
 				new HousePlacementEntry( typeof( HouseFoundation ),		1060384,	2119,	1059,	2437,	1218,	42,	179000,		0,	10,	0,	0x147B	)  // 18x18 3-Story Customizable House
 			};
 
-		public static HousePlacementEntry[] ThreeStoryFoundations{ get{ return m_ThreeStoryFoundations; } }
-	}
+		public static HousePlacementEntry[] ThreeStoryFoundations => m_ThreeStoryFoundations;
+    }
 }

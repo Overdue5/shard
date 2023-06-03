@@ -43,9 +43,9 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-		public override bool ClickTitle { get { return false; } }
+		public override bool ClickTitle => false;
 
-		public Sculptor( Serial serial )
+        public Sculptor( Serial serial )
 			: base( serial )
 		{
 		}

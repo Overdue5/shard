@@ -45,30 +45,15 @@ namespace Server.Mobiles
         {
         }
 
-        public override bool HasBreath
-        {
-            get { return true; }
-        }
+        public override bool HasBreath => true;
 
-        public override bool AutoDispel
-        {
-            get { return false; }
-        }
+        public override bool AutoDispel => false;
 
-        public override int TreasureMapLevel
-        {
-            get { return 4; }
-        }
+        public override int TreasureMapLevel => 4;
 
-        public override int Meat
-        {
-            get { return 99; }
-        }
+        public override int Meat => 99;
 
-        public override int Hides
-        {
-            get { return 20; }
-        }
+        public override int Hides => 20;
 
         public override HideType HideType
         {
@@ -87,20 +72,11 @@ namespace Server.Mobiles
             }
         }
 
-        public override int Scales
-        {
-            get { return 11; }
-        }
+        public override int Scales => 11;
 
-        public override ScaleType ScaleType
-        {
-            get { return (ScaleType.Red); }
-        }
+        public override ScaleType ScaleType => (ScaleType.Red);
 
-        public override FoodType FavoriteFood
-        {
-            get { return FoodType.Meat; }
-        }
+        public override FoodType FavoriteFood => FoodType.Meat;
 
         public override void GenerateLoot()
         {

@@ -7,8 +7,8 @@ namespace Knives.Chat3
 	{
         private static Hashtable s_Avatars = new Hashtable();
 
-        public static Hashtable Avatars { get { return s_Avatars; } }
-        public static ArrayList AvaKeys { get { return new ArrayList(s_Avatars.Keys); } }
+        public static Hashtable Avatars => s_Avatars;
+        public static ArrayList AvaKeys => new ArrayList(s_Avatars.Keys);
 
         public static void Initialize()
         {
@@ -224,9 +224,9 @@ namespace Knives.Chat3
 
         private int c_Id, c_X, c_Y;
 
-        public int Id { get { return c_Id; } }
-        public int X { get { return c_X; } }
-        public int Y { get { return c_Y; } }
+        public int Id => c_Id;
+        public int X => c_X;
+        public int Y => c_Y;
 
         public Avatar(int id, int x, int y)
         {

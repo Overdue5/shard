@@ -7,9 +7,9 @@ namespace Server.Mobiles
 	public class RedSolenQueen : BaseCreature
 	{
 		private bool m_BurstSac;
-		public bool BurstSac{ get{ return m_BurstSac; } }
+		public bool BurstSac => m_BurstSac;
 
-		[Constructable]
+        [Constructable]
 		public RedSolenQueen() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Red Solen Queen";

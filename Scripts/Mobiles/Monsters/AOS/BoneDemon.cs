@@ -47,13 +47,13 @@ namespace Server.Mobiles
             PackGold(1000, 3000);
 		}
 
-		public override bool BardImmune { get { return !Core.SE; } }
-		public override bool Unprovokable { get { return Core.SE; } }
-		public override bool AreaPeaceImmune { get { return Core.SE; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
+		public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
+        public override bool AreaPeaceImmune => Core.SE;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override int TreasureMapLevel => 1;
 
-		public BoneDemon( Serial serial ) : base( serial )
+        public BoneDemon( Serial serial ) : base( serial )
 		{
 		}
 

@@ -18,12 +18,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new ShadowAltarSouthAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new ShadowAltarSouthAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -48,12 +45,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new ShadowAltarSouthAddon(); }
-		}
+		public override BaseAddon Addon => new ShadowAltarSouthAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -84,12 +78,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new ShadowAltarEastAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new ShadowAltarEastAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -114,12 +105,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new ShadowAltarEastAddon(); }
-		}
+		public override BaseAddon Addon => new ShadowAltarEastAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version

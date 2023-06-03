@@ -27,14 +27,14 @@ namespace Server.Gumps
 		private readonly int m_Hue;
 		private readonly XmlAddCAGCategory m_Parent;
 
-		public Type Type{ get{ return m_Type; } }
-		public int ItemID{ get{ return m_ItemID; } }
-		public int Hue{ get{ return m_Hue; } }
-		public XmlAddCAGCategory Parent{ get{ return m_Parent; } }
+		public Type Type => m_Type;
+        public int ItemID => m_ItemID;
+        public int Hue => m_Hue;
+        public XmlAddCAGCategory Parent => m_Parent;
 
-		public override string Caption{ get{ return ( m_Type == null ? "bad type" : m_Type.Name ); } }
+        public override string Caption => ( m_Type == null ? "bad type" : m_Type.Name );
 
-		public override void OnClick( Mobile from, int page, int index, Gump gump )
+        public override void OnClick( Mobile from, int page, int index, Gump gump )
 		{
 			if ( m_Type == null )
 			{
@@ -103,13 +103,13 @@ namespace Server.Gumps
 		private readonly XmlAddCAGNode[] m_Nodes;
 		private readonly XmlAddCAGCategory m_Parent;
 
-		public string Title{ get{ return m_Title; } }
-		public XmlAddCAGNode[] Nodes{ get{ return m_Nodes; } }
-		public XmlAddCAGCategory Parent{ get{ return m_Parent; } }
+		public string Title => m_Title;
+        public XmlAddCAGNode[] Nodes => m_Nodes;
+        public XmlAddCAGCategory Parent => m_Parent;
 
-		public override string Caption{ get{ return m_Title; } }
+        public override string Caption => m_Title;
 
-		public override void OnClick( Mobile from, int page, int index, Gump gump )
+        public override void OnClick( Mobile from, int page, int index, Gump gump )
 		{
 			from.SendGump( new XmlCategorizedAddGump( from, this, 0, index, gump ) );
 		}

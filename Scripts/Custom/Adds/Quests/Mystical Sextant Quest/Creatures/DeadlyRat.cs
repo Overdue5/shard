@@ -52,9 +52,9 @@ namespace Server.Mobiles
 		}
 
 		
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public DeadlyRat( Serial serial ) : base( serial )
+        public DeadlyRat( Serial serial ) : base( serial )
 		{
 		}
 

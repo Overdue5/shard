@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class SacrificeSymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new SacrificeSymbolDeed(); } }
+		public override BaseAddonDeed Deed => new SacrificeSymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public SacrificeSymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x150E ), 0, 0, 0 ); //N
@@ -35,9 +35,9 @@ namespace Server.Items
 
 	public class SacrificeSymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new SacrificeSymbolAddon(); } }
+		public override BaseAddon Addon => new SacrificeSymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public SacrificeSymbolDeed()
 		{
             Name = "Sacrifice symbol deed";

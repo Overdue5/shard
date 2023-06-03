@@ -48,10 +48,10 @@ namespace Server.Mobiles
             PackGold(300);
         }
 
-        public override bool BleedImmune { get { return true; } }
-        public override int TreasureMapLevel { get { return 1; } }
+        public override bool BleedImmune => true;
+        public override int TreasureMapLevel => 1;
 
-        public override Poison PoisonImmune { get { return Poison.Deadly; } }
+        public override Poison PoisonImmune => Poison.Deadly;
 
         /*public override void OnCarve(Mobile from, Corpse corpse, Item item)
         {

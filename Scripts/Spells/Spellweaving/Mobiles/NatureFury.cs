@@ -4,22 +4,22 @@ namespace Server.Mobiles
 {
 	public class NatureFury : BaseCreature
 	{
-		public override bool DeleteCorpseOnDeath { get { return Core.AOS; } }
-		public override bool IsHouseSummonable { get { return true; } }
+		public override bool DeleteCorpseOnDeath => Core.AOS;
+        public override bool IsHouseSummonable => true;
 
-		public override double DispelDifficulty { get { return 125.0; } }
-		public override double DispelFocus { get { return 90.0; } }
+        public override double DispelDifficulty => 125.0;
+        public override double DispelFocus => 90.0;
 
-		public override bool BleedImmune { get { return true; } }
-		public override Poison PoisonImmune { get { return Poison.Lethal; } }
+        public override bool BleedImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override bool AlwaysMurderer { get { return true; } }
+        public override bool AlwaysMurderer => true;
 
-		private Mobile m_Target;
+        private Mobile m_Target;
 
-		public override Mobile ConstantFocus { get { return m_Target; } }
+		public override Mobile ConstantFocus => m_Target;
 
-		public override void OnThink()
+        public override void OnThink()
 		{
 			if( m_Target != null && (!m_Target.Alive || m_Target.Deleted || !InRange( m_Target, 24 ) || !CanSee( m_Target )) )
 				m_Target = null;	//Go kill other stuffs

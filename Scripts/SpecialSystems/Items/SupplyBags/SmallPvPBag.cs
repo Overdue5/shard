@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class SPvPBag : Bag
 	{
-		public override string DefaultName
-		{
-			get { return "a small combat bag"; }
-		}
+		public override string DefaultName => "a small combat bag";
 
-		[Constructable]
+        [Constructable]
 		public SPvPBag() : this( 1 )
 		{
 			Movable = true;

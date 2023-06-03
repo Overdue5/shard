@@ -1109,10 +1109,10 @@ namespace Server.Commands
 		private Point3D m_Location;
 		private string m_Extra;
 
-		public Point3D Location{ get{ return m_Location; } }
-		public string Extra{ get{ return m_Extra; } }
+		public Point3D Location => m_Location;
+        public string Extra => m_Extra;
 
-		public DecorationEntryMag( string line )
+        public DecorationEntryMag( string line )
 		{
 			string x, y, z;
 

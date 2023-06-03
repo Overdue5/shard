@@ -52,9 +52,9 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(1));
 		}
 
-		public override int TreasureMapLevel{ get{ return 2; } }
+		public override int TreasureMapLevel => 2;
 
-		public StoneGargoyle( Serial serial ) : base( serial )
+        public StoneGargoyle( Serial serial ) : base( serial )
 		{
 		}
 

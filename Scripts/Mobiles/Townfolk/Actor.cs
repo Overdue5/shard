@@ -43,9 +43,9 @@ namespace Server.Mobiles
 		} 
 
 
-		public override bool ClickTitle{ get{ return false; } }
+		public override bool ClickTitle => false;
 
-		public Actor( Serial serial ) : base( serial ) 
+        public Actor( Serial serial ) : base( serial ) 
 		{ 
 		} 
 

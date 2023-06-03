@@ -36,27 +36,15 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override Faction FactionAllegiance
-		{
-			get { return Minax.Instance; }
-		}
+		public override Faction FactionAllegiance => Minax.Instance;
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+        public override bool CanRummageCorpses => true;
 
-		public override int TreasureMapLevel
-		{
-			get { return 4; }
-		}
+        public override int TreasureMapLevel => 4;
 
-		public override int Meat
-		{
-			get { return 6; }
-		}
+        public override int Meat => 6;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			//AddLoot(LootPack.HighItems_Always, 1);
 			AddLoot( LootPack.Rich );

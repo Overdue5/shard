@@ -16,14 +16,14 @@ namespace Server.Items
 			private readonly TextDefinition m_NotNearbyMessage;
 		    private readonly TextDefinition m_Name;
 
-		    public TextDefinition NotNearbyMessage{	get { return m_NotNearbyMessage; } }
-			public TextDefinition Name { get { return m_Name; } }
+		    public TextDefinition NotNearbyMessage => m_NotNearbyMessage;
+            public TextDefinition Name => m_Name;
 
 
-			public CraftSystem System { get { return m_System; } }
-			public Type[] NearbyTypes { get { return m_NearbyTypes; } }
+            public CraftSystem System => m_System;
+            public Type[] NearbyTypes => m_NearbyTypes;
 
-			public RepairSkillInfo( CraftSystem system, Type[] nearbyTypes, TextDefinition notNearbyMessage, TextDefinition name )
+            public RepairSkillInfo( CraftSystem system, Type[] nearbyTypes, TextDefinition notNearbyMessage, TextDefinition name )
 			{
 				m_System = system;
 				m_NearbyTypes = nearbyTypes;
@@ -36,8 +36,9 @@ namespace Server.Items
 			{
 			}
 
-			public static RepairSkillInfo[] Table { get { return m_Table; } }
-			private static readonly RepairSkillInfo[] m_Table = new RepairSkillInfo[]
+			public static RepairSkillInfo[] Table => m_Table;
+
+            private static readonly RepairSkillInfo[] m_Table = new RepairSkillInfo[]
 				{
 					new RepairSkillInfo( DefBlacksmithy.CraftSystem, typeof( Blacksmith ), 1047013, 1023015 ),
 					new RepairSkillInfo( DefTailoring.CraftSystem, typeof( Tailor ), 1061132, 1022981 ),
@@ -65,9 +66,9 @@ namespace Server.Items
 			Fletching
 		}
 
-		public override bool DisplayLootType { get { return false; } }
+		public override bool DisplayLootType => false;
 
-		private RepairSkillType m_Skill; 
+        private RepairSkillType m_Skill; 
 		private double m_SkillLevel;
 
 		private Mobile m_Crafter;
@@ -75,22 +76,22 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public RepairSkillType RepairSkill
 		{
-			get { return m_Skill; }
-			set { m_Skill = value; InvalidateProperties(); }
+			get => m_Skill;
+            set { m_Skill = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public double SkillLevel
 		{
-			get { return m_SkillLevel; }
-			set { m_SkillLevel = Math.Max( Math.Min( value, 120.0 ), 0 ) ; InvalidateProperties(); }
+			get => m_SkillLevel;
+            set { m_SkillLevel = Math.Max( Math.Min( value, 120.0 ), 0 ) ; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Crafter
 		{
-			get { return m_Crafter; }
-			set { m_Crafter = value; InvalidateProperties(); }
+			get => m_Crafter;
+            set { m_Crafter = value; InvalidateProperties(); }
 		}
 
         public override void OnSingleClick(Mobile from)

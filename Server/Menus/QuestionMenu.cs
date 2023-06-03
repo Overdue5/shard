@@ -30,43 +30,19 @@ namespace Server.Menus.Questions
 		private int m_Serial;
 		private static int m_NextSerial;
 
-		int IMenu.Serial
-		{
-			get
-			{
-				return m_Serial;
-			}
-		}
+		int IMenu.Serial => m_Serial;
 
-		int IMenu.EntryLength
-		{
-			get
-			{
-				return m_Answers.Length;
-			}
-		}
+        int IMenu.EntryLength => m_Answers.Length;
 
-		public string Question
+        public string Question
 		{
-			get
-			{
-				return m_Question;
-			}
-			set
-			{
-				m_Question = value;
-			}
-		}
+			get => m_Question;
+            set => m_Question = value;
+        }
 
-		public string[] Answers
-		{
-			get
-			{
-				return m_Answers;
-			}
-		}
+		public string[] Answers => m_Answers;
 
-		public QuestionMenu( string question, string[] answers )
+        public QuestionMenu( string question, string[] answers )
 		{
 			m_Question = question;
 			m_Answers = answers;

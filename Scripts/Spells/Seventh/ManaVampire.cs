@@ -6,10 +6,10 @@ namespace Server.Spells.Seventh
 {
     public class ManaVampireSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 0x1F9; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 0x1F9;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Mana Vampire", "Ort Sanct",
 				212,
 				9032,

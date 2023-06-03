@@ -22,7 +22,9 @@ namespace Server.Mobiles
 		private XmlDialog m_DialogAttachment;
 
         
-		public XmlDialog DialogAttachment {get { return m_DialogAttachment; } set {m_DialogAttachment = value; }}
+		public XmlDialog DialogAttachment {get => m_DialogAttachment;
+            set => m_DialogAttachment = value;
+        }
 
 		private DateTime lasteffect;		
 		private int m_EItemID = 0;  // 0 = disable, 14202 = sparkle, 6251 = round stone, 7885 = light pyramid
@@ -32,41 +34,30 @@ namespace Server.Mobiles
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int EItemID { 
-			get{ return m_EItemID; } 
-			set { 
-				m_EItemID = value; 
-			} 
-		}
+			get => m_EItemID;
+            set => m_EItemID = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D EOffset 
 		{ 
-			get{ return m_Offset; } 
-			set 
-			{ 
-				m_Offset = value; 
-			} 
-		}
+			get => m_Offset;
+            set => m_Offset = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int EDuration 
 		{ 
-			get{ return m_Duration; } 
-			set 
-			{ 
-				m_Duration = value; 
-			} 
-		}
+			get => m_Duration;
+            set => m_Duration = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int EHue 
 		{ 
-			get{ return m_EHue; } 
-			set 
-			{ 
-				m_EHue = value; 
-			} 
-		}
+			get => m_EHue;
+            set => m_EHue = value;
+        }
 		public void DisplayHighlight()
 		{
 			if(EItemID > 0)
@@ -117,7 +108,9 @@ namespace Server.Mobiles
 		private string m_TalkText;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string TalkText {get{ return m_TalkText; } set { m_TalkText = value; }}
+		public string TalkText {get => m_TalkText;
+            set => m_TalkText = value;
+        }
 
 		// properties below are modified to access the equivalent XmlDialog properties
 		// this is largely for backward compatibility, but it does also add some convenience
@@ -168,53 +161,22 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan RealTOD
-		{
-			get
-			{
-				return DateTime.UtcNow.TimeOfDay;
-			}
-		}
+		public TimeSpan RealTOD => DateTime.UtcNow.TimeOfDay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int RealDay
-		{
-			get
-			{
-				return DateTime.UtcNow.Day;
-			}
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public int RealDay => DateTime.UtcNow.Day;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int RealMonth
-		{
-			get
-			{
-				return DateTime.UtcNow.Month;
-			}
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public int RealMonth => DateTime.UtcNow.Month;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public DayOfWeek RealDayOfWeek
-		{
-			get
-			{
-				return DateTime.UtcNow.DayOfWeek;
-			}
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public DayOfWeek RealDayOfWeek => DateTime.UtcNow.DayOfWeek;
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public MoonPhase MoonPhase
-		{
-			get
-			{
-				return Clock.GetMoonPhase( Map, Location.X, Location.Y );
-			}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public MoonPhase MoonPhase => Clock.GetMoonPhase( Map, Location.X, Location.Y );
 
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public AccessLevel TriggerAccessLevel 
 		{
 			get 
@@ -251,11 +213,8 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool DoReset 
 		{
-			get 
-			{
-					return false;
-			}
-			set 
+			get => false;
+            set 
 			{
 				if(DialogAttachment != null)
 					DialogAttachment.DoReset = value;
@@ -628,15 +587,15 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public  bool LoadConfig
 		{
-			get{return false;}
-			set{ if(value && DialogAttachment != null) DialogAttachment.DoLoadNPC(null,ConfigFile);}
+			get => false;
+            set{ if(value && DialogAttachment != null) DialogAttachment.DoLoadNPC(null,ConfigFile);}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public  bool SaveConfig
 		{
-			get{return false;}
-			set
+			get => false;
+            set
 			{ 
 				if(value && DialogAttachment != null) 
 					DialogAttachment.DoSaveNPC(null,ConfigFile, false);

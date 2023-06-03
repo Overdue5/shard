@@ -6,9 +6,9 @@ namespace Server.Items
 {
     public class ClayShovel : BaseHarvestTool
 	{
-        public override HarvestSystem HarvestSystem { get { return ClayMining.System; } }
+        public override HarvestSystem HarvestSystem => ClayMining.System;
 
-		[Constructable]
+        [Constructable]
 		public ClayShovel() : base( 0xF39 )
 		{
             Name = "a Clay Shovel";

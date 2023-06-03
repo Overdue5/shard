@@ -24,10 +24,7 @@ namespace Server.Engines.Harvest
 
 		private readonly HarvestDefinition m_Clay;
 
-        public HarvestDefinition Clay
-		{
-            get { return m_Clay; }
-		}
+        public HarvestDefinition Clay => m_Clay;
 
         private ClayMining()
 		{

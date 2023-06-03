@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class ShaminoCrossbow : RepeatingCrossbow
 	{
-		public override int LabelNumber{ get{ return 1062915; } } // Shamino’s Best Crossbow
+		public override int LabelNumber => 1062915; // Shamino’s Best Crossbow
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public ShaminoCrossbow()
 		{
 			Hue = 0x504;

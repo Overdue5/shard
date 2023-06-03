@@ -40,22 +40,16 @@ namespace Server.Mobiles
            
         }
 
-        public override int Meat
-        {
-            get { return 1; }
-        }
+        public override int Meat => 1;
 
         public override void GenerateLoot()
         {
             AddLoot(LootPack.Average);
         }
 
-        public override bool CanRummageCorpses
-        {
-            get { return true; }
-        }
+        public override bool CanRummageCorpses => true;
 
-        public override bool BleedImmune { get { return true; } }
+        public override bool BleedImmune => true;
 
         public GoblinScout(Serial serial)
             : base(serial)
@@ -115,22 +109,16 @@ namespace Server.Mobiles
 
         }
 
-        public override int Meat
-        {
-            get { return 1; }
-        }
+        public override int Meat => 1;
 
         public override void GenerateLoot()
         {
             AddLoot(LootPack.Average);
         }
 
-        public override bool CanRummageCorpses
-        {
-            get { return true; }
-        }
+        public override bool CanRummageCorpses => true;
 
-        public override bool BleedImmune { get { return true; } }
+        public override bool BleedImmune => true;
 
         public GoblinArcher(Serial serial)
             : base(serial)
@@ -190,10 +178,7 @@ namespace Server.Mobiles
 
         }
 
-        public override int Meat
-        {
-            get { return 2; }
-        }
+        public override int Meat => 2;
 
         public override void GenerateLoot()
         {
@@ -201,12 +186,9 @@ namespace Server.Mobiles
             PackGold(100, 150);
         }
 
-        public override bool CanRummageCorpses
-        {
-            get { return true; }
-        }
+        public override bool CanRummageCorpses => true;
 
-        public override bool BleedImmune { get { return true; } }
+        public override bool BleedImmune => true;
 
         public GoblinWarrior(Serial serial)
             : base(serial)
@@ -266,10 +248,7 @@ namespace Server.Mobiles
 
         }
 
-        public override int Meat
-        {
-            get { return 2; }
-        }
+        public override int Meat => 2;
 
         public override void GenerateLoot()
         {
@@ -281,12 +260,9 @@ namespace Server.Mobiles
             AddItem(weapon);
         }
 
-        public override bool CanRummageCorpses
-        {
-            get { return true; }
-        }
+        public override bool CanRummageCorpses => true;
 
-        public override bool BleedImmune { get { return true; } }
+        public override bool BleedImmune => true;
 
         public ArmoredGoblinArcher(Serial serial)
             : base(serial)

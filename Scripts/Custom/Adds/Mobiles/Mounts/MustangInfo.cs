@@ -144,9 +144,9 @@ namespace Carding.Mobiles
 		#endregion
 
 		private static MustangCollection m_Mustangs;
-		private static ArrayList Mustangs { get { return m_Mustangs.List; } }
+		private static ArrayList Mustangs => m_Mustangs.List;
 
-		/// <summary>
+        /// <summary>
 		/// Creates a random mustang
 		/// </summary>
 		public static MustangInfo Randomize()
@@ -286,9 +286,9 @@ namespace Carding.Mobiles
 		/// <value></value>
 		public ArrayList List
 		{
-			get { return m_List; }
-			set { m_List = value; }
-		}
+			get => m_List;
+            set => m_List = value;
+        }
 
 	}
 
@@ -376,8 +376,8 @@ namespace Carding.Mobiles
         [XmlAttribute]
         public int BodyVal
         {
-            get { return m_BodyVal; }
-            set { m_BodyVal = value; }
+            get => m_BodyVal;
+            set => m_BodyVal = value;
         }
 
 		/// <summary>
@@ -387,9 +387,9 @@ namespace Carding.Mobiles
 		[ XmlAttribute ]
 		public double Skill
 		{
-			get { return m_Skill; }
-			set { m_Skill = value; }
-		}
+			get => m_Skill;
+            set => m_Skill = value;
+        }
 
 		/// <summary>
 		/// The hue of this mustang
@@ -398,9 +398,9 @@ namespace Carding.Mobiles
 		[ XmlAttribute ]
 		public int Hue
 		{
-			get { return m_Hue; }
-			set { m_Hue = value; }
-		}
+			get => m_Hue;
+            set => m_Hue = value;
+        }
 
 		/// <summary>
 		/// The name of this mustang (as seen in game)
@@ -409,9 +409,9 @@ namespace Carding.Mobiles
 		[ XmlAttribute ]
 		public string Name
 		{
-			get { return m_Name; }
-			set { m_Name = value; }
-		}
+			get => m_Name;
+            set => m_Name = value;
+        }
 
 		/// <summary>
 		/// The ID of this mustang, used by staff to spawn it
@@ -420,8 +420,8 @@ namespace Carding.Mobiles
 		[ XmlAttribute ]
 		public string ID
 		{
-			get { return m_ID; }
-			set { m_ID = value; }
-		}
+			get => m_ID;
+            set => m_ID = value;
+        }
 	}
 }

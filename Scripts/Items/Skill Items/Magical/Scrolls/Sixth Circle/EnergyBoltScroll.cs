@@ -16,7 +16,7 @@ namespace Server.Items
 		{
 		}
 
-        public override int ManaCost { get { return 15; } }
+        public override int ManaCost => 15;
 
         /*public override void OnDoubleClick(Mobile from)
         {

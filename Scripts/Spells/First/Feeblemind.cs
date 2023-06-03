@@ -7,8 +7,8 @@ namespace Server.Spells.First
 {
     public class FeeblemindSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.First; } }
-        public override int Sound { get { return 0x1E4; } }
+        public override SpellCircle Circle => SpellCircle.First;
+        public override int Sound => 0x1E4;
 
         //public override bool SpellDisabled { get { return true; } }
 

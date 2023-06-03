@@ -12,12 +12,12 @@ namespace Server.Spells.Bushido
 				9002
 			);
 
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.25 ); } }
+		public override TimeSpan CastDelayBase => TimeSpan.FromSeconds( 0.25 );
 
-		public override double RequiredSkill{ get{ return 40.0; } }
-		public override int RequiredMana{ get{ return 5; } }
+        public override double RequiredSkill => 40.0;
+        public override int RequiredMana => 5;
 
-		public override bool CheckCast()
+        public override bool CheckCast()
 		{
 			if ( !base.CheckCast() )
 				return false;

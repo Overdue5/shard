@@ -101,37 +101,30 @@ namespace Server
 
 		#region Public Properties
 
-		public static int BreakCount { get { return m_BreakCount; } set { m_BreakCount = value; } }
+		public static int BreakCount { get => m_BreakCount;
+            set => m_BreakCount = value;
+        }
 
-		public virtual bool DefRegCreation
-		{
-			get { return true; }
-		}
+		public virtual bool DefRegCreation => true;
 
-		public TimeSpan Delay
+        public TimeSpan Delay
 		{
-			get { return m_Delay; }
-			set { m_Delay = value; }
-		}
+			get => m_Delay;
+            set => m_Delay = value;
+        }
 
 		public TimeSpan Interval
 		{
-			get { return m_Interval; }
-			set { m_Interval = value; }
-		}
+			get => m_Interval;
+            set => m_Interval = value;
+        }
 
-		public DateTime Next
-		{
-			get { return m_Next; }
-		}
+		public DateTime Next => m_Next;
 
-		public TimerPriority Priority
+        public TimerPriority Priority
 		{
-			get
-			{
-				return m_Priority;
-			}
-			set
+			get => m_Priority;
+            set
 			{
 				if (!m_PrioritySet)
 					m_PrioritySet = true;
@@ -148,8 +141,8 @@ namespace Server
 
 		public bool Running
 		{
-			get { return m_Running; }
-			set
+			get => m_Running;
+            set
 			{
 				if (value)
 				{
@@ -707,11 +700,11 @@ namespace Server
 
 			#region Public Properties
 
-			public TimerCallback Callback { get { return m_Callback; } }
+			public TimerCallback Callback => m_Callback;
 
-			public override bool DefRegCreation { get { return false; } }
+            public override bool DefRegCreation => false;
 
-			#endregion Public Properties
+            #endregion Public Properties
 
 			#region Public Methods
 
@@ -756,11 +749,11 @@ namespace Server
 
 			#region Public Properties
 
-			public TimerStateCallback Callback { get { return m_Callback; } }
+			public TimerStateCallback Callback => m_Callback;
 
-			public override bool DefRegCreation { get { return false; } }
+            public override bool DefRegCreation => false;
 
-			#endregion Public Properties
+            #endregion Public Properties
 
 			#region Public Methods
 
@@ -806,11 +799,11 @@ namespace Server
 
 			#region Public Properties
 
-			public TimerStateCallback<T> Callback { get { return m_Callback; } }
+			public TimerStateCallback<T> Callback => m_Callback;
 
-			public override bool DefRegCreation { get { return false; } }
+            public override bool DefRegCreation => false;
 
-			#endregion Public Properties
+            #endregion Public Properties
 
 			#region Public Methods
 

@@ -31,22 +31,14 @@ namespace Server.Engines.Quests.Hag
 				typeof( RecentlyFinishedConversation )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// "The Witch's Apprentice"
-				return 1055042;
-			}
-		}
+        public override object Name =>
+            // "The Witch's Apprentice"
+            1055042;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>The ancient, wrinkled hag looks up from her vile-smelling cauldron.
+        public override object OfferMessage =>
+            /* <I>The ancient, wrinkled hag looks up from her vile-smelling cauldron.
 				 * Her single, unblinking eye attempts to focus in on you, but to
 				 * little avail.</I><BR><BR>
 				 * 
@@ -81,16 +73,14 @@ namespace Server.Engines.Quests.Hag
 				 * 
 				 * Well, you little whelp?  Going to help an old hag or not?
 				 */
-				return 1055001;
-			}
-		}
+            1055001;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.FromMinutes( 5.0 ); } }
-		public override bool IsTutorial{ get{ return false; } }
+        public override TimeSpan RestartDelay => TimeSpan.FromMinutes( 5.0 );
+        public override bool IsTutorial => false;
 
-		public override int Picture{ get{ return 0x15D3; } }
+        public override int Picture => 0x15D3;
 
-		public WitchApprenticeQuest( PlayerMobile from ) : base( from )
+        public WitchApprenticeQuest( PlayerMobile from ) : base( from )
 		{
 		}
 

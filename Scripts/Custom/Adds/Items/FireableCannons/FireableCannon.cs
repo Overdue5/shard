@@ -33,23 +33,23 @@ namespace Server.Items
         [CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Mobile
 		{
-			get{ return m_Mobile; }
-			set{ m_Mobile = value; }
-		}
+			get => m_Mobile;
+            set => m_Mobile = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Hitch
 		{
-			get{ return m_Hitch; }
-			set{ m_Hitch = value; }
-		}
+			get => m_Hitch;
+            set => m_Hitch = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public MovableCannon MCannon
 		{
-			get{ return m_MCannon; }
-			set{ m_MCannon = value; }
-		}
+			get => m_MCannon;
+            set => m_MCannon = value;
+        }
 		
 		public HitchItem(Mobile from, Mobile hitch, MovableCannon mcan ) : base( 0x1f13 )
 		{
@@ -86,7 +86,7 @@ namespace Server.Items
 	
 	public class CannonBall : Item
 	{
-		public override int LabelNumber{ get{ return 1023700; } } // cannon balls
+		public override int LabelNumber => 1023700; // cannon balls
 		
 		[Constructable]
 		public CannonBall() : this( 1 )
@@ -131,20 +131,20 @@ namespace Server.Items
         private int m_MaxDamage = 50;
 		private BaseCannon m_cannon;
 		public DateTime NextShot = DateTime.UtcNow;
-		public override bool HandlesOnSpeech{ get{ return true; } }
+		public override bool HandlesOnSpeech => true;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int MinDamage
         {
-            get { return m_MinDamage; }
-            set { m_MinDamage = value; }
+            get => m_MinDamage;
+            set => m_MinDamage = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int MaxDamage
         {
-            get { return m_MaxDamage; }
-            set { m_MaxDamage = value; }
+            get => m_MaxDamage;
+            set => m_MaxDamage = value;
         }
 		
 		#region ICannonDamage vars
@@ -152,8 +152,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Hits
 		{
-			get{ return m_Hits; }
-			set
+			get => m_Hits;
+            set
 			{
 				if ( value > m_HitsMax )
 					m_Hits = m_HitsMax;
@@ -163,19 +163,22 @@ namespace Server.Items
 			}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int HitsMax{ get{ return m_HitsMax; } set{ m_HitsMax = value; } }
+		public int HitsMax{ get => m_HitsMax;
+            set => m_HitsMax = value;
+        }
 		#endregion
 		
 		#region ICannonRepair
-		public double MinReqSkill { get{ return 70; } }
-		public SkillName RepairSkill { get{ return SkillName.Blacksmith; } }
-		#endregion
+		public double MinReqSkill => 70;
+        public SkillName RepairSkill => SkillName.Blacksmith;
+
+        #endregion
 		
-		public BaseCannon cannon{ get{ return m_cannon; } }
-		
-		public override bool ForceShowProperties{ get{ return true;} }
-		
-		public CannonComponent( int itemID, BaseCannon c ) : base( itemID )
+		public BaseCannon cannon => m_cannon;
+
+        public override bool ForceShowProperties => true;
+
+        public CannonComponent( int itemID, BaseCannon c ) : base( itemID )
 		{
 			m_cannon = c;
 			m_HitsMax = 200;
@@ -591,26 +594,27 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
 		private Mobile m_Owner;
 		private CannonComponent m_CCom;
 		
-		public new virtual BaseCannonDeed Deed{ get{ return null; } }
-		[CommandProperty( AccessLevel.GameMaster )]
+		public new virtual BaseCannonDeed Deed => null;
+
+        [CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CannonComponent CCom
 		{
-			get{ return m_CCom; }
-			set{ m_CCom = value; }
-		}
+			get => m_CCom;
+            set => m_CCom = value;
+        }
 		
 		public BaseCannon(Direction dir) : this (null,dir)
 		{
@@ -687,9 +691,9 @@ namespace Server.Items
 		private Mobile m_Hitch;
 		private HitchItem m_HControl;
 		
-		public override bool HandlesOnSpeech{ get{ return true; } }
-		public override bool HandlesOnMovement{ get{return true;} }
-		private static int[] NorthID = new int[]{0xE8D,0xE8C,0xE8B};
+		public override bool HandlesOnSpeech => true;
+        public override bool HandlesOnMovement => true;
+        private static int[] NorthID = new int[]{0xE8D,0xE8C,0xE8B};
 		private static int[] SouthID = new int[]{0xE93,0xE92,0xE91};
 		private static int[] EastID = new int[]{0xE94,0xE95,0xE96};
 		private static int[] WestID = new int[]{0xE8E,0xE8F,0xE90};
@@ -697,31 +701,31 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Hitch
 		{
-			get{ return m_Hitch; }
-			set{ m_Hitch = value; }
-		}
+			get => m_Hitch;
+            set => m_Hitch = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public HitchItem HControl
 		{
-			get{ return m_HControl; }
-			set{ m_HControl = value; }
-		}
+			get => m_HControl;
+            set => m_HControl = value;
+        }
 		
 		#region ICannonDamage vars
 		private int m_Hits, m_HitsMax;
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Hits
 		{
-			get{ return m_Hits; }
-			set
+			get => m_Hits;
+            set
 			{
 				if ( value > m_HitsMax )
 					m_Hits = m_HitsMax;
@@ -731,13 +735,15 @@ namespace Server.Items
 			}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int HitsMax{ get{ return m_HitsMax; } set{ m_HitsMax = value; } }
+		public int HitsMax{ get => m_HitsMax;
+            set => m_HitsMax = value;
+        }
         
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
 		#endregion
 		
@@ -1011,12 +1017,12 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
-		public override BaseCannonDeed Deed{ get{ return new CannonNorthDeed(); } }
-		
-		[Constructable]
+		public override BaseCannonDeed Deed => new CannonNorthDeed();
+
+        [Constructable]
 		public CannonNorth () : this ( null )
 		{
 		}
@@ -1048,12 +1054,16 @@ namespace Server.Items
 	public class CannonNorthDeed : BaseCannonDeed
 	{
 		
-		public override BaseCannon FireCannon{ get{ return new CannonNorth(); } }
-		
-		private int m_Hits = 100;
+		public override BaseCannon FireCannon => new CannonNorth();
+
+        private int m_Hits = 100;
 		private int m_HitsMax = 100;
-		public override int Hits{ get{return m_Hits;} set{ m_Hits = value; } }
-		public override int HitsMax{ get{return m_HitsMax;} set{ m_HitsMax = value; } }
+		public override int Hits{ get => m_Hits;
+            set => m_Hits = value;
+        }
+		public override int HitsMax{ get => m_HitsMax;
+            set => m_HitsMax = value;
+        }
 		
 		[Constructable]
 		public CannonNorthDeed() : base ()
@@ -1081,12 +1091,12 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
-		public override BaseCannonDeed Deed{ get{ return new CannonSouthDeed(); } }
-		
-		[Constructable]
+		public override BaseCannonDeed Deed => new CannonSouthDeed();
+
+        [Constructable]
 		public CannonSouth () : this ( null )
 		{
 		}
@@ -1117,12 +1127,16 @@ namespace Server.Items
 	
 	public class CannonSouthDeed : BaseCannonDeed
 	{
-		public override BaseCannon FireCannon{ get{ return new CannonSouth(); } }
-		
-		private int m_Hits = 100;
+		public override BaseCannon FireCannon => new CannonSouth();
+
+        private int m_Hits = 100;
 		private int m_HitsMax = 100;
-		public override int Hits{ get{return m_Hits;} set{ m_Hits = value; } }
-		public override int HitsMax{ get{return m_HitsMax;} set{ m_HitsMax = value; } }
+		public override int Hits{ get => m_Hits;
+            set => m_Hits = value;
+        }
+		public override int HitsMax{ get => m_HitsMax;
+            set => m_HitsMax = value;
+        }
 		
 		[Constructable]
 		public CannonSouthDeed() : base ()
@@ -1150,12 +1164,12 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
-		public override BaseCannonDeed Deed{ get{ return new CannonEastDeed(); } }
-		
-		[Constructable]
+		public override BaseCannonDeed Deed => new CannonEastDeed();
+
+        [Constructable]
 		public CannonEast () : this ( null )
 		{
 		}
@@ -1186,12 +1200,16 @@ namespace Server.Items
 	
 	public class CannonEastDeed : BaseCannonDeed
 	{
-		public override BaseCannon FireCannon{ get{ return new CannonEast(); } }
-		
-		private int m_Hits = 100;
+		public override BaseCannon FireCannon => new CannonEast();
+
+        private int m_Hits = 100;
 		private int m_HitsMax = 100;
-		public override int Hits{ get{return m_Hits;} set{ m_Hits = value; } }
-		public override int HitsMax{ get{return m_HitsMax;} set{ m_HitsMax = value; } }
+		public override int Hits{ get => m_Hits;
+            set => m_Hits = value;
+        }
+		public override int HitsMax{ get => m_HitsMax;
+            set => m_HitsMax = value;
+        }
 		
 		[Constructable]
 		public CannonEastDeed() : base ()
@@ -1219,12 +1237,12 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
-		public override BaseCannonDeed Deed{ get{ return new CannonWestDeed(); } }
-		
-		[Constructable]
+		public override BaseCannonDeed Deed => new CannonWestDeed();
+
+        [Constructable]
 		public CannonWest () : this ( null )
 		{
 		}
@@ -1255,12 +1273,16 @@ namespace Server.Items
 	
 	public class CannonWestDeed : BaseCannonDeed
 	{
-		public override BaseCannon FireCannon{ get{ return new CannonWest(); } }
-		
-		private int m_Hits = 100;
+		public override BaseCannon FireCannon => new CannonWest();
+
+        private int m_Hits = 100;
 		private int m_HitsMax = 100;
-		public override int Hits{ get{return m_Hits;} set{ m_Hits = value; } }
-		public override int HitsMax{ get{return m_HitsMax;} set{ m_HitsMax = value; } }
+		public override int Hits{ get => m_Hits;
+            set => m_Hits = value;
+        }
+		public override int HitsMax{ get => m_HitsMax;
+            set => m_HitsMax = value;
+        }
 		
 		[Constructable]
 		public CannonWestDeed() : base ()

@@ -20,25 +20,45 @@ namespace Server.Custom.PvpToolkit.Items
         private pPetRule m_PetRule;
 
         [CommandProperty( AccessLevel.GameMaster )]
-        public int MinSkill { get { return m_MinSkill; } set { m_MinSkill = value; } }
+        public int MinSkill { get => m_MinSkill;
+            set => m_MinSkill = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public int MaxSkill { get { return m_MaxSkill; } set { m_MaxSkill = value; } }
+        public int MaxSkill { get => m_MaxSkill;
+            set => m_MaxSkill = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pClassRules ClassRulesRule { get { return m_ClassRulesRule; } set { m_ClassRulesRule = value; } }
+        public pClassRules ClassRulesRule { get => m_ClassRulesRule;
+            set => m_ClassRulesRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pKeepScoreRule KeepScoreRule { get { return m_KeepScoreRule; } set { m_KeepScoreRule = value; } }
+        public pKeepScoreRule KeepScoreRule { get => m_KeepScoreRule;
+            set => m_KeepScoreRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pMagicWeaponRule MagicWeaponRule { get { return m_MagicWeaponRule; } set { m_MagicWeaponRule = value; } }
+        public pMagicWeaponRule MagicWeaponRule { get => m_MagicWeaponRule;
+            set => m_MagicWeaponRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pMagicArmorRule MagicArmorRule { get { return m_MagicArmorRule; } set { m_MagicArmorRule = value; } }
+        public pMagicArmorRule MagicArmorRule { get => m_MagicArmorRule;
+            set => m_MagicArmorRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pPotionRule PotionRule { get { return m_PotionRule; } set { m_PotionRule = value; } }
+        public pPotionRule PotionRule { get => m_PotionRule;
+            set => m_PotionRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pBandaidRule BandageRule { get { return m_BandageRule; } set { m_BandageRule = value; } }
+        public pBandaidRule BandageRule { get => m_BandageRule;
+            set => m_BandageRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pMountRule MountRule { get { return m_MountRule; } set { m_MountRule = value; } }
+        public pMountRule MountRule { get => m_MountRule;
+            set => m_MountRule = value;
+        }
         [CommandProperty( AccessLevel.GameMaster )]
-        public pPetRule PetRule { get { return m_PetRule; } set { m_PetRule = value; } }
+        public pPetRule PetRule { get => m_PetRule;
+            set => m_PetRule = value;
+        }
         #endregion
 
         [Constructable]

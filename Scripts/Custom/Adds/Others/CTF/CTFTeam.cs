@@ -38,10 +38,14 @@ namespace Server.Custom.Games
 			}
 		}
 
-		public IGameFlag Flag{ get{ return m_Flag; } set {m_Flag = value; } }
+		public IGameFlag Flag{ get => m_Flag;
+            set => m_Flag = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Point3D FlagHome{ get{ return m_FlagHome; } set{ m_FlagHome = value; } }
+		public Point3D FlagHome{ get => m_FlagHome;
+            set => m_FlagHome = value;
+        }
 
 	    [CommandProperty(AccessLevel.Developer)]
 	    public int KillPoints { get; set; }

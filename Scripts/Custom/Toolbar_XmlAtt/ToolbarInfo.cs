@@ -29,24 +29,44 @@ namespace Server.Engines.XmlSpawner2
 			_Lock = switches[3];
 		}
 
-		public int Font { get { return _Font; } set { _Font = value; } }
-		public int Skin { get { return _Skin; } set { _Skin = value; } }
-		public bool Phantom { get { return _Phantom; } set { _Phantom = value; } }
-		public bool Stealth { get { return _Stealth; } set { _Stealth = value; } }
-		public bool Reverse { get { return _Reverse; } set { _Reverse = value; } }
-		public bool Lock { get { return _Lock; } set { _Lock = value; } }
+		public int Font { get => _Font;
+            set => _Font = value;
+        }
+		public int Skin { get => _Skin;
+            set => _Skin = value;
+        }
+		public bool Phantom { get => _Phantom;
+            set => _Phantom = value;
+        }
+		public bool Stealth { get => _Stealth;
+            set => _Stealth = value;
+        }
+		public bool Reverse { get => _Reverse;
+            set => _Reverse = value;
+        }
+		public bool Lock { get => _Lock;
+            set => _Lock = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-		public int Rows { get { return _Dimensions.X; } set { _Dimensions.X = value; } }
+		public int Rows { get => _Dimensions.X;
+            set => _Dimensions.X = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-		public int Collumns { get { return _Dimensions.Y; } set { _Dimensions.Y = value; } }
+		public int Collumns { get => _Dimensions.Y;
+            set => _Dimensions.Y = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-		public List<string> Entries { get { return _Entries; } set { _Entries = value; } }
+		public List<string> Entries { get => _Entries;
+            set => _Entries = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-		public List<Point3D> Points { get { return _Points; } set { _Points = value; } }
+		public List<Point3D> Points { get => _Points;
+            set => _Points = value;
+        }
 
         [Attachable]
 		public ToolbarInfo() 

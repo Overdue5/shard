@@ -7,17 +7,11 @@ namespace Server.Engines.Craft
 {
 	public class DefBlacksmithy : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get	{ return SkillName.Blacksmith;	}
-		}
+		public override SkillName MainSkill => SkillName.Blacksmith;
 
-		public override int GumpTitleNumber
-		{
-			get { return 1044002; } // <CENTER>BLACKSMITHY MENU</CENTER>
-		}
+        public override int GumpTitleNumber => 1044002; // <CENTER>BLACKSMITHY MENU</CENTER>
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
 		public static CraftSystem CraftSystem
 		{
@@ -30,9 +24,9 @@ namespace Server.Engines.Craft
 			}
 		}
 
-        public override CraftECA ECA { get { return CraftECA.CustomChance; } }
+        public override CraftECA ECA => CraftECA.CustomChance;
 
-		public override double GetChanceAtMin( CraftItem item )
+        public override double GetChanceAtMin( CraftItem item )
 		{
 			return 0.0; // 0%
 		}

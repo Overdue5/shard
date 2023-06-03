@@ -9,15 +9,15 @@ namespace Knives.TownHouses
 	public class TownHouse : VersionHouse
 	{
 		private static readonly ArrayList s_TownHouses = new ArrayList();
-		public static ArrayList AllTownHouses{ get{ return s_TownHouses; } }
+		public static ArrayList AllTownHouses => s_TownHouses;
 
-		private TownHouseSign c_Sign;
+        private TownHouseSign c_Sign;
 		private Item c_Hanger;
         private readonly ArrayList c_Sectors = new ArrayList();
 
-        public TownHouseSign ForSaleSign { get { return c_Sign; } }
+        public TownHouseSign ForSaleSign => c_Sign;
 
-		public Item Hanger
+        public Item Hanger
 		{
 			get
 			{
@@ -31,8 +31,8 @@ namespace Knives.TownHouses
 
 				return c_Hanger;
 			}
-			set{ c_Hanger = value; }
-		}
+			set => c_Hanger = value;
+        }
 
 		public TownHouse( Mobile m, TownHouseSign sign, int locks, int secures ) : base( 0x1DD6 | 0x4000, m, locks, secures )
 		{
@@ -43,9 +43,9 @@ namespace Knives.TownHouses
 			s_TownHouses.Add( this );
 		}
 
-        public override Point3D BaseBanLocation { get { return Point3D.Zero; } }
+        public override Point3D BaseBanLocation => Point3D.Zero;
 
-		public void InitSectorDefinition()
+        public void InitSectorDefinition()
 		{
             if (c_Sign == null || c_Sign.Blocks.Count == 0)
                 return;

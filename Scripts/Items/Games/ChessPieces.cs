@@ -2,10 +2,7 @@ namespace Server.Items
 {
 	public class PieceWhiteKing : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "white king"; }
-		}
+		public override string DefaultName => "white king";
 
         public PieceWhiteKing(BaseGameBoard board)
             : base(0x3587, board)
@@ -31,10 +28,7 @@ namespace Server.Items
 
 	public class PieceBlackKing : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "black king"; }
-		}
+		public override string DefaultName => "black king";
 
         public PieceBlackKing(BaseGameBoard board)
             : base(0x358E, board)
@@ -60,10 +54,7 @@ namespace Server.Items
 
 	public class PieceWhiteQueen : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "white queen"; }
-		}
+		public override string DefaultName => "white queen";
 
         public PieceWhiteQueen(BaseGameBoard board)
             : base(0x358A, board)
@@ -89,10 +80,7 @@ namespace Server.Items
 
 	public class PieceBlackQueen : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "black queen"; }
-		}
+		public override string DefaultName => "black queen";
 
         public PieceBlackQueen(BaseGameBoard board)
             : base(0x3591, board)
@@ -118,10 +106,7 @@ namespace Server.Items
 
 	public class PieceWhiteRook : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "white rook"; }
-		}
+		public override string DefaultName => "white rook";
 
         public PieceWhiteRook(BaseGameBoard board)
             : base(0x3586, board)
@@ -147,10 +132,7 @@ namespace Server.Items
 
 	public class PieceBlackRook : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "black rook"; }
-		}
+		public override string DefaultName => "black rook";
 
         public PieceBlackRook(BaseGameBoard board)
             : base(0x358D, board)
@@ -176,10 +158,7 @@ namespace Server.Items
 
 	public class PieceWhiteBishop : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "white bishop"; }
-		}
+		public override string DefaultName => "white bishop";
 
         public PieceWhiteBishop(BaseGameBoard board)
             : base(0x3585, board)
@@ -205,10 +184,7 @@ namespace Server.Items
 
 	public class PieceBlackBishop : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "black bishop"; }
-		}
+		public override string DefaultName => "black bishop";
 
         public PieceBlackBishop(BaseGameBoard board)
             : base(0x358C, board)
@@ -234,10 +210,7 @@ namespace Server.Items
 
 	public class PieceWhiteKnight : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "white knight"; }
-		}
+		public override string DefaultName => "white knight";
 
         public PieceWhiteKnight(BaseGameBoard board)
             : base(0x3588, board)
@@ -263,10 +236,7 @@ namespace Server.Items
 
 	public class PieceBlackKnight : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "black knight"; }
-		}
+		public override string DefaultName => "black knight";
 
         public PieceBlackKnight(BaseGameBoard board)
             : base(0x358F, board)
@@ -292,10 +262,7 @@ namespace Server.Items
 
 	public class PieceWhitePawn : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "white pawn"; }
-		}
+		public override string DefaultName => "white pawn";
 
         public PieceWhitePawn(BaseGameBoard board)
             : base(0x3589, board)
@@ -321,10 +288,7 @@ namespace Server.Items
 
 	public class PieceBlackPawn : BasePiece
 	{
-		public override string DefaultName
-		{
-			get { return "black pawn"; }
-		}
+		public override string DefaultName => "black pawn";
 
         public PieceBlackPawn(BaseGameBoard board)
             : base(0x3590, board)

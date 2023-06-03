@@ -4,10 +4,10 @@ namespace Server.Items
 {
 	public class StrengthPotion : BaseStrengthPotion
 	{
-		public override int StrOffset{ get{ return 8; } }
-		public override TimeSpan Duration{ get{ return TimeSpan.FromMinutes( 2 ); } }
+		public override int StrOffset => 8;
+        public override TimeSpan Duration => TimeSpan.FromMinutes( 2 );
 
-		[Constructable]
+        [Constructable]
 		public StrengthPotion() : base( PotionEffect.Strength )
 		{
             Name = "Strength Potion";

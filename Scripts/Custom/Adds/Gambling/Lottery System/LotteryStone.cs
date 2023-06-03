@@ -93,135 +93,163 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LastTotalWins
-        { get { return m_LastTotalWins; } set { m_LastTotalWins = value; InvalidateProperties(); } }
+        { get => m_LastTotalWins;
+            set { m_LastTotalWins = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LastWin5
-        { get { return m_LastWin5; } set { m_LastWin5 = value; InvalidateProperties(); } }
+        { get => m_LastWin5;
+            set { m_LastWin5 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LastWin4
-        { get { return m_LastWin4; } set { m_LastWin4 = value; InvalidateProperties(); } }
+        { get => m_LastWin4;
+            set { m_LastWin4 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LastWin3
-        { get { return m_LastWin3; } set { m_LastWin3 = value; InvalidateProperties(); } }
+        { get => m_LastWin3;
+            set { m_LastWin3 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LastWin2
-        { get { return m_LastWin2; } set { m_LastWin2 = value; InvalidateProperties(); } }
+        { get => m_LastWin2;
+            set { m_LastWin2 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LastWin1
-        { get { return m_LastWin1; } set { m_LastWin1 = value; InvalidateProperties(); } }
+        { get => m_LastWin1;
+            set { m_LastWin1 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Split5
-        { get { return m_Split5; } set { m_Split5 = value; InvalidateProperties(); } }
+        { get => m_Split5;
+            set { m_Split5 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Split4
-        { get { return m_Split4; } set { m_Split4 = value; InvalidateProperties(); } }
+        { get => m_Split4;
+            set { m_Split4 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Split3
-        { get { return m_Split3; } set { m_Split3 = value; InvalidateProperties(); } }
+        { get => m_Split3;
+            set { m_Split3 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Split2
-        { get { return m_Split2; } set { m_Split2 = value; InvalidateProperties(); } }
+        { get => m_Split2;
+            set { m_Split2 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Split1
-        { get { return m_Split1; } set { m_Split1 = value; InvalidateProperties(); } }
+        { get => m_Split1;
+            set { m_Split1 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int WinAmount1
-        { get { return m_WinAmount1; } set { m_WinAmount1 = value; InvalidateProperties(); } }
+        { get => m_WinAmount1;
+            set { m_WinAmount1 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int WinAmount2
-        { get { return m_WinAmount2; } set { m_WinAmount2 = value; InvalidateProperties(); } }
+        { get => m_WinAmount2;
+            set { m_WinAmount2 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int WinAmount3
-        { get { return m_WinAmount3; } set { m_WinAmount3 = value; InvalidateProperties(); } }
+        { get => m_WinAmount3;
+            set { m_WinAmount3 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int WinAmount4
-        { get { return m_WinAmount4; } set { m_WinAmount4 = value; InvalidateProperties(); } }
+        { get => m_WinAmount4;
+            set { m_WinAmount4 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int WinAmount5
-        { get { return m_WinAmount5; } set { m_WinAmount5 = value; InvalidateProperties(); } }
+        { get => m_WinAmount5;
+            set { m_WinAmount5 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int ThreeWinner5
-        { get { return m_ThreeWinner5; } set { m_ThreeWinner5 = value; InvalidateProperties(); } }
+        { get => m_ThreeWinner5;
+            set { m_ThreeWinner5 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int ThreeWinner4
-        { get { return m_ThreeWinner4; } set { m_ThreeWinner4 = value; InvalidateProperties(); } }
+        { get => m_ThreeWinner4;
+            set { m_ThreeWinner4 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int ThreeWinner3
-        { get { return m_ThreeWinner3; } set { m_ThreeWinner3 = value; InvalidateProperties(); } }
+        { get => m_ThreeWinner3;
+            set { m_ThreeWinner3 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int ThreeWinner2
-        { get { return m_ThreeWinner2; } set { m_ThreeWinner2 = value; InvalidateProperties(); } }
+        { get => m_ThreeWinner2;
+            set { m_ThreeWinner2 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int ThreeWinner1
-        { get { return m_ThreeWinner1; } set { m_ThreeWinner1 = value; InvalidateProperties(); } }
+        { get => m_ThreeWinner1;
+            set { m_ThreeWinner1 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int TwoWinner5
-        { get { return m_TwoWinner5; } set { m_TwoWinner5 = value; InvalidateProperties(); } }
+        { get => m_TwoWinner5;
+            set { m_TwoWinner5 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int TwoWinner4
-        { get { return m_TwoWinner4; } set { m_TwoWinner4 = value; InvalidateProperties(); } }
+        { get => m_TwoWinner4;
+            set { m_TwoWinner4 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int TwoWinner3
-        { get { return m_TwoWinner3; } set { m_TwoWinner3 = value; InvalidateProperties(); } }
+        { get => m_TwoWinner3;
+            set { m_TwoWinner3 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int TwoWinner2
-        { get { return m_TwoWinner2; } set { m_TwoWinner2 = value; InvalidateProperties(); } }
+        { get => m_TwoWinner2;
+            set { m_TwoWinner2 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int TwoWinner1
-        { get { return m_TwoWinner1; } set { m_TwoWinner1 = value; InvalidateProperties(); } }
+        { get => m_TwoWinner1;
+            set { m_TwoWinner1 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int OneWinner5
-        { get { return m_OneWinner5; } set { m_OneWinner5 = value; InvalidateProperties(); } }
+        { get => m_OneWinner5;
+            set { m_OneWinner5 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int OneWinner4
-        { get { return m_OneWinner4; } set { m_OneWinner4 = value; InvalidateProperties(); } }
+        { get => m_OneWinner4;
+            set { m_OneWinner4 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int OneWinner3
-        { get { return m_OneWinner3; } set { m_OneWinner3 = value; InvalidateProperties(); } }
+        { get => m_OneWinner3;
+            set { m_OneWinner3 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int OneWinner2
-        { get { return m_OneWinner2; } set { m_OneWinner2 = value; InvalidateProperties(); } }
+        { get => m_OneWinner2;
+            set { m_OneWinner2 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int OneWinner1
-        { get { return m_OneWinner1; } set { m_OneWinner1 = value; InvalidateProperties(); } }
+        { get => m_OneWinner1;
+            set { m_OneWinner1 = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public DateTime DateOfNextDraw
         {
-            get
-            {
-                return m_DateOfNextDraw;
-            }
+            get => m_DateOfNextDraw;
             set
             {
                 m_DateOfNextDraw = value;
@@ -232,10 +260,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int JackpotAmount
         {
-            get
-            {
-                return m_JackpotAmount;
-            }
+            get => m_JackpotAmount;
             set
             {
                 m_JackpotAmount = value;
@@ -246,10 +271,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryGoldTaken
         {
-            get
-            {
-                return m_LotteryGoldTaken;
-            }
+            get => m_LotteryGoldTaken;
             set
             {
                 m_LotteryGoldTaken = value;
@@ -260,10 +282,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int NextTicketNumber
         {
-            get
-            {
-                return m_NextTicketNumber;
-            }
+            get => m_NextTicketNumber;
             set
             {
                 m_NextTicketNumber = value;
@@ -274,10 +293,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int RollOverAmount
         {
-            get
-            {
-                return m_RollOverAmount;
-            }
+            get => m_RollOverAmount;
             set
             {
                 m_RollOverAmount = value;
@@ -288,10 +304,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int HighestEverJackpot
         {
-            get
-            {
-                return m_HighestEverJackpot;
-            }
+            get => m_HighestEverJackpot;
             set
             {
                 m_HighestEverJackpot = value;
@@ -302,10 +315,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int PriceToPlay
         {
-            get
-            {
-                return m_PriceToPlay;
-            }
+            get => m_PriceToPlay;
             set
             {
                 m_PriceToPlay = value;
@@ -316,11 +326,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int VisitsToStone
 		{
-			get
-			{
-                return m_VisitsToStone;
-			}
-			set
+			get => m_VisitsToStone;
+            set
 			{
                 m_VisitsToStone = value;
 				InvalidateProperties();
@@ -777,35 +784,38 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryTicketValue
-        { get { return m_LotteryTicketValue; } set { m_LotteryTicketValue = value; InvalidateProperties(); } }
+        { get => m_LotteryTicketValue;
+            set { m_LotteryTicketValue = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryNumber5Ticket
-        { get { return m_LotteryNumber5Ticket; } set { m_LotteryNumber5Ticket = value; InvalidateProperties(); } }
+        { get => m_LotteryNumber5Ticket;
+            set { m_LotteryNumber5Ticket = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryNumber4Ticket
-        { get { return m_LotteryNumber4Ticket; } set { m_LotteryNumber4Ticket = value; InvalidateProperties(); } }
+        { get => m_LotteryNumber4Ticket;
+            set { m_LotteryNumber4Ticket = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryNumber3Ticket
-        { get { return m_LotteryNumber3Ticket; } set { m_LotteryNumber3Ticket = value; InvalidateProperties(); } }
+        { get => m_LotteryNumber3Ticket;
+            set { m_LotteryNumber3Ticket = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryNumber2Ticket
-        { get { return m_LotteryNumber2Ticket; } set { m_LotteryNumber2Ticket = value; InvalidateProperties(); } }
+        { get => m_LotteryNumber2Ticket;
+            set { m_LotteryNumber2Ticket = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public int LotteryNumber1Ticket
-        { get { return m_LotteryNumber1Ticket; } set { m_LotteryNumber1Ticket = value; InvalidateProperties(); } }
+        { get => m_LotteryNumber1Ticket;
+            set { m_LotteryNumber1Ticket = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public string TicketStatus
         {
-            get
-            {
-                return m_TicketStatus;
-            }
+            get => m_TicketStatus;
             set
             {
                 m_TicketStatus = value;
@@ -816,10 +826,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public DateTime DateOfDrawOnTickets
         {
-            get
-            {
-                return m_DateOfDrawOnTickets;
-            }
+            get => m_DateOfDrawOnTickets;
             set
             {
                 m_DateOfDrawOnTickets = value;
@@ -830,10 +837,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Administrator)]
         public int TicketNumbers
         {
-            get
-            {
-                return m_TicketNumbers;
-            }
+            get => m_TicketNumbers;
             set
             {
                 m_TicketNumbers = value;

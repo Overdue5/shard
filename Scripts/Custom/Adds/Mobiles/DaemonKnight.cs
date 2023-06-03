@@ -43,27 +43,15 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool CanRummageCorpses
-		{
-			get { return false; }
-		}
+		public override bool CanRummageCorpses => false;
 
-		public override Poison PoisonImmune
-		{
-			get { return Poison.Deadly; }
-		}
+        public override Poison PoisonImmune => Poison.Deadly;
 
-		public override int TreasureMapLevel
-		{
-			get { return 5; }
-		}
+        public override int TreasureMapLevel => 5;
 
-		public override int Meat
-		{
-			get { return 2; }
-		}
+        public override int Meat => 2;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich);
 			AddLoot( LootPack.MedScrolls, 2 );

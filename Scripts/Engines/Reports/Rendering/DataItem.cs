@@ -50,9 +50,9 @@ namespace Server.Engines.Reports
 	{
 		public DataItem this[int index] 
 		{
-			get{ return (DataItem)(List[index]); }
-			set{ List[index] = value; }
-		}
+			get => (DataItem)(List[index]);
+            set => List[index] = value;
+        }
  
 		public int Add(DataItem value) 
 		{

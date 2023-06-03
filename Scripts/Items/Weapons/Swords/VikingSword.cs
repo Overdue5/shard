@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		public override int AosStrengthReq{ get{ return 40; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 17; } }
-		public override int AosSpeed{ get{ return 28; } }
+		public override int AosStrengthReq => 40;
+        public override int AosMinDamage => 15;
+        public override int AosMaxDamage => 17;
+        public override int AosSpeed => 28;
 
-		public override int OldStrengthReq{ get{ return 40; } }
-		public override int OldMinDamage{ get{ return 12; } }
-		public override int OldMaxDamage{ get{ return 35; } }
-		public override int OldSpeed{ get{ return 442; } }
+        public override int OldStrengthReq => 40;
+        public override int OldMinDamage => 12;
+        public override int OldMaxDamage => 35;
+        public override int OldSpeed => 442;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 100; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 100;
 
-		[Constructable]
+        [Constructable]
 		public VikingSword() : base( 0x13B9 )
 		{
 			Weight = 6.0;

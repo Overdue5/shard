@@ -36,10 +36,8 @@ namespace Server.Items
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int ItemID {
-			get {
-				return base.ItemID;
-			}
-			set {
+			get => base.ItemID;
+            set {
 				if ( base.ItemID != value ) {
 					Map facet = ( this.Parent == null ? this.Map : null );
 
@@ -99,15 +97,9 @@ namespace Server.Items
 			return 22;
 		}
 
-		public virtual MultiComponentList Components
-		{
-			get
-			{
-				return MultiData.GetComponents( ItemID );
-			}
-		}
+		public virtual MultiComponentList Components => MultiData.GetComponents( ItemID );
 
-		public virtual bool Contains( Point2D p )
+        public virtual bool Contains( Point2D p )
 		{
 			return Contains( p.m_X, p.m_Y );
 		}

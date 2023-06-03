@@ -30,8 +30,8 @@ namespace Arya.Chess
 
 		public bool AllowSpectators
 		{
-			get { return m_AllowSpectators; }
-			set
+			get => m_AllowSpectators;
+            set
 			{
 				if ( value != m_AllowSpectators )
 				{

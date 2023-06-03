@@ -80,16 +80,16 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool ClearAllPins
 		{
-			get { return false; }
-			set { if(value) ClearPins(); }
+			get => false;
+            set { if(value) ClearPins(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int PinRemove
 		{
-			set { RemovePin(value); }
-			get { return 0; }
-		}
+			set => RemovePin(value);
+            get => 0;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile ShowTo
@@ -102,8 +102,8 @@ namespace Server.Items
 					OnDoubleClick(value);
 				}
 			}
-			get { return null; }
-		}
+			get => null;
+        }
 
 
 		[Constructable]
@@ -112,7 +112,7 @@ namespace Server.Items
 			SetDisplay( 0, 0, 5119, 4095, 400, 400 );
 		}
 
-		public override int LabelNumber{ get{ return 1025355; } } // map
+		public override int LabelNumber => 1025355; // map
 
 		public SimpleMap( Serial serial ) : base( serial )
 		{

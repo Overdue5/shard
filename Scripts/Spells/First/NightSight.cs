@@ -5,10 +5,10 @@ namespace Server.Spells.First
 {
     public class NightSightSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.First; } }
-        public override int Sound { get { return 0x1E3; } }
+        public override SpellCircle Circle => SpellCircle.First;
+        public override int Sound => 0x1E3;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Night Sight", "In Lor",
 				263,
 				9031,

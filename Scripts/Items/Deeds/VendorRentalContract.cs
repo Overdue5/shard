@@ -10,7 +10,7 @@ namespace Server.Items
 {
 	public class VendorRentalContract : Item
 	{
-		public override int LabelNumber{ get{ return 1062332; } } // a vendor rental contract
+		public override int LabelNumber => 1062332; // a vendor rental contract
 
 		private VendorRentalDuration m_Duration;
 		private int m_Price;
@@ -21,8 +21,8 @@ namespace Server.Items
 
 		public VendorRentalDuration Duration
 		{
-			get{ return m_Duration; }
-			set
+			get => m_Duration;
+            set
 			{
 				if ( value != null )
 					m_Duration = value;
@@ -32,21 +32,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Price
 		{
-			get{ return m_Price; }
-			set{ m_Price = value; }
-		}
+			get => m_Price;
+            set => m_Price = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool LandlordRenew
 		{
-			get{ return m_LandlordRenew; }
-			set{ m_LandlordRenew = value; }
-		}
+			get => m_LandlordRenew;
+            set => m_LandlordRenew = value;
+        }
 
 		public Mobile Offeree
 		{
-			get{ return m_Offeree; }
-			set
+			get => m_Offeree;
+            set
 			{
 				if ( m_OfferExpireTimer != null )
 				{

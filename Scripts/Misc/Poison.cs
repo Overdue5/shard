@@ -69,10 +69,10 @@ namespace Server
             AddDelay = new TimeSpan(0);
         }
 
-		public override string Name{ get{ return m_Name; } }
-		public override int Level{ get{ return m_Level; } }
+		public override string Name => m_Name;
+        public override int Level => m_Level;
 
-		public class PoisonTimer : Timer
+        public class PoisonTimer : Timer
 		{
 			private readonly PoisonImpl m_Poison;
 			private readonly Mobile m_Mobile;
@@ -80,7 +80,9 @@ namespace Server
 			private int m_LastDamage;
 			private int m_Index;
 
-			public Mobile From{ get{ return m_From; } set{ m_From = value; } }
+			public Mobile From{ get => m_From;
+                set => m_From = value;
+            }
 
 			public PoisonTimer( Mobile m, PoisonImpl p ) : base( p.m_Delay + p.AddDelay, p.m_Interval )
 			{

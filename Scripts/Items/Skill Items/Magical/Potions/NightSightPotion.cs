@@ -17,7 +17,7 @@ namespace Server.Items
         {
         }
 
-        public override double PotionDelay { get { return 8.0; } }
+        public override double PotionDelay => 8.0;
 
         public override void Serialize(GenericWriter writer)
         {

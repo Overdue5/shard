@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class Cauldron : Item
 	{
-		public override string DefaultName
-		{
-			get { return "a cauldron"; }
-		}
+		public override string DefaultName => "a cauldron";
 
-		[Constructable]
+        [Constructable]
 		public Cauldron() : base( 0x9ED )
 		{
 			Weight = 1.0;

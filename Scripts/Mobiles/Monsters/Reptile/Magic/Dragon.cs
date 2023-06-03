@@ -58,12 +58,14 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomMinMax(2, 3)));
 		}
 
-	    public override bool ReacquireOnMovement{ get{ return !Controlled; } }
-		public override bool HasBreath{ get{ return true; } } // fire breath enabled
+	    public override bool ReacquireOnMovement => !Controlled;
+
+        public override bool HasBreath => true; // fire breath enabled
 //		public override bool AutoDispel{ get{ return !Controlled; } }
-		public override int TreasureMapLevel{ get{ return 4; } }
-		public override int Meat{ get{ return 19; } }
-		public override int Hides{ get{ return 20; } }
+		public override int TreasureMapLevel => 4;
+        public override int Meat => 19;
+        public override int Hides => 20;
+
         public override HideType HideType
         {
             get
@@ -80,12 +82,12 @@ namespace Server.Mobiles
                 return HideType.Regular;
             }
         }
-		public override int Scales{ get{ return 7; } }
-		public override ScaleType ScaleType{ get{ return ( Body == 12 ? ScaleType.Yellow : ScaleType.Red ); } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Meat; } }
-		public override bool CanAngerOnTame { get { return true; } }
+		public override int Scales => 7;
+        public override ScaleType ScaleType => ( Body == 12 ? ScaleType.Yellow : ScaleType.Red );
+        public override FoodType FavoriteFood => FoodType.Meat;
+        public override bool CanAngerOnTame => true;
 
-		public Dragon( Serial serial ) : base( serial )
+        public Dragon( Serial serial ) : base( serial )
 		{
 		}
 

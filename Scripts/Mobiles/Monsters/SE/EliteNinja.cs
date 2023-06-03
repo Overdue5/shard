@@ -2,9 +2,9 @@ namespace Server.Mobiles
 {
 	public class EliteNinja : BaseCreature
 	{
-		public override bool ClickTitle{ get{ return false; } }
+		public override bool ClickTitle => false;
 
-		[Constructable]
+        [Constructable]
 		public EliteNinja() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			SpeechHue = Utility.RandomDyedHue();
@@ -84,17 +84,17 @@ namespace Server.Mobiles
 			c.DropItem( new BookOfNinjitsu() );
 		}*/
 
-		public override bool BardImmune{ get{ return true; } }
+		public override bool BardImmune => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );
 			AddLoot( LootPack.Gems, 2 );
 		}
 		
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public EliteNinja( Serial serial ) : base( serial )
+        public EliteNinja( Serial serial ) : base( serial )
 		{
 		}
 

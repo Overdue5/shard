@@ -74,10 +74,10 @@ namespace Server.Mobiles
             PackGold(200, 300);
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 4; } }
+		public override bool CanRummageCorpses => true;
+        public override int TreasureMapLevel => 4;
 
-		/* TODO: Angry Fire
+        /* TODO: Angry Fire
 		 * cliloc 1070823
 		 * Action: 4 4 1 true false 1
 		 * Damage: 50-85, 60 phys, 20 fire, 20 nrgy according to the guide

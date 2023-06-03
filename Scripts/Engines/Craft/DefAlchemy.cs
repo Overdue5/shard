@@ -6,17 +6,11 @@ namespace Server.Engines.Craft
 {
 	public class DefAlchemy : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get	{ return SkillName.Alchemy;	}
-		}
+		public override SkillName MainSkill => SkillName.Alchemy;
 
-		public override int GumpTitleNumber
-		{
-			get { return 1044001; } // <CENTER>ALCHEMY MENU</CENTER>
-		}
+        public override int GumpTitleNumber => 1044001; // <CENTER>ALCHEMY MENU</CENTER>
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
 		public static CraftSystem CraftSystem
 		{

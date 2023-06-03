@@ -89,8 +89,8 @@ namespace Server.Engines.Quests.Collector
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Quantity
 		{
-			get { return m_Quantity; }
-			set
+			get => m_Quantity;
+            set
 			{
 				if ( value <= 1 )
 					m_Quantity = 1;
@@ -113,13 +113,13 @@ namespace Server.Engines.Quests.Collector
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string StatueName
 		{
-			get { return m_StatueName; }
-			set { m_StatueName = value; InvalidateProperties(); }
+			get => m_StatueName;
+            set { m_StatueName = value; InvalidateProperties(); }
 		}
 
-		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public Obsidian() : base( 0x1EA7 )
 		{
 			Hue = 0x497;

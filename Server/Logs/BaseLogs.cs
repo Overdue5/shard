@@ -62,7 +62,9 @@ namespace Server
         private string m_baseDir;
         protected bool m_Enabled = true;
         public int MaxLogCount = 2000;
-        public bool Enabled { get { return m_Enabled; } set { m_Enabled = value; } }
+        public bool Enabled { get => m_Enabled;
+            set => m_Enabled = value;
+        }
         protected string LogsDirName { get; set; }
         protected string LogsName { get; set; }
         protected Dictionary<Serial, List<LogInfo>> LogDict;

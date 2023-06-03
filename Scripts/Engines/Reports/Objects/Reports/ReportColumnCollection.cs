@@ -23,14 +23,8 @@ namespace Server.Engines.Reports
         /// </summary>
         public ReportColumn this[int index]
         {
-            get
-            {
-                return ((ReportColumn)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
+            get => ((ReportColumn)(List[index]));
+            set => List[index] = value;
         }
 
 		public int Add( string width, string align )

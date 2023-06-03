@@ -7,13 +7,13 @@ namespace Server.Mobiles
 	[CorpseName( "A Charred Corpse" )]
 	public class FireLord : BaseCreature
 	{
-        public override bool ReacquireOnMovement { get { return true; } }
-        public override bool BardImmune { get { return !Core.SE; } }
-        public override bool Unprovokable { get { return Core.SE; } }
-        public override bool Uncalmable { get { return Core.SE; } }
-        public override bool AlwaysMurderer { get { return true; } }
-        public override bool HasBreath { get { return true; } } 
-        public override int BreathFireDamage { get { return 20; } }
+        public override bool ReacquireOnMovement => true;
+        public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
+        public override bool Uncalmable => Core.SE;
+        public override bool AlwaysMurderer => true;
+        public override bool HasBreath => true;
+        public override int BreathFireDamage => 20;
 
         public override WeaponAbility GetWeaponAbility()
         {
@@ -79,7 +79,7 @@ namespace Server.Mobiles
         {                       
             return base.OnBeforeDeath();
         }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override Poison PoisonImmune => Poison.Lethal;
 
 
         public override void OnDamagedBySpell(Mobile caster)

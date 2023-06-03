@@ -7,10 +7,10 @@ namespace Server.Spells.Eighth
 {
     public class ResurrectionSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Eighth; } }
-        public override int Sound { get { return 0x214; } }
+        public override SpellCircle Circle => SpellCircle.Eighth;
+        public override int Sound => 0x214;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Resurrection", "An Corp",
 				263,
 				9062,

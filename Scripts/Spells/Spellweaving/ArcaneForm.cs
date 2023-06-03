@@ -3,15 +3,15 @@ namespace Server.Spells.Spellweaving
 	public abstract class ArcaneForm : ArcanistSpell, ITransformationSpell
 	{
 		public abstract int Body { get; }
-		public virtual int Hue { get { return 0; } }
+		public virtual int Hue => 0;
 
-		public virtual int PhysResistOffset { get { return 0; } }
-		public virtual int FireResistOffset { get { return 0; } }
-		public virtual int ColdResistOffset { get { return 0; } }
-		public virtual int PoisResistOffset { get { return 0; } }
-		public virtual int NrgyResistOffset { get { return 0; } }
+        public virtual int PhysResistOffset => 0;
+        public virtual int FireResistOffset => 0;
+        public virtual int ColdResistOffset => 0;
+        public virtual int PoisResistOffset => 0;
+        public virtual int NrgyResistOffset => 0;
 
-		public ArcaneForm( Mobile caster, Item scroll, SpellInfo info )	: base( caster, scroll, info )
+        public ArcaneForm( Mobile caster, Item scroll, SpellInfo info )	: base( caster, scroll, info )
 		{
 		}
 
@@ -30,12 +30,9 @@ namespace Server.Spells.Spellweaving
 			FinishSequence();
 		}
 
-		public virtual double TickRate
-		{
-			get { return 1.0; }
-		}
+		public virtual double TickRate => 1.0;
 
-		public virtual void OnTick( Mobile m )
+        public virtual void OnTick( Mobile m )
 		{
 		}
 

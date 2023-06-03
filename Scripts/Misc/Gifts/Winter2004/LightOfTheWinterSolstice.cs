@@ -26,7 +26,9 @@ namespace Server.Items
 		private string m_Dipper;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Dipper{ get{ return m_Dipper; } set{ m_Dipper = value; } }
+		public string Dipper{ get => m_Dipper;
+            set => m_Dipper = value;
+        }
 
 		[Constructable]
 		public LightOfTheWinterSolstice() : this( m_StaffNames[Utility.Random( m_StaffNames.Length )] )

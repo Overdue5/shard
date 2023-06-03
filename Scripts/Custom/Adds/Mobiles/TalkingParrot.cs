@@ -61,69 +61,69 @@ namespace Server.Mobiles
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase1
 		{ 
-			get { return m_phrases[0]; } 
-			set { m_phrases[0] = value; }
-		}
+			get => m_phrases[0];
+            set => m_phrases[0] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase2
 		{ 
-			get { return m_phrases[1]; }
-			set { m_phrases[1] = value; }
-		}
+			get => m_phrases[1];
+            set => m_phrases[1] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase3
 		{ 
-			get { return m_phrases[2]; }
-			set { m_phrases[2] = value; }
-		}
+			get => m_phrases[2];
+            set => m_phrases[2] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase4
 		{ 
-			get { return m_phrases[3]; }
-			set { m_phrases[3] = value; }
-		}
+			get => m_phrases[3];
+            set => m_phrases[3] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase5
 		{ 
-			get { return m_phrases[4]; }
-			set { m_phrases[4] = value; }
-		}
+			get => m_phrases[4];
+            set => m_phrases[4] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase6
 		{ 
-			get { return m_phrases[5]; }
-			set { m_phrases[5] = value; }
-		}
+			get => m_phrases[5];
+            set => m_phrases[5] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase7
 		{ 
-			get { return m_phrases[6]; }
-			set { m_phrases[6] = value; }
-		}
+			get => m_phrases[6];
+            set => m_phrases[6] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase8
 		{ 
-			get { return m_phrases[7]; }
-			set { m_phrases[7] = value; }
-		}
+			get => m_phrases[7];
+            set => m_phrases[7] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase9
 		{ 
-			get { return m_phrases[8]; }
-			set { m_phrases[8] = value; }
-		}
+			get => m_phrases[8];
+            set => m_phrases[8] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase10
 		{ 
-			get { return m_phrases[9]; }
-			set { m_phrases[9] = value; }
-		}
+			get => m_phrases[9];
+            set => m_phrases[9] = value;
+        }
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public string Phrase11
 		{ 
-			get { return m_phrases[10]; }
-			set { m_phrases[10] = value; }
-		}
+			get => m_phrases[10];
+            set => m_phrases[10] = value;
+        }
 
 		public override void OnSpeech( SpeechEventArgs e )
 		{
@@ -218,13 +218,13 @@ namespace Server.Mobiles
 		private double m_SpeakBonus = 0.0;
 		private double m_LearnBonus = 0.0;
 
-		public override int Meat{ get{ return 1; } }
-		public override MeatType MeatType{ get{ return MeatType.Bird; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
-		public override int Feathers{ get{ return 5; } }
+		public override int Meat => 1;
+        public override MeatType MeatType => MeatType.Bird;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
+        public override int Feathers => 5;
 
 
-		public override double GetControlChance( Mobile m, bool useBaseSkill )
+        public override double GetControlChance( Mobile m, bool useBaseSkill )
 		{
 			return 1.0;
 		}

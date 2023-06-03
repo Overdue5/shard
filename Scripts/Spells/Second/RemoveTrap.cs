@@ -5,10 +5,10 @@ namespace Server.Spells.Second
 {
     public class RemoveTrapSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Second; } }
-        public override int Sound { get { return 0x1F0; } }
+        public override SpellCircle Circle => SpellCircle.Second;
+        public override int Sound => 0x1F0;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Remove Trap", "An Jux",
 				263,
 				9001,

@@ -30,22 +30,22 @@ namespace Server.Misc
 				typeof( LeurociansMempoOfFortune ), typeof( LesserPigmentsOfTokuno ), typeof( MetalPigmentsOfTokuno ), typeof( ChestOfHeirlooms )
  			};
 		
-		public static Type[] LesserArtifactsTotal { get { return m_LesserArtifactsTotal; } }
-		
-		private static TreasuresOfTokunoEra _DropEra = TreasuresOfTokunoEra.None;
+		public static Type[] LesserArtifactsTotal => m_LesserArtifactsTotal;
+
+        private static TreasuresOfTokunoEra _DropEra = TreasuresOfTokunoEra.None;
 		private static TreasuresOfTokunoEra _RewardEra = TreasuresOfTokunoEra.ToTOne;
 		
 		public static TreasuresOfTokunoEra DropEra
 		{
-			get { return _DropEra; }
-			set { _DropEra = value; }
-		}
+			get => _DropEra;
+            set => _DropEra = value;
+        }
 		
 		public static TreasuresOfTokunoEra RewardEra
 		{
-			get { return _RewardEra; }
-			set { _RewardEra = value; }
-		}
+			get => _RewardEra;
+            set => _RewardEra = value;
+        }
 
 		private static Type[][] m_LesserArtifacts = new Type[][]
 		{
@@ -77,12 +77,9 @@ namespace Server.Misc
 			}
 		};
 
-		public static Type[] LesserArtifacts 
-		{ 
-			get { return m_LesserArtifacts[(int)RewardEra-1]; }
-		}
+		public static Type[] LesserArtifacts => m_LesserArtifacts[(int)RewardEra-1];
 
-		private static Type[][] m_GreaterArtifacts = null;
+        private static Type[][] m_GreaterArtifacts = null;
 		
 		public static Type[] GreaterArtifacts
 		{
@@ -186,16 +183,16 @@ namespace Server.Mobiles
 {
 	public class IharaSoko : BaseVendor
 	{
-		public override bool IsActiveVendor { get { return false; } }
-		public override bool IsInvulnerable { get { return true; } }
-		public override bool DisallowAllMoves { get { return true; } }
-		public override bool ClickTitle { get { return true; } }
-		public override bool CanTeach { get { return false; } }
+		public override bool IsActiveVendor => false;
+        public override bool IsInvulnerable => true;
+        public override bool DisallowAllMoves => true;
+        public override bool ClickTitle => true;
+        public override bool CanTeach => false;
 
         protected List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
-		
-		public override void InitSBInfo()
+        protected override List<SBInfo> SBInfos => m_SBInfos;
+
+        public override void InitSBInfo()
 		{
 		}
 
@@ -299,9 +296,9 @@ namespace Server.Gumps
 
 		public Item Item
 		{
-			get { return m_Item; }
-			set { m_Item = value; }
-		}
+			get => m_Item;
+            set => m_Item = value;
+        }
 
 		public ItemTileButtonInfo( Item i ) : base( i.ItemID, i.Hue, ((i.Name == null || i.Name.Length <= 0)? (TextDefinition)i.LabelNumber : (TextDefinition)i.Name ) )
 		{
@@ -409,9 +406,9 @@ namespace Server.Gumps
 		{
 			private Type m_Type;
 
-			public Type Type { get { return m_Type; } }
+			public Type Type => m_Type;
 
-			public TypeTileButtonInfo( Type type, int itemID, int hue, TextDefinition label, int localizedToolTip ) : base( itemID, hue, label, localizedToolTip )
+            public TypeTileButtonInfo( Type type, int itemID, int hue, TextDefinition label, int localizedToolTip ) : base( itemID, hue, label, localizedToolTip )
 			{
 				m_Type = type;
 			}
@@ -431,16 +428,10 @@ namespace Server.Gumps
 
 			public PigmentType Pigment
 			{
-				get
-				{
-					return m_Pigment;
-				}
+				get => m_Pigment;
 
-				set
-				{
-					m_Pigment = value;
-				}
-			}
+                set => m_Pigment = value;
+            }
 
 			public PigmentsTileButtonInfo( PigmentType p ) : base( 0xEFF, PigmentsOfTokuno.GetInfo( p )[0], PigmentsOfTokuno.GetInfo( p )[1] )
 			{
@@ -492,12 +483,9 @@ namespace Server.Gumps
 		};
 		#endregion
 
-		public static TypeTileButtonInfo[][] NormalRewards
-		{ 
-			get { return m_NormalRewards; }
-		}
+		public static TypeTileButtonInfo[][] NormalRewards => m_NormalRewards;
 
-		#region ToT Pigment Rewards Table
+        #region ToT Pigment Rewards Table
 		private static PigmentsTileButtonInfo[][] m_PigmentRewards = new PigmentsTileButtonInfo[][]
 		{
 			// ToT One Pigment Rewards
@@ -541,12 +529,9 @@ namespace Server.Gumps
 		};
 		#endregion
 
-		public static PigmentsTileButtonInfo[][] PigmentRewards
-		{ 
-			get { return m_PigmentRewards; }
-		}
+		public static PigmentsTileButtonInfo[][] PigmentRewards => m_PigmentRewards;
 
-		private Mobile m_Collector;
+        private Mobile m_Collector;
 
 		public ToTRedeemGump( Mobile collector, bool pigments ) : base( pigments ? 1070986 : 1070985, pigments ? (ImageTileButtonInfo[])m_PigmentRewards[(int)TreasuresOfTokuno.RewardEra-1] : (ImageTileButtonInfo[])m_NormalRewards[(int)TreasuresOfTokuno.RewardEra-1] )
 		{

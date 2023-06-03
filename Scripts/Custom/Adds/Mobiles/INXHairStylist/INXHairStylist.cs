@@ -61,7 +61,7 @@ namespace Server.INXHairStylist
         private CutTimer m_CutTimer;
 
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
         private static readonly Type[] typeofNormalHair = new Type[]
 		{
@@ -175,103 +175,103 @@ namespace Server.INXHairStylist
         [Description("The stylist chair location is set if you want the custom to be on a specific location while being cut. Target a chair to force the player to sit there.")]
         public Point3D StylistChairLoc
         {
-            get { return m_StylistChairLoc; }
-            set { m_StylistChairLoc = value; }
+            get => m_StylistChairLoc;
+            set => m_StylistChairLoc = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("The amount of time that the hair stylist will take to cut a customers hair.")]
         public TimeSpan CutTime
         {
-            get { return m_CutTime; }
-            set { m_CutTime = value; }
+            get => m_CutTime;
+            set => m_CutTime = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets the amount of time that goes in between each cut animation. The animation consist of scissor sounds and dropping hair residue.")]
         public TimeSpan CutAnimInterval
         {
-            get { return m_CutAnimInterval; }
-            set { m_CutAnimInterval = value; }
+            get => m_CutAnimInterval;
+            set => m_CutAnimInterval = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("The maxiumum amount of tiles that a player can walk while being cut, if \"MovementOption\" allows it. This is also the max allowed buy distance.")]
         public int MaxDistanceForCut
         {
-            get { return m_MaxDistanceForCut; }
-            set { m_MaxDistanceForCut = value; }
+            get => m_MaxDistanceForCut;
+            set => m_MaxDistanceForCut = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets weather or not females will be allowed to buy beard.")]
         public bool AllowFemalesBuyingBeard
         {
-            get { return m_AllowFemalesBuyingBeard; }
-            set { m_AllowFemalesBuyingBeard = value; }
+            get => m_AllowFemalesBuyingBeard;
+            set => m_AllowFemalesBuyingBeard = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets weather or not the scissor sounds will be played when cutting animation are issued.")]
         public bool PlayScissorSound
         {
-            get { return m_PlayScissorSound; }
-            set { m_PlayScissorSound = value; }
+            get => m_PlayScissorSound;
+            set => m_PlayScissorSound = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets weather or not the scissor sounds will be played when cutting animation are issued.")]
         public bool DropResidueHair
         {
-            get { return m_DropResidueHair; }
-            set { m_DropResidueHair = value; }
+            get => m_DropResidueHair;
+            set => m_DropResidueHair = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets weather or not a player is allowed to be mounted when buying a hair cut and while being cut.")]
         public bool NeedsToBeDismounted
         {
-            get { return m_NeedsToBeDismounted; }
-            set { m_NeedsToBeDismounted = value; }
+            get => m_NeedsToBeDismounted;
+            set => m_NeedsToBeDismounted = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets weather or not the hair stylist will freeze the customer while cutting their hair.")]
         public bool FreezeCustomer
         {
-            get { return m_FreezeCustomer; }
-            set { m_FreezeCustomer = value; }
+            get => m_FreezeCustomer;
+            set => m_FreezeCustomer = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("Sets weather or not a customer needs to be out of warmode when buying hair and while being cut.")]
         public bool NeedsPeaceForCut
         {
-            get { return m_NeedsPeaceForCut; }
-            set { m_NeedsPeaceForCut = value; }
+            get => m_NeedsPeaceForCut;
+            set => m_NeedsPeaceForCut = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("TODO NOTHING YET")]
         public bool UseExtensionSystem
         {
-            get { return m_UseExtensionSystem; }
-            set { m_UseExtensionSystem = value; }
+            get => m_UseExtensionSystem;
+            set => m_UseExtensionSystem = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("The movement rules the customer has to ahead too. You can choose to ignore all customer movement, ignore within \"MaxDistanceForCut\" and disallow all types.")]
         public MovementOptions MovementOption
         {
-            get { return m_MovementOption; }
-            set { m_MovementOption = value; }
+            get => m_MovementOption;
+            set => m_MovementOption = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         [Description("The ruleset on how to obtain a styling. Speech only, where the customer has to name the hairstyle, the buy menu, a custom gump and a mix of all three.")]
         public BuyStyle VendorBuyMethod
         {
-            get { return m_VendorBuyMethod; }
+            get => m_VendorBuyMethod;
             set 
             {
                 if (value == BuyStyle.BuyMenuAndSpeech || value == BuyStyle.GumpMenuAndSpeech || value == BuyStyle.SpeechOnly)
@@ -292,18 +292,16 @@ namespace Server.INXHairStylist
         [Description("Sets weather or not the hair stylist will hurt you when you move. Having this enabled will play a hurt sound and drop some blood.")]
         public bool HurtOnMove
         {
-            get { return m_HurtOnMove; }
-            set { m_HurtOnMove = value; }
+            get => m_HurtOnMove;
+            set => m_HurtOnMove = value;
         }
 
         #endregion
 
-        private bool AllowSpeechBuying
-        {
-            get { return (VendorBuyMethod == BuyStyle.SpeechOnly || 
-            VendorBuyMethod == BuyStyle.BuyMenuAndSpeech || 
-            VendorBuyMethod == BuyStyle.GumpMenuAndSpeech); }
-        }
+        private bool AllowSpeechBuying =>
+            (VendorBuyMethod == BuyStyle.SpeechOnly || 
+             VendorBuyMethod == BuyStyle.BuyMenuAndSpeech || 
+             VendorBuyMethod == BuyStyle.GumpMenuAndSpeech);
 
         [Constructable]
         public INXHairStylist() : base("the hair stylist")

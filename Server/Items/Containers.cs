@@ -29,48 +29,21 @@ namespace Server.Items
 		private Mobile m_Owner;
 		private bool m_Open;
         public static List<BankBox> AllBank = new List<BankBox>();
-		public override int DefaultMaxWeight
-		{
-			get
-			{
-                return 65535; //550; //Nasir - Bank Boxes set to IN1 values
-			}
-		}
+		public override int DefaultMaxWeight => 65535; //550; //Nasir - Bank Boxes set to IN1 values
 
-		public override int DefaultMaxItems
-		{
-			get
-			{
-                return 65535; //1000; //Nasir - Bank Boxes set to IN1 values
-			}
-		}
+        public override int DefaultMaxItems => 65535; //1000; //Nasir - Bank Boxes set to IN1 values
 
-		public override bool IsVirtualItem
-		{
-			get { return true; }
-		}
+        public override bool IsVirtualItem => true;
 
-		public BankBox( Serial serial ) : base( serial )
+        public BankBox( Serial serial ) : base( serial )
 		{
 		}
 
-		public Mobile Owner
-		{
-			get
-			{
-				return m_Owner;
-			}
-		}
+		public Mobile Owner => m_Owner;
 
-		public bool Opened
-		{
-			get
-			{
-				return m_Open;
-			}
-		}
+        public bool Opened => m_Open;
 
-		public void Open()
+        public void Open()
 		{
 			m_Open = true;
 
@@ -119,7 +92,9 @@ namespace Server.Items
 
 		private static bool m_SendRemovePacket;
 
-		public static bool SendDeleteOnClose{ get{ return m_SendRemovePacket; } set{ m_SendRemovePacket = value; } }
+		public static bool SendDeleteOnClose{ get => m_SendRemovePacket;
+            set => m_SendRemovePacket = value;
+        }
 
 		public void Close()
 		{

@@ -11,12 +11,9 @@ namespace Server.Mobiles
 				Title = "the gypsy animal herder";
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return Female ? VendorShoeType.ThighBoots : VendorShoeType.Boots; }
-		}
+		public override VendorShoeType ShoeType => Female ? VendorShoeType.ThighBoots : VendorShoeType.Boots;
 
-		public override int GetShoeHue()
+        public override int GetShoeHue()
 		{
 			return 0;
 		}

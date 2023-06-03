@@ -8,7 +8,9 @@ namespace Server.Regions
 	{
 		private Point3D m_EntranceLocation;
 
-	    public Point3D EntranceLocation{ get{ return m_EntranceLocation; } set{ m_EntranceLocation = value; } }
+	    public Point3D EntranceLocation{ get => m_EntranceLocation;
+            set => m_EntranceLocation = value;
+        }
 	    public Map EntranceMap { get; set; }
 
 	    public DungeonRegion( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )

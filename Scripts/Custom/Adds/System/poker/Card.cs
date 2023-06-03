@@ -10,13 +10,13 @@ namespace Server.Poker
 		private Suit m_Suit;
 		private Rank m_Rank;
 
-		public Suit Suit { get { return m_Suit; } }
-		public Rank Rank { get { return m_Rank; } }
+		public Suit Suit => m_Suit;
+        public Rank Rank => m_Rank;
 
-		public string Name { get { return String.Format( "{0} of {1}", m_Rank, m_Suit ).ToLower(); } }
-		public string RankString { get { return m_Rank.ToString().ToLower(); } }
+        public string Name => String.Format( "{0} of {1}", m_Rank, m_Suit ).ToLower();
+        public string RankString => m_Rank.ToString().ToLower();
 
-		public Card( Suit suit, Rank rank )
+        public Card( Suit suit, Rank rank )
 		{
 			m_Suit = suit;
 			m_Rank = rank;

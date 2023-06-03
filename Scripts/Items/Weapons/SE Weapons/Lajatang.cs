@@ -6,27 +6,27 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DefenseMastery; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.FrenziedWhirlwind; } }
 
-		public override int AosStrengthReq{ get{ return 65; } }
-		public override int AosMinDamage{ get{ return 16; } }
-		public override int AosMaxDamage{ get{ return 18; } }
-		public override int AosSpeed{ get{ return 32; } }
+		public override int AosStrengthReq => 65;
+        public override int AosMinDamage => 16;
+        public override int AosMaxDamage => 18;
+        public override int AosSpeed => 32;
 
-		public override int OldStrengthReq{ get{ return 65; } }
-		public override int OldMinDamage{ get{ return 16; } }
-		public override int OldMaxDamage{ get{ return 18; } }
-		public override int OldSpeed{ get{ return 290; } }
+        public override int OldStrengthReq => 65;
+        public override int OldMinDamage => 16;
+        public override int OldMaxDamage => 18;
+        public override int OldSpeed => 290;
 
-		public override int DefHitSound{ get{ return 0x232; } }
-		public override int DefMissSound{ get{ return 0x238; } }
+        public override int DefHitSound => 0x232;
+        public override int DefMissSound => 0x238;
 
-		public override int InitMinHits{ get{ return 90; } }
-		public override int InitMaxHits{ get{ return 95; } }
+        public override int InitMinHits => 90;
+        public override int InitMaxHits => 95;
 
-		public override SkillName DefSkill{ get{ return SkillName.Fencing; } }
-		public override WeaponType DefType{ get{ return WeaponType.Piercing; } }
-		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Pierce1H; } }
+        public override SkillName DefSkill => SkillName.Fencing;
+        public override WeaponType DefType => WeaponType.Piercing;
+        public override WeaponAnimation DefAnimation => WeaponAnimation.Pierce1H;
 
-		[Constructable]
+        [Constructable]
 		public Lajatang() : base( 0x27A7 )
 		{
 			Weight = 12.0;

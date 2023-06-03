@@ -37,23 +37,23 @@ namespace Server.Mobiles
 
 		private DateTime m_LastRestock;
 
-		public override bool CanTeach{ get{ return true; } }
+		public override bool CanTeach => true;
 
-        public override bool BardImmune { get { return true; } }
+        public override bool BardImmune => true;
 
-		public override bool PlayerRangeSensitive{ get{ return true; } }
+        public override bool PlayerRangeSensitive => true;
 
-		public virtual bool IsActiveVendor{ get{ return true; } }
-		public virtual bool IsActiveBuyer{ get{ return IsActiveVendor; } } // response to vendor SELL
-		public virtual bool IsActiveSeller{ get{ return IsActiveVendor; } } // repsonse to vendor BUY
+        public virtual bool IsActiveVendor => true;
+        public virtual bool IsActiveBuyer => IsActiveVendor; // response to vendor SELL
+		public virtual bool IsActiveSeller => IsActiveVendor; // repsonse to vendor BUY
 
-		public virtual NpcGuild NpcGuild{ get{ return NpcGuild.None; } }
+		public virtual NpcGuild NpcGuild => NpcGuild.None;
 
-		public virtual bool IsInvulnerable{ get{ return false; } }
+        public virtual bool IsInvulnerable => false;
 
-		public override bool ShowFameTitle{ get{ return false; } }
+        public override bool ShowFameTitle => false;
 
-		public virtual bool IsValidBulkOrder( Item item )
+        public virtual bool IsValidBulkOrder( Item item )
 		{
 			return false;
 		}
@@ -185,23 +185,11 @@ namespace Server.Mobiles
 
         public DateTime LastRestock
 		{
-			get
-			{
-				return m_LastRestock;
-			}
-			set
-			{
-				m_LastRestock = value;
-			}
-		}
+			get => m_LastRestock;
+            set => m_LastRestock = value;
+        }
 
-		public virtual TimeSpan RestockDelay
-		{
-			get
-			{
-                return m_RestockDelay;
-			}
-		}
+		public virtual TimeSpan RestockDelay => m_RestockDelay;
 
         private TimeSpan m_RestockDelay;
 
@@ -228,9 +216,9 @@ namespace Server.Mobiles
 
 		public abstract void InitSBInfo();
 
-		public virtual bool IsTokunoVendor{ get{ return ( Map == Map.Tokuno ); } }
+		public virtual bool IsTokunoVendor => ( Map == Map.Tokuno );
 
-		protected void LoadSBInfo()
+        protected void LoadSBInfo()
 		{
 			m_LastRestock = DateTime.UtcNow;
 
@@ -304,12 +292,9 @@ namespace Server.Mobiles
 			return Utility.RandomNeutralHue();
 		}
 
-		public virtual VendorShoeType ShoeType
-		{
-			get{ return VendorShoeType.Shoes; }
-		}
+		public virtual VendorShoeType ShoeType => VendorShoeType.Shoes;
 
-		public virtual int RandomBrightHue()
+        public virtual int RandomBrightHue()
 		{
 			if ( 0.1 > Utility.RandomDouble() )
 				return Utility.RandomList( 0x62, 0x71 );

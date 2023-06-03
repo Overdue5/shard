@@ -57,19 +57,16 @@ namespace Server.Mobiles
             PackGold(80);
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
+		public override bool BleedImmune => true;
+        public override Poison PoisonImmune => Poison.Regular;
 
-		public Zombie( Serial serial ) : base( serial )
+        public Zombie( Serial serial ) : base( serial )
 		{
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 );

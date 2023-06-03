@@ -6,10 +6,10 @@ namespace Server.Spells.Third
 {
     public class PoisonSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Third; } }
-        public override int Sound { get { return 517; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Third;
+        public override int Sound => 517;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Poison", "In Nox",
                 212,
 				9051,

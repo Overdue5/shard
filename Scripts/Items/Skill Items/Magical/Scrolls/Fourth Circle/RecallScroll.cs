@@ -2,7 +2,7 @@ namespace Server.Items
 {
     public class RecallScroll : SpellScroll
     {
-        public override int ManaCost { get { return 21; } }
+        public override int ManaCost => 21;
 
         [Constructable]
         public RecallScroll()

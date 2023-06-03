@@ -49,10 +49,10 @@ namespace Server.Mobiles
             PackGold(60, 180);
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
+		public override bool BleedImmune => true;
+        public override int TreasureMapLevel => 1;
 
-		public FleshGolem( Serial serial ) : base( serial )
+        public FleshGolem( Serial serial ) : base( serial )
 		{
 		}
 

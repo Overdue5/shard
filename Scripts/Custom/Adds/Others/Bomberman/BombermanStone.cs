@@ -51,26 +51,20 @@ namespace Server.Custom.Games
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Destructable
 		{ 
-			get{ return m_Destructable; } 
-			set
-			{ 
-				m_Destructable = value;
-			}
-		}
+			get => m_Destructable;
+            set => m_Destructable = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public BombermanUpgrade.BombermanUpgradeType UpgradeType
 		{ 
-			get{ return m_UpgradeType; } 
-			set
-			{ 
-				m_UpgradeType = value;
-			}
-		}
+			get => m_UpgradeType;
+            set => m_UpgradeType = value;
+        }
 
-		public override bool Decays{ get{ return false; } }
-		
-		public void destroy()
+		public override bool Decays => false;
+
+        public void destroy()
 		{
 			if(!m_Destructable)
 			{

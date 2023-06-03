@@ -45,10 +45,10 @@ namespace Server.Mobiles
             PackItem(new BatWing (2) );
 		}
 
-		public override int Meat{ get{ return 1; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Meat; } }
+		public override int Meat => 1;
+        public override FoodType FavoriteFood => FoodType.Meat;
 
-		public Mongbat( Serial serial ) : base( serial )
+        public Mongbat( Serial serial ) : base( serial )
 		{
 		}
 

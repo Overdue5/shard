@@ -3,9 +3,9 @@ namespace Server.Items
 	public abstract class BaseRefreshPotion : BasePotion
 	{
         //Loki/Rob edit
-        public override double PotionDelay { get { return 8.0; } }
+        public override double PotionDelay => 8.0;
 
-		public abstract int Refresh{ get; }
+        public abstract int Refresh{ get; }
 
 		public BaseRefreshPotion( PotionEffect effect ) : base( 0xF0B, effect )
 		{

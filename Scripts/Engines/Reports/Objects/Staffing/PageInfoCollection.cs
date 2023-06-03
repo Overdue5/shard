@@ -23,14 +23,8 @@ namespace Server.Engines.Reports
         /// </summary>
         public PageInfo this[int index]
         {
-            get
-            {
-                return ((PageInfo)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
+            get => ((PageInfo)(List[index]));
+            set => List[index] = value;
         }
         
         /// <summary>

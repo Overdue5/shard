@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	public class Butcher : BaseVendor 
 	{ 
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>(); 
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } } 
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Butcher() : base( "the butcher" ) 
 		{ 
 			SetSkill( SkillName.Anatomy, 45.0, 68.0 );

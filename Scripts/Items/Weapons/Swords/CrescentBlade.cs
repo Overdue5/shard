@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 
-		public override int AosStrengthReq{ get{ return 55; } }
-		public override int AosMinDamage{ get{ return 11; } }
-		public override int AosMaxDamage{ get{ return 14; } }
-		public override int AosSpeed{ get{ return 47; } }
+		public override int AosStrengthReq => 55;
+        public override int AosMinDamage => 11;
+        public override int AosMaxDamage => 14;
+        public override int AosSpeed => 47;
 
-		public override int OldStrengthReq{ get{ return 55; } }
-		public override int OldMinDamage{ get{ return 11; } }
-		public override int OldMaxDamage{ get{ return 14; } }
-		public override int OldSpeed{ get{ return 323; } }
+        public override int OldStrengthReq => 55;
+        public override int OldMinDamage => 11;
+        public override int OldMaxDamage => 14;
+        public override int OldSpeed => 323;
 
-		public override int InitMinHits{ get{ return 51; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 51;
+        public override int InitMaxHits => 80;
 
-		[Constructable]
+        [Constructable]
 		public CrescentBlade() : base( 0x26C1 )
 		{
 			Weight = 1.0;

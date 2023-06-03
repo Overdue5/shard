@@ -8,15 +8,15 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Price
         {
-            get { return m_Price; }
-            set { m_Price = value; }
+            get => m_Price;
+            set => m_Price = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public new int Amount
         {
-            get { return m_Amount; }
-            set { m_Amount = value; }
+            get => m_Amount;
+            set => m_Amount = value;
         }
 
         [Constructable]

@@ -9,16 +9,16 @@ namespace Server.Items
     {
 		private int m_SpellID;
 
-        protected virtual int PrecastManaCost { get { return 0; } }
+        protected virtual int PrecastManaCost => 0;
 
-        public virtual int ManaCost { get { return 0; } }
+        public virtual int ManaCost => 0;
 
-		public int SpellID { get { return m_SpellID; } }
+        public int SpellID => m_SpellID;
 
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return (Core.ML); } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => (Core.ML);
 
-		public SpellScroll( Serial serial ) : base( serial )
+        public SpellScroll( Serial serial ) : base( serial )
 		{
 		}
 

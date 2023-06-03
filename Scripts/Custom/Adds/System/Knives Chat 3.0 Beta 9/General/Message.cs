@@ -45,19 +45,16 @@ namespace Knives.Chat3
         private DateTime c_Received;
         private bool c_Read;
 
-        public Mobile From { get { return c_From; } }
-        public string Msg { get { return c_Msg; } }
-        public string Subject { get { return c_Subject; } }
-        public MsgType Type { get { return c_Type; } }
-        public DateTime Received { get { return c_Received; } }
+        public Mobile From => c_From;
+        public string Msg => c_Msg;
+        public string Subject => c_Subject;
+        public MsgType Type => c_Type;
+        public DateTime Received => c_Received;
 
         public bool Read
         {
-            get { return c_Read; }
-            set
-            {
-                c_Read = value;
-            }
+            get => c_Read;
+            set => c_Read = value;
         }
 
         public Message()

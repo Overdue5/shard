@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	[CorpseName( "a ratman archer corpse" )]
 	public class RatmanArcher : BaseCreature
 	{
-		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Ratman; } }
+		public override InhumanSpeech SpeechType => InhumanSpeech.Ratman;
 
-		[Constructable]
+        [Constructable]
 		public RatmanArcher() : base( AIType.AI_Archer, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "ratman" );
@@ -50,11 +50,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int Hides{ get{ return 8; } }
-        public override HideType HideType { get { return HideType.Regular; } }
+		public override bool CanRummageCorpses => true;
+        public override int Hides => 8;
+        public override HideType HideType => HideType.Regular;
 
-		public RatmanArcher( Serial serial ) : base( serial )
+        public RatmanArcher( Serial serial ) : base( serial )
 		{
 		}
 

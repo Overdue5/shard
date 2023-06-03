@@ -55,8 +55,8 @@ namespace Xanthos.ShrinkSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsStatuette
 		{
-			get { return m_IsStatuette; }
-			set
+			get => m_IsStatuette;
+            set
 			{
 				if ( null == ShrunkenPet )
 				{
@@ -79,29 +79,29 @@ namespace Xanthos.ShrinkSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IgnoreLockDown
 		{
-			get { return m_IgnoreLockDown; }
-			set { m_IgnoreLockDown = value; InvalidateProperties(); }
+			get => m_IgnoreLockDown;
+            set { m_IgnoreLockDown = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Locked
 		{
-			get { return m_Locked; }
-			set { m_Locked = value; InvalidateProperties(); }
+			get => m_Locked;
+            set { m_Locked = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get { return m_Owner; }
-			set { m_Owner = value; InvalidateProperties(); }
+			get => m_Owner;
+            set { m_Owner = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public BaseCreature ShrunkenPet
 		{
-			get { return m_Pet; }
-			set { m_Pet = value; InvalidateProperties(); }
+			get => m_Pet;
+            set { m_Pet = value; InvalidateProperties(); }
 		}
 
 		public ShrinkItem()

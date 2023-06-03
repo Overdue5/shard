@@ -17,20 +17,20 @@ namespace Server.Spells.Necromancy
 				Reagent.DaemonBlood
 			);
 
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 2.0 ); } }
+		public override TimeSpan CastDelayBase => TimeSpan.FromSeconds( 2.0 );
 
-		public override double RequiredSkill{ get{ return 30.0; } }
-		public override int RequiredMana{ get{ return 17; } }
+        public override double RequiredSkill => 30.0;
+        public override int RequiredMana => 17;
 
-		public SummonFamiliarSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+        public SummonFamiliarSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
 
 		private static Hashtable m_Table = new Hashtable();
 
-		public static Hashtable Table{ get{ return m_Table; } }
+		public static Hashtable Table => m_Table;
 
-		public override bool CheckCast()
+        public override bool CheckCast()
 		{
 			BaseCreature check = (BaseCreature)m_Table[Caster];
 
@@ -63,8 +63,8 @@ namespace Server.Spells.Necromancy
 				new SummonFamiliarEntry( typeof( VampireBatFamiliar ), 1060144, 100.0, 100.0 )  // Vampire Bat
 			};
 
-		public static SummonFamiliarEntry[] Entries{ get{ return m_Entries; } }
-	}
+		public static SummonFamiliarEntry[] Entries => m_Entries;
+    }
 
 	public class SummonFamiliarEntry
 	{
@@ -73,12 +73,12 @@ namespace Server.Spells.Necromancy
 		private double m_ReqNecromancy;
 		private double m_ReqSpiritSpeak;
 
-		public Type Type{ get{ return m_Type; } }
-		public object Name{ get{ return m_Name; } }
-		public double ReqNecromancy{ get{ return m_ReqNecromancy; } }
-		public double ReqSpiritSpeak{ get{ return m_ReqSpiritSpeak; } }
+		public Type Type => m_Type;
+        public object Name => m_Name;
+        public double ReqNecromancy => m_ReqNecromancy;
+        public double ReqSpiritSpeak => m_ReqSpiritSpeak;
 
-		public SummonFamiliarEntry( Type type, object name, double reqNecromancy, double reqSpiritSpeak )
+        public SummonFamiliarEntry( Type type, object name, double reqNecromancy, double reqSpiritSpeak )
 		{
 			m_Type = type;
 			m_Name = name;

@@ -35,48 +35,33 @@ namespace Server.Custom.Games
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public Mobile Owner
-        {
-            get { return m_Owner; }
-        }
+        public Mobile Owner => m_Owner;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Active
         {
-            get
-            {
-                return m_Active; 
-            }
-            set
-            {
-                m_Active = value;
-            }
+            get => m_Active;
+            set => m_Active = value;
         }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Strength
 		{ 
-			get{ return m_Strength; } 
-			set
-			{ 
-				m_Strength = value;
-			}
-		}
+			get => m_Strength;
+            set => m_Strength = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxBombs
 		{ 
-			get{ return m_MaxBombs; } 
-			set
-			{ 
-				m_MaxBombs = value;
-			}
+			get => m_MaxBombs;
+            set => m_MaxBombs = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public float SpreadSpeed
         {
-            get { return m_Speed; }
+            get => m_Speed;
             set
             {
                 if(value > 0.003)
@@ -87,8 +72,8 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public int BombsInWorld
         {
-            get { return m_BombsInWorld; }
-            protected set { m_BombsInWorld = value; }
+            get => m_BombsInWorld;
+            protected set => m_BombsInWorld = value;
         }
 		
 		public void BombDetonated()
@@ -96,9 +81,9 @@ namespace Server.Custom.Games
 			--m_BombsInWorld;
 		}
 
-		public override bool Decays{ get{ return false; } }
-		
-		public override void OnDoubleClick( Mobile from )
+		public override bool Decays => false;
+
+        public override void OnDoubleClick( Mobile from )
 		{
             if (!Active)
             {

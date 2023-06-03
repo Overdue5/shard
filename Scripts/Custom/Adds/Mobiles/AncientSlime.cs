@@ -35,10 +35,10 @@ namespace Server.Mobiles
 			VirtualArmor = 40;
 		}
 
-        public override bool AutoDispel{ get{ return true; } }
-        public override bool Unprovokable{ get{ return true; } }
-        public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-        public override Poison HitPoison{ get{ return Poison.Deadly; } }
+        public override bool AutoDispel => true;
+        public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override Poison HitPoison => Poison.Deadly;
 
         public override bool OnBeforeDeath()
         {

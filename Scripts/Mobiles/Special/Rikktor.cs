@@ -7,7 +7,7 @@ namespace Server.Mobiles
 {
 	public class Rikktor : BaseChampion
 	{
-		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Power; } }
+		public override ChampionSkullType SkullType => ChampionSkullType.Power;
 
         public override Type[] UniqueList { get { return new Type[] { typeof(CrownOfTalKeesh) }; } }
         public override Type[] SharedList
@@ -89,11 +89,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.UltraRich, 4 );
 		}
 
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override ScaleType ScaleType{ get{ return ScaleType.All; } }
-		public override int Scales{ get{ return 20; } }
+		public override Poison PoisonImmune => Poison.Lethal;
+        public override ScaleType ScaleType => ScaleType.All;
+        public override int Scales => 20;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 

@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class LightHouseLightAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new LightHouseLightAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new LightHouseLightAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public LightHouseLightAddon()
 		{
 			AddonComponent ac = null;
@@ -101,15 +95,9 @@ namespace Server.Items
 
 	public class LightHouseLightAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new LightHouseLightAddon();
-			}
-		}
+		public override BaseAddon Addon => new LightHouseLightAddon();
 
-		[Constructable]
+        [Constructable]
 		public LightHouseLightAddonDeed()
 		{
 			Name = "LightHouseLight";

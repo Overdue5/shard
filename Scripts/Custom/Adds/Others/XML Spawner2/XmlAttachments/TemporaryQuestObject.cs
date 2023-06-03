@@ -14,9 +14,9 @@ namespace Server.Engines.XmlSpawner2
         [CommandProperty( AccessLevel.GameMaster )]
 		public Mobile QuestOwner
 		{
-			get {return m_QuestOwner;}
-			set {m_QuestOwner = value;}
-		}
+			get => m_QuestOwner;
+            set => m_QuestOwner = value;
+        }
 
         // These are the various ways in which the message attachment can be constructed.  
         // These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.

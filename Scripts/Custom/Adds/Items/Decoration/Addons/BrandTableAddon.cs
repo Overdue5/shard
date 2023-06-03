@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class BrandTableAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new BrandTableAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new BrandTableAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public BrandTableAddon()
 		{
 			AddonComponent ac = null;
@@ -104,15 +98,9 @@ namespace Server.Items
 
 	public class BrandTableAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new BrandTableAddon();
-			}
-		}
+		public override BaseAddon Addon => new BrandTableAddon();
 
-		[Constructable]
+        [Constructable]
 		public BrandTableAddonDeed()
 		{
 			Name = "Brand Table";

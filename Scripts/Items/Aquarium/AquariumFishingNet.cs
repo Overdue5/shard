@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class AquariumFishingNet : Item
 	{		
-		public override int LabelNumber{ get{ return 1074463; } } // An aquarium fishing net
+		public override int LabelNumber => 1074463; // An aquarium fishing net
 		
 		private static int[] m_Hues = {	0x09B, 0x0CD, 0x0D3, 0x14D, 0x1DD, 0x1E9, 0x1F4, 0x373, 0x451, 0x47F, 0x489, 0x492, 0x4B5, 0x8AA };
 		private static int[] m_WaterTiles = { 0x00A8, 0x00AB, 0x0136, 0x0137 };

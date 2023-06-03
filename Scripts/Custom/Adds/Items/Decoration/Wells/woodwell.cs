@@ -9,8 +9,8 @@ namespace Server.Items
 	{
 		public int Quantity
 		{
-			get{ return 500; }
-			set{}
+			get => 500;
+            set{}
 		}
 		
 
@@ -68,7 +68,7 @@ namespace Server.Items
 
     public class WoodWellDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new WoodWellAddon(); } }
+        public override BaseAddon Addon => new WoodWellAddon();
 
         [Constructable]
         public WoodWellDeed()
@@ -106,8 +106,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WoodWellAddon woodwell
 		{
-			get{ return m_woodwell; }
-			set{}
+			get => m_woodwell;
+            set{}
 		}
 
 		public WoodWellPiece( WoodWellAddon woodwell, int itemid ) : base( itemid )

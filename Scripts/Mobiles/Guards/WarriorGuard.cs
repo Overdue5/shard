@@ -160,11 +160,8 @@ namespace Server.Mobiles
 		public override Mobile Focus
 		{
 
-			get
-			{
-				return m_Focus;
-			}
-			set
+			get => m_Focus;
+            set
 			{
 				if ( Deleted )
 					return;

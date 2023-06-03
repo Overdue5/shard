@@ -10,7 +10,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]                                                                                                                                                                                                                                                                                                                                                                                                   
         public Item TreasureItem
         {
-            get { return m_TreasureItem; }
+            get => m_TreasureItem;
             set {
                 if (m_TreasureItem != null && value == null)
                     m_TreasureItem.Delete();

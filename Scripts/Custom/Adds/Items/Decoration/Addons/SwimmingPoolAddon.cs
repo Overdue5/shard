@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class SwimmingPoolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SwimmingPoolAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SwimmingPoolAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SwimmingPoolAddon()
 		{
 			AddComponent( new AddonComponent( 1811 ), 4, 1, 2 );
@@ -329,15 +323,9 @@ namespace Server.Items
 
 	public class SwimmingPoolAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SwimmingPoolAddon();
-			}
-		}
+		public override BaseAddon Addon => new SwimmingPoolAddon();
 
-		[Constructable]
+        [Constructable]
 		public SwimmingPoolAddonDeed()
 		{
 			Name = "Swimming Pool";

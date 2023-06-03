@@ -24,8 +24,8 @@ namespace Server.Custom.Polymorph
         private readonly int m_Value;
         private readonly StatModType m_Type;
 
-        public int Value { get { return m_Value; } }
-        public StatModType Type { get { return m_Type; } }
+        public int Value => m_Value;
+        public StatModType Type => m_Type;
 
         public StatMod(StatModType type, int value)
         {
@@ -102,13 +102,13 @@ namespace Server.Custom.Polymorph
                 m_PolymorphEntries.Add(m_Entries[i].ArtID, m_Entries[i]);
         }
 
-        public int ArtID { get { return m_Art; } }
-        public int BodyID { get { return m_Body; } }
-        public int LocNumber { get { return m_Num; } }
-        public string LocName { get { return m_LocName; } }
-        public StatMod[] StatMods { get { return m_StatMods; } }
-        public double SkillRequired { get { return m_SkillRequired; } }
-        static public Dictionary<int, PolymorphEntry> EntryInfo { get { return m_PolymorphEntries; } }
+        public int ArtID => m_Art;
+        public int BodyID => m_Body;
+        public int LocNumber => m_Num;
+        public string LocName => m_LocName;
+        public StatMod[] StatMods => m_StatMods;
+        public double SkillRequired => m_SkillRequired;
+        static public Dictionary<int, PolymorphEntry> EntryInfo => m_PolymorphEntries;
 
         private PolymorphEntry(int Art, int Body, int LocNum, StatMod[] StatMods, double SkillRequired)
         {
@@ -151,8 +151,8 @@ namespace Server.Custom.Polymorph
                 m_Entries = entries;
             }
 
-            public PolymorphEntry[] Entries { get { return m_Entries; } }
-            public int LocNumber { get { return m_Num; } }
+            public PolymorphEntry[] Entries => m_Entries;
+            public int LocNumber => m_Num;
         }
 
         private static readonly PolymorphCategory[] Categories = new[]

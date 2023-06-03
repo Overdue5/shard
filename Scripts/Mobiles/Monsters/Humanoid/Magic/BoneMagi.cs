@@ -50,16 +50,13 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Potions );
 		}
 		
-		public override bool BleedImmune{ get{ return true; } }
-		
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override bool BleedImmune => true;
 
-		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
+        public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public BoneMagi( Serial serial ) : base( serial )
+        public override Poison PoisonImmune => Poison.Regular;
+
+        public BoneMagi( Serial serial ) : base( serial )
 		{
 		}
 

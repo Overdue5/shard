@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new tigerrugAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new tigerrugAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public tigerrugAddon()
 		{
 
@@ -77,15 +71,9 @@ namespace Server.Items
 
 	public class tigerrugAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new tigerrugAddon();
-			}
-		}
+		public override BaseAddon Addon => new tigerrugAddon();
 
-		[Constructable]
+        [Constructable]
 		public tigerrugAddonDeed()
 		{
 			Name = "tigerrug";

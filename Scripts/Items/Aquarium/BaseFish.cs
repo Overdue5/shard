@@ -7,12 +7,9 @@ namespace Server.Items
 		private Timer m_Timer;		
 		
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Dead
-		{
-			get{ return ItemID == 0x3B0C; }
-		}
-					
-		[Constructable]
+		public bool Dead => ItemID == 0x3B0C;
+
+        [Constructable]
 		public BaseFish( int itemID ) : base( itemID )
 		{
 			StartTimer();

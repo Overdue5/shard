@@ -10,9 +10,9 @@ namespace Server.Spells.Seventh
 {
     public class GateTravelSpell : MagerySpell
     {
-        public override bool SpellFizzlesOnHurt { get { return true; } }
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 0x20E; } }
+        public override bool SpellFizzlesOnHurt => true;
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 0x20E;
 
         private static readonly SpellInfo m_Info = new SpellInfo(
                 "Gate Travel", "Vas Rel Por",
@@ -211,7 +211,7 @@ namespace Server.Spells.Seventh
         [DispellableField]
         private class InternalItem : Moongate
         {
-            public override bool ShowFeluccaWarning { get { return Core.AOS; } }
+            public override bool ShowFeluccaWarning => Core.AOS;
 
             public InternalItem(Point3D target, Map map)
                 : base(target, map)

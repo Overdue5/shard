@@ -7,11 +7,13 @@ namespace Server.Custom.PvpToolkit
 {
     public class PvpCore
     {
-        public static string DeathmatchVersion { get { return "1.01"; } }
+        public static string DeathmatchVersion => "1.01";
 
         private static List<DMStone> m_DMStones = new List<DMStone>();
 
-        public static List<DMStone> DMStones { get { return m_DMStones; } set { m_DMStones = value; } }
+        public static List<DMStone> DMStones { get => m_DMStones;
+            set => m_DMStones = value;
+        }
 
         private static int AmountOfRunningDeathMatchGames = 0;
 

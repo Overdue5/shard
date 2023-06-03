@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class PearlTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new PearlTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new PearlTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public PearlTankAddon()
 		{
 			AddonComponent ac = null;
@@ -155,15 +149,9 @@ namespace Server.Items
 
 	public class PearlTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new PearlTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new PearlTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public PearlTankAddonDeed()
 		{
 			Name = "a Pearl Tank";

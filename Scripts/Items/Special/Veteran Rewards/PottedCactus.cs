@@ -6,15 +6,15 @@ namespace Server.Items
 {
 	public class RewardPottedCactus : Item, IRewardItem
 	{
-		public override bool ForceShowProperties{ get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		private bool m_IsRewardItem;
+        private bool m_IsRewardItem;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get { return m_IsRewardItem; }
-			set { m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set { m_IsRewardItem = value; InvalidateProperties(); }
 		}
 
 		[Constructable]
@@ -59,15 +59,15 @@ namespace Server.Items
 	
 	public class PottedCactusDeed : Item, IRewardItem
 	{
-		public override int LabelNumber{ get{ return 1080407; } } // Potted Cactus Deed
+		public override int LabelNumber => 1080407; // Potted Cactus Deed
 
 		private bool m_IsRewardItem;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set{ m_IsRewardItem = value; InvalidateProperties(); }
 		}
 
 		[Constructable]

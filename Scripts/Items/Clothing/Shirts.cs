@@ -134,9 +134,9 @@ namespace Server.Items
 
 	public class ElvenShirt : BaseShirt
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
+		public override Race RequiredRace => Race.Elf;
 
-		[Constructable]
+        [Constructable]
 		public ElvenShirt() : this( 0 )
 		{
 		}
@@ -169,8 +169,9 @@ namespace Server.Items
 
 	public class ElvenDarkShirt : BaseShirt
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
-		[Constructable]
+		public override Race RequiredRace => Race.Elf;
+
+        [Constructable]
 		public ElvenDarkShirt() : this( 0 )
 		{
 		}

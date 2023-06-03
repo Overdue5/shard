@@ -23,17 +23,11 @@ namespace Server.Engines.Harvest
 		private readonly HarvestDefinition m_OreAndStone;
 	    private readonly HarvestDefinition m_Sand;
 
-	    public HarvestDefinition OreAndStone
-		{
-			get{ return m_OreAndStone; }
-		}
+	    public HarvestDefinition OreAndStone => m_OreAndStone;
 
-		public HarvestDefinition Sand
-		{
-			get{ return m_Sand; }
-		}
+        public HarvestDefinition Sand => m_Sand;
 
-		private Mining()
+        private Mining()
 		{
 			HarvestResource[] res;
 			HarvestVein[] veins;

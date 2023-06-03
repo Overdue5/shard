@@ -10,9 +10,9 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public RaisableItem RaisableItem
 		{
-			get{ return m_RaisableItem; }
-			set{ m_RaisableItem = value; }
-		}
+			get => m_RaisableItem;
+            set => m_RaisableItem = value;
+        }
 
 		[Constructable]
 		public RaiseSwitch() : this( 0x1093 )
@@ -146,9 +146,9 @@ namespace Server.Items
 
 	public class DisappearingRaiseSwitch : RaiseSwitch
 	{
-		public int CurrentRange{ get{ return Visible ? 3 : 2; } }
+		public int CurrentRange => Visible ? 3 : 2;
 
-		[Constructable]
+        [Constructable]
 		public DisappearingRaiseSwitch() : base( 0x108F )
 		{
 		}
@@ -161,9 +161,9 @@ namespace Server.Items
 		{
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
+        public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			if ( Utility.InRange( m.Location, Location, CurrentRange ) || Utility.InRange( oldLocation, Location, CurrentRange ) )
 				Refresh();

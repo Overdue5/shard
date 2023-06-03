@@ -25,8 +25,8 @@ namespace Server.Engines.XmlSpawner2
 
         private static readonly ArrayList    PointsRewardList = new ArrayList();
         
-        public static ArrayList RewardsList { get { return PointsRewardList; } }
-        
+        public static ArrayList RewardsList => PointsRewardList;
+
         public XmlQuestPointsRewards(int minpoints, Type reward, string name, int cost, int id, object[] args)
         {
             RewardType = reward;

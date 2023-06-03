@@ -7,8 +7,8 @@ namespace Server.Spells.Sixth
 {
     public class ExplosionSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 519; } }
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 519;
 
         //Iza - explosion range
         private const int _RANGE = 2;
@@ -44,10 +44,7 @@ namespace Server.Spells.Sixth
             Caster.Target = new InternalTarget(this);
         }
 
-        public override bool DelayedDamage
-        {
-            get { return false; }
-        }
+        public override bool DelayedDamage => false;
 
         public void Target(Mobile m)
         {

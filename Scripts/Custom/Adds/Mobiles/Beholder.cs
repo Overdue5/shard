@@ -44,17 +44,11 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override int TreasureMapLevel
-		{
-			get { return 4; }
-		}
+		public override int TreasureMapLevel => 4;
 
-		public override int Meat
-		{
-			get { return 8; }
-		}
+        public override int Meat => 8;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			//AddLoot(LootPack.HighItems_Always, 1);
             PackGold(2500);

@@ -14,12 +14,12 @@ namespace Server.Spells.Necromancy
 				Reagent.GraveDust
 			);
 
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 1.5 ); } }
+		public override TimeSpan CastDelayBase => TimeSpan.FromSeconds( 1.5 );
 
-		public override double RequiredSkill{ get{ return 20.0; } }
-		public override int RequiredMana{ get{ return 11; } }
+        public override double RequiredSkill => 20.0;
+        public override int RequiredMana => 11;
 
-		public CorpseSkinSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+        public CorpseSkinSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
 

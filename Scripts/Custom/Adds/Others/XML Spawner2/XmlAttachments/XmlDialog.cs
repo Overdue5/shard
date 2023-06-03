@@ -38,7 +38,7 @@ namespace Server.Engines.XmlSpawner2
 
             public int SpeechHue
             {
-                get { return m_SpeechHue; }
+                get => m_SpeechHue;
                 set
                 {
                     // dont allow invalid hues
@@ -49,7 +49,7 @@ namespace Server.Engines.XmlSpawner2
 
             public int ID
             {
-                get { return m_ID; }
+                get => m_ID;
                 set
                 {
                     // dont allow ID modification of entry 0
@@ -91,20 +91,14 @@ namespace Server.Engines.XmlSpawner2
 
         public ArrayList SpeechEntries
         {
-            get
-            {
-                return m_SpeechEntries;
-            }
-            set
-            {
-                m_SpeechEntries = value;
-            }
+            get => m_SpeechEntries;
+            set => m_SpeechEntries = value;
         }
 
         public Mobile ActivePlayer
         {
-            get { return m_ActivePlayer; }
-            set { m_ActivePlayer = value; }
+            get => m_ActivePlayer;
+            set => m_ActivePlayer = value;
         }
 
 
@@ -187,33 +181,21 @@ namespace Server.Engines.XmlSpawner2
         [CommandProperty(AccessLevel.GameMaster)]
         public AccessLevel TriggerAccessLevel
         {
-            get
-            {
-                return m_TriggerAccessLevel;
-            }
-            set
-            {
-                m_TriggerAccessLevel = value;
-            }
+            get => m_TriggerAccessLevel;
+            set => m_TriggerAccessLevel = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime LastInteraction
         {
-            get
-            {
-                return m_LastInteraction;
-            }
-            set
-            {
-                m_LastInteraction = value;
-            }
+            get => m_LastInteraction;
+            set => m_LastInteraction = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DoReset
         {
-            get { return false; }
+            get => false;
             set
             {
                 if (value) Reset();
@@ -223,14 +205,8 @@ namespace Server.Engines.XmlSpawner2
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsActive
         {
-            get
-            {
-                return m_IsActive;
-            }
-            set
-            {
-                m_IsActive = value;
-            }
+            get => m_IsActive;
+            set => m_IsActive = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -264,40 +240,16 @@ namespace Server.Engines.XmlSpawner2
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public TimeSpan RealTOD
-        {
-            get
-            {
-                return DateTime.UtcNow.TimeOfDay;
-            }
-        }
+        public TimeSpan RealTOD => DateTime.UtcNow.TimeOfDay;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int RealDay
-        {
-            get
-            {
-                return DateTime.UtcNow.Day;
-            }
-        }
+        public int RealDay => DateTime.UtcNow.Day;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int RealMonth
-        {
-            get
-            {
-                return DateTime.UtcNow.Month;
-            }
-        }
+        public int RealMonth => DateTime.UtcNow.Month;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public DayOfWeek RealDayOfWeek
-        {
-            get
-            {
-                return DateTime.UtcNow.DayOfWeek;
-            }
-        }
+        public DayOfWeek RealDayOfWeek => DateTime.UtcNow.DayOfWeek;
 
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -329,32 +281,29 @@ namespace Server.Engines.XmlSpawner2
         [CommandProperty(AccessLevel.GameMaster)]
         public bool AllowGhostTrig
         {
-            get { return m_AllowGhostTriggering; }
-            set
-            {
-                m_AllowGhostTriggering = value;
-            }
+            get => m_AllowGhostTriggering;
+            set => m_AllowGhostTriggering = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Running
         {
-            get { return m_Running; }
-            set { m_Running = value; }
+            get => m_Running;
+            set => m_Running = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan ResetTime
         {
-            get { return m_ResetTime; }
-            set { m_ResetTime = value; }
+            get => m_ResetTime;
+            set => m_ResetTime = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int SpeechPace
         {
-            get { return m_SpeechPace; }
-            set { m_SpeechPace = value; }
+            get => m_SpeechPace;
+            set => m_SpeechPace = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -663,7 +612,7 @@ namespace Server.Engines.XmlSpawner2
         [CommandProperty(AccessLevel.GameMaster)]
         public int EntryNumber
         {
-            get { return m_CurrentEntryNumber; }
+            get => m_CurrentEntryNumber;
             set
             {
                 m_CurrentEntryNumber = value;
@@ -675,37 +624,28 @@ namespace Server.Engines.XmlSpawner2
         [CommandProperty(AccessLevel.GameMaster)]
         public int ProximityRange
         {
-            get { return m_ProximityRange; }
-            set
-            {
-                m_ProximityRange = value;
-            }
+            get => m_ProximityRange;
+            set => m_ProximityRange = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int ResetRange
         {
-            get { return m_ResetRange; }
-            set
-            {
-                m_ResetRange = value;
-            }
+            get => m_ResetRange;
+            set => m_ResetRange = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string ConfigFile
         {
-            get { return m_ConfigFile; }
-            set
-            {
-                m_ConfigFile = value;
-            }
+            get => m_ConfigFile;
+            set => m_ConfigFile = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool LoadConfig
         {
-            get { return false; }
+            get => false;
             set { if (value) DoLoadNPC(null, ConfigFile); }
         }
 
@@ -717,7 +657,7 @@ namespace Server.Engines.XmlSpawner2
 
         public SpeechEntry CurrentEntry
         {
-            get { return m_CurrentEntry; }
+            get => m_CurrentEntry;
             set
             {
 
@@ -976,10 +916,7 @@ namespace Server.Engines.XmlSpawner2
             }
         }
 
-        public override bool HandlesOnSpeech
-        {
-            get { return (m_Running); }
-        }
+        public override bool HandlesOnSpeech => (m_Running);
 
 
         public override void OnSpeech(SpeechEventArgs e)
@@ -1043,7 +980,7 @@ namespace Server.Engines.XmlSpawner2
             }
         }
 
-        public override bool HandlesOnMovement { get { return (m_Running); } }
+        public override bool HandlesOnMovement => (m_Running);
 
         public override void OnMovement(MovementEventArgs e)
         {

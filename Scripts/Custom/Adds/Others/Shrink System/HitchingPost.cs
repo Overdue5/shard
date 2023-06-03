@@ -20,8 +20,8 @@ namespace Xanthos.ShrinkSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int ShrinkCharges
 		{
-			get { return m_Charges; }
-			set
+			get => m_Charges;
+            set
 			{
 				if ( 0 == m_Charges || 0 == (m_Charges = value ))
 					Delete();
@@ -30,9 +30,9 @@ namespace Xanthos.ShrinkSystem
 			}
 		}
 
-		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; }}
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public HitchingPost() : this( 0x14E7 )
 		{
 		}
@@ -83,9 +83,9 @@ namespace Xanthos.ShrinkSystem
 
 	public class HitchingPostEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new HitchingPostEastDeed(); }}
+		public override BaseAddonDeed Deed => new HitchingPostEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public HitchingPostEastAddon()
 		{
 			AddComponent( new HitchingPost( 0x14E7 ), 0, 0, 0);
@@ -110,9 +110,9 @@ namespace Xanthos.ShrinkSystem
 
 	public class HitchingPostEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new HitchingPostEastAddon(); }}
+		public override BaseAddon Addon => new HitchingPostEastAddon();
 
-		[Constructable]
+        [Constructable]
 		public HitchingPostEastDeed()
 		{
 			Name = "Hitching Post (east)";
@@ -138,9 +138,9 @@ namespace Xanthos.ShrinkSystem
 
 	public class HitchingPostSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new HitchingPostSouthDeed(); }}
+		public override BaseAddonDeed Deed => new HitchingPostSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public HitchingPostSouthAddon()
 		{
 			AddComponent( new HitchingPost( 0x14E8 ), 0, 0, 0);
@@ -165,9 +165,9 @@ namespace Xanthos.ShrinkSystem
 
 	public class HitchingPostSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new HitchingPostSouthAddon(); }}
+		public override BaseAddon Addon => new HitchingPostSouthAddon();
 
-		[Constructable]
+        [Constructable]
 		public HitchingPostSouthDeed()
 		{
 			Name = "Hitching Post (south)";

@@ -2,7 +2,7 @@ namespace Server.Items
 {
     public class LightningScroll : SpellScroll
     {
-        public override int ManaCost { get { return 10; } }
+        public override int ManaCost => 10;
 
         [Constructable]
         public LightningScroll()

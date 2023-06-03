@@ -3,18 +3,18 @@ namespace Server.Items
     [Flipable]
 	public class RadioactiveGloves : BaseArmor
 	{
-        public override int InitMinHits { get { return 50; } }
-        public override int InitMaxHits { get { return 60; } }
+        public override int InitMinHits => 50;
+        public override int InitMaxHits => 60;
 
-        public override int AosStrReq { get { return 20; } }
-        public override int OldStrReq { get { return 10; } }
-		
-		public override int ArmorBase{ get{ return 40; } }
+        public override int AosStrReq => 20;
+        public override int OldStrReq => 10;
 
-        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
-        public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }
+        public override int ArmorBase => 40;
 
-		[Constructable]
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Leather;
+        public override CraftResource DefaultResource => CraftResource.RegularLeather;
+
+        [Constructable]
 		public RadioactiveGloves() : base (0x13C6)
 		{
             Weight = 1.0;

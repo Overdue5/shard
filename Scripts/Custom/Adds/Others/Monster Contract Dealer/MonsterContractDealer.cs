@@ -10,10 +10,10 @@ namespace Server.Mobiles
 	public class MonsterContractDealer : Mobile
 	{
 		
-		public virtual bool IsInvulnerable{ get{ return true; } }
-		public override bool ClickTitle { get { return true; } }
-		
-		[Constructable]
+		public virtual bool IsInvulnerable => true;
+        public override bool ClickTitle => true;
+
+        [Constructable]
 		public MonsterContractDealer()
 		{
 			Name = "Joseph";
@@ -74,8 +74,9 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool ShowContextMenu { get { return true; } }
-		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
+		public override bool ShowContextMenu => true;
+
+        public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
 		{
 			base.GetContextMenuEntries( from, list );
 			list.Add( new MonsterContractDealerEntry( from, this ) );

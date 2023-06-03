@@ -7,8 +7,8 @@ namespace Server.Spells.Second
 {
     public class StrengthSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Second; } }
-        public override int Sound { get { return 0x1EE; } }
+        public override SpellCircle Circle => SpellCircle.Second;
+        public override int Sound => 0x1EE;
 
         //public override bool SpellDisabled { get { return true; } }
 

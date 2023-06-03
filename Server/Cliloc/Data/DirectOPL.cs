@@ -82,38 +82,23 @@ namespace Solaris.CliLocHandler
 		
 		
 		//ICollection members
-		public virtual bool IsSynchronized
-		{
-			get{ return false; }
-		}
-		
-		public virtual object SyncRoot
-		{
-			get{ return List.SyncRoot; }
-		}
-		
-		public virtual void CopyTo( DOPLEntry[] array, int index )
+		public virtual bool IsSynchronized => false;
+
+        public virtual object SyncRoot => List.SyncRoot;
+
+        public virtual void CopyTo( DOPLEntry[] array, int index )
 		{
 			List.CopyTo( array, index );
 		}
 		
 		//IList members
-		public virtual bool IsFixedSize
-		{
-			get{ return false; }
-		}
-		
-		public virtual bool IsReadOnly
-		{
-			get{ return false; }
-		}
-		
-		public virtual DOPLEntry this[ int index ]
-		{
-			get{ return (DOPLEntry)( List[index] ); }
-		}
-		
-		public virtual int Add( DOPLEntry entry )
+		public virtual bool IsFixedSize => false;
+
+        public virtual bool IsReadOnly => false;
+
+        public virtual DOPLEntry this[ int index ] => (DOPLEntry)( List[index] );
+
+        public virtual int Add( DOPLEntry entry )
 		{
 			int add = List.Add( entry );
 			return add;
@@ -145,10 +130,10 @@ namespace Solaris.CliLocHandler
 		protected int _Index;
 		protected string _Arguments;
 		
-		public int Index{ get{ return _Index; } }
-		public string Arguments{ get{ return _Arguments; } }
-		
-		public DOPLEntry( int index, string arguments )
+		public int Index => _Index;
+        public string Arguments => _Arguments;
+
+        public DOPLEntry( int index, string arguments )
 		{
 			_Index = index;
 			_Arguments = arguments;

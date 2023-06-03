@@ -3,26 +3,26 @@ namespace Server.Items
 	[Flipable( 0x13c6, 0x13ce )]
 	public class LeatherGlovesOfMining : BaseGlovesOfMining
 	{
-		public override int BasePhysicalResistance{ get{ return 2; } }
-		public override int BaseFireResistance{ get{ return 4; } }
-		public override int BaseColdResistance{ get{ return 3; } }
-		public override int BasePoisonResistance{ get{ return 3; } }
-		public override int BaseEnergyResistance{ get{ return 3; } }
+		public override int BasePhysicalResistance => 2;
+        public override int BaseFireResistance => 4;
+        public override int BaseColdResistance => 3;
+        public override int BasePoisonResistance => 3;
+        public override int BaseEnergyResistance => 3;
 
-		public override int InitMinHits{ get{ return 30; } }
-		public override int InitMaxHits{ get{ return 40; } }
+        public override int InitMinHits => 30;
+        public override int InitMaxHits => 40;
 
-		public override int AosStrReq{ get{ return 20; } }
-		public override int OldStrReq{ get{ return 10; } }
+        public override int AosStrReq => 20;
+        public override int OldStrReq => 10;
 
-		public override int ArmorBase{ get{ return 13; } }
+        public override int ArmorBase => 13;
 
-		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Leather; } }
-		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Leather;
+        public override CraftResource DefaultResource => CraftResource.RegularLeather;
 
-		public override ArmorMeditationAllowance DefMedAllowance{ get{ return ArmorMeditationAllowance.All; } }
+        public override ArmorMeditationAllowance DefMedAllowance => ArmorMeditationAllowance.All;
 
-		public override int LabelNumber{ get{ return 1045122; } } // leather blacksmith gloves of mining
+        public override int LabelNumber => 1045122; // leather blacksmith gloves of mining
 
 		[Constructable]
 		public LeatherGlovesOfMining( int bonus ) : base( bonus, 0x13C6 )
@@ -50,24 +50,24 @@ namespace Server.Items
 	[Flipable( 0x13d5, 0x13dd )]
 	public class StuddedGlovesOfMining : BaseGlovesOfMining
 	{
-		public override int BasePhysicalResistance{ get{ return 2; } }
-		public override int BaseFireResistance{ get{ return 4; } }
-		public override int BaseColdResistance{ get{ return 3; } }
-		public override int BasePoisonResistance{ get{ return 3; } }
-		public override int BaseEnergyResistance{ get{ return 4; } }
+		public override int BasePhysicalResistance => 2;
+        public override int BaseFireResistance => 4;
+        public override int BaseColdResistance => 3;
+        public override int BasePoisonResistance => 3;
+        public override int BaseEnergyResistance => 4;
 
-		public override int InitMinHits{ get{ return 35; } }
-		public override int InitMaxHits{ get{ return 45; } }
+        public override int InitMinHits => 35;
+        public override int InitMaxHits => 45;
 
-		public override int AosStrReq{ get{ return 25; } }
-		public override int OldStrReq{ get{ return 25; } }
+        public override int AosStrReq => 25;
+        public override int OldStrReq => 25;
 
-		public override int ArmorBase{ get{ return 16; } }
+        public override int ArmorBase => 16;
 
-		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Studded; } }
-		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Studded;
+        public override CraftResource DefaultResource => CraftResource.RegularLeather;
 
-		public override int LabelNumber{ get{ return 1045123; } } // studded leather blacksmith gloves of mining
+        public override int LabelNumber => 1045123; // studded leather blacksmith gloves of mining
 
 		[Constructable]
 		public StuddedGlovesOfMining( int bonus ) : base( bonus, 0x13D5 )
@@ -95,25 +95,25 @@ namespace Server.Items
 	[Flipable( 0x13eb, 0x13f2 )]
 	public class RingmailGlovesOfMining : BaseGlovesOfMining
 	{
-		public override int BasePhysicalResistance{ get{ return 3; } }
-		public override int BaseFireResistance{ get{ return 3; } }
-		public override int BaseColdResistance{ get{ return 1; } }
-		public override int BasePoisonResistance{ get{ return 5; } }
-		public override int BaseEnergyResistance{ get{ return 3; } }
+		public override int BasePhysicalResistance => 3;
+        public override int BaseFireResistance => 3;
+        public override int BaseColdResistance => 1;
+        public override int BasePoisonResistance => 5;
+        public override int BaseEnergyResistance => 3;
 
-		public override int InitMinHits{ get{ return 40; } }
-		public override int InitMaxHits{ get{ return 50; } }
+        public override int InitMinHits => 40;
+        public override int InitMaxHits => 50;
 
-		public override int AosStrReq{ get{ return 40; } }
-		public override int OldStrReq{ get{ return 20; } }
+        public override int AosStrReq => 40;
+        public override int OldStrReq => 20;
 
-		public override int OldDexBonus{ get{ return 0; } }
+        public override int OldDexBonus => 0;
 
-		public override int ArmorBase{ get{ return 22; } }
+        public override int ArmorBase => 22;
 
-		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Ringmail; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Ringmail;
 
-		public override int LabelNumber{ get{ return 1045124; } } // ringmail blacksmith gloves of mining
+        public override int LabelNumber => 1045124; // ringmail blacksmith gloves of mining
 
 		[Constructable]
 		public RingmailGlovesOfMining( int bonus ) : base( bonus, 0x13EB )
@@ -146,11 +146,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Bonus
 		{
-			get
-			{
-				return m_Bonus;
-			}
-			set
+			get => m_Bonus;
+            set
 			{
 				m_Bonus = value;
 				InvalidateProperties();

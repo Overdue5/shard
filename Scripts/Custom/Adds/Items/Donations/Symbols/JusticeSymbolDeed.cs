@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class JusticeSymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new JusticeSymbolDeed(); } }
+		public override BaseAddonDeed Deed => new JusticeSymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public JusticeSymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14B3 ), 0, 0, 0 ); //N
@@ -35,9 +35,9 @@ namespace Server.Items
 
 	public class JusticeSymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new JusticeSymbolAddon(); } }
+		public override BaseAddon Addon => new JusticeSymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public JusticeSymbolDeed()
 		{
             Name = "Justice symbol deed";

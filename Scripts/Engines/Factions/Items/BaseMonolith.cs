@@ -11,8 +11,8 @@ namespace Server.Factions
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
 		public Sigil Sigil
 		{
-			get{ return m_Sigil; }
-			set
+			get => m_Sigil;
+            set
 			{
 				if ( m_Sigil == value )
 					return;
@@ -32,8 +32,8 @@ namespace Server.Factions
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
 		public Town Town
 		{
-			get{ return m_Town; }
-			set
+			get => m_Town;
+            set
 			{
 				m_Town = value;
 				OnTownChanged();
@@ -43,8 +43,8 @@ namespace Server.Factions
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
 		public Faction Faction
 		{
-			get{ return m_Faction; }
-			set
+			get => m_Faction;
+            set
 			{
 				m_Faction = value;
 				Hue = ( m_Faction == null ? 0 : m_Faction.Definition.HuePrimary );
@@ -128,8 +128,8 @@ namespace Server.Factions
 
 		public static List<BaseMonolith> Monoliths
 		{
-			get{ return m_Monoliths; }
-			set{ m_Monoliths = value; }
-		}
+			get => m_Monoliths;
+            set => m_Monoliths = value;
+        }
 	}
 }

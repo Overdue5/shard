@@ -2,13 +2,13 @@ namespace Server.Items
 {
 	public class ArmorOfFortune : StuddedChest
 	{
-		public override int LabelNumber{ get{ return 1061098; } } // Armor of Fortune
-		public override int ArtifactRarity{ get{ return 11; } }
+		public override int LabelNumber => 1061098; // Armor of Fortune
+		public override int ArtifactRarity => 11;
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public ArmorOfFortune()
 		{
 			Hue = 0x501;

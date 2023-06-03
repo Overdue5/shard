@@ -9,12 +9,12 @@ namespace Server.Mobiles
 	public abstract class BaseHealer : BaseVendor
 	{
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override bool IsActiveVendor{ get{ return true; } }
-		public override bool IsInvulnerable{ get{ return false; } }
+        public override bool IsActiveVendor => true;
+        public override bool IsInvulnerable => false;
 
-		public override void InitSBInfo()
+        public override void InitSBInfo()
         {
             if (this.Criminal || !(this.Region is GuardedRegion gr && !gr.Disabled) || this.AlwaysMurderer)
             {
@@ -65,9 +65,9 @@ namespace Server.Mobiles
 			PackItem( new CurePotion() );
 		}
 
-		public override VendorShoeType ShoeType{ get{ return VendorShoeType.Sandals; } }
+		public override VendorShoeType ShoeType => VendorShoeType.Sandals;
 
-		public virtual int GetRobeColor()
+        public virtual int GetRobeColor()
 		{
 			return Utility.RandomYellowHue();
 		}
@@ -79,9 +79,9 @@ namespace Server.Mobiles
 			AddItem( new Robe( GetRobeColor() ) );
 		}
 
-		public virtual bool HealsYoungPlayers{ get{ return true; } }
+		public virtual bool HealsYoungPlayers => true;
 
-		public virtual bool CheckResurrect( Mobile m )
+        public virtual bool CheckResurrect( Mobile m )
 		{
 			return true;
 		}

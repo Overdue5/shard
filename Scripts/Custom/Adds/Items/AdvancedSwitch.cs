@@ -77,15 +77,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Counselor )]
 		public bool SayOverhead
 		{
-			get { return m_SayOverhead; }
-			set { m_SayOverhead = value; }
-		}
+			get => m_SayOverhead;
+            set => m_SayOverhead = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int OnItemId
 		{
-			get { return m_OnItemId; }
-			set
+			get => m_OnItemId;
+            set
 			{
 				m_OnItemId = value;
 				m_HasOnItemId = ( m_OnItemId != -1 );
@@ -95,15 +95,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Counselor )]
 		public int OffItemId
 		{
-			get { return m_OffItemId; }
-			set { m_OffItemId = value; }
-		}
+			get => m_OffItemId;
+            set => m_OffItemId = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public BaseDoor LinkedDoor
 		{
-			get { return m_LinkedDoor; }
-			set
+			get => m_LinkedDoor;
+            set
 			{
 				m_LinkedDoor = value;
 				m_HasLinkedDoor = ( m_LinkedDoor != null );
@@ -113,8 +113,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Counselor )]
 		public string Message
 		{
-			get { return m_Message; }
-			set
+			get => m_Message;
+            set
 			{
 				m_Message = value;
 				m_HasMessage = ( !string.IsNullOrEmpty( m_Message ) );

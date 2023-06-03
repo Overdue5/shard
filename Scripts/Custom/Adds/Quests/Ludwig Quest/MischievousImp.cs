@@ -47,7 +47,7 @@ namespace Server.Mobiles
                 PackItem(new SheetMusic() );
         }
 
-		public override Poison PoisonImmune { get { return Poison.Lesser; } }
+		public override Poison PoisonImmune => Poison.Lesser;
 
         public MischievousImp(Serial serial)
             : base(serial)

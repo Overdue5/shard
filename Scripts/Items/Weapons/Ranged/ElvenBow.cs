@@ -5,27 +5,27 @@ namespace Server.Items
 	[Flipable( 0x13B2, 0x13B1 )]
 	public class ElvenBow : BaseRanged
 	{
-		public override int EffectID{ get{ return 0xF42; } }
-		public override Type AmmoType{ get{ return typeof( Arrow ); } }
-		public override BaseAmmo Ammo { get{ return new Arrow(); } }
+		public override int EffectID => 0xF42;
+        public override Type AmmoType => typeof( Arrow );
+        public override BaseAmmo Ammo => new Arrow();
 
-		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
-		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
+        public override WeaponAbility PrimaryAbility => WeaponAbility.ParalyzingBlow;
+        public override WeaponAbility SecondaryAbility => WeaponAbility.MortalStrike;
 
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 20; } }
-		public override int AosMaxDamage{ get{ return 24; } }
-		public override int AosSpeed{ get{ return 21; } }
+        public override int AosStrengthReq => 35;
+        public override int AosMinDamage => 20;
+        public override int AosMaxDamage => 24;
+        public override int AosSpeed => 21;
 
-		public override int OldStrengthReq{ get{ return 25; } }
-		public override int OldMinDamage{ get{ return 15; } }
-		public override int OldMaxDamage{ get{ return 21; } }
-		public override int OldSpeed{ get{ return 265; } }
+        public override int OldStrengthReq => 25;
+        public override int OldMinDamage => 15;
+        public override int OldMaxDamage => 21;
+        public override int OldSpeed => 265;
 
-		public override int DefMaxRange{ get{ return 10; } }
+        public override int DefMaxRange => 10;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 60; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 60;
 
         private SkillMod m_ARCHERYMod;
         private SkillMod m_TACTICSMod;

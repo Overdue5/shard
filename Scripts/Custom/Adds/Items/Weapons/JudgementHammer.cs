@@ -30,10 +30,7 @@ namespace Server.Items
             LabelTo(from, Sphere.ComputeCustomWeaponName(this));
         }
 
-        public override int OldStrengthReq
-        {
-            get { return 90; }
-        }
+        public override int OldStrengthReq => 90;
 
         public override void OnHit(Mobile attacker, Mobile defender)
         {

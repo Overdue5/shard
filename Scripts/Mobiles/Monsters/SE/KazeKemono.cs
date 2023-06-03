@@ -51,9 +51,9 @@ namespace Server.Mobiles
             PackGold(40, 100);
 		}
 
-		public override bool BleedImmune { get { return true; } }
+		public override bool BleedImmune => true;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 

@@ -14,9 +14,9 @@ namespace Server.Items
 
 	public class BaseFormTalisman : Item, ITokunoDyable
 	{
-		public virtual TalismanForm Form { get { return TalismanForm.Squirrel; } }
+		public virtual TalismanForm Form => TalismanForm.Squirrel;
 
-		public BaseFormTalisman() : base( 0x2F59 )
+        public BaseFormTalisman() : base( 0x2F59 )
 		{
 			LootType = LootType.Blessed;
 			Layer = Layer.Talisman;
@@ -75,9 +75,9 @@ namespace Server.Items
 
 	public class FerretFormTalisman : BaseFormTalisman
 	{
-		public override TalismanForm Form { get { return TalismanForm.Ferret; } }
+		public override TalismanForm Form => TalismanForm.Ferret;
 
-		[Constructable]
+        [Constructable]
 		public FerretFormTalisman() : base()
 		{
 		}
@@ -103,9 +103,9 @@ namespace Server.Items
 
 	public class SquirrelFormTalisman : BaseFormTalisman
 	{
-		public override TalismanForm Form { get { return TalismanForm.Squirrel; } }
+		public override TalismanForm Form => TalismanForm.Squirrel;
 
-		[Constructable]
+        [Constructable]
 		public SquirrelFormTalisman () : base()
 		{
 		}
@@ -131,9 +131,9 @@ namespace Server.Items
 
 	public class CuSidheFormTalisman : BaseFormTalisman
 	{
-		public override TalismanForm Form { get { return TalismanForm.CuSidhe; } }
+		public override TalismanForm Form => TalismanForm.CuSidhe;
 
-		[Constructable]
+        [Constructable]
 		public CuSidheFormTalisman() : base()
 		{
 		}
@@ -159,9 +159,9 @@ namespace Server.Items
 
 	public class ReptalonFormTalisman : BaseFormTalisman
 	{
-		public override TalismanForm Form { get { return TalismanForm.Reptalon; } }
+		public override TalismanForm Form => TalismanForm.Reptalon;
 
-		[Constructable]
+        [Constructable]
 		public ReptalonFormTalisman() : base()
 		{
 		}

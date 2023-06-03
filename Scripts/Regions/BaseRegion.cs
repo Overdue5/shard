@@ -30,14 +30,18 @@ namespace Server.Regions
 		private bool m_ExcludeFromParentSpawns;
         private static readonly Hashtable m_NextDisplayTime = new Hashtable();
 
-		public string RuneName{ get{ return m_RuneName; } set{ m_RuneName = value; } }
+		public string RuneName{ get => m_RuneName;
+            set => m_RuneName = value;
+        }
 
-		public bool NoLogoutDelay{ get{ return m_NoLogoutDelay; } set{ m_NoLogoutDelay = value; } }
+		public bool NoLogoutDelay{ get => m_NoLogoutDelay;
+            set => m_NoLogoutDelay = value;
+        }
 
 		public SpawnEntry[] Spawns
 		{
-			get{ return m_Spawns; }
-			set
+			get => m_Spawns;
+            set
 			{
 				if ( m_Spawns != null )
 				{
@@ -49,9 +53,13 @@ namespace Server.Regions
 			}
 		}
 
-		public SpawnZLevel SpawnZLevel{ get{ return m_SpawnZLevel; } set{ m_SpawnZLevel = value; } }
+		public SpawnZLevel SpawnZLevel{ get => m_SpawnZLevel;
+            set => m_SpawnZLevel = value;
+        }
 
-		public bool ExcludeFromParentSpawns{ get{ return m_ExcludeFromParentSpawns; } set{ m_ExcludeFromParentSpawns = value; } }
+		public bool ExcludeFromParentSpawns{ get => m_ExcludeFromParentSpawns;
+            set => m_ExcludeFromParentSpawns = value;
+        }
 
 		public override void OnUnregister()
 		{

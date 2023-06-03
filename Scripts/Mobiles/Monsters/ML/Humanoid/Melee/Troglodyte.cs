@@ -44,9 +44,9 @@ namespace Server.Mobiles
 
 		}
 
-			public override bool CanHeal { get { return true; } }
+			public override bool CanHeal => true;
 
-		public override void GenerateLoot()
+            public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich );  // Need to verify
 		}

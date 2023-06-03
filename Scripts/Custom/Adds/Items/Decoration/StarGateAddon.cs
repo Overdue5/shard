@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class StarGateAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new StarGateAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new StarGateAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public StarGateAddon()
 		{
 			AddComponent( new AddonComponent( 1958 ), -1, -1, 0 );
@@ -129,15 +123,9 @@ namespace Server.Items
 
 	public class StarGateAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new StarGateAddon();
-			}
-		}
+		public override BaseAddon Addon => new StarGateAddon();
 
-		[Constructable]
+        [Constructable]
 		public StarGateAddonDeed()
 		{
 			Name = "StarGate";

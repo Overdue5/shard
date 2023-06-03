@@ -22,22 +22,13 @@ namespace Server.Items
 		{
 		}
 
-		public new TimeSpan DecayTime
-		{
-			get { return TimeSpan.FromSeconds( 5 ); }
-		}
+		public new TimeSpan DecayTime => TimeSpan.FromSeconds( 5 );
 
-		public new bool Movable
-		{
-			get { return false; }
-		}
+        public new bool Movable => false;
 
-		public new bool Decays
-		{
-			get { return true; }
-		}
+        public new bool Decays => true;
 
-		public static int FindFootGear( Mobile m )
+        public static int FindFootGear( Mobile m )
 		{
 			Item shoes = m.FindItemOnLayer( Layer.Shoes );
 			if( shoes != null )

@@ -39,19 +39,25 @@ namespace Server.Multis
 		private FoundationType m_Type; // Graphic type of this foundation.
 	    //private int TeleCount;         // Number of teleporters the house has.
 
-		public FoundationType Type { get { return m_Type; } set { m_Type = value; } }
-		public int LastRevision { get { return m_LastRevision; } set { m_LastRevision = value; } }
-		public List<Item> Fixtures { get { return m_Fixtures; } }
-		public Item SignHanger { get { return m_SignHanger; } }
-		public Item Signpost { get { return m_Signpost; } }
-		public int SignpostGraphic { get { return m_SignpostGraphic; } set { m_SignpostGraphic = value; } }
+		public FoundationType Type { get => m_Type;
+            set => m_Type = value;
+        }
+		public int LastRevision { get => m_LastRevision;
+            set => m_LastRevision = value;
+        }
+		public List<Item> Fixtures => m_Fixtures;
+        public Item SignHanger => m_SignHanger;
+        public Item Signpost => m_Signpost;
+        public int SignpostGraphic { get => m_SignpostGraphic;
+            set => m_SignpostGraphic = value;
+        }
 	    public Mobile Customizer { get; set; }
 
-	    public override bool IsAosRules { get { return false; } }
+	    public override bool IsAosRules => false;
 
-		public override bool IsActive { get { return Customizer == null; } }
+        public override bool IsActive => Customizer == null;
 
-		public virtual int CustomizationCost { get { return (0); } }
+        public virtual int CustomizationCost => (0);
 
         public virtual int teleCount
         {
@@ -125,20 +131,20 @@ namespace Server.Multis
 		public DesignState CurrentState
 		{
 			get { if( m_Current == null ) SetInitialState(); return m_Current; }
-			set { m_Current = value; }
-		}
+			set => m_Current = value;
+        }
 
 		public DesignState DesignState
 		{
 			get { if( m_Design == null ) SetInitialState(); return m_Design; }
-			set { m_Design = value; }
-		}
+			set => m_Design = value;
+        }
 
 		public DesignState BackupState
 		{
 			get { if( m_Backup == null ) SetInitialState(); return m_Backup; }
-			set { m_Backup = value; }
-		}
+			set => m_Backup = value;
+        }
 
 		public void SetInitialState()
 		{
@@ -553,9 +559,9 @@ namespace Server.Multis
 			}
 		}
 
-		public override Point3D BaseBanLocation { get { return new Point3D( Components.Min.X, Components.Height - 1 - Components.Center.Y, 0 ); } }
+		public override Point3D BaseBanLocation => new Point3D( Components.Min.X, Components.Height - 1 - Components.Center.Y, 0 );
 
-		public void CheckSignpost()
+        public void CheckSignpost()
 		{
 			MultiComponentList mcl = Components;
 
@@ -695,9 +701,9 @@ namespace Server.Multis
 
 		private int m_DefaultPrice;
 
-		public override int DefaultPrice { get { return m_DefaultPrice; } }
+		public override int DefaultPrice => m_DefaultPrice;
 
-		public override void Deserialize( GenericReader reader )
+        public override void Deserialize( GenericReader reader )
 		{
 			int version = reader.ReadInt();
 
@@ -1733,8 +1739,8 @@ namespace Server.Multis
 
 		public Packet PacketCache
 		{
-			get { return m_PacketCache; }
-			set
+			get => m_PacketCache;
+            set
 			{
 				if( m_PacketCache == value )
 					return;
@@ -1746,10 +1752,12 @@ namespace Server.Multis
 			}
 		}
 
-		public HouseFoundation Foundation { get { return m_Foundation; } }
-		public MultiComponentList Components { get { return m_Components; } }
-		public MultiTileEntry[] Fixtures { get { return m_Fixtures; } }
-		public int Revision { get { return m_Revision; } set { m_Revision = value; } }
+		public HouseFoundation Foundation => m_Foundation;
+        public MultiComponentList Components => m_Components;
+        public MultiTileEntry[] Fixtures => m_Fixtures;
+        public int Revision { get => m_Revision;
+            set => m_Revision = value;
+        }
 
 		public DesignState( HouseFoundation foundation, MultiComponentList components )
 		{
@@ -2029,12 +2037,12 @@ namespace Server.Multis
 	{
 		private readonly HouseFoundation m_Foundation;
 
-	    public HouseFoundation Foundation { get { return m_Foundation; } }
-	    public int Level { get; set; }
+	    public HouseFoundation Foundation => m_Foundation;
+        public int Level { get; set; }
 
-	    public int MaxLevels { get { return m_Foundation.MaxLevels; } }
+	    public int MaxLevels => m_Foundation.MaxLevels;
 
-		public DesignContext( HouseFoundation foundation )
+        public DesignContext( HouseFoundation foundation )
 		{
 			m_Foundation = foundation;
 			Level = 1;
@@ -2042,9 +2050,9 @@ namespace Server.Multis
 
 		private static readonly Dictionary<Mobile, DesignContext> m_Table = new Dictionary<Mobile, DesignContext>();
 
-		public static Dictionary<Mobile, DesignContext> Table { get { return m_Table; } }
+		public static Dictionary<Mobile, DesignContext> Table => m_Table;
 
-		public static DesignContext Find( Mobile from )
+        public static DesignContext Find( Mobile from )
 		{
 			if( from == null )
 				return null;

@@ -45,22 +45,14 @@ namespace Server.Engines.Quests.Necro
 				typeof( HorusRewardConversation )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// Dark Tides
-				return 1060095;
-			}
-		}
+        public override object Name =>
+            // Dark Tides
+            1060095;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>An old man who looks to be 200 years old from the looks
+        public override object OfferMessage =>
+            /* <I>An old man who looks to be 200 years old from the looks
 				 * of his translucently pale and heavily wrinkled skin, turns
 				 * to you and gives you a half-cocked grin that makes you
 				 * feel somewhat uneasy.<BR><BR>
@@ -94,16 +86,14 @@ namespace Server.Engines.Quests.Necro
 				 * 
 				 * What do you say?  Do we have a deal?
 				 */
-				return 1060094;
-			}
-		}
+            1060094;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.MaxValue; } }
-		public override bool IsTutorial{ get{ return true; } }
+        public override TimeSpan RestartDelay => TimeSpan.MaxValue;
+        public override bool IsTutorial => true;
 
-		public override int Picture{ get{ return 0x15B5; } }
+        public override int Picture => 0x15B5;
 
-		public DarkTidesQuest( PlayerMobile from ) : base( from )
+        public DarkTidesQuest( PlayerMobile from ) : base( from )
 		{
 		}
 

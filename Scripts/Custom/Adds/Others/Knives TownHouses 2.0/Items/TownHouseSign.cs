@@ -14,9 +14,9 @@ namespace Knives.TownHouses
 	public class TownHouseSign : Item
 	{
 		private static readonly ArrayList s_TownHouseSigns = new ArrayList();
-		public static ArrayList AllSigns{ get{ return s_TownHouseSigns; } }
+		public static ArrayList AllSigns => s_TownHouseSigns;
 
-		private Point3D c_BanLoc, c_SignLoc;
+        private Point3D c_BanLoc, c_SignLoc;
 		private int c_Locks, c_Secures, c_Price, c_MinZ, c_MaxZ, c_MinTotalSkill, c_MaxTotalSkill, c_ItemsPrice, c_RTOPayments;
 		private bool c_YoungOnly, c_RecurRent, c_Relock, c_KeepItems, c_LeaveItems, c_RentToOwn, c_Free;
 		private string c_Skill;
@@ -31,8 +31,8 @@ namespace Knives.TownHouses
 
 		public Point3D BanLoc
 		{
-			get{ return c_BanLoc; }
-			set
+			get => c_BanLoc;
+            set
 			{
 				c_BanLoc = value;
 				InvalidateProperties();
@@ -43,8 +43,8 @@ namespace Knives.TownHouses
 
 		public Point3D SignLoc
 		{
-			get{ return c_SignLoc; }
-			set
+			get => c_SignLoc;
+            set
 			{
 				c_SignLoc = value;
 				InvalidateProperties();
@@ -59,8 +59,8 @@ namespace Knives.TownHouses
 
 		public int Locks
 		{
-			get{ return c_Locks; }
-			set
+			get => c_Locks;
+            set
 			{
 				c_Locks = value;
 				InvalidateProperties();
@@ -71,8 +71,8 @@ namespace Knives.TownHouses
 
 		public int Secures
 		{
-			get{ return c_Secures; }
-			set
+			get => c_Secures;
+            set
 			{
 				c_Secures = value;
 				InvalidateProperties();
@@ -83,8 +83,8 @@ namespace Knives.TownHouses
 
 		public int Price
 		{
-			get{ return c_Price; }
-			set
+			get => c_Price;
+            set
 			{
 				c_Price = value;
 				InvalidateProperties();
@@ -93,8 +93,8 @@ namespace Knives.TownHouses
 
 		public int MinZ
 		{
-			get{ return c_MinZ; }
-			set
+			get => c_MinZ;
+            set
 			{
 				if ( value > c_MaxZ )
 					c_MaxZ = value+1;
@@ -107,8 +107,8 @@ namespace Knives.TownHouses
 
 		public int MaxZ
 		{
-			get{ return c_MaxZ; }
-			set
+			get => c_MaxZ;
+            set
 			{
 				if ( value < c_MinZ )
 					value = c_MinZ;
@@ -121,8 +121,8 @@ namespace Knives.TownHouses
 
 		public int MinTotalSkill
 		{
-			get{ return c_MinTotalSkill; }
-			set
+			get => c_MinTotalSkill;
+            set
 			{
 				if ( value > c_MaxTotalSkill )
 					value = c_MaxTotalSkill;
@@ -135,8 +135,8 @@ namespace Knives.TownHouses
 
 		public int MaxTotalSkill
 		{
-			get{ return c_MaxTotalSkill; }
-			set
+			get => c_MaxTotalSkill;
+            set
 			{
 				if ( value < c_MinTotalSkill )
 					value = c_MinTotalSkill;
@@ -149,8 +149,8 @@ namespace Knives.TownHouses
 
 		public bool YoungOnly
 		{
-			get{ return c_YoungOnly; }
-			set
+			get => c_YoungOnly;
+            set
 			{
 				c_YoungOnly = value;
 
@@ -164,8 +164,8 @@ namespace Knives.TownHouses
 
 		public TimeSpan RentByTime
 		{
-			get{ return c_RentByTime; }
-			set
+			get => c_RentByTime;
+            set
 			{
 				c_RentByTime = value;
 				c_OriginalRentTime = value;
@@ -184,8 +184,8 @@ namespace Knives.TownHouses
 
 		public bool RecurRent
 		{
-			get{ return c_RecurRent; }
-			set
+			get => c_RecurRent;
+            set
 			{
 				c_RecurRent = value;
 
@@ -198,8 +198,8 @@ namespace Knives.TownHouses
 
 		public bool KeepItems
 		{
-			get{ return c_KeepItems; }
-			set
+			get => c_KeepItems;
+            set
 			{
 				c_LeaveItems = false;
 				c_KeepItems = value;
@@ -209,8 +209,8 @@ namespace Knives.TownHouses
 
 		public bool Free
 		{
-			get{ return c_Free; }
-			set
+			get => c_Free;
+            set
 			{
 				c_Free = value;
 				c_Price = 1;
@@ -220,8 +220,8 @@ namespace Knives.TownHouses
 
 		public Intu Murderers
 		{
-			get{ return c_Murderers; }
-			set
+			get => c_Murderers;
+            set
 			{
 				c_Murderers = value;
 
@@ -230,30 +230,41 @@ namespace Knives.TownHouses
 			}
 		}
 
-		public ArrayList Blocks{ get{ return c_Blocks; } set{ c_Blocks = value; } }
-        public string Skill { get { return c_Skill; } set { c_Skill = value; ValidateOwnership(); InvalidateProperties(); } }
-        public double SkillReq { get { return c_SkillReq; } set { c_SkillReq = value; ValidateOwnership(); InvalidateProperties(); } }
-		public bool LeaveItems{ get{ return c_LeaveItems; } set{ c_LeaveItems = value; InvalidateProperties(); } }
-		public bool RentToOwn{ get{ return c_RentToOwn; } set{ c_RentToOwn = value; InvalidateProperties(); } }
-		public bool Relock{ get{ return c_Relock; } set{ c_Relock = value; } }
-		public int ItemsPrice{ get{ return c_ItemsPrice; } set{ c_ItemsPrice = value; InvalidateProperties(); } }
-		public TownHouse House{ get{ return c_House; } set{ c_House = value; } }
-		public Timer DemolishTimer{ get{ return c_DemolishTimer; } }
-		public DateTime DemolishTime{ get{ return c_DemolishTime; } }
+		public ArrayList Blocks{ get => c_Blocks;
+            set => c_Blocks = value;
+        }
+        public string Skill { get => c_Skill;
+            set { c_Skill = value; ValidateOwnership(); InvalidateProperties(); } }
+        public double SkillReq { get => c_SkillReq;
+            set { c_SkillReq = value; ValidateOwnership(); InvalidateProperties(); } }
+		public bool LeaveItems{ get => c_LeaveItems;
+            set{ c_LeaveItems = value; InvalidateProperties(); } }
+		public bool RentToOwn{ get => c_RentToOwn;
+            set{ c_RentToOwn = value; InvalidateProperties(); } }
+		public bool Relock{ get => c_Relock;
+            set => c_Relock = value;
+        }
+		public int ItemsPrice{ get => c_ItemsPrice;
+            set{ c_ItemsPrice = value; InvalidateProperties(); } }
+		public TownHouse House{ get => c_House;
+            set => c_House = value;
+        }
+		public Timer DemolishTimer => c_DemolishTimer;
+        public DateTime DemolishTime => c_DemolishTime;
 
-		public bool Owned{ get{ return c_House != null && !c_House.Deleted; } }
-		public int Floors{ get{ return (c_MaxZ-c_MinZ)/20+1; } }
+        public bool Owned => c_House != null && !c_House.Deleted;
+        public int Floors => (c_MaxZ-c_MinZ)/20+1;
 
-		public bool BlocksReady{ get{ return Blocks.Count != 0; } }
-		public bool FloorsReady{ get{ return ( BlocksReady && MinZ != short.MinValue ); } }
-		public bool SignReady{ get{ return ( FloorsReady && SignLoc != Point3D.Zero ); } }
-		public bool BanReady{ get{ return ( SignReady && BanLoc != Point3D.Zero ); } }
-		public bool LocSecReady{ get{ return ( BanReady && Locks != 0 && Secures != 0 ); } }
-		public bool ItemsReady{ get{ return LocSecReady; } }
-		public bool LengthReady{ get{ return ItemsReady; } }
-		public bool PriceReady{ get{ return ( LengthReady && Price != 0 ); } }
+        public bool BlocksReady => Blocks.Count != 0;
+        public bool FloorsReady => ( BlocksReady && MinZ != short.MinValue );
+        public bool SignReady => ( FloorsReady && SignLoc != Point3D.Zero );
+        public bool BanReady => ( SignReady && BanLoc != Point3D.Zero );
+        public bool LocSecReady => ( BanReady && Locks != 0 && Secures != 0 );
+        public bool ItemsReady => LocSecReady;
+        public bool LengthReady => ItemsReady;
+        public bool PriceReady => ( LengthReady && Price != 0 );
 
-		public string PriceType
+        public string PriceType
 		{
 			get
 			{

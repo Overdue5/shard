@@ -26,20 +26,17 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public new Mobile Owner
 		{
-			get { return m_Owner; }
-			set
+			get => m_Owner;
+            set
 			{
 				m_Owner = value;
 				InvalidateProperties();
 			}
 		}
 
-		public override bool DisplayLootType
-		{
-			get { return false; }
-		}
-        
-		public override bool OnEquip( Mobile from )
+		public override bool DisplayLootType => false;
+
+        public override bool OnEquip( Mobile from )
 		{
 			if( from == Owner )
 				return base.OnEquip( from );

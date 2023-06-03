@@ -4,12 +4,9 @@ namespace Server.Items
 {
 	public class SandMiningBook : Item
 	{
-		public override string DefaultName
-		{
-			get { return "Find Glass-Quality Sand"; }
-		}
+		public override string DefaultName => "Find Glass-Quality Sand";
 
-		[Constructable]
+        [Constructable]
 		public SandMiningBook() : base( 0xFF4 )
 		{
 			Weight = 1.0;

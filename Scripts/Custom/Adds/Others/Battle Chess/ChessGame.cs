@@ -129,24 +129,15 @@ namespace Arya.Chess
 		/// <summary>
 		/// Gets the mobile who started this game
 		/// </summary>
-		public Mobile Owner
-		{
-			get
-			{
-				return m_BlackOwner ? m_Black : m_White;
-			}
-		}
+		public Mobile Owner => m_BlackOwner ? m_Black : m_White;
 
-		/// <summary>
+        /// <summary>
 		/// Gets or sets the player who has been invited to join the game
 		/// </summary>
 		public Mobile Guest
 		{
-			get
-			{
-				return m_BlackOwner ? m_White : m_Black;
-			}
-			set
+			get => m_BlackOwner ? m_White : m_Black;
+            set
 			{
 				if ( m_BlackOwner )
 					m_White = value;
@@ -262,19 +253,16 @@ namespace Arya.Chess
 		/// </summary>
 		public bool AllowSpectators
 		{
-			get { return m_AllowSpectators; }
-			set { m_AllowSpectators = value; }
-		}
+			get => m_AllowSpectators;
+            set => m_AllowSpectators = value;
+        }
 
 		/// <summary>
 		/// Gets the BChessboard region
 		/// </summary>
-		public ChessRegion Region
-		{
-			get { return m_Region; }
-		}
+		public ChessRegion Region => m_Region;
 
-		#endregion
+        #endregion
 
 		public ChessGame( ChessControl parent, Mobile owner, Rectangle2D bounds, int z )
 		{

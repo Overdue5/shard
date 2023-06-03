@@ -2,7 +2,7 @@ namespace Server.Items
 {
     public class GreaterHealScroll : SpellScroll
     {
-        public override int ManaCost { get { return 23; } }
+        public override int ManaCost => 23;
 
         [Constructable]
         public GreaterHealScroll()

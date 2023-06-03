@@ -73,16 +73,16 @@ namespace Server
 
 		public static MessagePump MessagePump
 		{
-			get { return m_MessagePump; }
-			set { m_MessagePump = value; }
-		}
+			get => m_MessagePump;
+            set => m_MessagePump = value;
+        }
 
 		public static Slice Slice;
 
 		public static bool Profiling
 		{
-			get { return m_Profiling; }
-			set
+			get => m_Profiling;
+            set
 			{
 				if( m_Profiling == value )
 					return;
@@ -107,17 +107,19 @@ namespace Server
 			}
 		}
 
-		public static bool Service { get { return m_Service; } }
-		public static bool Debug { get { return m_Debug; } }
-        public static bool IgnoreCache { get { return m_IgnoreCache; } }
-		internal static bool HaltOnWarning { get { return m_HaltOnWarning; } }
-        internal static bool VBdotNet { get { return m_VBdotNET; } }
-		public static List<string> DataDirectories { get { return m_DataDirectories; } }
-		public static Assembly Assembly { get { return m_Assembly; } set { m_Assembly = value; } }
-        public static Version Version { get { return m_Assembly.GetName().Version; } }
-		public static Process Process { get { return m_Process; } }
-		public static Thread Thread { get { return m_Thread; } }
-		public static MultiTextWriter MultiConsoleOut { get { return m_MultiConOut; } }
+		public static bool Service => m_Service;
+        public static bool Debug => m_Debug;
+        public static bool IgnoreCache => m_IgnoreCache;
+        internal static bool HaltOnWarning => m_HaltOnWarning;
+        internal static bool VBdotNet => m_VBdotNET;
+        public static List<string> DataDirectories => m_DataDirectories;
+        public static Assembly Assembly { get => m_Assembly;
+            set => m_Assembly = value;
+        }
+        public static Version Version => m_Assembly.GetName().Version;
+        public static Process Process => m_Process;
+        public static Thread Thread => m_Thread;
+        public static MultiTextWriter MultiConsoleOut => m_MultiConOut;
         public static readonly Encoding ASCIIEncoding = Encoding.GetEncoding(1251);
 
 #if Framework_4_0
@@ -129,14 +131,14 @@ namespace Server
 		private static bool m_MultiProcessor;
 		private static int m_ProcessorCount;
 
-        public static bool MultiProcessor { get { return m_MultiProcessor; } }
-        public static int ProcessorCount { get { return m_ProcessorCount; } }
+        public static bool MultiProcessor => m_MultiProcessor;
+        public static int ProcessorCount => m_ProcessorCount;
 
         private static bool m_Unix;
 
-        public static bool Unix { get { return m_Unix; } }
+        public static bool Unix => m_Unix;
 
-		public static string FindDataFile( string path )
+        public static string FindDataFile( string path )
 		{
 			if( m_DataDirectories.Count == 0 )
 				throw new InvalidOperationException( "Attempted to FindDataFile before DataDirectories list has been filled." );
@@ -166,51 +168,27 @@ namespace Server
 		private static Expansion m_Expansion;
 		public static Expansion Expansion
 		{
-			get { return m_Expansion; }
-			set { m_Expansion = value; }
-		}
-
-        public static bool T2A
-        {
-            get { return m_Expansion >= Expansion.T2A; }
+			get => m_Expansion;
+            set => m_Expansion = value;
         }
 
-        public static bool UOR
-        {
-            get { return m_Expansion >= Expansion.UOR; }
-        }
+        public static bool T2A => m_Expansion >= Expansion.T2A;
 
-        public static bool UOTD
-        {
-            get { return m_Expansion >= Expansion.UOTD; }
-        }
+        public static bool UOR => m_Expansion >= Expansion.UOR;
 
-        public static bool LBR
-        {
-            get { return m_Expansion >= Expansion.LBR; }
-        }
+        public static bool UOTD => m_Expansion >= Expansion.UOTD;
 
-		public static bool AOS
-		{
-            get { return m_Expansion >= Expansion.AOS; }
-		}
+        public static bool LBR => m_Expansion >= Expansion.LBR;
 
-		public static bool SE
-		{
-            get { return m_Expansion >= Expansion.SE; }
-		}
+        public static bool AOS => m_Expansion >= Expansion.AOS;
 
-		public static bool ML
-		{
-            get { return m_Expansion >= Expansion.ML; }
-		}
+        public static bool SE => m_Expansion >= Expansion.SE;
 
-        public static bool SA
-        {
-            get { return m_Expansion >= Expansion.SA; }
-        }
+        public static bool ML => m_Expansion >= Expansion.ML;
 
-		#endregion
+        public static bool SA => m_Expansion >= Expansion.SA;
+
+        #endregion
 
 		public static string ExePath
 		{
@@ -329,17 +307,14 @@ namespace Server
 		}
 
 		private static bool m_Closing;
-		public static bool Closing { get { return m_Closing; } }
+		public static bool Closing => m_Closing;
 
         private static long m_CycleIndex = 1;
         private static float[] m_CyclesPerSecond = new float[100];
 
-		public static float CyclesPerSecond
-		{
-            get { return m_CyclesPerSecond[(m_CycleIndex - 1) % m_CyclesPerSecond.Length]; }
-        }
+		public static float CyclesPerSecond => m_CyclesPerSecond[(m_CycleIndex - 1) % m_CyclesPerSecond.Length];
 
-		public static float AverageCPS
+        public static float AverageCPS
 		{
 			get
 			{
@@ -610,17 +585,17 @@ namespace Server
 
 		public static int GlobalMaxUpdateRange
 		{
-			get { return m_GlobalMaxUpdateRange; }
-			set { m_GlobalMaxUpdateRange = value; }
-		}
+			get => m_GlobalMaxUpdateRange;
+            set => m_GlobalMaxUpdateRange = value;
+        }
 
 		private static int m_ItemCount, m_MobileCount, m_CustomsCount;
 
-		public static int ScriptItems { get { return m_ItemCount; } }
-		public static int ScriptMobiles { get { return m_MobileCount; } }
-		public static int ScriptCustoms { get { return m_CustomsCount; } }
+		public static int ScriptItems => m_ItemCount;
+        public static int ScriptMobiles => m_MobileCount;
+        public static int ScriptCustoms => m_CustomsCount;
 
-		public static void VerifySerialization()
+        public static void VerifySerialization()
 		{
 			m_ItemCount = 0;
 			m_MobileCount = 0;
@@ -836,11 +811,8 @@ namespace Server
 			}
 		}
 
-		public override System.Text.Encoding Encoding
-		{
-			get { return System.Text.Encoding.Default; }
-		}
-	}
+		public override System.Text.Encoding Encoding => System.Text.Encoding.Default;
+    }
 
 	public class MultiTextWriter : TextWriter
 	{
@@ -901,9 +873,6 @@ namespace Server
 			WriteLine( String.Format( line, args ) );
 		}
 
-		public override Encoding Encoding
-		{
-			get { return Encoding.Default; }
-		}
-	}
+		public override Encoding Encoding => Encoding.Default;
+    }
 }

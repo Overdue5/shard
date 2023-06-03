@@ -6,42 +6,30 @@ namespace Server.Items
 {
 	public class FlourMillSouthAddon : BaseAddon, IFlourMill
 	{
-		public override BaseAddonDeed Deed{ get{ return new FlourMillSouthDeed(); } }
-		private int m_Flour;
+		public override BaseAddonDeed Deed => new FlourMillSouthDeed();
+        private int m_Flour;
 		private Timer m_Timer;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int MaxFlour
-		{
-			get{ return 2; }
-		}
+		public int MaxFlour => 2;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public int CurFlour
 		{
-			get{ return m_Flour; }
-			set{ m_Flour = Math.Max( 0, Math.Min( value, MaxFlour ) ); UpdateStage(); }
+			get => m_Flour;
+            set{ m_Flour = Math.Max( 0, Math.Min( value, MaxFlour ) ); UpdateStage(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool HasFlour
-		{
-			get{ return ( m_Flour > 0 ); }
-		}
+		public bool HasFlour => ( m_Flour > 0 );
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsFull
-		{
-			get{ return ( m_Flour >= MaxFlour ); }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public bool IsFull => ( m_Flour >= MaxFlour );
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsWorking
-		{
-			get{ return ( m_Timer != null ); }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public bool IsWorking => ( m_Timer != null );
 
-		public void StartWorking( Mobile from )
+        public void StartWorking( Mobile from )
 		{
 			if ( IsWorking )
 				return;
@@ -185,8 +173,8 @@ namespace Server.Items
 
 	public class FlourMillSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new FlourMillSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1044348; } } // flour mill (south)
+		public override BaseAddon Addon => new FlourMillSouthAddon();
+        public override int LabelNumber => 1044348; // flour mill (south)
 
 		[Constructable]
 		public FlourMillSouthDeed()

@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new GatewayPortalAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new GatewayPortalAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public GatewayPortalAddon()
 		{
 
@@ -78,15 +72,9 @@ namespace Server.Items
 
 	public class GatewayPortalAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new GatewayPortalAddon();
-			}
-		}
+		public override BaseAddon Addon => new GatewayPortalAddon();
 
-		[Constructable]
+        [Constructable]
 		public GatewayPortalAddonDeed()
 		{
 			Name = "GatewayPortal";

@@ -58,14 +58,14 @@ namespace Server.Items
 			typeof( ShaminoCrossbow )
 		};
 
-        public override int LabelNumber { get { return 1070933; } } // Pigments of Tokuno
+        public override int LabelNumber => 1070933; // Pigments of Tokuno
 
         private int m_UsesRemaining;
         private TextDefinition m_Label;
 
         protected TextDefinition Label
         {
-            get { return m_Label; }
+            get => m_Label;
             set { m_Label = value; InvalidateProperties(); }
         }
 
@@ -73,10 +73,8 @@ namespace Server.Items
         /* DO NOT USE! Only used in serialization of pigments that originally derived from Item */
         private bool m_InheritsItem;
 
-        protected bool InheritsItem
-        {
-            get { return m_InheritsItem; }
-        }
+        protected bool InheritsItem => m_InheritsItem;
+
         #endregion
 
         public BasePigmentsOfTokuno()
@@ -251,13 +249,13 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int UsesRemaining
         {
-            get { return m_UsesRemaining; }
+            get => m_UsesRemaining;
             set { m_UsesRemaining = value; InvalidateProperties(); }
         }
 
         public bool ShowUsesRemaining
         {
-            get { return true; }
+            get => true;
             set { }
         }
 

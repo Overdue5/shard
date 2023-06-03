@@ -42,8 +42,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public TimeSpan MinDelay
 		{
-			get { return m_MinDelay; }
-			set 
+			get => m_MinDelay;
+            set 
 			{
 				m_MinDelay = value;
 				InvalidateProperties(); }
@@ -52,8 +52,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public TimeSpan MaxDelay
 		{
-			get { return m_MaxDelay; }
-			set 
+			get => m_MaxDelay;
+            set 
 			{
 				m_MaxDelay = value;
 				InvalidateProperties(); }
@@ -79,8 +79,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public virtual int ResetState
 		{
-				get{ return m_ResetState; }
-			set 
+				get => m_ResetState;
+                set 
 			{
 				m_ResetState = value;
 				if ( m_Timer != null && m_Timer.Running )
@@ -91,8 +91,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public virtual int State
 		{
-				get{ return m_State; }
-			set 
+				get => m_State;
+                set 
 			{
 				m_State = value;
 				StartTimer();
@@ -222,16 +222,16 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Disabled
 		{
-			set { m_Disabled = value; }
-			get { return m_Disabled; }
-		}
+			set => m_Disabled = value;
+            get => m_Disabled;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Link
 		{
-			set { m_LinkedItem = value; }
-			get { return m_LinkedItem; }
-		}
+			set => m_LinkedItem = value;
+            get => m_LinkedItem;
+        }
 
 		[Constructable]
 		public TimedLever() : base( 0x108C )
@@ -248,8 +248,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public override int State
 		{
-			get { return base.State; }
-			set
+			get => base.State;
+            set
 			{
 				// prevent infinite recursion 
 				if (!already_being_activated)
@@ -330,8 +330,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int LeverSound
 		{
-				get{ return m_LeverSound; }
-			set 
+				get => m_LeverSound;
+                set 
 			{
 				m_LeverSound = value;
 				InvalidateProperties();}
@@ -340,8 +340,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public leverType LeverType
 		{
-				get{ return m_LeverType; }
-			set 
+				get => m_LeverType;
+                set 
 			{
 				m_LeverType = value; State = 0;
 				InvalidateProperties();}
@@ -350,21 +350,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		new public virtual Direction Direction
 		{
-			get{ return base.Direction; }
-			set { base.Direction = value; SetLeverStatic();InvalidateProperties();}
+			get => base.Direction;
+            set { base.Direction = value; SetLeverStatic();InvalidateProperties();}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target0Item
 		{
-				get{ return m_TargetItem0; }
-			set { m_TargetItem0 = value;InvalidateProperties();}
+				get => m_TargetItem0;
+                set { m_TargetItem0 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0Property
 		{
-				get{ return m_TargetProperty0; }
-			set { m_TargetProperty0 = value;InvalidateProperties();}
+				get => m_TargetProperty0;
+                set { m_TargetProperty0 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0ItemName
@@ -373,14 +373,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target1Item
 		{
-				get{ return m_TargetItem1; }
-			set { m_TargetItem1 = value;InvalidateProperties();}
+				get => m_TargetItem1;
+                set { m_TargetItem1 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1Property
 		{
-				get{ return m_TargetProperty1; }
-			set { m_TargetProperty1 = value;InvalidateProperties();}
+				get => m_TargetProperty1;
+                set { m_TargetProperty1 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1ItemName
@@ -389,14 +389,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target2Item
 		{
-				get{ return m_TargetItem2; }
-			set { m_TargetItem2 = value;InvalidateProperties();}
+				get => m_TargetItem2;
+                set { m_TargetItem2 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target2Property
 		{
-				get{ return m_TargetProperty2; }
-			set { m_TargetProperty2 = value;InvalidateProperties();}
+				get => m_TargetProperty2;
+                set { m_TargetProperty2 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target2ItemName
@@ -527,16 +527,16 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Disabled
 		{
-			set { m_Disabled = value; }
-			get { return m_Disabled; }
-		}
+			set => m_Disabled = value;
+            get => m_Disabled;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Link
 		{
-			set { m_LinkedItem = value; }
-			get { return m_LinkedItem; }
-		}
+			set => m_LinkedItem = value;
+            get => m_LinkedItem;
+        }
 
 		[Constructable]
 		public TimedSwitch() : base( 0x108F )
@@ -552,8 +552,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int State
 		{
-			get { return base.State; }
-			set
+			get => base.State;
+            set
 			{
 				// prevent infinite recursion 
 				if (!already_being_activated)
@@ -630,8 +630,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int SwitchSound
 		{
-				get{ return m_SwitchSound; }
-			set 
+				get => m_SwitchSound;
+                set 
 			{
 				m_SwitchSound = value;
 				InvalidateProperties();}
@@ -640,21 +640,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		new public virtual Direction Direction
 		{
-			get{ return base.Direction; }
-			set { base.Direction = value; SetSwitchStatic();InvalidateProperties();}
+			get => base.Direction;
+            set { base.Direction = value; SetSwitchStatic();InvalidateProperties();}
 		}
       
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target0Item
 		{
-				get{ return m_TargetItem0; }
-			set { m_TargetItem0 = value;InvalidateProperties();}
+				get => m_TargetItem0;
+                set { m_TargetItem0 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0Property
 		{
-				get{ return m_TargetProperty0; }
-			set { m_TargetProperty0 = value;InvalidateProperties();}
+				get => m_TargetProperty0;
+                set { m_TargetProperty0 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0ItemName
@@ -663,14 +663,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target1Item
 		{
-				get{ return m_TargetItem1; }
-			set { m_TargetItem1 = value;InvalidateProperties();}
+				get => m_TargetItem1;
+                set { m_TargetItem1 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1Property
 		{
-				get{ return m_TargetProperty1; }
-			set { m_TargetProperty1 = value;InvalidateProperties();}
+				get => m_TargetProperty1;
+                set { m_TargetProperty1 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1ItemName
@@ -790,30 +790,30 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Disabled
 		{
-			set { m_Disabled = value; }
-			get { return m_Disabled; }
-		}
+			set => m_Disabled = value;
+            get => m_Disabled;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool NoDoubleClick
 		{
-			set { m_NoDoubleClick = value; }
-			get { return m_NoDoubleClick; }
-		}
+			set => m_NoDoubleClick = value;
+            get => m_NoDoubleClick;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Point3D Offset
 		{
-			set { m_Offset = value; }
-			get { return m_Offset; }
-		}
+			set => m_Offset = value;
+            get => m_Offset;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Item Link
 		{
-			set { m_LinkedItem = value; }
-			get { return m_LinkedItem; }
-		}
+			set => m_LinkedItem = value;
+            get => m_LinkedItem;
+        }
 
 		[Constructable]
 		public TimedSwitchableItem() : base( 0x108F )
@@ -829,8 +829,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public override int State
 		{
-			get { return base.State; }
-			set
+			get => base.State;
+            set
 			{
 				// prevent infinite recursion 
 				if (!already_being_activated)
@@ -912,8 +912,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int ItemID0
 		{
-				get{ return m_ItemID0; }
-			set 
+				get => m_ItemID0;
+                set 
 			{
 				m_ItemID0 = value;
 				// refresh the lever static to reflect the state
@@ -925,8 +925,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int ItemID1
 		{
-				get{ return m_ItemID1; }
-			set 
+				get => m_ItemID1;
+                set 
 			{
 				m_ItemID1 = value;
 				// refresh the lever static to reflect the state
@@ -937,8 +937,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int SwitchSound
 		{
-				get{ return m_SwitchSound; }
-			set 
+				get => m_SwitchSound;
+                set 
 			{
 				m_SwitchSound = value;
 				InvalidateProperties();}
@@ -947,14 +947,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target0Item
 		{
-				get{ return m_TargetItem0; }
-			set { m_TargetItem0 = value;InvalidateProperties();}
+				get => m_TargetItem0;
+                set { m_TargetItem0 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0Property
 		{
-				get{ return m_TargetProperty0; }
-			set { m_TargetProperty0 = value;InvalidateProperties();}
+				get => m_TargetProperty0;
+                set { m_TargetProperty0 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0ItemName
@@ -963,14 +963,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target1Item
 		{
-				get{ return m_TargetItem1; }
-			set { m_TargetItem1 = value;InvalidateProperties();}
+				get => m_TargetItem1;
+                set { m_TargetItem1 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1Property
 		{
-				get{ return m_TargetProperty1; }
-			set { m_TargetProperty1 = value;InvalidateProperties();}
+				get => m_TargetProperty1;
+                set { m_TargetProperty1 = value;InvalidateProperties();}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1ItemName

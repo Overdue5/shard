@@ -2,15 +2,12 @@ namespace Server.Items
 {
 	public class Bloodmoss : BaseReagent, ICommodity
 	{
-        public override int PotionGroupIndex
-        {
-            get{ return 1; }
-        } 
+        public override int PotionGroupIndex => 1;
 
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		[Constructable]
+        [Constructable]
 		public Bloodmoss() : this( 1 )
 		{
 		}

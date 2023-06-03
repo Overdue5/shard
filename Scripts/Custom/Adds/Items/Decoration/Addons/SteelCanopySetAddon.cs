@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class SteelCanopySetAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SteelCanopySetAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SteelCanopySetAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SteelCanopySetAddon()
 		{
 			AddonComponent ac = null;
@@ -279,15 +273,9 @@ namespace Server.Items
 
 	public class SteelCanopySetAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SteelCanopySetAddon();
-			}
-		}
+		public override BaseAddon Addon => new SteelCanopySetAddon();
 
-		[Constructable]
+        [Constructable]
 		public SteelCanopySetAddonDeed()
 		{
 			Name = "Steel Canopy Set";

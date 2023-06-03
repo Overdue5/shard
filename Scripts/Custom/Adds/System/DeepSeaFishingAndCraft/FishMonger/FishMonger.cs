@@ -5,11 +5,11 @@ namespace Server.Mobiles
 	public class FishMonger : BaseVendor
 	{
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.FishermensGuild; } }
+        public override NpcGuild NpcGuild => NpcGuild.FishermensGuild;
 
-		[Constructable]
+        [Constructable]
 		public FishMonger() : base( "the fish monger" )
 		{
 			SetSkill( SkillName.Fishing, 75.0, 98.0 );

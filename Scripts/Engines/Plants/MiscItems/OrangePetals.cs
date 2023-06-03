@@ -6,14 +6,11 @@ namespace Server.Items
 {
 	public class OrangePetals : Item
 	{
-		public override int LabelNumber { get { return 1053122; } } // orange petals
+		public override int LabelNumber => 1053122; // orange petals
 
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public OrangePetals() : this( 1 )
 		{
 		}
@@ -122,9 +119,9 @@ namespace Server.Items
 		{
 			private readonly Timer m_Timer;
 
-			public Timer Timer{ get{ return m_Timer; } }
+			public Timer Timer => m_Timer;
 
-			public OrangePetalsContext( Timer timer )
+            public OrangePetalsContext( Timer timer )
 			{
 				m_Timer = timer;
 			}

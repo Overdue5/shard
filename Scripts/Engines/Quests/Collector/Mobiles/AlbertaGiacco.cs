@@ -5,8 +5,9 @@ namespace Server.Engines.Quests.Collector
 {
 	public class AlbertaGiacco : BaseQuester
 	{
-        public override bool ClickTitle { get { return true; } }
-		[Constructable]
+        public override bool ClickTitle => true;
+
+        [Constructable]
 		public AlbertaGiacco() : base( "the respected painter" )
 		{
 		}
@@ -49,7 +50,7 @@ namespace Server.Engines.Quests.Collector
 				|| qs.IsObjectiveInProgress( typeof( SitOnTheStoolObjective ) )
 				|| qs.IsObjectiveInProgress( typeof( ReturnPaintingObjective ) ) );
 		}
-        public override bool ShowContextMenu { get { return true; } }//
+        public override bool ShowContextMenu => true; //
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			QuestSystem qs = player.Quest;

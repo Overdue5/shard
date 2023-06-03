@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class GoldBricks : Item
 	{
-		public override int LabelNumber{ get{ return 1063489; } }
-		
-		[Constructable]
+		public override int LabelNumber => 1063489;
+
+        [Constructable]
 		public GoldBricks() : base( 0x1BEB )
 		{
 		}

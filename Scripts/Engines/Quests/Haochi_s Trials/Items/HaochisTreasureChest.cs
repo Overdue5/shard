@@ -19,9 +19,9 @@ namespace Server.Engines.Quests.Samurai
 		{
 		}
 
-		public override bool IsDecoContainer{ get{ return false; } }
+		public override bool IsDecoContainer => false;
 
-		private void GenerateTreasure()
+        private void GenerateTreasure()
 		{
 			for ( int i = Items.Count - 1; i >= 0; i-- )
 				Items[i].Delete();

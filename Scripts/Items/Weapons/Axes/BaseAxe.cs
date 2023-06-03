@@ -7,11 +7,12 @@ namespace Server.Items
 {
     public abstract class BaseAxe : BaseMeleeWeapon, IUsesRemaining
     {
-        public override int DefHitSound { get { return Utility.RandomList(0x236, 0x237); } }
-        public override int DefMissSound { get { return Utility.RandomList(0x238, 0x239, 0x23A); } }
+        public override int DefHitSound => Utility.RandomList(0x236, 0x237);
+        public override int DefMissSound => Utility.RandomList(0x238, 0x239, 0x23A);
 
-        public override SkillName DefSkill { get { return SkillName.Swords; } }
-        public override WeaponType DefType { get { return WeaponType.Axe; } }
+        public override SkillName DefSkill => SkillName.Swords;
+
+        public override WeaponType DefType => WeaponType.Axe;
         //public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
 
         public override int GetSwingAnim(Mobile from)
@@ -22,7 +23,7 @@ namespace Server.Items
                 return Utility.RandomList(12, 13, 14);
         }
 
-        public virtual HarvestSystem HarvestSystem { get { return Lumberjacking.System; } }
+        public virtual HarvestSystem HarvestSystem => Lumberjacking.System;
 
         private int m_UsesRemaining;
         private bool m_ShowUsesRemaining;
@@ -30,14 +31,14 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int UsesRemaining
         {
-            get { return m_UsesRemaining; }
+            get => m_UsesRemaining;
             set { m_UsesRemaining = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ShowUsesRemaining
         {
-            get { return m_ShowUsesRemaining; }
+            get => m_ShowUsesRemaining;
             set { m_ShowUsesRemaining = value; InvalidateProperties(); }
         }
 

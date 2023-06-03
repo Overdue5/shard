@@ -104,12 +104,9 @@ namespace Server.Items
 
         private static TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes(1.0);
 
-		public override bool DisplayLootType
-		{
-			get{ return false; }
-		}
+		public override bool DisplayLootType => false;
 
-		[Constructable]
+        [Constructable]
 		public DeathRobe()
 		{
 			LootType = LootType.Newbied;
@@ -241,15 +238,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; }
-		}
+			get => m_IsRewardItem;
+            set => m_IsRewardItem = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Number
 		{
-			get{ return m_LabelNumber; }
-			set{ m_LabelNumber = value; InvalidateProperties(); }
+			get => m_LabelNumber;
+            set{ m_LabelNumber = value; InvalidateProperties(); }
 		}
 
 		public override int LabelNumber
@@ -263,9 +260,9 @@ namespace Server.Items
 			}
 		}
 
-		public override int BasePhysicalResistance{ get{ return 3; } }
+		public override int BasePhysicalResistance => 3;
 
-		public override void OnAdded( object parent )
+        public override void OnAdded( object parent )
 		{
 			base.OnAdded( parent );
 
@@ -366,14 +363,14 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsRewardItem
         {
-            get { return m_IsRewardItem; }
-            set { m_IsRewardItem = value; }
+            get => m_IsRewardItem;
+            set => m_IsRewardItem = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Number
         {
-            get { return m_LabelNumber; }
+            get => m_LabelNumber;
             set { m_LabelNumber = value; InvalidateProperties(); }
         }
 
@@ -388,7 +385,7 @@ namespace Server.Items
             }
         }
 
-        public override int BasePhysicalResistance { get { return 3; } }
+        public override int BasePhysicalResistance => 3;
 
         public override void OnAdded(object parent)
         {
@@ -495,24 +492,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxArcaneCharges
 		{
-			get{ return m_MaxArcaneCharges; }
-			set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
+			get => m_MaxArcaneCharges;
+            set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int CurArcaneCharges
 		{
-			get{ return m_CurArcaneCharges; }
-			set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
+			get => m_CurArcaneCharges;
+            set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsArcane
-		{
-			get{ return ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 ); }
-		}
+		public bool IsArcane => ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 );
 
-		public void Update()
+        public void Update()
 		{
 			if ( IsArcane )
 				ItemID = 0x26AE;
@@ -637,8 +631,9 @@ namespace Server.Items
             Weight = 1.0;
             StrRequirement = 0;
         }
-        public override int LabelNumber { get { return 1076584; } } // A monk's robe
-        public override bool CanBeBlessed { get { return false; } }
+        public override int LabelNumber => 1076584; // A monk's robe
+        public override bool CanBeBlessed => false;
+
         public override bool Dye(Mobile from, DyeTub sender)
         {
             from.SendLocalizedMessage(sender.FailMessage);
@@ -834,9 +829,9 @@ namespace Server.Items
 	[Flipable( 0x2FB9, 0x3173 )]
 	public class MaleElvenRobe : BaseOuterTorso
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
+		public override Race RequiredRace => Race.Elf;
 
-		[Constructable]
+        [Constructable]
 		public MaleElvenRobe() : this( 0 )
 		{
 		}
@@ -869,8 +864,9 @@ namespace Server.Items
 	[Flipable( 0x2FBA, 0x3174 )]
 	public class FemaleElvenRobe : BaseOuterTorso
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
-		[Constructable]
+		public override Race RequiredRace => Race.Elf;
+
+        [Constructable]
 		public FemaleElvenRobe() : this( 0 )
 		{
 		}

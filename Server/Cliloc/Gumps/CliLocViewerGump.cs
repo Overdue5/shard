@@ -30,12 +30,12 @@ namespace Server.Gumps
 		protected int _MaxPages;
 		
 		
-		public Mobile Owner{ get{ return _Owner; } }
-		public string FilterText{ get{ return _FilterText; } }
-		public Hashtable FilteredCliLocs{ get{ return _FilteredCliLocs; } }
-		public int Page{ get{ return _Page; } }
-		
-		public CliLocViewerGump( CliLocViewerGump oldgump ) : this( oldgump.Owner, oldgump.FilterText, oldgump.Page )
+		public Mobile Owner => _Owner;
+        public string FilterText => _FilterText;
+        public Hashtable FilteredCliLocs => _FilteredCliLocs;
+        public int Page => _Page;
+
+        public CliLocViewerGump( CliLocViewerGump oldgump ) : this( oldgump.Owner, oldgump.FilterText, oldgump.Page )
 		{
 		}
 		

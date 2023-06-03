@@ -54,16 +54,16 @@ namespace Server.Mobiles
 		private readonly Mobile m_Target;
 		private readonly DateTime m_ExpireTime;
 
-		public override bool DeleteCorpseOnDeath{ get{ return true; } }
+		public override bool DeleteCorpseOnDeath => true;
 
-		public override void DisplayPaperdollTo( Mobile to )
+        public override void DisplayPaperdollTo( Mobile to )
 		{
 		}
 
-		public override Mobile ConstantFocus{ get{ return m_Target; } }
-		public override bool AlwaysAttackable{ get{ return true; } }
+		public override Mobile ConstantFocus => m_Target;
+        public override bool AlwaysAttackable => true;
 
-		public KhaldunRevenant( Mobile target ) : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.18, 0.36 )
+        public KhaldunRevenant( Mobile target ) : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.18, 0.36 )
 		{
 			Name = "Revenant";
 			Body = 0x3CA;
@@ -121,10 +121,10 @@ namespace Server.Mobiles
 			return 0xFD;
 		}
 
-		public override bool BardImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool BardImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override void OnThink()
+        public override void OnThink()
 		{
 			if ( !m_Target.Alive || DateTime.UtcNow > m_ExpireTime )
 			{

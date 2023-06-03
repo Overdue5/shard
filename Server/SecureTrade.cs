@@ -30,31 +30,13 @@ namespace Server
 		private SecureTradeInfo m_From, m_To;
 		private bool m_Valid;
 
-		public SecureTradeInfo From
-		{
-			get
-			{
-				return m_From;
-			}
-		}
+		public SecureTradeInfo From => m_From;
 
-		public SecureTradeInfo To
-		{
-			get
-			{
-				return m_To;
-			}
-		}
+        public SecureTradeInfo To => m_To;
 
-		public bool Valid
-		{
-			get
-			{
-				return m_Valid;
-			}
-		}
+        public bool Valid => m_Valid;
 
-		public void Cancel()
+        public void Cancel()
 		{
 			if ( !m_Valid )
 				return;
@@ -257,40 +239,16 @@ namespace Server
 			m_Mobile.AddItem( m_Container );
 		}
 
-		public SecureTrade Owner
-		{
-			get
-			{
-				return m_Owner;
-			}
-		}
+		public SecureTrade Owner => m_Owner;
 
-		public Mobile Mobile
-		{
-			get
-			{
-				return m_Mobile;
-			}
-		}
+        public Mobile Mobile => m_Mobile;
 
-		public SecureTradeContainer Container
-		{
-			get
-			{
-				return m_Container;
-			}
-		}
+        public SecureTradeContainer Container => m_Container;
 
-		public bool Accepted
+        public bool Accepted
 		{
-			get
-			{
-				return m_Accepted;
-			}
-			set
-			{
-				m_Accepted = value;
-			}
-		}
+			get => m_Accepted;
+            set => m_Accepted = value;
+        }
 	}
 }

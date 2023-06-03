@@ -2,15 +2,12 @@ namespace Server.Items
 {
 	public class MandrakeRoot : BaseReagent, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-        public override int PotionGroupIndex
-        {
-            get { return 4; }
-        } 
+        public override int PotionGroupIndex => 4;
 
-		[Constructable]
+        [Constructable]
 		public MandrakeRoot() : this( 1 )
 		{
 		}

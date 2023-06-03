@@ -43,11 +43,11 @@ namespace Server.Mobiles
             PackGold(200);
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
-		public override int Meat{ get{ return 4; } }
+		public override bool CanRummageCorpses => true;
+        public override int TreasureMapLevel => 1;
+        public override int Meat => 4;
 
-		public Ettin( Serial serial ) : base( serial )
+        public Ettin( Serial serial ) : base( serial )
 		{
 		}
 

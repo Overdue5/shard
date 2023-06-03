@@ -29,17 +29,11 @@ namespace Server.Items
 				m_BackDesign = Utility.RandomList(BackDesigns);
 		}
 
-		public int Remaining
-		{
-			get { return (m_DeckSize * 52) - m_DeckPointer; }
-		}
+		public int Remaining => (m_DeckSize * 52) - m_DeckPointer;
 
-		public int BackDesign
-		{
-			get { return m_BackDesign; }
-		}
+        public int BackDesign => m_BackDesign;
 
-		public void ChangeBackDesign()
+        public void ChangeBackDesign()
 		{
 			m_BackDesign = Utility.RandomList(BackDesigns);
 		}

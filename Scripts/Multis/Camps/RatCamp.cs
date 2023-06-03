@@ -6,9 +6,9 @@ namespace Server.Multis
 {	
 	public class RatCamp : BaseCamp
 	{
-		public virtual Mobile Ratmen{ get{ return new Ratman(); } }
-		
-		private Mobile m_Prisoner;
+		public virtual Mobile Ratmen => new Ratman();
+
+        private Mobile m_Prisoner;
 		
 		[Constructable]
 		public RatCamp() : base( 0x10EE ) // dummy garbage at center

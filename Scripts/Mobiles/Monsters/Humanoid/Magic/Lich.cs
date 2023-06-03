@@ -64,17 +64,14 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomMinMax(1, 2)));
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override bool BleedImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override int TreasureMapLevel{ get{ return 3; } }
+        public override bool CanRummageCorpses => true;
+        public override bool BleedImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override int TreasureMapLevel => 3;
 
-		public Lich( Serial serial ) : base( serial )
+        public Lich( Serial serial ) : base( serial )
 		{
 		}
 

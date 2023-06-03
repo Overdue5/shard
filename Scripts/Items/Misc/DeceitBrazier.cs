@@ -66,23 +66,27 @@ namespace Server.Items
 				#endregion
 			};
 
-		public static Type[] Creatures { get { return m_Creatures; } }
+		public static Type[] Creatures => m_Creatures;
 
-		private Timer m_Timer;
+        private Timer m_Timer;
 		private DateTime m_NextSpawn;
 		private int m_SpawnRange;
 		private TimeSpan m_NextSpawnDelay;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime NextSpawn { get { return m_NextSpawn; } }
+		public DateTime NextSpawn => m_NextSpawn;
+
+        [CommandProperty( AccessLevel.GameMaster )]
+		public int SpawnRange { get => m_SpawnRange;
+            set => m_SpawnRange = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int SpawnRange { get { return m_SpawnRange; } set { m_SpawnRange = value; } }
+		public TimeSpan NextSpawnDelay { get => m_NextSpawnDelay;
+            set => m_NextSpawnDelay = value;
+        }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan NextSpawnDelay { get { return m_NextSpawnDelay; } set { m_NextSpawnDelay = value; } }
-
-		public override int LabelNumber { get { return 1023633; } } // Brazier
+		public override int LabelNumber => 1023633; // Brazier
 
 		[Constructable]
 		public DeceitBrazier() : base( 0xE31 )
@@ -128,9 +132,9 @@ namespace Server.Items
 			PublicOverheadMessage( MessageType.Regular, 0x3B2, 500761 );// Heed this warning well, and use this brazier at your own peril.
 		}
 
-		public override bool HandlesOnMovement { get { return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
+        public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			if( m_NextSpawn < DateTime.UtcNow ) // means we haven't spawned anything if the next spawn is below
 			{

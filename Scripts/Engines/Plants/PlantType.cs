@@ -319,16 +319,16 @@ namespace Server.Engines.Plants
 		private readonly bool m_Flowery;
 		private readonly bool m_Crossable;
 
-		public int ItemID { get { return m_ItemID; } }
-		public int OffsetX { get { return m_OffsetX; } }
-		public int OffsetY { get { return m_OffsetY; } }
-		public PlantType PlantType { get { return m_PlantType; } }
-        public int Name { get { return m_ItemID < 0x4000 ? 1020000 + m_ItemID : 1078872 + m_ItemID; } }
-        public bool ContainsPlant { get { return m_ContainsPlant; } }
-		public bool Flowery { get { return m_Flowery; } }
-		public bool Crossable { get { return m_Crossable; } }
+		public int ItemID => m_ItemID;
+        public int OffsetX => m_OffsetX;
+        public int OffsetY => m_OffsetY;
+        public PlantType PlantType => m_PlantType;
+        public int Name => m_ItemID < 0x4000 ? 1020000 + m_ItemID : 1078872 + m_ItemID;
+        public bool ContainsPlant => m_ContainsPlant;
+        public bool Flowery => m_Flowery;
+        public bool Crossable => m_Crossable;
 
-		private PlantTypeInfo( int itemID, int offsetX, int offsetY, PlantType plantType, bool containsPlant, bool flowery, bool crossable )
+        private PlantTypeInfo( int itemID, int offsetX, int offsetY, PlantType plantType, bool containsPlant, bool flowery, bool crossable )
 		{
 			m_ItemID = itemID;
 			m_OffsetX = offsetX;

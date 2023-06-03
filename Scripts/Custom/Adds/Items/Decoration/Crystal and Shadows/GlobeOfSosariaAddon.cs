@@ -18,12 +18,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new GlobeOfSosariaAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new GlobeOfSosariaAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -48,12 +45,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new GlobeOfSosariaAddon(); }
-		}
+		public override BaseAddon Addon => new GlobeOfSosariaAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version

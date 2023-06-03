@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class ValorSymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new ValorSymbolDeed(); } }
+		public override BaseAddonDeed Deed => new ValorSymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public ValorSymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14BB ), 0, 0, 0 ); //N
@@ -35,9 +35,9 @@ namespace Server.Items
 
 	public class ValorSymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new ValorSymbolAddon(); } }
+		public override BaseAddon Addon => new ValorSymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public ValorSymbolDeed()
 		{
             Name = "Valor symbol deed";

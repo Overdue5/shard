@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class HealScroll : SpellScroll
 	{
-        public override int ManaCost { get { return 4; } } //Loki edit
+        public override int ManaCost => 4; //Loki edit
 
 		[Constructable]
 		public HealScroll() : this( 1 )

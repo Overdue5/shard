@@ -2,22 +2,16 @@ namespace Server.Items
 {
 	public class BatWing : BaseReagent, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
         //Misc pots
-        public override int PotionGroupIndex
-        {
-            get { return 8; }
-        }
+        public override int PotionGroupIndex => 8;
 
         //Shrinks
-        public override int PotionIndex
-        {
-            get { return 2; }
-        }
+        public override int PotionIndex => 2;
 
-		[Constructable]
+        [Constructable]
 		public BatWing() : this( 1 )
 		{
 		}

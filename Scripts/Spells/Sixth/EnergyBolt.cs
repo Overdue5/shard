@@ -6,9 +6,9 @@ namespace Server.Spells.Sixth
 {
     public class EnergyBoltSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 0x20A; } }
-        
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 0x20A;
+
         private static readonly SpellInfo m_Info = new SpellInfo(
                 "Energy Bolt", "Corp Por",
                 212,

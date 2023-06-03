@@ -2,10 +2,10 @@ namespace Server.Items
 {
 	public class HolidayTimepiece : Clock
 	{
-		public override int LabelNumber { get { return 1041113; } } // a holiday timepiece
-		public override double DefaultWeight { get { return 1.0; } }
+		public override int LabelNumber => 1041113; // a holiday timepiece
+		public override double DefaultWeight => 1.0;
 
-		[Constructable]
+        [Constructable]
 		public HolidayTimepiece()
 			: base( 0x1086 )
 		{

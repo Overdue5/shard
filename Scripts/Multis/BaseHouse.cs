@@ -19,7 +19,7 @@ namespace Server.Multis
 {
 	public abstract class BaseHouse : BaseMulti
 	{
-		public static bool NewVendorSystem{ get{ return Core.AOS; } } // Is new player vendor system enabled?
+		public static bool NewVendorSystem => Core.AOS; // Is new player vendor system enabled?
 
 		public const int MaxCoOwners = 15;
 		public const int MaxFriends = 50;
@@ -32,8 +32,8 @@ namespace Server.Multis
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime NextDecayStage
         {
-            get { return m_NextDecayStage; }
-            set { m_NextDecayStage = value; }
+            get => m_NextDecayStage;
+            set => m_NextDecayStage = value;
         }
 
         public void ResetDynamicDecay()
@@ -62,27 +62,27 @@ namespace Server.Multis
 		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime LastRefreshed
 		{
-			get{ return m_LastRefreshed; }
-			set{ m_LastRefreshed = value; }
-		}
+			get => m_LastRefreshed;
+            set => m_LastRefreshed = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool RestrictDecay
 		{
-			get{ return m_RestrictDecay; }
-			set{ m_RestrictDecay = value; }
-		}
+			get => m_RestrictDecay;
+            set => m_RestrictDecay = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public uint HouseKeyVal
         {
-            get { return m_HouseKeyVal; }
-            set { m_HouseKeyVal = value; }
+            get => m_HouseKeyVal;
+            set => m_HouseKeyVal = value;
         }
 
-		public virtual TimeSpan DecayPeriod{ get{ return TimeSpan.FromDays( 30.0 ); } }
+		public virtual TimeSpan DecayPeriod => TimeSpan.FromDays( 30.0 );
 
-		public virtual DecayType DecayType
+        public virtual DecayType DecayType
 		{
 			get
 			{
@@ -307,12 +307,12 @@ namespace Server.Multis
 			Delete();
 		}
 
-        public virtual TimeSpan RestrictedPlacingTime { get { return TimeSpan.FromHours(1.0); } }
+        public virtual TimeSpan RestrictedPlacingTime => TimeSpan.FromHours(1.0);
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public virtual double BonusStorageScalar { get { return (Core.ML ? 1.2 : 1.0); } }
+        [CommandProperty( AccessLevel.GameMaster )]
+		public virtual double BonusStorageScalar => (Core.ML ? 1.2 : 1.0);
 
-		private bool m_Public;
+        private bool m_Public;
 
 		private HouseRegion m_Region;
 		private HouseSign m_Sign;
@@ -352,11 +352,11 @@ namespace Server.Multis
 
 		private static readonly Dictionary<Mobile, List<BaseHouse>> m_Table = new Dictionary<Mobile, List<BaseHouse>>();
 
-		public virtual bool IsAosRules{ get{ return Core.AOS; } }
+		public virtual bool IsAosRules => Core.AOS;
 
-		public virtual bool IsActive{ get{ return true; } }
+        public virtual bool IsActive => true;
 
-		public virtual HousePlacementEntry GetAosEntry()
+        public virtual HousePlacementEntry GetAosEntry()
 		{
 			return HousePlacementEntry.Find( this );
 		}
@@ -1727,12 +1727,9 @@ namespace Server.Multis
 		{
 			private readonly BaseHouse m_House;
 
-			public override string DefaultName
-			{
-				get { return "a house transfer contract"; }
-			}
+			public override string DefaultName => "a house transfer contract";
 
-			public TransferItem( BaseHouse house ) : base( 0x14F0 )
+            public TransferItem( BaseHouse house ) : base( 0x14F0 )
 			{
 				m_House = house;
 
@@ -2148,15 +2145,9 @@ namespace Server.Multis
 			m.SendLocalizedMessage( 501717 );//This isn't secure...
 		}
 
-		public override bool Decays
-		{
-			get
-			{
-				return false;
-			}
-		}
+		public override bool Decays => false;
 
-		public void AddStrongBox( Mobile from )
+        public void AddStrongBox( Mobile from )
 		{
 			if ( !IsCoOwner( from ) || !IsActive )
 				return;
@@ -2895,11 +2886,8 @@ namespace Server.Multis
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get
-			{
-				return m_Owner;
-			}
-			set
+			get => m_Owner;
+            set
 			{
 				if ( m_Owner != null )
 				{
@@ -2935,18 +2923,15 @@ namespace Server.Multis
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Visits
 		{
-			get{ return m_Visits; }
-			set{ m_Visits = value; }
-		}
+			get => m_Visits;
+            set => m_Visits = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Public
 		{
-			get
-			{
-				return m_Public;
-			}
-			set
+			get => m_Public;
+            set
 			{
 				if ( m_Public != value )
 				{
@@ -2964,15 +2949,9 @@ namespace Server.Multis
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxSecures
 		{
-			get
-			{
-				return m_MaxSecures;
-			}
-			set
-			{
-				m_MaxSecures = value;
-			}
-		}
+			get => m_MaxSecures;
+            set => m_MaxSecures = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D BanLocation
@@ -2985,20 +2964,14 @@ namespace Server.Multis
                 Point3D rel = m_RelativeBanLocation;
                 return new Point3D(this.X + rel.X, this.Y + rel.Y, this.Z + rel.Z);
             }
-			set
-			{
-				RelativeBanLocation = new Point3D( value.X - X, value.Y - Y, value.Z - Z );
-			}
-		}
+			set => RelativeBanLocation = new Point3D( value.X - X, value.Y - Y, value.Z - Z );
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D RelativeBanLocation
 		{
-			get
-			{
-				return m_RelativeBanLocation;
-			}
-			set
+			get => m_RelativeBanLocation;
+            set
 			{
 				m_RelativeBanLocation = value;
 
@@ -3010,22 +2983,26 @@ namespace Server.Multis
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxLockDowns
 		{
-			get
-			{
-				return m_MaxLockDowns;
-			}
-			set
-			{
-				m_MaxLockDowns = value;
-			}
-		}
+			get => m_MaxLockDowns;
+            set => m_MaxLockDowns = value;
+        }
 
-		public Region Region{ get{ return m_Region; } }
-		public ArrayList CoOwners{ get{ return m_CoOwners; } set{ m_CoOwners = value; } }
-		public ArrayList Friends{ get{ return m_Friends; } set{ m_Friends = value; } }
-		public ArrayList Access{ get{ return m_Access; } set{ m_Access = value; } }
-		public ArrayList Bans{ get{ return m_Bans; } set{ m_Bans = value; } }
-		public ArrayList Doors{ get{ return m_Doors; } set{ m_Doors = value; } }
+		public Region Region => m_Region;
+        public ArrayList CoOwners{ get => m_CoOwners;
+            set => m_CoOwners = value;
+        }
+		public ArrayList Friends{ get => m_Friends;
+            set => m_Friends = value;
+        }
+		public ArrayList Access{ get => m_Access;
+            set => m_Access = value;
+        }
+		public ArrayList Bans{ get => m_Bans;
+            set => m_Bans = value;
+        }
+		public ArrayList Doors{ get => m_Doors;
+            set => m_Doors = value;
+        }
 
         public int GetLockdowns()
         {
@@ -3100,30 +3077,34 @@ namespace Server.Multis
 			}
 		}
 
-		public ArrayList Addons{ get{ return m_Addons; } set{ m_Addons = value; } }
-		public ArrayList LockDowns{ get{ return m_LockDowns; } }
-		public ArrayList Secures{ get{ return m_Secures; } }
-		public HouseSign Sign{ get{ return m_Sign; } set{ m_Sign = value; } }
-		public ArrayList PlayerVendors{ get{ return m_PlayerVendors; } }
-		public ArrayList PlayerBarkeepers{ get{ return m_PlayerBarkeepers; } }
-		public ArrayList VendorRentalContracts{ get{ return m_VendorRentalContracts; } }
-		public ArrayList VendorInventories{ get{ return m_VendorInventories; } }
-		public ArrayList RelocatedEntities{ get{ return m_RelocatedEntities; } }
-	    public MovingCrate MovingCrate { get; set; }
+		public ArrayList Addons{ get => m_Addons;
+            set => m_Addons = value;
+        }
+		public ArrayList LockDowns => m_LockDowns;
+        public ArrayList Secures => m_Secures;
+        public HouseSign Sign{ get => m_Sign;
+            set => m_Sign = value;
+        }
+		public ArrayList PlayerVendors => m_PlayerVendors;
+        public ArrayList PlayerBarkeepers => m_PlayerBarkeepers;
+        public ArrayList VendorRentalContracts => m_VendorRentalContracts;
+        public ArrayList VendorInventories => m_VendorInventories;
+        public ArrayList RelocatedEntities => m_RelocatedEntities;
+        public MovingCrate MovingCrate { get; set; }
 
-	    public ArrayList InternalizedVendors{ get{ return m_InternalizedVendors; } }
+	    public ArrayList InternalizedVendors => m_InternalizedVendors;
 
-		public DateTime BuiltOn
+        public DateTime BuiltOn
 		{
-			get{ return m_BuiltOn; }
-			set{ m_BuiltOn = value; }
-		}
+			get => m_BuiltOn;
+            set => m_BuiltOn = value;
+        }
 
 		public DateTime LastTraded
 		{
-			get{ return m_LastTraded; }
-			set{ m_LastTraded = value; }
-		}
+			get => m_LastTraded;
+            set => m_LastTraded = value;
+        }
 
 		public override void OnDelete()
 		{
@@ -3477,15 +3458,17 @@ namespace Server.Multis
 			}
 		}
 
-		public virtual HousePlacementEntry ConvertEntry{ get{ return null; } }
-		public virtual int ConvertOffsetX{ get{ return 0; } }
-		public virtual int ConvertOffsetY{ get{ return 0; } }
-		public virtual int ConvertOffsetZ{ get{ return 0; } }
+		public virtual HousePlacementEntry ConvertEntry => null;
+        public virtual int ConvertOffsetX => 0;
+        public virtual int ConvertOffsetY => 0;
+        public virtual int ConvertOffsetZ => 0;
 
-		public virtual int DefaultPrice{ get{ return 0; } }
+        public virtual int DefaultPrice => 0;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Price{ get{ return m_Price; } set{ m_Price = value; } }
+        [CommandProperty( AccessLevel.GameMaster )]
+		public int Price{ get => m_Price;
+            set => m_Price = value;
+        }
 
 		public virtual HouseDeed GetDeed()
 		{
@@ -3649,8 +3632,10 @@ namespace Server.Multis
 		private readonly Container m_Item;
 		private SecureLevel m_Level;
 
-		public Container Item{ get{ return m_Item; } }
-		public SecureLevel Level{ get{ return m_Level; } set{ m_Level = value; } }
+		public Container Item => m_Item;
+        public SecureLevel Level{ get => m_Level;
+            set => m_Level = value;
+        }
 
 		public SecureInfo( Container item, SecureLevel level )
 		{
@@ -3676,17 +3661,11 @@ namespace Server.Multis
 		private readonly IEntity m_Entity;
 		private readonly Point3D m_RelativeLocation;
 
-		public IEntity Entity
-		{
-			get{ return m_Entity; }
-		}
+		public IEntity Entity => m_Entity;
 
-		public Point3D RelativeLocation
-		{
-			get{ return m_RelativeLocation; }
-		}
+        public Point3D RelativeLocation => m_RelativeLocation;
 
-		public RelocatedEntity( IEntity entity, Point3D relativeLocation )
+        public RelocatedEntity( IEntity entity, Point3D relativeLocation )
 		{
 			m_Entity = entity;
 			m_RelativeLocation = relativeLocation;

@@ -14,13 +14,19 @@ namespace Server.Engines.XmlSpawner2
 		private readonly ArrayList MinionList = new ArrayList();
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Chance { get{ return m_Chance; } set { m_Chance = value; } }
+		public int Chance { get => m_Chance;
+            set => m_Chance = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan Refractory { get { return m_Refractory; } set { m_Refractory  = value; } }
+		public TimeSpan Refractory { get => m_Refractory;
+            set => m_Refractory  = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Minion { get { return m_Minion; } set { m_Minion  = value; } }
+		public string Minion { get => m_Minion;
+            set => m_Minion  = value;
+        }
 
 
 		// These are the various ways in which the message attachment can be constructed.

@@ -8,10 +8,10 @@ namespace Server.Engines.Quests.Samurai
 	{
 		private static readonly TimeSpan LitDuration = TimeSpan.FromSeconds( 20.0 );
 
-		public override int LitSound{ get{ return 0; } }
-		public override int UnlitSound{ get{ return 0; } }
+		public override int LitSound => 0;
+        public override int UnlitSound => 0;
 
-		[Constructable]
+        [Constructable]
 		public HonorCandle()
 		{
 			Movable = false;

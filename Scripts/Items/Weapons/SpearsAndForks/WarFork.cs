@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 
-		public override int AosStrengthReq{ get{ return 45; } }
-		public override int AosMinDamage{ get{ return 12; } }
-		public override int AosMaxDamage{ get{ return 13; } }
-		public override int AosSpeed{ get{ return 43; } }
+		public override int AosStrengthReq => 45;
+        public override int AosMinDamage => 12;
+        public override int AosMaxDamage => 13;
+        public override int AosSpeed => 43;
 
-		public override int OldStrengthReq{ get{ return 35; } }
-		public override int OldMinDamage{ get{ return 16; } }
-		public override int OldMaxDamage{ get{ return 27; } }
-		public override int OldSpeed{ get{ return 390; } }
+        public override int OldStrengthReq => 35;
+        public override int OldMinDamage => 16;
+        public override int OldMaxDamage => 27;
+        public override int OldSpeed => 390;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 110; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 110;
 
-		//public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Pierce1H; } }
+        //public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Pierce1H; } }
 
         	public override int GetSwingAnim(Mobile from)
 	        {

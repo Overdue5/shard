@@ -65,9 +65,9 @@ namespace Server.Mobiles
             PackGold(450, 550);
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public Executioner( Serial serial ) : base( serial ) 
+        public Executioner( Serial serial ) : base( serial ) 
 		{ 
 		} 
 

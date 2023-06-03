@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class LesserPoisonPotion : BasePoisonPotion
 	{
-		public override Poison Poison{ get{ return Poison.Lesser; } }
+		public override Poison Poison => Poison.Lesser;
 
-		public override double MinPoisoningSkill{ get{ return 0.0; } }
-		public override double MaxPoisoningSkill{ get{ return 60.0; } }
+        public override double MinPoisoningSkill => 0.0;
+        public override double MaxPoisoningSkill => 60.0;
 
-		[Constructable]
+        [Constructable]
 		public LesserPoisonPotion() : base( PotionEffect.PoisonLesser )
 		{
             Name = "Lesser Poison Potion";

@@ -27,49 +27,64 @@ namespace Server.Items
         private int m_WithdrawIncrement;		
 		
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int WithdrawIncrement { get { return m_WithdrawIncrement; } set { m_WithdrawIncrement = value; InvalidateProperties(); } }
+		public int WithdrawIncrement { get => m_WithdrawIncrement;
+            set { m_WithdrawIncrement = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int Dwarven { get { return m_Dwarven; } set { m_Dwarven = value; InvalidateProperties(); } }
+        public int Dwarven { get => m_Dwarven;
+            set { m_Dwarven = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int Mytheril { get { return m_Mytheril; } set { m_Mytheril = value; InvalidateProperties(); } }
+        public int Mytheril { get => m_Mytheril;
+            set { m_Mytheril = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int Aqua { get { return m_Aqua; } set { m_Aqua = value; InvalidateProperties(); } }
+        public int Aqua { get => m_Aqua;
+            set { m_Aqua = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int BloodRock { get { return m_BloodRock; } set { m_BloodRock = value; InvalidateProperties(); } }
+        public int BloodRock { get => m_BloodRock;
+            set { m_BloodRock = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int Amethyst { get { return m_Amethyst; } set { m_Amethyst = value; InvalidateProperties(); } }
+        public int Amethyst { get => m_Amethyst;
+            set { m_Amethyst = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int Ice { get { return m_Ice; } set { m_Ice = value; InvalidateProperties(); } }
+        public int Ice { get => m_Ice;
+            set { m_Ice = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Granite{ get{ return m_Granite; } set{ m_Granite = value; InvalidateProperties(); } }
+		public int Granite{ get => m_Granite;
+            set{ m_Granite = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int OldCopper{ get{ return m_OldCopper; } set{ m_OldCopper = value; InvalidateProperties(); } }
+		public int OldCopper{ get => m_OldCopper;
+            set{ m_OldCopper = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int ShadowIron{ get{ return m_ShadowIron; } set{ m_ShadowIron = value; InvalidateProperties(); } }
+		public int ShadowIron{ get => m_ShadowIron;
+            set{ m_ShadowIron = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Silver{ get{ return m_Silver; } set{ m_Silver = value; InvalidateProperties(); } }
+		public int Silver{ get => m_Silver;
+            set{ m_Silver = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Rose{ get{ return m_Rose; } set{ m_Rose = value; InvalidateProperties(); } }
+		public int Rose{ get => m_Rose;
+            set{ m_Rose = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Gold{ get{ return m_Gold; } set{ m_Gold = value; InvalidateProperties(); } }
+		public int Gold{ get => m_Gold;
+            set{ m_Gold = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Verite{ get{ return m_Verite; } set{ m_Verite = value; InvalidateProperties(); } }
+		public int Verite{ get => m_Verite;
+            set{ m_Verite = value; InvalidateProperties(); } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Valorite{ get{ return m_Valorite; } set{ m_Valorite = value; InvalidateProperties(); } }
+		public int Valorite{ get => m_Valorite;
+            set{ m_Valorite = value; InvalidateProperties(); } }
 		
 		[Constructable]
 		public MasonryBox() : base( 0xE80 )

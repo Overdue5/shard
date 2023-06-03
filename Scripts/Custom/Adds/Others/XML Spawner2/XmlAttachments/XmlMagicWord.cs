@@ -22,7 +22,9 @@ namespace Server.Engines.XmlSpawner2
 		private bool m_RequireIdentification = false;  // by default no identification is required for the mod to be activatable
 
 		// this property can be set allowing individual items to determine whether they must be identified for the mod to be activatable
-		public bool RequireIdentification { get { return m_RequireIdentification; } set {m_RequireIdentification = value; } }
+		public bool RequireIdentification { get => m_RequireIdentification;
+            set => m_RequireIdentification = value;
+        }
 
 		// a serial constructor is REQUIRED
 		public XmlMagicWord(ASerial serial) : base(serial)
@@ -155,9 +157,9 @@ namespace Server.Engines.XmlSpawner2
 			}
 		}
 
-		public override bool HandlesOnSpeech { get { return true; } }
-		
-		public override void OnSpeech(SpeechEventArgs e )
+		public override bool HandlesOnSpeech => true;
+
+        public override void OnSpeech(SpeechEventArgs e )
 		{
 			base.OnSpeech(e);
 		    

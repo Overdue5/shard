@@ -4,15 +4,15 @@ namespace Server.Items
 {
 	public class FireworksWand : MagicWand
 	{
-		public override int LabelNumber{ get{ return 1041424; } } // a fireworks wand
+		public override int LabelNumber => 1041424; // a fireworks wand
 
 		private int m_Charges;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges
 		{
-			get{ return m_Charges; }
-			set{ m_Charges = value; InvalidateProperties(); }
+			get => m_Charges;
+            set{ m_Charges = value; InvalidateProperties(); }
 		}
 
 		[Constructable]

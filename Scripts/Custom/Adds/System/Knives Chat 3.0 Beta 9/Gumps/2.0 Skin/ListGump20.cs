@@ -18,8 +18,8 @@ namespace Knives.Chat3
         private string c_TxtSearch = "";
         private string c_CharSearch = "";
 
-        protected ListPage CurrentPage { get { return c_ListPage; } }
-        public Mobile Current { get { return (c_Target == null ? Owner : c_Target); } }
+        protected ListPage CurrentPage => c_ListPage;
+        public Mobile Current => (c_Target == null ? Owner : c_Target);
 
         #endregion
 

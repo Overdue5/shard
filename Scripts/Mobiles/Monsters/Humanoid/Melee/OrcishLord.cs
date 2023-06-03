@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	[CorpseName( "an orcish corpse" )]
 	public class OrcishLord : BaseCreature
 	{
-		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Orc; } }
+		public override InhumanSpeech SpeechType => InhumanSpeech.Orc;
 
-		[Constructable]
+        [Constructable]
 		public OrcishLord() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Orcish Lord";
@@ -62,16 +62,13 @@ namespace Server.Mobiles
 			// TODO: evil orc helm
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
-		public override int Meat{ get{ return 1; } }
+		public override bool CanRummageCorpses => true;
+        public override int TreasureMapLevel => 1;
+        public override int Meat => 1;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.SavagesAndOrcs; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.SavagesAndOrcs;
 
-		public override bool IsEnemy( Mobile m )
+        public override bool IsEnemy( Mobile m )
 		{
 			if ( m.Player && m.FindItemOnLayer( Layer.Helm ) is OrcishKinMask )
 				return false;

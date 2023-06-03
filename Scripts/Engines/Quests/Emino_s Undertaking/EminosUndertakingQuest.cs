@@ -43,32 +43,22 @@ namespace Server.Engines.Quests.Ninja
 				typeof( GiveEminoSwordObjective )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// Emino's Undertaking
-				return 1063173;
-			}
-		}
+        public override object Name =>
+            // Emino's Undertaking
+            1063173;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				// Your value as a Ninja must be proven. Find Daimyo Emino and accept the test he offers.
-				return 1063174;
-			}
-		}
+        public override object OfferMessage =>
+            // Your value as a Ninja must be proven. Find Daimyo Emino and accept the test he offers.
+            1063174;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.MaxValue; } }
-		public override bool IsTutorial{ get{ return true; } }
+        public override TimeSpan RestartDelay => TimeSpan.MaxValue;
+        public override bool IsTutorial => true;
 
-		public override int Picture{ get{ return 0x15D5; } }
+        public override int Picture => 0x15D5;
 
-		public EminosUndertakingQuest( PlayerMobile from ) : base( from )
+        public EminosUndertakingQuest( PlayerMobile from ) : base( from )
 		{
 		}
 

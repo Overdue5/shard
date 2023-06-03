@@ -5,9 +5,9 @@ namespace Server.Engines.Quests.Hag
 {
 	public class Grizelda : BaseQuester
 	{
-		public override bool ClickTitle{ get{ return true; } }
+		public override bool ClickTitle => true;
 
-		[Constructable]
+        [Constructable]
 		public Grizelda() : base( "the Hag" )
 		{
 		}
@@ -40,7 +40,7 @@ namespace Server.Engines.Quests.Hag
 			staff.Movable = false;
 			AddItem( staff );
 		}
-        public override bool ShowContextMenu { get { return true; } }// 
+        public override bool ShowContextMenu => true; // 
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			Direction = GetDirectionTo( player );

@@ -16,28 +16,28 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime ExpireTime
 		{
-			get{ return m_ExpireTime; }
-			set{ m_ExpireTime = value; }
-		}
+			get => m_ExpireTime;
+            set => m_ExpireTime = value;
+        }
 
 		[Constructable]
 		public FlamingMinion() : this( null )
 		{
 		}
-        public override bool AlwaysMurderer { get { return true; } }
-        public override bool HasBreath { get { return false; } } 
-        public override bool Uncalmable { get { return Core.SE; } }
-        public override bool BardImmune { get { return !Core.SE; } }
-        public override bool Unprovokable { get { return Core.SE; } }
+        public override bool AlwaysMurderer => true;
+        public override bool HasBreath => false;
+        public override bool Uncalmable => Core.SE;
+        public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
 
-		public override void DisplayPaperdollTo(Mobile to)
+        public override void DisplayPaperdollTo(Mobile to)
 		{
 		}
         public override void OnBeforeSpawn(Point3D location, Map m)

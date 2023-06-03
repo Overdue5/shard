@@ -2,10 +2,10 @@ namespace Server.Items
 {
 	public class WristWatch : Clock
 	{
-		public override int LabelNumber { get { return 1041421; } } // a wrist watch
-		public override double DefaultWeight { get { return 1.0; } }
+		public override int LabelNumber => 1041421; // a wrist watch
+		public override double DefaultWeight => 1.0;
 
-		[Constructable]
+        [Constructable]
 		public WristWatch()
 			: base( 0x1086 )
 		{

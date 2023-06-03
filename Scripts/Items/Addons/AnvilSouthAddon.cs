@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class AnvilSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new AnvilSouthDeed(); } }
+		public override BaseAddonDeed Deed => new AnvilSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public AnvilSouthAddon()
 		{
 			AddComponent( new AnvilComponent( 0xFB0 ), 0, 0, 0 );
@@ -31,8 +31,8 @@ namespace Server.Items
 
 	public class AnvilSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new AnvilSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1044334; } } // anvil (south)
+		public override BaseAddon Addon => new AnvilSouthAddon();
+        public override int LabelNumber => 1044334; // anvil (south)
 
 		[Constructable]
 		public AnvilSouthDeed()

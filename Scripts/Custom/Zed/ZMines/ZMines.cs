@@ -238,15 +238,15 @@ namespace Server.Custom.Zed
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Owner
         {
-            get { return m_Owner; }
-            set { m_Owner = value; }
+            get => m_Owner;
+            set => m_Owner = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Teleporter Teleport
         {
-            get { return m_Telepor; }
-            set { m_Telepor = value; }
+            get => m_Telepor;
+            set => m_Telepor = value;
         }
 
         public static Dictionary<MineCenter, Hashtable> m_MineItems = new Dictionary<MineCenter, Hashtable>();

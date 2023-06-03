@@ -5,9 +5,9 @@ namespace Server.Items
 {
 	public class HouseLadderAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new HouseLadderDeed(); } }
+		public override BaseAddonDeed Deed => new HouseLadderDeed();
 
-		[Constructable]
+        [Constructable]
 		public HouseLadderAddon( int type ) : base()
 		{
 			switch ( type )
@@ -68,8 +68,8 @@ namespace Server.Items
 
 	public class HouseLadderDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new HouseLadderAddon( m_Type ); } }
-		public override int LabelNumber { get { return 1076287; } } // Ladder
+		public override BaseAddon Addon => new HouseLadderAddon( m_Type );
+        public override int LabelNumber => 1076287; // Ladder
 
 		private int m_Type;
 

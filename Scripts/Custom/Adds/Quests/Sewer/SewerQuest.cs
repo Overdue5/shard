@@ -6,9 +6,10 @@ using Server.Network;
 
 namespace Server.Mobiles
 {[CorpseName( "Brent's Corpse" )]
-    public class Brent : Mobile{public virtual bool IsInvulnerable{ get{ return true; } }
-    public override bool ClickTitle { get { return true; } }
-    [Constructable]
+    public class Brent : Mobile{public virtual bool IsInvulnerable => true;
+        public override bool ClickTitle => true;
+
+        [Constructable]
     public Brent()
     {
 
@@ -50,7 +51,8 @@ namespace Server.Mobiles
     }
 
 public Brent( Serial serial ) : base( serial ){}
-public override bool ShowContextMenu { get { return true; } }
+public override bool ShowContextMenu => true;
+
 public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
 { base.GetContextMenuEntries( from, list ); list.Add( new BrentEntry( from, this ) ); } 
 public override void Serialize( GenericWriter writer ){base.Serialize( writer );writer.Write( 0 );}

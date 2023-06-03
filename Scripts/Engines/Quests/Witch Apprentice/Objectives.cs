@@ -25,21 +25,16 @@ namespace Server.Engines.Quests.Hag
 		private Corpse m_Corpse;
 		private Point3D m_CorpseLocation;
 
-		public override object Message
-		{
-			get
-			{
-				/* To the west of the Hag's house lies the road between Skara Brae
+		public override object Message =>
+            /* To the west of the Hag's house lies the road between Skara Brae
 				 * and Yew.  Follow it carefully toward Yew's graveyard, and search for
 				 * any sign of the Hag's apprentice along the road.
 				 */
-				return 1055014;
-			}
-		}
+            1055014;
 
-		public Corpse Corpse{ get{ return m_Corpse; } }
+        public Corpse Corpse => m_Corpse;
 
-		public FindApprenticeObjective( bool init )
+        public FindApprenticeObjective( bool init )
 		{
 			if ( init )
 				m_CorpseLocation = RandomCorpseLocation();
@@ -126,19 +121,14 @@ namespace Server.Engines.Quests.Hag
 
 	public class FindGrizeldaAboutMurderObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Return to the Hag to tell her of the vile imp Zeefzorpul's role
+		public override object Message =>
+            /* Return to the Hag to tell her of the vile imp Zeefzorpul's role
 				 * in the murder of her Apprentice, and the subsequent theft of a mysterious
 				 * scrap of parchment from the corpse.
 				 */
-				return 1055015;
-			}
-		}
+            1055015;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new MurderConversation() );
 		}
@@ -148,21 +138,16 @@ namespace Server.Engines.Quests.Hag
 	{
 		private int m_MaxProgress;
 
-		public override object Message
-		{
-			get
-			{
-				/* Search the realm for any imps you can find, and slash, bash, mash,
+		public override object Message =>
+            /* Search the realm for any imps you can find, and slash, bash, mash,
 				 * or fry them with magics until one of them gives up the secret hiding
 				 * place of the imp Zeefzorpul.
 				 */
-				return 1055016;
-			}
-		}
+            1055016;
 
-		public override int MaxProgress{ get{ return m_MaxProgress; } }
+        public override int MaxProgress => m_MaxProgress;
 
-		public KillImpsObjective( bool init )
+        public KillImpsObjective( bool init )
 		{
 			if ( init )
 				m_MaxProgress = Utility.RandomMinMax( 1, 4 );
@@ -223,21 +208,16 @@ namespace Server.Engines.Quests.Hag
 	{
 		private Point3D m_ImpLocation;
 
-		public override object Message
-		{
-			get
-			{
-				/* Find the location shown in the map that the imp gave you. When you
+		public override object Message =>
+            /* Find the location shown in the map that the imp gave you. When you
 				 * have arrived at the location, play the magic flute he provided,
 				 * and the imp Zeefzorpul will be drawn to your presence.
 				 */
-				return 1055017;
-			}
-		}
+            1055017;
 
-		public Point3D ImpLocation{ get{ return m_ImpLocation; } }
+        public Point3D ImpLocation => m_ImpLocation;
 
-		public FindZeefzorpulObjective( Point3D impLocation )
+        public FindZeefzorpulObjective( Point3D impLocation )
 		{
 			m_ImpLocation = impLocation;
 		}
@@ -296,18 +276,13 @@ namespace Server.Engines.Quests.Hag
 
 	public class ReturnRecipeObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Return to the old Hag and tell her you have recovered her Magic
+		public override object Message =>
+            /* Return to the old Hag and tell her you have recovered her Magic
 				 * Brew Recipe from the bizarre imp named Zeefzorpul.
 				 */
-				return 1055018;
-			}
-		}
+            1055018;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new RecipeConversation() );
 		}
@@ -365,12 +340,12 @@ namespace Server.Engines.Quests.Hag
 			}
 		}
 
-		public Ingredient[] Ingredients{ get{ return m_Ingredients; } }
-		public Ingredient Ingredient{ get{ return m_Ingredients[m_Ingredients.Length - 1]; } }
-		public int Step{ get{ return m_Ingredients.Length; } }
-		public bool BlackheartMet{ get{ return m_BlackheartMet; } }
+		public Ingredient[] Ingredients => m_Ingredients;
+        public Ingredient Ingredient => m_Ingredients[m_Ingredients.Length - 1];
+        public int Step => m_Ingredients.Length;
+        public bool BlackheartMet => m_BlackheartMet;
 
-		public FindIngredientObjective( Ingredient[] oldIngredients ) : this( oldIngredients, false )
+        public FindIngredientObjective( Ingredient[] oldIngredients ) : this( oldIngredients, false )
 		{
 		}
 
@@ -497,18 +472,13 @@ namespace Server.Engines.Quests.Hag
 
 	public class ReturnIngredientsObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have gathered all the ingredients listed in the Hag's Magic Brew
+		public override object Message =>
+            /* You have gathered all the ingredients listed in the Hag's Magic Brew
 				 * Recipe.  Return to the Hag and tell her you have completed her task.
 				 */
-				return 1055050;
-			}
-		}
+            1055050;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new EndConversation() );
 		}

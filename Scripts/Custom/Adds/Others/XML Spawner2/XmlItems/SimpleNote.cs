@@ -32,22 +32,22 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string NoteString
 		{
-				get{ return m_NoteString; }
-			set { m_NoteString = value; InvalidateProperties();}
+				get => m_NoteString;
+                set { m_NoteString = value; InvalidateProperties();}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string TitleString
 		{
-				get{ return m_TitleString; }
-			set { m_TitleString = value; InvalidateProperties();}
+				get => m_TitleString;
+                set { m_TitleString = value; InvalidateProperties();}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Size
 		{
-				get{ return m_size; }
-			set 
+				get => m_size;
+                set 
 			{
 				m_size = value;
 				if(m_size < 1) m_size = 1;
@@ -57,15 +57,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int TextColor
 		{
-				get{ return m_TextColor; }
-			set { m_TextColor = value; InvalidateProperties();}
+				get => m_TextColor;
+                set { m_TextColor = value; InvalidateProperties();}
 		}
       
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int TitleColor
 		{
-				get{ return m_TitleColor; }
-			set { m_TitleColor = value; InvalidateProperties();}
+				get => m_TitleColor;
+                set { m_TitleColor = value; InvalidateProperties();}
 		}
 
 		public override void Serialize( GenericWriter writer )

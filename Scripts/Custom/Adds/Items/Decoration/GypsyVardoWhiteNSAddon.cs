@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class GypsyVardoWhiteNSAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new GypsyVardoWhiteNSAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new GypsyVardoWhiteNSAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public GypsyVardoWhiteNSAddon()
 		{
 			AddonComponent ac = null;
@@ -288,15 +282,9 @@ namespace Server.Items
 
 	public class GypsyVardoWhiteNSAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new GypsyVardoWhiteNSAddon();
-			}
-		}
+		public override BaseAddon Addon => new GypsyVardoWhiteNSAddon();
 
-		[Constructable]
+        [Constructable]
 		public GypsyVardoWhiteNSAddonDeed()
 		{
 			Name = "GypsyVardoWhiteNS";

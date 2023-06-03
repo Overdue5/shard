@@ -8,11 +8,11 @@ namespace Server.Spells.Fifth
     public class IncognitoSpell : MagerySpell
     {
         private static readonly Dictionary<Mobile, Timer> m_Timers = new Dictionary<Mobile, Timer>();
-        public override int Sound { get { return 0x3BD; } }
+        public override int Sound => 0x3BD;
 
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Incognito", "Kal In Ex",
 				206,
 				9002,

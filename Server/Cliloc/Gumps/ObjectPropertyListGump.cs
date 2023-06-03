@@ -27,13 +27,13 @@ namespace Server.Gumps
 		protected int _Width;
 		
 		//line spacing between entries
-		public int EntryLineSpacing{ get{ return 20; } }
-		
-		//public accessors for gump refreshing
-		public Mobile Owner{ get{ return _Owner; } }
-		public object Object{ get{ return _Object; } }
-		
-		//static refresh method, used when withdrawing/adding
+		public int EntryLineSpacing => 20;
+
+        //public accessors for gump refreshing
+		public Mobile Owner => _Owner;
+        public object Object => _Object;
+
+        //static refresh method, used when withdrawing/adding
 		public static bool RefreshGump( Mobile player )
 		{
 			return RefreshGump( player, null );

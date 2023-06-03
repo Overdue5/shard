@@ -62,22 +62,13 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+		public override bool ClickTitle => false;
 
-		public override bool ShowFameTitle
-		{
-			get { return false; }
-		}
+        public override bool ShowFameTitle => false;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
 		}
@@ -153,22 +144,13 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+		public override bool ClickTitle => false;
 
-		public override bool ShowFameTitle
-		{
-			get { return false; }
-		}
+        public override bool ShowFameTitle => false;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
 		}
@@ -241,22 +223,13 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+		public override bool ClickTitle => false;
 
-		public override bool ShowFameTitle
-		{
-			get { return false; }
-		}
+        public override bool ShowFameTitle => false;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
 			AddLoot( LootPack.HighScrolls, 2 );
@@ -342,22 +315,13 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+		public override bool ClickTitle => false;
 
-		public override bool ShowFameTitle
-		{
-			get { return false; }
-		}
+        public override bool ShowFameTitle => false;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
 		}

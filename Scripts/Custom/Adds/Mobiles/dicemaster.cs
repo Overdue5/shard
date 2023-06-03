@@ -9,17 +9,17 @@ namespace Server.Mobiles
 {
 	public class DiceMaster : BaseCreature
 	{
-		public override bool ClickTitle { get { return false; } }
-		public override bool CanTeach { get { return false; } }
+		public override bool ClickTitle => false;
+        public override bool CanTeach => false;
 
-		public int m_guthaben;
+        public int m_guthaben;
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int guthaben
 		{
-			get { return m_guthaben; }
-			set { m_guthaben = value; }
-		}
+			get => m_guthaben;
+            set => m_guthaben = value;
+        }
 
 		[Constructable]
 		public DiceMaster() : base(AIType.AI_Melee, FightMode.Aggressor, 20, 1, 0.2, 0.4)

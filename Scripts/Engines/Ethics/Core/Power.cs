@@ -6,9 +6,9 @@ namespace Server.Ethics
 	{
 		protected PowerDefinition m_Definition;
 
-		public PowerDefinition Definition { get { return m_Definition; } }
+		public PowerDefinition Definition => m_Definition;
 
-		public virtual bool CheckInvoke( Player from )
+        public virtual bool CheckInvoke( Player from )
 		{
 			if ( !from.Mobile.CheckAlive() )
 				return false;

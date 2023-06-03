@@ -12,13 +12,19 @@ namespace Server.Engines.XmlSpawner2
 		private int proximityrange = 5;                 // default movement activation from 5 tiles away
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Damage { get{ return m_Damage; } set { m_Damage = value; } }
+		public int Damage { get => m_Damage;
+            set => m_Damage = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan Refractory { get { return m_Refractory; } set { m_Refractory  = value; } }
+		public TimeSpan Refractory { get => m_Refractory;
+            set => m_Refractory  = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Range { get { return proximityrange; } set { proximityrange  = value; } }
+		public int Range { get => proximityrange;
+            set => proximityrange  = value;
+        }
 
 		// These are the various ways in which the message attachment can be constructed.
 		// These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.
@@ -76,9 +82,9 @@ namespace Server.Engines.XmlSpawner2
 			}
 		}
         
-		public override bool HandlesOnMovement { get { return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement(MovementEventArgs e )
+        public override void OnMovement(MovementEventArgs e )
 		{
 			base.OnMovement(e);
 		    

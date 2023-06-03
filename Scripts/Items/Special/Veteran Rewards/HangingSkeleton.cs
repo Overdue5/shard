@@ -8,9 +8,9 @@ namespace Server.Items
 {	
 	public class HangingSkeleton : Item, IAddon, IRewardItem
 	{
-		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		public Item Deed
+        public Item Deed
 		{ 
 			get
 			{ 
@@ -26,8 +26,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set{ m_IsRewardItem = value; InvalidateProperties(); }
 		}
 		
 		public bool FacingSouth
@@ -116,15 +116,15 @@ namespace Server.Items
 	
 	public class HangingSkeletonDeed : Item, IRewardItem
 	{
-		public override int LabelNumber{ get{ return 1049772; } } // deed for a hanging skeleton decoration
+		public override int LabelNumber => 1049772; // deed for a hanging skeleton decoration
 
 		private bool m_IsRewardItem;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set{ m_IsRewardItem = value; InvalidateProperties(); }
 		}
 		
 		[Constructable]

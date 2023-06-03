@@ -20,12 +20,9 @@ namespace Server.Engines.Harvest
 
 		private HarvestDefinition m_Definition;
 
-		public HarvestDefinition Definition
-		{
-			get{ return m_Definition; }
-		}
+		public HarvestDefinition Definition => m_Definition;
 
-		private ExoticFishing()
+        private ExoticFishing()
 		{
 			HarvestResource[] res;
 			HarvestVein[] veins;

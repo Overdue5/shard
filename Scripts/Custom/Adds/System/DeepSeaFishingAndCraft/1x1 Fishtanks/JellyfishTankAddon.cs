@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class JellyfishTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new JellyfishTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new JellyfishTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public JellyfishTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class JellyfishTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new JellyfishTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new JellyfishTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public JellyfishTankAddonDeed()
 		{
 			Name = "a Jellyfish tank";

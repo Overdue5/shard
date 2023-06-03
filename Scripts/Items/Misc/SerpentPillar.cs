@@ -11,23 +11,23 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get{ return m_Active; }
-			set{ m_Active = value; }
-		}
+			get => m_Active;
+            set => m_Active = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Word
 		{
-			get{ return m_Word; }
-			set{ m_Word = value; }
-		}
+			get => m_Word;
+            set => m_Word = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Rectangle2D Destination
 		{
-			get{ return m_Destination; }
-			set{ m_Destination = value; }
-		}
+			get => m_Destination;
+            set => m_Destination = value;
+        }
 
 		[Constructable]
 		public SerpentPillar() : this( null, new Rectangle2D(), false )
@@ -47,9 +47,9 @@ namespace Server.Items
 			m_Destination = destination;
 		}
 
-		public override bool HandlesOnSpeech{ get{ return true; } }
+		public override bool HandlesOnSpeech => true;
 
-		public override void OnSpeech( SpeechEventArgs e )
+        public override void OnSpeech( SpeechEventArgs e )
 		{
 			Mobile from = e.Mobile;
 

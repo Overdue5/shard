@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class PufferfishTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new PufferfishTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new PufferfishTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public PufferfishTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class PufferfishTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new PufferfishTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new PufferfishTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public PufferfishTankAddonDeed()
 		{
 			Name = "a Pufferfish tank";

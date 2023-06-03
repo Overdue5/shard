@@ -50,9 +50,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool BleedImmune => true;
 
-		public WailingBanshee( Serial serial ) : base( serial )
+        public WailingBanshee( Serial serial ) : base( serial )
 		{
 		}
 

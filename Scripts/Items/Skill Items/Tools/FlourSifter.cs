@@ -4,9 +4,9 @@ namespace Server.Items
 {
 	public class FlourSifter : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefCooking.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefCooking.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public FlourSifter() : base( 0x103E )
 		{
 			Weight = 1.0;

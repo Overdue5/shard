@@ -33,12 +33,12 @@ namespace Server.Mobiles
             SetSkill(SkillName.Wrestling, 150.0, 200.0);
         }
 
-        public override bool BardImmune{ get{ return true; } }
-		public override bool Uncalmable{ get{ return true; } }
-        public override bool CanRummageCorpses{ get{ return true; } }
-        public override bool Unprovokable{ get{ return true; } }
-        public override Poison HitPoison{ get{ return Poison.Lethal; } }
-        public override bool AlwaysMurderer{ get{ return true; } }
+        public override bool BardImmune => true;
+        public override bool Uncalmable => true;
+        public override bool CanRummageCorpses => true;
+        public override bool Unprovokable => true;
+        public override Poison HitPoison => Poison.Lethal;
+        public override bool AlwaysMurderer => true;
 
         public override void GenerateLoot()
         {

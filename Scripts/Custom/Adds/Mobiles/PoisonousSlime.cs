@@ -48,10 +48,10 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomList(3)));
         }
 
-        public override bool AutoDispel{ get{ return true; } }
-        public override bool Unprovokable{ get{ return true; } }
-        public override Poison PoisonImmune{ get{ return Poison.Regular; } }
-        public override Poison HitPoison{ get{ return Poison.Lesser; } }
+        public override bool AutoDispel => true;
+        public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Regular;
+        public override Poison HitPoison => Poison.Lesser;
 
         public override void OnGotMeleeAttack(Mobile attacker)
         {

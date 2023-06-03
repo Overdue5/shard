@@ -10,7 +10,7 @@ namespace Server.Mobiles
 		{
 		}
 
-        public override bool SubdueBeforeTame { get { return true; } } // Must be beaten into submission
+        public override bool SubdueBeforeTame => true; // Must be beaten into submission
 
 		[Constructable]
 		public YoungNightmare( string name ) : base( name, 0x74, 0x3EA7, AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
@@ -102,16 +102,16 @@ namespace Server.Mobiles
 			return base.GetAngerSound();
         }
 
-        public override bool AlwaysAttackable { get { return true; } }
+        public override bool AlwaysAttackable => true;
 
-		public override bool HasBreath{ get{ return true; } } // fire breath enabled
-		public override int Meat{ get{ return 5; } }
-		public override int Hides{ get{ return 10; } }
-        public override HideType HideType { get { return HideType.Regular; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Meat; } }
-		public override bool CanAngerOnTame { get { return true; } }
+        public override bool HasBreath => true; // fire breath enabled
+		public override int Meat => 5;
+        public override int Hides => 10;
+        public override HideType HideType => HideType.Regular;
+        public override FoodType FavoriteFood => FoodType.Meat;
+        public override bool CanAngerOnTame => true;
 
-		public YoungNightmare( Serial serial ) : base( serial )
+        public YoungNightmare( Serial serial ) : base( serial )
 		{
 		}
 

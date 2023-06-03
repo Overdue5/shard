@@ -64,21 +64,21 @@ namespace Server.Mobiles
 
 		}
 
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish; } }
+		public override FoodType FavoriteFood => FoodType.Fish;
 
-		public override int Meat{ get{ return 1; } }
+        public override int Meat => 1;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich );
             PackGold(40, 100);
 			AddLoot( LootPack.Gems,2);
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 3; } }
+		public override bool CanRummageCorpses => true;
+        public override int TreasureMapLevel => 3;
 
-		// TODO: Throwing Dagger
+        // TODO: Throwing Dagger
 
 		public override void OnGaveMeleeAttack( Mobile defender ) 
 		{

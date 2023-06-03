@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 
-		public override int AosStrengthReq{ get{ return 50; } }
-		public override int AosMinDamage{ get{ return 12; } }
-		public override int AosMaxDamage{ get{ return 13; } }
-		public override int AosSpeed{ get{ return 49; } }
+		public override int AosStrengthReq => 50;
+        public override int AosMinDamage => 12;
+        public override int AosMaxDamage => 13;
+        public override int AosSpeed => 49;
 
-		public override int OldStrengthReq{ get{ return 50; } }
-		public override int OldMinDamage{ get{ return 12; } }
-		public override int OldMaxDamage{ get{ return 13; } }
-		public override int OldSpeed{ get{ return 314; } }
+        public override int OldStrengthReq => 50;
+        public override int OldMinDamage => 12;
+        public override int OldMaxDamage => 13;
+        public override int OldSpeed => 314;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 80;
 
-        	public override int GetSwingAnim(Mobile from)
+        public override int GetSwingAnim(Mobile from)
 	        {
         	    if (from.Mounted)
                 	return 26;

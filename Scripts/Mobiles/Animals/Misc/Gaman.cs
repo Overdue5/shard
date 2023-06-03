@@ -62,11 +62,11 @@ namespace Server.Mobiles
 			return 0x4F5;
 		}
 
-		public override int Meat{ get{ return 10; } }
-		public override int Hides{ get{ return 15; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.GrainsAndHay; } }
+		public override int Meat => 10;
+        public override int Hides => 15;
+        public override FoodType FavoriteFood => FoodType.GrainsAndHay;
 
-		public Gaman( Serial serial ) : base( serial )
+        public Gaman( Serial serial ) : base( serial )
 		{
 		}
 

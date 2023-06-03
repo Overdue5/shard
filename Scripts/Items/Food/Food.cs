@@ -15,23 +15,23 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Poisoner
 		{
-			get { return m_Poisoner; }
-			set { m_Poisoner = value; }
-		}
+			get => m_Poisoner;
+            set => m_Poisoner = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Poison Poison
 		{
-			get { return m_Poison; }
-			set { m_Poison = value; }
-		}
+			get => m_Poison;
+            set => m_Poison = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int FillFactor
 		{
-			get { return m_FillFactor; }
-			set { m_FillFactor = value; }
-		}
+			get => m_FillFactor;
+            set => m_FillFactor = value;
+        }
 
 		public Food( int itemID ) : this( 1, itemID )
 		{
@@ -278,12 +278,9 @@ namespace Server.Items
 
 	public class FishSteak : Food
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public FishSteak() : this( 1 )
 		{
 		}
@@ -315,12 +312,9 @@ namespace Server.Items
 
 	public class CheeseWheel : Food
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public CheeseWheel() : this( 1 )
 		{
 		}
@@ -352,12 +346,9 @@ namespace Server.Items
 
 	public class CheeseWedge : Food
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public CheeseWedge() : this( 1 )
 		{
 		}
@@ -389,12 +380,9 @@ namespace Server.Items
 
 	public class CheeseSlice : Food
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public CheeseSlice() : this( 1 )
 		{
 		}
@@ -746,7 +734,7 @@ namespace Server.Items
 	[TypeAlias( "Server.Items.Pizza" )]
 	public class CheesePizza : Food
 	{
-		public override int LabelNumber{ get{ return 1044516; } } // cheese pizza
+		public override int LabelNumber => 1044516; // cheese pizza
 
 		[Constructable]
 		public CheesePizza() : base( 0x1040 )
@@ -777,7 +765,7 @@ namespace Server.Items
 
 	public class SausagePizza : Food
 	{
-		public override int LabelNumber{ get{ return 1044517; } } // sausage pizza
+		public override int LabelNumber => 1044517; // sausage pizza
 
 		[Constructable]
 		public SausagePizza() : base( 0x1040 )
@@ -839,7 +827,7 @@ namespace Server.Items
 
 	public class FruitPie : Food
 	{
-		public override int LabelNumber{ get{ return 1041346; } } // baked fruit pie
+		public override int LabelNumber => 1041346; // baked fruit pie
 
 		[Constructable]
 		public FruitPie() : base( 0x1041 )
@@ -870,7 +858,7 @@ namespace Server.Items
 
 	public class MeatPie : Food
 	{
-		public override int LabelNumber{ get{ return 1041347; } } // baked meat pie
+		public override int LabelNumber => 1041347; // baked meat pie
 
 		[Constructable]
 		public MeatPie() : base( 0x1041 )
@@ -901,7 +889,7 @@ namespace Server.Items
 
 	public class PumpkinPie : Food
 	{
-		public override int LabelNumber{ get{ return 1041348; } } // baked pumpkin pie
+		public override int LabelNumber => 1041348; // baked pumpkin pie
 
 		[Constructable]
 		public PumpkinPie() : base( 0x1041 )
@@ -932,7 +920,7 @@ namespace Server.Items
 
 	public class ApplePie : Food
 	{
-		public override int LabelNumber{ get{ return 1041343; } } // baked apple pie
+		public override int LabelNumber => 1041343; // baked apple pie
 
 		[Constructable]
 		public ApplePie() : base( 0x1041 )
@@ -963,7 +951,7 @@ namespace Server.Items
 
 	public class PeachCobbler : Food
 	{
-		public override int LabelNumber{ get{ return 1041344; } } // baked peach cobbler
+		public override int LabelNumber => 1041344; // baked peach cobbler
 
 		[Constructable]
 		public PeachCobbler() : base( 0x1041 )
@@ -994,7 +982,7 @@ namespace Server.Items
 
 	public class Quiche : Food
 	{
-		public override int LabelNumber{ get{ return 1041345; } } // baked quiche
+		public override int LabelNumber => 1041345; // baked quiche
 
 		[Constructable]
 		public Quiche() : base( 0x1041 )

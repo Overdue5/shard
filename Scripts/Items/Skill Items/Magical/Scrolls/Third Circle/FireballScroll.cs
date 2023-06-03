@@ -3,9 +3,9 @@ namespace Server.Items
 	public class FireballScroll : SpellScroll
 	{
         //Loki edit: Mana matched to spell
-        public override int ManaCost { get { return 9; } }
+        public override int ManaCost => 9;
 
-		[Constructable]
+        [Constructable]
 		public FireballScroll() : this( 1 )
 		{
 		}

@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new StoneVanityAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new StoneVanityAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public StoneVanityAddon()
 		{
 
@@ -73,15 +67,9 @@ namespace Server.Items
 
 	public class StoneVanityAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new StoneVanityAddon();
-			}
-		}
+		public override BaseAddon Addon => new StoneVanityAddon();
 
-		[Constructable]
+        [Constructable]
 		public StoneVanityAddonDeed()
 		{
 			Name = "StoneVanity";

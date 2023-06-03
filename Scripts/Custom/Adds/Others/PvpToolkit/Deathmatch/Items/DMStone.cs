@@ -61,60 +61,60 @@ namespace Server.Custom.PvpToolkit.DMatch.Items
 
         public List<Mobile> Contestants
         {
-            get { return m_Contestants; }
-            set { m_Contestants = value; }
+            get => m_Contestants;
+            set => m_Contestants = value;
         }
 
         public List<DMSpawnPoint> DMSpawnPoints
         {
-            get { return m_DMSpawnPoints; }
-            set { m_DMSpawnPoints = value; }
+            get => m_DMSpawnPoints;
+            set => m_DMSpawnPoints = value;
         }
 
         public Dictionary<Serial, ScoreKeeper> ScoreTable
         {
-            get { return m_ScoreTable; }
-            set { m_ScoreTable = value; }
+            get => m_ScoreTable;
+            set => m_ScoreTable = value;
         }
 
         public Dictionary<Serial, DMSpawnPoint> LatestSpawnPoint
         {
-            get { return m_LatestSpawnPoint; }
-            set { m_LatestSpawnPoint = value; }
+            get => m_LatestSpawnPoint;
+            set => m_LatestSpawnPoint = value;
         }
 
         public bool Active
         {
-            get { return m_Active; }
-            set { m_Active = value; }
+            get => m_Active;
+            set => m_Active = value;
         }
 
         [CommandProperty(AccessLevel.Counselor)]
         public int MatchMinutes
         {
-            get { return m_MatchMin; }
-            set { m_MatchMin = value; }
+            get => m_MatchMin;
+            set => m_MatchMin = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Map LeaveMap
         {
-            get { return m_LeaveMap; }
-            set { m_LeaveMap = value; }
+            get => m_LeaveMap;
+            set => m_LeaveMap = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D LeaveLocation
         {
-            get { return m_LeaveLocation; }
-            set { m_LeaveLocation = value; }
+            get => m_LeaveLocation;
+            set => m_LeaveLocation = value;
         }
 
         [CommandProperty(AccessLevel.Counselor)]
         public bool AcceptingContestants
         {
-            get { return m_AcceptingContestants; }
-            set { m_AcceptingContestants = value; }
+            get => m_AcceptingContestants;
+            set => m_AcceptingContestants = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -122,14 +122,14 @@ namespace Server.Custom.PvpToolkit.DMatch.Items
 
         public Dictionary<Serial, BaseCreature> MountCollection
         {
-            get { return m_MountCollection; }
-            set { m_MountCollection = value; }
+            get => m_MountCollection;
+            set => m_MountCollection = value;
         }
 
         [CommandProperty(AccessLevel.Counselor)]
         public bool Started
         {
-            get { return m_Started; }
+            get => m_Started;
             set
             {
                 if (m_MatchTimer == null)
@@ -168,22 +168,22 @@ namespace Server.Custom.PvpToolkit.DMatch.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public EventSupplier EventSupplier
         {
-            get { return m_EventSupplier; }
-            set { m_EventSupplier = value; }
+            get => m_EventSupplier;
+            set => m_EventSupplier = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool UseSphereRules
         {
-            get { return m_UseSphereRules; }
-            set { m_UseSphereRules = value; }
+            get => m_UseSphereRules;
+            set => m_UseSphereRules = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool GiveHorses
         {
-            get { return m_GiveHorses; }
-            set { m_GiveHorses = value; }
+            get => m_GiveHorses;
+            set => m_GiveHorses = value;
         }
 
         #endregion

@@ -8,9 +8,9 @@ namespace Knives.TownHouses
 		private readonly object c_Callback;
 		private readonly object c_Param;
 
-		public string Name{ get{ return c_Name; } }
+		public string Name => c_Name;
 
-		public ButtonPlus( int x, int y, int normalID, int pressedID, int buttonID, string name, GumpCallback back ) : base( x, y, normalID, pressedID, buttonID, GumpButtonType.Reply, 0 )
+        public ButtonPlus( int x, int y, int normalID, int pressedID, int buttonID, string name, GumpCallback back ) : base( x, y, normalID, pressedID, buttonID, GumpButtonType.Reply, 0 )
 		{
 			c_Name = name;
 			c_Callback = back;

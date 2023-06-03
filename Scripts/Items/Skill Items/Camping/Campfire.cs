@@ -50,12 +50,9 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime Created
-		{
-			get{ return m_Created; }
-		}
+		public DateTime Created => m_Created;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public CampfireStatus Status
 		{
 			get
@@ -189,20 +186,17 @@ namespace Server.Items
 		private readonly DateTime m_Start;
 		private bool m_Safe;
 
-		public PlayerMobile Player{ get{ return m_Player; } }
-		public Campfire Fire{ get{ return m_Fire; } }
-		public DateTime Start{ get{ return m_Start; } }
+		public PlayerMobile Player => m_Player;
+        public Campfire Fire => m_Fire;
+        public DateTime Start => m_Start;
 
-		public bool Valid
-		{
-			get{ return !Fire.Deleted && Fire.Status != CampfireStatus.Off && Player.Map == Fire.Map && Player.InRange( Fire, Campfire.SecureRange ); }
-		}
+        public bool Valid => !Fire.Deleted && Fire.Status != CampfireStatus.Off && Player.Map == Fire.Map && Player.InRange( Fire, Campfire.SecureRange );
 
-		public bool Safe
+        public bool Safe
 		{
-			get{ return Valid && m_Safe; }
-			set{ m_Safe = value; }
-		}
+			get => Valid && m_Safe;
+            set => m_Safe = value;
+        }
 
 		public CampfireEntry( PlayerMobile player, Campfire fire )
 		{

@@ -14,24 +14,21 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int TotalDevoured
         {
-            get { return m_DevourTotal; }
-            set { m_DevourTotal = value; }
+            get => m_DevourTotal;
+            set => m_DevourTotal = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int DevourGoal
         {
-            get { return (IsParagon ? m_DevourGoal + 25 : m_DevourGoal); }
-            set { m_DevourGoal = value; }
+            get => (IsParagon ? m_DevourGoal + 25 : m_DevourGoal);
+            set => m_DevourGoal = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool HasMetalChest
-        {
-            get { return m_HasMetalChest; }
-        }
+        public bool HasMetalChest => m_HasMetalChest;
 
-		[Constructable]
+        [Constructable]
 		public PlagueBeast() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Plague Beast";
@@ -105,10 +102,10 @@ namespace Server.Mobiles
 			base.OnDamagedBySpell( caster );
 		}
 
-		public override bool AutoDispel{ get{ return true; } }
-        public override Poison PoisonImmune { get { return Poison.Lethal; } }
+		public override bool AutoDispel => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override void OnGotMeleeAttack( Mobile attacker )
+        public override void OnGotMeleeAttack( Mobile attacker )
 		{
 			if ( Map != null && attacker != this && 0.25 > Utility.RandomDouble() )
 			{

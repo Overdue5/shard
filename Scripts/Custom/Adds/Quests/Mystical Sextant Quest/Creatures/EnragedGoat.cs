@@ -52,9 +52,9 @@ namespace Server.Mobiles
 		}
 
 		
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public EnragedGoat( Serial serial ) : base( serial )
+        public EnragedGoat( Serial serial ) : base( serial )
 		{
 		}
 

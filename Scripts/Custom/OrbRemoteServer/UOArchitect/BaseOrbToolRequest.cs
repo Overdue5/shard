@@ -7,12 +7,9 @@ namespace Server.Engines.UOArchitect
 	{
 		private Mobile m_OnlineMobile;
 
-		public Mobile Mobile
-		{
-			get{ return m_OnlineMobile; }
-		}
+		public Mobile Mobile => m_OnlineMobile;
 
-		public bool IsOnline
+        public bool IsOnline
 		{
 			get
 			{ 

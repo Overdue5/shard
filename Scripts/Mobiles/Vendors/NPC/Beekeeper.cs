@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class Beekeeper : BaseVendor 
 	{ 
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>(); 
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } } 
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Beekeeper() : base( "the beekeeper" ) 
 		{ 
 		} 
@@ -17,9 +17,9 @@ namespace Server.Mobiles
 			m_SBInfos.Add( new SBBeekeeper() ); 
 		}
 
-		public override VendorShoeType ShoeType{ get{ return VendorShoeType.Boots; } }
+		public override VendorShoeType ShoeType => VendorShoeType.Boots;
 
-		public Beekeeper( Serial serial ) : base( serial ) 
+        public Beekeeper( Serial serial ) : base( serial ) 
 		{ 
 		}
 

@@ -6,16 +6,13 @@ namespace Server.Items
 {
 	public abstract class BaseAddonContainer : BaseContainer, IChopable, IAddon
 	{
-		public override bool DisplayWeight { get { return false; } }
+		public override bool DisplayWeight => false;
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+        [Hue, CommandProperty( AccessLevel.GameMaster )]
 		public override int Hue
 		{
-			get
-			{
-				return base.Hue;
-			}
-			set
+			get => base.Hue;
+            set
 			{
 				if ( base.Hue != value )
 				{
@@ -37,8 +34,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CraftResource Resource
 		{
-			get { return m_Resource; }
-			set
+			get => m_Resource;
+            set
 			{
 				if ( m_Resource != value )
 				{
@@ -50,25 +47,19 @@ namespace Server.Items
 			}
 		}
 
-		Item IAddon.Deed
-		{
-			get { return this.Deed; }
-		}
+		Item IAddon.Deed => this.Deed;
 
-		public virtual bool RetainDeedHue { get { return false; } }
-		public virtual bool NeedsWall { get { return false; } }
-		public virtual bool ShareHue { get { return true; } }
-		public virtual Point3D WallPosition { get { return Point3D.Zero; } }
-		public virtual BaseAddonContainerDeed Deed { get { return null; } }
+        public virtual bool RetainDeedHue => false;
+        public virtual bool NeedsWall => false;
+        public virtual bool ShareHue => true;
+        public virtual Point3D WallPosition => Point3D.Zero;
+        public virtual BaseAddonContainerDeed Deed => null;
 
-		private List<AddonContainerComponent> m_Components;
+        private List<AddonContainerComponent> m_Components;
 
-		public List<AddonContainerComponent> Components
-		{
-			get { return m_Components; }
-		}
+		public List<AddonContainerComponent> Components => m_Components;
 
-		public BaseAddonContainer( int itemID ) : base( itemID )
+        public BaseAddonContainer( int itemID ) : base( itemID )
 		{
 			AddonComponent.ApplyLightTo( this );
 

@@ -21,7 +21,8 @@
         {
         }
 
-        public override double PotionDelay { get { return 13.0; } }
+        public override double PotionDelay => 13.0;
+
         /*
         //Maka - unstacking pots on death, stacking on resurrection
         public override void OnAdded(object parent)
@@ -43,10 +44,7 @@
                 base.OnAdded(parent);
         }
         */
-        public override int Mana
-        {
-            get { return 50; }
-        }
+        public override int Mana => 50;
 
         public override void Serialize(GenericWriter writer)
         {

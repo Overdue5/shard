@@ -15,10 +15,10 @@ namespace Server.Items
 			Amount = amount;
 		}
 
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		public BlankScroll( Serial serial ) : base( serial )
+        public BlankScroll( Serial serial ) : base( serial )
 		{
 		}
 

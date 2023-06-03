@@ -8,9 +8,10 @@ namespace Server.Mobiles
 	[CorpseName( "Arathan's corpse" )]
 	public class Arathan : Mobile
 	{
-        public override bool ClickTitle { get { return true; } }
-                public virtual bool IsInvulnerable{ get{ return true; } }
-		[Constructable]
+        public override bool ClickTitle => true;
+        public virtual bool IsInvulnerable => true;
+
+        [Constructable]
 		public Arathan()
 		{
 			Name = "Commodore Arathan";                        
@@ -68,7 +69,7 @@ namespace Server.Mobiles
 		public Arathan( Serial serial ) : base( serial )
 		{
 		}
-        public override bool ShowContextMenu { get { return true; } }//
+        public override bool ShowContextMenu => true; //
         public override void GetContextMenuEntries (Mobile from, System.Collections.Generic.List<ContextMenuEntry> list) 
 	        { 
 	                base.GetContextMenuEntries( from, list ); 

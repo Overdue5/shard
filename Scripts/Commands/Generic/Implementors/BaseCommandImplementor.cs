@@ -52,9 +52,9 @@ namespace Server.Commands.Generic
 
 	    public string[] Accessors
 		{
-			get{ return m_Accessors; }
-			set{ m_Accessors = value; }
-		}
+			get => m_Accessors;
+            set => m_Accessors = value;
+        }
 
 	    public string Usage { get; set; }
 
@@ -62,18 +62,15 @@ namespace Server.Commands.Generic
 
 	    public AccessLevel AccessLevel
 		{
-			get{ return m_AccessLevel; }
-			set{ m_AccessLevel = value; }
-		}
+			get => m_AccessLevel;
+            set => m_AccessLevel = value;
+        }
 
 	    public CommandSupport SupportRequirement { get; set; }
 
-	    public Dictionary<string, BaseCommand> Commands
-		{
-			get{ return m_Commands; }
-		}
+	    public Dictionary<string, BaseCommand> Commands => m_Commands;
 
-		public BaseCommandImplementor()
+        public BaseCommandImplementor()
 		{
 			m_Commands = new Dictionary<string, BaseCommand>( StringComparer.OrdinalIgnoreCase );
 		}

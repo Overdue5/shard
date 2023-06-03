@@ -6,10 +6,10 @@ namespace Server.Multis
 {	
 	public class BrigandCamp : BaseCamp
 	{
-		public virtual Mobile Brigands{ get{ return new Brigand(); } }
-		public virtual Mobile Executioners{ get{ return new Executioner(); } }
-		
-		private Mobile m_Prisoner;
+		public virtual Mobile Brigands => new Brigand();
+        public virtual Mobile Executioners => new Executioner();
+
+        private Mobile m_Prisoner;
 		
 		[Constructable]
 		public BrigandCamp() : base( 0x10EE ) // dummy garbage at center

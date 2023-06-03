@@ -9,23 +9,24 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public TimeSpan LifeSpan
 		{
-			get { return m_LifeSpan; }
-			set { m_LifeSpan = value; }
-		}
+			get => m_LifeSpan;
+            set => m_LifeSpan = value;
+        }
 
 		private DateTime m_CreationTime;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime CreationTime
 		{
-			get { return m_CreationTime; }
-			set { m_CreationTime = value; }
-		}
+			get => m_CreationTime;
+            set => m_CreationTime = value;
+        }
 
 		private Timer m_Timer;
 
-		public override bool Nontransferable { get { return true; } }
-		public override void HandleInvalidTransfer( Mobile from )
+		public override bool Nontransferable => true;
+
+        public override void HandleInvalidTransfer( Mobile from )
 		{
 			if( InvalidTransferMessage != null )
 				TextDefinition.SendMessageTo( from, InvalidTransferMessage );
@@ -33,10 +34,10 @@ namespace Server.Items
 			this.Delete();
 		}
 
-		public virtual TextDefinition InvalidTransferMessage { get { return null; } }
+		public virtual TextDefinition InvalidTransferMessage => null;
 
 
-		public virtual void Expire( Mobile parent )
+        public virtual void Expire( Mobile parent )
 		{
 			if( parent != null )
 				parent.SendLocalizedMessage( 1072515, (this.Name == null ? String.Format( "#{0}", LabelNumber ): this.Name) ); // The ~1_name~ expired...

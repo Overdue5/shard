@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new CheetahRug1AddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new CheetahRug1AddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public CheetahRug1Addon()
 		{
 
@@ -75,15 +69,9 @@ namespace Server.Items
 
 	public class CheetahRug1AddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new CheetahRug1Addon();
-			}
-		}
+		public override BaseAddon Addon => new CheetahRug1Addon();
 
-		[Constructable]
+        [Constructable]
 		public CheetahRug1AddonDeed()
 		{
 			Name = "CheetahRug1";

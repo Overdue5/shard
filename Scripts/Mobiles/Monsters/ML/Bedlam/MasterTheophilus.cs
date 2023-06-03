@@ -76,11 +76,11 @@ namespace Server.Mobiles
 		}
 		*/
 
-		public override bool GivesMLMinorArtifact{ get{ return true; } }
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 5; } }
+		public override bool GivesMLMinorArtifact => true;
+        public override bool AlwaysMurderer => true;
+        public override int TreasureMapLevel => 5;
 
-		public MasterTheophilus( Serial serial )
+        public MasterTheophilus( Serial serial )
 			: base( serial )
 		{
 		}

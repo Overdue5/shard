@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class Diamond : Item
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public Diamond() : this( 1 )
 		{
 		}

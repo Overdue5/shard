@@ -15,17 +15,11 @@ namespace Solaris.CliLocHandler
 		protected int _Index;
 		protected string _Text;
 		
-		public int Index
-		{
-			get{ return _Index; }
-		}
-		
-		public string Text
-		{
-			get{ return _Text; }
-		}
-		
-		public override string ToString()
+		public int Index => _Index;
+
+        public string Text => _Text;
+
+        public override string ToString()
 		{
 			return _Text;
 		}
@@ -48,9 +42,9 @@ namespace Solaris.CliLocHandler
 		
 		public static string FilePath
 		{
-			get{ return _FilePath; }
-			set{ _FilePath = value; }
-		}
+			get => _FilePath;
+            set => _FilePath = value;
+        }
 		
 		//default filename
 		public CliLocDAO() : this( "cliloc.enu" )

@@ -87,7 +87,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Active
         {
-            get { return m_Active; }
+            get => m_Active;
             set
             {
                 if (!m_Active && value)
@@ -123,16 +123,16 @@ namespace Server.Items
 #endif
         public bool Profile
         {
-            get { return m_Profile; }
+            get => m_Profile;
 
-            set { m_Profile = value; }
+            set => m_Profile = value;
         }
 
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ShowPlayerInfo
         {
-            get { return m_ShowPlayerInfo; }
+            get => m_ShowPlayerInfo;
             set
             {
                 if (value)
@@ -146,27 +146,27 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile SecurityCamMob
         {
-            get { return m_SecurityCamMobile; }
-            set { m_SecurityCamMobile = value; }
+            get => m_SecurityCamMobile;
+            set => m_SecurityCamMobile = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public VerboseType SecurityChatter
         {
-            get { return m_SecurityChatter; }
-            set { m_SecurityChatter = value; }
+            get => m_SecurityChatter;
+            set => m_SecurityChatter = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Throttle
         {
-            get { return m_Throttle; }
-            set { m_Throttle = value; }
+            get => m_Throttle;
+            set => m_Throttle = value;
         }
         [CommandProperty(AccessLevel.GameMaster)]
         public double ThrottleSeconds
         {
-            get { return m_ThrottleSeconds; }
+            get => m_ThrottleSeconds;
             set
             {
                 if (value > 5)
@@ -180,7 +180,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public ThemeType Theme
         {
-            get { return m_Theme; }
+            get => m_Theme;
             set
             {
                 if (m_Theme != value)
@@ -204,35 +204,35 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int CreditCashOutAt
         {
-            get { return m_CreditCashOut; }
-            set { m_CreditCashOut = value; }
+            get => m_CreditCashOut;
+            set => m_CreditCashOut = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CreditATMLimit
         {
-            get { return m_CreditATMLimit; }
-            set { m_CreditATMLimit = value; }
+            get => m_CreditATMLimit;
+            set => m_CreditATMLimit = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CreditATMIncrements
         {
-            get { return m_CreditATMIncrements; }
-            set { m_CreditATMIncrements = value; }
+            get => m_CreditATMIncrements;
+            set => m_CreditATMIncrements = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int ErrorCode
         {
-            get { return m_ErrorCode; }
-            set { m_ErrorCode = value; }
+            get => m_ErrorCode;
+            set => m_ErrorCode = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ResetTotals
         {
-            get { return m_ResetTotals; }
+            get => m_ResetTotals;
             set
             {
                 if (value)
@@ -248,10 +248,7 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public long TotalNetProfit
-        {
-            get { return (long)(m_TotalCollected - m_TotalWon); }
-        }
+        public long TotalNetProfit => (long)(m_TotalCollected - m_TotalWon);
 
         [CommandProperty(AccessLevel.GameMaster)]
         public ulong TotalCollected
@@ -268,16 +265,10 @@ namespace Server.Items
         }*/
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong TotalWon
-        {
-            get { return m_TotalWon; }
-        }
+        public ulong TotalWon => m_TotalWon;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong TotalSpins
-        {
-            get { return m_TotalSpins; }
-        }
+        public ulong TotalSpins => m_TotalSpins;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public float WinningPercentage
@@ -295,7 +286,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile LastWonBy
         {
-            get { return m_LastWonBy; }
+            get => m_LastWonBy;
             set
             {
                 m_LastWonBy = value;
@@ -308,136 +299,87 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime LastWonByDate
-        {
-            get { return m_LastWonByDate; }
-        }
+        public DateTime LastWonByDate => m_LastWonByDate;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int LastWonAmount
-        {
-            get { return m_LastWonAmount; }
-        }
+        public int LastWonAmount => m_LastWonAmount;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool MembershipCard
         {
-            get { return m_MembershipCard; }
-            set { m_MembershipCard = value; }
+            get => m_MembershipCard;
+            set => m_MembershipCard = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool CardClubOnly
         {
-            get { return m_CardClubOnly; }
+            get => m_CardClubOnly;
             set { m_CardClubOnly = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats00
-        {
-            get { return m_HitStats[0]; }
-        }
+        public ulong zHitStats00 => m_HitStats[0];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats01
-        {
-            get { return m_HitStats[1]; }
-        }
+        public ulong zHitStats01 => m_HitStats[1];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats02
-        {
-            get { return m_HitStats[2]; }
-        }
+        public ulong zHitStats02 => m_HitStats[2];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats03
-        {
-            get { return m_HitStats[3]; }
-        }
+        public ulong zHitStats03 => m_HitStats[3];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats04
-        {
-            get { return m_HitStats[4]; }
-        }
+        public ulong zHitStats04 => m_HitStats[4];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats05
-        {
-            get { return m_HitStats[5]; }
-        }
+        public ulong zHitStats05 => m_HitStats[5];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats06
-        {
-            get { return m_HitStats[6]; }
-        }
+        public ulong zHitStats06 => m_HitStats[6];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats07
-        {
-            get { return m_HitStats[7]; }
-        }
+        public ulong zHitStats07 => m_HitStats[7];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats08
-        {
-            get { return m_HitStats[8]; }
-        }
+        public ulong zHitStats08 => m_HitStats[8];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats09
-        {
-            get { return m_HitStats[9]; }
-        }
+        public ulong zHitStats09 => m_HitStats[9];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats10
-        {
-            get { return m_HitStats[10]; }
-        }
+        public ulong zHitStats10 => m_HitStats[10];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats11
-        {
-            get { return m_HitStats[11]; }
-        }
+        public ulong zHitStats11 => m_HitStats[11];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats12
-        {
-            get { return m_HitStats[12]; }
-        }
+        public ulong zHitStats12 => m_HitStats[12];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats13
-        {
-            get { return m_HitStats[13]; }
-        }
+        public ulong zHitStats13 => m_HitStats[13];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats14
-        {
-            get { return m_HitStats[14]; }
-        }
+        public ulong zHitStats14 => m_HitStats[14];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats15
-        {
-            get { return m_HitStats[15]; }
-        }
+        public ulong zHitStats15 => m_HitStats[15];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats16
-        {
-            get { return m_HitStats[16]; }
-        }
+        public ulong zHitStats16 => m_HitStats[16];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats17
-        {
-            get { return m_HitStats[17]; }
-        }
+        public ulong zHitStats17 => m_HitStats[17];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats18
-        {
-            get { return m_HitStats[18]; }
-        }
+        public ulong zHitStats18 => m_HitStats[18];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats19
-        {
-            get { return m_HitStats[19]; }
-        }
+        public ulong zHitStats19 => m_HitStats[19];
+
         [CommandProperty(AccessLevel.GameMaster)]
-        public ulong zHitStats20
-        {
-            get { return m_HitStats[20]; }
-        }
+        public ulong zHitStats20 => m_HitStats[20];
 
         #endregion
         [Constructable]

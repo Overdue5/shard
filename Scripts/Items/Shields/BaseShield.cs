@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class BaseShield : BaseArmor
     {
-        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Plate;
 
         public BaseShield(int itemID)
             : base(itemID)

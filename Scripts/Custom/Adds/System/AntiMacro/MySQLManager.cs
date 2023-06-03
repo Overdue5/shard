@@ -24,10 +24,7 @@ namespace Server.AntiMacro
         private const string c_TableName = "CurrentMobiles";
         private const string c_ConnectionString = "DRIVER={MySQL ODBC 5.1 Driver};" + "SERVER=localhost;" + "DATABASE=database;" + "UID=user;" + "PASSWORD=password;" + "OPTION=3";
 
-        public static bool SQLEnabled
-        {
-            get { return m_SQLEnabled; }
-        }
+        public static bool SQLEnabled => m_SQLEnabled;
 
         public static void Initialize()
         {

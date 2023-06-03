@@ -9,11 +9,11 @@ namespace Server.Spells.Seventh
 {
     public class PolymorphSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 527; } }
-        public override bool HasNoTarget { get { return true; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 527;
+        public override bool HasNoTarget => true;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Polymorph", "Vas Ylem Rel",
 				263,
 				9002,

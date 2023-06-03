@@ -50,14 +50,14 @@ namespace Server.Mobiles
 			AddLoot( LootPack.HighScrolls, 2 );
 		}
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool BardImmune{ get{ return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool AutoDispel => true;
+        public override bool BardImmune => true;
+        public override bool CanRummageCorpses => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override bool InitialInnocent{ get{ return true; } }
+        public override bool InitialInnocent => true;
 
-		public override int GetHurtSound()
+        public override int GetHurtSound()
 		{
 			return 0x167;
 		}

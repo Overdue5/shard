@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class PowderblueTangTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new PowderblueTangTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new PowderblueTangTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public PowderblueTangTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class PowderblueTangTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new PowderblueTangTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new PowderblueTangTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public PowderblueTangTankAddonDeed()
 		{
 			Name = "a powderblue tang tank";

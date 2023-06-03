@@ -18,12 +18,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new CrystalBullSouthAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new CrystalBullSouthAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -48,12 +45,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new CrystalBullSouthAddon(); }
-		}
+		public override BaseAddon Addon => new CrystalBullSouthAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -84,12 +78,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new CrystalBullEastAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new CrystalBullEastAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -114,12 +105,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new CrystalBullEastAddon(); }
-		}
+		public override BaseAddon Addon => new CrystalBullEastAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version

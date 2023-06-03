@@ -51,12 +51,9 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual bool SmartAI
-		{
-			get{ return ( m_Mobile is BaseVendor || m_Mobile is BaseEscortable ); }
-		}
+		public virtual bool SmartAI => ( m_Mobile is BaseVendor || m_Mobile is BaseEscortable );
 
-		private const double HealChance = 0.05; // 5% chance to heal at gm necromancy, uses spirit speak healing
+        private const double HealChance = 0.05; // 5% chance to heal at gm necromancy, uses spirit speak healing
 		private const double TeleportChance = 0.05; // 5% chance to teleport at gm necromancy
 		private const double DispelChance = 0.75; // 75% chance to dispel at gm necromancy
 

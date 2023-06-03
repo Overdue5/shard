@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class HumilitySymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new HumilitySymbolDeed(); } }
+		public override BaseAddonDeed Deed => new HumilitySymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public HumilitySymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14D3 ), 0, 0, 0 ); //N
@@ -34,9 +34,9 @@ namespace Server.Items
 
 	public class HumilitySymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new HumilitySymbolAddon(); } }
+		public override BaseAddon Addon => new HumilitySymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public HumilitySymbolDeed()
 		{
             Name = "Humility symbol deed";

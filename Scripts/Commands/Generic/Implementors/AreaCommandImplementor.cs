@@ -7,12 +7,9 @@ namespace Server.Commands.Generic
 	{
         private static AreaCommandImplementor m_Instance;
 
-        public static AreaCommandImplementor Instance
-        {
-            get { return m_Instance; }
-        }
+        public static AreaCommandImplementor Instance => m_Instance;
 
-		public AreaCommandImplementor()
+        public AreaCommandImplementor()
 		{
 			Accessors = new string[]{ "Area", "Group" };
 			SupportRequirement = CommandSupport.Area;

@@ -8,12 +8,9 @@ namespace Server.Engines.UOArchitect
 	{
 		private DesignItemCol m_Items;
 
-		public DesignItemCol Items
-		{
-			get{ return m_Items; }
-		}
+		public DesignItemCol Items => m_Items;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
 			OrbServer.Register("UOAR_BuildDesign", typeof(BuildDesignRequest), AccessLevel.GameMaster, true);
 		}

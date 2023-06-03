@@ -6,12 +6,12 @@ namespace Server.Spells.Sixth
 {
     public class RevealSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 0x1FD; } }
-        
-        public override bool CanTargetGround { get { return true; } }
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 0x1FD;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override bool CanTargetGround => true;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Reveal", "Wis Quas",
 				263,
 				9002,

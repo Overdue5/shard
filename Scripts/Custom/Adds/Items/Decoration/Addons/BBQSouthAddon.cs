@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class BBQSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new BBQSouthAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new BBQSouthAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public BBQSouthAddon()
 		{
 			AddonComponent ac = null;
@@ -120,15 +114,9 @@ namespace Server.Items
 
 	public class BBQSouthAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new BBQSouthAddon();
-			}
-		}
+		public override BaseAddon Addon => new BBQSouthAddon();
 
-		[Constructable]
+        [Constructable]
 		public BBQSouthAddonDeed()
 		{
 			Name = "BBQ South";

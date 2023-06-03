@@ -124,8 +124,9 @@ namespace Server.Mobiles
 			m.SendLocalizedMessage( 1070821, this.Name ); // %s spits a poisonous substance at you!
 		}
 
-		public override int Hides{ get{ return 8; } }	
-		public DeathwatchBeetle( Serial serial ) : base( serial )
+		public override int Hides => 8;
+
+        public DeathwatchBeetle( Serial serial ) : base( serial )
 		{
 		}
 

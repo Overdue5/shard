@@ -14,9 +14,9 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SecureLevel Level
 		{
-			get{ return m_Level; }
-			set{ m_Level = value; }
-		}
+			get => m_Level;
+            set => m_Level = value;
+        }
 
 		public BaseGameBoard( int itemID ) : base( itemID )
 		{
@@ -44,9 +44,9 @@ namespace Server.Items
 			piece.Location = new Point3D( x, y, 0 );
 		}
 
-		public override bool DisplaysContent{ get{ return false; } } // Do not display (x items, y stones)
+		public override bool DisplaysContent => false; // Do not display (x items, y stones)
 
-		public override bool IsDecoContainer{ get{ return false; } }
+		public override bool IsDecoContainer => false;
 
         public BaseGameBoard(Serial serial)
             : base(serial)
@@ -73,9 +73,9 @@ namespace Server.Items
 				Weight = 5.0;
 		}
 
-		public override TimeSpan DecayTime{ get{ return TimeSpan.FromDays( 1.0 ); } }
+		public override TimeSpan DecayTime => TimeSpan.FromDays( 1.0 );
 
-		public override bool OnDragDrop( Mobile from, Item dropped )
+        public override bool OnDragDrop( Mobile from, Item dropped )
 		{
 			BasePiece piece = dropped as BasePiece;
 

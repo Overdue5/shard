@@ -10,9 +10,9 @@ namespace Server.Engines.Quests
 	{
 		private readonly Type m_Quest;
 
-		public Type Quest{ get{ return m_Quest ; } }
+		public Type Quest => m_Quest;
 
-		public QuestOfferRegion( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )
+        public QuestOfferRegion( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )
 		{
 			ReadType( xml["quest"], "type", ref m_Quest );
 		}

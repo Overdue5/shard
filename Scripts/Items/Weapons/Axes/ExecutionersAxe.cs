@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 
-		public override int AosStrengthReq{ get{ return 40; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 17; } }
-		public override int AosSpeed{ get{ return 33; } }
+		public override int AosStrengthReq => 40;
+        public override int AosMinDamage => 15;
+        public override int AosMaxDamage => 17;
+        public override int AosSpeed => 33;
 
-		public override int OldStrengthReq{ get{ return 35; } }
-		public override int OldMinDamage{ get{ return 24; } }
-		public override int OldMaxDamage{ get{ return 33; } } //Loki edit: was 20 - 30
-		public override int OldSpeed{ get{ return 408; } }
+        public override int OldStrengthReq => 35;
+        public override int OldMinDamage => 24;
+        public override int OldMaxDamage => 33; //Loki edit: was 20 - 30
+		public override int OldSpeed => 408;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 70; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 70;
 
-		[Constructable]
+        [Constructable]
 		public ExecutionersAxe() : base( 0xF45 )
 		{
 			Weight = 8.0;

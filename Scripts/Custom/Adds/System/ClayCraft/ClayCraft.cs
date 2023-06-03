@@ -5,10 +5,7 @@ namespace Server.Engines.Craft
 {
     public class ClayCraft : CraftSystem
     {
-        public override SkillName MainSkill
-        {
-            get { return SkillName.Tinkering; }
-        }
+        public override SkillName MainSkill => SkillName.Tinkering;
 
         private static CraftSystem m_CraftSystem;
 

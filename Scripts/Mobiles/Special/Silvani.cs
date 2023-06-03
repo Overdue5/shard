@@ -56,16 +56,13 @@ namespace Server.Mobiles
 			AddLoot( LootPack.UltraRich, 2 );
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override bool Unprovokable{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
-		public override int TreasureMapLevel{ get{ return 5; } }
+        public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Regular;
+        public override int TreasureMapLevel => 5;
 
-		public void SpawnPixies( Mobile target )
+        public void SpawnPixies( Mobile target )
 		{
 			Map map = Map;
 

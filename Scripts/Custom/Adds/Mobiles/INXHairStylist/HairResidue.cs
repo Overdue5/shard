@@ -31,7 +31,7 @@ namespace Server.INXHairStylist
         private static readonly int[] m_HairIds = new int[] { 0xDFE };
 
         //Decay time for the hair
-        public override TimeSpan DecayTime {  get { return TimeSpan.FromMinutes(30.0); } }
+        public override TimeSpan DecayTime => TimeSpan.FromMinutes(30.0);
 
         private static readonly string[] m_HairNameFormat = new string[] { "a pile of {0}'s hair", "{0}'s cut-off hair", "a furry piece of {0}", "{0} was here" };
 

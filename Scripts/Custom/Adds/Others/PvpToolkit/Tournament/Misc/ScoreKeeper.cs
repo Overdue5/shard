@@ -8,9 +8,13 @@ namespace Server.Custom.PvpToolkit.Tournament
         private int m_Kills;
         private int m_Deaths;
 
-        public Mobile Player { get { return m_Player; } }
-        public int Kills { get { return m_Kills; } set { m_Kills = value; } }
-        public int Deaths { get { return m_Deaths; } set { m_Deaths = value; } }
+        public Mobile Player => m_Player;
+        public int Kills { get => m_Kills;
+            set => m_Kills = value;
+        }
+        public int Deaths { get => m_Deaths;
+            set => m_Deaths = value;
+        }
 
         public ScoreKeeper( Mobile m )
         {

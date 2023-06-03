@@ -7,12 +7,9 @@ namespace Server.Items
 	{
 		private SpawnTimer m_Timer;
 
-		public override string DefaultName
-		{
-			get { return "egg sac"; }
-		}
+		public override string DefaultName => "egg sac";
 
-		[Constructable]
+        [Constructable]
 		public RecluseSpiderEggSac() : base( 4313 )
 		{
 			Movable = false;

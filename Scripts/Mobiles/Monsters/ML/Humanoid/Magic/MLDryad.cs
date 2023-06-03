@@ -6,14 +6,11 @@ namespace Server.Mobiles
 	[CorpseName( "a dryad's corpse" )]
 	public class MLDryad : BaseCreature
 	{
-		public override bool InitialInnocent { get { return true; } }
+		public override bool InitialInnocent => true;
 
-		public override OppositionGroup OppositionGroup
-		{
-			get { return OppositionGroup.FeyAndUndead; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		[Constructable]
+        [Constructable]
 		public MLDryad() : base( AIType.AI_Mage, FightMode.Evil, 10, 1, 0.2, 0.4 )
 		{
 			Name = "a dryad";
@@ -60,9 +57,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MlRich );
 		}
 
-		public override int Meat { get { return 1; } }
+		public override int Meat => 1;
 
-		public override void OnThink()
+        public override void OnThink()
 		{
 			base.OnThink();
 

@@ -23,8 +23,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get { return m_Owner; }
-			set
+			get => m_Owner;
+            set
 			{
 				m_Owner = value;
 				InvalidateProperties();

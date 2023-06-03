@@ -22,15 +22,12 @@ namespace Server.Mobiles
 
         private string curspeech;
 
-        public override bool InitialInnocent { get { return true; } }
+        public override bool InitialInnocent => true;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Active
         {
-            get
-            {
-                return active;
-            }
+            get => active;
             set
             {
                 if (!value)
@@ -165,11 +162,11 @@ namespace Server.Mobiles
             AddLoot(LootPack.UltraRich, 2);
 		}
      
-        public override bool IsScaredOfScaryThings { get { return false; } }
-        public override bool AlwaysMurderer{ get{ return true; } }
-        public override Poison PoisonImmune { get { return Poison.Regular; } }
-        public override bool AutoDispel { get { return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+        public override bool IsScaredOfScaryThings => false;
+        public override bool AlwaysMurderer => true;
+        public override Poison PoisonImmune => Poison.Regular;
+        public override bool AutoDispel => true;
+        public override bool CanRummageCorpses => true;
 
         #region Pirate Can Say Random Phrases From A [.txt] File
 
@@ -225,7 +222,7 @@ namespace Server.Mobiles
 
         #endregion Pirate Can Say Random Phrases From A [.txt] File
         	
-		public override bool PlayerRangeSensitive{ get { return false; } }
+		public override bool PlayerRangeSensitive => false;
 
         private bool boatspawn;
 		private DateTime m_NextPickup;

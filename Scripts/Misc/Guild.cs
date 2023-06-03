@@ -40,19 +40,19 @@ namespace Server.Guilds
 				new RankDefinition( 1062960, 3, RankFlags.Member | RankFlags.ControlWarStatus ),	//Warlord
 				new RankDefinition( 1062959, 4, RankFlags.All )	//Leader
 			};
-		public static RankDefinition Leader{ get{ return Ranks[4]; } }
-		public static RankDefinition Member{ get{ return Ranks[1]; } }
-		public static RankDefinition Lowest{ get{ return Ranks[0]; } }
+		public static RankDefinition Leader => Ranks[4];
+        public static RankDefinition Member => Ranks[1];
+        public static RankDefinition Lowest => Ranks[0];
 
-		private readonly TextDefinition m_Name;
+        private readonly TextDefinition m_Name;
 		private readonly int m_Rank;
 		private RankFlags m_Flags;
 
-		public TextDefinition Name{ get{ return m_Name; } }
-		public int Rank{ get{ return m_Rank; } }
-		public RankFlags Flags{ get{ return m_Flags; } }
+		public TextDefinition Name => m_Name;
+        public int Rank => m_Rank;
+        public RankFlags Flags => m_Flags;
 
-		public RankDefinition( TextDefinition name, int rank, RankFlags flags )
+        public RankDefinition( TextDefinition name, int rank, RankFlags flags )
 		{
 			m_Name = name; 
 			m_Rank = rank;
@@ -80,22 +80,16 @@ namespace Server.Guilds
 	{
 		private static readonly Dictionary<string, AllianceInfo> m_Alliances = new Dictionary<string, AllianceInfo>();
 
-		public static Dictionary<string, AllianceInfo> Alliances
-		{
-			get{ return m_Alliances; }
-		}
+		public static Dictionary<string, AllianceInfo> Alliances => m_Alliances;
 
-		private readonly string m_Name;
+        private readonly string m_Name;
 		private Guild m_Leader;
 		private readonly List<Guild> m_Members;
 		private readonly List<Guild> m_PendingMembers;
 		
-		public string Name
-		{
-			get{ return m_Name; }
-		}
+		public string Name => m_Name;
 
-		public void CalculateAllianceLeader()
+        public void CalculateAllianceLeader()
 		{
 			m_Leader = ((m_Members.Count >= 2) ? m_Members[Utility.Random( m_Members.Count )] : null);
 		}
@@ -378,9 +372,9 @@ namespace Server.Guilds
 
 		public class AllianceRosterGump : GuildDiplomacyGump
 		{
-			protected override bool AllowAdvancedSearch{ get{ return false; } }
+			protected override bool AllowAdvancedSearch => false;
 
-			private readonly AllianceInfo m_Alliance;
+            private readonly AllianceInfo m_Alliance;
 
 			public AllianceRosterGump( PlayerMobile pm, Guild g, AllianceInfo alliance ): base( pm, g, true, "", 0, alliance.m_Members, alliance.Name )
 			{
@@ -431,37 +425,33 @@ namespace Server.Guilds
 
 		public int Kills
 		{
-			get{ return m_Kills; } 
-			set{ m_Kills = value; }
-		}
+			get => m_Kills;
+            set => m_Kills = value;
+        }
 		public int MaxKills
 		{
-			get{ return m_MaxKills; }
-			set{ m_MaxKills = value; }
-		}
+			get => m_MaxKills;
+            set => m_MaxKills = value;
+        }
 		public TimeSpan WarLength
 		{
-			get{ return m_WarLength; }
-			set{ m_WarLength = value; }
-		}
-		public Guild Opponent
+			get => m_WarLength;
+            set => m_WarLength = value;
+        }
+		public Guild Opponent => m_Opponent;
+
+        public Guild Guild => m_Guild;
+
+        public DateTime WarBeginning
 		{
-			get{ return m_Opponent; }
-		}
-		public Guild Guild
-		{
-			get{ return m_Guild; }
-		}
-		public DateTime WarBeginning
-		{
-			get{ return m_WarBeginning; } 
-			set{ m_WarBeginning = value; }
-		}
+			get => m_WarBeginning;
+            set => m_WarBeginning = value;
+        }
 		public bool WarRequester
 		{
-			get{ return m_WarRequester; }
-			set{ m_WarRequester = value; }
-		}
+			get => m_WarRequester;
+            set => m_WarRequester = value;
+        }
 
 		public WarDeclaration( Guild g, Guild opponent, int maxKills, TimeSpan warLength, bool warRequester )
 		{
@@ -691,9 +681,9 @@ namespace Server.Guilds
 		}
 		#endregion
 
-		public static bool NewGuildSystem{ get{ return false; } }
+		public static bool NewGuildSystem => false;
 
-		public static readonly int RegistrationFee = 25000;
+        public static readonly int RegistrationFee = 25000;
 		public static readonly int AbbrevLimit = 4;
 		public static readonly int NameLimit = 40;
 		public static readonly int MajorityPercentage = 66;
@@ -811,17 +801,12 @@ namespace Server.Guilds
 
 		#region New Wars
 
-		public List<WarDeclaration> PendingWars
-		{
-			get{ return m_PendingWars; }
-		}
-		public List<WarDeclaration> AcceptedWars
-		{
-			get{ return m_AcceptedWars; } 
-		}
+		public List<WarDeclaration> PendingWars => m_PendingWars;
+
+        public List<WarDeclaration> AcceptedWars => m_AcceptedWars;
 
 
-		public WarDeclaration FindPendingWar( Guild g )
+        public WarDeclaration FindPendingWar( Guild g )
 		{
 			for( var i = 0; i < PendingWars.Count; i++ )
 			{
@@ -1101,15 +1086,9 @@ namespace Server.Guilds
 		}
 
 
-		public override bool Disbanded
-		{
-			get
-			{
-				return ( m_Leader == null || m_Leader.Deleted );
-			}
-		}
+		public override bool Disbanded => ( m_Leader == null || m_Leader.Deleted );
 
-		public override void OnDelete( Mobile mob )
+        public override void OnDelete( Mobile mob )
 		{
 			RemoveMember( mob );
 		}
@@ -1741,37 +1720,22 @@ namespace Server.Guilds
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Guildstone
 		{
-			get
-			{
-				return m_Guildstone;
-			}
-			set
-			{
-				m_Guildstone = value;
-			}
-		}
+			get => m_Guildstone;
+            set => m_Guildstone = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Teleporter
 		{
-			get
-			{
-				return m_Teleporter;
-			}
-			set
-			{
-				m_Teleporter = value;
-			}
-		}
+			get => m_Teleporter;
+            set => m_Teleporter = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override string Name
 		{
-			get
-			{
-				return m_Name;
-			}
-			set
+			get => m_Name;
+            set
 			{
 				m_Name = value;
 
@@ -1785,24 +1749,15 @@ namespace Server.Guilds
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Website
 		{
-			get
-			{
-				return m_Website;
-			}
-			set
-			{
-				m_Website = value;
-			}
-		}
+			get => m_Website;
+            set => m_Website = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override string Abbreviation
 		{
-			get
-			{
-				return m_Abbreviation;
-			}
-			set
+			get => m_Abbreviation;
+            set
 			{
 				m_Abbreviation = value;
 
@@ -1816,24 +1771,15 @@ namespace Server.Guilds
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Charter
 		{
-			get
-			{
-				return m_Charter;
-			}
-			set
-			{
-				m_Charter = value;
-			}
-		}
+			get => m_Charter;
+            set => m_Charter = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override GuildType Type
 		{
-			get
-			{
-				return m_Type;
-			}
-			set
+			get => m_Type;
+            set
 			{
 				if ( m_Type != value )
 				{
@@ -1850,114 +1796,42 @@ namespace Server.Guilds
 		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime LastFealty
 		{
-			get
-			{
-				return m_LastFealty;
-			}
-			set
-			{
-				m_LastFealty = value;
-			}
-		}
+			get => m_LastFealty;
+            set => m_LastFealty = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime TypeLastChange
-		{
-			get
-			{
-				return m_TypeLastChange;
-			}
-		}
+		public DateTime TypeLastChange => m_TypeLastChange;
 
-		
-		public List<Guild> Allies
-		{
-			get
-			{
-				return m_Allies;
-			}
-		}
 
-		public List<Guild> Enemies
-		{
-			get
-			{
-				return m_Enemies;
-			}
-		}
+        public List<Guild> Allies => m_Allies;
 
-		public List<Guild> AllyDeclarations
-		{
-			get
-			{
-				return m_AllyDeclarations;
-			}
-		}
+        public List<Guild> Enemies => m_Enemies;
 
-		public List<Guild> AllyInvitations
-		{
-			get
-			{
-				return m_AllyInvitations;
-			}
-		}
+        public List<Guild> AllyDeclarations => m_AllyDeclarations;
 
-		public List<Guild> WarDeclarations
-		{
-			get
-			{
-				return m_WarDeclarations;
-			}
-		}
+        public List<Guild> AllyInvitations => m_AllyInvitations;
 
-		public List<Guild> WarInvitations
-		{
-			get
-			{
-				return m_WarInvitations;
-			}
-		}
+        public List<Guild> WarDeclarations => m_WarDeclarations;
 
-		public List<Mobile> Candidates
-		{
-			get
-			{
-				return m_Candidates;
-			}
-		}
+        public List<Guild> WarInvitations => m_WarInvitations;
 
-		public List<Mobile> Accepted
-		{
-			get
-			{
-				return m_Accepted;
-			}
-		}
+        public List<Mobile> Candidates => m_Candidates;
 
-		public List<Mobile> Members
+        public List<Mobile> Accepted => m_Accepted;
+
+        public List<Mobile> Members => m_Members;
+
+        public ArrayList Listeners
 		{
-			get
-			{
-				return m_Members;
-			}
-		}
-		
-		public ArrayList Listeners
-		{
-			get
-			{
-				return m_Listeners;
-			}
-            set { m_Listeners = value; }
-		}
+			get => m_Listeners;
+            set => m_Listeners = value;
+        }
 
         public ArrayList AllianceListeners
         {
-            get
-            {
-                return m_AllianceListeners;
-            }
-            set { m_AllianceListeners = value; }
+            get => m_AllianceListeners;
+            set => m_AllianceListeners = value;
         }
 
 		#endregion

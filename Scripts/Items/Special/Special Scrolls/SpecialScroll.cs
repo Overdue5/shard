@@ -13,15 +13,13 @@ namespace Server.Items
 		/* DO NOT USE! Only used in serialization of special scrolls that originally derived from Item */
 		private bool m_InheritsItem;
 		
-		protected bool InheritsItem
-		{ 
-			get{ return m_InheritsItem; } 
-		}
-		#endregion
+		protected bool InheritsItem => m_InheritsItem;
+
+        #endregion
 		
 		public abstract int Message{ get; }
-		public virtual int Title{ get { return 0; } }
-		public abstract string DefaultTitle{ get; }
+		public virtual int Title => 0;
+        public abstract string DefaultTitle{ get; }
 
 		public SpecialScroll( SkillName skill, double value ) : base( 0x14F0 )
 		{
@@ -39,16 +37,16 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SkillName Skill
 		{
-			get { return m_Skill; }
-			set { m_Skill = value; }
-		}
+			get => m_Skill;
+            set => m_Skill = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public double Value
 		{
-			get { return m_Value; }
-			set { m_Value = value; }
-		}
+			get => m_Value;
+            set => m_Value = value;
+        }
 		
 		public virtual string GetNameLocalized()
 		{

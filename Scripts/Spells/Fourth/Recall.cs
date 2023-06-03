@@ -10,11 +10,11 @@ namespace Server.Spells.Fourth
 {
     public class RecallSpell : MagerySpell
     {
-        public override bool SpellFizzlesOnHurt { get  { return true; } }
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 0x1FC; } }
+        public override bool SpellFizzlesOnHurt => true;
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 0x1FC;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Recall", "Kal Ort Por",
 				263,
 				9031,

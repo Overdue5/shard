@@ -81,9 +81,9 @@ namespace Server.Regions
 		private readonly Type m_Type;
 		private bool m_Init;
 
-		public Type Type{ get{ return m_Type; } }
+		public Type Type => m_Type;
 
-		public abstract int Height{ get; }
+        public abstract int Height{ get; }
 		public abstract bool Land{ get; }
 		public abstract bool Water{ get; }
 
@@ -153,8 +153,8 @@ namespace Server.Regions
 		protected bool m_Land;
 		protected bool m_Water;
 
-		public override int Height{ get{ return 16; } }
-		public override bool Land{ get{ EnsureInit(); return m_Land; } }
+		public override int Height => 16;
+        public override bool Land{ get{ EnsureInit(); return m_Land; } }
 		public override bool Water{ get{ EnsureInit(); return m_Water; } }
 
 		protected SpawnMobile( Type type ) : base( type )
@@ -219,10 +219,10 @@ namespace Server.Regions
 		protected int m_Height;
 
 		public override int Height{ get{ EnsureInit(); return m_Height; } }
-		public override bool Land{ get{ return true; } }
-		public override bool Water{ get{ return false; } }
+		public override bool Land => true;
+        public override bool Water => false;
 
-		protected SpawnItem( Type type ) : base( type )
+        protected SpawnItem( Type type ) : base( type )
 		{
 		}
 
@@ -257,10 +257,10 @@ namespace Server.Regions
 		private readonly int m_ItemID;
 		private readonly BaseTreasureChest.TreasureLevel m_Level;
 
-		public int ItemID{ get{ return m_ItemID; } }
-		public BaseTreasureChest.TreasureLevel Level{ get{ return m_Level; } }
+		public int ItemID => m_ItemID;
+        public BaseTreasureChest.TreasureLevel Level => m_Level;
 
-		public SpawnTreasureChest( int itemID, BaseTreasureChest.TreasureLevel level ) : base( typeof( BaseTreasureChest ) )
+        public SpawnTreasureChest( int itemID, BaseTreasureChest.TreasureLevel level ) : base( typeof( BaseTreasureChest ) )
 		{
 			m_ItemID = itemID;
 			m_Level = level;
@@ -282,10 +282,10 @@ namespace Server.Regions
 		private readonly SpawnDefinition m_SpawnDefinition;
 		private readonly int m_Weight;
 
-		public SpawnDefinition SpawnDefinition{ get{ return m_SpawnDefinition; } }
-		public int Weight{ get{ return m_Weight; } }
+		public SpawnDefinition SpawnDefinition => m_SpawnDefinition;
+        public int Weight => m_Weight;
 
-		public SpawnGroupElement( SpawnDefinition spawnDefinition, int weight )
+        public SpawnGroupElement( SpawnDefinition spawnDefinition, int weight )
 		{
 			m_SpawnDefinition = spawnDefinition;
 			m_Weight = weight;
@@ -296,9 +296,9 @@ namespace Server.Regions
 	{
 		private static readonly Hashtable m_Table = new Hashtable();
 
-		public static Hashtable Table{ get{ return m_Table; } }
+		public static Hashtable Table => m_Table;
 
-		public static void Register( SpawnGroup group )
+        public static void Register( SpawnGroup group )
 		{
 			if ( m_Table.Contains( group.Name ) )
 				ConsoleLog.Write.Warning( "Warning: Double SpawnGroup name '{0}'", group.Name );
@@ -361,10 +361,10 @@ namespace Server.Regions
 		private readonly SpawnGroupElement[] m_Elements;
 		private readonly int m_TotalWeight;
 
-		public string Name{ get{ return m_Name; } }
-		public SpawnGroupElement[] Elements{ get{ return m_Elements; } }
+		public string Name => m_Name;
+        public SpawnGroupElement[] Elements => m_Elements;
 
-		public SpawnGroup( string name, SpawnGroupElement[] elements )
+        public SpawnGroup( string name, SpawnGroupElement[] elements )
 		{
 			m_Name = name;
 			m_Elements = elements;

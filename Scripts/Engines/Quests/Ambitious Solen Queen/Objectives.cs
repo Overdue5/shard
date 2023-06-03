@@ -5,18 +5,13 @@ namespace Server.Engines.Quests.Ambitious
 {
 	public class KillQueensObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Kill 5 red/black solen queens.
-				return ((AmbitiousQueenQuest)System).RedSolen ? 1054062 : 1054063;
-			}
-		}
+		public override object Message =>
+            // Kill 5 red/black solen queens.
+            ((AmbitiousQueenQuest)System).RedSolen ? 1054062 : 1054063;
 
-		public override int MaxProgress{ get{ return 5; } }
+        public override int MaxProgress => 5;
 
-	    public override void RenderProgress( BaseQuestGump gump )
+        public override void RenderProgress( BaseQuestGump gump )
 		{
 			if ( !Completed )
 			{
@@ -69,18 +64,13 @@ namespace Server.Engines.Quests.Ambitious
 
 	public class ReturnAfterKillsObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You've completed your task of slaying solen queens. Return to
+		public override object Message =>
+            /* You've completed your task of slaying solen queens. Return to
 				 * the ambitious queen who asked for your help.
 				 */
-				return 1054067;
-			}
-		}
+            1054067;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new GatherFungiConversation() );
 		}
@@ -88,18 +78,13 @@ namespace Server.Engines.Quests.Ambitious
 
 	public class GatherFungiObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Gather zoogi fungus until you have 50 of them, then give them
+		public override object Message =>
+            /* Gather zoogi fungus until you have 50 of them, then give them
 				 * to the ambitious queen you are helping.
 				 */
-				return 1054069;
-			}
-		}
+            1054069;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new EndConversation() );
 		}
@@ -107,22 +92,23 @@ namespace Server.Engines.Quests.Ambitious
 
 	public class GetRewardObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Return to the ambitious solen queen for your reward.
-				return 1054148;
-			}
-		}
+		public override object Message =>
+            // Return to the ambitious solen queen for your reward.
+            1054148;
 
-		private bool m_BagOfSending;
+        private bool m_BagOfSending;
 		private bool m_PowderOfTranslocation;
 		private bool m_Gold;
 
-		public bool BagOfSending{ get{ return m_BagOfSending; } set{ m_BagOfSending = value; } }
-		public bool PowderOfTranslocation{ get{ return m_PowderOfTranslocation; } set{ m_PowderOfTranslocation = value; } }
-		public bool Gold{ get{ return m_Gold; } set{ m_Gold = value; } }
+		public bool BagOfSending{ get => m_BagOfSending;
+            set => m_BagOfSending = value;
+        }
+		public bool PowderOfTranslocation{ get => m_PowderOfTranslocation;
+            set => m_PowderOfTranslocation = value;
+        }
+		public bool Gold{ get => m_Gold;
+            set => m_Gold = value;
+        }
 
 		public GetRewardObjective( bool bagOfSending, bool powderOfTranslocation, bool gold)
 		{

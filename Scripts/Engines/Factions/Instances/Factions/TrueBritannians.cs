@@ -4,9 +4,9 @@ namespace Server.Factions
 	{
 		private static Faction m_Instance;
 
-		public static Faction Instance{ get{ return m_Instance; } }
+		public static Faction Instance => m_Instance;
 
-		public TrueBritannians()
+        public TrueBritannians()
 		{
 			m_Instance = this;
 

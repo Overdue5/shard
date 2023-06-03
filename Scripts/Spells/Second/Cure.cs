@@ -6,10 +6,10 @@ namespace Server.Spells.Second
 {
     public class CureSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Second; } }
-        public override int Sound { get { return 0x1E0; } }
+        public override SpellCircle Circle => SpellCircle.Second;
+        public override int Sound => 0x1E0;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Cure", "An Nox",
                 263,
 				9061,

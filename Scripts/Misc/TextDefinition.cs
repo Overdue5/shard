@@ -8,10 +8,10 @@ namespace Server
 		private readonly int m_Number;
 		private readonly string m_String;
 
-		public int Number{ get{ return m_Number; } }
-		public string String{ get{ return m_String; } }
+		public int Number => m_Number;
+        public string String => m_String;
 
-		public TextDefinition( int number ) : this( number, null )
+        public TextDefinition( int number ) : this( number, null )
 		{
 		}
 

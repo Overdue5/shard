@@ -2,19 +2,19 @@ namespace Server.Items
 {
 	public class FeyLeggings : ChainLegs
 	{
-		public override int LabelNumber{ get{ return 1075041; } } // Fey Leggings
+		public override int LabelNumber => 1075041; // Fey Leggings
 
-		public override int BasePhysicalResistance{ get{ return 12; } }
-		public override int BaseFireResistance{ get{ return 8; } }
-		public override int BaseColdResistance{ get{ return 7; } }
-		public override int BasePoisonResistance{ get{ return 4; } }
-		public override int BaseEnergyResistance{ get{ return 19; } }
+		public override int BasePhysicalResistance => 12;
+        public override int BaseFireResistance => 8;
+        public override int BaseColdResistance => 7;
+        public override int BasePoisonResistance => 4;
+        public override int BaseEnergyResistance => 19;
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get { return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
 
-		[Constructable]
+        [Constructable]
 		public FeyLeggings()
 		{
 			Attributes.BonusHits = 6;
@@ -23,9 +23,9 @@ namespace Server.Items
 			ArmorAttributes.MageArmor = 1;
 		}
 
-		public override Race RequiredRace { get { return Race.Elf; } }
+		public override Race RequiredRace => Race.Elf;
 
-		public FeyLeggings( Serial serial ) : base( serial )
+        public FeyLeggings( Serial serial ) : base( serial )
 		{
 		}
 

@@ -52,7 +52,7 @@ namespace Server.Items.MusicBox
         }
 
 #if SVN
-        public override bool DisplayWeight { get { return false; } }
+        public override bool DisplayWeight => false;
 #endif
         public const int SONGS = 51;
 
@@ -64,15 +64,15 @@ namespace Server.Items.MusicBox
 
         public bool[] HasTrack
         {
-            get { return m_HasTrack; }
-            set { m_HasTrack = value; }
+            get => m_HasTrack;
+            set => m_HasTrack = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public SecureLevel Level
         {
-            get { return m_Level; }
-            set { m_Level = value; }
+            get => m_Level;
+            set => m_Level = value;
         }
 
 
@@ -145,15 +145,9 @@ namespace Server.Items.MusicBox
             MusicName.ParoxysmusLair,       MusicName.Linelle,          MusicName.GrizzleDungeon
         };
 
-        public static int[] Locals
-        {
-            get { return m_Locals; }
-        }
+        public static int[] Locals => m_Locals;
 
-        public static MusicName[] Songs
-        {
-            get { return m_Songs; }
-        }
+        public static MusicName[] Songs => m_Songs;
 
         public void AddTrack(MusicBoxTrack track)
         {
@@ -198,14 +192,14 @@ namespace Server.Items.MusicBox
         [CommandProperty(AccessLevel.GameMaster)]
         public int Range
         {
-            get { return m_Range; }
-            set { m_Range = value; }
+            get => m_Range;
+            set => m_Range = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public MusicName Music
         {
-            get { return m_Music; }
+            get => m_Music;
             set { m_Music = value;
                 if (GetSong() < 0) m_Music = MusicName.Britain1;
                 InvalidateProperties(); }
@@ -293,7 +287,7 @@ namespace Server.Items.MusicBox
     {
         private MusicBoxComponent m_Box;
         private Mobile m_From;
-        public MusicBoxComponent Box { get { return m_Box; } }
+        public MusicBoxComponent Box => m_Box;
 
         public MusicBoxGump(Mobile from, MusicBoxComponent box)
             : base(30, 30)

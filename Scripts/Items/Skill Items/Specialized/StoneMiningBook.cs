@@ -4,12 +4,9 @@ namespace Server.Items
 {
 	public class StoneMiningBook : Item
 	{
-		public override string DefaultName
-		{
-			get { return "Mining For Quality Stone"; }
-		}
+		public override string DefaultName => "Mining For Quality Stone";
 
-		[Constructable]
+        [Constructable]
 		public StoneMiningBook() : base( 0xFBE )
 		{
 			Weight = 1.0;

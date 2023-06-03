@@ -9,8 +9,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsRewardItem
         {
-            get { return m_IsRewardItem; }
-            set { m_IsRewardItem = value; }
+            get => m_IsRewardItem;
+            set => m_IsRewardItem = value;
         }
 		[Constructable]
 		public AcidElementalStatue() : base( 0x25D6 )

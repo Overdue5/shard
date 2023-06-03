@@ -4,9 +4,9 @@ namespace Server.Mobiles
 {
 	public class HarborMaster : BaseCreature
 	{
-		public override bool CanTeach { get { return false; } }
+		public override bool CanTeach => false;
 
-		[Constructable]
+        [Constructable]
 		public HarborMaster()
 			: base( AIType.AI_Animal, FightMode.None, 10, 1, 0.2, 0.4 )
 		{
@@ -48,10 +48,10 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-		public override bool ClickTitle { get { return false; } }
+		public override bool ClickTitle => false;
 
 
-		public HarborMaster( Serial serial )
+        public HarborMaster( Serial serial )
 			: base( serial )
 		{
 		}

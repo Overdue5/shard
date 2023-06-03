@@ -17,7 +17,7 @@ namespace Server.Accounting
             EventSink.WorldSave += Save;
         }
 
-        public static int Count { get { return m_Accounts.Count; } }
+        public static int Count => m_Accounts.Count;
 
         public static ICollection<IAccount> GetAccounts()
         {

@@ -4,11 +4,11 @@ namespace Server.Mobiles
 {
 	public class GrimmochDrummel : BaseCreature
 	{
-		public override bool ClickTitle{ get{ return false; } }
-		public override bool ShowFameTitle{ get{ return false; } }
-		public override bool DeleteCorpseOnDeath{ get{ return true; } }
+		public override bool ClickTitle => false;
+        public override bool ShowFameTitle => false;
+        public override bool DeleteCorpseOnDeath => true;
 
-		[Constructable]
+        [Constructable]
 		public GrimmochDrummel() : base( AIType.AI_Archer, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Title = "the Cursed";
@@ -107,9 +107,9 @@ namespace Server.Mobiles
 			return true;
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public GrimmochDrummel( Serial serial ) : base( serial )
+        public GrimmochDrummel( Serial serial ) : base( serial )
 		{
 		}
 

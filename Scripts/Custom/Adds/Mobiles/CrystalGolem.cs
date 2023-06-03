@@ -40,8 +40,8 @@
             PackGold(80);
         }
 
-        public override bool BleedImmune { get { return true; } }
-        public override Poison PoisonImmune { get { return Poison.Deadly; } }
+        public override bool BleedImmune => true;
+        public override Poison PoisonImmune => Poison.Deadly;
 
         public CrystalGolem(Serial serial)
             : base(serial)

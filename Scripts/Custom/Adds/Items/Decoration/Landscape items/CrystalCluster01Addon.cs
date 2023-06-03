@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class CrystalCluster01Addon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new CrystalCluster01AddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new CrystalCluster01AddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public CrystalCluster01Addon()
 		{
 			AddonComponent ac = null;
@@ -64,15 +58,9 @@ namespace Server.Items
 
 	public class CrystalCluster01AddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new CrystalCluster01Addon();
-			}
-		}
+		public override BaseAddon Addon => new CrystalCluster01Addon();
 
-		[Constructable]
+        [Constructable]
 		public CrystalCluster01AddonDeed()
 		{
 			Name = "CrystalCluster01";

@@ -40,9 +40,9 @@ namespace Server.Mobiles
 			VirtualArmor = 50;
 		}
 
-		public override int TreasureMapLevel{ get{ return 4; } }
+		public override int TreasureMapLevel => 4;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );
             AddLoot(LootPack.MedScrolls, 2);

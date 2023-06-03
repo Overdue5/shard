@@ -14,9 +14,11 @@ namespace Server.Commands
         private static readonly List<string> commandnamelist = new List<string>();
         private static readonly List<string> commandaccesslevellist = new List<string>();
 
-        public static bool Enabled { get { return m_Enabled; } set { m_Enabled = value; } }
+        public static bool Enabled { get => m_Enabled;
+            set => m_Enabled = value;
+        }
 
-        public static StreamWriter Output { get { return m_Output; } }
+        public static StreamWriter Output => m_Output;
 
         public static void Initialize()
         {

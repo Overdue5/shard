@@ -6,7 +6,9 @@ namespace Knives.Chat3
 	{
 		private bool c_Override;
 
-		public bool Override{ get{ return c_Override; } set{ c_Override = value; } }
+		public bool Override{ get => c_Override;
+            set => c_Override = value;
+        }
 
 		public HtmlPlus( int x, int y, int width, int height, string text, bool back, bool scroll ) : base( x, y, width, height, text, back, scroll )
 		{

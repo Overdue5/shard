@@ -74,8 +74,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Title
 		{
-			get{ return m_Title; }
-			set{ m_Title = value; InvalidateProperties(); }
+			get => m_Title;
+            set{ m_Title = value; InvalidateProperties(); }
 		}
 
 		[Constructable]

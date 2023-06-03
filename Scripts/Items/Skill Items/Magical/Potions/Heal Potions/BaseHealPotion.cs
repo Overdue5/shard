@@ -15,9 +15,9 @@ namespace Server.Items
 		//public abstract double Delay { get; }
 
         //Loki/Rob edit
-        public override double PotionDelay { get { return 10.0; } }
+        public override double PotionDelay => 10.0;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

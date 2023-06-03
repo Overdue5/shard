@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class HonorSymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new HonorSymbolDeed(); } }
+		public override BaseAddonDeed Deed => new HonorSymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public HonorSymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14CB ), 0, 0, 0 ); //N
@@ -35,9 +35,9 @@ namespace Server.Items
 
 	public class HonorSymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new HonorSymbolAddon(); } }
+		public override BaseAddon Addon => new HonorSymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public HonorSymbolDeed()
 		{
             Name = "Honor symbol deed";

@@ -47,13 +47,13 @@ namespace Server.Mobiles
             AddItem(new ReptileBone());
 		}
 
-        public override bool BardImmune { get { return true; } }
-        public override bool Uncalmable { get { return true; } }
-        public override bool Unprovokable { get { return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int Meat{ get{ return 2; } }
-		public override int Hides{ get{ return 12; } }
-		public override HideType HideType{ get{ return HideType.Regular; } }
+        public override bool BardImmune => true;
+        public override bool Uncalmable => true;
+        public override bool Unprovokable => true;
+        public override bool CanRummageCorpses => true;
+        public override int Meat => 2;
+        public override int Hides => 12;
+        public override HideType HideType => HideType.Regular;
 
         public override WeaponAbility GetWeaponAbility()
         {

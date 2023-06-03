@@ -4,7 +4,7 @@ namespace Server.Items
 {
     public class MagicReflectScroll : SpellScroll
     {
-        public override int ManaCost { get { return 19; } } //Loki edit: was 16
+        public override int ManaCost => 19; //Loki edit: was 16
 
         [Constructable]
         public MagicReflectScroll()

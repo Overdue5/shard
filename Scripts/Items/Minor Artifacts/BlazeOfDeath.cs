@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class BlazeOfDeath : Halberd
 	{
-		public override int LabelNumber{ get{ return 1063486; } }
+		public override int LabelNumber => 1063486;
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public BlazeOfDeath()
 		{
 			Hue = 0x501;

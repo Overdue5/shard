@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class RaedsGlory : WarCleaver
 	{
-		public override int LabelNumber{ get{ return 1075036; } } // Raed's Glory
+		public override int LabelNumber => 1075036; // Raed's Glory
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public RaedsGlory()
 		{
 			ItemID = 0x2D23;

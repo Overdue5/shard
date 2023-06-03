@@ -28,55 +28,89 @@ namespace Server.Engines.XmlSpawner2
 
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool TargetingEnabled { get { return m_TargetingEnabled; } set { m_TargetingEnabled = value; } }
+        public bool TargetingEnabled { get => m_TargetingEnabled;
+            set => m_TargetingEnabled = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool AllowCarried { get { return m_AllowCarried; } set { m_AllowCarried = value; } }
+        public bool AllowCarried { get => m_AllowCarried;
+            set => m_AllowCarried = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool RequireLOS { get { return m_RequireLOS; } set { m_RequireLOS = value; } }
+        public bool RequireLOS { get => m_RequireLOS;
+            set => m_RequireLOS = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MaxRange { get { return m_MaxRange; } set { m_MaxRange = value; } }
+        public int MaxRange { get => m_MaxRange;
+            set => m_MaxRange = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MaxTargetRange { get { return m_MaxTargetRange; } set { m_MaxTargetRange = value; } }
+        public int MaxTargetRange { get => m_MaxTargetRange;
+            set => m_MaxTargetRange = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int NUses { get { return m_NUses; } set { m_NUses = value; } }
+        public int NUses { get => m_NUses;
+            set => m_NUses = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MaxUses { get { return m_MaxUses; } set { m_MaxUses = value; } }
+        public int MaxUses { get => m_MaxUses;
+            set => m_MaxUses = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public TimeSpan Refractory { get { return m_Refractory; } set { m_Refractory = value; } }
+        public TimeSpan Refractory { get => m_Refractory;
+            set => m_Refractory = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool BlockDefaultUse { get { return m_BlockDefaultUse; } set { m_BlockDefaultUse = value; } }
+        public bool BlockDefaultUse { get => m_BlockDefaultUse;
+            set => m_BlockDefaultUse = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string Condition { get { return m_Condition; } set { m_Condition = value; } }
+        public string Condition { get => m_Condition;
+            set => m_Condition = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string TargetCondition { get { return m_TargetCondition; } set { m_TargetCondition = value; } }
+        public string TargetCondition { get => m_TargetCondition;
+            set => m_TargetCondition = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string TargetingAction { get { return m_TargetingAction; } set { m_TargetingAction = value; } }
+        public string TargetingAction { get => m_TargetingAction;
+            set => m_TargetingAction = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string TargetFailureAction { get { return m_TargetFailureAction; } set { m_TargetFailureAction = value; } }
+        public string TargetFailureAction { get => m_TargetFailureAction;
+            set => m_TargetFailureAction = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string SuccessAction { get { return m_SuccessAction; } set { m_SuccessAction = value; } }
+        public string SuccessAction { get => m_SuccessAction;
+            set => m_SuccessAction = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string FailureAction { get { return m_FailureAction; } set { m_FailureAction = value; } }
+        public string FailureAction { get => m_FailureAction;
+            set => m_FailureAction = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string RefractoryAction { get { return m_RefractoryAction; } set { m_RefractoryAction = value; } }
+        public string RefractoryAction { get => m_RefractoryAction;
+            set => m_RefractoryAction = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string MaxUsesAction { get { return m_MaxUsesAction; } set { m_MaxUsesAction = value; } }
+        public string MaxUsesAction { get => m_MaxUsesAction;
+            set => m_MaxUsesAction = value;
+        }
 
         public XmlUse(ASerial serial)
             : base(serial)

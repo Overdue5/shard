@@ -13,15 +13,12 @@ namespace Server.Multis
 		private Timer m_DecayTimer;
 		private TimeSpan m_DecayDelay;
 
-		public virtual int EventRange{ get{ return 10; } }
+		public virtual int EventRange => 10;
 
-		public virtual TimeSpan DecayDelay
+        public virtual TimeSpan DecayDelay
 		{
-			get
-			{
-				return m_DecayDelay;
-			} 
-			set
+			get => m_DecayDelay;
+            set
 			{
 				m_DecayDelay = value;
 				RefreshDecay( true );
@@ -102,9 +99,9 @@ namespace Server.Multis
 			RefreshDecay( true );
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
+        public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			bool inOldRange = Utility.InRange( oldLocation, Location, EventRange );
 			bool inNewRange = Utility.InRange( m.Location, Location, EventRange );

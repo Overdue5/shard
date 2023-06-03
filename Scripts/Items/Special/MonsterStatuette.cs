@@ -53,12 +53,12 @@ namespace Server.Items
 		private readonly int[] m_Sounds;
         private const int m_Hue = 0;
 
-		public int LabelNumber{ get{ return m_LabelNumber; } }
-		public int ItemID{ get{ return m_ItemID; } }
-		public int[] Sounds{ get{ return m_Sounds; } }
-        public int Hue { get { return m_Hue; } }
+		public int LabelNumber => m_LabelNumber;
+        public int ItemID => m_ItemID;
+        public int[] Sounds => m_Sounds;
+        public int Hue => m_Hue;
 
-		public MonsterStatuetteInfo( int labelNumber, int itemID, int baseSoundID )
+        public MonsterStatuetteInfo( int labelNumber, int itemID, int baseSoundID )
 		{
 			m_LabelNumber = labelNumber;
 			m_ItemID = itemID;
@@ -133,22 +133,22 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; }
-		}
+			get => m_IsRewardItem;
+            set => m_IsRewardItem = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool TurnedOn
 		{
-			get{ return m_TurnedOn; }
-			set{ m_TurnedOn = value; InvalidateProperties(); }
+			get => m_TurnedOn;
+            set{ m_TurnedOn = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public MonsterStatuetteType Type
 		{
-			get{ return m_Type; }
-			set
+			get => m_Type;
+            set
 			{
 				m_Type = value;
 				ItemID = MonsterStatuetteInfo.GetInfo( m_Type ).ItemID;
@@ -162,17 +162,11 @@ namespace Server.Items
 			}
 		}
 
-		public override int LabelNumber
-		{
-			get{ return MonsterStatuetteInfo.GetInfo( m_Type ).LabelNumber; }
-		}
+		public override int LabelNumber => MonsterStatuetteInfo.GetInfo( m_Type ).LabelNumber;
 
-		public override double DefaultWeight
-		{
-			get { return 1.0; }
-		}
+        public override double DefaultWeight => 1.0;
 
-		[Constructable]
+        [Constructable]
 		public MonsterStatuette() : this( MonsterStatuetteType.Crocodile )
 		{
 		}
@@ -190,9 +184,9 @@ namespace Server.Items
                 Hue = 0x21;
 		}
 
-		public override bool HandlesOnMovement{ get{ return m_TurnedOn && IsLockedDown; } }
+		public override bool HandlesOnMovement => m_TurnedOn && IsLockedDown;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
+        public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			if ( m_TurnedOn && IsLockedDown && (!m.Hidden || m.AccessLevel == AccessLevel.Player) && Utility.InRange( m.Location, Location, 2 ) && !Utility.InRange( oldLocation, Location, 2 ) )
 			{

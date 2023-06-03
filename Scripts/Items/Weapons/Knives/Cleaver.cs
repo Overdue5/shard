@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 
-		public override int AosStrengthReq{ get{ return 10; } }
-		public override int AosMinDamage{ get{ return 11; } }
-		public override int AosMaxDamage{ get{ return 13; } }
-		public override int AosSpeed{ get{ return 46; } }
+		public override int AosStrengthReq => 10;
+        public override int AosMinDamage => 11;
+        public override int AosMaxDamage => 13;
+        public override int AosSpeed => 46;
 
-		public override int OldStrengthReq{ get{ return 10; } }
-		public override int OldMinDamage{ get{ return 2; } }
-		public override int OldMaxDamage{ get{ return 5; } }
-		public override int OldSpeed{ get{ return 200; } }
+        public override int OldStrengthReq => 10;
+        public override int OldMinDamage => 2;
+        public override int OldMaxDamage => 5;
+        public override int OldSpeed => 200;
 
-		public override int InitMinHits{ get{ return 51; } }
-		public override int InitMaxHits{ get{ return 70; } }
+        public override int InitMinHits => 51;
+        public override int InitMaxHits => 70;
 
-		[Constructable]
+        [Constructable]
 		public Cleaver() : base( 0xEC3 )
 		{
 			Weight = 2.0;

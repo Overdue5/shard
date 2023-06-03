@@ -9,12 +9,12 @@ namespace Server.Factions
 		private readonly Mobile m_GivenTo;
 		private readonly DateTime m_TimeOfGift;
 
-		public Mobile GivenTo{ get{ return m_GivenTo; } }
-		public DateTime TimeOfGift{ get{ return m_TimeOfGift; } }
+		public Mobile GivenTo => m_GivenTo;
+        public DateTime TimeOfGift => m_TimeOfGift;
 
-		public bool IsExpired{ get{ return ( m_TimeOfGift + ExpirePeriod ) < DateTime.UtcNow; } }
+        public bool IsExpired => ( m_TimeOfGift + ExpirePeriod ) < DateTime.UtcNow;
 
-		public SilverGivenEntry( Mobile givenTo )
+        public SilverGivenEntry( Mobile givenTo )
 		{
 			m_GivenTo = givenTo;
 			m_TimeOfGift = DateTime.UtcNow;

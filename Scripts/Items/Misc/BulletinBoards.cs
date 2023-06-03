@@ -46,28 +46,25 @@ namespace Server.Items
         private string m_Title;
         private ArrayList m_BannedPlayers;
 
-        public List<BulletinBoardMessage> Messages
-        {
-            get { return m_Messages; }
-        }
+        public List<BulletinBoardMessage> Messages => m_Messages;
 
         public BulletinBoardMessage Greeting
         {
-            get { return m_Greeting; }
-            set { m_Greeting = value; }
+            get => m_Greeting;
+            set => m_Greeting = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string Title
         {
-            get { return m_Title; }
-            set { m_Title = value; }
+            get => m_Title;
+            set => m_Title = value;
         }
 
         public ArrayList BannedPlayers
         {
-            get { return m_BannedPlayers; }
-            set { m_BannedPlayers = value; }
+            get => m_BannedPlayers;
+            set => m_BannedPlayers = value;
         }
 
         public BaseBulletinBoard(int itemID) : base(itemID)
@@ -269,22 +266,22 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime Time
         {
-            get { return m_Time; }
-            set { m_Time = value; }
+            get => m_Time;
+            set => m_Time = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Poster
         {
-            get { return m_Poster; }
-            set { m_Poster = value; }
+            get => m_Poster;
+            set => m_Poster = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string Message
         {
-            get { return m_Message; }
-            set { m_Message = value; }
+            get => m_Message;
+            set => m_Message = value;
         }
 
         public BulletinBoardMessage(DateTime time, Mobile poster, string message)

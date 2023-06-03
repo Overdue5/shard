@@ -4,11 +4,11 @@ namespace Server.Mobiles
 {
 	public class ToolMaster : BaseVendor
 	{
-        public override bool ClickTitle { get { return true; } }
-		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        public override bool ClickTitle => true;
+        private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public ToolMaster() : base( "the clay crafter" )
 		{
             Title = "the clay crafter";

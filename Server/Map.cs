@@ -62,19 +62,19 @@ namespace Server
 
         private static Map[] m_Maps = new Map[0x100];
 
-        public static Map[] Maps { get { return m_Maps; } }
+        public static Map[] Maps => m_Maps;
 
-        public static Map Felucca { get { return m_Maps[0]; } }
-        public static Map Trammel { get { return m_Maps[1]; } }
-        public static Map Ilshenar { get { return m_Maps[2]; } }
-        public static Map Malas { get { return m_Maps[3]; } }
-        public static Map Tokuno { get { return m_Maps[4]; } }
-        public static Map TerMur { get { return m_Maps[5]; } }
-        public static Map Internal { get { return m_Maps[0x7F]; } }
+        public static Map Felucca => m_Maps[0];
+        public static Map Trammel => m_Maps[1];
+        public static Map Ilshenar => m_Maps[2];
+        public static Map Malas => m_Maps[3];
+        public static Map Tokuno => m_Maps[4];
+        public static Map TerMur => m_Maps[5];
+        public static Map Internal => m_Maps[0x7F];
 
         private static List<Map> m_AllMaps = new List<Map>();
 
-        public static List<Map> AllMaps { get { return m_AllMaps; } }
+        public static List<Map> AllMaps => m_AllMaps;
 
         private int m_MapID, m_MapIndex, m_FileIndex;
 
@@ -85,8 +85,12 @@ namespace Server
         private Dictionary<string, Region> m_Regions;
         private Region m_DefaultRegion;
 
-        public int Light { get { return m_Light; } set { m_Light = value; } }
-		public SeasonName Season { get { return m_Season; } set { m_Season = value; } }
+        public int Light { get => m_Light;
+            set => m_Light = value;
+        }
+		public SeasonName Season { get => m_Season;
+            set => m_Season = value;
+        }
 
         private string m_Name;
         private MapRules m_Rules;
@@ -952,45 +956,15 @@ namespace Server
             }
         }
 
-        public int MapID
-        {
-            get
-            {
-                return m_MapID;
-            }
-        }
+        public int MapID => m_MapID;
 
-        public int MapIndex
-        {
-            get
-            {
-                return m_MapIndex;
-            }
-        }
+        public int MapIndex => m_MapIndex;
 
-        public int Width
-        {
-            get
-            {
-                return m_Width;
-            }
-        }
+        public int Width => m_Width;
 
-        public int Height
-        {
-            get
-            {
-                return m_Height;
-            }
-        }
+        public int Height => m_Height;
 
-        public Dictionary<string, Region> Regions
-        {
-            get
-            {
-                return m_Regions;
-            }
-        }
+        public Dictionary<string, Region> Regions => m_Regions;
 
         public void RegisterRegion(Region reg)
         {
@@ -1022,42 +996,21 @@ namespace Server
 
                 return m_DefaultRegion;
             }
-            set
-            {
-                m_DefaultRegion = value;
-            }
+            set => m_DefaultRegion = value;
         }
 
         public MapRules Rules
         {
-            get
-            {
-                return m_Rules;
-            }
-            set
-            {
-                m_Rules = value;
-            }
+            get => m_Rules;
+            set => m_Rules = value;
         }
 
-        public Sector InvalidSector
-        {
-            get
-            {
-                return m_InvalidSector;
-            }
-        }
+        public Sector InvalidSector => m_InvalidSector;
 
         public string Name
         {
-            get
-            {
-                return m_Name;
-            }
-            set
-            {
-                m_Name = value;
-            }
+            get => m_Name;
+            set => m_Name = value;
         }
 
         #region Enumerables
@@ -1087,13 +1040,7 @@ namespace Server
                 {
                 }
 
-                public object Current
-                {
-                    get
-                    {
-                        return null;
-                    }
-                }
+                public object Current => null;
 
                 public bool MoveNext()
                 {
@@ -1180,8 +1127,8 @@ namespace Server
 
             public IPooledEnumerable Enumerable
             {
-                get { return m_Enumerable; }
-                set { m_Enumerable = value; }
+                get => m_Enumerable;
+                set => m_Enumerable = value;
             }
 
             private Map m_Map;
@@ -1242,13 +1189,7 @@ namespace Server
                 Reset();
             }
 
-            public object Current
-            {
-                get
-                {
-                    return m_Current;
-                }
-            }
+            public object Current => m_Current;
 
             public bool MoveNext()
             {
@@ -1323,8 +1264,8 @@ namespace Server
 
             public IPooledEnumerable Enumerable
             {
-                get { return m_Enumerable; }
-                set { m_Enumerable = value; }
+                get => m_Enumerable;
+                set => m_Enumerable = value;
             }
 
             private List<BaseMulti> m_List;
@@ -1363,13 +1304,7 @@ namespace Server
                 Reset();
             }
 
-            public object Current
-            {
-                get
-                {
-                    return m_Current;
-                }
-            }
+            public object Current => m_Current;
 
             public bool MoveNext()
             {
@@ -1440,8 +1375,8 @@ namespace Server
 
             public IPooledEnumerable Enumerable
             {
-                get { return m_Enumerable; }
-                set { m_Enumerable = value; }
+                get => m_Enumerable;
+                set => m_Enumerable = value;
             }
 
             private Map m_Map;
@@ -1500,13 +1435,7 @@ namespace Server
                 Reset();
             }
 
-            public object Current
-            {
-                get
-                {
-                    return m_Current;
-                }
-            }
+            public object Current => m_Current;
 
             public bool MoveNext()
             {
@@ -1582,8 +1511,8 @@ namespace Server
 
             public IPooledEnumerable Enumerable
             {
-                get { return m_Enumerable; }
-                set { m_Enumerable = value; }
+                get => m_Enumerable;
+                set => m_Enumerable = value;
             }
 
             private Map m_Map;
@@ -1797,8 +1726,8 @@ namespace Server
 
         public static int MaxLOSDistance
         {
-            get { return m_MaxLOSDistance; }
-            set { m_MaxLOSDistance = value; }
+            get => m_MaxLOSDistance;
+            set => m_MaxLOSDistance = value;
         }
 
         public bool LineOfSight(Point3D org, Point3D dest)
@@ -2073,8 +2002,8 @@ namespace Server
 
         public static int[] InvalidLandTiles
         {
-            get { return m_InvalidLandTiles; }
-            set { m_InvalidLandTiles = value; }
+            get => m_InvalidLandTiles;
+            set => m_InvalidLandTiles = value;
         }
 
         private static Point3DList m_PathList = new Point3DList();

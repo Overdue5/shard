@@ -50,29 +50,17 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+		public override bool AlwaysMurderer => true;
 
-		public override bool BardImmune
-		{
-			get { return true; }
-		}
+        public override bool BardImmune => true;
 
-		//Do we want him immune to poison?
+        //Do we want him immune to poison?
 
-		public override bool ShowFameTitle
-		{
-			get { return false; }
-		}
+		public override bool ShowFameTitle => false;
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+        public override bool ClickTitle => false;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Meager );
 		}

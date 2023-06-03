@@ -38,11 +38,11 @@ namespace Server.Mobiles
 			MinTameSkill = 73.1;
 		}
 
-		public override int Meat{ get{ return 3; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
-		public override PackInstinct PackInstinct{ get{ return PackInstinct.Ostard; } }
+		public override int Meat => 3;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
+        public override PackInstinct PackInstinct => PackInstinct.Ostard;
 
-		public Orn( Serial serial ) : base( serial )
+        public Orn( Serial serial ) : base( serial )
 		{
 		}
 

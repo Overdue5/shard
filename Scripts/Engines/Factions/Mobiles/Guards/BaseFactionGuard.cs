@@ -13,25 +13,22 @@ namespace Server.Factions
 		private Town m_Town;
 		private Orders m_Orders;
 
-		public override bool BardImmune{ get{ return true; } }
+		public override bool BardImmune => true;
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+        [CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
 		public Faction Faction
 		{
-			get{ return m_Faction; }
-			set{ Unregister(); m_Faction = value; Register(); }
+			get => m_Faction;
+            set{ Unregister(); m_Faction = value; Register(); }
 		}
 
-		public Orders Orders
-		{
-			get{ return m_Orders; }
-		}
+		public Orders Orders => m_Orders;
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+        [CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
 		public Town Town
 		{
-			get{ return m_Town; }
-			set{ Unregister(); m_Town = value; Register(); }
+			get => m_Town;
+            set{ Unregister(); m_Town = value; Register(); }
 		}
 
 		public void Register()
@@ -48,14 +45,11 @@ namespace Server.Factions
 
 		public abstract GuardAI GuardAI{ get; }
 
-		protected override BaseAI ForcedAI
-		{
-			get { return new FactionGuardAI( this ); }
-		}
+		protected override BaseAI ForcedAI => new FactionGuardAI( this );
 
-		public override TimeSpan ReacquireDelay{ get{ return TimeSpan.FromSeconds( 2.0 ); } }
- 
-		public override bool IsEnemy( Mobile m )
+        public override TimeSpan ReacquireDelay => TimeSpan.FromSeconds( 2.0 );
+
+        public override bool IsEnemy( Mobile m )
 		{
 			Faction ourFaction = m_Faction;
 			Faction theirFaction = Faction.Find( m );
@@ -404,9 +398,9 @@ namespace Server.Factions
 				GenerateRandomHair();
 		}
 
-		public override bool ClickTitle{ get{ return false; } }
+		public override bool ClickTitle => false;
 
-		public BaseFactionGuard( string title ) : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
+        public BaseFactionGuard( string title ) : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			m_Orders = new Orders( this );
 			Title = title;
@@ -450,8 +444,8 @@ namespace Server.Factions
 
 		public Mobile Rider
 		{
-			get{ return m_Item.Rider; }
-			set{}
+			get => m_Item.Rider;
+            set{}
 		}
 
 		public VirtualMount( VirtualMountItem item )
@@ -469,9 +463,9 @@ namespace Server.Factions
 		private Mobile m_Rider;
 		private readonly VirtualMount m_Mount;
 
-		public Mobile Rider{ get{ return m_Rider; } }
+		public Mobile Rider => m_Rider;
 
-		public VirtualMountItem( Mobile mob ) : base( 0x3EA0 )
+        public VirtualMountItem( Mobile mob ) : base( 0x3EA0 )
 		{
 			Layer = Layer.Mount;
 
@@ -479,12 +473,9 @@ namespace Server.Factions
 			m_Mount = new VirtualMount( this );
 		}
 
-		public IMount Mount
-		{
-			get{ return m_Mount; }
-		}
+		public IMount Mount => m_Mount;
 
-		public VirtualMountItem( Serial serial ) : base( serial )
+        public VirtualMountItem( Serial serial ) : base( serial )
 		{
 			m_Mount = new VirtualMount( this );
 		}

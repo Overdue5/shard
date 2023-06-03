@@ -5,7 +5,7 @@ namespace Server.Items
 	[Flipable( 0x2A77, 0x2A78 )]
 	public class MountedPixieLimeComponent : AddonComponent
 	{
-		public override int LabelNumber { get { return 1074482; } } // Mounted pixie
+		public override int LabelNumber => 1074482; // Mounted pixie
 
 		public MountedPixieLimeComponent() : base( 0x2A77 )
 		{
@@ -40,9 +40,9 @@ namespace Server.Items
 
 	public class MountedPixieLimeAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new MountedPixieLimeDeed(); } }
+		public override BaseAddonDeed Deed => new MountedPixieLimeDeed();
 
-		public MountedPixieLimeAddon() : base()
+        public MountedPixieLimeAddon() : base()
 		{
 			AddComponent( new MountedPixieLimeComponent(), 0, 0, 0 );
 		}
@@ -68,8 +68,8 @@ namespace Server.Items
 
 	public class MountedPixieLimeDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new MountedPixieLimeAddon(); } }
-		public override int LabelNumber { get { return 1074482; } } // Mounted pixie
+		public override BaseAddon Addon => new MountedPixieLimeAddon();
+        public override int LabelNumber => 1074482; // Mounted pixie
 
 		[Constructable]
 		public MountedPixieLimeDeed() : base()

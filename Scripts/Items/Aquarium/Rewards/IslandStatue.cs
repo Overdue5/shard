@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class IslandStatue : Item
 	{		
-		public override int LabelNumber{ get{ return 1074600; } } // An island statue
+		public override int LabelNumber => 1074600; // An island statue
 		
 		[Constructable]
 		public IslandStatue() : base( 0x3B0F )

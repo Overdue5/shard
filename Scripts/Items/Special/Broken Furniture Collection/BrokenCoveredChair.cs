@@ -3,7 +3,7 @@ namespace Server.Items
 	[Flipable( 0xC17, 0xC18 )]
 	public class BrokenCoveredChairComponent : AddonComponent
 	{
-		public override int LabelNumber { get { return 1076257; } } // Broken Covered Chair
+		public override int LabelNumber => 1076257; // Broken Covered Chair
 
 		public BrokenCoveredChairComponent() : base( 0xC17 )
 		{
@@ -30,9 +30,9 @@ namespace Server.Items
 
 	public class BrokenCoveredChairAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new BrokenCoveredChairDeed(); } }
+		public override BaseAddonDeed Deed => new BrokenCoveredChairDeed();
 
-		[Constructable]
+        [Constructable]
 		public BrokenCoveredChairAddon() : base()
 		{
 			AddComponent( new BrokenCoveredChairComponent(), 0, 0, 0 );
@@ -59,8 +59,8 @@ namespace Server.Items
 
 	public class BrokenCoveredChairDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new BrokenCoveredChairAddon(); } }
-		public override int LabelNumber { get { return 1076257; } } // Broken Covered Chair
+		public override BaseAddon Addon => new BrokenCoveredChairAddon();
+        public override int LabelNumber => 1076257; // Broken Covered Chair
 
 		[Constructable]
 		public BrokenCoveredChairDeed() : base()

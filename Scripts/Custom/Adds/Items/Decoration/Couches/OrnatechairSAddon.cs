@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class OrnatechairSAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new OrnatechairSAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new OrnatechairSAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public OrnatechairSAddon()
 		{
 			AddonComponent ac = null;
@@ -72,15 +66,9 @@ namespace Server.Items
 
 	public class OrnatechairSAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new OrnatechairSAddon();
-			}
-		}
+		public override BaseAddon Addon => new OrnatechairSAddon();
 
-		[Constructable]
+        [Constructable]
 		public OrnatechairSAddonDeed()
 		{
 			Name = "OrnatechairS";

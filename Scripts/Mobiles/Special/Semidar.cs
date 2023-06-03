@@ -7,7 +7,7 @@ namespace Server.Mobiles
 {
 	public class Semidar : BaseChampion
 	{
-        public override ChampionSkullType SkullType { get { return ChampionSkullType.Pain; } }
+        public override ChampionSkullType SkullType => ChampionSkullType.Pain;
 
         public override Type[] UniqueList { get { return new Type[] { typeof(GladiatorsCollar) }; } }
         public override Type[] SharedList { get { return new Type[] { typeof(RoyalGuardSurvivalKnife), typeof(ANecromancerShroud), typeof(LieutenantOfTheBritannianRoyalGuard) }; } }
@@ -70,10 +70,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.FilthyRich );
 		}
 
-		public override bool Unprovokable{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override void CheckReflect( Mobile caster, ref bool reflect )
+        public override void CheckReflect( Mobile caster, ref bool reflect )
 		{
 			if ( caster.Body.IsMale )
 				reflect = true; // Always reflect if caster isn't female

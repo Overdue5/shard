@@ -5,11 +5,13 @@ namespace Server.Mobiles
 {
 	public class BaseCannonGuard : BaseCreature
 	{
-		public override bool ClickTitle{ get{ return false; } }
-		private BaseCannon m_Cannon;
+		public override bool ClickTitle => false;
+        private BaseCannon m_Cannon;
 		private DateTime NextFire, NextThink;
 		
-		public BaseCannon Cannon{ get{ return m_Cannon;} set{ m_Cannon = value; } }
+		public BaseCannon Cannon{ get => m_Cannon;
+            set => m_Cannon = value;
+        }
 		
 		public BaseCannonGuard() : base( AIType.AI_Archer, FightMode.Evil, 15, 1, 0.2, 0.4 )
 		{

@@ -2,15 +2,12 @@ namespace Server.Items
 {
 	public class Ginseng : BaseReagent, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-        public override int PotionGroupIndex
-        {
-            get { return 3; }
-        } 
+        public override int PotionGroupIndex => 3;
 
-		[Constructable]
+        [Constructable]
 		public Ginseng() : this( 1 )
 		{
 		}

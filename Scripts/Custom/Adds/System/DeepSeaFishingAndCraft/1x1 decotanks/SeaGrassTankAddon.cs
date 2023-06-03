@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class SeaGrassTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SeaGrassTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SeaGrassTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SeaGrassTankAddon()
 		{
 			AddonComponent ac = null;
@@ -154,15 +148,9 @@ namespace Server.Items
 
 	public class SeaGrassTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SeaGrassTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new SeaGrassTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public SeaGrassTankAddonDeed()
 		{
 			Name = "a sea grass tank";

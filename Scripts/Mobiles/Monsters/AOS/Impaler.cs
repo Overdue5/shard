@@ -10,9 +10,9 @@ namespace Server.Mobiles
 			return Utility.RandomBool() ? WeaponAbility.MortalStrike : WeaponAbility.BleedAttack;
 		}
 
-		public override bool IgnoreYoungProtection { get { return Core.ML; } }
+		public override bool IgnoreYoungProtection => Core.ML;
 
-		[Constructable]
+        [Constructable]
 		public Impaler() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "impaler" );
@@ -62,16 +62,16 @@ namespace Server.Mobiles
 				DemonKnight.DistributeArtifact( this );
 		}*/
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool BardImmune{ get{ return true; } }
-		public override bool Unprovokable{ get{ return true; } }
-		public override bool AreaPeaceImmune { get { return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override Poison HitPoison{ get{ return (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly); } }
+		public override bool AutoDispel => true;
+        public override bool BardImmune => true;
+        public override bool Unprovokable => true;
+        public override bool AreaPeaceImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override Poison HitPoison => (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly);
 
-		public override int TreasureMapLevel{ get{ return 5; } }
+        public override int TreasureMapLevel => 5;
 
-		public Impaler( Serial serial ) : base( serial )
+        public Impaler( Serial serial ) : base( serial )
 		{
 		}
 

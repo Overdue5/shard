@@ -9,8 +9,8 @@ namespace Server.Items
 	{
 		public int Quantity
 		{
-			get{ return 500; }
-			set{}
+			get => 500;
+            set{}
 		}
 		
 
@@ -70,7 +70,7 @@ namespace Server.Items
 
     public class MarbleWellDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new MarbleWellAddon(); } }
+        public override BaseAddon Addon => new MarbleWellAddon();
 
         [Constructable]
         public MarbleWellDeed()
@@ -108,8 +108,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public MarbleWellAddon marblewell
 		{
-			get{ return m_marblewell; }
-			set{}
+			get => m_marblewell;
+            set{}
 		}
 
 		public MarbleWellPiece( MarbleWellAddon marblewell, int itemid ) : base( itemid )

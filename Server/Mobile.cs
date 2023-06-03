@@ -119,8 +119,8 @@ namespace Server
 
 		public bool ObeyCap
 		{
-			get { return m_ObeyCap; }
-			set
+			get => m_ObeyCap;
+            set
 			{
 				m_ObeyCap = value;
 

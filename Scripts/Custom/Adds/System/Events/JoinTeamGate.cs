@@ -39,10 +39,7 @@ namespace Server.Custom.Games
 
         public BaseGameTeam Team
         {
-            get
-            {
-                return m_Team;
-            }
+            get => m_Team;
             set
             {
                 m_Team = value;

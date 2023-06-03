@@ -8,8 +8,8 @@ namespace Server.Items
 	{
 		public int Quantity
 		{
-			get{ return 500; }
-			set{}
+			get => 500;
+            set{}
 		}
 		
 
@@ -64,7 +64,7 @@ namespace Server.Items
 
     public class BlackWellDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new BlackWellAddon(); } }
+        public override BaseAddon Addon => new BlackWellAddon();
 
         [Constructable]
         public BlackWellDeed()
@@ -101,8 +101,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public BlackWellAddon blackwell
 		{
-			get{ return m_Blackwell; }
-			set{}
+			get => m_Blackwell;
+            set{}
 		}
 
 		public BlackWellPiece( BlackWellAddon blackwell, int itemid ) : base( itemid )

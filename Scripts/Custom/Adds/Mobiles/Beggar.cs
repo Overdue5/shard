@@ -7,24 +7,24 @@ namespace Server.Mobiles
 {
     public class Beggar : BaseCreature
     {
-        public override bool CanOpenDoors { get { return true; } }
-        public override bool Commandable { get { return false; } }
-        public override bool CanTeach { get { return true; } }
+        public override bool CanOpenDoors => true;
+        public override bool Commandable => false;
+        public override bool CanTeach => true;
 
         private bool m_Talked = false; // flag to prevent spam
 
         public bool Talked
         {
-            get { return m_Talked; }
-            set { m_Talked = value; }
+            get => m_Talked;
+            set => m_Talked = value;
         }
 
         private bool m_Done = false; // flag to disable for delete
 
         public bool Done
         {
-            get { return m_Done; }
-            set { m_Done = value; }
+            get => m_Done;
+            set => m_Done = value;
         }
 
         readonly string[] begsay = new string[] // things to say while begging

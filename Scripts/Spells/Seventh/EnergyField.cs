@@ -9,12 +9,12 @@ namespace Server.Spells.Seventh
 {
     public class EnergyFieldSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 0x20B; } }
-        
-        public override bool CanTargetGround { get { return true; } }
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 0x20B;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override bool CanTargetGround => true;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Energy Field", "In Sanct Grav",
 				263,
                 9022,
@@ -188,9 +188,9 @@ namespace Server.Spells.Seventh
 		{
 			private readonly Timer m_Timer;
 
-			public override bool BlocksFit{ get{ return true; } }
+			public override bool BlocksFit => true;
 
-			public InternalItem( Point3D loc, Map map, TimeSpan duration, int itemID, Mobile caster ) : base( itemID )
+            public InternalItem( Point3D loc, Map map, TimeSpan duration, int itemID, Mobile caster ) : base( itemID )
 			{
                 Visible = true;
 				//Visible = false;

@@ -46,10 +46,10 @@ namespace Server.Mobiles
             PackGold(100, 150);
 		}
 
-		public override int Meat{ get{ return 4; } }
-		public override int TreasureMapLevel{ get{ return 3; } }
+		public override int Meat => 4;
+        public override int TreasureMapLevel => 3;
 
-		public Cyclops( Serial serial ) : base( serial )
+        public Cyclops( Serial serial ) : base( serial )
 		{
 		}
 

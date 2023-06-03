@@ -11,15 +11,9 @@ namespace Server.Items
 {
 	public class PianoAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new PianoAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new PianoAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public PianoAddon()
 		{
 			AddonComponent ac = null;
@@ -225,15 +219,9 @@ AddonComponent( 2928 );
 
 	public class PianoAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new PianoAddon();
-			}
-		}
+		public override BaseAddon Addon => new PianoAddon();
 
-		[Constructable]
+        [Constructable]
 		public PianoAddonDeed()
 		{
 			Name = "Piano";

@@ -5,8 +5,9 @@ namespace Server.Engines.Quests.Collector
 {
 	public class ElwoodMcCarrin : BaseQuester
 	{
-        public override bool ClickTitle { get { return true; } }
-		[Constructable]
+        public override bool ClickTitle => true;
+
+        [Constructable]
 		public ElwoodMcCarrin() : base( "the well-known collector" )
 		{
 		}
@@ -40,7 +41,7 @@ namespace Server.Engines.Quests.Collector
 			FacialHairItemID = 0x2040; // Goatee
 			FacialHairHue = 0x47D;
 		}
-        public override bool ShowContextMenu { get { return true; } }//
+        public override bool ShowContextMenu => true; //
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			Direction = GetDirectionTo( player );

@@ -109,7 +109,7 @@ namespace Server.Mobiles
                 gamestats[i] = 0;
         }
 
-        public override bool ClickTitle { get { return false; } }
+        public override bool ClickTitle => false;
 
 
         public override bool HandlesOnSpeech(Mobile from)
@@ -341,10 +341,7 @@ namespace Server.Mobiles
             from.SendGump(new PokerGump(this, this));
         }
 
-        public override bool DisallowAllMoves
-        {
-            get { return true; }
-        }
+        public override bool DisallowAllMoves => true;
 
         public override void OnDoubleClick(Mobile from)
         {

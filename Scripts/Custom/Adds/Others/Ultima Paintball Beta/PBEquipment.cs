@@ -16,26 +16,26 @@ namespace Server.Games.PaintBall
 {
 	public class PBArmor : BaseArmor
 	{
-		public override int BasePhysicalResistance{ get{ return 0; } }
-		public override int BaseFireResistance{ get{ return 0; } }
-		public override int BaseColdResistance{ get{ return 0; } }
-		public override int BasePoisonResistance{ get{ return 0; } }
-		public override int BaseEnergyResistance{ get{ return 0; } }
+		public override int BasePhysicalResistance => 0;
+        public override int BaseFireResistance => 0;
+        public override int BaseColdResistance => 0;
+        public override int BasePoisonResistance => 0;
+        public override int BaseEnergyResistance => 0;
 
-		public override int InitMinHits{ get{ return 3; } }
-		public override int InitMaxHits{ get{ return 3; } }
+        public override int InitMinHits => 3;
+        public override int InitMaxHits => 3;
 
-		public override int AosStrReq{ get{ return 0; } }
+        public override int AosStrReq => 0;
 
-		public override int OldStrReq{ get{ return 0; } }
-		public override int OldDexBonus{ get{ return 0; } }
+        public override int OldStrReq => 0;
+        public override int OldDexBonus => 0;
 
-		public override int ArmorBase{ get{ return 0; } }
+        public override int ArmorBase => 0;
 
-		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Plate; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Plate;
 
 
-		public PBArmor( int hue, int itemid, Layer layer ) : base( itemid )
+        public PBArmor( int hue, int itemid, Layer layer ) : base( itemid )
 		{
 			Name = "paintball armor";
 			Hue = hue;
@@ -130,32 +130,32 @@ namespace Server.Games.PaintBall
 
 	public class PBWeapon : BaseRanged
 	{
-		public override int EffectID{ get{ return 3962; } }
-		public override Type AmmoType{ get{ return typeof( PaintBall ); } }
-		public override BaseAmmo Ammo { get{ return new PaintBall( this.Hue ); } }
+		public override int EffectID => 3962;
+        public override Type AmmoType => typeof( PaintBall );
+        public override BaseAmmo Ammo => new PaintBall( this.Hue );
 
-		public override int AosStrengthReq{ get{ return 0; } }
-		public override int AosMinDamage{ get{ return 0; } }
-		public override int AosMaxDamage{ get{ return 0; } }
-		public override int AosSpeed{ get{ return 15; } }
-
-
-       // public override float MlSpeed { get { return 2.5f; } }//For ML Change Speed Here
+        public override int AosStrengthReq => 0;
+        public override int AosMinDamage => 0;
+        public override int AosMaxDamage => 0;
+        public override int AosSpeed => 15;
 
 
-		public override int OldStrengthReq{ get{ return 0; } }
-		public override int OldMinDamage{ get{ return 0; } }
-		public override int OldMaxDamage{ get{ return 0; } }
-		public override int OldSpeed{ get{ return 20; } }
+        // public override float MlSpeed { get { return 2.5f; } }//For ML Change Speed Here
 
-		public override int InitMinHits{ get{ return -1; } }
-		public override int InitMaxHits{ get{ return -1; } }
 
-		public override int DefMaxRange{ get{ return 10; } }
+		public override int OldStrengthReq => 0;
+        public override int OldMinDamage => 0;
+        public override int OldMaxDamage => 0;
+        public override int OldSpeed => 20;
 
-		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.ShootBow; } }
+        public override int InitMinHits => -1;
+        public override int InitMaxHits => -1;
 
-		public PBGameItem m_PBGI;
+        public override int DefMaxRange => 10;
+
+        public override WeaponAnimation DefAnimation => WeaponAnimation.ShootBow;
+
+        public PBGameItem m_PBGI;
 
 		public PBWeapon( int hue, PBGameItem pbgi ) : base( 5042 ) 
 		{

@@ -10,15 +10,9 @@ namespace Arya.Chess
 		private int m_CheckSound;
 		private int m_CheckMateSound;
 
-		public override int Power
-		{
-			get
-			{
-				return 100; // Useless
-			}
-		}
+		public override int Power => 100; // Useless
 
-		public King( BChessboard board, ChessColor color, Point2D position ) : base( board, color, position )
+        public King( BChessboard board, ChessColor color, Point2D position ) : base( board, color, position )
 		{
 		}
 

@@ -11,7 +11,7 @@ namespace Server.Mobiles
     public class AnimalTrainer : BaseVendor
     {
         private List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
         [Constructable]
         public AnimalTrainer()
@@ -27,10 +27,7 @@ namespace Server.Mobiles
             m_SBInfos.Add(new SBAnimalTrainer());
         }
 
-        public override VendorShoeType ShoeType
-        {
-            get { return Female ? VendorShoeType.ThighBoots : VendorShoeType.Boots; }
-        }
+        public override VendorShoeType ShoeType => Female ? VendorShoeType.ThighBoots : VendorShoeType.Boots;
 
         public override int GetShoeHue()
         {

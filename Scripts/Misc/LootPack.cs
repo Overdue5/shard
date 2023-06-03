@@ -532,13 +532,13 @@ namespace Server
 
         #region Generic accessors
 
-        public static LootPack Poor { get { return Core.SE ? SePoor : Core.AOS ? AosPoor : OldPoor; } }
-        public static LootPack Meager { get { return Core.SE ? SeMeager : Core.AOS ? AosMeager : OldMeager; } }
-        public static LootPack Average { get { return Core.SE ? SeAverage : Core.AOS ? AosAverage : OldAverage; } }
-        public static LootPack Rich { get { return Core.SE ? SeRich : Core.AOS ? AosRich : OldRich; } }
-        public static LootPack FilthyRich { get { return Core.SE ? SeFilthyRich : Core.AOS ? AosFilthyRich : OldFilthyRich; } }
-        public static LootPack UltraRich { get { return Core.SE ? SeUltraRich : Core.AOS ? AosUltraRich : OldUltraRich; } }
-        public static LootPack SuperBoss { get { return Core.SE ? SeSuperBoss : Core.AOS ? AosSuperBoss : OldSuperBoss; } }
+        public static LootPack Poor => Core.SE ? SePoor : Core.AOS ? AosPoor : OldPoor;
+        public static LootPack Meager => Core.SE ? SeMeager : Core.AOS ? AosMeager : OldMeager;
+        public static LootPack Average => Core.SE ? SeAverage : Core.AOS ? AosAverage : OldAverage;
+        public static LootPack Rich => Core.SE ? SeRich : Core.AOS ? AosRich : OldRich;
+        public static LootPack FilthyRich => Core.SE ? SeFilthyRich : Core.AOS ? AosFilthyRich : OldFilthyRich;
+        public static LootPack UltraRich => Core.SE ? SeUltraRich : Core.AOS ? AosUltraRich : OldUltraRich;
+        public static LootPack SuperBoss => Core.SE ? SeSuperBoss : Core.AOS ? AosSuperBoss : OldSuperBoss;
 
         #endregion
 
@@ -616,20 +616,20 @@ public static readonly LootPack Parrot = new LootPack( new LootPackEntry[]
 
         public int MaxProps
         {
-            get { return m_MaxProps; }
-            set { m_MaxProps = value; }
+            get => m_MaxProps;
+            set => m_MaxProps = value;
         }
 
         public int MinIntensity
         {
-            get { return m_MinIntensity; }
-            set { m_MinIntensity = value; }
+            get => m_MinIntensity;
+            set => m_MinIntensity = value;
         }
 
         public int MaxIntensity
         {
-            get { return m_MaxIntensity; }
-            set { m_MaxIntensity = value; }
+            get => m_MaxIntensity;
+            set => m_MaxIntensity = value;
         }
 
         public LootPackEntry(bool atSpawnTime, LootPackItem[] items, double chance, string quantity)
@@ -933,8 +933,8 @@ public static readonly LootPack Parrot = new LootPack( new LootPackEntry[]
 
         public Type Type
         {
-            get { return m_Type; }
-            set { m_Type = value; }
+            get => m_Type;
+            set => m_Type = value;
         }
 
         public int Chance { get; set; }
@@ -1043,20 +1043,20 @@ public static readonly LootPack Parrot = new LootPack( new LootPackEntry[]
 
         public int Count
         {
-            get { return m_Count; }
-            set { m_Count = value; }
+            get => m_Count;
+            set => m_Count = value;
         }
 
         public int Sides
         {
-            get { return m_Sides; }
-            set { m_Sides = value; }
+            get => m_Sides;
+            set => m_Sides = value;
         }
 
         public int Bonus
         {
-            get { return m_Bonus; }
-            set { m_Bonus = value; }
+            get => m_Bonus;
+            set => m_Bonus = value;
         }
 
         public int Roll()

@@ -74,12 +74,9 @@ namespace Server.Items
 			}
 		}
 
-		public Item Deed
-		{
-			get{ return new WreathDeed( Hue ); }
-		}
+		public Item Deed => new WreathDeed( Hue );
 
-		public override void OnDoubleClick( Mobile from )
+        public override void OnDoubleClick( Mobile from )
 		{
 			BaseHouse house = BaseHouse.FindHouseAt( this );
 
@@ -168,7 +165,7 @@ namespace Server.Items
 	[Flipable( 0x14F0, 0x14EF )]
 	public class WreathDeed : Item
 	{
-		public override int LabelNumber{ get{ return 1062837; } } // holiday wreath deed
+		public override int LabelNumber => 1062837; // holiday wreath deed
 
 		[Constructable]
 		public WreathDeed() : this( Utility.RandomDyedHue() )

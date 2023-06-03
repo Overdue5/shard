@@ -50,13 +50,13 @@ namespace Server.Mobiles
                                                if (Utility.RandomDouble() <= 0.2)
                                                    AddItem(new RandomAccWeap(3));
                                             }
-                                 public override bool BardImmune{ get{ return true; } }
-                                 public override bool Unprovokable{ get{ return true; } }
-                                 public override Poison HitPoison{ get{ return Poison. Deadly ; } }
-                                 public override bool AlwaysMurderer{ get{ return true; } }
-                                 public override bool Uncalmable { get { return Core.SE; } }
-                                 public override bool HasBreath { get { return true; } }
-                                 public override int BreathFireDamage { get { return 20; } }
+                                 public override bool BardImmune => true;
+                                 public override bool Unprovokable => true;
+                                 public override Poison HitPoison => Poison. Deadly;
+                                 public override bool AlwaysMurderer => true;
+                                 public override bool Uncalmable => Core.SE;
+                                 public override bool HasBreath => true;
+                                 public override int BreathFireDamage => 20;
 
                                  public override WeaponAbility GetWeaponAbility()
                                  {

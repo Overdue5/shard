@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class MindBlastScroll : SpellScroll
 	{
-        public override int ManaCost { get { return 17; } } //Loki edit: New PvP changes
+        public override int ManaCost => 17; //Loki edit: New PvP changes
 
 		[Constructable]
 		public MindBlastScroll() : this( 1 )

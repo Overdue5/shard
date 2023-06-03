@@ -272,9 +272,9 @@ locked down container.
 			return base.CheckHold( m, item, false, checkItems, plusItems, plusWeight );
 		}
 
-		public override int DefaultMaxWeight{ get{ return 1600; } }
+		public override int DefaultMaxWeight => 1600;
 
-		public override bool CheckContentDisplay( Mobile from )
+        public override bool CheckContentDisplay( Mobile from )
 		{
 			object root = RootParent;
 
@@ -308,15 +308,9 @@ locked down container.
 
 	public class Backpack : BaseContainer, IDyable
 	{
-		public override int DefaultDropSound
-		{
-			get
-			{
-				return 0x57;
-			}
-		}
+		public override int DefaultDropSound => 0x57;
 
-		[Constructable]
+        [Constructable]
 		public Backpack() : base( 0xE75 )
 		{
 			Layer = Layer.Backpack;

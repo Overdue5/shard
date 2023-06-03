@@ -38,39 +38,21 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override double DispelDifficulty
-		{
-			get { return 125.0; }
-		}
+		public override double DispelDifficulty => 125.0;
 
-		public override double DispelFocus
-		{
-			get { return 45.0; }
-		}
+        public override double DispelFocus => 45.0;
 
-		//public override Faction FactionAllegiance { get { return Shadowlords.Instance; } }
+        //public override Faction FactionAllegiance { get { return Shadowlords.Instance; } }
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+		public override bool CanRummageCorpses => true;
 
-		public override Poison PoisonImmune
-		{
-			get { return Poison.Regular; }
-		}
+        public override Poison PoisonImmune => Poison.Regular;
 
-		public override int TreasureMapLevel
-		{
-			get { return 4; }
-		}
+        public override int TreasureMapLevel => 4;
 
-		public override int Meat
-		{
-			get { return 9; }
-		}
+        public override int Meat => 9;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );
 			AddLoot( LootPack.MedScrolls, 2 );
@@ -138,39 +120,21 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override double DispelDifficulty
-		{
-			get { return 125.0; }
-		}
+		public override double DispelDifficulty => 125.0;
 
-		public override double DispelFocus
-		{
-			get { return 45.0; }
-		}
+        public override double DispelFocus => 45.0;
 
-		//public override Faction FactionAllegiance { get { return Shadowlords.Instance; } }
+        //public override Faction FactionAllegiance { get { return Shadowlords.Instance; } }
 
-		public override bool CanRummageCorpses
-		{
-			get { return true; }
-		}
+		public override bool CanRummageCorpses => true;
 
-		public override Poison PoisonImmune
-		{
-			get { return Poison.Regular; }
-		}
+        public override Poison PoisonImmune => Poison.Regular;
 
-		public override int TreasureMapLevel
-		{
-			get { return 4; }
-		}
+        public override int TreasureMapLevel => 4;
 
-		public override int Meat
-		{
-			get { return 9; }
-		}
+        public override int Meat => 9;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.UltraRich );
 			AddLoot( LootPack.HighScrolls, 1 );

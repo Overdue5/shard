@@ -116,7 +116,7 @@ namespace Server.Items
 	// ********** SweetDough **********
 	public class SweetDough : Item
 	{
-		public override int LabelNumber{ get{ return 1041340; } } // sweet dough
+		public override int LabelNumber => 1041340; // sweet dough
 
 		[Constructable]
 		public SweetDough() : base( 0x103d )
@@ -444,8 +444,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Quantity
 		{
-			get{ return m_Quantity; }
-			set
+			get => m_Quantity;
+            set
 			{
 				if ( value < 0 )
 					value = 0;
@@ -524,7 +524,7 @@ namespace Server.Items
 	// ********** SackFlourOpen **********
 	public class SackFlourOpen : Item
 	{
-		public override int LabelNumber{ get{ return 1024166; } } // open sack of flour
+		public override int LabelNumber => 1024166; // open sack of flour
 
 		[Constructable]
 		public SackFlourOpen() : base(UtilityItem.RandomChoice( 0x1046, 0x103a ))

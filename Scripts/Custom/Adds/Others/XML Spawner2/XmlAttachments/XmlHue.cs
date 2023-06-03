@@ -8,7 +8,9 @@ namespace Server.Engines.XmlSpawner2
 		private int m_Hue;
         
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Hue { get{ return m_Hue; } set { m_Hue = value; } }
+		public int Hue { get => m_Hue;
+            set => m_Hue = value;
+        }
 
 
 		// These are the various ways in which the message attachment can be constructed.  

@@ -7,12 +7,12 @@ namespace Server.Spells.Eighth
 {
     public class EarthElementalSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Eighth; } }
-        public override int Sound { get { return 0x217; } }
+        public override SpellCircle Circle => SpellCircle.Eighth;
+        public override int Sound => 0x217;
 
-        public override bool HasNoTarget { get { return true; } }
+        public override bool HasNoTarget => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Earth Elemental", "Kal Vas Xen Ylem",
 				269,
 				9020,

@@ -19,9 +19,9 @@ namespace Server.Items
 				new CureLevelInfo( Poison.Lethal,  0.25 )
 			};
 
-		public override CureLevelInfo[] LevelInfo{ get{ return Core.AOS ? m_AosLevelInfo : m_OldLevelInfo; } }
+		public override CureLevelInfo[] LevelInfo => Core.AOS ? m_AosLevelInfo : m_OldLevelInfo;
 
-		[Constructable]
+        [Constructable]
 		public CurePotion() : base( PotionEffect.Cure )
 		{
             Name = "Cure Potion";
@@ -31,9 +31,9 @@ namespace Server.Items
 		{
 		}
 
-        public override double PotionDelay { get { return 13.0; } }
+        public override double PotionDelay => 13.0;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

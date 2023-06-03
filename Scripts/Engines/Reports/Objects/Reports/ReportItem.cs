@@ -10,14 +10,15 @@ namespace Server.Engines.Reports
 			return new ReportItem();
 		}
 
-		public override PersistableType TypeID{ get{ return ThisTypeID; } }
-		#endregion
+		public override PersistableType TypeID => ThisTypeID;
+
+        #endregion
 
 		private readonly ItemValueCollection m_Values;
 
-		public ItemValueCollection Values{ get{ return m_Values; } }
+		public ItemValueCollection Values => m_Values;
 
-		public ReportItem()
+        public ReportItem()
 		{
 			m_Values = new ItemValueCollection();
 		}

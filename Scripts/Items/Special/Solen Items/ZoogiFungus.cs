@@ -2,10 +2,10 @@ namespace Server.Items
 {
     public class ZoogiFungus : Item, ICommodity
     {
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return (Core.ML); } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => (Core.ML);
 
-		[Constructable]
+        [Constructable]
 		public ZoogiFungus() : this( 1 )
 		{
 		}

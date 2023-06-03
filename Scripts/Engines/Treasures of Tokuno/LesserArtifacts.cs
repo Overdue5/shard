@@ -2,13 +2,13 @@ namespace Server.Items
 {
 	public class AncientFarmersKasa : Kasa
 	{
-		public override int LabelNumber{ get{ return 1070922; } } // Ancient Farmer's Kasa
-		public override int BaseColdResistance { get { return 19; } }
+		public override int LabelNumber => 1070922; // Ancient Farmer's Kasa
+		public override int BaseColdResistance => 19;
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get { return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public AncientFarmersKasa() : base()
 		{
 			Attributes.BonusStr = 5;
@@ -48,15 +48,15 @@ namespace Server.Items
 
 	public class AncientSamuraiDo : PlateDo 
 	{
-		public override int LabelNumber { get { return 1070926; } } // Ancient Samurai Do
+		public override int LabelNumber => 1070926; // Ancient Samurai Do
 
-		public override int BasePhysicalResistance { get { return 15; } }
-		public override int BaseFireResistance { get { return 12; } }
-		public override int BaseColdResistance { get { return 10; } }
-		public override int BasePoisonResistance { get { return 11; } }
-		public override int BaseEnergyResistance { get { return 8; } }
+		public override int BasePhysicalResistance => 15;
+        public override int BaseFireResistance => 12;
+        public override int BaseColdResistance => 10;
+        public override int BasePoisonResistance => 11;
+        public override int BaseEnergyResistance => 8;
 
-		[Constructable]
+        [Constructable]
 		public AncientSamuraiDo() : base()
 		{
 			ArmorAttributes.LowerStatReq = 100;
@@ -82,19 +82,19 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class ArmsOfTacticalExcellence : LeatherHiroSode
 	{
-		public override int LabelNumber { get { return 1070921; } } // Arms of Tactical Excellence
+		public override int LabelNumber => 1070921; // Arms of Tactical Excellence
 
-		public override int BaseFireResistance { get { return 9; } }
-		public override int BaseColdResistance { get { return 13; } }
-		public override int BasePoisonResistance { get { return 8; } }
+		public override int BaseFireResistance => 9;
+        public override int BaseColdResistance => 13;
+        public override int BasePoisonResistance => 8;
 
-		[Constructable]
+        [Constructable]
 		public ArmsOfTacticalExcellence() : base()
 		{
 			Attributes.BonusDex = 5;
@@ -119,24 +119,24 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class BlackLotusHood : ClothNinjaHood
 	{
-		public override int LabelNumber { get { return 1070919; } } // Black Lotus Hood
+		public override int LabelNumber => 1070919; // Black Lotus Hood
 
-		public override int BasePhysicalResistance { get { return 0; } }
-		public override int BaseFireResistance { get { return 11; } }
-		public override int BaseColdResistance { get { return 15; } }
-		public override int BasePoisonResistance { get { return 11; } }
-		public override int BaseEnergyResistance { get { return 11; } }
+		public override int BasePhysicalResistance => 0;
+        public override int BaseFireResistance => 11;
+        public override int BaseColdResistance => 15;
+        public override int BasePoisonResistance => 11;
+        public override int BaseEnergyResistance => 11;
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public BlackLotusHood() : base()
 		{
 			Attributes.LowerManaCost = 6;
@@ -171,11 +171,11 @@ namespace Server.Items
 
 	public class DaimyosHelm : PlateBattleKabuto
 	{
-		public override int LabelNumber { get { return 1070920; } } // Daimyo's Helm
+		public override int LabelNumber => 1070920; // Daimyo's Helm
 
-		public override int BaseColdResistance { get { return 10; } }
+		public override int BaseColdResistance => 10;
 
-		[Constructable]
+        [Constructable]
 		public DaimyosHelm() : base()
 		{
 			ArmorAttributes.LowerStatReq = 100;
@@ -202,13 +202,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class DemonForks : Sai
 	{
-		public override int LabelNumber{ get{ return 1070917; } } // Demon Forks
+		public override int LabelNumber => 1070917; // Demon Forks
 
 		[Constructable]
 		public DemonForks() : base()
@@ -239,13 +239,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class DragonNunchaku : Nunchaku
 	{
-		public override int LabelNumber{ get{ return 1070914; } } // Dragon Nunchaku
+		public override int LabelNumber => 1070914; // Dragon Nunchaku
 
 		[Constructable]
 		public DragonNunchaku() : base()
@@ -276,13 +276,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class Exiler : Tetsubo
 	{
-		public override int LabelNumber{ get{ return 1070913; } } // Exiler
+		public override int LabelNumber => 1070913; // Exiler
 
 		[Constructable]
 		public Exiler() : base()
@@ -320,17 +320,17 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class GlovesOfTheSun : LeatherNinjaMitts
 	{
-		public override int LabelNumber { get { return 1070924; } } // Gloves of the Sun
+		public override int LabelNumber => 1070924; // Gloves of the Sun
 
-		public override int BaseFireResistance { get { return 24; } }
+		public override int BaseFireResistance => 24;
 
-		[Constructable]
+        [Constructable]
 		public GlovesOfTheSun() : base()
 		{
 			Attributes.RegenHits = 2;
@@ -357,13 +357,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class HanzosBow : Yumi
 	{
-		public override int LabelNumber { get { return 1070918; } } // Hanzo's Bow
+		public override int LabelNumber => 1070918; // Hanzo's Bow
 
 		[Constructable]
 		public HanzosBow() : base()
@@ -394,18 +394,18 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class LegsOfStability : PlateSuneate
 	{
-		public override int LabelNumber { get { return 1070925; } } // Legs of Stability
+		public override int LabelNumber => 1070925; // Legs of Stability
 
-		public override int BasePhysicalResistance { get { return 20; } }
-		public override int BasePoisonResistance { get { return 18; } }
+		public override int BasePhysicalResistance => 20;
+        public override int BasePoisonResistance => 18;
 
-		[Constructable]
+        [Constructable]
 		public LegsOfStability() : base()
 		{
 			Attributes.BonusStam = 5;
@@ -433,13 +433,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class PeasantsBokuto : Bokuto
 	{
-		public override int LabelNumber { get { return 1070912; } } // Peasant's Bokuto
+		public override int LabelNumber => 1070912; // Peasant's Bokuto
 
 		[Constructable]
 		public PeasantsBokuto() : base()
@@ -470,13 +470,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class PilferedDancerFans : Tessen
 	{
-		public override int LabelNumber { get { return 1070916; } } // Pilfered Dancer Fans
+		public override int LabelNumber => 1070916; // Pilfered Dancer Fans
 
 		[Constructable]
 		public PilferedDancerFans() : base()
@@ -506,13 +506,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class TheDestroyer : NoDachi
 	{
-		public override int LabelNumber { get { return 1070915; } } // The Destroyer
+		public override int LabelNumber => 1070915; // The Destroyer
 
 		[Constructable]
 		public TheDestroyer() : base()
@@ -542,13 +542,13 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	public class TomeOfEnlightenment : Spellbook
 	{
-		public override int LabelNumber { get { return 1070934; } } // Tome of Enlightenment
+		public override int LabelNumber => 1070934; // Tome of Enlightenment
 
 		[Constructable]
 		public TomeOfEnlightenment() : base()
@@ -582,15 +582,15 @@ namespace Server.Items
 	
 	public class LeurociansMempoOfFortune : LeatherMempo
 	{
-		public override int LabelNumber { get { return 1071460; } } // Leurocian's mempo of fortune
+		public override int LabelNumber => 1071460; // Leurocian's mempo of fortune
 
-		public override int BasePhysicalResistance{ get{ return 15; } }
-		public override int BaseFireResistance{ get{ return 10; } }
-		public override int BaseColdResistance{ get{ return 10; } }
-		public override int BasePoisonResistance{ get{ return 10; } }
-		public override int BaseEnergyResistance{ get{ return 15; } }
-		
-		[Constructable]
+		public override int BasePhysicalResistance => 15;
+        public override int BaseFireResistance => 10;
+        public override int BaseColdResistance => 10;
+        public override int BasePoisonResistance => 10;
+        public override int BaseEnergyResistance => 15;
+
+        [Constructable]
 		public LeurociansMempoOfFortune() : base()
 		{
 			LootType = LootType.Regular;
@@ -617,9 +617,9 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 		}
-		public override int InitMinHits { get { return 255; } }
-		public override int InitMaxHits { get { return 255; } }
-	}
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
+    }
 
 	//Non weapon/armor ones:
 
@@ -664,18 +664,18 @@ namespace Server.Items
 				"Zeshin"
 			};
 
-		public static string[] Names { get { return m_Names; } }
+		public static string[] Names => m_Names;
 
-		private string m_UrnName;
+        private string m_UrnName;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string UrnName
 		{
-			get { return m_UrnName; }
-			set { m_UrnName = value; }
-		}
+			get => m_UrnName;
+            set => m_UrnName = value;
+        }
 
-		public override int LabelNumber { get { return 1071014; } } // Ancient Urn
+		public override int LabelNumber => 1071014; // Ancient Urn
 
 		[Constructable]
 		public AncientUrn( string urnName ) : base( 0x241D )
@@ -730,11 +730,11 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string SwordsName
 		{
-			get { return m_SwordsName; }
-			set { m_SwordsName = value; }
-		}
+			get => m_SwordsName;
+            set => m_SwordsName = value;
+        }
 
-		public override int LabelNumber { get { return 1071015; } } // Honorable Swords
+		public override int LabelNumber => 1071015; // Honorable Swords
 
 		[Constructable]
 		public HonorableSwords( string swordsName ) : base( 0x2853 )
@@ -786,7 +786,7 @@ namespace Server.Items
 	[Flipable( 0x2811, 0x2812 )]
 	public class ChestOfHeirlooms : LockableContainer
 	{
-		public override int LabelNumber{ get{ return 1070937; } } // Chest of heirlooms
+		public override int LabelNumber => 1070937; // Chest of heirlooms
 		
 		[Constructable]
 		public ChestOfHeirlooms() : base( 0x2811 )
@@ -865,7 +865,7 @@ namespace Server.Items
 
 	public class FluteOfRenewal : BambooFlute
 	{
-		public override int LabelNumber { get { return 1070927; } } // Flute of Renewal
+		public override int LabelNumber => 1070927; // Flute of Renewal
 
 		[Constructable]
 		public FluteOfRenewal() : base()
@@ -875,10 +875,10 @@ namespace Server.Items
 			ReplenishesCharges = true;
 		}
 
-		public override int InitMinUses { get { return 300; } }
-		public override int InitMaxUses { get { return 300; } }
+		public override int InitMinUses => 300;
+        public override int InitMaxUses => 300;
 
-		public FluteOfRenewal( Serial serial ) : base( serial )
+        public FluteOfRenewal( Serial serial ) : base( serial )
 		{
 		}
 
@@ -949,8 +949,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public LesserPigmentType Type
 		{
-			get { return m_Type; }
-			set
+			get => m_Type;
+            set
 			{
 				m_Type = value;
 				

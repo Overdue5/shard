@@ -3,9 +3,9 @@ namespace Server.Mobiles
 	[CorpseName( "a ronin corpse" )]
 	public class Ronin : BaseCreature
 	{
-		public override bool ClickTitle{ get{ return false; } }
+		public override bool ClickTitle => false;
 
-		[Constructable]
+        [Constructable]
 		public Ronin() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			SpeechHue = Utility.RandomDyedHue();
@@ -91,11 +91,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 4 );
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool BardImmune{ get{ return true; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
+        public override bool BardImmune => true;
+        public override bool CanRummageCorpses => true;
 
-		public Ronin( Serial serial ) : base( serial )
+        public Ronin( Serial serial ) : base( serial )
 		{
 		}
 

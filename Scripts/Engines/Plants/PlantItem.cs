@@ -46,15 +46,15 @@ namespace Server.Engines.Plants
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SecureLevel Level
 		{
-			get{ return m_Level; }
-			set{ m_Level = value; }
-		}
+			get => m_Level;
+            set => m_Level = value;
+        }
 
-		public PlantSystem PlantSystem { get { return m_PlantSystem; } }
+		public PlantSystem PlantSystem => m_PlantSystem;
 
-		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; } }
+        public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		public override int LabelNumber
+        public override int LabelNumber
 		{
 			get
 			{
@@ -73,8 +73,8 @@ namespace Server.Engines.Plants
 		[CommandProperty( AccessLevel.GameMaster )]
 		public PlantStatus PlantStatus
 		{
-			get { return m_PlantStatus; }
-			set
+			get => m_PlantStatus;
+            set
 			{
 				if ( m_PlantStatus == value || value < PlantStatus.BowlOfDirt || value > PlantStatus.DeadTwigs )
 					return;
@@ -111,8 +111,8 @@ namespace Server.Engines.Plants
 		[CommandProperty( AccessLevel.GameMaster )]
 		public PlantType PlantType
 		{
-			get { return m_PlantType; }
-			set
+			get => m_PlantType;
+            set
 			{
 				m_PlantType = value;
 				Update();
@@ -122,8 +122,8 @@ namespace Server.Engines.Plants
 		[CommandProperty( AccessLevel.GameMaster )]
 		public PlantHue PlantHue
 		{
-			get { return m_PlantHue; }
-			set
+			get => m_PlantHue;
+            set
 			{
 				m_PlantHue = value;
 				Update();
@@ -133,8 +133,8 @@ namespace Server.Engines.Plants
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool ShowType
 		{
-			get { return m_ShowType; }
-			set
+			get => m_ShowType;
+            set
 			{
 				m_ShowType = value;
 				InvalidateProperties();
@@ -166,22 +166,16 @@ namespace Server.Engines.Plants
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsGrowable
-		{
-			get { return m_PlantStatus >= PlantStatus.BowlOfDirt && m_PlantStatus <= PlantStatus.Stage9; }
-		}
+		public bool IsGrowable => m_PlantStatus >= PlantStatus.BowlOfDirt && m_PlantStatus <= PlantStatus.Stage9;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsCrossable
-		{
-			get { return PlantHueInfo.IsCrossable( PlantHue ) && PlantTypeInfo.IsCrossable( PlantType ); }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public bool IsCrossable => PlantHueInfo.IsCrossable( PlantHue ) && PlantTypeInfo.IsCrossable( PlantType );
 
-		private static readonly ArrayList m_Instances = new ArrayList();
+        private static readonly ArrayList m_Instances = new ArrayList();
 
-		public static ArrayList Plants{ get{ return m_Instances; } }
+		public static ArrayList Plants => m_Instances;
 
-		[Constructable]
+        [Constructable]
 		public PlantItem() : this( false )
 		{
 		}

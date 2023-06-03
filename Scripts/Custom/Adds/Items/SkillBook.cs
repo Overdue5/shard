@@ -33,57 +33,57 @@
         [CommandProperty(m_RequiredAccessLevel)]
         public Mobile Owner
         {
-            get { return m_Owner; }
-            set { m_Owner = value; }
+            get => m_Owner;
+            set => m_Owner = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public SkillName SkillName
         {
-            get { return m_SkillName; }
-            set { m_SkillName = value; }
+            get => m_SkillName;
+            set => m_SkillName = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public SkillBonusType BonusType
         {
-            get { return m_BonusType; }
-            set { m_BonusType = value; }
+            get => m_BonusType;
+            set => m_BonusType = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public double Bonus
         {
-            get { return m_BonusValue; }
-            set { m_BonusValue = value; }
+            get => m_BonusValue;
+            set => m_BonusValue = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public double MaxValue
         {
-            get { return m_MaxValue; }
-            set { m_MaxValue = value; }
+            get => m_MaxValue;
+            set => m_MaxValue = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public bool RequiresOwner
         {
-            get { return m_RequiresOwner; }
-            set { m_RequiresOwner = value; }
+            get => m_RequiresOwner;
+            set => m_RequiresOwner = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public bool CheckBaseSkill
         {
-            get { return m_CheckBaseSkill; }
-            set { m_CheckBaseSkill = value; }
+            get => m_CheckBaseSkill;
+            set => m_CheckBaseSkill = value;
         }
 
         [CommandProperty(m_RequiredAccessLevel)]
         public bool SetOwnerOnPickup
         {
-            get { return m_SetOwnerOnPickup; }
-            set { m_SetOwnerOnPickup = value; }
+            get => m_SetOwnerOnPickup;
+            set => m_SetOwnerOnPickup = value;
         }
 
         [Constructable]

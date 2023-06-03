@@ -59,9 +59,9 @@ namespace Server.Commands.Generic
 
 		private static readonly List<BaseCommand> m_AllCommands = new List<BaseCommand>();
 
-		public static List<BaseCommand> AllCommands{ get{ return m_AllCommands; } }
+		public static List<BaseCommand> AllCommands => m_AllCommands;
 
-		public static void Register( BaseCommand command )
+        public static void Register( BaseCommand command )
 		{
 			m_AllCommands.Add( command );
 

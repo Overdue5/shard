@@ -6,12 +6,12 @@ namespace Server.Spells.First
 {
     public class ReactiveArmorSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.First; } }
-        public override int Sound { get { return 0x1E9; } }
+        public override SpellCircle Circle => SpellCircle.First;
+        public override int Sound => 0x1E9;
 
-        public override bool SpellDisabled { get { return true; } }
+        public override bool SpellDisabled => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Reactive Armor", "Flam Sanct",
 				212,
 				9011,

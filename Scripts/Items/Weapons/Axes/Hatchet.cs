@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 
-		public override int AosStrengthReq{ get{ return 20; } }
-		public override int AosMinDamage{ get{ return 13; } }
-		public override int AosMaxDamage{ get{ return 15; } }
-		public override int AosSpeed{ get{ return 41; } }
+		public override int AosStrengthReq => 20;
+        public override int AosMinDamage => 13;
+        public override int AosMaxDamage => 15;
+        public override int AosSpeed => 41;
 
-		public override int OldStrengthReq{ get{ return 15; } }
-		public override int OldMinDamage{ get{ return 15; } }
-		public override int OldMaxDamage{ get{ return 28; } } //Loki edit: Was 12 - 26
-		public override int OldSpeed{ get{ return 342; } }
+        public override int OldStrengthReq => 15;
+        public override int OldMinDamage => 15;
+        public override int OldMaxDamage => 28; //Loki edit: Was 12 - 26
+		public override int OldSpeed => 342;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 80;
 
-		[Constructable]
+        [Constructable]
 		public Hatchet() : base( 0xF43 )
 		{
 			Weight = 4.0;

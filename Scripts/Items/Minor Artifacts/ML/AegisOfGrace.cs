@@ -2,18 +2,18 @@ namespace Server.Items
 {
 	public class AegisOfGrace : DragonHelm
 	{
-		public override int LabelNumber{ get{ return 1075047; } } // Aegis of Grace
+		public override int LabelNumber => 1075047; // Aegis of Grace
 
-		public override int BasePhysicalResistance{ get{ return 10; } }
-		public override int BaseFireResistance{ get{ return 9; } }
-		public override int BaseColdResistance{ get{ return 7; } }
-		public override int BasePoisonResistance{ get{ return 7; } }
-		public override int BaseEnergyResistance{ get{ return 15; } }
+		public override int BasePhysicalResistance => 10;
+        public override int BaseFireResistance => 9;
+        public override int BaseColdResistance => 7;
+        public override int BasePoisonResistance => 7;
+        public override int BaseEnergyResistance => 15;
 
-		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Dragon; } }
-		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
+        public override ArmorMaterialType MaterialType => ArmorMaterialType.Dragon;
+        public override CraftResource DefaultResource => CraftResource.Iron;
 
-		[Constructable]
+        [Constructable]
 		public AegisOfGrace()
 		{
 			SkillBonuses.SetValues( 0, SkillName.MagicResist, 10.0 );
@@ -23,15 +23,9 @@ namespace Server.Items
 			ArmorAttributes.SelfRepair = 2;
 		}
 
-		public override Race RequiredRace
-		{
-			get
-			{
-				return Race.Elf;
-			}
-		}
+		public override Race RequiredRace => Race.Elf;
 
-		public AegisOfGrace( Serial serial ) : base( serial )
+        public AegisOfGrace( Serial serial ) : base( serial )
 		{
 		}
 

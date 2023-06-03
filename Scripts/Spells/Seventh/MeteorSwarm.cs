@@ -6,10 +6,10 @@ namespace Server.Spells.Seventh
 {
     public class MeteorSwarmSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 0x160; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 0x160;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Meteor Swarm", "Flam Kal Des Ylem",
 				263,
 				9042,
@@ -42,9 +42,9 @@ namespace Server.Spells.Seventh
 			Caster.Target = new InternalTarget( this );
 		}
 
-		public override bool DelayedDamage{ get{ return false; } }
+		public override bool DelayedDamage => false;
 
-		public void Target( Mobile m )
+        public void Target( Mobile m )
 		{
 			if ( !Caster.CanSee( m ) )
 			{

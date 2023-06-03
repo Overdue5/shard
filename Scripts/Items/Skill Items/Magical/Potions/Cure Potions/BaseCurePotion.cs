@@ -5,17 +5,11 @@ namespace Server.Items
 		private readonly Poison m_Poison;
 		private readonly double m_Chance;
 
-		public Poison Poison
-		{
-			get{ return m_Poison; }
-		}
+		public Poison Poison => m_Poison;
 
-		public double Chance
-		{
-			get{ return m_Chance; }
-		}
+        public double Chance => m_Chance;
 
-		public CureLevelInfo( Poison poison, double chance )
+        public CureLevelInfo( Poison poison, double chance )
 		{
 			m_Poison = poison;
 			m_Chance = chance;
@@ -25,9 +19,9 @@ namespace Server.Items
 	public abstract class BaseCurePotion : BasePotion
 	{
         //Loki/Rob edit
-        public override double PotionDelay { get { return 5.0; } }
+        public override double PotionDelay => 5.0;
 
-		public abstract CureLevelInfo[] LevelInfo{ get; }
+        public abstract CureLevelInfo[] LevelInfo{ get; }
 
 		public BaseCurePotion( PotionEffect effect ) : base( 0xF07, effect )
 		{

@@ -425,14 +425,14 @@ namespace Server.Items
 		private readonly CraftResource m_Resource;
 		private readonly Type[] m_ResourceTypes;
 
-		public int Hue{ get{ return m_Hue; } }
-		public int Number{ get{ return m_Number; } }
-		public string Name{ get{ return m_Name; } }
-		public CraftAttributeInfo AttributeInfo{ get{ return m_AttributeInfo; } }
-		public CraftResource Resource{ get{ return m_Resource; } }
-		public Type[] ResourceTypes{ get{ return m_ResourceTypes; } }
+		public int Hue => m_Hue;
+        public int Number => m_Number;
+        public string Name => m_Name;
+        public CraftAttributeInfo AttributeInfo => m_AttributeInfo;
+        public CraftResource Resource => m_Resource;
+        public Type[] ResourceTypes => m_ResourceTypes;
 
-		public CraftResourceInfo( int hue, int number, string name, CraftAttributeInfo attributeInfo, CraftResource resource, params Type[] resourceTypes )
+        public CraftResourceInfo( int hue, int number, string name, CraftAttributeInfo attributeInfo, CraftResource resource, params Type[] resourceTypes )
 		{
 			m_Hue = hue;
 			m_Number = number;
@@ -770,28 +770,10 @@ namespace Server.Items
 			m_Name = name;
 		}
 
-		public int Level
-		{
-			get
-			{
-				return m_Level;
-			}
-		}
+		public int Level => m_Level;
 
-		public int Hue
-		{
-			get
-			{
-				return m_Hue;
-			}
-		}
+        public int Hue => m_Hue;
 
-		public string Name
-		{
-			get
-			{
-				return m_Name;
-			}
-		}
-	}
+        public string Name => m_Name;
+    }
 }

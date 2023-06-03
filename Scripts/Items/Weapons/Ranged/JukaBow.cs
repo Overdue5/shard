@@ -5,19 +5,16 @@ namespace Server.Items
 	[Flipable( 0x13B2, 0x13B1 )]
 	public class JukaBow : Bow
 	{
-		public override int AosStrengthReq{ get{ return 80; } }
-		public override int AosDexterityReq{ get{ return 80; } }
+		public override int AosStrengthReq => 80;
+        public override int AosDexterityReq => 80;
 
-		public override int OldStrengthReq{ get{ return 80; } }
-		public override int OldDexterityReq{ get{ return 80; } }
+        public override int OldStrengthReq => 80;
+        public override int OldDexterityReq => 80;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsModified
-		{
-			get{ return ( Hue == 0x453 ); }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public bool IsModified => ( Hue == 0x453 );
 
-		[Constructable]
+        [Constructable]
 		public JukaBow()
 		{
 		}

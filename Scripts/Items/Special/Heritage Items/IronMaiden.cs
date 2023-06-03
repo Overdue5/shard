@@ -6,9 +6,9 @@ namespace Server.Items
 {
 	public class IronMaidenAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new IronMaidenDeed(); } }
+		public override BaseAddonDeed Deed => new IronMaidenDeed();
 
-		public IronMaidenAddon() : base()
+        public IronMaidenAddon() : base()
 		{
 			AddComponent( new LocalizedAddonComponent( 0x1249, 1076288 ), 0, 0, 0 );
 		}
@@ -105,8 +105,8 @@ namespace Server.Items
 
 	public class IronMaidenDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new IronMaidenAddon(); } }
-		public override int LabelNumber { get { return 1076288; } } // Iron Maiden
+		public override BaseAddon Addon => new IronMaidenAddon();
+        public override int LabelNumber => 1076288; // Iron Maiden
 
 		[Constructable]
 		public IronMaidenDeed() : base()

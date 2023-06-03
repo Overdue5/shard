@@ -18,7 +18,7 @@ namespace Knives.Chat3
         private string c_TxtSearch = "";
         private string c_CharSearch = "";
 
-        public Mobile Current { get { return (c_Target == null ? Owner : c_Target); } }
+        public Mobile Current => (c_Target == null ? Owner : c_Target);
 
         #endregion
 

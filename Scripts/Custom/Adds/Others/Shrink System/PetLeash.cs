@@ -17,8 +17,8 @@ namespace Xanthos.ShrinkSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int ShrinkCharges
 		{
-			get { return m_Charges; }
-			set
+			get => m_Charges;
+            set
 			{
 				if ( 0 == m_Charges || 0 == (m_Charges = value ))
 					Delete();

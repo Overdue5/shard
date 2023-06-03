@@ -12,16 +12,20 @@ namespace Server.Engines.XmlSpawner2
 		private Type m_EnemyType;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Chance { get{ return m_Chance; } set { m_Chance = value; } }
+		public int Chance { get => m_Chance;
+            set => m_Chance = value;
+        }
         
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int PercentIncrease { get{ return m_PercentIncrease; } set { m_PercentIncrease = value; } }
+		public int PercentIncrease { get => m_PercentIncrease;
+            set => m_PercentIncrease = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Enemy 
 		{ 
-			get { return m_Enemy; }
-			set 
+			get => m_Enemy;
+            set 
 			{ 
 				m_Enemy  = value; 
 				// look up the type

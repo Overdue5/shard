@@ -11,10 +11,10 @@ namespace Server
 		private readonly string m_Type;
 		private readonly string[] m_List;
 
-		public string Type{ get{ return m_Type; } }
-		public string[] List{ get{ return m_List; } }
+		public string Type => m_Type;
+        public string[] List => m_List;
 
-		public bool ContainsName( string name )
+        public bool ContainsName( string name )
 		{
 			for ( int i = 0; i < m_List.Length; i++ )
 				if ( name == m_List[i] )

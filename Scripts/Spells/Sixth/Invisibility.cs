@@ -6,9 +6,9 @@ namespace Server.Spells.Sixth
 {
     public class InvisibilitySpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 515; } }
-        
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 515;
+
         private static readonly SpellInfo m_Info = new SpellInfo(
                 "Invisibility", "An Lor Xen",
                 263,

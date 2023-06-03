@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class Coal : Item
 	{
-		public override string DefaultName{ get { return "Coal"; }}
+		public override string DefaultName => "Coal";
 
-		[Constructable]
+        [Constructable]
 		public Coal() : base( 0x19b9 )
 		{
 			Stackable = false;
@@ -31,7 +31,7 @@ namespace Server.Items
 
 	public class BadCard : Item
 	{
-		public override int LabelNumber{ get { return 1041428; }} // Maybe next year youll get a better...
+		public override int LabelNumber => 1041428; // Maybe next year youll get a better...
 
 		[Constructable]
 		public BadCard() : base( 0x14ef )

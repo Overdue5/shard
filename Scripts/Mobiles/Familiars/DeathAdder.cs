@@ -32,9 +32,9 @@ namespace Server.Mobiles
 			//ControlSlots = 1;
 		}
 
-		public override Poison HitPoison{ get{ return (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly); } }
+		public override Poison HitPoison => (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly);
 
-		public DeathAdder( Serial serial ) : base( serial )
+        public DeathAdder( Serial serial ) : base( serial )
 		{
 		}
 

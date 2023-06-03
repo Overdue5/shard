@@ -9,9 +9,9 @@ namespace Server.Mobiles
 	{
         private DateTime recoverDelay;
         bool firstSummoned = true;
-        public override InhumanSpeech SpeechType { get { return InhumanSpeech.Lizardman; } }
+        public override InhumanSpeech SpeechType => InhumanSpeech.Lizardman;
 
-		[Constructable]
+        [Constructable]
 		public LizardmanShaman () : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
             Name = "Lizardman Shaman";
@@ -48,10 +48,10 @@ namespace Server.Mobiles
 			VirtualArmor = 40;
 		}
 
-        public override bool BardImmune { get { return true; } }
-        public override bool Uncalmable { get { return true; } }
-        public override bool CanRummageCorpses { get { return true; } }
-        public override bool Unprovokable { get { return true; } }
+        public override bool BardImmune => true;
+        public override bool Uncalmable => true;
+        public override bool CanRummageCorpses => true;
+        public override bool Unprovokable => true;
 
         public override void OnGotMeleeAttack(Mobile attacker)
         {

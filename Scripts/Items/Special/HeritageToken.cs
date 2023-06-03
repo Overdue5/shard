@@ -9,7 +9,7 @@ namespace Server.Items
 
 	public class HeritageToken : Item
 	{
-		public override int LabelNumber { get { return 1076596; } } // A Heritage Token
+		public override int LabelNumber => 1076596; // A Heritage Token
 
 		[Constructable]
 		public HeritageToken() : base( 0x367A )

@@ -48,9 +48,9 @@ namespace Server.Mobiles
             Tamable = true;
 		}
 
-		public override int Meat { get { return 1; } }
+		public override int Meat => 1;
 
-		public Dolphin( Serial serial )
+        public Dolphin( Serial serial )
 			: base( serial )
 		{
 		}

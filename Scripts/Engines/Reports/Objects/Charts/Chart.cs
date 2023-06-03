@@ -6,11 +6,15 @@ namespace Server.Engines.Reports
 		protected string m_FileName;
 		protected ChartItemCollection m_Items;
 
-		public string Name{ get{ return m_Name; } set{ m_Name = value; } }
-		public string FileName{ get{ return m_FileName; } set{ m_FileName = value; } }
-		public ChartItemCollection Items{ get{ return m_Items; } }
+		public string Name{ get => m_Name;
+            set => m_Name = value;
+        }
+		public string FileName{ get => m_FileName;
+            set => m_FileName = value;
+        }
+		public ChartItemCollection Items => m_Items;
 
-		public Chart()
+        public Chart()
 		{
 			m_Items = new ChartItemCollection();
 		}

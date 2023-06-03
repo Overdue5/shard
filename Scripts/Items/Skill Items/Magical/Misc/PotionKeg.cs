@@ -12,11 +12,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Held
 		{
-			get
-			{
-				return m_Held;
-			}
-			set
+			get => m_Held;
+            set
 			{
 				if ( m_Held != value )
 				{
@@ -30,11 +27,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public PotionEffect Type
 		{
-			get
-			{
-				return m_Type;
-			}
-			set
+			get => m_Type;
+            set
 			{
 				m_Type = value;
 				InvalidateProperties();
@@ -44,9 +38,9 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
 	    public int MaxCount
 	    {
-            get { return m_MaxAmount; }
-            set { m_MaxAmount = value; }
-	    }
+            get => m_MaxAmount;
+            set => m_MaxAmount = value;
+        }
 
 		[Constructable]
 		public PotionKeg() : base( 0x1940 )

@@ -6,12 +6,9 @@ namespace Server.Items
 	{
 		private SpawnTimer m_Timer;
 
-		public override string DefaultName
-		{
-			get { return ""; }
-		}
+		public override string DefaultName => "";
 
-		[Constructable]
+        [Constructable]
 		public DKMist() : base( 0x3789 )
 		{
 			Movable = false;

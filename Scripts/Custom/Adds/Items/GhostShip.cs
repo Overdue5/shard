@@ -19,7 +19,7 @@ namespace Server.Items
         private List<Item> m_Items = new List<Item>();
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime DeleteTime { get { return m_DeleteTime; } }
+        public DateTime DeleteTime => m_DeleteTime;
 
         [Constructable]
         public GhostShip()
@@ -822,15 +822,9 @@ namespace Server.Items
         {
         }
 
-        public List<Mobile> Spawnlist
-        {
-            get { return m_Spawns; }
-        }
+        public List<Mobile> Spawnlist => m_Spawns;
 
-        public List<Item> Itemlist
-        {
-            get { return m_Items; }
-        }
+        public List<Item> Itemlist => m_Items;
 
         private class DeleteTimer : Timer
         {

@@ -16,27 +16,27 @@ namespace Server.Items
 		
 		public int Monster
 		{
-			get{ return m_monster; }
-			set{ m_monster = value; }
-		}
+			get => m_monster;
+            set => m_monster = value;
+        }
 		
 		public int Reward
 		{
-			get{ return reward; }
-			set{ reward = value; }
-		}
+			get => reward;
+            set => reward = value;
+        }
 		
 		public int AmountToKill
 		{
-			get{ return m_amount; }
-			set{ m_amount = value; }
-		}
+			get => m_amount;
+            set => m_amount = value;
+        }
 		
 		public int AmountKilled
 		{
-			get{ return m_killed; }
-			set{ m_killed = value; }
-		}
+			get => m_killed;
+            set => m_killed = value;
+        }
 		
 		public MonsterContractEntry( int monster, int ak, int atk, int gpreward )
 		{

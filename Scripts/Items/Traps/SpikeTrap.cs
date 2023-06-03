@@ -39,8 +39,8 @@ namespace Server.Items
 
 		public bool Extended
 		{
-			get{ return ( ItemID == GetExtendedID( Type ) ); }
-			set
+			get => ( ItemID == GetExtendedID( Type ) );
+            set
 			{
 				if ( value )
 					ItemID = GetExtendedID( Type );
@@ -93,18 +93,18 @@ namespace Server.Items
             m_AnimHue = 0;
 		}
 
-		public override bool PassivelyTriggered{ get{ return false; } }
-		public override TimeSpan PassiveTriggerDelay{ get{ return TimeSpan.Zero; } }
-		public override int PassiveTriggerRange{ get{ return 0; } }
-		public override TimeSpan ResetDelay{ get{ return TimeSpan.FromSeconds( 6.0 ); } }
+		public override bool PassivelyTriggered => false;
+        public override TimeSpan PassiveTriggerDelay => TimeSpan.Zero;
+        public override int PassiveTriggerRange => 0;
+        public override TimeSpan ResetDelay => TimeSpan.FromSeconds( 6.0 );
 
         private int m_AnimHue;
 
         [CommandProperty(AccessLevel.Counselor)]
         public virtual int AnimHue
         {
-            get { return m_AnimHue; }
-            set { m_AnimHue = value; }
+            get => m_AnimHue;
+            set => m_AnimHue = value;
         }
 
 		public override void OnTrigger( Mobile from )

@@ -9,8 +9,8 @@ namespace Server.Factions
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
 		public Town Town
 		{
-			get{ return m_Town; }
-			set
+			get => m_Town;
+            set
 			{
 				m_Town = value;
 
@@ -18,9 +18,9 @@ namespace Server.Factions
 			}
 		}
 
-		public override string DefaultName { get { return "faction town stone"; } }
+		public override string DefaultName => "faction town stone";
 
-		[Constructable]
+        [Constructable]
 		public FactionTownStone() : this( null )
 		{
 		}

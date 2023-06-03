@@ -36,8 +36,8 @@ namespace Server.Items
 			}
 		}
 
-		public override int LabelNumber { get { return 1071023; } } // Talisman
-		public virtual bool ForceShowName { get { return false; } } // used to override default summoner/removal name
+		public override int LabelNumber => 1071023; // Talisman
+		public virtual bool ForceShowName => false; // used to override default summoner/removal name
 
 		private int m_KarmaLoss;
 		private int m_MaxCharges;
@@ -49,22 +49,22 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int KarmaLoss
 		{
-			get { return m_KarmaLoss; }
-			set { m_KarmaLoss = value; InvalidateProperties(); }
+			get => m_KarmaLoss;
+            set { m_KarmaLoss = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int MaxCharges
 		{
-			get { return m_MaxCharges; }
-			set { m_MaxCharges = value; InvalidateProperties(); }
+			get => m_MaxCharges;
+            set { m_MaxCharges = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Charges
 		{
-			get { return m_Charges; }
-			set
+			get => m_Charges;
+            set
 			{
 				m_Charges = value;
 
@@ -78,21 +78,21 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int MaxChargeTime
 		{
-			get { return m_MaxChargeTime; }
-			set { m_MaxChargeTime = value; InvalidateProperties(); }
+			get => m_MaxChargeTime;
+            set { m_MaxChargeTime = value; InvalidateProperties(); }
 		}
 
 		public int ChargeTime
 		{
-			get { return m_ChargeTime; }
-			set { m_ChargeTime = value; InvalidateProperties(); }
+			get => m_ChargeTime;
+            set { m_ChargeTime = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Blessed
 		{
-			get { return m_Blessed; }
-			set { m_Blessed = value; InvalidateProperties(); }
+			get => m_Blessed;
+            set { m_Blessed = value; InvalidateProperties(); }
 		}
 
 		#region Slayer
@@ -101,8 +101,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TalismanSlayerName Slayer
 		{
-			get { return m_Slayer; }
-			set { m_Slayer = value; InvalidateProperties(); }
+			get => m_Slayer;
+            set { m_Slayer = value; InvalidateProperties(); }
 		}
 		#endregion
 
@@ -114,15 +114,15 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TalismanAttribute Summoner
 		{
-			get { return m_Summoner; }
-			set { m_Summoner = value; InvalidateProperties(); }
+			get => m_Summoner;
+            set { m_Summoner = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TalismanRemoval Removal
 		{
-			get { return m_Removal; }
-			set { m_Removal = value; InvalidateProperties(); }
+			get => m_Removal;
+            set { m_Removal = value; InvalidateProperties(); }
 		}
 		#endregion
 
@@ -133,15 +133,15 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TalismanAttribute Protection
 		{
-			get { return m_Protection; }
-			set { m_Protection = value; InvalidateProperties(); }
+			get => m_Protection;
+            set { m_Protection = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TalismanAttribute Killer
 		{
-			get { return m_Killer; }
-			set { m_Killer = value; InvalidateProperties(); }
+			get => m_Killer;
+            set { m_Killer = value; InvalidateProperties(); }
 		}
 		#endregion
 
@@ -153,22 +153,22 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public SkillName Skill
 		{
-			get { return m_Skill; }
-			set { m_Skill = value; InvalidateProperties(); }
+			get => m_Skill;
+            set { m_Skill = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int SuccessBonus
 		{
-			get { return m_SuccessBonus; }
-			set { m_SuccessBonus = value; InvalidateProperties(); }
+			get => m_SuccessBonus;
+            set { m_SuccessBonus = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ExceptionalBonus
 		{
-			get { return m_ExceptionalBonus; }
-			set { m_ExceptionalBonus = value; InvalidateProperties(); }
+			get => m_ExceptionalBonus;
+            set { m_ExceptionalBonus = value; InvalidateProperties(); }
 		}
 		#endregion
 
@@ -179,15 +179,15 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public AosAttributes Attributes
 		{
-			get { return m_AosAttributes; }
-			set { }
+			get => m_AosAttributes;
+            set { }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public AosSkillBonuses SkillBonuses
 		{
-			get { return m_AosSkillBonuses; }
-			set { }
+			get => m_AosSkillBonuses;
+            set { }
 		}
 		#endregion
 

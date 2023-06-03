@@ -55,22 +55,13 @@ namespace Server.Mobiles
 			get { return true; }
 		}*/
 
-		public override int Meat
-		{
-			get { return 3; }
-		}
+		public override int Meat => 3;
 
-		public override FoodType FavoriteFood
-		{
-			get { return FoodType.Meat | FoodType.Fish | FoodType.Eggs | FoodType.FruitsAndVegies; }
-		}
+        public override FoodType FavoriteFood => FoodType.Meat | FoodType.Fish | FoodType.Eggs | FoodType.FruitsAndVegies;
 
-		public override PackInstinct PackInstinct
-		{
-			get { return PackInstinct.Ostard; }
-		}
+        public override PackInstinct PackInstinct => PackInstinct.Ostard;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

@@ -10,12 +10,12 @@ namespace Server.Spells.Fourth
 {
     public class FireFieldSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 477; } }
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 477;
 
-        public override bool CanTargetGround { get { return true; } }
+        public override bool CanTargetGround => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Fire Field", "In Flam Grav",
 				263,
                 9041,
@@ -229,9 +229,9 @@ namespace Server.Spells.Fourth
 			private DateTime m_End;
 			private Mobile m_Caster;
 
-			public override bool BlocksFit{ get{ return true; } }
+			public override bool BlocksFit => true;
 
-			public InternalItem( int itemID, Point3D loc, Mobile caster, Map map, TimeSpan duration, int val ) : base( itemID )
+            public InternalItem( int itemID, Point3D loc, Mobile caster, Map map, TimeSpan duration, int val ) : base( itemID )
 			{
 				bool canFit = SpellHelper.AdjustField( ref loc, map, 12, false );
 

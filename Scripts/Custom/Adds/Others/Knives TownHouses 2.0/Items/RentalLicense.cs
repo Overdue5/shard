@@ -6,7 +6,8 @@ namespace Knives.TownHouses
 	{
 		private Mobile c_Owner;
 
-		public Mobile Owner{ get{ return c_Owner; } set{ c_Owner = value; InvalidateProperties(); } }
+		public Mobile Owner{ get => c_Owner;
+            set{ c_Owner = value; InvalidateProperties(); } }
 
 		public RentalLicense() : base( 0x14F0 )
 		{

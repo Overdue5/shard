@@ -9,34 +9,19 @@ namespace Server.Items
 		private int m_DyedHue;
 		private int m_Price;
 
-		public virtual CustomHuePicker CustomHuePicker{ get{ return null; } }
+		public virtual CustomHuePicker CustomHuePicker => null;
 
-		public virtual bool AllowRunebooks
-		{
-			get{ return false; }
-		}
+        public virtual bool AllowRunebooks => false;
 
-		public virtual bool AllowFurniture
-		{
-			get{ return false; }
-		}
+        public virtual bool AllowFurniture => false;
 
-		public virtual bool AllowStatuettes
-		{
-			get{ return false; }
-		}
+        public virtual bool AllowStatuettes => false;
 
-		public virtual bool AllowLeather
-		{
-			get{ return false; }
-		}
+        public virtual bool AllowLeather => false;
 
-		public virtual bool AllowDyables
-		{
-			get{ return false; }
-		}
-		
-		public override void GetProperties( ObjectPropertyList list )
+        public virtual bool AllowDyables => false;
+
+        public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );			
 			list.Add( "Price Per Item Dyed: "+m_Price.ToString()  );
@@ -75,22 +60,22 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Price
 		{
-			get{return m_Price;}
-			set{m_Price = value;}
-		}
+			get => m_Price;
+            set => m_Price = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Redyable
 		{
-			get{return m_Redyable;}
-			set{m_Redyable = value;}
-		}
+			get => m_Redyable;
+            set => m_Redyable = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int DyedHue
 		{
-			get{return m_DyedHue;}
-			set
+			get => m_DyedHue;
+            set
 			{
 				if ( m_Redyable )
 				{
@@ -115,12 +100,12 @@ namespace Server.Items
 		}
 
 		// Select the clothing to dye.
-		public virtual int TargetMessage{ get{ return 500859; } }
+		public virtual int TargetMessage => 500859;
 
-		// You can not dye that.
-		public virtual int FailMessage{ get{ return 1042083; } }
+        // You can not dye that.
+		public virtual int FailMessage => 1042083;
 
-		public override void OnDoubleClick( Mobile from )
+        public override void OnDoubleClick( Mobile from )
 		{
             if (from.InRange(this.GetWorldLocation(), 5) && from.InLOS(this))
 			{

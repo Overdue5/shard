@@ -11,9 +11,9 @@ namespace Server.Mobiles
 	[CorpseName( "a horde minion corpse" )]
 	public class HordeMinionFamiliar : BaseFamiliar
 	{
-        public override bool DisplayWeight { get { return true; } }
+        public override bool DisplayWeight => true;
 
-		public HordeMinionFamiliar()
+        public HordeMinionFamiliar()
 		{
 			Name = "Horde Minion";
 			Body = 776;

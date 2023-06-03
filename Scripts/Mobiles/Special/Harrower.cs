@@ -50,9 +50,9 @@ namespace Server.Mobiles
 
 		private static readonly ArrayList m_Instances = new ArrayList();
 
-		public static ArrayList Instances{ get{ return m_Instances; } }
+		public static ArrayList Instances => m_Instances;
 
-		public static Harrower Spawn( Point3D platLoc, Map platMap )
+        public static Harrower Spawn( Point3D platLoc, Map platMap )
 		{
 			if ( m_Instances.Count > 0 )
 				return null;
@@ -68,15 +68,9 @@ namespace Server.Mobiles
 			return harrower;
 		}
 
-		public static bool CanSpawn
-		{
-			get
-			{
-				return ( m_Instances.Count == 0 );
-			}
-		}
+		public static bool CanSpawn => ( m_Instances.Count == 0 );
 
-		[Constructable]
+        [Constructable]
 		public Harrower() : base( AIType.AI_SphereMage, FightMode.Closest, 18, 1, 0.2, 0.4 )
 		{
 			m_Instances.Add( this );
@@ -133,11 +127,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool Unprovokable{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool AutoDispel => true;
+        public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		private static readonly double[] m_Offsets = new double[]
+        private static readonly double[] m_Offsets = new double[]
 			{
 				Math.Cos( 000.0 / 180.0 * Math.PI ), Math.Sin( 000.0 / 180.0 * Math.PI ),
 				Math.Cos( 040.0 / 180.0 * Math.PI ), Math.Sin( 040.0 / 180.0 * Math.PI ),
@@ -225,12 +219,12 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public override int HitsMax{ get{ return m_TrueForm ? 65000 : 30000; } }
+		public override int HitsMax => m_TrueForm ? 65000 : 30000;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public override int ManaMax{ get{ return 5000; } }
+        [CommandProperty( AccessLevel.GameMaster )]
+		public override int ManaMax => 5000;
 
-		public Harrower( Serial serial ) : base( serial )
+        public Harrower( Serial serial ) : base( serial )
 		{
 			m_Instances.Add( this );
 		}
@@ -242,9 +236,9 @@ namespace Server.Mobiles
 			base.OnAfterDelete();
 		}
 
-		public override bool DisallowAllMoves{ get{ return m_TrueForm; } }
+		public override bool DisallowAllMoves => m_TrueForm;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

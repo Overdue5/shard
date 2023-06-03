@@ -37,10 +37,7 @@ namespace Server.Custom.Games
 
         private new int Y
         {
-            get
-            {
-                return m_Y;
-            }
+            get => m_Y;
             set
             {
                 m_Y = value;
@@ -51,31 +48,13 @@ namespace Server.Custom.Games
 
         private int Height
         {
-            get
-            {
-                return m_Height;
-            }
-            set
-            {
-                m_Height = value;
-            }
+            get => m_Height;
+            set => m_Height = value;
         }
 
-        public BaseGame Game
-        {
-            get
-            {
-                return m_Game;
-            }
-        }
+        public BaseGame Game => m_Game;
 
-        public Mobile User
-        {
-            get
-            {
-                return m_User;
-            }
-        }
+        public Mobile User => m_User;
 
         private void MakeGump()
         {

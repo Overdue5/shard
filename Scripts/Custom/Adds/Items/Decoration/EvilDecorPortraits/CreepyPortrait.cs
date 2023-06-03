@@ -54,9 +54,9 @@ namespace Server.Items
 			}
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation ) 
+        public override void OnMovement( Mobile m, Point3D oldLocation ) 
 		{ 
 			if ( DateTime.UtcNow >= m_NextAnim && m.InRange( this, 4 ) ) // check if it's time to animate & mobile in range & in los.
 			{
@@ -144,9 +144,9 @@ namespace Server.Items
 			
 	public class CreepyPortraitAddon : BaseAddon
 	{
-	    public override BaseAddonDeed Deed{ get{ return new CreepyPortraitDeed(); } }
-		
-		[Constructable]
+	    public override BaseAddonDeed Deed => new CreepyPortraitDeed();
+
+        [Constructable]
 		public CreepyPortraitAddon()
 		{
 		  Name = "Creepy Portrait";
@@ -174,9 +174,9 @@ namespace Server.Items
 
 	public class CreepyPortraitDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new CreepyPortraitAddon(); } }
+		public override BaseAddon Addon => new CreepyPortraitAddon();
 
-		[Constructable]
+        [Constructable]
 		public CreepyPortraitDeed()
 		{
 		    Name = "Creepy Portrait";

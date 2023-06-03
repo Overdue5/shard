@@ -16,13 +16,10 @@ namespace Server.Games.PaintBall
 		public PBGameItem m_PBGI;
 		public int Team1, Team2, Team3, Team4;
 
-			public override string DefaultName
-		{
-			get { return "Paintball Scoreboard"; }
-		}
-		
+			public override string DefaultName => "Paintball Scoreboard";
 
-		public PBScoreBoard( PBGameItem pbgi, int id ) : base( 0x1e5e )
+
+            public PBScoreBoard( PBGameItem pbgi, int id ) : base( 0x1e5e )
 		{
 			Movable = false;
 			m_PBGI = pbgi;

@@ -70,56 +70,56 @@ namespace Server.Custom.CraftMenu
 
         public static Dictionary<CraftItem, int> GroupIndexList
         {
-            get { return groupIndexList; }
-            set { groupIndexList = value; }
+            get => groupIndexList;
+            set => groupIndexList = value;
         }
 
         public static Dictionary<CraftSubRes, ResourceInfo> ResourceInfoList
         {
-            get { return resourceInfoList; }
-            set { resourceInfoList = value; }
+            get => resourceInfoList;
+            set => resourceInfoList = value;
         }
 
         private Mobile GumpOwner
         {
-            get { return m_CurrentCraftMenu.m_To; }
-            set { m_CurrentCraftMenu.m_To = value; }
+            get => m_CurrentCraftMenu.m_To;
+            set => m_CurrentCraftMenu.m_To = value;
         }
 
         private CraftSystem CurrentCraftSystem
         {
-            get { return m_CurrentCraftMenu.m_CraftSystem; }
-            set { m_CurrentCraftMenu.m_CraftSystem = value; }
+            get => m_CurrentCraftMenu.m_CraftSystem;
+            set => m_CurrentCraftMenu.m_CraftSystem = value;
         }
 
         private GumpLevel SelectedGumpLevel
         {
-            get { return m_CurrentCraftMenu.m_GumpLevel; }
-            set { m_CurrentCraftMenu.m_GumpLevel = value; }
+            get => m_CurrentCraftMenu.m_GumpLevel;
+            set => m_CurrentCraftMenu.m_GumpLevel = value;
         }
 
         private BaseTool ToolUsed
         {
-            get { return m_CurrentCraftMenu.m_Tool; }
-            set { m_CurrentCraftMenu.m_Tool = value; }
+            get => m_CurrentCraftMenu.m_Tool;
+            set => m_CurrentCraftMenu.m_Tool = value;
         }
 
         private int SelectedGroupIndex
         {
-            get { return m_CurrentCraftMenu.m_GroupIndex; }
-            set { m_CurrentCraftMenu.m_GroupIndex = value; }
+            get => m_CurrentCraftMenu.m_GroupIndex;
+            set => m_CurrentCraftMenu.m_GroupIndex = value;
         }
 
         private int SelectedResourceIndex
         {
-            get { return m_CurrentCraftMenu.m_ResourceIndex; }
-            set { m_CurrentCraftMenu.m_ResourceIndex = value; }
+            get => m_CurrentCraftMenu.m_ResourceIndex;
+            set => m_CurrentCraftMenu.m_ResourceIndex = value;
         }
 
         private Type SelectedResType
         {
-            get { return m_CurrentCraftMenu.m_ResType; }
-            set { m_CurrentCraftMenu.m_ResType = value; }
+            get => m_CurrentCraftMenu.m_ResType;
+            set => m_CurrentCraftMenu.m_ResType = value;
         }
 
         #endregion

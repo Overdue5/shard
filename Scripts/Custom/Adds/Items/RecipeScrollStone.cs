@@ -25,7 +25,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Recipe
         {
-            get { return m_Recipe; }
+            get => m_Recipe;
             set
             {
                 m_Recipe = value;

@@ -117,9 +117,9 @@ namespace Server.Items
 	public class AnkhWest : Item
 	{
 		private InternalItem m_Item;
-        public override bool ShowContextMenu { get { return true; } }
+        public override bool ShowContextMenu => true;
 
-		[Constructable]
+        [Constructable]
 		public AnkhWest() : this( false )
 		{
 		}
@@ -136,7 +136,7 @@ namespace Server.Items
 		{
 		}
 
-		public override bool HandlesOnMovement{ get{ return false; } } // Tell the core that we implement OnMovement
+		public override bool HandlesOnMovement => false; // Tell the core that we implement OnMovement
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
@@ -153,8 +153,8 @@ namespace Server.Items
 		[Hue, CommandProperty( AccessLevel.GameMaster )]
 		public override int Hue
 		{
-			get{ return base.Hue; }
-			set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
+			get => base.Hue;
+            set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
 		}
 
 		public override void OnDoubleClickDead( Mobile m )
@@ -203,9 +203,9 @@ namespace Server.Items
 		private class InternalItem : Item
 		{
 			private AnkhWest m_Item;
-            public override bool ShowContextMenu { get { return true; } }
+            public override bool ShowContextMenu => true;
 
-			public InternalItem( bool bloodied, AnkhWest item ) : base( bloodied ? 0x1D97 : 0x2 )
+            public InternalItem( bool bloodied, AnkhWest item ) : base( bloodied ? 0x1D97 : 0x2 )
 			{
 				Movable = false;
 
@@ -236,7 +236,7 @@ namespace Server.Items
 					m_Item.Delete();
 			}
 
-			public override bool HandlesOnMovement{ get{ return false; } } // Tell the core that we implement OnMovement
+			public override bool HandlesOnMovement => false; // Tell the core that we implement OnMovement
 
 			public override void OnMovement( Mobile m, Point3D oldLocation )
 			{
@@ -253,8 +253,8 @@ namespace Server.Items
 			[Hue, CommandProperty( AccessLevel.GameMaster )]
 			public override int Hue
 			{
-				get{ return base.Hue; }
-				set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
+				get => base.Hue;
+                set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
 			}
 
 			public override void OnDoubleClickDead( Mobile m )
@@ -286,9 +286,9 @@ namespace Server.Items
 	public class AnkhNorth : Item
 	{
 		private InternalItem m_Item;
-        public override bool ShowContextMenu { get { return true; } }
+        public override bool ShowContextMenu => true;
 
-		[Constructable]
+        [Constructable]
 		public AnkhNorth() : this( false )
 		{
 		}
@@ -306,7 +306,7 @@ namespace Server.Items
 		{
 		}
 
-		public override bool HandlesOnMovement{ get{ return false; } } // Tell the core that we implement OnMovement
+		public override bool HandlesOnMovement => false; // Tell the core that we implement OnMovement
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
@@ -323,8 +323,8 @@ namespace Server.Items
 		[Hue, CommandProperty( AccessLevel.GameMaster )]
 		public override int Hue
 		{
-			get{ return base.Hue; }
-			set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
+			get => base.Hue;
+            set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
 		}
 
 		public override void OnDoubleClickDead( Mobile m )
@@ -374,9 +374,9 @@ namespace Server.Items
 		private class InternalItem : Item
 		{
 			private AnkhNorth m_Item;
-            public override bool ShowContextMenu { get { return true; } }
+            public override bool ShowContextMenu => true;
 
-			public InternalItem( bool bloodied, AnkhNorth item )
+            public InternalItem( bool bloodied, AnkhNorth item )
 				: base( bloodied ? 0x1E5C : 0x5 )
 			{
 				Movable = false;
@@ -408,7 +408,7 @@ namespace Server.Items
 					m_Item.Delete();
 			}
 
-			public override bool HandlesOnMovement{ get{ return false; } } // Tell the core that we implement OnMovement
+			public override bool HandlesOnMovement => false; // Tell the core that we implement OnMovement
 
 			public override void OnMovement( Mobile m, Point3D oldLocation )
 			{
@@ -425,8 +425,8 @@ namespace Server.Items
 			[Hue, CommandProperty( AccessLevel.GameMaster )]
 			public override int Hue
 			{
-				get{ return base.Hue; }
-				set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
+				get => base.Hue;
+                set{ base.Hue = value; if ( m_Item.Hue != value ) m_Item.Hue = value; }
 			}
 
 			public override void OnDoubleClickDead( Mobile m )

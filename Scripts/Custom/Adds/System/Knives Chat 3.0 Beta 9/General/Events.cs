@@ -11,13 +11,13 @@ namespace Knives.Chat3
     public class ChatEventArgs : EventArgs
     {
         private Mobile c_Mobile;
-        public Mobile Mobile { get { return c_Mobile; } }
+        public Mobile Mobile => c_Mobile;
 
         private Channel c_Channel;
-        public Channel Channel { get { return c_Channel; } }
+        public Channel Channel => c_Channel;
 
         private string c_Speech;
-        public string Speech { get { return c_Speech; } }
+        public string Speech => c_Speech;
 
         public ChatEventArgs(Mobile m, Channel c, string txt)
         {
@@ -30,7 +30,7 @@ namespace Knives.Chat3
     public class FilterViolationEventArgs : EventArgs
     {
         private Mobile c_Mobile;
-        public Mobile Mobile { get { return c_Mobile; } }
+        public Mobile Mobile => c_Mobile;
 
         public FilterViolationEventArgs(Mobile m)
         {
@@ -41,7 +41,7 @@ namespace Knives.Chat3
     public class ErrorEventArgs : EventArgs
     {
         private string c_Text;
-        public string Text { get { return c_Text; } }
+        public string Text => c_Text;
 
         public ErrorEventArgs(string txt)
         {
@@ -52,10 +52,10 @@ namespace Knives.Chat3
     public class GumpCreatedEventArgs : EventArgs
     {
         private Mobile c_Mobile;
-        public Mobile Mobile { get { return c_Mobile; } }
+        public Mobile Mobile => c_Mobile;
 
         private GumpPlus c_Gump;
-        public GumpPlus Gump { get { return c_Gump; } }
+        public GumpPlus Gump => c_Gump;
 
         public GumpCreatedEventArgs(Mobile m, GumpPlus g)
         {

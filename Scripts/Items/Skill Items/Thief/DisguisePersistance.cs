@@ -7,14 +7,11 @@ namespace Server.Items
 	{
 		private static DisguisePersistance m_Instance;
 
-		public static DisguisePersistance Instance{ get{ return m_Instance; } }
+		public static DisguisePersistance Instance => m_Instance;
 
-		public override string DefaultName
-		{
-			get { return "Disguise Persistance - Internal"; }
-		}
+        public override string DefaultName => "Disguise Persistance - Internal";
 
-		public DisguisePersistance() : base( 1 )
+        public DisguisePersistance() : base( 1 )
 		{
 			Movable = false;
 			

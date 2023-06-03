@@ -91,8 +91,9 @@ namespace Server.Mobiles
 		public DeathwatchBeetleHatchling( Serial serial ) : base( serial )
 		{
 		}
-		public override int Hides{ get{ return 8; } }
-		public override void Serialize( GenericWriter writer )
+		public override int Hides => 8;
+
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( (int) 0 );

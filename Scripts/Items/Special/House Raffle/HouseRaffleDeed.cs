@@ -13,48 +13,39 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public HouseRaffleStone Stone
 		{
-			get { return m_Stone; }
-			set { m_Stone = value; InvalidateProperties(); }
+			get => m_Stone;
+            set { m_Stone = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public Point3D PlotLocation
 		{
-			get { return m_PlotLocation; }
-			set { m_PlotLocation = value; InvalidateProperties(); }
+			get => m_PlotLocation;
+            set { m_PlotLocation = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public Map PlotFacet
 		{
-			get { return m_Facet; }
-			set { m_Facet = value; InvalidateProperties(); }
+			get => m_Facet;
+            set { m_Facet = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public Mobile AwardedTo
 		{
-			get { return m_AwardedTo; }
-			set { m_AwardedTo = value; InvalidateProperties(); }
+			get => m_AwardedTo;
+            set { m_AwardedTo = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
-		public bool IsExpired
-		{
-			get { return ( m_Stone == null || m_Stone.Deleted || m_Stone.IsExpired ); }
-		}
+		public bool IsExpired => ( m_Stone == null || m_Stone.Deleted || m_Stone.IsExpired );
 
-		public override string DefaultName
-		{
-			get { return "a writ of lease"; }
-		}
+        public override string DefaultName => "a writ of lease";
 
-		public override double DefaultWeight
-		{
-			get { return 1.0; }
-		}
+        public override double DefaultWeight => 1.0;
 
-		[Constructable]
+        [Constructable]
 		public HouseRaffleDeed()
 			: this ( null, null )
 		{

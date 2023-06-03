@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class SeveredAnchorTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SeveredAnchorTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SeveredAnchorTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SeveredAnchorTankAddon()
 		{
 			AddonComponent ac = null;
@@ -155,15 +149,9 @@ namespace Server.Items
 
 	public class SeveredAnchorTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SeveredAnchorTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new SeveredAnchorTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public SeveredAnchorTankAddonDeed()
 		{
 			Name = "a Severed Anchor Tank";

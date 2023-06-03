@@ -5,12 +5,12 @@ namespace Server.Engines.Quests.Ambitious
 {
 	public abstract class BaseAmbitiousSolenQueen : BaseQuester
 	{
-        public override bool ClickTitle { get { return true; } }
-		public abstract bool RedSolen{ get; }
+        public override bool ClickTitle => true;
+        public abstract bool RedSolen{ get; }
 
-		public override bool DisallowAllMoves{ get{ return false; } }
+		public override bool DisallowAllMoves => false;
 
-		public BaseAmbitiousSolenQueen()
+        public BaseAmbitiousSolenQueen()
 		{
 		}
 
@@ -30,8 +30,9 @@ namespace Server.Engines.Quests.Ambitious
 		{
 			return 0x10D;
 		}
-        public override bool ShowContextMenu { get { return true; } }
-		public override void OnTalk( PlayerMobile player, bool contextMenu )
+        public override bool ShowContextMenu => true;
+
+        public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			Direction = GetDirectionTo( player );
 
@@ -168,9 +169,9 @@ namespace Server.Engines.Quests.Ambitious
 
 	public class RedAmbitiousSolenQueen : BaseAmbitiousSolenQueen
 	{
-		public override bool RedSolen{ get{ return true; } }
+		public override bool RedSolen => true;
 
-		[Constructable]
+        [Constructable]
 		public RedAmbitiousSolenQueen()
 		{
 		}
@@ -196,9 +197,9 @@ namespace Server.Engines.Quests.Ambitious
 
 	public class BlackAmbitiousSolenQueen : BaseAmbitiousSolenQueen
 	{
-		public override bool RedSolen{ get{ return false; } }
+		public override bool RedSolen => false;
 
-		[Constructable]
+        [Constructable]
 		public BlackAmbitiousSolenQueen()
 		{
 		}

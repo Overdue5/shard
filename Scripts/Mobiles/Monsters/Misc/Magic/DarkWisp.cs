@@ -8,13 +8,13 @@ namespace Server.Mobiles
 	[CorpseName( "a wisp corpse" )]
 	public class DarkWisp : BaseCreature
 	{
-		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Wisp; } }
+		public override InhumanSpeech SpeechType => InhumanSpeech.Wisp;
 
-		public override Ethic EthicAllegiance { get { return Ethic.Evil; } }
+        public override Ethic EthicAllegiance => Ethic.Evil;
 
-		public override TimeSpan ReacquireDelay { get { return TimeSpan.FromSeconds( 1.0 ); } }
+        public override TimeSpan ReacquireDelay => TimeSpan.FromSeconds( 1.0 );
 
-		[Constructable]
+        [Constructable]
 		public DarkWisp() : base( AIType.AI_SphereMage, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Wisp";
@@ -57,12 +57,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public DarkWisp( Serial serial )
+        public DarkWisp( Serial serial )
 			: base( serial )
 		{
 		}

@@ -43,22 +43,14 @@ namespace Server.Engines.Quests.Haven
 				typeof( FewReagentsConversation )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// "Uzeraan's Turmoil"
-				return 1049007;
-			}
-		}
+        public override object Name =>
+            // "Uzeraan's Turmoil"
+            1049007;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>The guard speaks to you as you come closer... </I><BR><BR>
+        public override object OfferMessage =>
+            /* <I>The guard speaks to you as you come closer... </I><BR><BR>
 				 * 
 				 * Greetings traveler! <BR><BR>
 				 * 
@@ -77,14 +69,12 @@ namespace Server.Engines.Quests.Haven
 				 * 
 				 * Will you assist us?
 				 */
-				return 1049008;
-			}
-		}
+            1049008;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.MaxValue; } }
-		public override bool IsTutorial{ get{ return true; } }
+        public override TimeSpan RestartDelay => TimeSpan.MaxValue;
+        public override bool IsTutorial => true;
 
-		public override int Picture
+        public override int Picture
 		{
 			get
 			{

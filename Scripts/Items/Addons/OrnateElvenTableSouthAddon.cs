@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class OrnateElvenTableSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new OrnateElvenTableSouthDeed(); } }
+		public override BaseAddonDeed Deed => new OrnateElvenTableSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public OrnateElvenTableSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x308F ), 0, 1, 0 );
@@ -33,8 +33,8 @@ namespace Server.Items
 
 	public class OrnateElvenTableSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new OrnateElvenTableSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1072869; } } // ornate table (south)
+		public override BaseAddon Addon => new OrnateElvenTableSouthAddon();
+        public override int LabelNumber => 1072869; // ornate table (south)
 
 		[Constructable]
 		public OrnateElvenTableSouthDeed()

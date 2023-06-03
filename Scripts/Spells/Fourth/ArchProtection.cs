@@ -6,10 +6,10 @@ namespace Server.Spells.Fourth
 {
     public class ArchProtectionSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 493; } }
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 493;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Arch Protection", "Vas Uus Sanct",
 				Core.AOS ? 239 : 215,
 				9011,

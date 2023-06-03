@@ -22,16 +22,13 @@ namespace Server.Items
 		private int m_MessageIndex;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsAncient
-		{
-			get{ return ( m_Level >= 4 ); }
-		}
+		public bool IsAncient => ( m_Level >= 4 );
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public int Level
 		{
-			get{ return m_Level; }
-			set
+			get => m_Level;
+            set
 			{
 				m_Level = Math.Max( 1, Math.Min( value, 4 ) );
 				UpdateHue();
@@ -42,23 +39,23 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Map TargetMap
 		{
-			get{ return m_TargetMap; }
-			set{ m_TargetMap = value; }
-		}
+			get => m_TargetMap;
+            set => m_TargetMap = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D TargetLocation
 		{
-			get{ return m_TargetLocation; }
-			set{ m_TargetLocation = value; }
-		}
+			get => m_TargetLocation;
+            set => m_TargetLocation = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MessageIndex
 		{
-			get{ return m_MessageIndex; }
-			set{ m_MessageIndex = value; }
-		}
+			get => m_MessageIndex;
+            set => m_MessageIndex = value;
+        }
 
 		public void UpdateHue()
 		{
@@ -304,11 +301,11 @@ namespace Server.Items
 		    private readonly int m_Height;
 		    private readonly string m_Message;
 
-			public int Width{ get{ return m_Width; } }
-			public int Height{ get{ return m_Height; } }
-			public string Message{ get{ return m_Message; } }
+			public int Width => m_Width;
+            public int Height => m_Height;
+            public string Message => m_Message;
 
-			public MessageEntry( int width, int height, string message )
+            public MessageEntry( int width, int height, string message )
 			{
 				m_Width = width;
 				m_Height = height;
@@ -331,10 +328,7 @@ namespace Server.Items
 					new MessageEntry( 280, 250, "...was a cad and a boor, no matter what momma s...rew him overboard! Oh, Anna, 'twas so exciting!<br>  Unfort...y he grabbe...est, and all his riches went with him!<br>  ...sked the captain, and he says we're at {0}<br>...so maybe..." )
 				};
 
-			public static MessageEntry[] Entries
-			{
-				get{ return m_Entries; }
-			}
-		}
+			public static MessageEntry[] Entries => m_Entries;
+        }
 	}
 }

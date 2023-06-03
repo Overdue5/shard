@@ -5,8 +5,9 @@ namespace Server.Engines.Quests.Collector
 {
 	public class TomasONeerlan : BaseQuester
 	{
-        public override bool ClickTitle { get { return true; } }
-		[Constructable]
+        public override bool ClickTitle => true;
+
+        [Constructable]
 		public TomasONeerlan() : base( "the famed toymaker" )
 		{
 		}
@@ -48,7 +49,7 @@ namespace Server.Engines.Quests.Collector
 				|| qs.IsObjectiveInProgress( typeof( CaptureImagesObjective ) )
 				|| qs.IsObjectiveInProgress( typeof( ReturnImagesObjective ) ) );
 		}
-        public override bool ShowContextMenu { get { return true; } }//
+        public override bool ShowContextMenu => true; //
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			QuestSystem qs = player.Quest;

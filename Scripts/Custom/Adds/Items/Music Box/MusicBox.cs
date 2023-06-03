@@ -15,9 +15,9 @@ namespace Server.Items.MusicBox
     [Flipable(0x2AF9, 0x2AFD)]
     public class MusicBox : Item, ISecurable
     {
-        public override bool ShowContextMenu { get { return true; } }
+        public override bool ShowContextMenu => true;
 
-		public static void Initialize() 
+        public static void Initialize() 
 		{
             CommandSystem.Register("AddAllSongs", AccessLevel.GameMaster, new CommandEventHandler(AddAllSongs_OnCommand)); 
 		}
@@ -51,7 +51,7 @@ namespace Server.Items.MusicBox
         }
 
 #if SVN
-        public override bool DisplayWeight { get { return false; } }
+        public override bool DisplayWeight => false;
 #endif
 
         public const int SONGS = 51;
@@ -61,8 +61,8 @@ namespace Server.Items.MusicBox
         [CommandProperty(AccessLevel.GameMaster)]
         public SecureLevel Level
         {
-            get { return m_Level; }
-            set { m_Level = value; }
+            get => m_Level;
+            set => m_Level = value;
         }
 
         public override void AddNameProperties(ObjectPropertyList list)
@@ -184,22 +184,16 @@ namespace Server.Items.MusicBox
             MusicName.ParoxysmusLair,MusicName.Linelle,MusicName.GrizzleDungeon
         };
 
-        public static int[] Locals
-        {
-            get { return m_Locals; }
-        }
+        public static int[] Locals => m_Locals;
 
-        public static MusicName[] Songs
-        {
-            get { return m_Songs; }
-        }
+        public static MusicName[] Songs => m_Songs;
 
         private bool[] m_HasTrack;
 
         public bool[] HasTrack
         {
-            get { return m_HasTrack; }
-            set { m_HasTrack = value; }
+            get => m_HasTrack;
+            set => m_HasTrack = value;
         }
 
         public void AddTrack(MusicBoxTrack track)
@@ -216,7 +210,7 @@ namespace Server.Items.MusicBox
 
         private Timer m_Timer;
 
-        public bool Turning { get { return m_Timer != null; } }
+        public bool Turning => m_Timer != null;
 
         public void BeginTurn(Mobile from, double duration)
         {
@@ -288,8 +282,8 @@ namespace Server.Items.MusicBox
         [CommandProperty(AccessLevel.GameMaster)]
         public int Range
         {
-            get { return m_Range; }
-            set { m_Range = value; }
+            get => m_Range;
+            set => m_Range = value;
         }
 
         private MusicName m_Music;
@@ -297,7 +291,7 @@ namespace Server.Items.MusicBox
         [CommandProperty(AccessLevel.GameMaster)]
         public MusicName Music
         {
-            get { return m_Music; }
+            get => m_Music;
             set { m_Music = value;
                 if (GetSong() < 0) m_Music = MusicName.Britain1;
                 InvalidateProperties(); }
@@ -385,7 +379,7 @@ namespace Server.Items.MusicBox
     {
         private MusicBox m_Box;
         private Mobile m_From;
-        public MusicBox Box { get { return m_Box; } }
+        public MusicBox Box => m_Box;
 
         public PlayListGump(Mobile from, MusicBox box)
             : base(30, 30)

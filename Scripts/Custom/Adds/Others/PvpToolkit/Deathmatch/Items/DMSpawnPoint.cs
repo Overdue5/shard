@@ -7,10 +7,7 @@ namespace Server.Custom.PvpToolkit.DMatch.Items
         [CommandProperty( AccessLevel.GameMaster )]
         public DMStone StoneLink
         {
-            get
-            {
-                return m_Link;
-            }
+            get => m_Link;
             set
             {
                 if (m_Link != value && m_Link != null)

@@ -7,8 +7,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Seer)]
         public int Price
         {
-            get { return m_Price; }
-            set { m_Price = value; }
+            get => m_Price;
+            set => m_Price = value;
         }
 
 		[Constructable]

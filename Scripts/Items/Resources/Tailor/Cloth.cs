@@ -3,15 +3,12 @@ namespace Server.Items
     [Flipable(0x175D, 0x1761)]
 	public class Cloth : Item, IScissorable, IDyable, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+        public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public Cloth() : this( 1 )
 		{
 		}

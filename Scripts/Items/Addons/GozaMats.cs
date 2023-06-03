@@ -2,9 +2,9 @@ namespace Server.Items
 {
     public class GozaMatEastAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new GozaMatEastDeed(); } }
+        public override BaseAddonDeed Deed => new GozaMatEastDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public GozaMatEastAddon()
@@ -42,8 +42,8 @@ namespace Server.Items
 
     public class GozaMatEastDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new GozaMatEastAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030404; } } // goza (east)
+        public override BaseAddon Addon => new GozaMatEastAddon(this.Hue);
+        public override int LabelNumber => 1030404; // goza (east)
 
         [Constructable]
         public GozaMatEastDeed()
@@ -72,9 +72,9 @@ namespace Server.Items
 
     public class GozaMatSouthAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new GozaMatSouthDeed(); } }
+        public override BaseAddonDeed Deed => new GozaMatSouthDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public GozaMatSouthAddon()
@@ -112,8 +112,8 @@ namespace Server.Items
 
     public class GozaMatSouthDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new GozaMatSouthAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030405; } } // goza (south)
+        public override BaseAddon Addon => new GozaMatSouthAddon(this.Hue);
+        public override int LabelNumber => 1030405; // goza (south)
 
         [Constructable]
         public GozaMatSouthDeed()
@@ -142,10 +142,10 @@ namespace Server.Items
 
     public class SquareGozaMatEastAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new SquareGozaMatEastDeed(); } }
-        public override int LabelNumber { get { return 1030688; } } // goza mat
+        public override BaseAddonDeed Deed => new SquareGozaMatEastDeed();
+        public override int LabelNumber => 1030688; // goza mat
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public SquareGozaMatEastAddon()
@@ -182,8 +182,8 @@ namespace Server.Items
 
     public class SquareGozaMatEastDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new SquareGozaMatEastAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030407; } } // square goza (east)
+        public override BaseAddon Addon => new SquareGozaMatEastAddon(this.Hue);
+        public override int LabelNumber => 1030407; // square goza (east)
 
         [Constructable]
         public SquareGozaMatEastDeed()
@@ -212,9 +212,9 @@ namespace Server.Items
 
     public class SquareGozaMatSouthAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new SquareGozaMatSouthDeed(); } }
+        public override BaseAddonDeed Deed => new SquareGozaMatSouthDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public SquareGozaMatSouthAddon()
@@ -251,8 +251,8 @@ namespace Server.Items
 
     public class SquareGozaMatSouthDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new SquareGozaMatSouthAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030406; } } // square goza (south)
+        public override BaseAddon Addon => new SquareGozaMatSouthAddon(this.Hue);
+        public override int LabelNumber => 1030406; // square goza (south)
 
 
         [Constructable]
@@ -282,9 +282,9 @@ namespace Server.Items
 
     public class BrocadeGozaMatEastAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new BrocadeGozaMatEastDeed(); } }
+        public override BaseAddonDeed Deed => new BrocadeGozaMatEastDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public BrocadeGozaMatEastAddon()
@@ -322,8 +322,8 @@ namespace Server.Items
 
     public class BrocadeGozaMatEastDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new BrocadeGozaMatEastAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030408; } } // brocade goza (east)
+        public override BaseAddon Addon => new BrocadeGozaMatEastAddon(this.Hue);
+        public override int LabelNumber => 1030408; // brocade goza (east)
 
         [Constructable]
         public BrocadeGozaMatEastDeed()
@@ -351,9 +351,9 @@ namespace Server.Items
     }
     public class BrocadeGozaMatSouthAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new BrocadeGozaMatSouthDeed(); } }
+        public override BaseAddonDeed Deed => new BrocadeGozaMatSouthDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public BrocadeGozaMatSouthAddon()
@@ -391,8 +391,8 @@ namespace Server.Items
 
     public class BrocadeGozaMatSouthDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new BrocadeGozaMatSouthAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030409; } } // brocade goza (south)
+        public override BaseAddon Addon => new BrocadeGozaMatSouthAddon(this.Hue);
+        public override int LabelNumber => 1030409; // brocade goza (south)
 
         [Constructable]
         public BrocadeGozaMatSouthDeed()
@@ -420,9 +420,9 @@ namespace Server.Items
     }
     public class BrocadeSquareGozaMatEastAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new BrocadeSquareGozaMatEastDeed(); } }
+        public override BaseAddonDeed Deed => new BrocadeSquareGozaMatEastDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public BrocadeSquareGozaMatEastAddon()
@@ -459,8 +459,8 @@ namespace Server.Items
 
     public class BrocadeSquareGozaMatEastDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new BrocadeSquareGozaMatEastAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030411; } } // brocade square goza (east)
+        public override BaseAddon Addon => new BrocadeSquareGozaMatEastAddon(this.Hue);
+        public override int LabelNumber => 1030411; // brocade square goza (east)
 
         [Constructable]
         public BrocadeSquareGozaMatEastDeed()
@@ -489,9 +489,9 @@ namespace Server.Items
 
     public class BrocadeSquareGozaMatSouthAddon : BaseAddon
     {
-        public override BaseAddonDeed Deed { get { return new BrocadeSquareGozaMatSouthDeed(); } }
+        public override BaseAddonDeed Deed => new BrocadeSquareGozaMatSouthDeed();
 
-        public override bool RetainDeedHue { get { return true; } }
+        public override bool RetainDeedHue => true;
 
         [Constructable]
         public BrocadeSquareGozaMatSouthAddon()
@@ -528,8 +528,8 @@ namespace Server.Items
 
     public class BrocadeSquareGozaMatSouthDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new BrocadeSquareGozaMatSouthAddon(this.Hue); } }
-        public override int LabelNumber { get { return 1030410; } } // brocade square goza (south)
+        public override BaseAddon Addon => new BrocadeSquareGozaMatSouthAddon(this.Hue);
+        public override int LabelNumber => 1030410; // brocade square goza (south)
 
 
         [Constructable]

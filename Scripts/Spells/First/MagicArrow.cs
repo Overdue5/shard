@@ -6,10 +6,10 @@ namespace Server.Spells.First
 {
     public class MagicArrowSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.First; } }
-        public override int Sound { get { return 0x1E5; } }
+        public override SpellCircle Circle => SpellCircle.First;
+        public override int Sound => 0x1E5;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Magic Arrow", "In Por Ylem",
 				212,
 				9041,
@@ -45,7 +45,7 @@ namespace Server.Spells.First
 			Caster.Target = new InternalTarget( this );
 		}
 
-		public override bool DelayedDamage{ get{ return false; } }//XUO Chro blah useless
+		public override bool DelayedDamage => false; //XUO Chro blah useless
 
         public void iTarget(BaseExplosionPotion pot) //Taran: When casted on explosion pots they explode
         {

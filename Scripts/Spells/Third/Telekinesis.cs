@@ -5,9 +5,9 @@ namespace Server.Spells.Third
 {
     public class TelekinesisSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Third; } }
-        public override int Sound { get { return 0x1F5; } }
-        
+        public override SpellCircle Circle => SpellCircle.Third;
+        public override int Sound => 0x1F5;
+
         //public override bool SpellDisabled { get { return true; } }
 
 		private static readonly SpellInfo m_Info = new SpellInfo(

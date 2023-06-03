@@ -65,22 +65,21 @@ namespace Server.Mobiles
 			if ( Utility.RandomDouble() < .11 ) PackItem( Engines.Plants.Seed.RandomBonsaiSeed() );
 		}
 
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish; } }
+		public override FoodType FavoriteFood => FoodType.Fish;
 
-		public override int Meat{ get{ return 1; } }
+        public override int Meat => 1;
 
 
-
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );
             PackGold(40, 200);
 			AddLoot( LootPack.Gems, 4);
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool CanRummageCorpses => true;
 
-		// TODO: Body Transformation
+        // TODO: Body Transformation
 
 		public override void OnGaveMeleeAttack( Mobile defender )
  		{

@@ -11,9 +11,9 @@ namespace Server.Engines.Apiculture
 
 		public static readonly bool LessWax = true; //wax production is slower then honey (realistic)
 
-		public override BaseAddonDeed Deed{ get{ return new apiBeeHiveDeed(); } }
+		public override BaseAddonDeed Deed => new apiBeeHiveDeed();
 
-		apiBeesComponent m_Bees; //for displaying bee swarm
+        apiBeesComponent m_Bees; //for displaying bee swarm
 
 		int m_Health = 10;    //current health
 
@@ -42,18 +42,26 @@ namespace Server.Engines.Apiculture
 
 		apiBeeHiveComponent m_Comp; //for storing the top of the hive
 
-		public int HiveAge { get { return m_Age; } set { m_Age = value; } }
+		public int HiveAge { get => m_Age;
+            set => m_Age = value;
+        }
 
-		public DateTime NextCheck { get { return m_NextCheck; } set { m_NextCheck = value; } }
+		public DateTime NextCheck { get => m_NextCheck;
+            set => m_NextCheck = value;
+        }
 
-		public HiveStatus HiveStage { get { return m_Status; } set { m_Status = value; } }
+		public HiveStatus HiveStage { get => m_Status;
+            set => m_Status = value;
+        }
 
-		public HiveGrowthIndicator LastGrowth { get { return m_LastGrowth; } set { m_LastGrowth = value; } }
+		public HiveGrowthIndicator LastGrowth { get => m_LastGrowth;
+            set => m_LastGrowth = value;
+        }
 
 		public int Wax 
 		{ 
-			get { return m_Wax; } 
-			set 
+			get => m_Wax;
+            set 
 			{ 
 				if( value < 0 )
 					m_Wax = 0;
@@ -66,8 +74,8 @@ namespace Server.Engines.Apiculture
 
 		public int Honey 
 		{ 
-			get { return m_Honey; } 
-			set 
+			get => m_Honey;
+            set 
 			{ 
 				if( value < 0 )
 					m_Honey = 0;
@@ -80,8 +88,8 @@ namespace Server.Engines.Apiculture
 
 		public int Health 
 		{ 
-			get{ return m_Health; } 
-			set
+			get => m_Health;
+            set
 			{ 
 				if ( value < 0 )
 					m_Health = 0;
@@ -97,12 +105,9 @@ namespace Server.Engines.Apiculture
 			} 
 		}
 
-		public int MaxHealth
-		{
-			get	{ return 10 + ((int)m_Status * 2); }
-		}
+		public int MaxHealth => 10 + ((int)m_Status * 2);
 
-		public HiveHealth OverallHealth
+        public HiveHealth OverallHealth
 		{
 			get
 			{
@@ -121,8 +126,8 @@ namespace Server.Engines.Apiculture
 
 		public int Population 
 		{ 
-			get{ return m_Population; } 
-			set
+			get => m_Population;
+            set
 			{ 
 				if ( value < 0 )
 					m_Population = 0;
@@ -135,8 +140,8 @@ namespace Server.Engines.Apiculture
         
 		public int ParasiteLevel 
 		{ 
-			get{ return m_Parasite; } 
-			set
+			get => m_Parasite;
+            set
 			{ 
 				if ( value < 0 )
 					m_Parasite = 0;
@@ -149,8 +154,8 @@ namespace Server.Engines.Apiculture
 
 		public int DiseaseLevel 
 		{ 
-			get{ return m_Disease; } 
-			set
+			get => m_Disease;
+            set
 			{ 
 				if ( value < 0 )
 					m_Disease = 0;
@@ -161,11 +166,12 @@ namespace Server.Engines.Apiculture
 			} 
 		}
 
-		public bool IsFullAgilityPotion { get { return m_PotAgility >= 2; } }
-		public int potAgility 
+		public bool IsFullAgilityPotion => m_PotAgility >= 2;
+
+        public int potAgility 
 		{ 
-			get{ return m_PotAgility; } 
-			set
+			get => m_PotAgility;
+            set
 			{ 
                 if ( value < 0 )
 					m_PotAgility = 0;
@@ -176,11 +182,12 @@ namespace Server.Engines.Apiculture
 			} 
 		}
 
-		public bool IsFullHealPotion { get { return m_PotHeal >= 2; } }
-		public int potHeal 
+		public bool IsFullHealPotion => m_PotHeal >= 2;
+
+        public int potHeal 
 		{ 
-			get{ return m_PotHeal; } 
-			set
+			get => m_PotHeal;
+            set
 			{ 
 				if ( value < 0 )
 					m_PotHeal = 0;
@@ -191,11 +198,12 @@ namespace Server.Engines.Apiculture
 			} 
 		}
 
-		public bool IsFullCurePotion { get { return m_PotCure >= 2; } }
-		public int potCure 
+		public bool IsFullCurePotion => m_PotCure >= 2;
+
+        public int potCure 
 		{ 
-			get{ return m_PotCure; } 
-			set
+			get => m_PotCure;
+            set
 			{ 
 				if ( value < 0 )
 					m_PotCure = 0;
@@ -206,11 +214,12 @@ namespace Server.Engines.Apiculture
 			} 
 		}
 
-		public bool IsFullStrengthPotion { get { return m_PotStr >= 2; } }
-		public int potStrength 
+		public bool IsFullStrengthPotion => m_PotStr >= 2;
+
+        public int potStrength 
 		{ 
-			get{ return m_PotStr; } 
-			set
+			get => m_PotStr;
+            set
 			{ 
 				if ( value < 0 )
 					m_PotStr = 0;
@@ -221,11 +230,12 @@ namespace Server.Engines.Apiculture
 			} 
 		}
 
-		public bool IsFullPoisonPotion { get { return m_PotPoison >= 2; } }
-		public int potPoison 
+		public bool IsFullPoisonPotion => m_PotPoison >= 2;
+
+        public int potPoison 
 		{ 
-			get{ return m_PotPoison; } 
-			set
+			get => m_PotPoison;
+            set
 			{ 
 				if ( value < 0 )
 					m_PotPoison = 0;
@@ -238,39 +248,27 @@ namespace Server.Engines.Apiculture
 
 		public int FlowersInRange
 		{
-			get{ return m_Flowers; }
-			set{ m_Flowers = value; }
-		}
+			get => m_Flowers;
+            set => m_Flowers = value;
+        }
 
 		public int WaterInRange
 		{
-			get{ return m_Water; }
-			set{ m_Water = value; }
-		}
+			get => m_Water;
+            set => m_Water = value;
+        }
 
-		public int Range
-		{
-			get{ return m_Population + 2 + potAgility; } //bees work harder
-		}
+		public int Range => m_Population + 2 + potAgility; //bees work harder
 
-		public bool IsCheckable
-		{
-			get { return m_Status != HiveStatus.Empty; }
-		}
+        public bool IsCheckable => m_Status != HiveStatus.Empty;
 
-		public bool IsGrowable
-		{
-			get { return m_Status != HiveStatus.Empty; }
-		}
+        public bool IsGrowable => m_Status != HiveStatus.Empty;
 
-		public bool HasMaladies
-		{
-			get { return DiseaseLevel > 0 || ParasiteLevel > 0 ; }
-		}
+        public bool HasMaladies => DiseaseLevel > 0 || ParasiteLevel > 0;
 
-		public apiBeeHiveComponent BeeHiveComponent { get{ return m_Comp; } }
-		
-		[Constructable]
+        public apiBeeHiveComponent BeeHiveComponent => m_Comp;
+
+        [Constructable]
 		public apiBeeHive()
 		{
 			AddComponent( new AddonComponent( 2868 ),0,0, 0 ); //table
@@ -766,9 +764,9 @@ namespace Server.Engines.Apiculture
 	{
 		apiBeeHive m_Hive;
 
-		public override bool ForceShowProperties{ get{ return true;} }
-		
-		public apiBeeHiveComponent(apiBeeHive hive) : base (2330)
+		public override bool ForceShowProperties => true;
+
+        public apiBeeHiveComponent(apiBeeHive hive) : base (2330)
 		{	
 			m_Hive = hive;
 		}
@@ -846,9 +844,9 @@ namespace Server.Engines.Apiculture
 
 	public class apiBeeHiveDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new apiBeeHive(); } }
-	
-		[Constructable]
+		public override BaseAddon Addon => new apiBeeHive();
+
+        [Constructable]
 		public apiBeeHiveDeed()
 		{
 			Name = "beehive deed";

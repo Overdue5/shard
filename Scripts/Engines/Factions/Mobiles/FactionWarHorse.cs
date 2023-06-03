@@ -10,8 +10,8 @@ namespace Server.Factions
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
 		public Faction Faction
 		{
-			get{ return m_Faction; }
-			set
+			get => m_Faction;
+            set
 			{
 				m_Faction = value;
 
@@ -62,9 +62,9 @@ namespace Server.Factions
 			Faction = faction;
 		}
 
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+		public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public FactionWarHorse( Serial serial ) : base( serial )
+        public FactionWarHorse( Serial serial ) : base( serial )
 		{
 		}
 

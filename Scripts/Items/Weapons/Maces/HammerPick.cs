@@ -6,22 +6,23 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 
-		public override int AosStrengthReq{ get{ return 45; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 17; } }
-		public override int AosSpeed{ get{ return 28; } }
+		public override int AosStrengthReq => 45;
+        public override int AosMinDamage => 15;
+        public override int AosMaxDamage => 17;
+        public override int AosSpeed => 28;
 
-		public override int OldStrengthReq{ get{ return 35; } }
-		//public override int OldMinDamage{ get{ return 20; } }
+        public override int OldStrengthReq => 35;
+
+        //public override int OldMinDamage{ get{ return 20; } }
 		//public override int OldMaxDamage{ get{ return 45; } }
-        public override int OldMinDamage { get { return 25; } }
-        public override int OldMaxDamage { get { return 40; } }
-		public override int OldSpeed{ get{ return 604; } }
+        public override int OldMinDamage => 25;
+        public override int OldMaxDamage => 40;
+        public override int OldSpeed => 604;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 70; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 70;
 
-		[Constructable]
+        [Constructable]
 		public HammerPick() : base( 0x143D )
 		{
 			Weight = 9.0;

@@ -62,190 +62,182 @@ namespace Server.Games.PaintBall
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get { return m_Active; }
-			set { m_Active = value; 
+			get => m_Active;
+            set { m_Active = value; 
 			InvalidateProperties();
 			}
 		}
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool CanJoin		
 		{
-			get { return m_CanJoin; }
-			set { m_CanJoin = value; }
-		}
+			get => m_CanJoin;
+            set => m_CanJoin = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool AddNpc		
 		{
-			get { return m_AddNpc; }
-			set { m_AddNpc = value; }
-		}
+			get => m_AddNpc;
+            set => m_AddNpc = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Team1	
 		{
-			get { return m_Team1; }
-			set { m_Team1 = value; }
-		}
+			get => m_Team1;
+            set => m_Team1 = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Team2	
 		{
-			get { return m_Team2; }
-			set { m_Team2 = value; }
-		}
+			get => m_Team2;
+            set => m_Team2 = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Team3	
 		{
-			get { return m_Team3; }
-			set { m_Team3 = value; }
-		}
+			get => m_Team3;
+            set => m_Team3 = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Team4
 		{
-			get { return m_Team4; }
-			set { m_Team4 = value; }
-		}
+			get => m_Team4;
+            set => m_Team4 = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Team1Name		
 		{
-			get { return m_Team1Name; }
-			set { m_Team1Name = value; }
-		}
+			get => m_Team1Name;
+            set => m_Team1Name = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Team2Name		
 		{
-			get { return m_Team2Name; }
-			set { m_Team2Name = value; }
-		}
+			get => m_Team2Name;
+            set => m_Team2Name = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Team3Name		
 		{
-			get { return m_Team3Name; }
-			set { m_Team3Name = value; }
-		}
+			get => m_Team3Name;
+            set => m_Team3Name = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Team4Name		
 		{
-			get { return m_Team4Name; }
-			set { m_Team4Name = value; }
-		}
+			get => m_Team4Name;
+            set => m_Team4Name = value;
+        }
 		
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Teams
 		{
-			get { return m_Teams; }
-			set { m_Teams = value; }
-		
-		}
+			get => m_Teams;
+            set => m_Teams = value;
+        }
 
 	    [CommandProperty( AccessLevel.GameMaster )]
 		public int Team1Hue
 		{
-			get { return m_Team1Hue; }
-			set { m_Team1Hue = value; }
-		
-		}
+			get => m_Team1Hue;
+            set => m_Team1Hue = value;
+        }
 				[CommandProperty( AccessLevel.GameMaster )]
 		public int Team2Hue
 		{
-			get { return m_Team2Hue; }
-			set { m_Team2Hue = value; }
-		
-		}
+			get => m_Team2Hue;
+            set => m_Team2Hue = value;
+        }
 				[CommandProperty( AccessLevel.GameMaster )]
 		public int Team3Hue
 		{
-			get { return m_Team3Hue; }
-			set { m_Team3Hue = value; }
-		
-		}
+			get => m_Team3Hue;
+            set => m_Team3Hue = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Team4Hue
 		{
-			get { return m_Team4Hue; }
-			set { m_Team4Hue = value; }
-		
-		}
+			get => m_Team4Hue;
+            set => m_Team4Hue = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int NadeDamage
 		{
-			get { return m_NadeDamage; }
-			set { m_NadeDamage = value; }
-		}
+			get => m_NadeDamage;
+            set => m_NadeDamage = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int NumberOfNades
 		{
-			get { return m_NumNades; }
-			set { m_NumNades = value; }
-		}
+			get => m_NumNades;
+            set => m_NumNades = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Team1Dest
 		{
-			get { return m_Team1Dest; }
-			set { m_Team1Dest = value; }
-		}
+			get => m_Team1Dest;
+            set => m_Team1Dest = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Team2Dest
 		{
-			get { return m_Team2Dest; }
-			set { m_Team2Dest = value; }
-		}
+			get => m_Team2Dest;
+            set => m_Team2Dest = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Team3Dest
 		{
-			get { return m_Team3Dest; }
-			set { m_Team3Dest = value; }
-		}
+			get => m_Team3Dest;
+            set => m_Team3Dest = value;
+        }
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Team4Dest
 		{
-			get { return m_Team4Dest; }
-			set { m_Team4Dest = value; }
-		}
+			get => m_Team4Dest;
+            set => m_Team4Dest = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Exit1Dest
 		{
-			get { return m_Exit1Dest; }
-			set { m_Exit1Dest = value; }
-		}
+			get => m_Exit1Dest;
+            set => m_Exit1Dest = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Exit2Dest
 		{
-			get { return m_Exit2Dest; }
-			set { m_Exit2Dest = value; }
-		}
+			get => m_Exit2Dest;
+            set => m_Exit2Dest = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Exit3Dest
 		{
-			get { return m_Exit3Dest; }
-			set { m_Exit3Dest = value; }
-		}
+			get => m_Exit3Dest;
+            set => m_Exit3Dest = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Exit4Dest
 		{
-			get { return m_Exit4Dest; }
-			set { m_Exit4Dest = value; }
-		}
+			get => m_Exit4Dest;
+            set => m_Exit4Dest = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Map MapDest
 		{
-			get { return m_MapDest; }
-			set { m_MapDest = value; }
-		}
+			get => m_MapDest;
+            set => m_MapDest = value;
+        }
         [CommandProperty(AccessLevel.GameMaster)]
         public Mod SetMod
         {
-            get
-            {
-                return m_Mod;
-            }
+            get => m_Mod;
             set
             {
                 if (m_Mod != value)
@@ -262,13 +254,12 @@ namespace Server.Games.PaintBall
 		public ArrayList NpcPlayers;
 		public ArrayList DeadPlayers;
 		public ArrayList DeadNpcPlayers;
-		public ArrayList Announcers{ get{ return m_Announcers; } }
-		public ArrayList Npcs{ get{ return m_Npcs; } }
-		public PBScoreBoard SB{ get{ return m_PBScoreBoard; } }
+		public ArrayList Announcers => m_Announcers;
+        public ArrayList Npcs => m_Npcs;
+        public PBScoreBoard SB => m_PBScoreBoard;
 
 
-
-		[Constructable]
+        [Constructable]
 		public PBGameItem() : base( 0xED4 )
 		{
 			Movable = false;

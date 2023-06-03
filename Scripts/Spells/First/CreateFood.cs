@@ -5,12 +5,12 @@ namespace Server.Spells.First
 {
     public class CreateFoodSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.First; } }
-        public override int Sound { get { return 0x1E2; } }
+        public override SpellCircle Circle => SpellCircle.First;
+        public override int Sound => 0x1E2;
 
-        public override bool CanTargetGround { get { return true; } }
+        public override bool CanTargetGround => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Create Food", "In Mani Ylem",
                 263,
 				9011,
@@ -89,7 +89,9 @@ namespace Server.Spells.First
 	{
 		private Type m_Type;
 
-	    public Type Type{ get{ return m_Type; } set{ m_Type = value; } }
+	    public Type Type{ get => m_Type;
+            set => m_Type = value;
+        }
 	    public string Name { get; set; }
 
 	    public FoodInfo( Type type, string name )

@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class SquirrelStatueSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new SquirrelStatueSouthDeed(); } }
+		public override BaseAddonDeed Deed => new SquirrelStatueSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public SquirrelStatueSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x2D11 ), 0, 0, 0 );
@@ -31,8 +31,8 @@ namespace Server.Items
 
 	public class SquirrelStatueSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new SquirrelStatueSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1072884; } } // squirrel statue (south)
+		public override BaseAddon Addon => new SquirrelStatueSouthAddon();
+        public override int LabelNumber => 1072884; // squirrel statue (south)
 
 		[Constructable]
 		public SquirrelStatueSouthDeed()

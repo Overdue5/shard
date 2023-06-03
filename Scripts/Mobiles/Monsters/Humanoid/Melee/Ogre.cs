@@ -50,11 +50,11 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomMinMax(1, 2)));
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
-		public override int Meat{ get{ return 2; } }
+		public override bool CanRummageCorpses => true;
+        public override int TreasureMapLevel => 1;
+        public override int Meat => 2;
 
-		public Ogre( Serial serial ) : base( serial )
+        public Ogre( Serial serial ) : base( serial )
 		{
 		}
 

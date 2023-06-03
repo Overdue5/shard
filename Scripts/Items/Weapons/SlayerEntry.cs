@@ -9,10 +9,10 @@ namespace Server.Items
 
 	    public SlayerGroup Group { get; set; }
 
-	    public SlayerName Name{ get{ return m_Name; } }
-		public Type[] Types{ get{ return m_Types; } }
+	    public SlayerName Name => m_Name;
+        public Type[] Types => m_Types;
 
-		private static readonly int[] m_AosTitles = new int[]
+        private static readonly int[] m_AosTitles = new int[]
 			{
 				1060479, // undead slayer
 				1060470, // orc slayer

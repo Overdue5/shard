@@ -8,7 +8,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public CraftResource Resource
         {
-            get { return m_Resource; }
+            get => m_Resource;
             set { m_Resource = value; InvalidateProperties(); }
         }
 
@@ -38,7 +38,7 @@ namespace Server.Items
             }
         }
 
-        bool ICommodity.IsDeedable { get { return true; } }
+        bool ICommodity.IsDeedable => true;
 
         public BaseBoard(CraftResource resource) : this(resource, 1)
         {

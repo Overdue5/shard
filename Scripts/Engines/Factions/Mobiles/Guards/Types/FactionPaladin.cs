@@ -4,9 +4,9 @@ namespace Server.Factions
 {
 	public class FactionPaladin : BaseFactionGuard
 	{
-		public override GuardAI GuardAI{ get{ return GuardAI.Magic | GuardAI.Melee | GuardAI.Smart | GuardAI.Curse | GuardAI.Bless; } }
+		public override GuardAI GuardAI => GuardAI.Magic | GuardAI.Melee | GuardAI.Smart | GuardAI.Curse | GuardAI.Bless;
 
-		[Constructable]
+        [Constructable]
 		public FactionPaladin() : base( "the paladin" )
 		{
 			GenerateBody( false, false );

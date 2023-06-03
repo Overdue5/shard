@@ -7,17 +7,11 @@ namespace Server.Engines.Craft
 {
 	public class DefTinkering : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get	{ return SkillName.Tinkering; }
-		}
+		public override SkillName MainSkill => SkillName.Tinkering;
 
-		public override int GumpTitleNumber
-		{
-			get { return 1044007; } // <CENTER>TINKERING MENU</CENTER>
-		}
+        public override int GumpTitleNumber => 1044007; // <CENTER>TINKERING MENU</CENTER>
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
 		public static CraftSystem CraftSystem
 		{
@@ -426,9 +420,9 @@ namespace Server.Engines.Craft
 	{
 		private LockableContainer m_Container;
 
-		public LockableContainer Container{ get{ return m_Container; } }
+		public LockableContainer Container => m_Container;
 
-		public abstract TrapType TrapType{ get; }
+        public abstract TrapType TrapType{ get; }
 
 		public TrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
 		{
@@ -535,9 +529,9 @@ namespace Server.Engines.Craft
 	[CraftItemID( 0x1BFC )]
 	public class DartTrapCraft : TrapCraft
 	{
-		public override TrapType TrapType{ get{ return TrapType.DartTrap; } }
+		public override TrapType TrapType => TrapType.DartTrap;
 
-		public DartTrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
+        public DartTrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
 		{
 		}
 	}
@@ -545,9 +539,9 @@ namespace Server.Engines.Craft
 	[CraftItemID( 0x113E )]
 	public class PoisonTrapCraft : TrapCraft
 	{
-		public override TrapType TrapType{ get{ return TrapType.PoisonTrap; } }
+		public override TrapType TrapType => TrapType.PoisonTrap;
 
-		public PoisonTrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
+        public PoisonTrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
 		{
 		}
 	}
@@ -555,9 +549,9 @@ namespace Server.Engines.Craft
 	[CraftItemID( 0x370C )]
 	public class ExplosionTrapCraft : TrapCraft
 	{
-		public override TrapType TrapType{ get{ return TrapType.ExplosionTrap; } }
+		public override TrapType TrapType => TrapType.ExplosionTrap;
 
-		public ExplosionTrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
+        public ExplosionTrapCraft( Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, int quality ) : base( from, craftItem, craftSystem, typeRes, tool, quality )
 		{
 		}
 	}

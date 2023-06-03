@@ -39,9 +39,9 @@ namespace Server.Engines.Quests.Ninja
 			AddItem( tekagi );
 		}
 
-		public override int TalkNumber{ get	{ return -1; } }
+		public override int TalkNumber => -1;
 
-		public override int GetAutoTalkRange( PlayerMobile pm )
+        public override int GetAutoTalkRange( PlayerMobile pm )
 		{
 			return 2;
 		}

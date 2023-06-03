@@ -29,7 +29,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public CraftResource Resource
         {
-            get { return m_Resource; }
+            get => m_Resource;
             set
             {
                 if (m_Resource != value)
@@ -64,7 +64,7 @@ namespace Server.Items
 			m_Components = new List<AddonComponent>();
 		}
 
-		public virtual bool RetainDeedHue{ get{ return false; } }
+		public virtual bool RetainDeedHue => false;
 
         public virtual void OnChop(Mobile from)
         {
@@ -104,22 +104,13 @@ namespace Server.Items
 			}
 		}
 
-		public virtual BaseAddonDeed Deed{ get{ return null; } }
+		public virtual BaseAddonDeed Deed => null;
 
-		Item IAddon.Deed
-		{
-			get{ return Deed; }
-		}
+        Item IAddon.Deed => Deed;
 
-		public List<AddonComponent> Components
-		{
-			get
-			{
-				return m_Components;
-			}
-		}
+        public List<AddonComponent> Components => m_Components;
 
-		public BaseAddon( Serial serial ) : base( serial )
+        public BaseAddon( Serial serial ) : base( serial )
 		{
 		}
 
@@ -240,16 +231,13 @@ namespace Server.Items
 				c.Delete();
 		}
 
-		public virtual bool ShareHue{ get{ return true; } }
+		public virtual bool ShareHue => true;
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+        [Hue, CommandProperty( AccessLevel.GameMaster )]
 		public override int Hue
 		{
-			get
-			{
-				return base.Hue;
-			}
-			set
+			get => base.Hue;
+            set
 			{
 				if ( base.Hue != value )
 				{

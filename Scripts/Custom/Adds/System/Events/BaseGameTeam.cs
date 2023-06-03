@@ -30,10 +30,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public string Name
         {
-            get
-            {
-                return m_Name;
-            }
+            get => m_Name;
             set
             {
                 m_Name = value;
@@ -45,10 +42,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D Home
         {
-            get
-            {
-                return m_Home;
-            }
+            get => m_Home;
             set
             {
                 if(m_Moongate != null)
@@ -60,10 +54,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Map HomeMap
         {
-            get
-            {
-                return m_HomeMap;
-            }
+            get => m_HomeMap;
             set
             {
                 if (m_Moongate != null)
@@ -75,10 +66,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D TeamGateLocation
         {
-            get
-            {
-                return m_TeamGateLocation;
-            }
+            get => m_TeamGateLocation;
             set
             {
                 m_TeamGateLocation = value;
@@ -90,10 +78,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Map TeamGateMap
         {
-            get
-            {
-                return m_TeamGateMap;
-            }
+            get => m_TeamGateMap;
             set
             {
                 m_TeamGateMap = value;
@@ -105,10 +90,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public int Score
         {
-            get
-            {
-                return m_Score;
-            }
+            get => m_Score;
             set
             {
                 m_Score = value;
@@ -120,10 +102,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public int Hue
         {
-            get
-            {
-                return m_Hue;
-            }
+            get => m_Hue;
             set
             {
                 m_Hue = value;
@@ -133,26 +112,14 @@ namespace Server.Custom.Games
         }
         public BaseGame Game
         {
-            get
-            {
-                return m_Game;
-            }
-            set
-            {
-                m_Game = value;
-            }
+            get => m_Game;
+            set => m_Game = value;
         }
 
         public List<Mobile> Players
         {
-            get
-            {
-                return m_Players;
-            }
-            set
-            {
-                m_Players = value;
-            }
+            get => m_Players;
+            set => m_Players = value;
         }
         #endregion
 

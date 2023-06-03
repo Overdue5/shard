@@ -9,7 +9,7 @@ namespace Server.Items
 {
 	public class CannonAddonComponent : AddonComponent
 	{
-		public override int LabelNumber{ get{ return 1076157; } } // Decorative Cannon
+		public override int LabelNumber => 1076157; // Decorative Cannon
 
 		public CannonAddonComponent( int itemID ) : base( itemID )
 		{			
@@ -67,16 +67,13 @@ namespace Server.Items
 		private bool m_IsRewardItem;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public CannonDirection CannonDirection
-		{ 
-			get{ return m_CannonDirection; } 
-		}
-		
-		[CommandProperty( AccessLevel.GameMaster )]
+		public CannonDirection CannonDirection => m_CannonDirection;
+
+        [CommandProperty( AccessLevel.GameMaster )]
 		public int Charges 
 		{ 
-			get{ return m_Charges; } 
-			set
+			get => m_Charges;
+            set
 			{ 
 				m_Charges = value; 
 				
@@ -88,8 +85,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set
+			get => m_IsRewardItem;
+            set
 			{ 
 				m_IsRewardItem = value; 
 				
@@ -362,7 +359,7 @@ namespace Server.Items
 	
 	public class CannonDeed : BaseAddonDeed, IRewardItem, IRewardOption
 	{
-		public override int LabelNumber{ get{ return 1076195; } } // A deed for a cannon
+		public override int LabelNumber => 1076195; // A deed for a cannon
 		
 		public override BaseAddon Addon
 		{ 
@@ -383,15 +380,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges 
 		{ 
-			get{ return m_Charges; } 
-			set{ m_Charges = value; InvalidateProperties(); } 
+			get => m_Charges;
+            set{ m_Charges = value; InvalidateProperties(); } 
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set{ m_IsRewardItem = value; InvalidateProperties(); }
 		}
 		
 		[Constructable]

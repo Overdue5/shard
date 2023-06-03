@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class ChaosSymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new ChaosSymbolDeed(); } }
+		public override BaseAddonDeed Deed => new ChaosSymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public ChaosSymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14E3 ), 0, 0, 0 ); //N
@@ -34,9 +34,9 @@ namespace Server.Items
 
 	public class ChaosSymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new ChaosSymbolAddon(); } }
+		public override BaseAddon Addon => new ChaosSymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public ChaosSymbolDeed()
 		{
             Name = "Chaos symbol deed";

@@ -17,12 +17,9 @@ namespace Server.Engines.MyRunUO
 		private readonly string m_CompletionString;
 		private readonly string m_ConnectionString;
 
-		public bool HasCompleted
-		{
-			get{ return m_HasCompleted; }
-		}
+		public bool HasCompleted => m_HasCompleted;
 
-		public void Enqueue( object obj )
+        public void Enqueue( object obj )
 		{
 			lock ( m_Queue.SyncRoot )
 			{

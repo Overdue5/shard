@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class EmptyTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new EmptyTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new EmptyTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public EmptyTankAddon()
 		{
 			AddonComponent ac = null;
@@ -149,15 +143,9 @@ namespace Server.Items
 
 	public class EmptyTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new EmptyTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new EmptyTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public EmptyTankAddonDeed()
 		{
 			Name = "a fishtank";

@@ -45,16 +45,13 @@ namespace Server.Custom.Games
 		[CommandProperty( AccessLevel.GameMaster )]
 		public BombermanUpgradeType Type
 		{ 
-			get{ return m_UpgradeType; } 
-			set
-			{ 
-				m_UpgradeType = value;
-			}
-		}
+			get => m_UpgradeType;
+            set => m_UpgradeType = value;
+        }
 
-		public override bool Decays{ get{ return false; } }
+		public override bool Decays => false;
 
-		public override bool OnMoveOver( Mobile m )
+        public override bool OnMoveOver( Mobile m )
 		{
             if(m_Game != null)
                 m_Game.RemoveItemFromGameArea(this);

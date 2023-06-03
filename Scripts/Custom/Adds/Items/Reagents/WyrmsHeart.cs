@@ -2,22 +2,16 @@ namespace Server.Items
 {
 	public class WyrmsHeart : BaseReagent, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
         //Misc pots
-        public override int PotionGroupIndex
-        {
-            get { return 8; }
-        }
+        public override int PotionGroupIndex => 8;
 
         //Shrinks
-        public override int PotionIndex
-        {
-            get { return 3; }
-        }
+        public override int PotionIndex => 3;
 
-		[Constructable]
+        [Constructable]
 		public WyrmsHeart() : this( 1 )
 		{
 		}

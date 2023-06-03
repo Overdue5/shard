@@ -8,27 +8,28 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 14; } }
-		public override int AosMaxDamage{ get{ return 15; } }
-		public override int AosSpeed{ get{ return 33; } }
+		public override int AosStrengthReq => 35;
+        public override int AosMinDamage => 14;
+        public override int AosMaxDamage => 15;
+        public override int AosSpeed => 33;
 
-		public override int OldStrengthReq{ get{ return 35; } }
-		public override int OldMinDamage{ get{ return 13; } }
-		public override int OldMaxDamage{ get{ return 26; } }
-		public override int OldSpeed{ get{ return 350; } }
+        public override int OldStrengthReq => 35;
+        public override int OldMinDamage => 13;
+        public override int OldMaxDamage => 26;
+        public override int OldSpeed => 350;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 80;
 
-		public override SkillName DefSkill{ get{ return SkillName.Macing; } }
-		public override WeaponType DefType{ get{ return WeaponType.Bashing; } }
-		//public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Bash1H; } }
+        public override SkillName DefSkill => SkillName.Macing;
 
-      		public override int DefHitSound { get { return 0x232; }}
-		public override int DefMissSound {get { return Utility.RandomList(0x238, 0x239, 0x23A); }}
+        public override WeaponType DefType => WeaponType.Bashing;
+        //public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Bash1H; } }
 
-        	public override int GetSwingAnim(Mobile from)
+      		public override int DefHitSound => 0x232;
+            public override int DefMissSound => Utility.RandomList(0x238, 0x239, 0x23A);
+
+            public override int GetSwingAnim(Mobile from)
 	        {
         	    if (from.Mounted)
                 	return 26;
@@ -36,9 +37,9 @@ namespace Server.Items
         	        return Utility.RandomList(12, 13, 14);
 	        }
 
-		public override HarvestSystem HarvestSystem{ get{ return null; } }
+		public override HarvestSystem HarvestSystem => null;
 
-		[Constructable]
+        [Constructable]
 		public WarAxe() : base( 0x13B0 )
 		{
 			Weight = 8.0;

@@ -29,9 +29,9 @@ namespace Server.Guilds
 			m_List = list;
 		}
 
-		public virtual bool WillFilter{ get{ return (m_Filter.Length >= 0); } }
+		public virtual bool WillFilter => (m_Filter.Length >= 0);
 
-		public override void PopulateGump()
+        public override void PopulateGump()
 		{
 			base.PopulateGump();
 
@@ -194,10 +194,11 @@ namespace Server.Guilds
 		private readonly int m_Width;
 		private readonly IComparer<T> m_Comparer;
 
-		public TextDefinition Name{ get{ return m_Name; } }
-		public int Width{ get{ return m_Width; } }
-		public IComparer<T> Comparer { get { return m_Comparer; } }
-		public InfoField( TextDefinition name, int width, IComparer<T> comparer )
+		public TextDefinition Name => m_Name;
+        public int Width => m_Width;
+        public IComparer<T> Comparer => m_Comparer;
+
+        public InfoField( TextDefinition name, int width, IComparer<T> comparer )
 		{
 			m_Name = name;
 			m_Width = width;

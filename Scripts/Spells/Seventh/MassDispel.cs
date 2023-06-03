@@ -7,10 +7,10 @@ namespace Server.Spells.Seventh
 {
     public class MassDispelSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 521; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 521;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Mass Dispel", "Vas An Ort",
 				212,
 				9002,

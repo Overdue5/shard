@@ -11,7 +11,7 @@ namespace Server.Custom.Games
     {
         private BaseGame m_Game;
 
-        public BaseGame Game { get { return m_Game; } }
+        public BaseGame Game => m_Game;
 
         public EndGameEventArgs(BaseGame game)
         {
@@ -82,91 +82,46 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
         public EventType EventType
         {
-            get
-            {
-                return m_EventType;
-            }
-            set
-            {
-                m_EventType = value;
-            }
+            get => m_EventType;
+            set => m_EventType = value;
         }
         [CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
         public String GameName
         {
-            get
-            {
-                return m_GameName;
-            }
-            set
-            {
-                m_GameName = value;
-            }
+            get => m_GameName;
+            set => m_GameName = value;
         }
 
         [CommandProperty(AccessLevel.Counselor)]
-        public Mobile GameMaster
-        {
-            get
-            {
-                return m_GameMaster;
-            }
-        }
+        public Mobile GameMaster => m_GameMaster;
 
         public List<Mobile> Players
         {
-            get
-            {
-                return m_Players;
-            }
-            set
-            {
-                m_Players = value;
-            }
+            get => m_Players;
+            set => m_Players = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool MsgStaff
         {
-            get
-            {
-                return m_MsgStaff;
-            }
-            set
-            {
-                m_MsgStaff = value;
-            }
+            get => m_MsgStaff;
+            set => m_MsgStaff = value;
         }
 
         [CommandProperty(AccessLevel.Counselor)]
-        public bool Running
-        {
-            get
-            {
-                return m_Running;
-            }
-        }
+        public bool Running => m_Running;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int MaxScore
         {
-            get
-            {
-                return m_MaxScore;
-            }
-            set
-            {
-                m_MaxScore = value;
-            }
+            get => m_MaxScore;
+            set => m_MaxScore = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan Length
         {
-            get
-            {
-                return m_Length;
-            }
+            get => m_Length;
             set
             {
                 if (Running)
@@ -184,23 +139,14 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster, false)]
         public virtual bool Open
         {
-            get
-            {
-                return m_Open;
-            }
-            set
-            {
-                m_Open = value;
-            }
+            get => m_Open;
+            set => m_Open = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool GiveSupplies
         {
-            get
-            {
-                return m_GiveSupplies;
-            }
+            get => m_GiveSupplies;
             set
             {
                 if (value && Supplier == null)
@@ -214,14 +160,8 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public virtual bool BeginGame 
         {
-            get
-            {
-                return m_BeginGame;
-            }
-            set
-            {
-                m_BeginGame = value;
-            }
+            get => m_BeginGame;
+            set => m_BeginGame = value;
         }
 
         public EventSupplier Supplier
@@ -235,20 +175,21 @@ namespace Server.Custom.Games
                 }
                 return m_Supplier;
             }
-            set
-            {
-                m_Supplier = value;
-            }
+            set => m_Supplier = value;
         }
 
         [CommandProperty(AccessLevel.Counselor)]
         public TimeSpan TimeLeft { get { if (Running) return m_Length - (DateTime.UtcNow - m_StartTime); else return Length; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public Point3D Lobby { get { return m_Lobby; } set { m_Lobby = value; } }
+        public Point3D Lobby { get => m_Lobby;
+            set => m_Lobby = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public Map LobbyMap { get { return m_LobbyMap; } set { m_LobbyMap = value; } }
+        public Map LobbyMap { get => m_LobbyMap;
+            set => m_LobbyMap = value;
+        }
 
         #endregion
 

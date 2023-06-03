@@ -45,9 +45,9 @@ namespace Server.Items
 			}
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation ) 
+        public override void OnMovement( Mobile m, Point3D oldLocation ) 
 		{ 
 			if ( DateTime.UtcNow >= m_NextAnim && m.InRange( this, 4 ) ) // check if it's time to animate & mobile in range & in los.
 			{
@@ -120,9 +120,9 @@ namespace Server.Items
 			
 	public class UnsettlingPortraitAddon : BaseAddon
 	{
-	    public override BaseAddonDeed Deed{ get{ return new UnsettlingPortraitDeed(); } }
-		
-		[Constructable]
+	    public override BaseAddonDeed Deed => new UnsettlingPortraitDeed();
+
+        [Constructable]
 		public UnsettlingPortraitAddon()
 		{
 		  Name = "Unsettling Portrait South";
@@ -150,9 +150,9 @@ namespace Server.Items
 
 	public class UnsettlingPortraitDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new UnsettlingPortraitAddon(); } }
+		public override BaseAddon Addon => new UnsettlingPortraitAddon();
 
-		[Constructable]
+        [Constructable]
 		public UnsettlingPortraitDeed()
 		{
 		    Name = "Unsettling Portrait South Deed";

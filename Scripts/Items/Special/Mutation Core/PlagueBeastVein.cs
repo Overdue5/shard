@@ -7,12 +7,9 @@ namespace Server.Items
 	{
 		private bool m_Cut;
 
-		public bool Cut
-		{
-			get { return m_Cut; }
-		}
+		public bool Cut => m_Cut;
 
-		private Timer m_Timer;
+        private Timer m_Timer;
 
 		public PlagueBeastVein( int itemID, int hue ) : base( itemID, hue )
 		{

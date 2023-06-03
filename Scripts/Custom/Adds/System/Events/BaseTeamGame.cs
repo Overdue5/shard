@@ -24,24 +24,12 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public List<BaseGameTeam> Teams
         {
-            get
-            {
-                return m_Teams;
-            }
-            set
-            {
-                m_Teams = value;
-            }
+            get => m_Teams;
+            set => m_Teams = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int TeamCount
-        {
-            get
-            {
-                return m_Teams.Count;
-            }
-        }
+        public int TeamCount => m_Teams.Count;
 
         [CommandProperty(AccessLevel.GameMaster, false)]
         public override bool Open
@@ -64,10 +52,7 @@ namespace Server.Custom.Games
                     }
                 }
             }
-            get
-            {
-                return base.Open;
-            }
+            get => base.Open;
         }
         #endregion
 

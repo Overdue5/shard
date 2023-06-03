@@ -17,22 +17,14 @@ namespace Server.Engines.Quests.Zento
 				typeof( ReturnObjective )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// Terrible Hatchlings
-				return 1063314;
-			}
-		}
+        public override object Name =>
+            // Terrible Hatchlings
+            1063314;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* The Deathwatch Beetle Hatchlings have trampled through my fields
+        public override object OfferMessage =>
+            /* The Deathwatch Beetle Hatchlings have trampled through my fields
 				 * again, what a nuisance! Please help me get rid of the terrible
 				 * hatchlings. If you kill 10 of them, you will be rewarded.
 				 * The Deathwatch Beetle Hatchlings live in The Waste -
@@ -40,16 +32,14 @@ namespace Server.Engines.Quests.Zento
 				 * 
 				 * Will you accept this challenge?
 				 */
-				return 1063315;
-			}
-		}
+            1063315;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.MaxValue; } }
-		public override bool IsTutorial{ get{ return true; } }
+        public override TimeSpan RestartDelay => TimeSpan.MaxValue;
+        public override bool IsTutorial => true;
 
-		public override int Picture{ get{ return 0x15CF; } }
+        public override int Picture => 0x15CF;
 
-		public TerribleHatchlingsQuest( PlayerMobile from ) : base( from )
+        public TerribleHatchlingsQuest( PlayerMobile from ) : base( from )
 		{
 		}
 

@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class PyramidAddon : BaseAddon
 	{
-		public override bool ShareHue
-		{
-			get { return false; }
-		}
+		public override bool ShareHue => false;
 
-		[Constructable]
+        [Constructable]
 		public PyramidAddon()
 		{
 			AddComponent( new AddonComponent( 1006 ), 0, 0, 5 );

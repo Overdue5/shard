@@ -25,11 +25,11 @@ namespace Server.Mobiles
         private bool m_Group;
         private WayPoint m_WayPoint;
 
-        public bool IsFull { get { return (m_Spawned != null && m_Spawned.Count >= m_Count); } }
+        public bool IsFull => (m_Spawned != null && m_Spawned.Count >= m_Count);
 
         public List<string> SpawnNames
         {
-            get { return m_SpawnNames; }
+            get => m_SpawnNames;
             set
             {
                 m_SpawnNames = value;
@@ -40,7 +40,7 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual int SpawnNamesCount { get { return m_SpawnNames.Count; } }
+        public virtual int SpawnNamesCount => m_SpawnNames.Count;
 
         public override void OnAfterDuped(Item newItem)
         {
@@ -56,27 +56,21 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int Count
         {
-            get { return m_Count; }
+            get => m_Count;
             set { m_Count = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public WayPoint WayPoint
         {
-            get
-            {
-                return m_WayPoint;
-            }
-            set
-            {
-                m_WayPoint = value;
-            }
+            get => m_WayPoint;
+            set => m_WayPoint = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Running
         {
-            get { return m_Running; }
+            get => m_Running;
             set
             {
                 if (value)
@@ -91,35 +85,35 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int HomeRange
         {
-            get { return m_HomeRange; }
+            get => m_HomeRange;
             set { m_HomeRange = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int WalkingRange
         {
-            get { return m_WalkingRange; }
+            get => m_WalkingRange;
             set { m_WalkingRange = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Team
         {
-            get { return m_Team; }
+            get => m_Team;
             set { m_Team = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan MinDelay
         {
-            get { return m_MinDelay; }
+            get => m_MinDelay;
             set { m_MinDelay = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan MaxDelay
         {
-            get { return m_MaxDelay; }
+            get => m_MaxDelay;
             set { m_MaxDelay = value; InvalidateProperties(); }
         }
 
@@ -143,7 +137,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Group
         {
-            get { return m_Group; }
+            get => m_Group;
             set { m_Group = value; InvalidateProperties(); }
         }
 
@@ -177,10 +171,7 @@ namespace Server.Mobiles
             InitSpawner(amount, minDelay, maxDelay, team, homeRange, spawnNames);
         }
 
-        public override string DefaultName
-        {
-            get { return "Spawner"; }
-        }
+        public override string DefaultName => "Spawner";
 
         private void InitSpawner(int amount, TimeSpan minDelay, TimeSpan maxDelay, int team, int homeRange, List<string> spawnNames)
         {
@@ -322,7 +313,7 @@ namespace Server.Mobiles
                 InvalidateProperties();
         }
 
-        bool ISpawner.UnlinkOnTaming { get { return true; } }
+        bool ISpawner.UnlinkOnTaming => true;
 
         void ISpawner.Remove(ISpawnable spawn)
         {
@@ -507,7 +498,7 @@ namespace Server.Mobiles
             return null;
         }
 
-        public Point3D HomeLocation { get { return this.Location; } }
+        public Point3D HomeLocation => this.Location;
 
         public void Spawn(int index)
         {

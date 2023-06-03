@@ -13,11 +13,20 @@ namespace Knives.Chat3
         private TimeSpan c_Recur = TimeSpan.Zero;
         private Timer c_Timer;
 
-        public string Text { get { return c_Text; } set { c_Text = value; } }
-        public string Name { get { return c_Name; } set { c_Name = value; } }
-        public bool Gump { get { return c_Gump; } set { c_Gump = value; } }
-        public bool AntiMacro { get { return c_AntiMacro; } set { c_AntiMacro = value; } }
-        public TimeSpan Recur { get { return c_Recur; } set { c_Recur = value; StartNotify(); } }
+        public string Text { get => c_Text;
+            set => c_Text = value;
+        }
+        public string Name { get => c_Name;
+            set => c_Name = value;
+        }
+        public bool Gump { get => c_Gump;
+            set => c_Gump = value;
+        }
+        public bool AntiMacro { get => c_AntiMacro;
+            set => c_AntiMacro = value;
+        }
+        public TimeSpan Recur { get => c_Recur;
+            set { c_Recur = value; StartNotify(); } }
 
         public Notification()
         {

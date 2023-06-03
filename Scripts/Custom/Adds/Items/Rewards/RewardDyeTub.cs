@@ -9,10 +9,7 @@ namespace Server.Items
             m_Owner = owner;
         }
 
-        public override bool AllowRunebooks // so you can dye runes.
-        {
-            get { return true; }
-        }
+        public override bool AllowRunebooks => true; // so you can dye runes.
 
         [Constructable]
         public RewardDyeTub()
@@ -28,7 +25,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;

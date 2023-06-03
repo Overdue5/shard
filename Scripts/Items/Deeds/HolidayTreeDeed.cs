@@ -8,7 +8,7 @@ namespace Server.Items
 {
     public class HolidayTreeDeed : Item
     {
-        public override int LabelNumber { get { return 1041116; } } // a deed for a holiday tree
+        public override int LabelNumber => 1041116; // a deed for a holiday tree
 
         [Constructable]
         public HolidayTreeDeed()

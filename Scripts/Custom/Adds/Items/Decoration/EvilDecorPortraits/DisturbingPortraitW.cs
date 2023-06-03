@@ -51,9 +51,9 @@ namespace Server.Items
 			}
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation ) 
+        public override void OnMovement( Mobile m, Point3D oldLocation ) 
 		{ 
 			if ( DateTime.UtcNow >= m_NextAnim && m.InRange( this, 4 ) ) // check if it's time to animate & mobile in range & in los.
 			{
@@ -140,9 +140,9 @@ namespace Server.Items
 			
 	public class DisturbingPortraitWAddon : BaseAddon
 	{
-	    public override BaseAddonDeed Deed{ get{ return new DisturbingPortraitWDeed(); } }
-		
-		[Constructable]
+	    public override BaseAddonDeed Deed => new DisturbingPortraitWDeed();
+
+        [Constructable]
 		public DisturbingPortraitWAddon()
 		{
 		  Name = "Disturbing Portrait West";
@@ -170,9 +170,9 @@ namespace Server.Items
 
 	public class DisturbingPortraitWDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new DisturbingPortraitWAddon(); } }
+		public override BaseAddon Addon => new DisturbingPortraitWAddon();
 
-		[Constructable]
+        [Constructable]
 		public DisturbingPortraitWDeed()
 		{
 		    Name = "Disturbing Portrait West Deed";

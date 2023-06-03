@@ -6,12 +6,12 @@ namespace Server.Spells.Fifth
 {
     public class SummonCreatureSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 0x215; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 0x215;
 
-		private readonly bool m_HasNoTarget;
-        public override bool CanTargetGround { get { return true; } }
-        public override bool HasNoTarget { get { return m_HasNoTarget; } }
+        private readonly bool m_HasNoTarget;
+        public override bool CanTargetGround => true;
+        public override bool HasNoTarget => m_HasNoTarget;
 
         private static readonly SpellInfo m_Info = new SpellInfo(
                 "Summon Creature", "Kal Xen",

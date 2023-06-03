@@ -8,7 +8,7 @@ namespace Server.Mobiles
 {
 	public class Barracoon : BaseChampion
 	{
-		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Greed; } }
+		public override ChampionSkullType SkullType => ChampionSkullType.Greed;
 
         public override Type[] UniqueList { get { return new Type[] { typeof(FangOfRactus) }; } }
         public override Type[] SharedList
@@ -85,18 +85,18 @@ namespace Server.Mobiles
 			AddLoot( LootPack.UltraRich, 3 );
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool AutoDispel{ get{ return true; } }
-		public override double AutoDispelChance{ get{ return 1.0; } }
-		public override bool BardImmune{ get{ return !Core.SE; } }
-		public override bool Unprovokable{ get{ return Core.SE; } }
-		public override bool Uncalmable{ get{ return Core.SE; } }
-		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
+		public override bool AlwaysMurderer => true;
+        public override bool AutoDispel => true;
+        public override double AutoDispelChance => 1.0;
+        public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
+        public override bool Uncalmable => Core.SE;
+        public override Poison PoisonImmune => Poison.Deadly;
 
-		public override bool ShowFameTitle{ get{ return false; } }
-		public override bool ClickTitle{ get{ return false; } }
+        public override bool ShowFameTitle => false;
+        public override bool ClickTitle => false;
 
-		public void Polymorph( Mobile m )
+        public void Polymorph( Mobile m )
 		{
 			if ( !m.CanBeginAction( typeof( PolymorphSpell ) ) || !m.CanBeginAction( typeof( IncognitoSpell ) ) || m.IsBodyMod )
 				return;

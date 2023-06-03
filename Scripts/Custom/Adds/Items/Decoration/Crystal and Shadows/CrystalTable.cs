@@ -18,12 +18,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new CrystalTableEastAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new CrystalTableEastAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -48,12 +45,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new CrystalTableEastAddon(); }
-		}
+		public override BaseAddon Addon => new CrystalTableEastAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -84,12 +78,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddonDeed Deed
-		{
-			get { return new CrystalTableSouthAddonDeed(); }
-		}
+		public override BaseAddonDeed Deed => new CrystalTableSouthAddonDeed();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version
@@ -114,12 +105,9 @@ namespace Server.Items
 		{
 		}
 
-		public override BaseAddon Addon
-		{
-			get { return new CrystalTableSouthAddon(); }
-		}
+		public override BaseAddon Addon => new CrystalTableSouthAddon();
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 ); // Version

@@ -168,12 +168,9 @@ namespace Server.Games.PaintBall
 		{
 			private PBGrenade m_Nade;
 
-			public PBGrenade Nade
-			{
-				get{ return m_Nade; }
-			}
+			public PBGrenade Nade => m_Nade;
 
-			public ThrowTarget( PBGrenade nade ) : base( 12, true, TargetFlags.None )
+            public ThrowTarget( PBGrenade nade ) : base( 12, true, TargetFlags.None )
 			{
 				m_Nade = nade;
 			}

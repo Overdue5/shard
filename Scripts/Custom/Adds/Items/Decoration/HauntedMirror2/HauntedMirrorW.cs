@@ -45,9 +45,9 @@ namespace Server.Items
 			}
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } }
+		public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation ) 
+        public override void OnMovement( Mobile m, Point3D oldLocation ) 
 		{ 
 			if ( DateTime.UtcNow >= m_NextAnim && m.InRange( this, 4 ) ) // check if it's time to animate & mobile in range & in los.
 			{
@@ -119,9 +119,9 @@ namespace Server.Items
 			
 	public class HauntedMirrorWAddon : BaseAddon
 	{
-	    public override BaseAddonDeed Deed{ get{ return new HauntedMirrorWDeed(); } }
-		
-		[Constructable]
+	    public override BaseAddonDeed Deed => new HauntedMirrorWDeed();
+
+        [Constructable]
 		public HauntedMirrorWAddon()
 		{
 		    Name = "Haunted Mirror - West";
@@ -149,9 +149,9 @@ namespace Server.Items
 
 	public class HauntedMirrorWDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new HauntedMirrorWAddon(); } }
+		public override BaseAddon Addon => new HauntedMirrorWAddon();
 
-		[Constructable]
+        [Constructable]
 		public HauntedMirrorWDeed()
 		{
 		    Name = "Haunted Mirror Deed - West";

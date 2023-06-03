@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class TreasureChestTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new TreasureChestTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new TreasureChestTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public TreasureChestTankAddon()
 		{
 			AddonComponent ac = null;
@@ -155,15 +149,9 @@ namespace Server.Items
 
 	public class TreasureChestTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new TreasureChestTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new TreasureChestTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public TreasureChestTankAddonDeed()
 		{
 			Name = "a Treasure Chest Tank";

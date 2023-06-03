@@ -5,17 +5,11 @@ namespace Server.Engines.Craft
 {
 	public class DefAquarium : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get{ return SkillName.Tinkering; }
-		}
+		public override SkillName MainSkill => SkillName.Tinkering;
 
-		public override string GumpTitleString
-		{
-			get { return "<basefont color=#FFFFFF><CENTER>AQUARIUM MENU</CENTER></basefont>"; } 
-		}
+        public override string GumpTitleString => "<basefont color=#FFFFFF><CENTER>AQUARIUM MENU</CENTER></basefont>";
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
 		public static CraftSystem CraftSystem
 		{

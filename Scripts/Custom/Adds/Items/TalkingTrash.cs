@@ -6,9 +6,9 @@ namespace Server.Items
 {
 	public class TrashTalkingBarrel : Container, IChopable
 	{
-		public override int LabelNumber{ get{ return 1041064; } } // a trash barrel
+		public override int LabelNumber => 1041064; // a trash barrel
 
-		public override int DefaultMaxWeight{ get{ return 0; } } // A value of 0 signals unlimited weight
+		public override int DefaultMaxWeight => 0; // A value of 0 signals unlimited weight
 
 		private static string[] trashAdj = { "fat", "ugly", "stupid", "clumsy", "hideous", "loose", "malodorous", "cheap", "poor", "unkempt", "frail", "square", "aweful", "ugly", "grotesque", "horrid", "unsightly", "repelling", "repungnant", "repelling", "not beautiful", "disfigured", "foul", "deformed", "dense", "witless", "crazy", "deranged"};
 		private static string[] trashAction = { "fart", "defecate", "hug", "smile", "play with dolls", "eat shortcakes", "pick strawberries", "wipe yourself", "bend over", "tie your shoes", "look down at yourself", "unzip", "snort", "laugh", "walk", "hunger", "point", "look at anyone", "talk", "cook", "shop", "yell", "screeche", "yelp", "vociferate", "wobble", "move", "get undressed", "sleep", "are naked", "blow your nose" };
@@ -17,12 +17,9 @@ namespace Server.Items
 
 
 
-		public override bool IsDecoContainer
-		{
-			get{ return false; }
-		}
+		public override bool IsDecoContainer => false;
 
-		[Constructable]
+        [Constructable]
 		public TrashTalkingBarrel() : base( 0xE77 )
 		{
 			Movable = false;

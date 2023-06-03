@@ -49,12 +49,9 @@ namespace Server.Mobiles
 
         public override bool IsNight => true;
 
-        public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+        public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );
 			AddLoot( LootPack.MedScrolls, 2 );
@@ -64,12 +61,12 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomMinMax(3, 4)));
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override bool BleedImmune{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override int TreasureMapLevel{ get{ return 4; } }
+		public override bool CanRummageCorpses => true;
+        public override bool BleedImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override int TreasureMapLevel => 4;
 
-		public LichLord( Serial serial ) : base( serial )
+        public LichLord( Serial serial ) : base( serial )
 		{
 		}
 

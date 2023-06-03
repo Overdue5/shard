@@ -24,11 +24,9 @@ namespace Server {
 	public sealed class BinaryMemoryWriter : BinaryFileWriter {
 		private MemoryStream stream;
 
-		protected override int BufferSize {
-			get { return 512; }
-		}
+		protected override int BufferSize => 512;
 
-		public BinaryMemoryWriter()
+        public BinaryMemoryWriter()
 		 : base( new MemoryStream( 512 ), true ) {
 			this.stream = this.UnderlyingStream as MemoryStream;
 		}

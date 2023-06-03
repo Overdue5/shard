@@ -5,17 +5,11 @@ namespace Server.Items
 {
 	public class PlagueBeastBlood : PlagueBeastComponent
 	{
-		public bool Patched
-		{
-			get { return ItemID == 0x1765; }
-		}
+		public bool Patched => ItemID == 0x1765;
 
-		public bool Starting
-		{
-			get { return ItemID == 0x122C; }
-		}
+        public bool Starting => ItemID == 0x122C;
 
-		private Timer m_Timer;
+        private Timer m_Timer;
 
 		public PlagueBeastBlood() : base( 0x122C, 0 )
 		{

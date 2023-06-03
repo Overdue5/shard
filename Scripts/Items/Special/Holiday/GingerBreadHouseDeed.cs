@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class GingerBreadHouseAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new GingerBreadHouseDeed(); } }
+		public override BaseAddonDeed Deed => new GingerBreadHouseDeed();
 
-		public GingerBreadHouseAddon()
+        public GingerBreadHouseAddon()
 		{
 			for( int i=0x2be5; i<0x2be8; i++ )
 			{
@@ -33,10 +33,10 @@ namespace Server.Items
 
 	public class GingerBreadHouseDeed : BaseAddonDeed
 	{
-		public override int LabelNumber{ get{ return 1077394; } } //a Gingerbread House Deed
-		public override BaseAddon Addon{ get{ return new GingerBreadHouseAddon(); } }
+		public override int LabelNumber => 1077394; //a Gingerbread House Deed
+		public override BaseAddon Addon => new GingerBreadHouseAddon();
 
-		[Constructable]
+        [Constructable]
 		public GingerBreadHouseDeed() 
 		{
 			Weight = 1.0;

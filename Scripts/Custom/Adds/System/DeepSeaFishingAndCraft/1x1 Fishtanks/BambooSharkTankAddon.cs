@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class BambooSharkTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new BambooSharkTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new BambooSharkTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public BambooSharkTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class BambooSharkTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new BambooSharkTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new BambooSharkTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public BambooSharkTankAddonDeed()
 		{
 			Name = "a Bamboo Shark Tank";

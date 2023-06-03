@@ -30,9 +30,11 @@ namespace Knives.Chat3
 		private Hashtable c_Buttons, c_Fields;
 		private bool c_Override;
 
-		public Mobile Owner{ get{ return c_Owner; } }
-        public GumpInfo Info { get { return GumpInfo.GetInfo(c_Owner, this.GetType()); } }
-		public bool Override{ get{ return c_Override; } set{ c_Override = value; } }
+		public Mobile Owner => c_Owner;
+        public GumpInfo Info => GumpInfo.GetInfo(c_Owner, this.GetType());
+        public bool Override{ get => c_Override;
+            set => c_Override = value;
+        }
 
 		public GumpPlus( Mobile m, int x, int y ) : base( x, y )
 		{

@@ -104,12 +104,9 @@ namespace Server.Items
 			{
 			}
 
-			public override int LabelNumber
-			{
-				get { return 1016152; }
-			}
+			public override int LabelNumber => 1016152;
 
-			public override void OnDelete()
+            public override void OnDelete()
 			{
 				if( m_parent != null )
 					if( !m_parent.Deleted )

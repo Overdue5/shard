@@ -5,26 +5,17 @@ namespace Server.Engines.Craft
 {
 	public class DefTailoring : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get	{ return SkillName.Tailoring; }
-		}
+		public override SkillName MainSkill => SkillName.Tailoring;
 
-		public override int GumpTitleNumber
-		{
-			get { return 1044005; } // <CENTER>TAILORING MENU</CENTER>
-		}
+        public override int GumpTitleNumber => 1044005; // <CENTER>TAILORING MENU</CENTER>
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
-		public static CraftSystem CraftSystem
-		{
-			get { return m_CraftSystem ?? (m_CraftSystem = new DefTailoring()); }
-		}
+		public static CraftSystem CraftSystem => m_CraftSystem ?? (m_CraftSystem = new DefTailoring());
 
-        public override CraftECA ECA { get { return CraftECA.CustomChance; } }
+        public override CraftECA ECA => CraftECA.CustomChance;
 
-		public override double GetChanceAtMin( CraftItem item )
+        public override double GetChanceAtMin( CraftItem item )
 		{
 			return 0.5; // 50%
 		}

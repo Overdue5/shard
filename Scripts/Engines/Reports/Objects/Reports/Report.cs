@@ -10,20 +10,25 @@ namespace Server.Engines.Reports
 			return new Report();
 		}
 
-		public override PersistableType TypeID{ get{ return ThisTypeID; } }
-		#endregion
+		public override PersistableType TypeID => ThisTypeID;
+
+        #endregion
 
 		private string m_Name;
 		private string m_Width;
 		private readonly ReportColumnCollection m_Columns;
 		private readonly ReportItemCollection m_Items;
 
-		public string Name{ get{ return m_Name; } set{ m_Name = value; } }
-		public string Width{ get{ return m_Width; } set{ m_Width = value; } }
-		public ReportColumnCollection Columns{ get{ return m_Columns; } }
-		public ReportItemCollection Items{ get{ return m_Items; } }
+		public string Name{ get => m_Name;
+            set => m_Name = value;
+        }
+		public string Width{ get => m_Width;
+            set => m_Width = value;
+        }
+		public ReportColumnCollection Columns => m_Columns;
+        public ReportItemCollection Items => m_Items;
 
-		private Report() : this( null, null )
+        private Report() : this( null, null )
 		{
 		}
 

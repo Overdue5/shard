@@ -6,11 +6,13 @@ namespace Server.Custom.PvpToolkit.Tournament
 {
     public class TournamentCore
     {
-        public static string TournamentVersion { get { return "1.00"; } }
+        public static string TournamentVersion => "1.00";
 
         private static List<TournamentStone> m_TournamentStones = new List<TournamentStone>();
 
-        public static List<TournamentStone> TournamentStones { get { return m_TournamentStones; } set { m_TournamentStones = value; } }
+        public static List<TournamentStone> TournamentStones { get => m_TournamentStones;
+            set => m_TournamentStones = value;
+        }
 
         private static int AmountOfRunningTournamentGames;
 

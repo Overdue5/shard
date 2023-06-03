@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new BovineRugAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new BovineRugAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public BovineRugAddon()
 		{
 
@@ -76,15 +70,9 @@ namespace Server.Items
 
 	public class BovineRugAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new BovineRugAddon();
-			}
-		}
+		public override BaseAddon Addon => new BovineRugAddon();
 
-		[Constructable]
+        [Constructable]
 		public BovineRugAddonDeed()
 		{
 			Name = "BovineRug";

@@ -2,10 +2,10 @@
 {
     public class Hood : BaseHat
     {
-        public override int BasePhysicalResistance { get { return 5; } }
+        public override int BasePhysicalResistance => 5;
 
-        public override int InitMinHits { get { return 220; } }
-        public override int InitMaxHits { get { return 330; } }
+        public override int InitMinHits => 220;
+        public override int InitMaxHits => 330;
 
         [Constructable]
         public Hood()

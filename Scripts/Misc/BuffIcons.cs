@@ -6,7 +6,7 @@ namespace Server
 {
     public class BuffInfo
     {
-        public static bool Enabled { get { return true; } }
+        public static bool Enabled => true;
 
         public static void Initialize()
         {
@@ -24,28 +24,28 @@ namespace Server
 
         #region Properties
         private readonly BuffIcon m_ID;
-        public BuffIcon ID { get { return m_ID; } }
+        public BuffIcon ID => m_ID;
 
         private readonly int m_TitleCliloc;
-        public int TitleCliloc { get { return m_TitleCliloc; } }
+        public int TitleCliloc => m_TitleCliloc;
 
         private readonly int m_SecondaryCliloc;
-        public int SecondaryCliloc { get { return m_SecondaryCliloc; } }
+        public int SecondaryCliloc => m_SecondaryCliloc;
 
         private readonly TimeSpan m_TimeLength;
-        public TimeSpan TimeLength { get { return m_TimeLength; } }
+        public TimeSpan TimeLength => m_TimeLength;
 
         private readonly DateTime m_TimeStart;
-        public DateTime TimeStart { get { return m_TimeStart; } }
+        public DateTime TimeStart => m_TimeStart;
 
         private readonly Timer m_Timer;
-        public Timer Timer { get { return m_Timer; } }
+        public Timer Timer => m_Timer;
 
         private readonly bool m_RetainThroughDeath;
-        public bool RetainThroughDeath { get { return m_RetainThroughDeath; } }
+        public bool RetainThroughDeath => m_RetainThroughDeath;
 
         private readonly TextDefinition m_Args;
-        public TextDefinition Args { get { return m_Args; } }
+        public TextDefinition Args => m_Args;
 
         #endregion
 

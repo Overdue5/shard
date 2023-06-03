@@ -5,27 +5,27 @@ namespace Server.Items
     [Flipable(0xE86, 0xE85)]
     public class Pickaxe : BaseAxe
     {
-        public override HarvestSystem HarvestSystem { get { return Mining.System; } }
-        public override bool ShowContextMenu { get { return true; } }
+        public override HarvestSystem HarvestSystem => Mining.System;
+        public override bool ShowContextMenu => true;
 
         ////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
         //public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }
 
-        public override int AosStrengthReq { get { return 50; } }
-        public override int AosMinDamage { get { return 13; } }
-        public override int AosMaxDamage { get { return 15; } }
-        public override int AosSpeed { get { return 35; } }
+        public override int AosStrengthReq => 50;
+        public override int AosMinDamage => 13;
+        public override int AosMaxDamage => 15;
+        public override int AosSpeed => 35;
 
-        public override int OldStrengthReq { get { return 25; } }
-        public override int OldMinDamage { get { return 1; } }
-        public override int OldMaxDamage { get { return 15; } }
-        public override int OldSpeed { get { return 400; } }
+        public override int OldStrengthReq => 25;
+        public override int OldMinDamage => 1;
+        public override int OldMaxDamage => 15;
+        public override int OldSpeed => 400;
 
-        public override int InitMinHits { get { return 31; } }
-        public override int InitMaxHits { get { return 60; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 60;
 
-        public override int DefHitSound { get { return 0x232; } }
-        public override int DefMissSound { get { return Utility.RandomList(0x238, 0x239, 0x23A); } }
+        public override int DefHitSound => 0x232;
+        public override int DefMissSound => Utility.RandomList(0x238, 0x239, 0x23A);
 
         public override int GetSwingAnim(Mobile from)
         {

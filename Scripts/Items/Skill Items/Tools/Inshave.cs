@@ -4,9 +4,9 @@ namespace Server.Items
 {
 	public class Inshave : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefCarpentry.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public Inshave() : base( 0x10E6 )
 		{
 			Weight = 1.0;

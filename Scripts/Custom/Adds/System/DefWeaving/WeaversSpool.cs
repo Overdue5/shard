@@ -5,9 +5,9 @@ namespace Server.Items
 	[Flipable( 0x1420, 0x1421 )]
 	public class WeaversSpool : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefWeaving.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefWeaving.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public WeaversSpool() : base( 0x1420 )
 		{
 			Name = "Weaver's spool";

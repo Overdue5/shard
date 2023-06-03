@@ -37,16 +37,13 @@ namespace Arya.Chess
 		#region Properties
 
 		[ CommandProperty( AccessLevel.GameMaster ) ]
-		public Rectangle2D Bounds
-		{
-			get { return m_Bounds; }
-		}
+		public Rectangle2D Bounds => m_Bounds;
 
-		[ CommandProperty( AccessLevel.GameMaster ) ]
+        [ CommandProperty( AccessLevel.GameMaster ) ]
 		public Point2D BoardNorthWestCorner
 		{
-			get { return m_Bounds.Start; }
-			set
+			get => m_Bounds.Start;
+            set
 			{
 				m_Bounds.Start = value;
 				m_Bounds.Width = 8 * m_SquareWidth;
@@ -59,8 +56,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int SquareWidth
 		{
-			get { return m_SquareWidth; }
-			set
+			get => m_SquareWidth;
+            set
 			{
 				if ( value < 1 )
 					return;
@@ -80,8 +77,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int WhiteHue
 		{
-			get { return m_WhiteHue; }
-			set
+			get => m_WhiteHue;
+            set
 			{
 				if ( value < 0 || value > 3000 )
 					return;
@@ -99,8 +96,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int BlackHue
 		{
-			get { return m_BlackHue; }
-			set
+			get => m_BlackHue;
+            set
 			{
 				if ( value < 0 || value > 3000 )
 					return;
@@ -118,8 +115,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int WhiteMinorHue
 		{
-			get { return m_WhiteMinorHue; }
-			set
+			get => m_WhiteMinorHue;
+            set
 			{
 				if ( value < 0 || value > 3000 )
 					return;
@@ -137,8 +134,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int BlackMinorHue
 		{
-			get { return m_BlackMinorHue; }
-			set
+			get => m_BlackMinorHue;
+            set
 			{
 				if ( value < 0 || value > 3000 )
 					return;
@@ -156,8 +153,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public bool OverrideMinorHue
 		{
-			get { return m_OverrideMinorHue; }
-			set
+			get => m_OverrideMinorHue;
+            set
 			{
 				if ( value != m_OverrideMinorHue )
 				{
@@ -172,36 +169,36 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int AttackEffect
 		{
-			get { return m_AttackEffect; }
-			set { m_AttackEffect = value; }
-		}
+			get => m_AttackEffect;
+            set => m_AttackEffect = value;
+        }
 
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int CaptureEffect
 		{
-			get { return m_CaptureEffect; }
-			set { m_CaptureEffect = value; }
-		}
+			get => m_CaptureEffect;
+            set => m_CaptureEffect = value;
+        }
 
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public bool BoltOnDeath
 		{
-			get { return m_BoltOnDeath; }
-			set { m_BoltOnDeath = value; }
-		}
+			get => m_BoltOnDeath;
+            set => m_BoltOnDeath = value;
+        }
 
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public int BoardHeight
 		{
-			get { return m_BoardHeight; }
-			set { m_BoardHeight = value; }
-		}
+			get => m_BoardHeight;
+            set => m_BoardHeight = value;
+        }
 
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public ChessSet ChessSet
 		{
-			get { return m_ChessSet; }
-			set
+			get => m_ChessSet;
+            set
 			{
 				m_ChessSet = value;
 
@@ -235,8 +232,8 @@ namespace Arya.Chess
 		[ CommandProperty( AccessLevel.GameMaster ) ]
 		public BoardOrientation Orientation
 		{
-			get { return m_Orientation; }
-			set
+			get => m_Orientation;
+            set
 			{
 				m_Orientation = value;
 
@@ -248,7 +245,7 @@ namespace Arya.Chess
         [CommandProperty(AccessLevel.GameMaster)]
         public int BoardWhiteHue
         {
-            get { return m_BoardWhiteHue; }
+            get => m_BoardWhiteHue;
             set
             {
                 if (value < 0 || value > 3000)
@@ -264,7 +261,7 @@ namespace Arya.Chess
         [CommandProperty(AccessLevel.GameMaster)]
         public int BoardBlackHue
         {
-            get { return m_BoardBlackHue; }
+            get => m_BoardBlackHue;
             set
             {
                 if (value < 0 || value > 3000)
@@ -280,7 +277,7 @@ namespace Arya.Chess
         [CommandProperty(AccessLevel.GameMaster)]
         public int BoardStairsHue
         {
-            get { return m_BoardStairsHue; }
+            get => m_BoardStairsHue;
             set
             {
                 if (value < 0 || value > 3000)

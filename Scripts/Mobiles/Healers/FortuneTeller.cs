@@ -4,9 +4,9 @@ namespace Server.Mobiles
 {
 	public class FortuneTeller : BaseHealer
 	{
-		public override bool CanTeach{ get{ return true; } }
+		public override bool CanTeach => true;
 
-		public override bool CheckTeach( SkillName skill, Mobile from )
+        public override bool CheckTeach( SkillName skill, Mobile from )
 		{
 			if ( !base.CheckTeach( skill, from ) )
 				return false;
@@ -28,10 +28,10 @@ namespace Server.Mobiles
 			SetSkill( SkillName.SpiritSpeak, 65.0, 88.0 );
 		}
 
-		public override bool IsActiveVendor{ get{ return true; } }
-		public override bool IsInvulnerable{ get{ return true; } }
+		public override bool IsActiveVendor => true;
+        public override bool IsInvulnerable => true;
 
-		public override void InitSBInfo()
+        public override void InitSBInfo()
 		{
 			SBInfos.Add( new SBMage() );
 			SBInfos.Add( new SBFortuneTeller() );

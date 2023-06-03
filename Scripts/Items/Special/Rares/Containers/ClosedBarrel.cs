@@ -2,9 +2,9 @@
 {
 	class ClosedBarrel : TrapableContainer
 	{	
-		public override int DefaultGumpID{ get { return 0x3e; } }
+		public override int DefaultGumpID => 0x3e;
 
-		[Constructable]
+        [Constructable]
 		public ClosedBarrel()
 			: base( 0x0FAE )
 		{

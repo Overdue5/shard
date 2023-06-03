@@ -6,23 +6,23 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 17; } }
-		public override int AosSpeed{ get{ return 31; } }
+		public override int AosStrengthReq => 35;
+        public override int AosMinDamage => 15;
+        public override int AosMaxDamage => 17;
+        public override int AosSpeed => 31;
 
-		public override int OldStrengthReq{ get{ return 40; } }
+        public override int OldStrengthReq => 40;
 
         //public override int OldMinDamage { get { return 18; } }
         //public override int OldMaxDamage { get { return 36; } }
-		public override int OldMinDamage{ get{ return 25; } }
-		public override int OldMaxDamage{ get{ return 36; } } //Loki edit: Was 21 - 33
-		public override int OldSpeed{ get{ return 429; } }
+		public override int OldMinDamage => 25;
+        public override int OldMaxDamage => 36; //Loki edit: Was 21 - 33
+		public override int OldSpeed => 429;
 
-		public override int InitMinHits{ get{ return 60; } }
-		public override int InitMaxHits{ get{ return 140; } }
+        public override int InitMinHits => 60;
+        public override int InitMaxHits => 140;
 
-		[Constructable]
+        [Constructable]
 		public BattleAxe() : base( 0xF47 )
 		{
 			Weight = 4.0;

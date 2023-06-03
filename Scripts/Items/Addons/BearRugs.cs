@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class BrownBearRugEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new BrownBearRugEastDeed(); } }
+		public override BaseAddonDeed Deed => new BrownBearRugEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public BrownBearRugEastAddon()
 		{
 			AddComponent( new AddonComponent( 0x1E40 ), 1, 1, 0 );
@@ -39,8 +39,8 @@ namespace Server.Items
 
 	public class BrownBearRugEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new BrownBearRugEastAddon(); } }
-		public override int LabelNumber{ get{ return 1049397; } } // a brown bear rug deed facing east
+		public override BaseAddon Addon => new BrownBearRugEastAddon();
+        public override int LabelNumber => 1049397; // a brown bear rug deed facing east
 
 		[Constructable]
 		public BrownBearRugEastDeed()
@@ -68,9 +68,9 @@ namespace Server.Items
 
 	public class BrownBearRugSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new BrownBearRugSouthDeed(); } }
+		public override BaseAddonDeed Deed => new BrownBearRugSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public BrownBearRugSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x1E36 ), 1, 1, 0 );
@@ -105,8 +105,8 @@ namespace Server.Items
 
 	public class BrownBearRugSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new BrownBearRugSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1049398; } } // a brown bear rug deed facing south
+		public override BaseAddon Addon => new BrownBearRugSouthAddon();
+        public override int LabelNumber => 1049398; // a brown bear rug deed facing south
 
 		[Constructable]
 		public BrownBearRugSouthDeed()
@@ -134,9 +134,9 @@ namespace Server.Items
 
 	public class PolarBearRugEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new PolarBearRugEastDeed(); } }
+		public override BaseAddonDeed Deed => new PolarBearRugEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public PolarBearRugEastAddon()
 		{
 			AddComponent( new AddonComponent( 0x1E53 ), 1, 1, 0 );
@@ -171,8 +171,8 @@ namespace Server.Items
 
 	public class PolarBearRugEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new PolarBearRugEastAddon(); } }
-		public override int LabelNumber{ get{ return 1049399; } } // a polar bear rug deed facing east
+		public override BaseAddon Addon => new PolarBearRugEastAddon();
+        public override int LabelNumber => 1049399; // a polar bear rug deed facing east
 
 		[Constructable]
 		public PolarBearRugEastDeed()
@@ -200,9 +200,9 @@ namespace Server.Items
 
 	public class PolarBearRugSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new PolarBearRugSouthDeed(); } }
+		public override BaseAddonDeed Deed => new PolarBearRugSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public PolarBearRugSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0x1E49 ), 1, 1, 0 );
@@ -237,8 +237,8 @@ namespace Server.Items
 
 	public class PolarBearRugSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new PolarBearRugSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1049400; } } // a polar bear rug deed facing south
+		public override BaseAddon Addon => new PolarBearRugSouthAddon();
+        public override int LabelNumber => 1049400; // a polar bear rug deed facing south
 
 		[Constructable]
 		public PolarBearRugSouthDeed()

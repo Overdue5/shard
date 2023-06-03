@@ -5,14 +5,11 @@ namespace Server.Items
 {
 	public class FishBowl : Container
 	{		
-		public override int LabelNumber{ get{ return 1074499; } } // A fish bowl
+		public override int LabelNumber => 1074499; // A fish bowl
 		
-		public bool Empty
-		{
-			get{ return Items.Count == 0; }
-		}
-		
-		public BaseFish Fish
+		public bool Empty => Items.Count == 0;
+
+        public BaseFish Fish
 		{
 			get
 			{

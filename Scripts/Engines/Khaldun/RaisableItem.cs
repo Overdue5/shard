@@ -12,8 +12,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxElevation
 		{
-			get{ return m_MaxElevation; }
-			set
+			get => m_MaxElevation;
+            set
 			{
 				if ( value <= 0 )
 					m_MaxElevation = 0;
@@ -25,13 +25,19 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int MoveSound{ get{ return m_MoveSound; } set{ m_MoveSound = value; } }
+		public int MoveSound{ get => m_MoveSound;
+            set => m_MoveSound = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int StopSound{ get{ return m_StopSound; } set{ m_StopSound = value; } }
+		public int StopSound{ get => m_StopSound;
+            set => m_StopSound = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan CloseDelay{ get{ return m_CloseDelay; } set{ m_CloseDelay = value; } }
+		public TimeSpan CloseDelay{ get => m_CloseDelay;
+            set => m_CloseDelay = value;
+        }
 
 		[Constructable]
 		public RaisableItem( int itemID ) : this( itemID, 20, -1, -1, TimeSpan.FromMinutes( 1.0 ) )
@@ -57,12 +63,9 @@ namespace Server.Items
 		private int m_Elevation;
 		private RaiseTimer m_RaiseTimer;
 
-		public bool IsRaisable
-		{
-			get{ return m_RaiseTimer == null; }
-		}
+		public bool IsRaisable => m_RaiseTimer == null;
 
-		public void Raise()
+        public void Raise()
 		{
 			if ( !IsRaisable )
 				return;

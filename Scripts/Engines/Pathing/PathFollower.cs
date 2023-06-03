@@ -18,16 +18,13 @@ namespace Server
 
 		public MoveMethod Mover
 		{
-			get{ return m_Mover; }
-			set{ m_Mover = value; }
-		}
+			get => m_Mover;
+            set => m_Mover = value;
+        }
 
-		public IPoint3D Goal
-		{
-			get{ return m_Goal; }
-		}
+		public IPoint3D Goal => m_Goal;
 
-		public PathFollower( Mobile from, IPoint3D goal )
+        public PathFollower( Mobile from, IPoint3D goal )
 		{
 			m_From = from;
 			m_Goal = goal;

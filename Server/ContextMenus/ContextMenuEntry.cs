@@ -40,64 +40,61 @@ namespace Server.ContextMenus
 		/// </summary>
 		public CMEFlags Flags
 		{
-			get{ return m_Flags; }
-			set{ m_Flags = value; }
-		}
+			get => m_Flags;
+            set => m_Flags = value;
+        }
 
 		/// <summary>
 		/// Gets or sets the <see cref="ContextMenu" /> that owns this entry.
 		/// </summary>
 		public ContextMenu Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
 		/// <summary>
 		/// Gets or sets the localization number containing the name of this entry.
 		/// </summary>
 		public int Number
 		{
-			get{ return m_Number; }
-			set{ m_Number = value; }
-		}
+			get => m_Number;
+            set => m_Number = value;
+        }
 
 		/// <summary>
 		/// Gets or sets the maximum range at which this entry may be used, in tiles. A value of -1 signifies no maximum range.
 		/// </summary>
 		public int Range
 		{
-			get{ return m_Range; }
-			set{ m_Range = value; }
-		}
+			get => m_Range;
+            set => m_Range = value;
+        }
 
 		/// <summary>
 		/// Gets or sets the color for this entry. Format is A1-R5-G5-B5.
 		/// </summary>
 		public int Color
 		{
-			get{ return m_Color; }
-			set{ m_Color = value; }
-		}
+			get => m_Color;
+            set => m_Color = value;
+        }
 
 		/// <summary>
 		/// Gets or sets whether this entry is enabled. When false, the entry will appear in a gray hue and <see cref="OnClick" /> will never be invoked.
 		/// </summary>
 		public bool Enabled
 		{
-			get{ return m_Enabled; }
-			set{ m_Enabled = value; }
-		}
+			get => m_Enabled;
+            set => m_Enabled = value;
+        }
 
 		/// <summary>
 		/// Gets a value indicating if non local use of this entry is permitted.
 		/// </summary>
-		public virtual bool NonLocalUse
-		{
-			get{ return false; }
-		}
+		public virtual bool NonLocalUse => false;
 
-		/// <summary>
+        /// <summary>
 		/// Instantiates a new ContextMenuEntry with a given <see cref="Number">localization number</see> (<paramref name="number" />). No <see cref="Range">maximum range</see> is used.
 		/// </summary>
 		/// <param name="number">

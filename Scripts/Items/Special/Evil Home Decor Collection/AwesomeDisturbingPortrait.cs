@@ -6,10 +6,10 @@ namespace Server.Items
 	[Flipable( 0x2A5D, 0x2A61 )]
 	public class AwesomeDisturbingPortraitComponent : AddonComponent
 	{
-		public override int LabelNumber { get { return 1074479; } } // Disturbing portrait
-		public bool FacingSouth { get { return ItemID < 0x2A61; } }
+		public override int LabelNumber => 1074479; // Disturbing portrait
+		public bool FacingSouth => ItemID < 0x2A61;
 
-		private InternalTimer m_Timer;
+        private InternalTimer m_Timer;
 
 		public AwesomeDisturbingPortraitComponent() : base( 0x2A5D )
 		{
@@ -128,9 +128,9 @@ namespace Server.Items
 
 	public class AwesomeDisturbingPortraitAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new AwesomeDisturbingPortraitDeed(); } }
+		public override BaseAddonDeed Deed => new AwesomeDisturbingPortraitDeed();
 
-		[Constructable]
+        [Constructable]
 		public AwesomeDisturbingPortraitAddon() : base()
 		{
 			AddComponent( new AwesomeDisturbingPortraitComponent(), 0, 0, 0 );
@@ -157,8 +157,8 @@ namespace Server.Items
 
 	public class AwesomeDisturbingPortraitDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new AwesomeDisturbingPortraitAddon(); } }
-		public override int LabelNumber { get { return 1074479; } } // Disturbing portrait
+		public override BaseAddon Addon => new AwesomeDisturbingPortraitAddon();
+        public override int LabelNumber => 1074479; // Disturbing portrait
 
 		[Constructable]
 		public AwesomeDisturbingPortraitDeed() : base()

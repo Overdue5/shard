@@ -67,20 +67,14 @@ namespace Arya.Chess
 		/// <summary>
 		/// Gets the NPC corresponding to this chess piece
 		/// </summary>
-		public ChessMobile Piece
-		{
-			get { return m_Piece; }
-		}
+		public ChessMobile Piece => m_Piece;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the color of this piece
 		/// </summary>
-		public ChessColor Color
-		{
-			get { return m_Color; }
-		}
+		public ChessColor Color => m_Color;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the color of the enemy
 		/// </summary>
 		public ChessColor EnemyColor
@@ -100,9 +94,9 @@ namespace Arya.Chess
 		/// </summary>
 		public Point2D Position
 		{
-			get { return m_Position; }
-			set { m_Position = value; }
-		}
+			get => m_Position;
+            set => m_Position = value;
+        }
 
 		/// <summary>
 		/// Gets the facing for the NPC when it's standing
@@ -178,18 +172,15 @@ namespace Arya.Chess
 		/// <summary>
 		/// States whether this piece has already moved
 		/// </summary>
-		public virtual bool HasMoved
-		{
-			get { return m_HasMoved; }
-		}
+		public virtual bool HasMoved => m_HasMoved;
 
-		/// <summary>
+        /// <summary>
 		/// Specifies if this piece can be captured by a pawn en passant
 		/// </summary>
 		public virtual bool AllowEnPassantCapture
 		{
-			get { return false; }
-			set {}
+			get => false;
+            set {}
 		}
 
 		#endregion

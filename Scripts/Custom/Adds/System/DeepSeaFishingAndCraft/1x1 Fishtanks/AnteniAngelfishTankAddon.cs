@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class AnteniAngelfishTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new AnteniAngelfishTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new AnteniAngelfishTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public AnteniAngelfishTankAddon()
 		{
 			AddonComponent ac = null;
@@ -172,15 +166,9 @@ namespace Server.Items
 
 	public class AnteniAngelfishTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new AnteniAngelfishTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new AnteniAngelfishTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public AnteniAngelfishTankAddonDeed()
 		{
 			Name = "a Anteni Angelfish tank";

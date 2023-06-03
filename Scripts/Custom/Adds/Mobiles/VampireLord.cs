@@ -132,32 +132,17 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override int TreasureMapLevel
-		{
-			get { return 5; }
-		}
+		public override int TreasureMapLevel => 5;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override bool BardImmune
-		{
-			get { return true; }
-		}
+        public override bool BardImmune => true;
 
-		public override bool ShowFameTitle
-		{
-			get { return false; }
-		}
+        public override bool ShowFameTitle => false;
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+        public override bool ClickTitle => false;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
             AddItem(new Spellbook(ulong.MaxValue) { LootType = LootType.Regular });
 			AddItem( new BlankScroll( 3 ) );

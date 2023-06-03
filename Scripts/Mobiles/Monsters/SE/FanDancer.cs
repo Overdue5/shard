@@ -58,9 +58,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 3 );
 		}
 			
-		public override bool Uncalmable{ get{ return true; } }
+		public override bool Uncalmable => true;
 
-		/* TODO: Repel Magic
+        /* TODO: Repel Magic
 		 * 10% chance of repelling a melee attack (why did they call it repel magic anyway?)
 		 * Cliloc: 1070844
 		 * Effect: damage is dealt to the attacker, no damage is taken by the fan dancer

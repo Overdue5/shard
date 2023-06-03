@@ -71,8 +71,8 @@ namespace Server.Accounting
         /// </summary>
         public string[] IPRestrictions
         {
-            get { return m_IPRestrictions; }
-            set { m_IPRestrictions = value; }
+            get => m_IPRestrictions;
+            set => m_IPRestrictions = value;
         }
 
         /// <summary>
@@ -80,8 +80,8 @@ namespace Server.Accounting
         /// </summary>
         public IPAddress[] LoginIPs
         {
-            get { return m_LoginIPs; }
-            set { m_LoginIPs = value; }
+            get => m_LoginIPs;
+            set => m_LoginIPs = value;
         }
 
         /// <summary>
@@ -105,8 +105,8 @@ namespace Server.Accounting
         /// </summary>
         public string Username
         {
-            get { return m_Username; }
-            set { m_Username = value; }
+            get => m_Username;
+            set => m_Username = value;
         }
 
         /// <summary>
@@ -114,8 +114,8 @@ namespace Server.Accounting
         /// </summary>
         public string PlainPassword
         {
-            get { return m_PlainPassword; }
-            set { m_PlainPassword = value; }
+            get => m_PlainPassword;
+            set => m_PlainPassword = value;
         }
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace Server.Accounting
         /// </summary>
         public string CryptPassword
         {
-            get { return m_CryptPassword; }
-            set { m_CryptPassword = value; }
+            get => m_CryptPassword;
+            set => m_CryptPassword = value;
         }
 
         /// <summary>
@@ -132,8 +132,8 @@ namespace Server.Accounting
         /// </summary>
         public string NewCryptPassword
         {
-            get { return m_NewCryptPassword; }
-            set { m_NewCryptPassword = value; }
+            get => m_NewCryptPassword;
+            set => m_NewCryptPassword = value;
         }
 
 
@@ -154,8 +154,8 @@ namespace Server.Accounting
         /// </summary>
         public AccessLevel AccessLevel
         {
-            get { return m_AccessLevel; }
-            set { m_AccessLevel = value; }
+            get => m_AccessLevel;
+            set => m_AccessLevel = value;
         }
 
         /// <summary>
@@ -163,8 +163,8 @@ namespace Server.Accounting
         /// </summary>
         public int Flags
         {
-            get { return m_Flags; }
-            set { m_Flags = value; }
+            get => m_Flags;
+            set => m_Flags = value;
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Server.Accounting
 
                 return true;
             }
-            set { SetFlag(0, value); }
+            set => SetFlag(0, value);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Server.Accounting
         /// </summary>
         public bool Young
         {
-            get { return !GetFlag(1); }
+            get => !GetFlag(1);
             set
             {
                 SetFlag(1, !value);
@@ -218,18 +218,15 @@ namespace Server.Accounting
         /// <summary>
         /// The date and time of when this account was created.
         /// </summary>
-        public DateTime Created
-        {
-            get { return m_Created; }
-        }
+        public DateTime Created => m_Created;
 
         /// <summary>
         /// Gets or sets the date and time when this account was last accessed.
         /// </summary>
         public DateTime LastLogin
         {
-            get { return m_LastLogin; }
-            set { m_LastLogin = value; }
+            get => m_LastLogin;
+            set => m_LastLogin = value;
         }
 
         /// <summary>
@@ -1147,18 +1144,12 @@ namespace Server.Accounting
         /// <summary>
         /// Gets the maximum amount of characters allowed to be created on this account. Values other than 1, 5, 6, or 7 are not supported by the client.
         /// </summary>
-        public int Limit
-        {
-            get { return (Core.SA ? 7 : Core.AOS ? 6 : 5); }
-        }
+        public int Limit => (Core.SA ? 7 : Core.AOS ? 6 : 5);
 
         /// <summary>
         /// Gets the maxmimum amount of characters that this account can hold.
         /// </summary>
-        public int Length
-        {
-            get { return m_Mobiles.Length; }
-        }
+        public int Length => m_Mobiles.Length;
 
         /// <summary>
         /// Gets or sets the character at a specified index for this account. Out of bound index values are handled; null returned for get, ignored for set.

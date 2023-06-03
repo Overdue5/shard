@@ -7,21 +7,18 @@ namespace Server.Mobiles
 	public class Bowyer : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Bowyer() : base( "the bowyer" )
 		{
 			SetSkill( SkillName.Fletching, 80.0, 100.0 );
 			SetSkill( SkillName.Archery, 80.0, 100.0 );
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return Female ? VendorShoeType.ThighBoots : VendorShoeType.Boots; }
-		}
+		public override VendorShoeType ShoeType => Female ? VendorShoeType.ThighBoots : VendorShoeType.Boots;
 
-		public override int GetShoeHue()
+        public override int GetShoeHue()
 		{
 			return 0;
 		}

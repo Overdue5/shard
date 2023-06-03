@@ -561,12 +561,9 @@ namespace Server
 	{
 		protected Property m_Property;
 
-		public Property Property
-		{
-			get { return m_Property; }
-		}
+		public Property Property => m_Property;
 
-		public PropertyException( Property property, string message )
+        public PropertyException( Property property, string message )
 			: base( message )
 		{
 			m_Property = property;
@@ -642,17 +639,11 @@ namespace Server
 		protected AccessLevel m_PlayerAccess;
 		protected AccessLevel m_NeededAccess;
 
-		public AccessLevel PlayerAccess
-		{
-			get { return m_PlayerAccess; }
-		}
+		public AccessLevel PlayerAccess => m_PlayerAccess;
 
-		public AccessLevel NeededAccess
-		{
-			get { return m_NeededAccess; }
-		}
+        public AccessLevel NeededAccess => m_NeededAccess;
 
-		public ClearanceException( Property property, AccessLevel playerAccess, AccessLevel neededAccess, string accessType )
+        public ClearanceException( Property property, AccessLevel playerAccess, AccessLevel neededAccess, string accessType )
 			: base( property, string.Format(
 				"You must be at least {0} to {1} this property.",
 				Mobile.GetAccessLevelName( neededAccess ),
@@ -685,22 +676,13 @@ namespace Server
 		private PropertyInfo[] m_Chain;
 		private PropertyAccess m_Access;
 
-		public string Binding
-		{
-			get { return m_Binding; }
-		}
+		public string Binding => m_Binding;
 
-		public bool IsBound
-		{
-			get { return ( m_Chain != null ); }
-		}
+        public bool IsBound => ( m_Chain != null );
 
-		public PropertyAccess Access
-		{
-			get { return m_Access; }
-		}
+        public PropertyAccess Access => m_Access;
 
-		public PropertyInfo[] Chain
+        public PropertyInfo[] Chain
 		{
 			get
 			{

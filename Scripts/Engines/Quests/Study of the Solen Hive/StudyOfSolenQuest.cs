@@ -17,22 +17,14 @@ namespace Server.Engines.Quests.Naturalist
 				typeof( FullBackpackConversation )
 			};
 
-		public override Type[] TypeReferenceTable{ get{ return m_TypeReferenceTable; } }
+		public override Type[] TypeReferenceTable => m_TypeReferenceTable;
 
-		public override object Name
-		{
-			get
-			{
-				// "Study of the Solen Hive"
-				return 1054041;
-			}
-		}
+        public override object Name =>
+            // "Study of the Solen Hive"
+            1054041;
 
-		public override object OfferMessage
-		{
-			get
-			{
-				/* <I>The Naturalist looks up from his notes, regarding you with a hopeful
+        public override object OfferMessage =>
+            /* <I>The Naturalist looks up from his notes, regarding you with a hopeful
 				 * look in his eyes.</I><BR><BR>
 				 * 
 				 * Um..yes..excuse me. I was wondering if you could offer me a bit of assistance.
@@ -60,20 +52,18 @@ namespace Server.Engines.Quests.Naturalist
 				 * 
 				 * Will you accept my offer?
 				 */
-				return 1054042;
-			}
-		}
+            1054042;
 
-		public override TimeSpan RestartDelay{ get{ return TimeSpan.Zero; } }
-		public override bool IsTutorial{ get{ return false; } }
+        public override TimeSpan RestartDelay => TimeSpan.Zero;
+        public override bool IsTutorial => false;
 
-		public override int Picture{ get{ return 0x15C7; } }
+        public override int Picture => 0x15C7;
 
-		private Naturalist m_Naturalist;
+        private Naturalist m_Naturalist;
 
-		public Naturalist Naturalist{ get{ return m_Naturalist; } }
+		public Naturalist Naturalist => m_Naturalist;
 
-		public StudyOfSolenQuest( PlayerMobile from, Naturalist naturalist ) : base( from )
+        public StudyOfSolenQuest( PlayerMobile from, Naturalist naturalist ) : base( from )
 		{
 			m_Naturalist = naturalist;
 		}

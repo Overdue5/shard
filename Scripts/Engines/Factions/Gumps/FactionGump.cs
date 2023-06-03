@@ -4,9 +4,9 @@ namespace Server.Factions
 {
 	public abstract class FactionGump : Gump
 	{
-		public virtual int ButtonTypes{ get{ return 10; } }
+		public virtual int ButtonTypes => 10;
 
-		public int ToButtonID( int type, int index )
+        public int ToButtonID( int type, int index )
 		{
 			return 1 + (index * ButtonTypes) + type;
 		}

@@ -7,12 +7,9 @@ namespace Server.Items
 	{
 		private SpawnTimer m_Timer;
 
-		public override string DefaultName
-		{
-			get { return "remains"; }
-		}
+		public override string DefaultName => "remains";
 
-		[Constructable]
+        [Constructable]
 		public DKRemains() : base( 3790 )
 		{
 			Movable = false;

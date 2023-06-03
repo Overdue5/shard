@@ -4,20 +4,17 @@ namespace Server.Regions
 	{
 		private static SpawnPersistence m_Instance;
 
-		public SpawnPersistence Instance{ get{ return m_Instance; } }
+		public SpawnPersistence Instance => m_Instance;
 
-		public static void EnsureExistence()
+        public static void EnsureExistence()
 		{
 			if ( m_Instance == null )
 				m_Instance = new SpawnPersistence();
 		}
 
-		public override string DefaultName
-		{
-			get { return "Region spawn persistence - Internal"; }
-		}
+		public override string DefaultName => "Region spawn persistence - Internal";
 
-		private SpawnPersistence() : base( 1 )
+        private SpawnPersistence() : base( 1 )
 		{
 			Movable = false;
 		}

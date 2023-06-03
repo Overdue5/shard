@@ -15,12 +15,12 @@ namespace Server.Engines.Mahjong
 		private MahjongPieceDirection m_Direction;
 		private MahjongWind m_Wind;
 
-		public MahjongGame Game { get { return m_Game; } }
-		public Point2D Position { get { return m_Position; } }
-		public MahjongPieceDirection Direction { get { return m_Direction; } }
-		public MahjongWind Wind { get { return m_Wind; } }
+		public MahjongGame Game => m_Game;
+        public Point2D Position => m_Position;
+        public MahjongPieceDirection Direction => m_Direction;
+        public MahjongWind Wind => m_Wind;
 
-		public MahjongDealerIndicator( MahjongGame game, Point2D position, MahjongPieceDirection direction, MahjongWind wind )
+        public MahjongDealerIndicator( MahjongGame game, Point2D position, MahjongPieceDirection direction, MahjongWind wind )
 		{
 			m_Game = game;
 			m_Position = position;
@@ -28,12 +28,9 @@ namespace Server.Engines.Mahjong
 			m_Wind = wind;
 		}
 
-		public MahjongPieceDim Dimensions
-		{
-			get { return GetDimensions( m_Position, m_Direction ); }
-		}
+		public MahjongPieceDim Dimensions => GetDimensions( m_Position, m_Direction );
 
-		public void Move( Point2D position, MahjongPieceDirection direction, MahjongWind wind )
+        public void Move( Point2D position, MahjongPieceDirection direction, MahjongWind wind )
 		{
 			MahjongPieceDim dim = GetDimensions( position, direction );
 

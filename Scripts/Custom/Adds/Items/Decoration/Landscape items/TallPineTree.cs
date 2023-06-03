@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class TallPineTree : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new TallPineTreeDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new TallPineTreeDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public TallPineTree()
 		{
 			AddonComponent ac = null;
@@ -80,15 +74,9 @@ namespace Server.Items
 
 	public class TallPineTreeDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new TallPineTree();
-			}
-		}
+		public override BaseAddon Addon => new TallPineTree();
 
-		[Constructable]
+        [Constructable]
 		public TallPineTreeDeed()
 		{
 			Name = "TallPineTree";

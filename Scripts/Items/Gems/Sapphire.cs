@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class Sapphire : Item
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public Sapphire() : this( 1 )
 		{
 		}

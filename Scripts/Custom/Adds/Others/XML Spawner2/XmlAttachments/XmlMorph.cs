@@ -13,19 +13,27 @@ namespace Server.Engines.XmlSpawner2
 		private DateTime m_MorphEnd;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int MorphID { get { return m_MorphID; } set { m_MorphID  = value; } }
+		public int MorphID { get => m_MorphID;
+            set => m_MorphID  = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan Duration { get { return m_Duration; } set { m_Duration  = value; } }
+		public TimeSpan Duration { get => m_Duration;
+            set => m_Duration  = value;
+        }
         
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime MorphEnd { get { return m_MorphEnd; }  }
+		public DateTime MorphEnd => m_MorphEnd;
+
+        [CommandProperty( AccessLevel.GameMaster )]
+		public string ActivationWord { get => m_Word;
+            set => m_Word  = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string ActivationWord { get { return m_Word; } set { m_Word  = value; } }
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Range { get { return proximityrange; } set { proximityrange  = value; } }
+		public int Range { get => proximityrange;
+            set => proximityrange  = value;
+        }
 
 		// These are the various ways in which the message attachment can be constructed.
 		// These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.
@@ -147,9 +155,9 @@ namespace Server.Engines.XmlSpawner2
 			}
 		}
         
-		public override bool HandlesOnSpeech { get { return (ActivationWord != null); } }
+		public override bool HandlesOnSpeech => (ActivationWord != null);
 
-		public override void OnSpeech(SpeechEventArgs e )
+        public override void OnSpeech(SpeechEventArgs e )
 		{
 			base.OnSpeech(e);
 		    
@@ -164,9 +172,9 @@ namespace Server.Engines.XmlSpawner2
 			}
 		}
 
-		public override bool HandlesOnMovement { get { return (ActivationWord == null); } }
+		public override bool HandlesOnMovement => (ActivationWord == null);
 
-		public override void OnMovement(MovementEventArgs e )
+        public override void OnMovement(MovementEventArgs e )
 		{
 			base.OnMovement(e);
 		    

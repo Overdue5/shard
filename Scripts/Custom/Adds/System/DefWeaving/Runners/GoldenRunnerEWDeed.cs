@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class GoldenRunnerEWAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new GoldenRunnerEWDeed(); } }
+		public override BaseAddonDeed Deed => new GoldenRunnerEWDeed();
 
-		[Constructable]
+        [Constructable]
 		public GoldenRunnerEWAddon()
 		{
 			AddComponent( new AddonComponent( 0x0ADC ), -1, -1, 0 );
@@ -36,9 +36,9 @@ namespace Server.Items
 
 	public class GoldenRunnerEWDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new GoldenRunnerEWAddon(); } }
+		public override BaseAddon Addon => new GoldenRunnerEWAddon();
 
-		[Constructable]
+        [Constructable]
 		public GoldenRunnerEWDeed()
 		{
 			Name = "Golden Runner Deed - E/W";

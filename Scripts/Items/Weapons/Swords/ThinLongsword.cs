@@ -3,20 +3,20 @@ namespace Server.Items
 	[Flipable( 0x13B8, 0x13B7 )]
 	public class ThinLongsword : BaseSword
 	{
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 16; } }
-		public override int AosSpeed{ get{ return 30; } }
+		public override int AosStrengthReq => 35;
+        public override int AosMinDamage => 15;
+        public override int AosMaxDamage => 16;
+        public override int AosSpeed => 30;
 
-		public override int OldStrengthReq{ get{ return 25; } }
-		public override int OldMinDamage{ get{ return 8; } }
-		public override int OldMaxDamage{ get{ return 34; } }
-		public override int OldSpeed{ get{ return 396; } }
+        public override int OldStrengthReq => 25;
+        public override int OldMinDamage => 8;
+        public override int OldMaxDamage => 34;
+        public override int OldSpeed => 396;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 110; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 110;
 
-		[Constructable]
+        [Constructable]
 		public ThinLongsword() : base( 0x13B8 )
 		{
 			Weight = 1.0;

@@ -6,7 +6,7 @@ namespace Knives.Chat3
     {
         private Mobile c_Target;
 
-        public Mobile Current { get { return (c_Target == null ? Owner : c_Target); } }
+        public Mobile Current => (c_Target == null ? Owner : c_Target);
 
         public MailGump(Mobile m, Mobile targ)
             : base(m, 100, 100)

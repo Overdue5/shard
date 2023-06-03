@@ -2,9 +2,9 @@ namespace Server.Mobiles
 {
 	public class FisherGuildmaster : BaseGuildmaster
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.FishermensGuild; } }
+		public override NpcGuild NpcGuild => NpcGuild.FishermensGuild;
 
-		[Constructable]
+        [Constructable]
 		public FisherGuildmaster() : base( "fisher" )
 		{
 			SetSkill( SkillName.Fishing, 80.0, 100.0 );

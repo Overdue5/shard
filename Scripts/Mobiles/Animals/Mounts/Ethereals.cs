@@ -16,20 +16,17 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get { return m_IsRewardItem; }
-			set { m_IsRewardItem = value; }
-		}
+			get => m_IsRewardItem;
+            set => m_IsRewardItem = value;
+        }
 
-		public override double DefaultWeight
-		{
-			get { return 1.0; }
-		}
+		public override double DefaultWeight => 1.0;
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+        [CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
 		public bool IsDonationItem
 		{
-			get { return m_IsDonationItem; }
-			set { m_IsDonationItem = value; InvalidateProperties(); }
+			get => m_IsDonationItem;
+            set { m_IsDonationItem = value; InvalidateProperties(); }
 		}
 
 		[Constructable]
@@ -61,11 +58,8 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MountedID
 		{
-			get
-			{
-				return m_MountedID;
-			}
-			set
+			get => m_MountedID;
+            set
 			{
 				if( m_MountedID != value )
 				{
@@ -80,11 +74,8 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int RegularID
 		{
-			get
-			{
-				return m_RegularID;
-			}
-			set
+			get => m_RegularID;
+            set
 			{
 				if( m_RegularID != value )
 				{
@@ -101,11 +92,11 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool DisplayLootType { get { return false; } }
+		public override bool DisplayLootType => false;
 
-		public virtual int FollowerSlots { get { return 1; } }
+        public virtual int FollowerSlots => 1;
 
-		public void RemoveFollowers()
+        public void RemoveFollowers()
 		{
 			if( m_Rider != null )
 				m_Rider.Followers -= FollowerSlots;
@@ -243,11 +234,8 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Rider
 		{
-			get
-			{
-				return m_Rider;
-			}
-			set
+			get => m_Rider;
+            set
 			{
 				if( value != m_Rider )
 				{
@@ -276,9 +264,9 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual int EtherealHue { get { return 0x4001; } }
+		public virtual int EtherealHue => 0x4001;
 
-		public void UnmountMe()
+        public void UnmountMe()
 		{
 			Container bp = m_Rider.Backpack;
 
@@ -324,15 +312,9 @@ namespace Server.Mobiles
 			ProcessDelta();
 		}
 
-		public IMount Mount
-		{
-			get
-			{
-				return this;
-			}
-		}
+		public IMount Mount => this;
 
-		public static void StopMounting( Mobile mob )
+        public static void StopMounting( Mobile mob )
 		{
 			if( mob.Spell is EtherealSpell )
 				((EtherealSpell)mob.Spell).Stop();
@@ -356,25 +338,19 @@ namespace Server.Mobiles
 				m_Mount = mount;
 			}
 
-			public override bool ClearHandsOnCast { get { return false; } }
-			public override bool RevealOnCast { get { return false; } }
+			public override bool ClearHandsOnCast => false;
+            public override bool RevealOnCast => false;
 
-			public override TimeSpan GetCastRecovery()
+            public override TimeSpan GetCastRecovery()
 			{
 				return TimeSpan.Zero;
 			}
 
-			public override double CastDelayFastScalar { get { return 0; } }
+			public override double CastDelayFastScalar => 0;
 
-			public override TimeSpan CastDelayBase
-			{
-				get
-				{
-					return TimeSpan.FromSeconds( ((m_Mount.IsDonationItem && RewardSystem.GetRewardLevel( m_Rider ) < 3)? ( 7.5 + ( Core.AOS ? 3.0 : 2.0)) : ( Core.AOS ? 3.0 : 2.0)) );
-				}
-			}
+            public override TimeSpan CastDelayBase => TimeSpan.FromSeconds( ((m_Mount.IsDonationItem && RewardSystem.GetRewardLevel( m_Rider ) < 3)? ( 7.5 + ( Core.AOS ? 3.0 : 2.0)) : ( Core.AOS ? 3.0 : 2.0)) );
 
-			public override int GetMana()
+            public override int GetMana()
 			{
 				return 0;
 			}
@@ -437,7 +413,7 @@ namespace Server.Mobiles
 
 	public class EtherealHorse : EtherealMount
 	{
-		public override int LabelNumber { get { return 1041298; } } // Ethereal Horse Statuette
+		public override int LabelNumber => 1041298; // Ethereal Horse Statuette
 
 		[Constructable]
 		public EtherealHorse()
@@ -473,7 +449,7 @@ namespace Server.Mobiles
 
 	public class EtherealLlama : EtherealMount
 	{
-		public override int LabelNumber { get { return 1041300; } } // Ethereal Llama Statuette
+		public override int LabelNumber => 1041300; // Ethereal Llama Statuette
 
 		[Constructable]
 		public EtherealLlama()
@@ -506,7 +482,7 @@ namespace Server.Mobiles
 
 	public class EtherealOstard : EtherealMount
 	{
-		public override int LabelNumber { get { return 1041299; } } // Ethereal Ostard Statuette
+		public override int LabelNumber => 1041299; // Ethereal Ostard Statuette
 
 		[Constructable]
 		public EtherealOstard()
@@ -539,7 +515,7 @@ namespace Server.Mobiles
 
 	public class EtherealRidgeback : EtherealMount
 	{
-		public override int LabelNumber { get { return 1049747; } } // Ethereal Ridgeback Statuette
+		public override int LabelNumber => 1049747; // Ethereal Ridgeback Statuette
 
 		[Constructable]
 		public EtherealRidgeback()
@@ -572,7 +548,7 @@ namespace Server.Mobiles
 
 	public class EtherealUnicorn : EtherealMount
 	{
-		public override int LabelNumber { get { return 1049745; } } // Ethereal Unicorn Statuette
+		public override int LabelNumber => 1049745; // Ethereal Unicorn Statuette
 
 		[Constructable]
 		public EtherealUnicorn()
@@ -605,7 +581,7 @@ namespace Server.Mobiles
 
 	public class EtherealBeetle : EtherealMount
 	{
-		public override int LabelNumber { get { return 1049748; } } // Ethereal Beetle Statuette
+		public override int LabelNumber => 1049748; // Ethereal Beetle Statuette
 
 		[Constructable]
 		public EtherealBeetle()
@@ -638,7 +614,7 @@ namespace Server.Mobiles
 
 	public class EtherealKirin : EtherealMount
 	{
-		public override int LabelNumber { get { return 1049746; } } // Ethereal Ki-Rin Statuette
+		public override int LabelNumber => 1049746; // Ethereal Ki-Rin Statuette
 
 		[Constructable]
 		public EtherealKirin()
@@ -671,7 +647,7 @@ namespace Server.Mobiles
 
 	public class EtherealSwampDragon : EtherealMount
 	{
-		public override int LabelNumber { get { return 1049749; } } // Ethereal Swamp Dragon Statuette
+		public override int LabelNumber => 1049749; // Ethereal Swamp Dragon Statuette
 
 		[Constructable]
 		public EtherealSwampDragon()
@@ -704,10 +680,10 @@ namespace Server.Mobiles
 
 	public class RideablePolarBear : EtherealMount
 	{
-		public override int LabelNumber { get { return 1076159; } } // Rideable Polar Bear 
-		public override int EtherealHue { get { return 0; } }
+		public override int LabelNumber => 1076159; // Rideable Polar Bear 
+		public override int EtherealHue => 0;
 
-		[Constructable]
+        [Constructable]
 		public RideablePolarBear() : base( 0x20E1, 0x3EC5 )
 		{
 		}
@@ -733,7 +709,7 @@ namespace Server.Mobiles
 
 	public class EtherealCuSidhe : EtherealMount
 	{
-		public override int LabelNumber { get { return 1080386; } } // Ethereal Cu Sidhe Statuette
+		public override int LabelNumber => 1080386; // Ethereal Cu Sidhe Statuette
 
 		[Constructable]
 		public EtherealCuSidhe() : base( 0x2D96, 0x3E91 )
@@ -761,7 +737,7 @@ namespace Server.Mobiles
 
     public class EtherealHiryu : EtherealMount
     {
-        public override int LabelNumber { get { return 1113813; } } // Ethereal Hiryu Statuette
+        public override int LabelNumber => 1113813; // Ethereal Hiryu Statuette
 
         [Constructable]
         public EtherealHiryu()
@@ -791,7 +767,7 @@ namespace Server.Mobiles
 
     public class EtherealReptalon : EtherealMount
     {
-        public override int LabelNumber { get { return 1113812; } } // Ethereal Reptalon Statuette
+        public override int LabelNumber => 1113812; // Ethereal Reptalon Statuette
 
         [Constructable]
         public EtherealReptalon()
@@ -821,7 +797,7 @@ namespace Server.Mobiles
 
 	public class ChargerOfTheFallen : EtherealMount
 	{
-		public override int LabelNumber { get { return 1074816; } } // Charger of the Fallen Statuette
+		public override int LabelNumber => 1074816; // Charger of the Fallen Statuette
 
 		[Constructable]
 		public ChargerOfTheFallen()
@@ -829,9 +805,9 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override int EtherealHue { get { return 0; } }
+		public override int EtherealHue => 0;
 
-		public ChargerOfTheFallen( Serial serial )
+        public ChargerOfTheFallen( Serial serial )
 			: base( serial )
 		{
 		}

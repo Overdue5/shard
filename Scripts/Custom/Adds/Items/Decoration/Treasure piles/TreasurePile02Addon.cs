@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class TreasurePile02Addon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new TreasurePile02AddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new TreasurePile02AddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public TreasurePile02Addon()
 		{
 			AddonComponent ac = null;
@@ -58,15 +52,9 @@ namespace Server.Items
 
 	public class TreasurePile02AddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new TreasurePile02Addon();
-			}
-		}
+		public override BaseAddon Addon => new TreasurePile02Addon();
 
-		[Constructable]
+        [Constructable]
 		public TreasurePile02AddonDeed()
 		{
 			Name = "TreasurePile02";

@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class HarmScroll : SpellScroll
 	{
-        public override int ManaCost { get { return 11; } }
+        public override int ManaCost => 11;
 
-		[Constructable]
+        [Constructable]
 		public HarmScroll() : this( 1 )
 		{
 		}

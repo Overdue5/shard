@@ -19,12 +19,9 @@ namespace Server.Items
 
 		private WayPoint m_Next;
 
-		public override string DefaultName
-		{
-			get { return "AI Way Point"; }
-		}
+		public override string DefaultName => "AI Way Point";
 
-		[Constructable]
+        [Constructable]
 		public WayPoint() : base( 0x1f14 )
 		{
 			Hue = 0x498;
@@ -41,11 +38,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WayPoint NextPoint
 		{
-			get
-			{
-				return m_Next;
-			}
-			set
+			get => m_Next;
+            set
 			{
 				if ( m_Next != this )
 					m_Next = value;

@@ -4,12 +4,9 @@ namespace Server.Items
 {
 	public class JackOLantern : BaseAddon
 	{
-		public override bool ShareHue
-		{
-			get { return false; }
-		}
+		public override bool ShareHue => false;
 
-		private AddonComponent GetComponent( int itemID, int hue )
+        private AddonComponent GetComponent( int itemID, int hue )
 		{
 			AddonComponent ac = new AddonComponent( itemID );
 

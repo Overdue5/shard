@@ -4,9 +4,9 @@ namespace Server.Mobiles
 {
 	public class EvilWanderingHealer : BaseHealer
 	{
-		public override bool CanTeach{ get{ return true; } }
+		public override bool CanTeach => true;
 
-		public override bool CheckTeach( SkillName skill, Mobile from )
+        public override bool CheckTeach( SkillName skill, Mobile from )
 		{
 			if ( !base.CheckTeach( skill, from ) )
 				return false;
@@ -31,8 +31,8 @@ namespace Server.Mobiles
 			SetSkill( SkillName.SpiritSpeak, 80.0, 100.0 );
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool ClickTitle{ get{ return false; } } // Do not display title in OnSingleClick
+		public override bool AlwaysMurderer => true;
+        public override bool ClickTitle => false; // Do not display title in OnSingleClick
 
 		public override bool CheckResurrect( Mobile m )
 		{

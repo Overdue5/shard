@@ -5,31 +5,31 @@ namespace Server.Items
 	[Flipable( 0x27A5, 0x27F0 )]
 	public class Yumi : BaseRanged
 	{
-		public override int EffectID{ get{ return 0xF42; } }
-		public override Type AmmoType{ get{ return typeof( Arrow ); } }
-		public override BaseAmmo Ammo{ get{ return new Arrow(); } }
+		public override int EffectID => 0xF42;
+        public override Type AmmoType => typeof( Arrow );
+        public override BaseAmmo Ammo => new Arrow();
 
-		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorPierce; } }
+        ////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorPierce; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.DoubleShot; } }
 
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 18; } }
-		public override int AosMaxDamage{ get{ return 20; } }
-		public override int AosSpeed{ get{ return 25; } }
+		public override int AosStrengthReq => 35;
+        public override int AosMinDamage => 18;
+        public override int AosMaxDamage => 20;
+        public override int AosSpeed => 25;
 
-		public override int OldStrengthReq{ get{ return 35; } }
-		public override int OldMinDamage{ get{ return 18; } }
-		public override int OldMaxDamage{ get{ return 20; } }
-		public override int OldSpeed{ get{ return 520; } }
+        public override int OldStrengthReq => 35;
+        public override int OldMinDamage => 18;
+        public override int OldMaxDamage => 20;
+        public override int OldSpeed => 520;
 
-		public override int DefMaxRange{ get{ return 10; } }
+        public override int DefMaxRange => 10;
 
-		public override int InitMinHits{ get{ return 55; } }
-		public override int InitMaxHits{ get{ return 60; } }
+        public override int InitMinHits => 55;
+        public override int InitMaxHits => 60;
 
-		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.ShootBow; } }
+        public override WeaponAnimation DefAnimation => WeaponAnimation.ShootBow;
 
-		[Constructable]
+        [Constructable]
 		public Yumi() : base( 0x27A5 )
 		{
 			Weight = 9.0;

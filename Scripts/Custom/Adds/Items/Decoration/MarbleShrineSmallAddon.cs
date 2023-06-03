@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class MarbleShrineSmallAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new MarbleShrineSmallAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new MarbleShrineSmallAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public MarbleShrineSmallAddon()
 		{
 			AddonComponent ac = null;
@@ -376,15 +370,9 @@ namespace Server.Items
 
 	public class MarbleShrineSmallAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new MarbleShrineSmallAddon();
-			}
-		}
+		public override BaseAddon Addon => new MarbleShrineSmallAddon();
 
-		[Constructable]
+        [Constructable]
 		public MarbleShrineSmallAddonDeed()
 		{
 			Name = "MarbleShrineSmall";

@@ -7,7 +7,7 @@ namespace Server.Items
 	[Flipable( 0x125E, 0x1230 )]
 	public class GuillotineComponent : AddonComponent
 	{
-		public override int LabelNumber { get { return 1024656; } } // Guillotine
+		public override int LabelNumber => 1024656; // Guillotine
 
 		public GuillotineComponent() : base( 0x125E )
 		{
@@ -34,9 +34,9 @@ namespace Server.Items
 
 	public class GuillotineAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new GuillotineDeed(); } }
+		public override BaseAddonDeed Deed => new GuillotineDeed();
 
-		public GuillotineAddon() : base()
+        public GuillotineAddon() : base()
 		{
 			AddComponent( new GuillotineComponent(), 0, 0, 0 );
 		}
@@ -143,8 +143,8 @@ namespace Server.Items
 
 	public class GuillotineDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new GuillotineAddon(); } }
-		public override int LabelNumber { get { return 1024656; } } // Guillotine
+		public override BaseAddon Addon => new GuillotineAddon();
+        public override int LabelNumber => 1024656; // Guillotine
 
 		[Constructable]
 		public GuillotineDeed() : base()

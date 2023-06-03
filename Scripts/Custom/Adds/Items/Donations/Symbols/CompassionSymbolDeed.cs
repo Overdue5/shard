@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class CompassionSymbolAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new CompassionSymbolDeed(); } }
+		public override BaseAddonDeed Deed => new CompassionSymbolDeed();
 
-		[Constructable]
+        [Constructable]
 		public CompassionSymbolAddon()
 		{
 			AddComponent( new AddonComponent( 0x14AB ), 0, 0, 0 ); //N
@@ -35,9 +35,9 @@ namespace Server.Items
 
 	public class CompassionSymbolDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new CompassionSymbolAddon(); } }
+		public override BaseAddon Addon => new CompassionSymbolAddon();
 
-		[Constructable]
+        [Constructable]
 		public CompassionSymbolDeed()
 		{
             Name = "Compassion symbol deed";

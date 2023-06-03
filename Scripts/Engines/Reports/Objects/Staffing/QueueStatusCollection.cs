@@ -23,14 +23,8 @@ namespace Server.Engines.Reports
         /// </summary>
         public QueueStatus this[int index]
         {
-            get
-            {
-                return ((QueueStatus)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
+            get => ((QueueStatus)(List[index]));
+            set => List[index] = value;
         }
         
         /// <summary>

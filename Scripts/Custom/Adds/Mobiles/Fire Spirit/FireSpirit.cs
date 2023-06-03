@@ -9,9 +9,9 @@ namespace Server.Mobiles
     public class FireSpirit : BaseCreature
     {
         private bool m_LavaBurst; 
-        public bool LavaBurst { get { return m_LavaBurst; } }
+        public bool LavaBurst => m_LavaBurst;
 
-		[Constructable]
+        [Constructable]
         public FireSpirit() : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.1, 0.2)
 		{
             Name = "Fire Spirit"; 
@@ -51,14 +51,14 @@ namespace Server.Mobiles
             VirtualArmor = 128;
         }
          
-        public override bool BardImmune { get { return !Core.AOS; } }
-        public override Poison PoisonImmune { get { return Poison.Lethal; } }
-        public override bool Uncalmable { get { return true; } }
-        public override bool CanRummageCorpses { get { return true; } }
-        public override bool Unprovokable { get { return true; } }
-        public override bool AlwaysMurderer { get { return true; } }
+        public override bool BardImmune => !Core.AOS;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override bool Uncalmable => true;
+        public override bool CanRummageCorpses => true;
+        public override bool Unprovokable => true;
+        public override bool AlwaysMurderer => true;
 
-		public FireSpirit( Serial serial ) : base( serial )
+        public FireSpirit( Serial serial ) : base( serial )
 		{
         }
 

@@ -5,9 +5,9 @@ namespace Server.Items
 {
 	public class RunicSewingKit : BaseRunicTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefTailoring.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefTailoring.CraftSystem;
 
-		public override void AddNameProperty( ObjectPropertyList list )
+        public override void AddNameProperty( ObjectPropertyList list )
 		{
 			string v = " ";
 

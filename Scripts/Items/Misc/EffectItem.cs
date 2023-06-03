@@ -44,15 +44,9 @@ namespace Server.Items
 			new FreeTimer( this, duration ).Start();
 		}
 
-		public override bool Decays
-		{
-			get
-			{
-				return true;
-			}
-		}
+		public override bool Decays => true;
 
-		public EffectItem( Serial serial ) : base( serial )
+        public EffectItem( Serial serial ) : base( serial )
 		{
 		}
 

@@ -11,8 +11,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool TurnedOn
 		{
-			get{ return m_TurnedOn; }
-			set{ m_TurnedOn = value; InvalidateProperties(); }
+			get => m_TurnedOn;
+            set{ m_TurnedOn = value; InvalidateProperties(); }
 		}
 
 		public BaseWindChimes( int itemID ) : base( itemID )
@@ -21,14 +21,11 @@ namespace Server.Items
 
 		private static readonly int[] m_Sounds = new int[] { 0x505, 0x506, 0x507 };
 
-		public static int[] Sounds
-		{
-			get{ return m_Sounds; }
-		}
+		public static int[] Sounds => m_Sounds;
 
-		public override bool HandlesOnMovement{ get{ return m_TurnedOn && IsLockedDown; } }
+        public override bool HandlesOnMovement => m_TurnedOn && IsLockedDown;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
+        public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			if ( m_TurnedOn && IsLockedDown && (!m.Hidden || m.AccessLevel == AccessLevel.Player) && Utility.InRange( m.Location, Location, 2 ) && !Utility.InRange( oldLocation, Location, 2 ) )
 				Effects.PlaySound( Location, Map, m_Sounds[Utility.Random( m_Sounds.Length )] );
@@ -134,9 +131,9 @@ namespace Server.Items
 
 	public class WindChimes : BaseWindChimes
 	{
-		public override int LabelNumber{ get{ return 1030290; } }
+		public override int LabelNumber => 1030290;
 
-		[Constructable]
+        [Constructable]
 		public WindChimes() : base( 0x2832 )
 		{
 		}
@@ -160,9 +157,9 @@ namespace Server.Items
 
 	public class FancyWindChimes : BaseWindChimes
 	{
-		public override int LabelNumber{ get{ return 1030291; } }
+		public override int LabelNumber => 1030291;
 
-		[Constructable]
+        [Constructable]
 		public FancyWindChimes() : base( 0x2833 )
 		{
 		}

@@ -6,12 +6,12 @@ namespace Server.Engines.Quests.Haven
 {
 	public class Dryad : BaseQuester
 	{
-		public override bool IsActiveVendor{ get{ return true; } }
-		public override bool DisallowAllMoves{ get{ return false; } }
-		public override bool ClickTitle{ get { return true; } }
-		public override bool CanTeach{ get{ return true; } }
+		public override bool IsActiveVendor => true;
+        public override bool DisallowAllMoves => false;
+        public override bool ClickTitle => true;
+        public override bool CanTeach => true;
 
-		[Constructable]
+        [Constructable]
 		public Dryad() : base( "the Dryad" )
 		{
 			SetSkill( SkillName.Peacemaking, 80.0, 100.0 );
@@ -160,8 +160,8 @@ namespace Server.Engines.Quests.Haven
         private List<GenericBuyInfo> m_BuyInfo = new InternalBuyInfo();
         private readonly IShopSellInfo m_SellInfo = new InternalSellInfo();
 
-	    public override IShopSellInfo SellInfo { get { return m_SellInfo; } }
-        public override List<GenericBuyInfo> BuyInfo { get { return m_BuyInfo; } }
+	    public override IShopSellInfo SellInfo => m_SellInfo;
+        public override List<GenericBuyInfo> BuyInfo => m_BuyInfo;
 
         public class InternalBuyInfo : List<GenericBuyInfo>
         {

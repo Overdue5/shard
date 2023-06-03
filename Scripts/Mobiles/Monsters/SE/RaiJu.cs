@@ -48,9 +48,9 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Rich );
 			AddLoot( LootPack.Gems, 2 );
 		}
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool BleedImmune => true;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 

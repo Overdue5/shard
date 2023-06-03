@@ -33,17 +33,11 @@ namespace Server.Mobiles
 				return base.Think();
 		}
 
-        public virtual bool SmartAI
-        {
-            get { return (m_Mobile is BaseVendor || m_Mobile is BaseEscortable/* || m_Mobile is Changeling*/ ); } // TODO: Uncomment once added
-        }
+        public virtual bool SmartAI => (m_Mobile is BaseVendor || m_Mobile is BaseEscortable/* || m_Mobile is Changeling*/ ); // TODO: Uncomment once added
 
-        public virtual bool IsNecromancer
-        {
-            get { return (m_Mobile.Skills[SkillName.Necromancy].Value > 50); }
-        }
+        public virtual bool IsNecromancer => (m_Mobile.Skills[SkillName.Necromancy].Value > 50);
 
-		private const double HealChance = 0.10; // 10% chance to heal at gm magery
+        private const double HealChance = 0.10; // 10% chance to heal at gm magery
 		private const double TeleportChance = 0.05; // 5% chance to teleport at gm magery
 		private const double DispelChance = 0.75; // 75% chance to dispel at gm magery
 

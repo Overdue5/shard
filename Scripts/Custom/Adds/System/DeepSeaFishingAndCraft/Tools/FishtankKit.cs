@@ -4,9 +4,9 @@ namespace Server.Items
 {
 	public class FishtankKit : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefAquarium.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefAquarium.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public FishtankKit() : base( 0x1EB8 )
 		{
 			Name = "Fishtank kit";

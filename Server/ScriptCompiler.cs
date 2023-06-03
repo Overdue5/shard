@@ -42,14 +42,8 @@ namespace Server
 
         public static Assembly[] Assemblies
         {
-            get
-            {
-                return m_Assemblies;
-            }
-            set
-            {
-                m_Assemblies = value;
-            }
+            get => m_Assemblies;
+            set => m_Assemblies = value;
         }
 
         private static List<string> m_AdditionalReferences = new List<string>();
@@ -844,9 +838,9 @@ public static void EnsureDirectory(string dir)
         private Type[] m_Types;
         private TypeTable m_Names, m_FullNames;
 
-        public Type[] Types { get { return m_Types; } }
-        public TypeTable Names { get { return m_Names; } }
-        public TypeTable FullNames { get { return m_FullNames; } }
+        public Type[] Types => m_Types;
+        public TypeTable Names => m_Names;
+        public TypeTable FullNames => m_FullNames;
 
         public Type GetTypeByName(string name, bool ignoreCase)
         {

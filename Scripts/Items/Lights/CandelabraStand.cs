@@ -4,10 +4,10 @@ namespace Server.Items
 {
 	public class CandelabraStand : BaseLight
 	{
-		public override int LitItemID{ get { return 0xB26; } }
-		public override int UnlitItemID{ get { return 0xA29; } }
+		public override int LitItemID => 0xB26;
+        public override int UnlitItemID => 0xA29;
 
-		[Constructable]
+        [Constructable]
 		public CandelabraStand() : base( 0xA29 )
 		{
 			Duration = TimeSpan.Zero; // Never burnt out

@@ -3,9 +3,9 @@ namespace Server.Mobiles
 	[CorpseName( "a dryad corpse" )]
 	public class DryadA : BaseCreature
 	{
-		public override bool InitialInnocent{ get{ return true; } }
+		public override bool InitialInnocent => true;
 
-		[Constructable]
+        [Constructable]
 		public DryadA() : base( AIType.AI_Mage, FightMode.Evil, 10, 1, 0.2, 0.4 )
 		{
 			Name = "a Dryad";
@@ -54,12 +54,12 @@ namespace Server.Mobiles
 			// TODO: statue
 		}
 
-        public override HideType HideType { get { return HideType.Regular; } }
+        public override HideType HideType => HideType.Regular;
 
-        public override int Hides { get { return 5; } }
-		public override int Meat{ get{ return 1; } }
+        public override int Hides => 5;
+        public override int Meat => 1;
 
-		public DryadA( Serial serial ) : base( serial )
+        public DryadA( Serial serial ) : base( serial )
 		{
 		}
 

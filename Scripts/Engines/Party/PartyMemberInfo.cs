@@ -4,8 +4,8 @@ namespace Server.Engines.PartySystem
 	{
 		private readonly Mobile m_Mobile;
 
-	    public Mobile Mobile{ get{ return m_Mobile; } }
-	    public bool CanLoot { get; set; }
+	    public Mobile Mobile => m_Mobile;
+        public bool CanLoot { get; set; }
 
 	    public PartyMemberInfo( Mobile m )
 		{

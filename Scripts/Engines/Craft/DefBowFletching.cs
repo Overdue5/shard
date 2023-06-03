@@ -5,17 +5,11 @@ namespace Server.Engines.Craft
 {
 	public class DefBowFletching : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get	{ return SkillName.Fletching; }
-		}
+		public override SkillName MainSkill => SkillName.Fletching;
 
-		public override int GumpTitleNumber
-		{
-			get { return 1044006; } // <CENTER>BOWCRAFT AND FLETCHING MENU</CENTER>
-		}
+        public override int GumpTitleNumber => 1044006; // <CENTER>BOWCRAFT AND FLETCHING MENU</CENTER>
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
 		public static CraftSystem CraftSystem
 		{
@@ -81,9 +75,9 @@ namespace Server.Engines.Craft
 		    return 1044154; // You create the item.
 		}
 
-		public override CraftECA ECA{ get{ return CraftECA.CustomChance; } }
+		public override CraftECA ECA => CraftECA.CustomChance;
 
-		public override void InitCraftList()
+        public override void InitCraftList()
 		{
 			int index = -1;
 

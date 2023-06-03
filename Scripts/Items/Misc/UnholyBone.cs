@@ -7,12 +7,9 @@ namespace Server.Items
 	{
 		private SpawnTimer m_Timer;
 
-		public override string DefaultName
-		{
-			get { return "unholy bone"; }
-		}
+		public override string DefaultName => "unholy bone";
 
-		[Constructable]
+        [Constructable]
 		public UnholyBone() : base( 0xF7E )
 		{
 			Movable = false;

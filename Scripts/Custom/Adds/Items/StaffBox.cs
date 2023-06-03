@@ -5,14 +5,11 @@ namespace Server.Items
 	[Flipable( 0x9A8, 0xE80 )]
 	public class StaffBox : Container
 	{
-		public override int DefaultMaxWeight{ get{ return 0; } } 
+		public override int DefaultMaxWeight => 0;
 
-		public override bool IsDecoContainer
-		{
-			get{ return false; }
-		}
+        public override bool IsDecoContainer => false;
 
-		[Constructable]
+        [Constructable]
 		public StaffBox() : base( 0x9A8 )
 		{
 			Movable = false;

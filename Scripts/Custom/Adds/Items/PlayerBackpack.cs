@@ -3,29 +3,17 @@ namespace Server.Items
     public class PlayerBackpack : Backpack
     {
 
-        public override int DefaultMaxWeight
-        {
-            get
-            {
-                return m_Owner == null ? 0 : WeightLeft != 0 ? WeightLeft : -1;
-            }
-        }
+        public override int DefaultMaxWeight => m_Owner == null ? 0 : WeightLeft != 0 ? WeightLeft : -1;
 
-        public int WeightLeft
-        {
-            get
-            {
-                return ((m_Owner.Str * 4) + 27 - GetGearWeight());
-            }
-        }
+        public int WeightLeft => ((m_Owner.Str * 4) + 27 - GetGearWeight());
 
         private Mobile m_Owner;
 
         [CommandProperty(AccessLevel.Seer)]
         private Mobile Owner 
         {
-            get { return m_Owner; }
-            set { m_Owner = value; }
+            get => m_Owner;
+            set => m_Owner = value;
         }
 
         [Constructable]

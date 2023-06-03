@@ -6,22 +6,23 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 
-		public override int AosStrengthReq{ get{ return 95; } }
-		public override int AosMinDamage{ get{ return 18; } }
-		public override int AosMaxDamage{ get{ return 19; } }
-		public override int AosSpeed{ get{ return 25; } }
+		public override int AosStrengthReq => 95;
+        public override int AosMinDamage => 18;
+        public override int AosMaxDamage => 19;
+        public override int AosSpeed => 25;
 
-		public override int OldStrengthReq{ get{ return 45; } }
-		//public override int OldMinDamage{ get{ return 20; } }
+        public override int OldStrengthReq => 45;
+
+        //public override int OldMinDamage{ get{ return 20; } }
 		//public override int OldMaxDamage{ get{ return 57; } }
-        public override int OldMinDamage { get { return 25; } }
-        public override int OldMaxDamage { get { return 52; } }
-		public override int OldSpeed{ get{ return 616; } }
+        public override int OldMinDamage => 25;
+        public override int OldMaxDamage => 52;
+        public override int OldSpeed => 616;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 80;
 
-		[Constructable]
+        [Constructable]
 		public Halberd() : base( 0x143E )
 		{
 			Weight = 16.0;

@@ -6,9 +6,9 @@ namespace Server.Multis
 {	
 	public class OrcCamp : BaseCamp
 	{
-		public virtual Mobile Orcs{ get{ return new Orc(); } }
-		
-		private Mobile m_Prisoner;
+		public virtual Mobile Orcs => new Orc();
+
+        private Mobile m_Prisoner;
 		
 		[Constructable]
 		public OrcCamp() : base( 0x10EE ) // dummy garbage at center

@@ -8,7 +8,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public CraftResource Resource
         {
-            get { return m_Resource; }
+            get => m_Resource;
             set { m_Resource = value; InvalidateProperties(); }
         }
 
@@ -20,8 +20,8 @@ namespace Server.Items
                 LabelTo(from, string.Format("{0} {1} log{2}", Amount, CraftResources.GetName(m_Resource).ToLower(), Amount > 1 ? "s" : ""));
         }
 
-        int ICommodity.DescriptionNumber { get { return CraftResources.IsStandard(m_Resource) ? LabelNumber : 1075062 + ((int)m_Resource - (int)CraftResource.RegularWood); } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => CraftResources.IsStandard(m_Resource) ? LabelNumber : 1075062 + ((int)m_Resource - (int)CraftResource.RegularWood);
+        bool ICommodity.IsDeedable => true;
 
         public BaseLog(CraftResource resource)
             : this(resource, 1)

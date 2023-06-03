@@ -49,7 +49,8 @@ namespace Server.Engines.Quests.Collector
             return qs.IsObjectiveInProgress(typeof(FindSheetMusicObjective));
         }
 
-        public override bool ShowContextMenu { get { return true; } }
+        public override bool ShowContextMenu => true;
+
         public override void OnTalk(PlayerMobile player, bool contextMenu)
         {
             QuestSystem qs = player.Quest;

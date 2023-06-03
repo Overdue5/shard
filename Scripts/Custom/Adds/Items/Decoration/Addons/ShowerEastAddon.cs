@@ -9,15 +9,9 @@ namespace Server.Items
 {
 	public class ShowerEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new ShowerEastAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new ShowerEastAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public ShowerEastAddon()
 		{
 			AddonComponent ac = null;
@@ -83,15 +77,9 @@ namespace Server.Items
 
 	public class ShowerEastAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new ShowerEastAddon();
-			}
-		}
+		public override BaseAddon Addon => new ShowerEastAddon();
 
-		[Constructable]
+        [Constructable]
 		public ShowerEastAddonDeed()
 		{
 			Name = "Shower East";

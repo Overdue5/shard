@@ -13,11 +13,11 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
-		public override int LabelNumber{ get{ return 1062094; } } // a young player ticket
+		public override int LabelNumber => 1062094; // a young player ticket
 
 		[Constructable]
 		public NewPlayerTicket() : base( 0x14EF )
@@ -33,9 +33,9 @@ namespace Server.Items
 			list.Add( 1041492 ); // This is half a prize ticket! Double-click this ticket and target any other ticket marked NEW PLAYER and get a prize! This ticket will only work for YOU, so don't give it away!
 		}
 
-		public override bool DisplayLootType{ get{ return false; } }
+		public override bool DisplayLootType => false;
 
-		public NewPlayerTicket( Serial serial ) : base( serial )
+        public NewPlayerTicket( Serial serial ) : base( serial )
 		{
 		}
 

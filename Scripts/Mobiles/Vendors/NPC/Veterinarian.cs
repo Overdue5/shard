@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class Veterinarian : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Veterinarian() : base( "the vet" )
 		{
 			SetSkill( SkillName.AnimalLore, 85.0, 100.0 );

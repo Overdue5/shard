@@ -4,11 +4,11 @@ namespace Server.Items
 {
 	public class GreaterAgilityPotion : BaseAgilityPotion
 	{
-		public override int DexOffset{ get{ return 15; } }
-        public override double PotionDelay { get { return 30; } }
-		public override TimeSpan Duration{ get{ return TimeSpan.FromMinutes( 2 ); } }
+		public override int DexOffset => 15;
+        public override double PotionDelay => 30;
+        public override TimeSpan Duration => TimeSpan.FromMinutes( 2 );
 
-		[Constructable]
+        [Constructable]
 		public GreaterAgilityPotion() : base( PotionEffect.AgilityGreater )
 		{
             Name = "Greater Agility Potion";

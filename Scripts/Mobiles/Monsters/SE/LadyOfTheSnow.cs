@@ -61,11 +61,11 @@ namespace Server.Mobiles
                 AddItem(new RandomAccWeap(Utility.RandomMinMax(2, 3)));
 		}
 
-		public override bool BleedImmune { get { return true; } }
-		public override bool CanRummageCorpses { get { return true; } }
-		public override int TreasureMapLevel { get { return 4; } }
+		public override bool BleedImmune => true;
+        public override bool CanRummageCorpses => true;
+        public override int TreasureMapLevel => 4;
 
-		// TODO: Snowball
+        // TODO: Snowball
 
 		public override void OnGaveMeleeAttack( Mobile defender )
 		{

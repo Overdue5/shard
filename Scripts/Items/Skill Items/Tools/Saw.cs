@@ -5,9 +5,9 @@ namespace Server.Items
 	[Flipable( 0x1034, 0x1035 )]
 	public class Saw : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefCarpentry.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public Saw() : base( 0x1034 )
 		{
 			Weight = 2.0;

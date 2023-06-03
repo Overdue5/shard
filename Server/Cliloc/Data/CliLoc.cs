@@ -8,12 +8,12 @@ namespace Solaris.CliLocHandler
 {
 	public class CliLoc
 	{
-		public static int MaxEntry{ get{ return 3011032; } }
-		
-		//this is used to guess the space required for cliloc text on a gump.  Basically it's the average pixels per character
-		public static int PixelsPerCharacter{ get{ return 7; } }
-		
-		//this stores all the cliloc entries
+		public static int MaxEntry => 3011032;
+
+        //this is used to guess the space required for cliloc text on a gump.  Basically it's the average pixels per character
+		public static int PixelsPerCharacter => 7;
+
+        //this stores all the cliloc entries
 		protected static Hashtable _CliLocs;
 		
 		public static Hashtable CliLocs

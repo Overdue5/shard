@@ -33,10 +33,10 @@ namespace Server.Items
 		private readonly Type m_Type;
 		private readonly int m_Amount;
 
-		public Type Type{ get{ return m_Type; } }
-		public int Amount{ get{ return m_Amount; } }
+		public Type Type => m_Type;
+        public int Amount => m_Amount;
 
-		private CrystalRechargeInfo( Type type, int amount )
+        private CrystalRechargeInfo( Type type, int amount )
 		{
 			m_Type = type;
 			m_Amount = amount;
@@ -47,7 +47,7 @@ namespace Server.Items
 	{
 		public static readonly int MaxCharges = 2000;
 
-		public override int LabelNumber{ get{ return 1060740; } } // communication crystal
+		public override int LabelNumber => 1060740; // communication crystal
 
 		private int m_Charges;
 		private List<ReceiverCrystal> m_Receivers;
@@ -55,8 +55,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get{ return ItemID == 0x1ECD; }
-			set
+			get => ItemID == 0x1ECD;
+            set
 			{
 				ItemID = value ? 0x1ECD : 0x1ED0;
 				InvalidateProperties();
@@ -66,20 +66,17 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges
 		{
-			get{ return m_Charges; }
-			set
+			get => m_Charges;
+            set
 			{
 				m_Charges = value;
 				InvalidateProperties();
 			}
 		}
 
-		public List<ReceiverCrystal> Receivers
-		{
-			get{ return m_Receivers; }
-		}
+		public List<ReceiverCrystal> Receivers => m_Receivers;
 
-		[Constructable]
+        [Constructable]
 		public BroadcastCrystal() : this( 2000 )
 		{
 		}
@@ -122,12 +119,9 @@ namespace Server.Items
 				LabelTo( from, 1060746, Receivers.Count.ToString() ); // links: ~1_val~
 		}
 
-		public override bool HandlesOnSpeech
-		{
-			get{ return Active && Receivers.Count > 0 && ( RootParent == null || RootParent is Mobile ); }
-		}
+		public override bool HandlesOnSpeech => Active && Receivers.Count > 0 && ( RootParent == null || RootParent is Mobile );
 
-		public override void OnSpeech( SpeechEventArgs e )
+        public override void OnSpeech( SpeechEventArgs e )
 		{
 			if ( !Active || Receivers.Count == 0 || ( RootParent != null && !(RootParent is Mobile) ) )
 				return;
@@ -301,15 +295,15 @@ namespace Server.Items
 
 	public class ReceiverCrystal : Item
 	{
-		public override int LabelNumber{ get{ return 1060740; } } // communication crystal
+		public override int LabelNumber => 1060740; // communication crystal
 
 		private BroadcastCrystal m_Sender;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get{ return ItemID == 0x1ED1; }
-			set
+			get => ItemID == 0x1ED1;
+            set
 			{
 				ItemID = value ? 0x1ED1 : 0x1ED0;
 				InvalidateProperties();
@@ -319,8 +313,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public BroadcastCrystal Sender
 		{
-			get{ return m_Sender; }
-			set
+			get => m_Sender;
+            set
 			{
 				if ( m_Sender != null )
 				{

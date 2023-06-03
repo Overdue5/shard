@@ -271,13 +271,7 @@ namespace Server.Network
         {
         }
 
-        public string Version
-        {
-            get
-            {
-                return zlibVersion();
-            }
-        }
+        public string Version => zlibVersion();
 
         public ZLibError Compress(byte[] dest, ref int destLength, byte[] source, int sourceLength)
         {
@@ -313,13 +307,7 @@ namespace Server.Network
         {
         }
 
-        public string Version
-        {
-            get
-            {
-                return zlibVersion();
-            }
-        }
+        public string Version => zlibVersion();
 
         public ZLibError Compress(byte[] dest, ref int destLength, byte[] source, int sourceLength)
         {
@@ -355,13 +343,7 @@ namespace Server.Network
         {
         }
 
-        public string Version
-        {
-            get
-            {
-                return zlibVersion();
-            }
-        }
+        public string Version => zlibVersion();
 
         public ZLibError Compress(byte[] dest, ref int destLength, byte[] source, int sourceLength)
         {
@@ -397,13 +379,7 @@ namespace Server.Network
         {
         }
 
-        public string Version
-        {
-            get
-            {
-                return zlibVersion();
-            }
-        }
+        public string Version => zlibVersion();
 
         public ZLibError Compress(byte[] dest, ref int destLength, byte[] source, int sourceLength)
         {

@@ -102,24 +102,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxArcaneCharges
 		{
-			get{ return m_MaxArcaneCharges; }
-			set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
+			get => m_MaxArcaneCharges;
+            set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int CurArcaneCharges
 		{
-			get{ return m_CurArcaneCharges; }
-			set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
+			get => m_CurArcaneCharges;
+            set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsArcane
-		{
-			get{ return ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 ); }
-		}
+		public bool IsArcane => ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 );
 
-		public void Update()
+        public void Update()
 		{
 			if ( IsArcane )
 				ItemID = 0x26AD;
@@ -225,15 +222,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; }
-		}
+			get => m_IsRewardItem;
+            set => m_IsRewardItem = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Number
 		{
-			get{ return m_LabelNumber; }
-			set{ m_LabelNumber = value; InvalidateProperties(); }
+			get => m_LabelNumber;
+            set{ m_LabelNumber = value; InvalidateProperties(); }
 		}
 
 		public override int LabelNumber
@@ -247,9 +244,9 @@ namespace Server.Items
 			}
 		}
 
-		public override int BasePhysicalResistance{ get{ return 3; } }
+		public override int BasePhysicalResistance => 3;
 
-		public override void OnAdded( object parent )
+        public override void OnAdded( object parent )
 		{
 			base.OnAdded( parent );
 

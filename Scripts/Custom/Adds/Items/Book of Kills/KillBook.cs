@@ -34,19 +34,27 @@ namespace Server.Items
 		private int m_TotDeaths;
 		
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Mobile BookOwner	{ get{ return m_BookOwner; }set{ m_BookOwner = value; }}
+		public Mobile BookOwner	{ get => m_BookOwner;
+            set => m_BookOwner = value;
+        }
 		
-		public static bool Pointsys{ get{ return m_Pointsys; } set{ m_Pointsys = value; }}
+		public static bool Pointsys{ get => m_Pointsys;
+            set => m_Pointsys = value;
+        }
 		
-		public int TotKills{ get{ return m_TotKills; }set{ m_TotKills = value; }}		
+		public int TotKills{ get => m_TotKills;
+            set => m_TotKills = value;
+        }		
 		
-		public int TotDeaths{ get{ return m_TotDeaths; }set{ m_TotDeaths = value;}}
+		public int TotDeaths{ get => m_TotDeaths;
+            set => m_TotDeaths = value;
+        }
 		
-		public ArrayList Entries { get{return m_Entries; }}
-		
-		public override bool DisplayLootType{ get{ return false; } }
-		
-		[Constructable]
+		public ArrayList Entries => m_Entries;
+
+        public override bool DisplayLootType => false;
+
+        [Constructable]
 		public KillBook ( ) : base ( 0x2253 )
 		{
 			Name = "Book of kills";
@@ -166,9 +174,11 @@ namespace Server.Items
 		private readonly string m_Name;
 		private int m_Deaths;
 		
-		public string Name{ get{ return m_Name; } }
-		
-		public int Deaths{ get{ return m_Deaths; } set{ m_Deaths = value; }	}
+		public string Name => m_Name;
+
+        public int Deaths{ get => m_Deaths;
+            set => m_Deaths = value;
+        }
 		
 		public DeathEntry( string name, int deaths )
 		{

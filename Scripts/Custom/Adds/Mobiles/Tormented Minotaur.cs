@@ -45,10 +45,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.FilthyRich );
 		}
 
-		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
-		public override int TreasureMapLevel{ get{ return 3; } }
+		public override Poison PoisonImmune => Poison.Regular;
+        public override int TreasureMapLevel => 3;
 
-		public TormentedMinotaur( Serial serial ) : base( serial )
+        public TormentedMinotaur( Serial serial ) : base( serial )
 		{
 		}
 

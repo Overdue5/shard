@@ -7,11 +7,11 @@ namespace Server.Mobiles
 	public class Banker : BaseVendor
 	{
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.MerchantsGuild; } }
+        public override NpcGuild NpcGuild => NpcGuild.MerchantsGuild;
 
-		[Constructable]
+        [Constructable]
 		public Banker() : base( "the banker" )
 		{
 		}

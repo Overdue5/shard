@@ -27,7 +27,7 @@
         [CommandProperty(AccessLevel.GameMaster)]
         public new Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;
@@ -35,10 +35,7 @@
             }
         }
 
-        public override bool DisplayLootType
-        {
-            get { return false; }
-        }
+        public override bool DisplayLootType => false;
 
         public override bool OnEquip(Mobile from)
         {
@@ -98,7 +95,7 @@
         [CommandProperty(AccessLevel.GameMaster)]
         public new Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;
@@ -106,10 +103,7 @@
             }
         }
 
-        public override bool DisplayLootType
-        {
-            get { return false; }
-        }
+        public override bool DisplayLootType => false;
 
         public override bool OnEquip(Mobile from)
         {
@@ -171,7 +165,7 @@
         [CommandProperty(AccessLevel.GameMaster)]
         public new Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;
@@ -179,10 +173,7 @@
             }
         }
 
-        public override bool DisplayLootType
-        {
-            get { return false; }
-        }
+        public override bool DisplayLootType => false;
 
         public override bool OnEquip(Mobile from)
         {

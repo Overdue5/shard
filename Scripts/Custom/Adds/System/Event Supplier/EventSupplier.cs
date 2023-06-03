@@ -43,52 +43,49 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool StayEquipped
         {
-            get { return m_StayEquipped; }
-            set { m_StayEquipped = false; }
+            get => m_StayEquipped;
+            set => m_StayEquipped = false;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool NewbieAllItems
         {
-            get { return m_NewbieAllItems; }
-            set { m_NewbieAllItems = value; }
+            get => m_NewbieAllItems;
+            set => m_NewbieAllItems = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public SupplyType SupplyType
         {
-            get { return m_SupplyType; }
-            set { m_SupplyType = value; }
+            get => m_SupplyType;
+            set => m_SupplyType = value;
         }
 
         public EventItemContainer[] ItemContaiers
         {
-            get { return m_ItemContaiers; }
-            set { m_ItemContaiers = value; }
+            get => m_ItemContaiers;
+            set => m_ItemContaiers = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int ClothHue
         {
-            get { return m_ClothHue; }
-            set
-            {
-                m_ClothHue = value;
-            }
+            get => m_ClothHue;
+            set => m_ClothHue = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int GearHue
         {
-            get { return m_GearHue; }
-            set { m_GearHue = value; }
+            get => m_GearHue;
+            set => m_GearHue = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string TeamName
         {
-            get { return m_TeamName; }
-            set { m_TeamName = value; }
+            get => m_TeamName;
+            set => m_TeamName = value;
         }
 
         public void AddCustomItem(Item item)

@@ -97,17 +97,11 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override bool ClickTitle
-		{
-			get { return false; }
-		}
+		public override bool ClickTitle => false;
 
-		public override bool AlwaysMurderer
-		{
-			get { return true; }
-		}
+        public override bool AlwaysMurderer => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
             AddItem(new Spellbook(ulong.MaxValue) {LootType = LootType.Regular});
             AddLoot(LootPack.FilthyRich);

@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new NecroTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new NecroTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public NecroTankAddon()
 		{
 
@@ -73,15 +67,9 @@ namespace Server.Items
 
 	public class NecroTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new NecroTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new NecroTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public NecroTankAddonDeed()
 		{
 			Name = "NecroTank";

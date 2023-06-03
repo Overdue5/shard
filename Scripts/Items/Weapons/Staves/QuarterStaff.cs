@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 
-		public override int AosStrengthReq{ get{ return 30; } }
-		public override int AosMinDamage{ get{ return 11; } }
-		public override int AosMaxDamage{ get{ return 14; } }
-		public override int AosSpeed{ get{ return 48; } }
+		public override int AosStrengthReq => 30;
+        public override int AosMinDamage => 11;
+        public override int AosMaxDamage => 14;
+        public override int AosSpeed => 48;
 
-		public override int OldStrengthReq{ get{ return 30; } }
-		public override int OldMinDamage{ get{ return 9; } }
-		public override int OldMaxDamage{ get{ return 35; } }
-		public override int OldSpeed{ get{ return 355; } }
+        public override int OldStrengthReq => 30;
+        public override int OldMinDamage => 9;
+        public override int OldMaxDamage => 35;
+        public override int OldSpeed => 355;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 60; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 60;
 
-		[Constructable]
+        [Constructable]
 		public QuarterStaff() : base( 0xE89 )
 		{
 			Weight = 4.0;

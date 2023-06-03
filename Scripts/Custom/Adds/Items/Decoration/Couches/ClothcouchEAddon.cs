@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class ClothcouchEAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new ClothcouchEAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new ClothcouchEAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public ClothcouchEAddon()
 		{
 			AddonComponent ac = null;
@@ -75,15 +69,9 @@ namespace Server.Items
 
 	public class ClothcouchEAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new ClothcouchEAddon();
-			}
-		}
+		public override BaseAddon Addon => new ClothcouchEAddon();
 
-		[Constructable]
+        [Constructable]
 		public ClothcouchEAddonDeed()
 		{
 			Name = "ClothcouchE";

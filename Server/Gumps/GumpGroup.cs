@@ -34,15 +34,9 @@ namespace Server.Gumps
 
 		public int Group
 		{
-			get
-			{
-				return m_Group;
-			}
-			set
-			{
-				Delta( ref m_Group, value );
-			}
-		}
+			get => m_Group;
+            set => Delta( ref m_Group, value );
+        }
 
 		public override string Compile()
 		{

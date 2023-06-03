@@ -16,9 +16,9 @@ namespace Knives.TownHouses
 		private readonly Hashtable c_Buttons;
 	    private readonly Hashtable c_Fields;
 
-	    public Mobile Owner{ get{ return c_Owner; } }
+	    public Mobile Owner => c_Owner;
 
-		public GumpPlusLight( Mobile m, int x, int y ) : base( x, y )
+        public GumpPlusLight( Mobile m, int x, int y ) : base( x, y )
 		{
 			c_Owner = m;
 

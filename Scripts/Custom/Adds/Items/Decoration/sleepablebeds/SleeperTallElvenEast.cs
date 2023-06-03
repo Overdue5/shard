@@ -20,15 +20,9 @@ namespace Server.Items
 	public class SleeperTallElvenEast: BaseAddon, IChopable
 	{
 
-      public override BaseAddonDeed Deed
-        {
-            get
-            {
-                return new SleeperTallElvenEastDeed ();
-            }
-        }
+      public override BaseAddonDeed Deed => new SleeperTallElvenEastDeed ();
 
-		public SleeperTallElvenEast( Serial serial ) : base( serial )
+      public SleeperTallElvenEast( Serial serial ) : base( serial )
 		{
 		}
 
@@ -60,35 +54,32 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Bed
 		{
-			get{ return m_Location; }
-			set{ m_Location = value; }
-		}
+			get => m_Location;
+            set => m_Location = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Debug
 		{
-			get{ return m_Debug; }
-			set{ m_Debug = value; }
-		}
+			get => m_Debug;
+            set => m_Debug = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get{ return m_Active; }
-			set{ m_Active = value; InvalidateProperties(); }
+			get => m_Active;
+            set{ m_Active = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Asleep
-		{
-			get{ return m_Sleeping; }
-		}
+		public bool Asleep => m_Sleeping;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Mobile
 		{
-			get{ return m_Player; }
-			set
+			get => m_Player;
+            set
 			{ 
 				if( value == null )
 					m_Active = false;
@@ -105,8 +96,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SleeperTallElvenEast Sleeper
 		{
-			get{ return m_Sleeper; }
-			set{}
+			get => m_Sleeper;
+            set{}
 		}
 
 		private void Sleep()
@@ -282,13 +273,7 @@ namespace Server.Items
 	}
    public class SleeperTallElvenEastDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon
-        {
-            get
-            {
-                return new SleeperTallElvenEast ();
-            }
-        }
+        public override BaseAddon Addon => new SleeperTallElvenEast ();
 
         [Constructable]
         public SleeperTallElvenEastDeed ()

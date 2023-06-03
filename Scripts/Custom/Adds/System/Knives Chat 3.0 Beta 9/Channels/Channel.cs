@@ -37,8 +37,8 @@ namespace Knives.Chat3
 
         private static ArrayList s_Channels = new ArrayList();
         
-        public static ArrayList Channels { get{ return s_Channels; } }
-        
+        public static ArrayList Channels => s_Channels;
+
         public static void Register(Channel c)
         {
             foreach (string str in c.Commands)
@@ -207,18 +207,36 @@ namespace Knives.Chat3
         private ChatStyle c_Style;
         private bool c_ToIrc, c_NewChars, c_Filter, c_Delay, c_ShowStaff, c_Enabled;
 
-        public string Name { get { return c_Name; } set { c_Name = value; } }
-        public Hashtable Colors { get { return c_Colors; } }
-        public ArrayList Commands { get { return c_Commands; } }
-        public ArrayList History { get { return c_History; } }
-        public int DefaultC { get { return c_DefaultC; } set { c_DefaultC = value; } }
-        public ChatStyle Style { get { return c_Style; } set { c_Style = value; } }
-        public bool ToIrc { get { return c_ToIrc; } set { c_ToIrc = value; } }
-        public bool NewChars { get { return c_NewChars; } set { c_NewChars = value; } }
-        public bool Filter { get { return c_Filter; } set { c_Filter = value; } }
-        public bool Delay { get { return c_Delay; } set { c_Delay = value; } }
-        public bool ShowStaff { get { return c_ShowStaff; } set { c_ShowStaff = value; } }
-        public bool Enabled { get { return c_Enabled; } set { c_Enabled = value; } }
+        public string Name { get => c_Name;
+            set => c_Name = value;
+        }
+        public Hashtable Colors => c_Colors;
+        public ArrayList Commands => c_Commands;
+        public ArrayList History => c_History;
+        public int DefaultC { get => c_DefaultC;
+            set => c_DefaultC = value;
+        }
+        public ChatStyle Style { get => c_Style;
+            set => c_Style = value;
+        }
+        public bool ToIrc { get => c_ToIrc;
+            set => c_ToIrc = value;
+        }
+        public bool NewChars { get => c_NewChars;
+            set => c_NewChars = value;
+        }
+        public bool Filter { get => c_Filter;
+            set => c_Filter = value;
+        }
+        public bool Delay { get => c_Delay;
+            set => c_Delay = value;
+        }
+        public bool ShowStaff { get => c_ShowStaff;
+            set => c_ShowStaff = value;
+        }
+        public bool Enabled { get => c_Enabled;
+            set => c_Enabled = value;
+        }
 
         protected BaseDiscord.Channel DiscordChannel = BaseDiscord.Channel.None;
 
@@ -537,8 +555,8 @@ namespace Knives.Chat3
             private Mobile c_Mobile;
             private string c_Txt;
 
-            public Mobile Mobile { get { return c_Mobile; } }
-            public string Txt { get { return c_Txt; } }
+            public Mobile Mobile => c_Mobile;
+            public string Txt => c_Txt;
 
             public ChatHistory(Mobile m, string txt)
             {

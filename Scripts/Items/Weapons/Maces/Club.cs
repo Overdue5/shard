@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 
-		public override int AosStrengthReq{ get{ return 40; } }
-		public override int AosMinDamage{ get{ return 11; } }
-		public override int AosMaxDamage{ get{ return 13; } }
-		public override int AosSpeed{ get{ return 44; } }
+		public override int AosStrengthReq => 40;
+        public override int AosMinDamage => 11;
+        public override int AosMaxDamage => 13;
+        public override int AosSpeed => 44;
 
-		public override int OldStrengthReq{ get{ return 10; } }
-		public override int OldMinDamage{ get{ return 12; } }
-		public override int OldMaxDamage{ get{ return 19; } }
-		public override int OldSpeed{ get{ return 302; } }
+        public override int OldStrengthReq => 10;
+        public override int OldMinDamage => 12;
+        public override int OldMaxDamage => 19;
+        public override int OldSpeed => 302;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 40; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 40;
 
-		[Constructable]
+        [Constructable]
 		public Club() : base( 0x13B4 )
 		{
 			Weight = 3.0;

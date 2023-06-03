@@ -60,47 +60,32 @@ namespace Scripts.ZTest
 			}
 		}
 
-		public static List<string> WeaponColumn
-		{
-			get
-			{
-				return ("LabelNumber,AsciiName,PrimaryAbility,SecondaryAbility,OldStrengthReq,OldMinDamage," +
-						"OldMaxDamage,OldSpeed,InitMinHits,InitMaxHits,DefHitSound,DefMissSound," +
-						"DefSkill,DefType,DefAnimation,StaffEffect,DefMaxRange,OldDexterityReq," +
-						"OldIntelligenceReq,PhysicalResistance,FireResistance,ColdResistance,PoisonResistance," +
-						"EnergyResistance,AccuracySkill,Hue,Weight,Layer,ItemID").ToLower().Split(',').ToList();
-			}
-		}
+		public static List<string> WeaponColumn =>
+            ("LabelNumber,AsciiName,PrimaryAbility,SecondaryAbility,OldStrengthReq,OldMinDamage," +
+             "OldMaxDamage,OldSpeed,InitMinHits,InitMaxHits,DefHitSound,DefMissSound," +
+             "DefSkill,DefType,DefAnimation,StaffEffect,DefMaxRange,OldDexterityReq," +
+             "OldIntelligenceReq,PhysicalResistance,FireResistance,ColdResistance,PoisonResistance," +
+             "EnergyResistance,AccuracySkill,Hue,Weight,Layer,ItemID").ToLower().Split(',').ToList();
 
-		public static List<string> ArmorColumn
-		{
-			get
-			{
-				return ("InitMinHits,InitMaxHits,LabelNumber,BaseColdResistance,BaseEnergyResistance,BasePhysicalResistance," +
-						"BaseFireResistance,BasePoisonResistance,OldStrReq,ArmorBase,MaterialType,OldStrBonus,OldDexBonus," +
-						"OldIntBonus,OldDexReq,OldIntReq,ArmorRating,StrBonus,DexBonus,IntBonus,StrRequirement," +
-						"DexRequirement,IntRequirement,Resource,ArmorScalar,MaxHitPoints,HitPoints,PhysicalBonus," +
-						"FireBonus,ColdBonus,PoisonBonus,EnergyBonus,PhysicalResistance,FireResistance,ColdResistance," +
-						"PoisonResistance,EnergyResistance,BodyPosition," +
-						"Hue,Weight,Layer,ItemID").ToLower().Split(',').ToList();
-			}
-		}
+        public static List<string> ArmorColumn =>
+            ("InitMinHits,InitMaxHits,LabelNumber,BaseColdResistance,BaseEnergyResistance,BasePhysicalResistance," +
+             "BaseFireResistance,BasePoisonResistance,OldStrReq,ArmorBase,MaterialType,OldStrBonus,OldDexBonus," +
+             "OldIntBonus,OldDexReq,OldIntReq,ArmorRating,StrBonus,DexBonus,IntBonus,StrRequirement," +
+             "DexRequirement,IntRequirement,Resource,ArmorScalar,MaxHitPoints,HitPoints,PhysicalBonus," +
+             "FireBonus,ColdBonus,PoisonBonus,EnergyBonus,PhysicalResistance,FireResistance,ColdResistance," +
+             "PoisonResistance,EnergyResistance,BodyPosition," +
+             "Hue,Weight,Layer,ItemID").ToLower().Split(',').ToList();
 
-		public static List<string> MobileColumn
-		{
-			get
-			{
-				return ("CanTeach,ClickTitle,CanRegenHits,CanRegenStam,CanRegenMana,WeaponAbilityChance,BasePhysicalResistance," +
-						"BaseFireResistance,BaseColdResistance,BasePoisonResistance,BaseEnergyResistance,PhysicalDamage," +
-						"FireDamage,ColdDamage,PoisonDamage,EnergyDamage,FavoriteFood,AllowMaleTamer,AllowFemaleTamer," +
-						"HitPoisonChance,DispelFocus,DamageMin,DamageMax,HitsMax,StamMax,ManaMax,CanOpenDoors,AI," +
-						"FightMode,RangePerception,RangeFight,RangeHome,ActiveSpeed,PassiveSpeed,Tamable," +
-						"MaxWeight,Skills,Fame,Karma,Blessed,Str,Dex,Int,Hits,Stam,Mana,Luck,Body,BodyValue," +
-						"ShieldArmor,NeckArmor,HandArmor,HeadArmor,ArmsArmor,LegsArmor,ChestArmor,Talisman").ToLower().Split(',').ToList();
-			}
-		}
+        public static List<string> MobileColumn =>
+            ("CanTeach,ClickTitle,CanRegenHits,CanRegenStam,CanRegenMana,WeaponAbilityChance,BasePhysicalResistance," +
+             "BaseFireResistance,BaseColdResistance,BasePoisonResistance,BaseEnergyResistance,PhysicalDamage," +
+             "FireDamage,ColdDamage,PoisonDamage,EnergyDamage,FavoriteFood,AllowMaleTamer,AllowFemaleTamer," +
+             "HitPoisonChance,DispelFocus,DamageMin,DamageMax,HitsMax,StamMax,ManaMax,CanOpenDoors,AI," +
+             "FightMode,RangePerception,RangeFight,RangeHome,ActiveSpeed,PassiveSpeed,Tamable," +
+             "MaxWeight,Skills,Fame,Karma,Blessed,Str,Dex,Int,Hits,Stam,Mana,Luck,Body,BodyValue," +
+             "ShieldArmor,NeckArmor,HandArmor,HeadArmor,ArmsArmor,LegsArmor,ChestArmor,Talisman").ToLower().Split(',').ToList();
 
-		public static List<string> IgnoreListEnums => "None,Invalid".ToLower().Split(',').ToList();
+        public static List<string> IgnoreListEnums => "None,Invalid".ToLower().Split(',').ToList();
 
 		#endregion
 

@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SandTowerAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SandTowerAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SandTowerAddon()
 		{
 
@@ -96,15 +90,9 @@ namespace Server.Items
 
 	public class SandTowerAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SandTowerAddon();
-			}
-		}
+		public override BaseAddon Addon => new SandTowerAddon();
 
-		[Constructable]
+        [Constructable]
 		public SandTowerAddonDeed()
 		{
 			Name = "Sand Tower Deed";

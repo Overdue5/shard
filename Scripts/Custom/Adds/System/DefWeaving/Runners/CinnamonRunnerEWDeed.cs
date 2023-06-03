@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class CinnamonRunnerEWAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new CinnamonRunnerEWDeed(); } }
+		public override BaseAddonDeed Deed => new CinnamonRunnerEWDeed();
 
-		[Constructable]
+        [Constructable]
 		public CinnamonRunnerEWAddon()
 		{
 			AddComponent( new AddonComponent( 0x0AE4 ), -1, -1, 0 );
@@ -36,9 +36,9 @@ namespace Server.Items
 
 	public class CinnamonRunnerEWDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new CinnamonRunnerEWAddon(); } }
+		public override BaseAddon Addon => new CinnamonRunnerEWAddon();
 
-		[Constructable]
+        [Constructable]
 		public CinnamonRunnerEWDeed()
 		{
 			Name = "Cinnamon Runner Deed - E/W";

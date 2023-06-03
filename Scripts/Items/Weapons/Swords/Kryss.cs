@@ -6,24 +6,24 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 
-		public override int AosStrengthReq{ get{ return 10; } }
-		public override int AosMinDamage{ get{ return 10; } }
-		public override int AosMaxDamage{ get{ return 12; } }
-		public override int AosSpeed{ get{ return 53; } }
+		public override int AosStrengthReq => 10;
+        public override int AosMinDamage => 10;
+        public override int AosMaxDamage => 12;
+        public override int AosSpeed => 53;
 
-		public override int OldStrengthReq{ get{ return 10; } }
-		public override int OldMinDamage{ get{ return 11; } }
-		public override int OldMaxDamage{ get{ return 18; } }
-		public override int OldSpeed{ get{ return 248; } }
+        public override int OldStrengthReq => 10;
+        public override int OldMinDamage => 11;
+        public override int OldMaxDamage => 18;
+        public override int OldSpeed => 248;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 90; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 90;
 
-		public override SkillName DefSkill{ get{ return SkillName.Fencing; } }
-		public override WeaponType DefType{ get{ return WeaponType.Piercing; } }
-		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Pierce1H; } }
+        public override SkillName DefSkill => SkillName.Fencing;
+        public override WeaponType DefType => WeaponType.Piercing;
+        public override WeaponAnimation DefAnimation => WeaponAnimation.Pierce1H;
 
-		[Constructable]
+        [Constructable]
 		public Kryss() : base( 0x1401 )
 		{
 			Weight = 2.0;

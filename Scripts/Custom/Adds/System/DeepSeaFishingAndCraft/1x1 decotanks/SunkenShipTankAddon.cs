@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class SunkenShipTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SunkenShipTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SunkenShipTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SunkenShipTankAddon()
 		{
 			AddonComponent ac = null;
@@ -156,15 +150,9 @@ namespace Server.Items
 
 	public class SunkenShipTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SunkenShipTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new SunkenShipTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public SunkenShipTankAddonDeed()
 		{
 			Name = "a Sunken Ship Tank";

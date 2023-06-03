@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class CinnamonFancyRug2Addon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new CinnamonFancyRug2Deed(); } }
+		public override BaseAddonDeed Deed => new CinnamonFancyRug2Deed();
 
-		[Constructable]
+        [Constructable]
 		public CinnamonFancyRug2Addon()
 		{
 			AddComponent( new AddonComponent( 0x0AE4 ), -1, -1, 0 );
@@ -39,9 +39,9 @@ namespace Server.Items
 
 	public class CinnamonFancyRug2Deed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new CinnamonFancyRug2Addon(); } }
+		public override BaseAddon Addon => new CinnamonFancyRug2Addon();
 
-		[Constructable]
+        [Constructable]
 		public CinnamonFancyRug2Deed()
 		{
 			Name = "Cinnamon decorative rug deed";

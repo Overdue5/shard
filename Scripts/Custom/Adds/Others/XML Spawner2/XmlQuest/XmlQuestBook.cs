@@ -13,12 +13,9 @@ namespace Server.Items
 	public class PlayerQuestBoard : XmlQuestBook
    {
 
-       public override bool IsDecoContainer
-       {
-           get { return false; }
-       }
+       public override bool IsDecoContainer => false;
 
-        public PlayerQuestBoard( Serial serial ) : base( serial )
+       public PlayerQuestBoard( Serial serial ) : base( serial )
         {
         }
 
@@ -55,14 +52,14 @@ namespace Server.Items
 
         [CommandProperty( AccessLevel.GameMaster )]
         public PlayerMobile Owner
-        {   get{ return m_Owner; }
-            set { m_Owner = value; }
+        {   get => m_Owner;
+            set => m_Owner = value;
         }
         
         [CommandProperty( AccessLevel.GameMaster )]
         public bool Locked
-        {   get{ return m_Locked; }
-            set { m_Locked = value; }
+        {   get => m_Locked;
+            set => m_Locked = value;
         }
         
         [CommandProperty( AccessLevel.GameMaster )]

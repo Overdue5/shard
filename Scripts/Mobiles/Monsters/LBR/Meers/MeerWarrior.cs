@@ -43,12 +43,12 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-		public override bool BardImmune{ get{ return !Core.AOS; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool BardImmune => !Core.AOS;
+        public override bool CanRummageCorpses => true;
 
-		public override bool InitialInnocent{ get{ return true; } }
+        public override bool InitialInnocent => true;
 
-		public override void OnDamage( int amount, Mobile from, bool willKill )
+        public override void OnDamage( int amount, Mobile from, bool willKill )
 		{
 			if ( from != null && !willKill && amount > 3 && from != null && !InRange( from, 7 ) )
 			{

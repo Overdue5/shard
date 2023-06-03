@@ -4,10 +4,10 @@ namespace Server.Items
 {
 	public class ClayCraftTool : BaseTool
 	{
-		public override CraftSystem CraftSystem { get { return ClayCraft.CraftSystem; } }
+		public override CraftSystem CraftSystem => ClayCraft.CraftSystem;
 
 
-		[Constructable]
+        [Constructable]
 		public ClayCraftTool() : base( 0x12B3 )
 		{
 			Weight = 1.0;

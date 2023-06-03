@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class GoldenDecorativeRugAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new GoldenDecorativeRugDeed(); } }
+		public override BaseAddonDeed Deed => new GoldenDecorativeRugDeed();
 
-		[Constructable]
+        [Constructable]
 		public GoldenDecorativeRugAddon()
 		{
 			AddComponent( new AddonComponent( 0x0ADC ), -1, -1, 0 );
@@ -39,8 +39,8 @@ namespace Server.Items
 
 	public class GoldenDecorativeRugDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new GoldenDecorativeRugAddon(); } }
-		public override int LabelNumber{ get{ return 1076586; } } // Golden Decorative Rug
+		public override BaseAddon Addon => new GoldenDecorativeRugAddon();
+        public override int LabelNumber => 1076586; // Golden Decorative Rug
 
 		[Constructable]
 		public GoldenDecorativeRugDeed()

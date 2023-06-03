@@ -9,9 +9,9 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Price
 		{
-			get{ return m_Price; }
-			set{ m_Price = value; }
-		}
+			get => m_Price;
+            set => m_Price = value;
+        }
 
 		[Constructable]
 		public PricedHealer() : this( 5000 )
@@ -27,15 +27,15 @@ namespace Server.Mobiles
 				NameHue = -1;
 		}
 
-		public override bool IsInvulnerable{ get{ return true; } }
+		public override bool IsInvulnerable => true;
 
-		public override void InitSBInfo()
+        public override void InitSBInfo()
 		{
 		}
 
-		public override bool HealsYoungPlayers{ get{ return false; } }
+		public override bool HealsYoungPlayers => false;
 
-		public override void OfferResurrection( Mobile m )
+        public override void OfferResurrection( Mobile m )
 		{
 			Direction = GetDirectionTo( m );
 

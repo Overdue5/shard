@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class CarpetWeaver : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public CarpetWeaver() : base( "the carpet weaver" )
 		{
 			SetSkill( SkillName.Tailoring, 64.0, 100.0 );
@@ -19,9 +19,9 @@ namespace Server.Mobiles
 
 		}
 
-		public override VendorShoeType ShoeType { get { return VendorShoeType.Sandals; } }
+		public override VendorShoeType ShoeType => VendorShoeType.Sandals;
 
-		public override void InitOutfit()
+        public override void InitOutfit()
 		{
 			base.InitOutfit();
 

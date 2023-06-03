@@ -94,9 +94,9 @@ namespace Server.Mobiles
 		}
 
 		
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public Rackham( Serial serial ) : base( serial )
+        public Rackham( Serial serial ) : base( serial )
 		{
 		}
 

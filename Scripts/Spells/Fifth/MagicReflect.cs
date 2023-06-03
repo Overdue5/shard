@@ -9,10 +9,10 @@ namespace Server.Spells.Fifth
     {
         private static readonly Dictionary<Mobile, Timer> m_Timers = new Dictionary<Mobile, Timer>();
 
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 488; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 488;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Magic Reflection", "In Jux Sanct",
 				263,
 				9012,
@@ -30,10 +30,7 @@ namespace Server.Spells.Fifth
 			return true;
 		}
 
-        public static Dictionary<Mobile, Timer> Registry
-        {
-            get { return m_Timers; }
-        }
+        public static Dictionary<Mobile, Timer> Registry => m_Timers;
 
         public override void OnPlayerCast()
         {

@@ -31,15 +31,9 @@ namespace Server
 			m_Count = 0;
 		}
 
-		public int Count
-		{
-			get
-			{
-				return m_Count;
-			}
-		}
+		public int Count => m_Count;
 
-		public bool Contains( int keyword )
+        public bool Contains( int keyword )
 		{
 			bool contains = false;
 

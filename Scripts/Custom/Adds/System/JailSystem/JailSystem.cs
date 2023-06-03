@@ -130,36 +130,21 @@ namespace Server.Jailing
 			}
 		}
 
-		public static Dictionary<int, JailSystem> list
-		{
-			get { return m_jailings; }
-		}
+		public static Dictionary<int, JailSystem> list => m_jailings;
 
-		public DateTime ReleaseDate
-		{
-			get { return m_releaseTime; }
-		}
+        public DateTime ReleaseDate => m_releaseTime;
 
-		public bool jailed
-		{
-			get { return ( ReleaseDate > DateTime.UtcNow ); }
-		}
+        public bool jailed => ( ReleaseDate > DateTime.UtcNow );
 
-		public int ID
-		{
-			get { return m_id; }
-		}
+        public int ID => m_id;
 
-		public Account Prisoner
-		{
-			get { return Accounts.GetAccount( Name ) as Account; }
-		}
+        public Account Prisoner => Accounts.GetAccount( Name ) as Account;
 
-		public string Name
+        public string Name
 		{
-			get { return m_name; }
-			set { m_name = value; }
-		}
+			get => m_name;
+            set => m_name = value;
+        }
 
 		#region Event Handlers
 		public static void EventSink_Speech( SpeechEventArgs args )

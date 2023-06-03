@@ -21,14 +21,8 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public int Range
         {
-            set
-            {
-                range = value;
-            }
-            get
-            {
-                return range;
-            }
+            set => range = value;
+            get => range;
         }
 
         public override void OnDoubleClick(Mobile from)

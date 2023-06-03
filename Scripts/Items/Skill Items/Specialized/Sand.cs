@@ -3,12 +3,12 @@ namespace Server.Items
 	[Flipable( 0x11EA, 0x11EB )]
 	public class Sand : Item, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
 
-		public override int LabelNumber{ get{ return 1044626; } } // sand
-        bool ICommodity.IsDeedable { get { return true; } }
+        public override int LabelNumber => 1044626; // sand
+        bool ICommodity.IsDeedable => true;
 
-		[Constructable]
+        [Constructable]
 		public Sand() : this( 1 )
 		{
 		}

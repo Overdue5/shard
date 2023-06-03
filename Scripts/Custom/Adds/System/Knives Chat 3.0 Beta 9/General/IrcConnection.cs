@@ -33,9 +33,9 @@ namespace Knives.Chat3
 	{
 		private static IrcConnection s_Connection = new IrcConnection();
 
-		public static IrcConnection Connection{ get{ return s_Connection; } }
+		public static IrcConnection Connection => s_Connection;
 
-		private TcpClient c_Tcp;
+        private TcpClient c_Tcp;
 		private Thread c_Thread;
 		private StreamReader c_Reader;
 		private StreamWriter c_Writer;
@@ -45,19 +45,13 @@ namespace Knives.Chat3
         private DateTime c_NextStatus = DateTime.UtcNow;
         private Server.Timer c_ConnectTimer;
 
-		public bool Connecting{ get{ return c_Connecting; } }
-		public bool Connected{ get{ return c_Connected; } }
-		public bool HasMoreAttempts{ get{ return c_Attempts <= Data.IrcMaxAttempts; } }
+		public bool Connecting => c_Connecting;
+        public bool Connected => c_Connected;
+        public bool HasMoreAttempts => c_Attempts <= Data.IrcMaxAttempts;
 
-        public string Status
-        {
-            get
-            {
-                return "Server: RunUO 2.0   Creatures: " + World.Mobiles.Count + "   Items: " + World.Items.Count + "   Guilds: " + BaseGuild.List.Count + "   Players: " + NetState.Instances.Count;
-            }
-        }
+        public string Status => "Server: RunUO 2.0   Creatures: " + World.Mobiles.Count + "   Items: " + World.Items.Count + "   Guilds: " + BaseGuild.List.Count + "   Players: " + NetState.Instances.Count;
 
-		public IrcConnection()
+        public IrcConnection()
 		{
 		}
 

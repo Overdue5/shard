@@ -31,7 +31,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string EngravedText
         {
-            get { return m_EngravedText; }
+            get => m_EngravedText;
             set { m_EngravedText = value; InvalidateProperties(); }
         }
 
@@ -43,8 +43,8 @@ namespace Server.Items
 
 		public FactionItem FactionItemState
 		{
-			get{ return m_FactionState; }
-			set
+			get => m_FactionState;
+            set
 			{
 				m_FactionState = value;
 
@@ -120,118 +120,107 @@ namespace Server.Items
 		#endregion
 
 		#region Virtual Properties
-		public virtual WeaponAbility PrimaryAbility{ get{ return null; } }
-		public virtual WeaponAbility SecondaryAbility{ get{ return null; } }
+		public virtual WeaponAbility PrimaryAbility => null;
+        public virtual WeaponAbility SecondaryAbility => null;
 
-		public virtual int DefMaxRange{ get{ return 1; } }
-		public virtual int DefHitSound{ get{ return 0; } }
-		public virtual int DefMissSound{ get{ return 0; } }
-		public virtual SkillName DefSkill{ get{ return SkillName.Swords; } }
-		public virtual WeaponType DefType{ get{ return WeaponType.Slashing; } }
-		public virtual WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
+        public virtual int DefMaxRange => 1;
+        public virtual int DefHitSound => 0;
+        public virtual int DefMissSound => 0;
+        public virtual SkillName DefSkill => SkillName.Swords;
+        public virtual WeaponType DefType => WeaponType.Slashing;
+        public virtual WeaponAnimation DefAnimation => WeaponAnimation.Slash1H;
 
-		public virtual int AosStrengthReq{ get{ return 0; } }
-		public virtual int AosDexterityReq{ get{ return 0; } }
-		public virtual int AosIntelligenceReq{ get{ return 0; } }
-		public virtual int AosMinDamage{ get{ return 0; } }
-		public virtual int AosMaxDamage{ get{ return 0; } }
-		public virtual int AosSpeed{ get{ return 0; } }
-        public virtual float MlSpeed { get { return 0.0f; } }
-		public virtual int AosMaxRange{ get{ return DefMaxRange; } }
-		public virtual int AosHitSound{ get{ return DefHitSound; } }
-		public virtual int AosMissSound{ get{ return DefMissSound; } }
-		public virtual SkillName AosSkill{ get{ return DefSkill; } }
-		public virtual WeaponType AosType{ get{ return DefType; } }
-		public virtual WeaponAnimation AosAnimation{ get{ return DefAnimation; } }
+        public virtual int AosStrengthReq => 0;
+        public virtual int AosDexterityReq => 0;
+        public virtual int AosIntelligenceReq => 0;
+        public virtual int AosMinDamage => 0;
+        public virtual int AosMaxDamage => 0;
+        public virtual int AosSpeed => 0;
+        public virtual float MlSpeed => 0.0f;
+        public virtual int AosMaxRange => DefMaxRange;
+        public virtual int AosHitSound => DefHitSound;
+        public virtual int AosMissSound => DefMissSound;
+        public virtual SkillName AosSkill => DefSkill;
+        public virtual WeaponType AosType => DefType;
+        public virtual WeaponAnimation AosAnimation => DefAnimation;
 
-		public virtual int OldStrengthReq{ get{ return 0; } }
-		public virtual int OldDexterityReq{ get{ return 0; } }
-		public virtual int OldIntelligenceReq{ get{ return 0; } }
-		public virtual int OldMinDamage{ get{ return 0; } }
-		public virtual int OldMaxDamage{ get{ return 0; } }
-		public virtual int OldSpeed{ get{ return 0; } }
-		public virtual int OldMaxRange{ get{ return DefMaxRange; } }
-		public virtual int OldHitSound{ get{ return DefHitSound; } }
-		public virtual int OldMissSound{ get{ return DefMissSound; } }
-		public virtual SkillName OldSkill{ get{ return DefSkill; } }
-		public virtual WeaponType OldType{ get{ return DefType; } }
-		public virtual WeaponAnimation OldAnimation{ get{ return DefAnimation; } }
+        public virtual int OldStrengthReq => 0;
+        public virtual int OldDexterityReq => 0;
+        public virtual int OldIntelligenceReq => 0;
+        public virtual int OldMinDamage => 0;
+        public virtual int OldMaxDamage => 0;
+        public virtual int OldSpeed => 0;
+        public virtual int OldMaxRange => DefMaxRange;
+        public virtual int OldHitSound => DefHitSound;
+        public virtual int OldMissSound => DefMissSound;
+        public virtual SkillName OldSkill => DefSkill;
+        public virtual WeaponType OldType => DefType;
+        public virtual WeaponAnimation OldAnimation => DefAnimation;
 
-		public virtual int InitMinHits{ get{ return 0; } }
-		public virtual int InitMaxHits{ get{ return 0; } }
+        public virtual int InitMinHits => 0;
+        public virtual int InitMaxHits => 0;
 
-        public virtual bool CanFortify { get { return false; } }
+        public virtual bool CanFortify => false;
 
         public virtual int GetSwingAnim(Mobile from) { return -1; }
 
-		public override int PhysicalResistance{ get{ return m_AosWeaponAttributes.ResistPhysicalBonus; } }
-		public override int FireResistance{ get{ return m_AosWeaponAttributes.ResistFireBonus; } }
-		public override int ColdResistance{ get{ return m_AosWeaponAttributes.ResistColdBonus; } }
-		public override int PoisonResistance{ get{ return m_AosWeaponAttributes.ResistPoisonBonus; } }
-		public override int EnergyResistance{ get{ return m_AosWeaponAttributes.ResistEnergyBonus; } }
+		public override int PhysicalResistance => m_AosWeaponAttributes.ResistPhysicalBonus;
+        public override int FireResistance => m_AosWeaponAttributes.ResistFireBonus;
+        public override int ColdResistance => m_AosWeaponAttributes.ResistColdBonus;
+        public override int PoisonResistance => m_AosWeaponAttributes.ResistPoisonBonus;
+        public override int EnergyResistance => m_AosWeaponAttributes.ResistEnergyBonus;
 
-		public virtual SkillName AccuracySkill { get { return SkillName.Tactics; } }
-		#endregion
+        public virtual SkillName AccuracySkill => SkillName.Tactics;
+
+        #endregion
 
 		#region Getters & Setters
 
         [CommandProperty(AccessLevel.GameMaster)]
 	    public bool IsRenamed
         {
-            get { return m_IsRenamed; }
-            set { m_IsRenamed = value; }
+            get => m_IsRenamed;
+            set => m_IsRenamed = value;
         }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public AosAttributes Attributes
-		{
-			get{ return m_AosAttributes; }
-		}
+		public AosAttributes Attributes => m_AosAttributes;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public AosWeaponAttributes WeaponAttributes
-		{
-			get{ return m_AosWeaponAttributes; }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public AosWeaponAttributes WeaponAttributes => m_AosWeaponAttributes;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public AosSkillBonuses SkillBonuses
-		{
-			get{ return m_AosSkillBonuses; }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public AosSkillBonuses SkillBonuses => m_AosSkillBonuses;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public AosElementAttributes AosElementDamages
-		{
-			get { return m_AosElementDamages; }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public AosElementAttributes AosElementDamages => m_AosElementDamages;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public bool Cursed
 		{
-			get{ return m_Cursed; }
-			set{ m_Cursed = value; }
-		}
+			get => m_Cursed;
+            set => m_Cursed = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Consecrated
 		{
-			get{ return m_Consecrated; }
-			set{ m_Consecrated = value; }
-		}
+			get => m_Consecrated;
+            set => m_Consecrated = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Identified
 		{
-			get{ return m_Identified; }
-			set{ m_Identified = value; InvalidateProperties(); }
+			get => m_Identified;
+            set{ m_Identified = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int HitPoints
 		{
-			get{ return m_Hits; }
-			set
+			get => m_Hits;
+            set
 			{
 				if ( m_Hits == value )
 					return;
@@ -248,43 +237,43 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxHitPoints
 		{
-			get{ return m_MaxHits; }
-			set{ m_MaxHits = value; InvalidateProperties(); }
+			get => m_MaxHits;
+            set{ m_MaxHits = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int PoisonCharges
 		{
-			get{ return m_PoisonCharges; }
-			set{ m_PoisonCharges = value; InvalidateProperties(); }
+			get => m_PoisonCharges;
+            set{ m_PoisonCharges = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Poison Poison
 		{
-			get{ return m_Poison; }
-			set{ m_Poison = value; InvalidateProperties(); }
+			get => m_Poison;
+            set{ m_Poison = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WeaponQuality Quality
 		{
-			get{ return m_Quality; }
-			set{ UnscaleDurability(); m_Quality = value; ScaleDurability(); InvalidateProperties(); }
+			get => m_Quality;
+            set{ UnscaleDurability(); m_Quality = value; ScaleDurability(); InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Crafter
 		{
-			get{ return m_Crafter; }
-			set{ m_Crafter = value; InvalidateProperties(); }
+			get => m_Crafter;
+            set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SlayerName Slayer
 		{
-			get{ return m_Slayer; }
-			set
+			get => m_Slayer;
+            set
 			{
                 if (value == SlayerName.Silver)
                     Hue = 1953;
@@ -299,130 +288,127 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SlayerName Slayer2
 		{
-			get { return m_Slayer2; }
-			set { m_Slayer2 = value; InvalidateProperties(); }
+			get => m_Slayer2;
+            set { m_Slayer2 = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CraftResource Resource
 		{
-			get{ return m_Resource; }
-			set{ UnscaleDurability(); m_Resource = value; Hue = CraftResources.GetHue( m_Resource ); InvalidateProperties(); ScaleDurability(); }
+			get => m_Resource;
+            set{ UnscaleDurability(); m_Resource = value; Hue = CraftResources.GetHue( m_Resource ); InvalidateProperties(); ScaleDurability(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WeaponDamageLevel DamageLevel
 		{
-			get{ return m_DamageLevel; }
-			set{ m_DamageLevel = value; InvalidateProperties(); }
+			get => m_DamageLevel;
+            set{ m_DamageLevel = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WeaponDurabilityLevel DurabilityLevel
 		{
-			get{ return m_DurabilityLevel; }
-			set{ UnscaleDurability(); m_DurabilityLevel = value; InvalidateProperties(); ScaleDurability(); }
+			get => m_DurabilityLevel;
+            set{ UnscaleDurability(); m_DurabilityLevel = value; InvalidateProperties(); ScaleDurability(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool PlayerConstructed
 		{
-			get{ return m_PlayerConstructed; }
-			set{ m_PlayerConstructed = value; }
-		}
+			get => m_PlayerConstructed;
+            set => m_PlayerConstructed = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxRange
 		{
-			get{ return ( m_MaxRange == -1 ? Core.AOS ? AosMaxRange : OldMaxRange : m_MaxRange ); }
-			set{ m_MaxRange = value; InvalidateProperties(); }
+			get => ( m_MaxRange == -1 ? Core.AOS ? AosMaxRange : OldMaxRange : m_MaxRange );
+            set{ m_MaxRange = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WeaponAnimation Animation
 		{
-			get{ return ( m_Animation == (WeaponAnimation)(-1) ? Core.AOS ? AosAnimation : OldAnimation : m_Animation ); } 
-			set{ m_Animation = value; }
-		}
+			get => ( m_Animation == (WeaponAnimation)(-1) ? Core.AOS ? AosAnimation : OldAnimation : m_Animation );
+            set => m_Animation = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WeaponType Type
 		{
-			get{ return ( m_Type == (WeaponType)(-1) ? Core.AOS ? AosType : OldType : m_Type ); }
-			set{ m_Type = value; }
-		}
+			get => ( m_Type == (WeaponType)(-1) ? Core.AOS ? AosType : OldType : m_Type );
+            set => m_Type = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SkillName Skill
 		{
-			get{ return ( m_Skill == (SkillName)(-1) ? Core.AOS ? AosSkill : OldSkill : m_Skill ); }
-			set{ m_Skill = value; InvalidateProperties(); }
+			get => ( m_Skill == (SkillName)(-1) ? Core.AOS ? AosSkill : OldSkill : m_Skill );
+            set{ m_Skill = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int HitSound
 		{
-			get{ return ( m_HitSound == -1 ? Core.AOS ? AosHitSound : OldHitSound : m_HitSound ); }
-			set{ m_HitSound = value; }
-		}
+			get => ( m_HitSound == -1 ? Core.AOS ? AosHitSound : OldHitSound : m_HitSound );
+            set => m_HitSound = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MissSound
 		{
-			get{ return ( m_MissSound == -1 ? Core.AOS ? AosMissSound : OldMissSound : m_MissSound ); }
-			set{ m_MissSound = value; }
-		}
+			get => ( m_MissSound == -1 ? Core.AOS ? AosMissSound : OldMissSound : m_MissSound );
+            set => m_MissSound = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? Core.AOS ? AosMinDamage : OldMinDamage : m_MinDamage ); }
-			set{ m_MinDamage = value; InvalidateProperties(); }
+			get => ( m_MinDamage == -1 ? Core.AOS ? AosMinDamage : OldMinDamage : m_MinDamage );
+            set{ m_MinDamage = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? Core.AOS ? AosMaxDamage : OldMaxDamage : m_MaxDamage ); }
-			set{ m_MaxDamage = value; InvalidateProperties(); }
+			get => ( m_MaxDamage == -1 ? Core.AOS ? AosMaxDamage : OldMaxDamage : m_MaxDamage );
+            set{ m_MaxDamage = value; InvalidateProperties(); }
 		}
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Speed
         {
-            get { return (m_Speed == -1 ? Core.AOS ? AosSpeed : OldSpeed : m_Speed); }
+            get => (m_Speed == -1 ? Core.AOS ? AosSpeed : OldSpeed : m_Speed);
             set { m_Speed = value; InvalidateProperties(); }
         }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int StrRequirement
 		{
-			get{ return ( m_StrReq == -1 ? Core.AOS ? AosStrengthReq : OldStrengthReq : m_StrReq ); }
-			set{ m_StrReq = value; InvalidateProperties(); }
+			get => ( m_StrReq == -1 ? Core.AOS ? AosStrengthReq : OldStrengthReq : m_StrReq );
+            set{ m_StrReq = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int DexRequirement
 		{
-			get{ return ( m_DexReq == -1 ? Core.AOS ? AosDexterityReq : OldDexterityReq : m_DexReq ); }
-			set{ m_DexReq = value; }
-		}
+			get => ( m_DexReq == -1 ? Core.AOS ? AosDexterityReq : OldDexterityReq : m_DexReq );
+            set => m_DexReq = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int IntRequirement
 		{
-			get{ return ( m_IntReq == -1 ? Core.AOS ? AosIntelligenceReq : OldIntelligenceReq : m_IntReq ); }
-			set{ m_IntReq = value; }
-		}
+			get => ( m_IntReq == -1 ? Core.AOS ? AosIntelligenceReq : OldIntelligenceReq : m_IntReq );
+            set => m_IntReq = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public WeaponAccuracyLevel AccuracyLevel
 		{
-			get
-			{
-				return m_AccuracyLevel;
-			}
-			set
+			get => m_AccuracyLevel;
+            set
 			{
 				if ( m_AccuracyLevel != value )
 				{
@@ -664,7 +650,7 @@ namespace Server.Items
 			return base.AllowSecureTrade( from, to, newOwner, accepted );
 		}
 
-		public virtual Race RequiredRace { get { return null; } }	//On OSI, there are no weapons with race requirements, this is for custom stuff
+		public virtual Race RequiredRace => null; //On OSI, there are no weapons with race requirements, this is for custom stuff
 
 		public override bool CanEquip( Mobile from )
 		{
@@ -710,7 +696,7 @@ namespace Server.Items
 		    return true;// base.CanEquip(from);
 		}
 
-		public virtual bool UseSkillMod{ get{ return !Core.AOS; } }
+		public virtual bool UseSkillMod => !Core.AOS;
 
         public override bool OnEquip( Mobile from )
 		{
@@ -1526,9 +1512,9 @@ namespace Server.Items
 
 		public static bool InDoubleStrike
 		{
-			get{ return m_InDoubleStrike; }
-			set{ m_InDoubleStrike = value; }
-		}
+			get => m_InDoubleStrike;
+            set => m_InDoubleStrike = value;
+        }
 
 		public virtual void OnHit( Mobile attacker, Mobile defender )
 		{
@@ -2964,9 +2950,9 @@ namespace Server.Items
 			return damage + (int)(damage * totalBonus);
 		}
 
-		public virtual int VirtualDamageBonus{ get{ return 0; } }
+		public virtual int VirtualDamageBonus => 0;
 
-		public virtual int ComputeDamageAOS( Mobile attacker, Mobile defender )
+        public virtual int ComputeDamageAOS( Mobile attacker, Mobile defender )
 		{
 			return (int)ScaleDamageAOS( attacker, GetBaseDamage( attacker ), true );
 		}
@@ -3678,8 +3664,8 @@ namespace Server.Items
 		[Hue, CommandProperty( AccessLevel.GameMaster )]
 		public override int Hue
 		{
-			get{ return base.Hue; }
-			set{ base.Hue = value; InvalidateProperties(); }
+			get => base.Hue;
+            set{ base.Hue = value; InvalidateProperties(); }
 		}
 
 		public int GetElementalDamageHue()
@@ -3778,12 +3764,9 @@ namespace Server.Items
 			return ( m_AosAttributes.SpellChanneling != 0 );
 		}
 
-		public virtual int ArtifactRarity
-		{
-			get{ return 0; }
-		}
+		public virtual int ArtifactRarity => 0;
 
-		public virtual int GetLuckBonus()
+        public virtual int GetLuckBonus()
 		{
 			CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
 
@@ -4127,9 +4110,9 @@ namespace Server.Items
 
 		public static BaseWeapon Fists
 		{
-			get{ return m_Fists; }
-			set{ m_Fists = value; }
-		}
+			get => m_Fists;
+            set => m_Fists = value;
+        }
 
 		#region ICraftable Members
 

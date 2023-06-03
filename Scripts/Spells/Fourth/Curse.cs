@@ -8,8 +8,8 @@ namespace Server.Spells.Fourth
 {
     public class CurseSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fourth; } }
-        public override int Sound { get { return 481; } }
+        public override SpellCircle Circle => SpellCircle.Fourth;
+        public override int Sound => 481;
 
         //public override bool SpellDisabled  {  get { return true; } }
 

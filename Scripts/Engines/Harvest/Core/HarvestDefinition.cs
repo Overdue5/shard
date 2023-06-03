@@ -12,14 +12,22 @@ namespace Server.Engines.Harvest
         private BonusHarvestResource[] m_BonusResources;
 	    private bool m_RandomizeVeins;
 
-		public int BankWidth{ get{ return m_BankWidth; } set{ m_BankWidth = value; } }
-		public int BankHeight{ get{ return m_BankHeight; } set{ m_BankHeight = value; } }
+		public int BankWidth{ get => m_BankWidth;
+            set => m_BankWidth = value;
+        }
+		public int BankHeight{ get => m_BankHeight;
+            set => m_BankHeight = value;
+        }
 	    public int MinTotal { get; set; }
 
 	    public int MaxTotal { get; set; }
 
-	    public int[] Tiles{ get{ return m_Tiles; } set{ m_Tiles = value; } }
-		public bool RangedTiles{ get{ return m_RangedTiles; } set{ m_RangedTiles = value; } }
+	    public int[] Tiles{ get => m_Tiles;
+            set => m_Tiles = value;
+        }
+		public bool RangedTiles{ get => m_RangedTiles;
+            set => m_RangedTiles = value;
+        }
 	    public TimeSpan MinRespawn { get; set; }
 
 	    public TimeSpan MaxRespawn { get; set; }
@@ -62,15 +70,23 @@ namespace Server.Engines.Harvest
 
 	    public HarvestResource[] Resources { get; set; }
 
-	    public HarvestVein[] Veins{ get{ return m_Veins; } set{ m_Veins = value; } }
-        public BonusHarvestResource[] BonusResources { get { return m_BonusResources; } set { m_BonusResources = value; } }
+	    public HarvestVein[] Veins{ get => m_Veins;
+            set => m_Veins = value;
+        }
+        public BonusHarvestResource[] BonusResources { get => m_BonusResources;
+            set => m_BonusResources = value;
+        }
 	    public bool RaceBonus { get; set; }
 
-	    public bool RandomizeVeins { get { return m_RandomizeVeins; } set { m_RandomizeVeins = value; } }
+	    public bool RandomizeVeins { get => m_RandomizeVeins;
+            set => m_RandomizeVeins = value;
+        }
 
 		private Dictionary<Map, Dictionary<Point2D, HarvestBank>> m_BanksByMap;
 
-		public Dictionary<Map, Dictionary<Point2D, HarvestBank>> Banks{ get{ return m_BanksByMap; } set{ m_BanksByMap = value; } }
+		public Dictionary<Map, Dictionary<Point2D, HarvestBank>> Banks{ get => m_BanksByMap;
+            set => m_BanksByMap = value;
+        }
 
 		public void SendMessageTo( Mobile from, object message )
 		{

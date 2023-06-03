@@ -146,26 +146,20 @@ namespace Arya.Chess
 		/// <summary>
 		/// Gets the map for this game
 		/// </summary>
-		public Map Map
-		{
-			get { return m_Map; }
-		}
+		public Map Map => m_Map;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the Z coordinate of the board plane
 		/// </summary>
-		public int Z
-		{
-			get { return m_Z; }
-		}
+		public int Z => m_Z;
 
-		/// <summary>
+        /// <summary>
 		/// Gets or sets the chess set for this board
 		/// </summary>
 		public ChessSet ChessSet
 		{
-			get { return m_ChessSet; }
-			set
+			get => m_ChessSet;
+            set
 			{
 				if ( m_ChessSet != value )
 				{
@@ -180,8 +174,8 @@ namespace Arya.Chess
 		/// </summary>
 		public int WhiteHue
 		{
-			get { return m_WhiteHue; }
-			set
+			get => m_WhiteHue;
+            set
 			{
 				if ( m_WhiteHue != value )
 				{
@@ -196,8 +190,8 @@ namespace Arya.Chess
 		/// </summary>
 		public int BlackHue
 		{
-			get { return m_BlackHue; }
-			set
+			get => m_BlackHue;
+            set
 			{
 				if ( m_BlackHue != value )
 				{
@@ -212,11 +206,8 @@ namespace Arya.Chess
 		/// </summary>
 		public int WhiteMinorHue
 		{
-			get
-			{
-				return m_WhiteMinorHue;
-			}
-			set
+			get => m_WhiteMinorHue;
+            set
 			{
 				if ( m_WhiteMinorHue != value )
 				{
@@ -233,11 +224,8 @@ namespace Arya.Chess
 		/// </summary>
 		public int BlackMinorHue
 		{
-			get
-			{
-				return m_BlackMinorHue;
-			}
-			set
+			get => m_BlackMinorHue;
+            set
 			{
 				if ( m_BlackMinorHue != value )
 				{
@@ -296,8 +284,8 @@ namespace Arya.Chess
 		/// </summary>
 		public BoardOrientation Orientation
 		{
-			get { return m_Orientation; }
-			set
+			get => m_Orientation;
+            set
 			{
 				if ( value != m_Orientation )
 				{
@@ -312,8 +300,8 @@ namespace Arya.Chess
 		/// </summary>
 		public bool OverrideMinorHue
 		{
-			get { return m_OverrideMinorHue; }
-			set
+			get => m_OverrideMinorHue;
+            set
 			{
 				if ( m_OverrideMinorHue != value )
 				{
@@ -383,26 +371,14 @@ namespace Arya.Chess
 		/// <summary>
 		/// Gets the chess piece currently on the board
 		/// </summary>
-		public BaseChessPiece this[int x, int y]
-		{
-			get
-			{
-				return m_Table[ new Point2D( x,y ) ] as BaseChessPiece;
-			}
-		}
+		public BaseChessPiece this[int x, int y] => m_Table[ new Point2D( x,y ) ] as BaseChessPiece;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the chess piece currently on the board
 		/// </summary>
-		public BaseChessPiece this[ Point2D p ]
-		{
-			get
-			{
-				return m_Table[ p ] as BaseChessPiece;
-			}
-		}
+		public BaseChessPiece this[ Point2D p ] => m_Table[ p ] as BaseChessPiece;
 
-		#region Board Creation
+        #region Board Creation
 
 		/// <summary>
 		/// Adds a chess piece to the board table

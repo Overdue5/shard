@@ -8,10 +8,10 @@ namespace Server.Spells.Fifth
 {
     public class ParalyzeSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 0x204; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 0x204;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Paralyze", "An Ex Por",
 				212,
 				9012,

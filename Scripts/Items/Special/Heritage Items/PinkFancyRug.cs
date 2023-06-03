@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class PinkFancyRugAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new PinkFancyRugDeed(); } }
+		public override BaseAddonDeed Deed => new PinkFancyRugDeed();
 
-		[Constructable]
+        [Constructable]
 		public PinkFancyRugAddon() : base()
 		{
 			AddComponent( new LocalizedAddonComponent( 0xAEE, 1076590 ), 1, 1, 0 );
@@ -39,8 +39,8 @@ namespace Server.Items
 
 	public class PinkFancyRugDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new PinkFancyRugAddon(); } }
-		public override int LabelNumber { get { return 1076590; } } // Pink fancy rug
+		public override BaseAddon Addon => new PinkFancyRugAddon();
+        public override int LabelNumber => 1076590; // Pink fancy rug
 
 		[Constructable]
 		public PinkFancyRugDeed() : base()

@@ -5,9 +5,9 @@ namespace Server.Items
 	[Flipable( 0x1022, 0x1023 )]
 	public class FletcherTools : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefBowFletching.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefBowFletching.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public FletcherTools() : base( 0x1022 )
 		{
 			Weight = 2.0;

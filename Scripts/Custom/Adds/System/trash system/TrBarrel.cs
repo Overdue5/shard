@@ -11,12 +11,9 @@ namespace Server.Items
         private Item m_TrashedItem;
 	    private int trashedReward;
 
-	    public Item trashedItem
-	    {
-	        get { return m_TrashedItem; }
-	    }
+	    public Item trashedItem => m_TrashedItem;
 
-		[Constructable]
+        [Constructable]
 		public MiniRewardCan() : base( 0xE7A )
 		{
 			Name = "reward trash can";

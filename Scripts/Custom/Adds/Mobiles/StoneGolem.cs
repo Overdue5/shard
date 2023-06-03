@@ -35,22 +35,13 @@ namespace Server.Mobiles
 		{
 		}
 
-		public override double DispelDifficulty
-		{
-			get { return 117.5; }
-		}
+		public override double DispelDifficulty => 117.5;
 
-		public override double DispelFocus
-		{
-			get { return 45.0; }
-		}
+        public override double DispelFocus => 45.0;
 
-		public override int TreasureMapLevel
-		{
-			get { return 1; }
-		}
+        public override int TreasureMapLevel => 1;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			PackItem( new IronOre( 3 ) ); // TODO: Five small iron ore
 			PackItem( new MandrakeRoot( 8 ) );

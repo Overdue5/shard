@@ -113,8 +113,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Owner)]
 		public int TextHueID
 		{
-			get { return PvXScoreBoard.m_textHueId[boardType]; }
-			set
+			get => PvXScoreBoard.m_textHueId[boardType];
+            set
 			{
 				m_textHueId[boardType] = value;
 				Config.Set($@"PvXsystem.{boardType.ToString()}_Text_Hue", value);

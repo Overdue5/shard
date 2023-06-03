@@ -7,9 +7,9 @@ namespace Server.Engines.XmlSpawner2
 	{
 		private class SaveItemPack : Container
 		{
-			public override int MaxWeight { get { return 0; }}
+			public override int MaxWeight => 0;
 
-			public SaveItemPack() : base( 0x9B2 )
+            public SaveItemPack() : base( 0x9B2 )
 			{
 			}
 
@@ -37,12 +37,9 @@ namespace Server.Engines.XmlSpawner2
 		private Mobile m_WasOwnedBy;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Container Container
-		{
-			get { return m_Container; } 
-		}
-		
-		[CommandProperty( AccessLevel.GameMaster )]
+		public Container Container => m_Container;
+
+        [CommandProperty( AccessLevel.GameMaster )]
 			public Item SavedItem 
 		{ 
 			get
@@ -84,8 +81,8 @@ namespace Server.Engines.XmlSpawner2
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool RestoreItem
 		{ 
-			get{ return false; } 
-			set 
+			get => false;
+            set 
 			{ 
 				if(value && SavedItem != null && AttachedTo is IEntity && ((IEntity)AttachedTo).Map != Map.Internal && ((IEntity)AttachedTo).Map != null)
 				{
@@ -113,7 +110,9 @@ namespace Server.Engines.XmlSpawner2
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Mobile WasOwnedBy { get{ return m_WasOwnedBy; } set { m_WasOwnedBy = value; } }
+		public Mobile WasOwnedBy { get => m_WasOwnedBy;
+            set => m_WasOwnedBy = value;
+        }
 
 		private void AddToContainer(Item item)
 		{

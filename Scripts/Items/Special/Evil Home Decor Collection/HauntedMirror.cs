@@ -3,10 +3,10 @@ namespace Server.Items
 	[Flipable( 0x2A7B, 0x2A7D )]
 	public class HaunterMirrorComponent : AddonComponent
 	{
-		public override int LabelNumber { get { return 1074800; } } // Haunted Mirror
-		public override bool HandlesOnMovement { get { return true; } }
+		public override int LabelNumber => 1074800; // Haunted Mirror
+		public override bool HandlesOnMovement => true;
 
-		public HaunterMirrorComponent() : base( 0x2A7B )
+        public HaunterMirrorComponent() : base( 0x2A7B )
 		{
 		}
 
@@ -53,9 +53,9 @@ namespace Server.Items
 
 	public class HaunterMirrorAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new HaunterMirrorDeed(); } }
+		public override BaseAddonDeed Deed => new HaunterMirrorDeed();
 
-		[Constructable]
+        [Constructable]
 		public HaunterMirrorAddon() : base()
 		{
 			AddComponent( new HaunterMirrorComponent(), 0, 0, 0 );
@@ -82,8 +82,8 @@ namespace Server.Items
 
 	public class HaunterMirrorDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new HaunterMirrorAddon(); } }
-		public override int LabelNumber { get { return 1074800; } } // Haunted Mirror
+		public override BaseAddon Addon => new HaunterMirrorAddon();
+        public override int LabelNumber => 1074800; // Haunted Mirror
 
 		[Constructable]
 		public HaunterMirrorDeed() : base()

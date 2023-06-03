@@ -28,12 +28,9 @@ namespace Server.Engines.Harvest
 
 		private readonly HarvestDefinition m_Definition;
 
-		public HarvestDefinition Definition
-		{
-			get{ return m_Definition; }
-		}
+		public HarvestDefinition Definition => m_Definition;
 
-		private Fishing()
+        private Fishing()
 		{
 			HarvestResource[] res;
 			HarvestVein[] veins;

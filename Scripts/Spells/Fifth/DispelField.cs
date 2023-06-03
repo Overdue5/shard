@@ -7,10 +7,10 @@ namespace Server.Spells.Fifth
 {
 	public class DispelFieldSpell : MagerySpell
 	{
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 528; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 528;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Dispel Field", "An Grav",
 				263,
 				9002,

@@ -65,19 +65,20 @@ namespace Server.Mobiles
                                                                     } );
 
 	    private static readonly LootPackItem[] WeaponAndArmor = null;
-	    public override bool ReacquireOnMovement{ get{ return true; } }
-		public override bool HasBreath{ get{ return true; } } // fire breath enabled
-		public override int BreathFireDamage{ get{ return 0; } }
-		public override int BreathColdDamage{ get{ return 100; } }
-		public override int BreathEffectHue{ get{ return 0x480; } }
-		public override double BonusPetDamageScalar{ get{ return (Core.SE)? 3.0 : 1.0; } }
-		// TODO: Undead summoning?
+	    public override bool ReacquireOnMovement => true;
+        public override bool HasBreath => true; // fire breath enabled
+		public override int BreathFireDamage => 0;
+        public override int BreathColdDamage => 100;
+        public override int BreathEffectHue => 0x480;
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override bool BleedImmune{ get{ return true; } }
+        public override double BonusPetDamageScalar => (Core.SE)? 3.0 : 1.0;
+        // TODO: Undead summoning?
 
-		public SkeletalDragon( Serial serial ) : base( serial )
+		public override bool AutoDispel => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override bool BleedImmune => true;
+
+        public SkeletalDragon( Serial serial ) : base( serial )
 		{
 		}
 

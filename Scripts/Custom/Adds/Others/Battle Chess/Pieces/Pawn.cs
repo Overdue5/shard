@@ -12,22 +12,13 @@ namespace Arya.Chess
 			return color == ChessColor.Black ? 2343 : 2336;
 		}
 
-		public override int Power
-		{
-			get
-			{
-				return 1;
-			}
-		}
+		public override int Power => 1;
 
-		public override bool AllowEnPassantCapture
+        public override bool AllowEnPassantCapture
 		{
-			get
-			{
-				return m_EnPassantRisk;
-			}
-			set { m_EnPassantRisk = value; }
-		}
+			get => m_EnPassantRisk;
+            set => m_EnPassantRisk = value;
+        }
 
 		private bool m_EnPassantRisk = false;
 

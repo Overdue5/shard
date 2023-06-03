@@ -6,10 +6,10 @@ namespace Server.Spells.Sixth
 {
     public class MarkSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 0x1FA; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 0x1FA;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Mark", "Kal Por Ylem",
 				263,
 				9002,

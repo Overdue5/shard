@@ -39,12 +39,9 @@ namespace Server.Items
                 base.OnAdded(parent);
         }
         */
-		public override int Mana
-		{
-			get { return 43; }
-		}
+		public override int Mana => 43;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

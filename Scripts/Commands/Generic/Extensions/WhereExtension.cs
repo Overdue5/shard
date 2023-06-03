@@ -11,19 +11,13 @@ namespace Server.Commands.Generic
 			ExtensionInfo.Register( ExtInfo );
 		}
 
-		public override ExtensionInfo Info
-		{
-			get { return ExtInfo; }
-		}
+		public override ExtensionInfo Info => ExtInfo;
 
-		private ObjectConditional m_Conditional;
+        private ObjectConditional m_Conditional;
 
-		public ObjectConditional Conditional
-		{
-			get { return m_Conditional; }
-		}
+		public ObjectConditional Conditional => m_Conditional;
 
-	    public override void Optimize( Mobile from, Type baseType, ref AssemblyEmitter assembly )
+        public override void Optimize( Mobile from, Type baseType, ref AssemblyEmitter assembly )
 		{
 			if ( baseType == null )
 				throw new InvalidOperationException( "Insanity." );

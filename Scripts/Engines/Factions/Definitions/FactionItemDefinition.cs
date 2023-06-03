@@ -9,10 +9,10 @@ namespace Server.Factions
 		private readonly int m_SilverCost;
 		private readonly Type m_VendorType;
 
-		public int SilverCost{ get{ return m_SilverCost; } }
-		public Type VendorType{ get{ return m_VendorType; } }
+		public int SilverCost => m_SilverCost;
+        public Type VendorType => m_VendorType;
 
-		public FactionItemDefinition( int silverCost, Type vendorType )
+        public FactionItemDefinition( int silverCost, Type vendorType )
 		{
 			m_SilverCost = silverCost;
 			m_VendorType = vendorType;

@@ -20,26 +20,26 @@ namespace Server.Ladder
 
         static public OdbcConnection GetmySQLConnection
         {
-            get { return currentConnection; }
-            set { currentConnection = value; }
+            get => currentConnection;
+            set => currentConnection = value;
         }
 
         static public DataTable Get1vs1Ladder
         {
-            get { return ladder1vs1; }
-            set { ladder1vs1 = value; }
+            get => ladder1vs1;
+            set => ladder1vs1 = value;
         }
 
         static public DataTable Get2vs2Ladder
         {
-            get { return ladder2vs2; }
-            set { ladder2vs2 = value; }
+            get => ladder2vs2;
+            set => ladder2vs2 = value;
         }
 
         static public DataTable GetTotalLadder
         {
-            get { return ladderTotal; }
-            set { ladderTotal = value; }
+            get => ladderTotal;
+            set => ladderTotal = value;
         }
 
 

@@ -9,10 +9,10 @@ namespace Server.Spells.Sixth
 {
     public class DispelSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 513; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 513;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Dispel", "An Ort",
 				212,
 				9002,

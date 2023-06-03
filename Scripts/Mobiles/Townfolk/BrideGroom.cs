@@ -15,8 +15,8 @@ namespace Server.Mobiles
 
 		}
 
-		public override bool CanTeach{ get{ return true; } }
-		public override bool ClickTitle{ get{ return false; } } // Do not display 'the groom' when single-clicking
+		public override bool CanTeach => true;
+        public override bool ClickTitle => false; // Do not display 'the groom' when single-clicking
 
 		private static int GetRandomHue()
 		{

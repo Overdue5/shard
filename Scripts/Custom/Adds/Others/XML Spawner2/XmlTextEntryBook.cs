@@ -99,32 +99,26 @@ namespace Server.Items
 	    [CommandProperty( AccessLevel.GameMaster )]
 		public string Title
 		{
-			get { return m_Title; }
-			set { m_Title = value; InvalidateProperties(); }
+			get => m_Title;
+            set { m_Title = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Author
 		{
-			get { return m_Author; }
-			set { m_Author = value; InvalidateProperties(); }
+			get => m_Author;
+            set { m_Author = value; InvalidateProperties(); }
 		}
 
 	    [CommandProperty(AccessLevel.GameMaster)]
 	    public bool Writable { get; set; }
 
 	    [CommandProperty(AccessLevel.GameMaster)]
-		public int PagesCount
-		{
-			get { return m_Pages.Length; }
-		}
+		public int PagesCount => m_Pages.Length;
 
-		public BookPageInfo[] Pages
-		{
-			get { return m_Pages; }
-		}
+        public BookPageInfo[] Pages => m_Pages;
 
-		[Constructable]
+        [Constructable]
 		public BaseEntryBook( int itemID, string title, string author, int pageCount, bool writable) : base( itemID )
 		{
 			m_Title = title;

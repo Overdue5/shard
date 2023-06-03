@@ -50,8 +50,8 @@ namespace Server.Network
 
         public static IPEndPoint[] EndPoints
         {
-            get { return m_EndPoints; }
-            set { m_EndPoints = value; }
+            get => m_EndPoints;
+            set => m_EndPoints = value;
         }
 
         public Listener(IPEndPoint ipep)

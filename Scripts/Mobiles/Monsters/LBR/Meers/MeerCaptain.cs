@@ -84,12 +84,12 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override bool BardImmune{ get{ return !Core.AOS; } }
-		public override bool CanRummageCorpses{ get{ return true; } }
+		public override bool BardImmune => !Core.AOS;
+        public override bool CanRummageCorpses => true;
 
-		public override bool InitialInnocent{ get{ return true; } }
+        public override bool InitialInnocent => true;
 
-		public override int GetHurtSound()
+        public override int GetHurtSound()
 		{
 			return 0x14D;
 		}

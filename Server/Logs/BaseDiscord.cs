@@ -25,8 +25,8 @@ namespace Server
 
         public static BaseDiscord Bot
         {
-            get { return m_Discord ?? new BaseDiscord(); }
-            set { m_Discord = value; }
+            get => m_Discord ?? new BaseDiscord();
+            set => m_Discord = value;
         }
 
         public class ChannelsInfo

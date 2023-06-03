@@ -39,10 +39,10 @@ namespace Server.Mobiles
 			m_CanTalk = true;
 		}
 
-		public override int Meat{ get{ return 1; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish; } }
+		public override int Meat => 1;
+        public override FoodType FavoriteFood => FoodType.Fish;
 
-		public Ferret( Serial serial ) : base( serial )
+        public Ferret( Serial serial ) : base( serial )
 		{
 		}
 

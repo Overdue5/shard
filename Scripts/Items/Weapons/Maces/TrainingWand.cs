@@ -3,20 +3,20 @@ namespace Server.Items
     public class TrainingWand : BaseBashing
 	{
 
-        public override int AosStrengthReq { get { return 40; } }
-        public override int AosMinDamage { get { return 11; } }
-        public override int AosMaxDamage { get { return 13; } }
-        public override int AosSpeed { get { return 44; } }
+        public override int AosStrengthReq => 40;
+        public override int AosMinDamage => 11;
+        public override int AosMaxDamage => 13;
+        public override int AosSpeed => 44;
 
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 1; } }
-        public override int OldMaxDamage { get { return 5; } }
-        public override int OldSpeed { get { return 312; } }
+        public override int OldStrengthReq => 10;
+        public override int OldMinDamage => 1;
+        public override int OldMaxDamage => 5;
+        public override int OldSpeed => 312;
 
-        public override int InitMinHits { get { return 31; } }
-        public override int InitMaxHits { get { return 45; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 45;
 
-		[Constructable]
+        [Constructable]
 		public TrainingWand() : base( 0xDF5 )
 		{
 			Weight = 3.0;

@@ -27,16 +27,16 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D Target
 		{
-			get { return m_Target; }
-			set { m_Target = value; }
-		}
+			get => m_Target;
+            set => m_Target = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Map TargetMap
 		{
-			get { return m_TargetMap; }
-			set { m_TargetMap = value; }
-		}
+			get => m_TargetMap;
+            set => m_TargetMap = value;
+        }
 
 		public static bool IsInGuild( Mobile m )
 		{

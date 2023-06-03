@@ -2,10 +2,10 @@ namespace Server.Items
 {
 	public class DeadWood : BaseReagent, ICommodity
 	{
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		[Constructable]
+        [Constructable]
 		public DeadWood() : this( 1 )
 		{
 		}

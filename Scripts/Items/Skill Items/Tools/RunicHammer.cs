@@ -5,9 +5,9 @@ namespace Server.Items
 	[Flipable( 0x13E4, 0x13E3 )]
 	public class RunicHammer : BaseRunicTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefBlacksmithy.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefBlacksmithy.CraftSystem;
 
-		public override int LabelNumber
+        public override int LabelNumber
 		{
 			get
 			{

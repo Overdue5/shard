@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	public class Waiter : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Waiter() : base( "the waiter" )
 		{
 			SetSkill( SkillName.Discordance, 36.0, 68.0 );

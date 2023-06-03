@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class VacationWafer : Item
 	{		
-		public override int LabelNumber{ get{ return 1074431; } } // An aquarium flake sphere
+		public override int LabelNumber => 1074431; // An aquarium flake sphere
 		
 		[Constructable]
 		public VacationWafer() : base( 0x971 )

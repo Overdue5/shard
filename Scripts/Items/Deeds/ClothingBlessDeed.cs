@@ -85,12 +85,9 @@ namespace Server.Items
 
 	public class ClothingBlessDeed : Item // Create the item class which is derived from the base item class
 	{
-		public override string DefaultName
-		{
-			get { return "Clothing Bless Deed"; }
-		}
+		public override string DefaultName => "Clothing Bless Deed";
 
-		[Constructable]
+        [Constructable]
 		public ClothingBlessDeed() : base( 0x14F0 )
 		{
             Hue = 2029;
@@ -117,9 +114,9 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public override bool DisplayLootType{ get{ return true; } }
+		public override bool DisplayLootType => true;
 
-		public override void OnDoubleClick( Mobile from ) // Override double click of the deed to call our target
+        public override void OnDoubleClick( Mobile from ) // Override double click of the deed to call our target
 		{
 			if ( !IsChildOf( from.Backpack ) ) // Make sure its in their pack
 			{

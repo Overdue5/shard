@@ -14,15 +14,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int UsesRemaining
 		{
-			get { return m_UsesRemaining; }
-			set { m_UsesRemaining = value; InvalidateProperties(); }
+			get => m_UsesRemaining;
+            set { m_UsesRemaining = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MeltedBeeswax
 		{
-			get { return m_Beeswax; }
-			set { if(value<0)value=0;if(value>MaxWax)value=MaxWax;m_Beeswax = value; InvalidateProperties(); }
+			get => m_Beeswax;
+            set { if(value<0)value=0;if(value>MaxWax)value=MaxWax;m_Beeswax = value; InvalidateProperties(); }
 		}
 
 		[Constructable]

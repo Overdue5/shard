@@ -32,20 +32,20 @@ namespace Server {
 
         public static SaveOption SaveType = SaveOption.Normal;
 
-		public override string Name {
-			get { return "Standard"; }
-		}
+		public override string Name => "Standard";
 
-		private Queue<Item> _decayQueue;
+        private Queue<Item> _decayQueue;
         private bool _permitBackgroundWrite;
 
 		public StandardSaveStrategy() {
 			_decayQueue = new Queue<Item>();
 		}
 
-        protected bool PermitBackgroundWrite { get { return _permitBackgroundWrite; } set { _permitBackgroundWrite = value; } }
+        protected bool PermitBackgroundWrite { get => _permitBackgroundWrite;
+            set => _permitBackgroundWrite = value;
+        }
 
-        protected bool UseSequentialWriters { get { return (StandardSaveStrategy.SaveType == SaveOption.Normal || !_permitBackgroundWrite); } }
+        protected bool UseSequentialWriters => (StandardSaveStrategy.SaveType == SaveOption.Normal || !_permitBackgroundWrite);
 
         public override void Save(SaveMetrics metrics, bool permitBackgroundWrite)
         {

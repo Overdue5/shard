@@ -4,10 +4,10 @@ namespace Server.Items
 {
 	public class CandleShort : BaseLight
 	{
-		public override int LitItemID{ get { return 0x142C; } }
-		public override int UnlitItemID{ get { return 0x142F; } }
+		public override int LitItemID => 0x142C;
+        public override int UnlitItemID => 0x142F;
 
-		[Constructable]
+        [Constructable]
 		public CandleShort() : base( 0x142F )
 		{
 			if ( Burnout )

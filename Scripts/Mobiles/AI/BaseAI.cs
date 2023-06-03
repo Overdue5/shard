@@ -89,11 +89,8 @@ namespace Server.Mobiles
 
 		public ActionType Action
 		{
-			get
-			{
-				return m_Action;
-			}
-			set
+			get => m_Action;
+            set
 			{
 				m_Action = value;
 				OnActionChanged();
@@ -2108,9 +2105,9 @@ namespace Server.Mobiles
 
 		public DateTime NextMove
 		{
-			get { return m_NextMove; }
-			set { m_NextMove = value; }
-		}
+			get => m_NextMove;
+            set => m_NextMove = value;
+        }
 
 		public virtual bool CheckMove()
 		{
@@ -2830,9 +2827,9 @@ namespace Server.Mobiles
 
 		private DateTime m_NextDetectHidden;
 
-		public virtual bool CanDetectHidden { get { return m_Mobile.Skills[SkillName.DetectHidden].Value > 0; } }
+		public virtual bool CanDetectHidden => m_Mobile.Skills[SkillName.DetectHidden].Value > 0;
 
-		/*
+        /*
 		 *  The Timer object
 		 */
 		private class AITimer : Timer

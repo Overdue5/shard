@@ -52,9 +52,9 @@ namespace Server.Mobiles
 		}
 
 		
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public FrenziedMongbat( Serial serial ) : base( serial )
+        public FrenziedMongbat( Serial serial ) : base( serial )
 		{
 		}
 

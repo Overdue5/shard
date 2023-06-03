@@ -99,12 +99,9 @@ namespace Server.Engines.Doom
 		private LeverPuzzleController m_Controller;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public UInt16 Code
-		{
-			get{ return m_Code; }
-		}
+		public UInt16 Code => m_Code;
 
-		public LeverPuzzleLever( UInt16 code, LeverPuzzleController controller ) : base( 0x108E )
+        public LeverPuzzleLever( UInt16 code, LeverPuzzleController controller ) : base( 0x108E )
 		{
 			m_Controller=controller;
 			m_Code = code;
@@ -161,8 +158,9 @@ namespace Server.Engines.Doom
 			Movable = false;
 		}
 
-		public override bool HandlesOnMovement { get { return true; } }
-		public override bool OnMoveOver( Mobile m )
+		public override bool HandlesOnMovement => true;
+
+        public override bool OnMoveOver( Mobile m )
 		{
 			if( m != null && m is PlayerMobile )
 			{

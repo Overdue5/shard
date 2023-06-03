@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class AnthiasTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new AnthiasTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new AnthiasTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public AnthiasTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class AnthiasTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new AnthiasTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new AnthiasTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public AnthiasTankAddonDeed()
 		{
 			Name = "an Anthias tank";

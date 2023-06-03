@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class AmethystTreeAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new AmethystTreeAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new AmethystTreeAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public AmethystTreeAddon()
 		{
 			AddonComponent ac = null;
@@ -56,15 +50,9 @@ namespace Server.Items
 
 	public class AmethystTreeAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new AmethystTreeAddon();
-			}
-		}
+		public override BaseAddon Addon => new AmethystTreeAddon();
 
-		[Constructable]
+        [Constructable]
 		public AmethystTreeAddonDeed()
 		{
 			Name = "AmethystTree";

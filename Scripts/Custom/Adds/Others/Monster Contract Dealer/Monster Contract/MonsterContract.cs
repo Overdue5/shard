@@ -13,30 +13,30 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Monster
 		{
-			get{ return m_monster; }
-			set{ m_monster = value; }
-		}
+			get => m_monster;
+            set => m_monster = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Reward
 		{
-			get{ return reward; }
-			set{ reward = value; }
-		}
+			get => reward;
+            set => reward = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int AmountToKill
 		{
-			get{ return m_amount; }
-			set{ m_amount = value; }
-		}
+			get => m_amount;
+            set => m_amount = value;
+        }
 		
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int AmountKilled
 		{
-			get{ return m_killed; }
-			set{ m_killed = value; }
-		}
+			get => m_killed;
+            set => m_killed = value;
+        }
 		
 		[Constructable]
 		public MonsterContract() : base( 0x14EF )

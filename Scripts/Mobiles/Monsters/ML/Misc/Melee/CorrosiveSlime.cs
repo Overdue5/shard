@@ -47,11 +47,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems );
 		}
 
-		public override Poison PoisonImmune { get { return Poison.Regular; } }
-		public override Poison HitPoison { get { return Poison.Regular; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish; } }
-		
-		//TODO: Damage weapon via acid
+		public override Poison PoisonImmune => Poison.Regular;
+        public override Poison HitPoison => Poison.Regular;
+        public override FoodType FavoriteFood => FoodType.Fish;
+
+        //TODO: Damage weapon via acid
 
 		public CorrosiveSlime( Serial serial ) : base( serial )
 		{

@@ -8,11 +8,11 @@ namespace Server.Engines.Chat
 		private readonly bool m_RequireConference;
 		private readonly OnChatAction m_Callback;
 
-		public bool RequireModerator{ get{ return m_RequireModerator; } }
-		public bool RequireConference{ get{ return m_RequireConference; } }
-		public OnChatAction Callback{ get{ return m_Callback; } }
+		public bool RequireModerator => m_RequireModerator;
+        public bool RequireConference => m_RequireConference;
+        public OnChatAction Callback => m_Callback;
 
-		public ChatActionHandler( bool requireModerator, bool requireConference, OnChatAction callback )
+        public ChatActionHandler( bool requireModerator, bool requireConference, OnChatAction callback )
 		{
 			m_RequireModerator = requireModerator;
 			m_RequireConference = requireConference;

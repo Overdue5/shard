@@ -9,8 +9,12 @@ namespace Server.Engines.XmlSpawner2
         private string m_Virtue;
 
         [CommandProperty( AccessLevel.GameMaster )]
-        public int Value { get{ return m_DataValue; } set { m_DataValue = value; } }
-        public string Virtue { get{ return m_Virtue; } set { m_Virtue = value; } }
+        public int Value { get => m_DataValue;
+            set => m_DataValue = value;
+        }
+        public string Virtue { get => m_Virtue;
+            set => m_Virtue = value;
+        }
 
         // These are the various ways in which the message attachment can be constructed.  
         // These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.
@@ -93,9 +97,9 @@ namespace Server.Engines.XmlSpawner2
 
 		}
 		
-		public override bool HandlesOnKilled { get { return true; } }
-		
-		public override void OnKilled(Mobile killed, Mobile killer )
+		public override bool HandlesOnKilled => true;
+
+        public override void OnKilled(Mobile killed, Mobile killer )
 		{
 		    base.OnKilled(killed, killer);
 

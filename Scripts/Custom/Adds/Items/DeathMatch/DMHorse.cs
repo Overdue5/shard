@@ -179,10 +179,7 @@ namespace Server.Scripts.Custom.Adds.Items.DeathMatch
 
         Mobile IMount.Rider
         {
-            get
-            {
-                return Rider;
-            }
+            get => Rider;
             set
             {
                 if (value == null)

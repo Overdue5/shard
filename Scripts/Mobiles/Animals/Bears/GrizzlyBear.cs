@@ -42,12 +42,12 @@ namespace Server.Mobiles
 		}
 
 
-		public override int Meat{ get{ return 2; } }
-		public override int Hides{ get{ return 16; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish | FoodType.FruitsAndVegies | FoodType.Meat; } }
-		public override PackInstinct PackInstinct{ get{ return PackInstinct.Bear; } }
+		public override int Meat => 2;
+        public override int Hides => 16;
+        public override FoodType FavoriteFood => FoodType.Fish | FoodType.FruitsAndVegies | FoodType.Meat;
+        public override PackInstinct PackInstinct => PackInstinct.Bear;
 
-		public GrizzlyBear( Serial serial ) : base( serial )
+        public GrizzlyBear( Serial serial ) : base( serial )
 		{
 		}
 

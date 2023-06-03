@@ -8,16 +8,16 @@ namespace Knives.TownHouses
 {
 	public class General
 	{
-		public static string Version{ get { return "2.0"; } }
+		public static string Version => "2.0";
 
-		// This setting determines the suggested gold value for a single square of a home
+        // This setting determines the suggested gold value for a single square of a home
 		//  which then derives price, lockdowns and secures.
-		public static int SuggestionFactor { get{ return 600; } }
+		public static int SuggestionFactor => 600;
 
-		// This setting determines if players need License in order to rent out their property
-		public static bool RequireRenterLicense{ get{ return true; } }
+        // This setting determines if players need License in order to rent out their property
+		public static bool RequireRenterLicense => true;
 
-		public static void Configure()
+        public static void Configure()
 		{
 			EventSink.WorldSave += OnSave;
 		}

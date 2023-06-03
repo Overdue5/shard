@@ -44,81 +44,33 @@ namespace Server.Engines.Help
 
 		private readonly PageInfo m_PageInfo;
 
-		public PageInfo PageInfo
-		{
-			get{ return m_PageInfo; }
-		}
+		public PageInfo PageInfo => m_PageInfo;
 
-		public Mobile Sender
-		{
-			get
-			{
-				return m_Sender;
-			}
-		}
+        public Mobile Sender => m_Sender;
 
-		public Mobile Handler
+        public Mobile Handler
 		{
-			get
-			{
-				return m_Handler;
-			}
-			set
+			get => m_Handler;
+            set
 			{
 				PageQueue.OnHandlerChanged( m_Handler, value, this );
 				m_Handler = value;
 			}
 		}
 
-		public DateTime Sent
-		{
-			get
-			{
-				return m_Sent;
-			}
-		}
+		public DateTime Sent => m_Sent;
 
-		public string Message
-		{
-			get
-			{
-				return m_Message;
-			}
-		}
+        public string Message => m_Message;
 
-		public PageType Type
-		{
-			get
-			{
-				return m_Type;
-			}
-		}
+        public PageType Type => m_Type;
 
-		public Point3D PageLocation
-		{
-			get
-			{
-				return m_PageLocation;
-			}
-		}
+        public Point3D PageLocation => m_PageLocation;
 
-		public Map PageMap
-		{
-			get
-			{
-				return m_PageMap;
-			}
-		}
+        public Map PageMap => m_PageMap;
 
-		public List<SpeechLogEntry> SpeechLog
-		{
-			get
-			{
-				return m_SpeechLog;
-			}
-		}
+        public List<SpeechLogEntry> SpeechLog => m_SpeechLog;
 
-		private Timer m_Timer;
+        private Timer m_Timer;
 
 		public void Stop()
 		{
@@ -316,15 +268,9 @@ namespace Server.Engines.Help
 			Remove( GetEntry( sender ) );
 		}
 
-		public static ArrayList List
-		{
-			get
-			{
-				return m_List;
-			}
-		}
+		public static ArrayList List => m_List;
 
-		public static void Enqueue( PageEntry entry )
+        public static void Enqueue( PageEntry entry )
 		{
 			m_List.Add( entry );
 			m_KeyedBySender[entry.Sender] = entry;

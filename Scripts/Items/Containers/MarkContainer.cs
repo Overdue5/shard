@@ -68,8 +68,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool AutoLock
 		{
-			get { return m_AutoLock; }
-			set
+			get => m_AutoLock;
+            set
 			{
 				m_AutoLock = value;
 
@@ -81,16 +81,20 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Map TargetMap { get { return m_TargetMap; } set { m_TargetMap = value; } }
+		public Map TargetMap { get => m_TargetMap;
+            set => m_TargetMap = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Point3D Target { get { return m_Target; } set { m_Target = value; } }
+		public Point3D Target { get => m_Target;
+            set => m_Target = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Bone
 		{
-			get { return ItemID == 0xECA; }
-			set
+			get => ItemID == 0xECA;
+            set
 			{
 				ItemID = value ? 0xECA : 0xE79;
 				Hue = value ? 1102 : 0;
@@ -98,14 +102,13 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Description { get { return m_Description; } set { m_Description = value; } }
+		public string Description { get => m_Description;
+            set => m_Description = value;
+        }
 
-		public override bool IsDecoContainer
-		{
-			get{ return false; }
-		}
+		public override bool IsDecoContainer => false;
 
-		[Constructable]
+        [Constructable]
 		public MarkContainer() : this( false )
 		{
 		}
@@ -137,8 +140,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override bool Locked
 		{
-			get { return base.Locked; }
-			set
+			get => base.Locked;
+            set
 			{
 				base.Locked = value;
 
@@ -165,10 +168,10 @@ namespace Server.Items
 			private readonly MarkContainer m_Container;
 			private readonly DateTime m_RelockTime;
 
-			public MarkContainer Container { get { return m_Container; } }
-			public DateTime RelockTime { get { return m_RelockTime; } }
+			public MarkContainer Container => m_Container;
+            public DateTime RelockTime => m_RelockTime;
 
-			public InternalTimer( MarkContainer container ) : this( container, TimeSpan.FromMinutes( 5.0 ) )
+            public InternalTimer( MarkContainer container ) : this( container, TimeSpan.FromMinutes( 5.0 ) )
 			{
 			}
 

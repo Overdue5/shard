@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new AngelStatueAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new AngelStatueAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public AngelStatueAddon()
 		{
 
@@ -74,15 +68,9 @@ namespace Server.Items
 
 	public class AngelStatueAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new AngelStatueAddon();
-			}
-		}
+		public override BaseAddon Addon => new AngelStatueAddon();
 
-		[Constructable]
+        [Constructable]
 		public AngelStatueAddonDeed()
 		{
 			Name = "AngelStatue";

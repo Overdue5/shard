@@ -82,12 +82,9 @@ namespace Server.Jailing
 			new JailWraith( this, prisoner.X + 15, prisoner.Y + 15, m_jailor );
 		}
 
-		public Mobile Prisoner
-		{
-			get { return m_prisoner; }
-		}
+		public Mobile Prisoner => m_prisoner;
 
-		public void jail()
+        public void jail()
 		{
 			JailSystem.Jail( m_prisoner, TimeSpan.FromDays( 2 ), "Interefering with a Role-Playing event.", true, m_jailor.Name, AccessLevel.Seer );
 			m_prisoner.CantWalk = false;
@@ -154,12 +151,9 @@ namespace Server.Jailing
 			{
 			}
 
-			public override bool BlocksFit
-			{
-				get { return true; }
-			}
+			public override bool BlocksFit => true;
 
-			public override void Serialize( GenericWriter writer )
+            public override void Serialize( GenericWriter writer )
 			{
 				base.Serialize( writer );
 

@@ -37,13 +37,7 @@ namespace Server.Scripts.Custom.Adds.System.Database
             Connect(host, db, user, password);
         }
 
-        public bool Connected
-        {
-            get
-            {
-                return m_Connected;
-            }
-        }
+        public bool Connected => m_Connected;
 
         public bool Connect(string host, string db, string user, string password)
         {

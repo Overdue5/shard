@@ -35,12 +35,9 @@ namespace Server
 		private MemoryStream _memStream;
 		private List<IndexInfo> _orderedIndexInfo = new List<IndexInfo>();
 
-		protected override int BufferSize
-		{
-			get { return 512; }
-		}
+		protected override int BufferSize => 512;
 
-		public QueuedMemoryWriter()
+        public QueuedMemoryWriter()
 			: base(new MemoryStream(1024 * 1024), true)
 		{
 			this._memStream = this.UnderlyingStream as MemoryStream;

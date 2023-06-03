@@ -16,15 +16,9 @@ namespace Server.Items
 
  
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new BoilingCauldronEastAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new BoilingCauldronEastAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public BoilingCauldronEastAddon()
 		{
 
@@ -78,15 +72,9 @@ namespace Server.Items
 
 	public class BoilingCauldronEastAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new BoilingCauldronEastAddon();
-			}
-		}
+		public override BaseAddon Addon => new BoilingCauldronEastAddon();
 
-		[Constructable]
+        [Constructable]
 		public BoilingCauldronEastAddonDeed()
 		{
 			Name = "Boiling Cauldron East";

@@ -55,11 +55,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 4 );
 		}
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool BleedImmune{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
+		public override bool AutoDispel => true;
+        public override bool BleedImmune => true;
+        public override int TreasureMapLevel => 1;
 
-		public override void AlterMeleeDamageFrom( Mobile from, ref int damage )
+        public override void AlterMeleeDamageFrom( Mobile from, ref int damage )
 		{
 			if ( from is BaseCreature )
 			{

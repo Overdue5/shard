@@ -10,12 +10,9 @@ namespace Server.Items
 	{		
 		private ArrayList m_Entries;
 
-		public ArrayList Entries
-		{
-			get{ return m_Entries; }
-		}
+		public ArrayList Entries => m_Entries;
 
-		[Constructable]
+        [Constructable]
 		public MonsterContractBook() : base( 0x2259 )
 		{
 			Weight = 1.0;

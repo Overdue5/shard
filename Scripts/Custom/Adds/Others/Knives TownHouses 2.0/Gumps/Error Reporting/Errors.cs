@@ -10,10 +10,10 @@ namespace Knives.TownHouses
 		private static readonly ArrayList s_ErrorLog = new ArrayList();
 		private static readonly ArrayList s_Checked = new ArrayList();
 
-		public static ArrayList ErrorLog{ get{ return s_ErrorLog; } }
-		public static ArrayList Checked{ get{ return s_Checked; } }
+		public static ArrayList ErrorLog => s_ErrorLog;
+        public static ArrayList Checked => s_Checked;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
             RUOVersion.AddCommand("TownHouseErrors", AccessLevel.Counselor, OnErrors);
             RUOVersion.AddCommand("the", AccessLevel.Counselor, OnErrors);

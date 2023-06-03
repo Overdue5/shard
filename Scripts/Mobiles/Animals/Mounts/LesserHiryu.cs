@@ -12,9 +12,9 @@ namespace Server.Mobiles
 			return WeaponAbility.Dismount;
 		}
 
-		public override bool StatLossAfterTame { get { return true; } }
+		public override bool StatLossAfterTame => true;
 
-		private static int GetHue()
+        private static int GetHue()
 		{
 			int rand = Utility.Random( 527 );
 
@@ -146,13 +146,13 @@ namespace Server.Mobiles
 			return bushidoChance > tamingChance ? bushidoChance : tamingChance;
 		}
 
-		public override int TreasureMapLevel { get { return 3; } }
-		public override int Meat { get { return 16; } }
-		public override int Hides { get { return 60; } }
-		public override FoodType FavoriteFood { get { return FoodType.Meat; } }
-		public override bool CanAngerOnTame { get { return true; } }
+		public override int TreasureMapLevel => 3;
+        public override int Meat => 16;
+        public override int Hides => 60;
+        public override FoodType FavoriteFood => FoodType.Meat;
+        public override bool CanAngerOnTame => true;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 

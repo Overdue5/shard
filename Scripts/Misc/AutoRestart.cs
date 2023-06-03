@@ -16,12 +16,9 @@ namespace Server.Misc
 		private static DateTime m_RestartTime;
         private bool m_SendToDiscord = true;
 
-		public static bool Restarting
-		{
-			get{ return m_Restarting; }
-		}
+		public static bool Restarting => m_Restarting;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
 			//CommandSystem.Register( "Restart", AccessLevel.Administrator, Restart_OnCommand );
 			if (Enabled)

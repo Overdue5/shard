@@ -5,12 +5,9 @@ namespace Server.Items
 {
 	public class ClockworkAssembly : Item
 	{
-		public override string DefaultName
-		{
-			get { return "clockwork assembly"; }
-		}
+		public override string DefaultName => "clockwork assembly";
 
-		[Constructable]
+        [Constructable]
 		public ClockworkAssembly() : base( 0x1EA8 )
 		{
 			Weight = 5.0;

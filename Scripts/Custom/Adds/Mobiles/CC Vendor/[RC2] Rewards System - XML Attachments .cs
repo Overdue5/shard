@@ -26,11 +26,11 @@ public class Currency : Item
     private string m_Name;
     private int m_Hue;
 
-    public Type XMLType { get { return m_XML_Type; } }
-    public Type PaymentType { get { return m_Payment_Type; } }
-    public string PayName { get { return m_Name; } }
-    public int PayID { get { return m_ItemID; } }
-    public int CurrHue { get { return m_Hue; } } 
+    public Type XMLType => m_XML_Type;
+    public Type PaymentType => m_Payment_Type;
+    public string PayName => m_Name;
+    public int PayID => m_ItemID;
+    public int CurrHue => m_Hue;
 
     public enum Payment
     {
@@ -484,8 +484,12 @@ public class Reward : Item, ICloneable
     private RestockInfo m_RestockInfo;
     private int m_BuyCount;
 
-    public int BuyCount { get { return m_BuyCount; } set { m_BuyCount = value; } }
-    public RestockInfo Restock { get { return m_RestockInfo; } set { m_RestockInfo = value; } }
+    public int BuyCount { get => m_BuyCount;
+        set => m_BuyCount = value;
+    }
+    public RestockInfo Restock { get => m_RestockInfo;
+        set => m_RestockInfo = value;
+    }
 
     public ObjectPropertyList Display
     {
@@ -545,29 +549,25 @@ public class Reward : Item, ICloneable
     }
 
     //for retrieving information only
-    public Item RewardInfo
-    {
-        get { return m_Reward; }
-    }
+    public Item RewardInfo => m_Reward;
+
     //use only when creating Reward for player
-    public Item RewardCopy
-    {
-        get { return GetReward(); }
-    }
+    public Item RewardCopy => GetReward();
+
     public int Cost
     {
-        get { return m_Cost; }
-        set { m_Cost = value; }
+        get => m_Cost;
+        set => m_Cost = value;
     }
     public string Title
     {
-        get { return m_Title; }
-        set { m_Title = value; }
+        get => m_Title;
+        set => m_Title = value;
     }
     public string Description
     {
-        get { return m_Description; }
-        set { m_Description = value; }
+        get => m_Description;
+        set => m_Description = value;
     }
     object ICloneable.Clone()
     {
@@ -632,15 +632,17 @@ public class Reward : Item, ICloneable
         private int m_Count;
         private int? m_Maximum;
         
-        public TimeSpan RestockRate { get { return m_RestockRate; } }
-        public DateTime LastRestock { get { return m_LastRestock; } }
+        public TimeSpan RestockRate => m_RestockRate;
+        public DateTime LastRestock => m_LastRestock;
 
-        public int RestockAmnt { get { return m_RestockAmnt; } }
-        public int Count { get { return m_Count; } set { m_Count = value; } }
-        public int Maximum { get { return m_Maximum.GetValueOrDefault(-1); } }
+        public int RestockAmnt => m_RestockAmnt;
+        public int Count { get => m_Count;
+            set => m_Count = value;
+        }
+        public int Maximum => m_Maximum.GetValueOrDefault(-1);
 
-        public int Hours { get { return (int)m_RestockRate.Hours; } }
-        public int Minutes { get { return (int)m_RestockRate.Minutes; } }
+        public int Hours => (int)m_RestockRate.Hours;
+        public int Minutes => (int)m_RestockRate.Minutes;
 
         public RestockInfo()
         {
@@ -805,8 +807,8 @@ public static class WorldRewardVendors
 {
     private static List<IRewardVendor> m_Vendors = new List<IRewardVendor>();
 
-    public static List<IRewardVendor> Vendors { get { return m_Vendors; } }
-   
+    public static List<IRewardVendor> Vendors => m_Vendors;
+
     public static void RegisterVendor(IRewardVendor vendor)
     {
         m_Vendors.Add(vendor);
@@ -1320,10 +1322,7 @@ public class Storage
 {
     object[] m_Objs;
 
-    public object this[int index]
-    {
-        get { return m_Objs[index]; }
-    }
+    public object this[int index] => m_Objs[index];
 
     public Storage(params object[] input)
     {
@@ -1710,7 +1709,7 @@ public static class MenuUploader
 {
     private static List<Type> m_Menus = new List<Type>(); 
     
-    public static List<Type> Menus { get { return m_Menus; } }
+    public static List<Type> Menus => m_Menus;
 
     public static void RegisterMenu<G>(G menu) where G : Gump, IRewardVendorGump
     {
@@ -1993,12 +1992,24 @@ public class JewlRewardGump : Gump, IRewardVendorGump
     }
 
     //Properties
-    public int PageNum { get { return m_PageNum; } set { m_PageNum = value; } }
-    public int EntryNum { get { return m_EntryNum; } set { m_EntryNum = value; } }
-    public int PosY { get { return m_PosY; } set { m_PosY = value; } }
-    public IRewardVendor Vendor { get { return m_Vendor; } set { m_Vendor = value; } }
-    public Mobile Mobile { get { return m_Mobile; } set { m_Mobile = value; } }
-    public int CurrencyAmnt { get { return m_CurrencyAmnt; } set { m_CurrencyAmnt = value; } }
+    public int PageNum { get => m_PageNum;
+        set => m_PageNum = value;
+    }
+    public int EntryNum { get => m_EntryNum;
+        set => m_EntryNum = value;
+    }
+    public int PosY { get => m_PosY;
+        set => m_PosY = value;
+    }
+    public IRewardVendor Vendor { get => m_Vendor;
+        set => m_Vendor = value;
+    }
+    public Mobile Mobile { get => m_Mobile;
+        set => m_Mobile = value;
+    }
+    public int CurrencyAmnt { get => m_CurrencyAmnt;
+        set => m_CurrencyAmnt = value;
+    }
 
     //Interface Explicit Implementation 
     void IRewardVendorGump.Send(Mobile m) { SendControl(m); }
@@ -2100,7 +2111,7 @@ public class DisplayBox : LargeCrate, IEnumerable
 {
     private Dictionary<Reward, MetalBox> m_Boxes;
 
-    public override bool IsPublicContainer { get { return true; } }
+    public override bool IsPublicContainer => true;
 
     public MetalBox this[Reward r]
     {
@@ -2307,8 +2318,8 @@ public class ClassicVendorGump : Gump, IRewardVendorGump
     private List<ObjectPropertyList> m_Opls;
     private List<BuyItemState> m_List;
 
-    public List<ObjectPropertyList> ObjPropLists { get { return m_Opls; } }
-    public List<BuyItemState> RewardList { get { return m_List; } }
+    public List<ObjectPropertyList> ObjPropLists => m_Opls;
+    public List<BuyItemState> RewardList => m_List;
 
     public static void Initialize()
     {
@@ -2413,28 +2424,26 @@ public class MobileRewardVendor : Banker, IRewardVendor
     [CommandProperty(AccessLevel.GameMaster)]
     public bool IsBanker
     {
-        get { return m_IsBanker; }
-        set { m_IsBanker = value; }     
+        get => m_IsBanker;
+        set => m_IsBanker = value;
     }
     Currency IRewardVendor.Payment
     {
-        get { return m_Currency; }
-        set { m_Currency = value; }
+        get => m_Currency;
+        set => m_Currency = value;
     }
     RewardCollection IRewardVendor.Rewards
     {
-        get { return m_Rewards; }
-        set { m_Rewards = value; }
+        get => m_Rewards;
+        set => m_Rewards = value;
     }
     Type IRewardVendor.Menu
     {
-        get { return m_Menu; }
-        set { m_Menu = value;  }
+        get => m_Menu;
+        set => m_Menu = value;
     }
-    DisplayBox IRewardVendor.Display
-    {
-        get { return m_Box; }
-    }
+    DisplayBox IRewardVendor.Display => m_Box;
+
     [Constructable]
     public MobileRewardVendor() : base()
     {
@@ -2745,23 +2754,20 @@ public class StoneRewardVendor : Item, IRewardVendor
 
     Currency IRewardVendor.Payment
     {
-        get { return m_Currency; }
-        set { m_Currency = value; }
+        get => m_Currency;
+        set => m_Currency = value;
     }
     RewardCollection IRewardVendor.Rewards
     {
-        get { return m_Rewards; }
-        set { m_Rewards = value; }
+        get => m_Rewards;
+        set => m_Rewards = value;
     }
     Type IRewardVendor.Menu
     {
-        get { return m_Menu; }
-        set { m_Menu = value; }
+        get => m_Menu;
+        set => m_Menu = value;
     }
-    DisplayBox IRewardVendor.Display
-    {
-        get { return m_Box; }
-    }
+    DisplayBox IRewardVendor.Display => m_Box;
 
     [Constructable]
     public StoneRewardVendor()

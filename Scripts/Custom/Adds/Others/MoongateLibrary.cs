@@ -32,11 +32,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Counselor)]
 		public Mobile MobOwner
 		{
-			get
-			{
-				return m_Owner;
-			}
-			set
+			get => m_Owner;
+            set
 			{
 				if (value == null)
 				{
@@ -54,11 +51,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Counselor)]
 		public bool Active
 		{
-			get
-			{
-				return m_Active;
-			}
-			set
+			get => m_Active;
+            set
 			{
 				if (m_Active == value)
 					return;
@@ -91,11 +85,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Counselor)]
 		public AccessLevel Security
 		{
-			get
-			{
-				return m_AccessLevel;
-			}
-			set
+			get => m_AccessLevel;
+            set
 			{
 				if ((value <= AccessLevel.Administrator) && (value >= AccessLevel.Player))
 				{
@@ -112,8 +103,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Cost
 		{
-			get { return m_Cost; }
-			set
+			get => m_Cost;
+            set
 			{
 				if (value < 0)
 					m_Cost = 0;
@@ -125,29 +116,23 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public long Collected
-		{
-			get { return m_AmountCollected; }
-		}
+		public long Collected => m_AmountCollected;
 
-		[CommandProperty(AccessLevel.GameMaster)]
-		public bool DecayRunning
-		{
-			get { return m_DecayRunning; }
-		}
+        [CommandProperty(AccessLevel.GameMaster)]
+		public bool DecayRunning => m_DecayRunning;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan DecayTimer1
 		{
-			get { return m_DecayTime; }
-			set { m_DecayTime = value; if (m_Decays && m_DecayTime != TimeSpan.FromSeconds(0)) DoDecayTimer(value); }
+			get => m_DecayTime;
+            set { m_DecayTime = value; if (m_Decays && m_DecayTime != TimeSpan.FromSeconds(0)) DoDecayTimer(value); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool GateDecays
 		{
-			get { return m_Decays; }
-			set
+			get => m_Decays;
+            set
 			{
 				m_Decays = value;
 				if (m_Decays && (m_DecayTime != TimeSpan.FromSeconds(0))) DoDecayTimer(m_DecayTime);
@@ -182,15 +167,9 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Administrator)]
 		public DateTime LastChanged
 		{
-			get
-			{
-				return m_LastChanged;
-			}
-			set
-			{
-				m_LastChanged = value;
-			}
-		}
+			get => m_LastChanged;
+            set => m_LastChanged = value;
+        }
 
 		[Constructable]
 		public MoongateLibrary(Mobile owner, Point3D loc, bool active, ArrayList runebooks, bool decays, TimeSpan decaytime, TimeSpan timeleft, int cost, long amountcollected)
@@ -1268,7 +1247,7 @@ namespace Server.Items
 {
 	public class MoongateLibraryDeed : Item
 	{
-		public override int LabelNumber { get { return 1041116; } } // a deed for a holiday tree
+		public override int LabelNumber => 1041116; // a deed for a holiday tree
 		private bool m_Active;
 		private ArrayList m_RuneBooks = new ArrayList();
 
@@ -1282,16 +1261,13 @@ namespace Server.Items
 		private long m_AmountCollected;
 
 		[CommandProperty(AccessLevel.Counselor)]
-		public bool Active
-		{
-			get { return m_Active; }
-		}
+		public bool Active => m_Active;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public bool GateDecays
 		{
-			get { return m_Decays; }
-			set
+			get => m_Decays;
+            set
 			{
 				m_Decays = value;
 				if (m_Decays)
@@ -1305,8 +1281,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Cost
 		{
-			get { return m_Cost; }
-			set
+			get => m_Cost;
+            set
 			{
 				if (value < 0)
 					m_Cost = 0;
@@ -1318,24 +1294,21 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public long Collected
-		{
-			get { return m_AmountCollected; }
-		}
+		public long Collected => m_AmountCollected;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan DecayTimer1
 		{
-			get { return m_DecayTime; }
-			set { m_DecayTime = value; }
-		}
+			get => m_DecayTime;
+            set => m_DecayTime = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public TimeSpan TimeLeft
 		{
-			get { return m_TimeLeft; }
-			set { m_TimeLeft = value; }
-		}
+			get => m_TimeLeft;
+            set => m_TimeLeft = value;
+        }
 
 		[Constructable]
 		public MoongateLibraryDeed(bool active, ArrayList runebooks, bool decays, TimeSpan decaytimer, TimeSpan timeleft, int cost, long amountcollected)

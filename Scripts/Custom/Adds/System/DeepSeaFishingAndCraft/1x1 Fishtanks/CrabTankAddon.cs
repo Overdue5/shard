@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class CrabTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new CrabTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new CrabTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public CrabTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class CrabTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new CrabTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new CrabTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public CrabTankAddonDeed()
 		{
 			Name = "a Crab Tank";

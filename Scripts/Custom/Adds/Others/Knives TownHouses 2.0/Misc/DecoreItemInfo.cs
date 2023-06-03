@@ -11,14 +11,14 @@ namespace Knives.TownHouses
 		private Point3D c_Location;
 		private Map c_Map;
 
-		public string TypeString{ get{ return c_TypeString; } }
-		public string Name{ get{ return c_Name; } }
-		public int ItemID{ get{ return c_ItemID; } }
-		public int Hue{ get{ return c_Hue; } }
-		public Point3D Location{ get{ return c_Location; } }
-		public Map Map{ get{ return c_Map; } }
+		public string TypeString => c_TypeString;
+        public string Name => c_Name;
+        public int ItemID => c_ItemID;
+        public int Hue => c_Hue;
+        public Point3D Location => c_Location;
+        public Map Map => c_Map;
 
-		public DecoreItemInfo()
+        public DecoreItemInfo()
 		{
 		}
 

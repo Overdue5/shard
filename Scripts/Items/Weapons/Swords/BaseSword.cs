@@ -4,9 +4,10 @@ namespace Server.Items
 {
 	public abstract class BaseSword : BaseMeleeWeapon
 	{
-		public override SkillName DefSkill{ get{ return SkillName.Swords; } }
-		public override WeaponType DefType{ get{ return WeaponType.Slashing; } }
-		//public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
+		public override SkillName DefSkill => SkillName.Swords;
+
+        public override WeaponType DefType => WeaponType.Slashing;
+        //public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
         	public override int GetSwingAnim(Mobile from)
 	        {
@@ -16,10 +17,10 @@ namespace Server.Items
         	        return Utility.RandomList(9, 10);
 	        }
 
-      	public override int DefHitSound { get { return Utility.RandomList(0x23B, 0x23C); }}
-		public override int DefMissSound {get { return Utility.RandomList(0x238, 0x239, 0x23A); }}
+      	public override int DefHitSound => Utility.RandomList(0x23B, 0x23C);
+        public override int DefMissSound => Utility.RandomList(0x238, 0x239, 0x23A);
 
-		public BaseSword( int itemID ) : base( itemID )
+        public BaseSword( int itemID ) : base( itemID )
 		{
 		}
 

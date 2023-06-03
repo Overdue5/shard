@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class FantailGoldfishTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new FantailGoldfishTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new FantailGoldfishTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public FantailGoldfishTankAddon()
 		{
 			AddonComponent ac = null;
@@ -173,15 +167,9 @@ namespace Server.Items
 
 	public class FantailGoldfishTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new FantailGoldfishTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new FantailGoldfishTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public FantailGoldfishTankAddonDeed()
 		{
 			Name = "a fantailed goldfish tank";

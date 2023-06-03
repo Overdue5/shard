@@ -50,22 +50,38 @@ namespace Server.Poker
 		private PokerGameTimer m_Timer;
 		private PlayerStructure m_Players;
 
-		public bool NeedsGumpUpdate { get { return m_NeedsGumpUpdate; } set { m_NeedsGumpUpdate = value; } }
-		public int CommunityGold { get { return m_CommunityGold; } set { m_CommunityGold = value; } }
-		public int CurrentBet { get { return m_CurrentBet; } set { m_CurrentBet = value; } }
-		public Deck Deck { get { return m_Deck; } set { m_Deck = value; } }
-		public PokerGameState State { get { return m_State; } set { m_State = value; } }
-		public PokerDealer Dealer { get { return m_Dealer; } set { m_Dealer = value; } }
-		public PokerPlayer DealerButton { get { return m_DealerButton; } }
-		public PokerPlayer SmallBlind { get { return m_SmallBlind; } }
-		public PokerPlayer BigBlind { get { return m_BigBlind; } }
-		public List<Card> CommunityCards { get { return m_CommunityCards; } set { m_CommunityCards = value; } }
-		public PokerGameTimer Timer { get { return m_Timer; } set { m_Timer = value; } }
-		public PlayerStructure Players { get { return m_Players; } }
+		public bool NeedsGumpUpdate { get => m_NeedsGumpUpdate;
+            set => m_NeedsGumpUpdate = value;
+        }
+		public int CommunityGold { get => m_CommunityGold;
+            set => m_CommunityGold = value;
+        }
+		public int CurrentBet { get => m_CurrentBet;
+            set => m_CurrentBet = value;
+        }
+		public Deck Deck { get => m_Deck;
+            set => m_Deck = value;
+        }
+		public PokerGameState State { get => m_State;
+            set => m_State = value;
+        }
+		public PokerDealer Dealer { get => m_Dealer;
+            set => m_Dealer = value;
+        }
+		public PokerPlayer DealerButton => m_DealerButton;
+        public PokerPlayer SmallBlind => m_SmallBlind;
+        public PokerPlayer BigBlind => m_BigBlind;
+        public List<Card> CommunityCards { get => m_CommunityCards;
+            set => m_CommunityCards = value;
+        }
+		public PokerGameTimer Timer { get => m_Timer;
+            set => m_Timer = value;
+        }
+		public PlayerStructure Players => m_Players;
 
-		public bool IsBettingRound { get { return ( (int)m_State % 2 == 0 ); } }
+        public bool IsBettingRound => ( (int)m_State % 2 == 0 );
 
-		public PokerGame( PokerDealer dealer )
+        public PokerGame( PokerDealer dealer )
 		{
 			m_Dealer = dealer;
 			m_NeedsGumpUpdate = false;
@@ -833,9 +849,13 @@ namespace Server.Poker
 		private List<Card> m_BestCards;
 		private HandRank m_Rank;
 
-		public PokerPlayer Player { get { return m_Player; } }
-		public List<Card> BestCards { get { return m_BestCards; } set { m_BestCards = value; } }
-		public HandRank Rank { get { return m_Rank; } set { m_Rank = value; } }
+		public PokerPlayer Player => m_Player;
+        public List<Card> BestCards { get => m_BestCards;
+            set => m_BestCards = value;
+        }
+		public HandRank Rank { get => m_Rank;
+            set => m_Rank = value;
+        }
 
 		public ResultEntry( PokerPlayer player )
 		{

@@ -53,10 +53,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Gems, 2 );
 		}
 
-		public override bool BardImmune{ get{ return !Core.AOS; } }
-		public override int Meat{ get{ return 1; } }
+		public override bool BardImmune => !Core.AOS;
+        public override int Meat => 1;
 
-		public override void OnDamagedBySpell( Mobile from )
+        public override void OnDamagedBySpell( Mobile from )
 		{
 			if( from != null && from.Alive && 0.4 > Utility.RandomDouble() )
 			{

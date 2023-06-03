@@ -44,9 +44,9 @@
             MinTameSkill = 90.6;
         }
 
-        public override int Meat { get { return 4; } }
-        public override int Hides { get { return 12; } }
-        public override FoodType FavoriteFood { get { return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+        public override int Meat => 4;
+        public override int Hides => 12;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
         public GrizzlyMount(Serial serial)
             : base(serial)

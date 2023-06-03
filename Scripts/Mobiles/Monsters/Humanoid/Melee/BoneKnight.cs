@@ -60,18 +60,15 @@ namespace Server.Mobiles
             AddItem(new Bone(Utility.RandomMinMax(1, 3)));
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool BleedImmune => true;
 
-		public BoneKnight( Serial serial ) : base( serial )
+        public BoneKnight( Serial serial ) : base( serial )
 		{
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 			writer.Write( 0 );

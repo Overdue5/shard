@@ -48,7 +48,7 @@ namespace Server.Engines.Reports
         private static SnapshotHistory m_StatsHistory;
         private static StaffHistory m_StaffHistory;
 
-        public static StaffHistory StaffHistory { get { return m_StaffHistory; } }
+        public static StaffHistory StaffHistory => m_StaffHistory;
 
         public static void Generate()
         {

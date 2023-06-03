@@ -14,10 +14,7 @@ namespace Server.Regions
         private readonly RegionControl m_Controller;
         private static readonly Hashtable m_NextDisplayTime = new Hashtable();
 
-        public RegionControl Controller
-        {
-            get { return m_Controller; }
-        }
+        public RegionControl Controller => m_Controller;
 
         public CustomRegion(RegionControl control): base(control.RegionName, control.Map, control.RegionPriority, control.RegionArea)
         {
@@ -284,13 +281,7 @@ namespace Server.Regions
             return m_Controller.CanBeDamaged;
         }
 
-        public override bool AllowTrade
-        {
-            get
-            {
-                return m_Controller.AllowTrade;
-            }
-        }
+        public override bool AllowTrade => m_Controller.AllowTrade;
 
         public override bool OnBeginSpellCast(Mobile from, ISpell s)
         {

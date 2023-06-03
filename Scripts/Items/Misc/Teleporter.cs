@@ -21,84 +21,84 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool AllowCriminals
         {
-            get { return m_AllowCriminals; }
+            get => m_AllowCriminals;
             set { m_AllowCriminals = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool RemoveEventGear
         {
-            get { return m_RemoveEventGear; }
-            set { m_RemoveEventGear = value; }
+            get => m_RemoveEventGear;
+            set => m_RemoveEventGear = value;
         }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool SourceEffect
 		{
-			get{ return m_SourceEffect; }
-			set{ m_SourceEffect = value; }
-		}
+			get => m_SourceEffect;
+            set => m_SourceEffect = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool DestEffect
 		{
-			get{ return m_DestEffect; }
-			set{ m_DestEffect = value; InvalidateProperties(); }
+			get => m_DestEffect;
+            set{ m_DestEffect = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int SoundID
 		{
-			get{ return m_SoundID; }
-			set{ m_SoundID = value; InvalidateProperties(); }
+			get => m_SoundID;
+            set{ m_SoundID = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public TimeSpan Delay
 		{
-			get{ return m_Delay; }
-			set{ m_Delay = value; InvalidateProperties(); }
+			get => m_Delay;
+            set{ m_Delay = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Active
 		{
-			get { return m_Active; }
-			set { m_Active = value; InvalidateProperties(); }
+			get => m_Active;
+            set { m_Active = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D PointDest
 		{
-			get { return m_PointDest; }
-			set { m_PointDest = value; InvalidateProperties(); }
+			get => m_PointDest;
+            set { m_PointDest = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Map MapDest
 		{
-			get { return m_MapDest; }
-			set { m_MapDest = value; InvalidateProperties(); }
+			get => m_MapDest;
+            set { m_MapDest = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Creatures
 		{
-			get { return m_Creatures; }
-			set { m_Creatures = value; InvalidateProperties(); }
+			get => m_Creatures;
+            set { m_Creatures = value; InvalidateProperties(); }
 		}
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool CombatCheck
         {
-            get { return m_CombatCheck; }
+            get => m_CombatCheck;
             set { m_CombatCheck = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DeleteOnUse{ get; set; }
 
-		public override int LabelNumber{ get{ return 1026095; } } // teleporter
+		public override int LabelNumber => 1026095; // teleporter
 
 		[Constructable]
 		public Teleporter() : this( new Point3D( 0, 0, 0 ), null, false )
@@ -336,29 +336,29 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SkillName Skill
 		{
-			get{ return m_Skill; }
-			set{ m_Skill = value; InvalidateProperties(); }
+			get => m_Skill;
+            set{ m_Skill = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public double Required
 		{
-			get{ return m_Required; }
-			set{ m_Required = value; InvalidateProperties(); }
+			get => m_Required;
+            set{ m_Required = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string MessageString
 		{
-			get{ return m_MessageString; }
-			set{ m_MessageString = value; InvalidateProperties(); }
+			get => m_MessageString;
+            set{ m_MessageString = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MessageNumber
 		{
-			get{ return m_MessageNumber; }
-			set{ m_MessageNumber = value; InvalidateProperties(); }
+			get => m_MessageNumber;
+            set{ m_MessageNumber = value; InvalidateProperties(); }
 		}
 
 		private void EndMessageLock( object state )
@@ -468,27 +468,27 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Substring
 		{
-			get{ return m_Substring; }
-			set{ m_Substring = value; InvalidateProperties(); }
+			get => m_Substring;
+            set{ m_Substring = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Keyword
 		{
-			get{ return m_Keyword; }
-			set{ m_Keyword = value; InvalidateProperties(); }
+			get => m_Keyword;
+            set{ m_Keyword = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Range
 		{
-			get{ return m_Range; }
-			set{ m_Range = value; InvalidateProperties(); }
+			get => m_Range;
+            set{ m_Range = value; InvalidateProperties(); }
 		}
 
-		public override bool HandlesOnSpeech{ get{ return true; } }
+		public override bool HandlesOnSpeech => true;
 
-		public override void OnSpeech( SpeechEventArgs e )
+        public override void OnSpeech( SpeechEventArgs e )
 		{
 			if ( !e.Handled && Active )
 			{
@@ -615,36 +615,36 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int StartNumber
         {
-            get { return m_StartNumber; }
-            set { m_StartNumber = value; }
+            get => m_StartNumber;
+            set => m_StartNumber = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string StartMessage
         {
-            get { return m_StartMessage; }
-            set { m_StartMessage = value; }
+            get => m_StartMessage;
+            set => m_StartMessage = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int ProgressNumber
         {
-            get { return m_ProgressNumber; }
-            set { m_ProgressNumber = value; }
+            get => m_ProgressNumber;
+            set => m_ProgressNumber = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string ProgressMessage
         {
-            get { return m_ProgressMessage; }
-            set { m_ProgressMessage = value; }
+            get => m_ProgressMessage;
+            set => m_ProgressMessage = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool ShowTimeRemaining
         {
-            get { return m_ShowTimeRemaining; }
-            set { m_ShowTimeRemaining = value; }
+            get => m_ShowTimeRemaining;
+            set => m_ShowTimeRemaining = value;
         }
 
         [Constructable]
@@ -757,8 +757,8 @@ namespace Server.Items
             private WaitTeleporter m_Teleporter;
             private Timer m_Timer;
 
-            public WaitTeleporter Teleporter { get { return m_Teleporter; } }
-            public Timer Timer { get { return m_Timer; } }
+            public WaitTeleporter Teleporter => m_Teleporter;
+            public Timer Timer => m_Timer;
 
             public TeleportingInfo(WaitTeleporter tele, Timer t)
             {

@@ -7,9 +7,9 @@ namespace Server.Mobiles
 	[CorpseName("a corpse of Twaulo")]
 	public class Twaulo : BaseChampion
 	{
-		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Pain; } }
+		public override ChampionSkullType SkullType => ChampionSkullType.Pain;
 
-		public override Type[] UniqueList{ get{ return new Type[] { typeof( Quell ) }; } }
+        public override Type[] UniqueList{ get{ return new Type[] { typeof( Quell ) }; } }
 		public override Type[] SharedList{ get{ return new Type[] { typeof( TheMostKnowledgePerson ), typeof( OblivionsNeedle ) }; } }
 		public override Type[] DecorativeList{ get{ return new Type[] { typeof( Pier ), typeof( MonsterStatuette ) }; } }
 
@@ -66,19 +66,16 @@ namespace Server.Mobiles
 			AddLoot(LootPack.Gems);
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override bool Unprovokable{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
-		public override int TreasureMapLevel{ get{ return 5; } }
-		public override int Meat { get { return 1; } }
-		public override int Hides { get { return 8; } }
-		public override HideType HideType { get { return HideType.Spined; } }
+        public override bool Unprovokable => true;
+        public override Poison PoisonImmune => Poison.Regular;
+        public override int TreasureMapLevel => 5;
+        public override int Meat => 1;
+        public override int Hides => 8;
+        public override HideType HideType => HideType.Spined;
 
-		public void SpawnPixies( Mobile target )
+        public void SpawnPixies( Mobile target )
 		{
 			Map map = this.Map;
 

@@ -121,18 +121,18 @@ namespace Server.SkillHandlers
 		{
             private static readonly SpellInfo m_Info = new SpellInfo("Spirit Speak", "", 269);
 
-			public override bool BlockedByHorrificBeast{ get{ return false; } }
+			public override bool BlockedByHorrificBeast => false;
 
-			public SpiritSpeakSpell( Mobile caster ) : base( caster, null, m_Info )
+            public SpiritSpeakSpell( Mobile caster ) : base( caster, null, m_Info )
 			{
 			}
 
-			public override bool ClearHandsOnCast{ get{ return false; } }
+			public override bool ClearHandsOnCast => false;
 
-            public override double CastDelayFastScalar { get { return 0; } }
-            public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(1.0); } }
+            public override double CastDelayFastScalar => 0;
+            public override TimeSpan CastDelayBase => TimeSpan.FromSeconds(1.0);
 
-			public override int GetMana()
+            public override int GetMana()
 			{
 				return 0;
 			}
@@ -153,9 +153,9 @@ namespace Server.SkillHandlers
 				return true;
 			}
 
-			public override bool CheckNextSpellTime{ get{ return false; } }
+			public override bool CheckNextSpellTime => false;
 
-			public override void OnDisturb( DisturbType type, bool message )
+            public override void OnDisturb( DisturbType type, bool message )
 			{
 				Caster.NextSkillTime = DateTime.UtcNow;
 

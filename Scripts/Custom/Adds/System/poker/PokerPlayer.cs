@@ -21,23 +21,48 @@ namespace Server.Poker
 		private List<Card> m_HoleCards;
 		private PlayerAction m_Action;
 
-		public int Gold { get { return m_Gold; } set { m_Gold = value; } }
-		public int Bet { get { return m_Bet; } set { m_Bet = value; } }
-		public int RoundGold { get { return m_RoundGold; } set { m_RoundGold = value; } }
-		public int RoundBet { get { return m_RoundBet; } set { m_RoundBet = value; } }
-		public bool RequestLeave { get { return m_RequestLeave; } set { m_RequestLeave = value; } }
-		public bool IsAllIn { get { return m_IsAllIn; } set { m_IsAllIn = value; } }
-		public bool Forced { get { return m_Forced; } set { m_Forced = value; } }
-		public bool LonePlayer { get { return m_LonePlayer; } set { m_LonePlayer = value; } }
-		public Mobile Mobile { get { return m_Mobile; } set { m_Mobile = value; } }
-		public PokerGame Game { get { return m_Game; } set { m_Game = value; } }
-		public Point3D Seat { get { return m_Seat; } set { m_Seat = value; } }
-		public DateTime BetStart { get { return m_BetStart; } set { m_BetStart = value; } }
-		public List<Card> HoleCards { get { return m_HoleCards; } }
-		public PlayerAction Action
+		public int Gold { get => m_Gold;
+            set => m_Gold = value;
+        }
+		public int Bet { get => m_Bet;
+            set => m_Bet = value;
+        }
+		public int RoundGold { get => m_RoundGold;
+            set => m_RoundGold = value;
+        }
+		public int RoundBet { get => m_RoundBet;
+            set => m_RoundBet = value;
+        }
+		public bool RequestLeave { get => m_RequestLeave;
+            set => m_RequestLeave = value;
+        }
+		public bool IsAllIn { get => m_IsAllIn;
+            set => m_IsAllIn = value;
+        }
+		public bool Forced { get => m_Forced;
+            set => m_Forced = value;
+        }
+		public bool LonePlayer { get => m_LonePlayer;
+            set => m_LonePlayer = value;
+        }
+		public Mobile Mobile { get => m_Mobile;
+            set => m_Mobile = value;
+        }
+		public PokerGame Game { get => m_Game;
+            set => m_Game = value;
+        }
+		public Point3D Seat { get => m_Seat;
+            set => m_Seat = value;
+        }
+		public DateTime BetStart { get => m_BetStart;
+            set => m_BetStart = value;
+        }
+		public List<Card> HoleCards => m_HoleCards;
+
+        public PlayerAction Action
 		{
-			get { return m_Action; }
-			set
+			get => m_Action;
+            set
 			{
 				m_Action = value;
 
@@ -53,12 +78,12 @@ namespace Server.Poker
 			}
 		}
 
-		public bool HasDealerButton { get { return ( m_Game.DealerButton == this ); } }
-		public bool HasSmallBlind { get { return ( m_Game.SmallBlind == this ); } }
-		public bool HasBigBlind { get { return ( m_Game.BigBlind == this ); } }
-		public bool HasBlindBet { get { return ( m_Game.SmallBlind == this || m_Game.BigBlind == this ); } }
+		public bool HasDealerButton => ( m_Game.DealerButton == this );
+        public bool HasSmallBlind => ( m_Game.SmallBlind == this );
+        public bool HasBigBlind => ( m_Game.BigBlind == this );
+        public bool HasBlindBet => ( m_Game.SmallBlind == this || m_Game.BigBlind == this );
 
-		public PokerPlayer( Mobile from )
+        public PokerPlayer( Mobile from )
 		{
 			m_Mobile = from;
 			m_HoleCards = new List<Card>();

@@ -13,25 +13,26 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int UsesRemaining
 		{
-			get { return m_UsesRemaining; }
-			set { m_UsesRemaining = value; InvalidateProperties(); }
+			get => m_UsesRemaining;
+            set { m_UsesRemaining = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Poison Poison
 		{
-			get{ return m_Poison; }
-			set{ m_Poison = value; InvalidateProperties(); }
+			get => m_Poison;
+            set{ m_Poison = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int PoisonCharges
 		{
-			get { return m_PoisonCharges; }
-			set { m_PoisonCharges = value; InvalidateProperties(); }
+			get => m_PoisonCharges;
+            set { m_PoisonCharges = value; InvalidateProperties(); }
 		}
 
-		public bool ShowUsesRemaining{ get{ return true; } set{} }
+		public bool ShowUsesRemaining{ get => true;
+            set{} }
 
 		[Constructable]
 		public FukiyaDarts() : this( 1 )

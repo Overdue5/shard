@@ -23,14 +23,8 @@ namespace Server.Engines.Reports
         /// </summary>
         public Snapshot this[int index]
         {
-            get
-            {
-                return ((Snapshot)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
+            get => ((Snapshot)(List[index]));
+            set => List[index] = value;
         }
         
         /// <summary>

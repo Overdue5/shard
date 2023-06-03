@@ -7,9 +7,9 @@ namespace Server.Engines.Quests.Naturalist
     
 	public class Naturalist : BaseQuester
 	{
-        public override bool ClickTitle { get { return true; } }
+        public override bool ClickTitle => true;
 
-		[Constructable]
+        [Constructable]
 		public Naturalist() : base( "the Naturalist" )
 		{
 		}
@@ -35,7 +35,7 @@ namespace Server.Engines.Quests.Naturalist
 			Utility.AssignRandomHair( this );
 			Utility.AssignRandomFacialHair( this, HairHue );
 		}
-        public override bool ShowContextMenu { get { return true; } }//
+        public override bool ShowContextMenu => true; //
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
 			StudyOfSolenQuest qs = player.Quest as StudyOfSolenQuest;

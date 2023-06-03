@@ -79,30 +79,30 @@ namespace Server.Voting
 		/// <summary>
 		/// The Mobile reference to the request sender.
 		/// </summary>
-		public Mobile Sender { get { return _Sender; } }
+		public Mobile Sender => _Sender;
 
-		private readonly VoteSite _VoteSite;
+        private readonly VoteSite _VoteSite;
 		/// <summary>
 		/// The VoteSiteProfile used by the request.
 		/// </summary>
-		public VoteSite VoteSite { get { return _VoteSite; } }
+		public VoteSite VoteSite => _VoteSite;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the total time left before the sender of this request can vote again.
 		/// </summary>
-		public TimeSpan TimeLeft { get { return GetTimeLeft(); } }
+		public TimeSpan TimeLeft => GetTimeLeft();
 
-		/// <summary>
+        /// <summary>
 		/// Gets the time of the last successful vote request for this request sender.
 		/// </summary>
-		public DateTime LastVoteTime { get { return GetLastVoteTime(); } }
+		public DateTime LastVoteTime => GetLastVoteTime();
 
-		/// <summary>
+        /// <summary>
 		/// Gets a value indicating whether this request sender may vote again.
 		/// </summary>
-		public bool CanVote { get { return GetCanVote(); } }
+		public bool CanVote => GetCanVote();
 
-		/// <summary>
+        /// <summary>
 		/// Creates a new instance of VoteRequestEventArgs.
 		/// </summary>
 		/// <param name="sender">The Mobile reference to the request sender.</param>

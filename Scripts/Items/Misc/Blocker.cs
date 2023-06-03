@@ -4,7 +4,7 @@ namespace Server.Items
 {
     public class Blocker : Item
     {
-        public override int LabelNumber { get { return 503057; } } // Impassable!
+        public override int LabelNumber => 503057; // Impassable!
 
         [Constructable]
         public Blocker()

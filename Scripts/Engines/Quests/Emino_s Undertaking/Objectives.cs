@@ -5,16 +5,11 @@ namespace Server.Engines.Quests.Ninja
 {
 	public class FindEminoBeginObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Your value as a Ninja must be proven. Find Daimyo Emino and accept the test he offers.
-				return 1063174;
-			}
-		}
+		public override object Message =>
+            // Your value as a Ninja must be proven. Find Daimyo Emino and accept the test he offers.
+            1063174;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new FindZoelConversation() );
 		}
@@ -22,16 +17,11 @@ namespace Server.Engines.Quests.Ninja
 
 	public class FindZoelObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Find Elite Ninja Zoel immediately!
-				return 1063176;
-			}
-		}
+		public override object Message =>
+            // Find Elite Ninja Zoel immediately!
+            1063176;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new EnterCaveConversation() );
 		}
@@ -39,16 +29,11 @@ namespace Server.Engines.Quests.Ninja
 
 	public class EnterCaveObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Enter the cave and walk through it. You will be tested as you travel along the path.
-				return 1063179;
-			}
-		}
+		public override object Message =>
+            // Enter the cave and walk through it. You will be tested as you travel along the path.
+            1063179;
 
-	    public override void CheckProgress()
+        public override void CheckProgress()
 		{
 			if ( System.From.Map == Map.Malas && System.From.InRange( new Point3D( 406, 1141, 0 ), 2 ) )
 				Complete();
@@ -66,20 +51,15 @@ namespace Server.Engines.Quests.Ninja
 
 		public bool TaughtHowToUseSkills
 		{
-			get{ return m_TaughtHowToUseSkills; } 
-			set{ m_TaughtHowToUseSkills = value; }
-		}
+			get => m_TaughtHowToUseSkills;
+            set => m_TaughtHowToUseSkills = value;
+        }
 
-		public override object Message
-		{
-			get
-			{
-				// Use your Ninja training to move invisibly past the magical guardians.
-				return 1063261;
-			}
-		}
+		public override object Message =>
+            // Use your Ninja training to move invisibly past the magical guardians.
+            1063261;
 
-	    public override void CheckProgress()
+        public override void CheckProgress()
 		{
 			if ( System.From.Map == Map.Malas && System.From.InRange( new Point3D( 412, 1123, 0 ), 3 ) )
 				Complete();
@@ -107,18 +87,13 @@ namespace Server.Engines.Quests.Ninja
 
 	public class UseTeleporterObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* The special tile is known as a teleporter.
+		public override object Message =>
+            /* The special tile is known as a teleporter.
 				 * Step on the teleporter tile and you will be transported to a new location.
 				 */
-				return 1063183;
-			}
-		}
+            1063183;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new GiveZoelNoteConversation() );
 		}
@@ -126,19 +101,14 @@ namespace Server.Engines.Quests.Ninja
 
 	public class GiveZoelNoteObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Bring the note to Elite Ninja Zoel and speak with him again. 
+		public override object Message =>
+            /* Bring the note to Elite Ninja Zoel and speak with him again. 
 				 * He is near the cave entrance. You can hand the note to Zoel 
 				 * by dragging it and dropping it on his body.
 				 */
-				return 1063185;
-			}
-		}
+            1063185;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new GainInnInformationConversation() );
 		}
@@ -146,19 +116,14 @@ namespace Server.Engines.Quests.Ninja
 
 	public class GainInnInformationObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Take the Blue Teleporter Tile from Daimyo Emino's
+		public override object Message =>
+            /* Take the Blue Teleporter Tile from Daimyo Emino's
 				 * house to the Abandoned Inn. Quietly look around
 				 * to gain information.
 				 */
-				return 1063190;
-			}
-		}
+            1063190;
 
-	    public override void CheckProgress()
+        public override void CheckProgress()
 		{
 			Mobile from = System.From;
 
@@ -174,16 +139,11 @@ namespace Server.Engines.Quests.Ninja
 
 	public class ReturnFromInnObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Go back through the blue teleporter and tell Daimyo Emino what you’ve overheard.
-				return 1063197;
-			}
-		}
+		public override object Message =>
+            // Go back through the blue teleporter and tell Daimyo Emino what you’ve overheard.
+            1063197;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new SearchForSwordConversation() );
 		}
@@ -191,20 +151,15 @@ namespace Server.Engines.Quests.Ninja
 
 	public class SearchForSwordObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Take the white teleporter and check the chests for the sword. 
+		public override object Message =>
+            /* Take the white teleporter and check the chests for the sword. 
 				 * Leave everything else behind. Avoid damage from traps you may 
 				 * encounter. To use a potion, make sure at least one hand is 
 				 * free and double click on the bottle.
 				 */
-				return 1063200;
-			}
-		}
+            1063200;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new HallwayWalkConversation() );
 		}
@@ -216,23 +171,18 @@ namespace Server.Engines.Quests.Ninja
 
 		public bool StolenTreasure
 		{
-			get{ return m_StolenTreasure; }
-			set{ m_StolenTreasure = value; }
-		}
+			get => m_StolenTreasure;
+            set => m_StolenTreasure = value;
+        }
 
-		public override object Message
-		{
-			get
-			{
-				/* Walk through the hallway being careful 
+		public override object Message =>
+            /* Walk through the hallway being careful 
 				 * to avoid the traps. You may be able to 
 				 * time the traps to avoid injury.
 				 */
-				return 1063202;
-			}
-		}
+            1063202;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 			System.AddConversation( new ReturnSwordConversation() );
 		}
@@ -254,16 +204,11 @@ namespace Server.Engines.Quests.Ninja
 
 	public class ReturnSwordObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Take the sword and bring it back to Daimyo Emino.
-				return 1063204;
-			}
-		}
+		public override object Message =>
+            // Take the sword and bring it back to Daimyo Emino.
+            1063204;
 
-	    public override void CheckProgress()
+        public override void CheckProgress()
 		{
 			Mobile from = System.From;
 
@@ -279,18 +224,13 @@ namespace Server.Engines.Quests.Ninja
 
 	public class SlayHenchmenObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				// Kill three henchmen.
-				return 1063206;
-			}
-		}
+		public override object Message =>
+            // Kill three henchmen.
+            1063206;
 
-	    public override int MaxProgress{ get{ return 3; } }
+        public override int MaxProgress => 3;
 
-		public override void RenderProgress( BaseQuestGump gump )
+        public override void RenderProgress( BaseQuestGump gump )
 		{
 			if ( !Completed )
 			{
@@ -320,19 +260,14 @@ namespace Server.Engines.Quests.Ninja
 
 	public class GiveEminoSwordObjective : QuestObjective
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have proven your fighting skills. Bring the Sword to
+		public override object Message =>
+            /* You have proven your fighting skills. Bring the Sword to
 				 * Daimyo Emino immediately. Be sure to follow the
 				 * path back to the teleporter.
 				 */
-				return 1063210;
-			}
-		}
+            1063210;
 
-	    public override void OnComplete()
+        public override void OnComplete()
 		{
 		}
 	}

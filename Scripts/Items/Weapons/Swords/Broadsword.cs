@@ -6,20 +6,20 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 
-		public override int AosStrengthReq{ get{ return 30; } }
-		public override int AosMinDamage{ get{ return 14; } }
-		public override int AosMaxDamage{ get{ return 15; } }
-		public override int AosSpeed{ get{ return 33; } }
+		public override int AosStrengthReq => 30;
+        public override int AosMinDamage => 14;
+        public override int AosMaxDamage => 15;
+        public override int AosSpeed => 33;
 
-		public override int OldStrengthReq{ get{ return 25; } }
-		public override int OldMinDamage{ get{ return 10; } }
-		public override int OldMaxDamage{ get{ return 25; } }
-		public override int OldSpeed{ get{ return 334; } }
+        public override int OldStrengthReq => 25;
+        public override int OldMinDamage => 10;
+        public override int OldMaxDamage => 25;
+        public override int OldSpeed => 334;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 100; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 100;
 
-		[Constructable]
+        [Constructable]
 		public Broadsword() : base( 0xF5E )
 		{
 			Weight = 6.0;

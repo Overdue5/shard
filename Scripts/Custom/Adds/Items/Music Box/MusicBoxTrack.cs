@@ -3,11 +3,13 @@ namespace Server.Items.MusicBox
     public class MusicBoxTrack : Item
     {
         private int m_Track;
-        public int Track { get { return m_Track; } set { m_Track = value; InvalidateProperties(); } }
+        public int Track { get => m_Track;
+            set { m_Track = value; InvalidateProperties(); } }
         private MusicName m_Song;
-        public MusicName Song { get { return m_Song; } set { m_Song = value; InvalidateProperties(); } }
+        public MusicName Song { get => m_Song;
+            set { m_Song = value; InvalidateProperties(); } }
 
-        public override int LabelNumber { get { return m_Track; } }
+        public override int LabelNumber => m_Track;
 
         public MusicBoxTrack(int track)
             : base(0x2830)

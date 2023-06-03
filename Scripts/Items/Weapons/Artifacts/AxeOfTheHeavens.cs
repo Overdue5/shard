@@ -2,13 +2,13 @@ namespace Server.Items
 {
 	public class AxeOfTheHeavens : DoubleAxe
 	{
-		public override int LabelNumber{ get{ return 1061106; } } // Axe of the Heavens
-		public override int ArtifactRarity{ get{ return 11; } }
+		public override int LabelNumber => 1061106; // Axe of the Heavens
+		public override int ArtifactRarity => 11;
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+        public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public AxeOfTheHeavens()
 		{
 			Hue = 0x4D5;

@@ -81,8 +81,8 @@ namespace Server
 		private NetState m_State;
 		private ClientVersion m_Version;
 
-		public NetState State { get { return m_State; } }
-		public ClientVersion Version { get { return m_Version; } }
+		public NetState State => m_State;
+        public ClientVersion Version => m_Version;
 
         public ClientVersionReceivedArgs(NetState state, ClientVersion cv)
 		{
@@ -94,7 +94,9 @@ namespace Server
 	public class CreateGuildEventArgs : EventArgs
 	{
 		private int m_Id;
-		public int Id { get { return m_Id; } set { m_Id = value; } }
+		public int Id { get => m_Id;
+            set => m_Id = value;
+        }
 
 		public CreateGuildEventArgs( int id )
 		{
@@ -106,9 +108,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public GuildGumpRequestArgs( Mobile mobile )
+        public GuildGumpRequestArgs( Mobile mobile )
 		{
 			m_Mobile = mobile;
 		}
@@ -118,9 +120,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile { get { return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public QuestGumpRequestArgs( Mobile mobile )
+        public QuestGumpRequestArgs( Mobile mobile )
 		{
 			m_Mobile = mobile;
 		}
@@ -131,10 +133,10 @@ namespace Server
 		private Mobile m_Mobile;
 		private int m_Index;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public int Index{ get{ return m_Index; } }
+		public Mobile Mobile => m_Mobile;
+        public int Index => m_Index;
 
-		public SetAbilityEventArgs( Mobile mobile, int index )
+        public SetAbilityEventArgs( Mobile mobile, int index )
 		{
 			m_Mobile = mobile;
 			m_Index = index;
@@ -146,10 +148,10 @@ namespace Server
 		private NetState m_State;
 		private int m_Index;
 
-		public NetState State{ get{ return m_State; } }
-		public int Index{ get{ return m_Index; } }
+		public NetState State => m_State;
+        public int Index => m_Index;
 
-		public DeleteRequestEventArgs( NetState state, int index )
+        public DeleteRequestEventArgs( NetState state, int index )
 		{
 			m_State = state;
 			m_Index = index;
@@ -164,11 +166,15 @@ namespace Server
 		private bool m_Accepted;
 		private CityInfo[] m_CityInfo;
 
-		public NetState State{ get{ return m_State; } }
-		public string Username{ get{ return m_Username; } }
-		public string Password{ get{ return m_Password; } }
-		public bool Accepted{ get{ return m_Accepted; } set{ m_Accepted = value; } }
-		public CityInfo[] CityInfo{ get{ return m_CityInfo; } set{ m_CityInfo = value; } }
+		public NetState State => m_State;
+        public string Username => m_Username;
+        public string Password => m_Password;
+        public bool Accepted{ get => m_Accepted;
+            set => m_Accepted = value;
+        }
+		public CityInfo[] CityInfo{ get => m_CityInfo;
+            set => m_CityInfo = value;
+        }
 
 		public GameLoginEventArgs( NetState state, string un, string pw )
 		{
@@ -184,11 +190,11 @@ namespace Server
 		private Mobile m_Aggressor;
 		private bool m_Criminal;
 
-		public Mobile Aggressed{ get{ return m_Aggressed; } }
-		public Mobile Aggressor{ get{ return m_Aggressor; } }
-		public bool Criminal{ get{ return m_Criminal; } }
+		public Mobile Aggressed => m_Aggressed;
+        public Mobile Aggressor => m_Aggressor;
+        public bool Criminal => m_Criminal;
 
-		private static Queue<AggressiveActionEventArgs> m_Pool = new Queue<AggressiveActionEventArgs>();
+        private static Queue<AggressiveActionEventArgs> m_Pool = new Queue<AggressiveActionEventArgs>();
 
 		public static AggressiveActionEventArgs Create( Mobile aggressed, Mobile aggressor, bool criminal )
 		{
@@ -228,10 +234,10 @@ namespace Server
 		private Mobile m_Beholder;
 		private Mobile m_Beheld;
 
-		public Mobile Beholder{ get{ return m_Beholder; } }
-		public Mobile Beheld{ get{ return m_Beheld; } }
+		public Mobile Beholder => m_Beholder;
+        public Mobile Beheld => m_Beheld;
 
-		public ProfileRequestEventArgs( Mobile beholder, Mobile beheld )
+        public ProfileRequestEventArgs( Mobile beholder, Mobile beheld )
 		{
 			m_Beholder = beholder;
 			m_Beheld = beheld;
@@ -244,11 +250,11 @@ namespace Server
 		private Mobile m_Beheld;
 		private string m_Text;
 
-		public Mobile Beholder{ get{ return m_Beholder; } }
-		public Mobile Beheld{ get{ return m_Beheld; } }
-		public string Text{ get{ return m_Text; } }
+		public Mobile Beholder => m_Beholder;
+        public Mobile Beheld => m_Beheld;
+        public string Text => m_Text;
 
-		public ChangeProfileRequestEventArgs( Mobile beholder, Mobile beheld, string text )
+        public ChangeProfileRequestEventArgs( Mobile beholder, Mobile beheld, string text )
 		{
 			m_Beholder = beholder;
 			m_Beheld = beheld;
@@ -261,10 +267,10 @@ namespace Server
 		private Mobile m_Beholder;
 		private Mobile m_Beheld;
 
-		public Mobile Beholder{ get{ return m_Beholder; } }
-		public Mobile Beheld{ get{ return m_Beheld; } }
+		public Mobile Beholder => m_Beholder;
+        public Mobile Beheld => m_Beheld;
 
-		public PaperdollRequestEventArgs( Mobile beholder, Mobile beheld )
+        public PaperdollRequestEventArgs( Mobile beholder, Mobile beheld )
 		{
 			m_Beholder = beholder;
 			m_Beheld = beheld;
@@ -280,11 +286,15 @@ namespace Server
 		private bool m_Accepted;
 		private ALRReason m_RejectReason;
 
-		public NetState State{ get{ return m_State; } }
-		public string Username{ get{ return m_Username; } }
-		public string Password{ get{ return m_Password; } }
-		public bool Accepted{ get{ return m_Accepted; } set{ m_Accepted = value; } }
-		public ALRReason RejectReason{ get{ return m_RejectReason; } set{ m_RejectReason = value; } }
+		public NetState State => m_State;
+        public string Username => m_Username;
+        public string Password => m_Password;
+        public bool Accepted{ get => m_Accepted;
+            set => m_Accepted = value;
+        }
+		public ALRReason RejectReason{ get => m_RejectReason;
+            set => m_RejectReason = value;
+        }
 
 		public AccountLoginEventArgs( NetState state, string username, string password )
 		{
@@ -300,11 +310,11 @@ namespace Server
 		private Mobile m_Beheld;
 		private int m_GumpID;
 
-		public Mobile Beholder{ get{ return m_Beholder; } }
-		public Mobile Beheld{ get{ return m_Beheld; } }
-		public int GumpID{ get{ return m_GumpID; } }
+		public Mobile Beholder => m_Beholder;
+        public Mobile Beheld => m_Beheld;
+        public int GumpID => m_GumpID;
 
-		public VirtueItemRequestEventArgs( Mobile beholder, Mobile beheld, int gumpID )
+        public VirtueItemRequestEventArgs( Mobile beholder, Mobile beheld, int gumpID )
 		{
 			m_Beholder = beholder;
 			m_Beheld = beheld;
@@ -316,10 +326,10 @@ namespace Server
 	{
 		private Mobile m_Beholder, m_Beheld;
 
-		public Mobile Beholder{ get{ return m_Beholder; } }
-		public Mobile Beheld{ get{ return m_Beheld; } }
+		public Mobile Beholder => m_Beholder;
+        public Mobile Beheld => m_Beheld;
 
-		public VirtueGumpRequestEventArgs( Mobile beholder, Mobile beheld )
+        public VirtueGumpRequestEventArgs( Mobile beholder, Mobile beheld )
 		{
 			m_Beholder = beholder;
 			m_Beheld = beheld;
@@ -331,10 +341,10 @@ namespace Server
 		private Mobile m_Mobile;
 		private int m_VirtueID;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public int VirtueID{ get{ return m_VirtueID; } }
+		public Mobile Mobile => m_Mobile;
+        public int VirtueID => m_VirtueID;
 
-		public VirtueMacroRequestEventArgs( Mobile mobile, int virtueID )
+        public VirtueMacroRequestEventArgs( Mobile mobile, int virtueID )
 		{
 			m_Mobile = mobile;
 			m_VirtueID = virtueID;
@@ -345,9 +355,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public ChatRequestEventArgs( Mobile mobile )
+        public ChatRequestEventArgs( Mobile mobile )
 		{
 			m_Mobile = mobile;
 		}
@@ -357,9 +367,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public PlayerDeathEventArgs( Mobile mobile )
+        public PlayerDeathEventArgs( Mobile mobile )
 		{
 			m_Mobile = mobile;
 		}
@@ -370,11 +380,11 @@ namespace Server
 		private Mobile m_From, m_Target;
 		private string m_Name;
 
-		public Mobile From{ get{ return m_From; } }
-		public Mobile Target{ get{ return m_Target; } }
-		public string Name{ get{ return m_Name; } }
+		public Mobile From => m_From;
+        public Mobile Target => m_Target;
+        public string Name => m_Name;
 
-		public RenameRequestEventArgs( Mobile from, Mobile target, string name )
+        public RenameRequestEventArgs( Mobile from, Mobile target, string name )
 		{
 			m_From = from;
 			m_Target = target;
@@ -386,9 +396,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public LogoutEventArgs( Mobile m )
+        public LogoutEventArgs( Mobile m )
 		{
 			m_Mobile = m;
 		}
@@ -399,8 +409,10 @@ namespace Server
 		private Socket m_Socket;
 		private bool m_AllowConnection;
 
-		public Socket Socket{ get{ return m_Socket; } }
-		public bool AllowConnection{ get { return m_AllowConnection; } set { m_AllowConnection = value; } }
+		public Socket Socket => m_Socket;
+        public bool AllowConnection{ get => m_AllowConnection;
+            set => m_AllowConnection = value;
+        }
 
 		public SocketConnectEventArgs( Socket s )
 		{
@@ -413,9 +425,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public ConnectedEventArgs( Mobile m )
+        public ConnectedEventArgs( Mobile m )
 		{
 			m_Mobile = m;
 		}
@@ -425,9 +437,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public DisconnectedEventArgs( Mobile m )
+        public DisconnectedEventArgs( Mobile m )
 		{
 			m_Mobile = m;
 		}
@@ -438,10 +450,10 @@ namespace Server
 		private Mobile m_Mobile;
 		private string m_Action;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public string Action{ get{ return m_Action; } }
+		public Mobile Mobile => m_Mobile;
+        public string Action => m_Action;
 
-		public AnimateRequestEventArgs( Mobile m, string action )
+        public AnimateRequestEventArgs( Mobile m, string action )
 		{
 			m_Mobile = m;
 			m_Action = action;
@@ -454,11 +466,11 @@ namespace Server
 		private Item m_Spellbook;
 		private int m_SpellID;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public Item Spellbook{ get{ return m_Spellbook; } }
-		public int SpellID{ get{ return m_SpellID; } }
+		public Mobile Mobile => m_Mobile;
+        public Item Spellbook => m_Spellbook;
+        public int SpellID => m_SpellID;
 
-		public CastSpellRequestEventArgs( Mobile m, int spellID, Item book )
+        public CastSpellRequestEventArgs( Mobile m, int spellID, Item book )
 		{
 			m_Mobile = m;
 			m_Spellbook = book;
@@ -471,10 +483,10 @@ namespace Server
 		private Mobile m_Mobile;
 		private int m_Type;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public int Type{ get{ return m_Type; } }
+		public Mobile Mobile => m_Mobile;
+        public int Type => m_Type;
 
-		public OpenSpellbookRequestEventArgs( Mobile m, int type )
+        public OpenSpellbookRequestEventArgs( Mobile m, int type )
 		{
 			m_Mobile = m;
 			m_Type = type;
@@ -485,9 +497,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public StunRequestEventArgs( Mobile m )
+        public StunRequestEventArgs( Mobile m )
 		{
 			m_Mobile = m;
 		}
@@ -497,9 +509,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public DisarmRequestEventArgs( Mobile m )
+        public DisarmRequestEventArgs( Mobile m )
 		{
 			m_Mobile = m;
 		}
@@ -509,9 +521,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public HelpRequestEventArgs( Mobile m )
+        public HelpRequestEventArgs( Mobile m )
 		{
 			m_Mobile = m;
 		}
@@ -529,8 +541,10 @@ namespace Server
 		private Exception m_Exception;
 		private bool m_Close;
 
-		public Exception Exception{ get{ return m_Exception; } }
-		public bool Close{ get{ return m_Close; } set{ m_Close = value; } }
+		public Exception Exception => m_Exception;
+        public bool Close{ get => m_Close;
+            set => m_Close = value;
+        }
 
 		public CrashedEventArgs( Exception e )
 		{
@@ -543,10 +557,10 @@ namespace Server
 		private Mobile m_Mobile;
 		private int m_OldValue;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public int OldValue{ get{ return m_OldValue; } }
+		public Mobile Mobile => m_Mobile;
+        public int OldValue => m_OldValue;
 
-		public HungerChangedEventArgs( Mobile mobile, int oldValue )
+        public HungerChangedEventArgs( Mobile mobile, int oldValue )
 		{
 			m_Mobile = mobile;
 			m_OldValue = oldValue;
@@ -559,9 +573,11 @@ namespace Server
 		private Direction m_Direction;
 		private bool m_Blocked;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public Direction Direction{ get{ return m_Direction; } }
-		public bool Blocked{ get{ return m_Blocked; } set{ m_Blocked = value; } }
+		public Mobile Mobile => m_Mobile;
+        public Direction Direction => m_Direction;
+        public bool Blocked{ get => m_Blocked;
+            set => m_Blocked = value;
+        }
 
 		private static Queue<MovementEventArgs> m_Pool = new Queue<MovementEventArgs>();
 
@@ -604,12 +620,14 @@ namespace Server
 		private bool m_Rejected;
 		private List<ServerInfo> m_Servers;
 
-		public NetState State{ get{ return m_State; } }
-		public IAccount Account{ get{ return m_Account; } }
-		public bool Rejected{ get{ return m_Rejected; } set{ m_Rejected = value; } }
-		public List<ServerInfo> Servers{ get{ return m_Servers; } }
+		public NetState State => m_State;
+        public IAccount Account => m_Account;
+        public bool Rejected{ get => m_Rejected;
+            set => m_Rejected = value;
+        }
+		public List<ServerInfo> Servers => m_Servers;
 
-		public void AddServer( string name, IPEndPoint address )
+        public void AddServer( string name, IPEndPoint address )
 		{
 			AddServer( name, 0, TimeZone.CurrentTimeZone, address );
 		}
@@ -632,10 +650,10 @@ namespace Server
 		private SkillName m_Name;
 		private int m_Value;
 
-		public SkillName Name{ get{ return m_Name; } }
-		public int Value{ get{ return m_Value; } }
+		public SkillName Name => m_Name;
+        public int Value => m_Value;
 
-		public SkillNameValue( SkillName name, int value )
+        public SkillNameValue( SkillName name, int value )
 		{
 			m_Name = name;
 			m_Value = value;
@@ -660,27 +678,31 @@ namespace Server
 
 		private Race m_Race;
 
-		public NetState State{ get{ return m_State; } }
-		public IAccount Account{ get{ return m_Account; } }
-		public Mobile Mobile{ get{ return m_Mobile; } set{ m_Mobile = value; } }
-		public string Name{ get{ return m_Name; } }
-		public bool Female{ get{ return m_Female; } }
-		public int Hue{ get{ return m_Hue; } }
-		public int Str{ get{ return m_Str; } }
-		public int Dex{ get{ return m_Dex; } }
-		public int Int{ get{ return m_Int; } }
-		public CityInfo City{ get{ return m_City; } }
-		public SkillNameValue[] Skills{ get{ return m_Skills; } }
-		public int ShirtHue{ get{ return m_ShirtHue; } }
-		public int PantsHue{ get{ return m_PantsHue; } }
-		public int HairID{ get{ return m_HairID; } }
-		public int HairHue{ get{ return m_HairHue; } }
-		public int BeardID{ get{ return m_BeardID; } }
-		public int BeardHue{ get{ return m_BeardHue; } }
-		public int Profession{ get{ return m_Profession; } set{ m_Profession = value; }}
-		public Race Race { get { return m_Race; } }
+		public NetState State => m_State;
+        public IAccount Account => m_Account;
+        public Mobile Mobile{ get => m_Mobile;
+            set => m_Mobile = value;
+        }
+		public string Name => m_Name;
+        public bool Female => m_Female;
+        public int Hue => m_Hue;
+        public int Str => m_Str;
+        public int Dex => m_Dex;
+        public int Int => m_Int;
+        public CityInfo City => m_City;
+        public SkillNameValue[] Skills => m_Skills;
+        public int ShirtHue => m_ShirtHue;
+        public int PantsHue => m_PantsHue;
+        public int HairID => m_HairID;
+        public int HairHue => m_HairHue;
+        public int BeardID => m_BeardID;
+        public int BeardHue => m_BeardHue;
+        public int Profession{ get => m_Profession;
+            set => m_Profession = value;
+        }
+		public Race Race => m_Race;
 
-		public CharacterCreatedEventArgs( NetState state, IAccount a, string name, bool female, int hue, int str, int dex, int intel, CityInfo city, SkillNameValue[] skills, int shirtHue, int pantsHue, int hairID, int hairHue, int beardID, int beardHue, int profession, Race race )
+        public CharacterCreatedEventArgs( NetState state, IAccount a, string name, bool female, int hue, int str, int dex, int intel, CityInfo city, SkillNameValue[] skills, int shirtHue, int pantsHue, int hairID, int hairHue, int beardID, int beardHue, int profession, Race race )
 		{
 			m_State = state;
 			m_Account = a;
@@ -707,9 +729,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public OpenDoorMacroEventArgs( Mobile mobile )
+        public OpenDoorMacroEventArgs( Mobile mobile )
 		{
 			m_Mobile = mobile;
 		}
@@ -725,13 +747,19 @@ namespace Server
 		private bool m_Handled;
 		private bool m_Blocked;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
-		public string Speech{ get{ return m_Speech; } set{ m_Speech = value; } }
-		public MessageType Type{ get{ return m_Type; } }
-		public int Hue{ get{ return m_Hue; } }
-		public int[] Keywords{ get{ return m_Keywords; } }
-		public bool Handled{ get{ return m_Handled; } set{ m_Handled = value; } }
-		public bool Blocked{ get{ return m_Blocked; } set{ m_Blocked = value; } }
+		public Mobile Mobile => m_Mobile;
+        public string Speech{ get => m_Speech;
+            set => m_Speech = value;
+        }
+		public MessageType Type => m_Type;
+        public int Hue => m_Hue;
+        public int[] Keywords => m_Keywords;
+        public bool Handled{ get => m_Handled;
+            set => m_Handled = value;
+        }
+		public bool Blocked{ get => m_Blocked;
+            set => m_Blocked = value;
+        }
 
 		public bool HasKeyword( int keyword )
 		{
@@ -756,9 +784,9 @@ namespace Server
 	{
 		private Mobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public Mobile Mobile => m_Mobile;
 
-		public LoginEventArgs( Mobile mobile )
+        public LoginEventArgs( Mobile mobile )
 		{
 			m_Mobile = mobile;
 		}
@@ -768,7 +796,7 @@ namespace Server
     {
         private readonly bool m_Msg;
 
-        public bool Message { get { return m_Msg; } }
+        public bool Message => m_Msg;
 
         public WorldBeforeSaveEventArgs(bool msg)
         {
@@ -780,9 +808,9 @@ namespace Server
 	{
 		private bool m_Msg;
 
-		public bool Message{ get{ return m_Msg; } }
+		public bool Message => m_Msg;
 
-		public WorldSaveEventArgs( bool msg )
+        public WorldSaveEventArgs( bool msg )
 		{
 			m_Msg = msg;
 		}
@@ -799,8 +827,10 @@ namespace Server
 			m_Blocked = false;
 		}
 
-		public NetState NetState{ get{ return m_State; } }
-		public bool Blocked{ get{ return m_Blocked; } set{ m_Blocked = value; } }
+		public NetState NetState => m_State;
+        public bool Blocked{ get => m_Blocked;
+            set => m_Blocked = value;
+        }
 	}
 
     public class GuildChatEventArgs
@@ -816,9 +846,9 @@ namespace Server
             m_Speech = speech;
         }
 
-        public Mobile Mobile { get { return m_Mobile; } }
-        public string Speech { get { return m_Speech; } }
-        public BaseGuild Guild { get { return m_Guild; } }
+        public Mobile Mobile => m_Mobile;
+        public string Speech => m_Speech;
+        public BaseGuild Guild => m_Guild;
     }
 
     public class PartyChatEventArgs
@@ -840,9 +870,9 @@ namespace Server
             m_Speech = speech;
         }
 
-        public Mobile From { get { return m_Mobile; } }
-        public Mobile To { get { return m_ToMobile; } }
-        public string Speech { get { return m_Speech; } }
+        public Mobile From => m_Mobile;
+        public Mobile To => m_ToMobile;
+        public string Speech => m_Speech;
     }
 
     public class AllianceChatEventArgs
@@ -858,9 +888,9 @@ namespace Server
             m_Speech = speech;
         }
 
-        public Mobile Mobile { get { return m_Mobile; } }
-        public string Speech { get { return m_Speech; } }
-        public BaseGuild Guild { get { return m_Guild; } }
+        public Mobile Mobile => m_Mobile;
+        public string Speech => m_Speech;
+        public BaseGuild Guild => m_Guild;
     }
 
     public static class EventSink

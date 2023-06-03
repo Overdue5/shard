@@ -380,9 +380,9 @@ namespace Scripts.SpecialSystems
 		[CommandProperty(AccessLevel.GameMaster)]
 		public DateTime LastChangeTime
 		{
-			get { return m_LastChangeTime; }
-			set { m_LastChangeTime = value; }
-		}
+			get => m_LastChangeTime;
+            set => m_LastChangeTime = value;
+        }
 
 		/// <summary>
 		/// The last killed
@@ -390,9 +390,9 @@ namespace Scripts.SpecialSystems
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Hashtable LastKilled
 		{
-			get { return m_LastKilled; }
-			set { m_LastKilled = value; }
-		}
+			get => m_LastKilled;
+            set => m_LastKilled = value;
+        }
 
 		/// <summary>
 		/// The last killer
@@ -400,65 +400,62 @@ namespace Scripts.SpecialSystems
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Hashtable LastKiller
 		{
-			get { return m_LastKiller; }
-			set { m_LastKiller = value; }
-		}
+			get => m_LastKiller;
+            set => m_LastKiller = value;
+        }
 
 		public PlayerMobile Owner
 		{
-			get { return m_Owner; }
-			set { m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
 		public PvXType PvXType
 		{
-			get { return m_type; }
-			set { m_type = value; }
-		}
+			get => m_type;
+            set => m_type = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string RankName
 		{
-			get { return m_RankName; }
-			set { m_RankName = value; }
-		}
+			get => m_RankName;
+            set => m_RankName = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public DateTime ResKillTime
 		{
-			get { return m_ResKillTime; }
-			set { m_ResKillTime = value; }
-		}
+			get => m_ResKillTime;
+            set => m_ResKillTime = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int TotalLoses
 		{
-			get { return m_TotalLoses; }
-			set { m_TotalLoses = value; }
-		}
+			get => m_TotalLoses;
+            set => m_TotalLoses = value;
+        }
 
 		/// <summary>
 		/// Calculated value, TotalWins - TotalLoses - TotalResKills
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int TotalPoints
-		{
-			get { return m_TotalWins - m_TotalLoses - m_TotalResKills; }
-		}
+		public int TotalPoints => m_TotalWins - m_TotalLoses - m_TotalResKills;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public int TotalPointsLost
 		{
-			get { return m_TotalPointsLost; }
-			set { m_TotalPointsLost = value; }
-		}
+			get => m_TotalPointsLost;
+            set => m_TotalPointsLost = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int TotalPointsSpent
 		{
-			get { return m_TotalPointsSpent; }
-			set { m_TotalPointsSpent = value; }
-		}
+			get => m_TotalPointsSpent;
+            set => m_TotalPointsSpent = value;
+        }
 
 		/// <summary>
 		/// Was killed in a row by one character
@@ -466,9 +463,9 @@ namespace Scripts.SpecialSystems
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int TotalResKilled
 		{
-			get { return m_TotalResKilled; }
-			set { m_TotalResKilled = value; }
-		}
+			get => m_TotalResKilled;
+            set => m_TotalResKilled = value;
+        }
 
 		/// <summary>
 		/// Killed several times in a row one character
@@ -476,16 +473,16 @@ namespace Scripts.SpecialSystems
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int TotalResKills
 		{
-			get { return m_TotalResKills; }
-			set { m_TotalResKills = value; }
-		}
+			get => m_TotalResKills;
+            set => m_TotalResKills = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int TotalWins
 		{
-			get { return m_TotalWins; }
-			set { m_TotalWins = value; }
-		}
+			get => m_TotalWins;
+            set => m_TotalWins = value;
+        }
 
 		#endregion Properties
 

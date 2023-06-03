@@ -7,9 +7,9 @@ namespace Server.Items
 {	
 	public class StoneAnkhComponent : AddonComponent
 	{
-		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		public StoneAnkhComponent( int itemID ) : base( itemID )
+        public StoneAnkhComponent( int itemID ) : base( itemID )
 		{
 			Weight = 1.0;
 		}
@@ -59,8 +59,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set{ m_IsRewardItem = value; InvalidateProperties(); }
 		}
 		
 		[Constructable]
@@ -140,7 +140,7 @@ namespace Server.Items
 	
 	public class StoneAnkhDeed : BaseAddonDeed, IRewardItem
 	{
-		public override int LabelNumber{ get{ return 1049773; } } // deed for a stone ankh
+		public override int LabelNumber => 1049773; // deed for a stone ankh
 		
 		private bool m_East;
 		private bool m_IsRewardItem;
@@ -148,8 +148,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool IsRewardItem
 		{
-			get{ return m_IsRewardItem; }
-			set{ m_IsRewardItem = value; InvalidateProperties(); }
+			get => m_IsRewardItem;
+            set{ m_IsRewardItem = value; InvalidateProperties(); }
 		}
 
 		public override BaseAddon Addon

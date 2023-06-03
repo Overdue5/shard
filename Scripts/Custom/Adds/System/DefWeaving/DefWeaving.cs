@@ -6,12 +6,9 @@ namespace Server.Engines.Craft
 
 	public class DefWeaving : CraftSystem
 	{
-		public override SkillName MainSkill
-		{
-			get	{ return SkillName.Tailoring; }
-		}
+		public override SkillName MainSkill => SkillName.Tailoring;
 
-		private static CraftSystem m_CraftSystem;
+        private static CraftSystem m_CraftSystem;
 
 		public static CraftSystem CraftSystem
 		{
@@ -24,9 +21,9 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		public override CraftECA ECA{ get{ return CraftECA.ChanceMinusSixtyToFourtyFive; } }
+		public override CraftECA ECA => CraftECA.ChanceMinusSixtyToFourtyFive;
 
-		public override double GetChanceAtMin( CraftItem item )
+        public override double GetChanceAtMin( CraftItem item )
 		{
 			return 0.5; // 50%
 		}

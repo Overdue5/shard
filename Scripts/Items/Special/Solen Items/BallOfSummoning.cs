@@ -20,7 +20,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Charges
         {
-            get { return m_Charges; }
+            get => m_Charges;
             set
             {
                 if (value > this.MaxCharges)
@@ -37,7 +37,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Recharges
         {
-            get { return m_Recharges; }
+            get => m_Recharges;
             set
             {
                 if (value > this.MaxRecharges)
@@ -52,12 +52,12 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MaxCharges { get { return 20; } }
+        public int MaxCharges => 20;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MaxRecharges { get { return 255; } }
+        public int MaxRecharges => 255;
 
-        public string TranslocationItemName { get { return "crystal ball of pet summoning"; } }
+        public string TranslocationItemName => "crystal ball of pet summoning";
 
         [CommandProperty(AccessLevel.GameMaster)]
         public BaseCreature Pet
@@ -80,7 +80,7 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public string PetName { get { return m_PetName; } }
+        public string PetName => m_PetName;
 
         [Constructable]
         public BallOfSummoning()
@@ -391,23 +391,17 @@ namespace Server.Items
                 m_Ball = ball;
             }
 
-            public override bool ClearHandsOnCast { get { return false; } }
-            public override bool RevealOnCast { get { return true; } }
+            public override bool ClearHandsOnCast => false;
+            public override bool RevealOnCast => true;
 
             public override TimeSpan GetCastRecovery()
             {
                 return TimeSpan.Zero;
             }
 
-            public override double CastDelayFastScalar { get { return 0; } }
+            public override double CastDelayFastScalar => 0;
 
-            public override TimeSpan CastDelayBase
-            {
-                get
-                {
-                    return TimeSpan.FromSeconds(2.0);
-                }
-            }
+            public override TimeSpan CastDelayBase => TimeSpan.FromSeconds(2.0);
 
             public override int GetMana()
             {

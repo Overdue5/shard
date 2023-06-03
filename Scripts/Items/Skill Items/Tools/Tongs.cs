@@ -5,9 +5,9 @@ namespace Server.Items
 	[Flipable( 0xfbb, 0xfbc )]
 	public class Tongs : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefBlacksmithy.CraftSystem; } }
+		public override CraftSystem CraftSystem => DefBlacksmithy.CraftSystem;
 
-		[Constructable]
+        [Constructable]
 		public Tongs() : base( 0xFBB )
 		{
 			Weight = 2.0;

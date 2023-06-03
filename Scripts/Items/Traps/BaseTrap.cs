@@ -4,18 +4,18 @@ namespace Server.Items
 {
 	public abstract class BaseTrap : Item
 	{
-		public virtual bool PassivelyTriggered{ get{ return false; } }
-		public virtual TimeSpan PassiveTriggerDelay{ get{ return TimeSpan.Zero; } }
-		public virtual int PassiveTriggerRange{ get{ return -1; } }
-		public virtual TimeSpan ResetDelay{ get{ return TimeSpan.Zero; } }
+		public virtual bool PassivelyTriggered => false;
+        public virtual TimeSpan PassiveTriggerDelay => TimeSpan.Zero;
+        public virtual int PassiveTriggerRange => -1;
+        public virtual TimeSpan ResetDelay => TimeSpan.Zero;
 
-		private DateTime m_NextPassiveTrigger, m_NextActiveTrigger;
+        private DateTime m_NextPassiveTrigger, m_NextActiveTrigger;
 
 		public virtual void OnTrigger( Mobile from )
 		{
 		}
 
-		public override bool HandlesOnMovement{ get{ return true; } } // Tell the core that we implement OnMovement
+		public override bool HandlesOnMovement => true; // Tell the core that we implement OnMovement
 
 		public virtual int GetEffectHue()
 		{

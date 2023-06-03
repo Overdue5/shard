@@ -6,7 +6,9 @@ namespace Knives.Chat3
 	{
 		private bool c_Override;
 
-		public bool Override{ get{ return c_Override; } set{ c_Override = value; } }
+		public bool Override{ get => c_Override;
+            set => c_Override = value;
+        }
 
 		public BackgroundPlus( int x, int y, int width, int height, int back ) : base( x, y, width, height, back )
 		{

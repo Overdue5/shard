@@ -5,31 +5,31 @@ namespace Server.Items
 	[Flipable( 0x26C3, 0x26CD )]
 	public class RepeatingCrossbow : BaseRanged
 	{
-		public override int EffectID{ get{ return 0x1BFE; } }
-		public override Type AmmoType{ get{ return typeof( Bolt ); } }
-		public override BaseAmmo Ammo { get{ return new Bolt(); } }
+		public override int EffectID => 0x1BFE;
+        public override Type AmmoType => typeof( Bolt );
+        public override BaseAmmo Ammo => new Bolt();
 
-		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
+        ////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MovingShot; } }
 
-		public override int AosStrengthReq{ get{ return 30; } }
-		public override int AosMinDamage{ get{ return 10; } }
-		public override int AosMaxDamage{ get{ return 12; } }
-		public override int AosSpeed{ get{ return 41; } }
+		public override int AosStrengthReq => 30;
+        public override int AosMinDamage => 10;
+        public override int AosMaxDamage => 12;
+        public override int AosSpeed => 41;
 
-		public override int OldStrengthReq{ get{ return 30; } }
-		public override int OldMinDamage{ get{ return 10; } }
-		public override int OldMaxDamage{ get{ return 12; } }
-		public override int OldSpeed{ get{ return 356; } }
+        public override int OldStrengthReq => 30;
+        public override int OldMinDamage => 10;
+        public override int OldMaxDamage => 12;
+        public override int OldSpeed => 356;
 
-		public override int DefMaxRange{ get{ return 7; } }
+        public override int DefMaxRange => 7;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 80;
 
-        public override WeaponAnimation DefAnimation { get { return WeaponAnimation.ShootXBow; } }
+        public override WeaponAnimation DefAnimation => WeaponAnimation.ShootXBow;
 
-		[Constructable]
+        [Constructable]
 		public RepeatingCrossbow() : base( 0x26C3 )
 		{
 			Weight = 6.0;

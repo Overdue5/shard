@@ -30,31 +30,13 @@ namespace Server
 
         public static bool Enabled
         {
-            get
-            {
-                return m_Enabled;
-            }
-            set
-            {
-                m_Enabled = value;
-            }
+            get => m_Enabled;
+            set => m_Enabled = value;
         }
 
-        public int LandBlocks
-        {
-            get
-            {
-                return m_LandBlocks;
-            }
-        }
+        public int LandBlocks => m_LandBlocks;
 
-        public int StaticBlocks
-        {
-            get
-            {
-                return m_StaticBlocks;
-            }
-        }
+        public int StaticBlocks => m_StaticBlocks;
 
         public TileMatrixPatch(TileMatrix matrix, int index)
         {

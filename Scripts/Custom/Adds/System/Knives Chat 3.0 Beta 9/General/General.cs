@@ -15,14 +15,14 @@ namespace Knives.Chat3
         private static string s_SavePath = "Saves/ChatBeta8";
         private static DateTime s_ReleaseDate = new DateTime(2007, 3, 1);
 
-        public static string Version { get { return s_Version; } }
-        public static string SavePath { get { return s_SavePath; } }
-        public static DateTime ReleaseDate { get { return s_ReleaseDate; } }
+        public static string Version => s_Version;
+        public static string SavePath => s_SavePath;
+        public static DateTime ReleaseDate => s_ReleaseDate;
 
         private static ArrayList s_Locals = new ArrayList();
 
         private static Hashtable s_Help = new Hashtable();
-        public static Hashtable Help { get { return s_Help; } }
+        public static Hashtable Help => s_Help;
 
         private static readonly string[] m_IgnoredSpeech = new[]
                                                       {

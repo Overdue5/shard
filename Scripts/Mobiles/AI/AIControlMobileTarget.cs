@@ -9,13 +9,9 @@ namespace Server.Targets
 		private readonly List<BaseAI> m_List;
 		private readonly OrderType m_Order;
 
-		public OrderType Order {
-			get {
-				return m_Order;
-			}
-		}
+		public OrderType Order => m_Order;
 
-		public AIControlMobileTarget( BaseAI ai, OrderType order ) : base( -1, false, ( order == OrderType.Attack ? TargetFlags.Harmful : TargetFlags.None ) )
+        public AIControlMobileTarget( BaseAI ai, OrderType order ) : base( -1, false, ( order == OrderType.Attack ? TargetFlags.Harmful : TargetFlags.None ) )
 		{
 			m_List = new List<BaseAI>();
 			m_Order = order;

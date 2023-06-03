@@ -15,14 +15,14 @@ namespace Server.Items
 			private readonly Type m_Type;
 			private readonly int m_Hue;
 
-			public Map Map{ get{ return m_Map; } }
-			public Point3D Location{ get{ return m_Location; } }
-			public int MinDelay{ get{ return m_MinDelay; } }
-			public int MaxDelay{ get{ return m_MaxDelay; } }
-			public Type Type{ get{ return m_Type; } }
-			public int Hue{ get{ return m_Hue; } }
+			public Map Map => m_Map;
+            public Point3D Location => m_Location;
+            public int MinDelay => m_MinDelay;
+            public int MaxDelay => m_MaxDelay;
+            public Type Type => m_Type;
+            public int Hue => m_Hue;
 
-			public StealableEntry( Map map, Point3D location, int minDelay, int maxDelay, Type type ) : this( map, location, minDelay, maxDelay, type, 0 )
+            public StealableEntry( Map map, Point3D location, int minDelay, int maxDelay, Type type ) : this( map, location, minDelay, maxDelay, type, 0 )
 			{
 			}
 
@@ -158,9 +158,9 @@ namespace Server.Items
 				new StealableEntry( Map.Malas, new Point3D( 178, 629, -1 ), 18432, 27648, typeof( ManStatuetteEastArtifact ) )
 			};
 
-		public static StealableEntry[] Entries{ get{ return m_Entries; } }
+		public static StealableEntry[] Entries => m_Entries;
 
-		private static Type[] m_TypesOfEntries = null;
+        private static Type[] m_TypesOfEntries = null;
 		public static Type[] TypesOfEntires
 		{
 			get
@@ -179,9 +179,9 @@ namespace Server.Items
 
 		private static StealableArtifactsSpawner m_Instance;
 
-		public static StealableArtifactsSpawner Instance{ get{ return m_Instance; } }
+		public static StealableArtifactsSpawner Instance => m_Instance;
 
-		private static int GetLampPostHue()
+        private static int GetLampPostHue()
 		{
 			if ( 0.9 > Utility.RandomDouble() )
 				return 0;
@@ -253,12 +253,12 @@ namespace Server.Items
 			private readonly StealableEntry m_Entry;
 			private Item m_Item;
 
-		    public StealableEntry Entry{ get{ return m_Entry; } }
+		    public StealableEntry Entry => m_Entry;
 
-			public Item Item
+            public Item Item
 			{
-				get{ return m_Item; }
-				set
+				get => m_Item;
+                set
 				{
 					if ( m_Item != null && value == null )
 					{
@@ -308,12 +308,9 @@ namespace Server.Items
 		private StealableInstance[] m_Artifacts;
 		private Hashtable m_Table;
 
-		public override string DefaultName
-		{
-			get { return "Stealable Artifacts Spawner - Internal"; }
-		}
+		public override string DefaultName => "Stealable Artifacts Spawner - Internal";
 
-		private StealableArtifactsSpawner() : base( 1 )
+        private StealableArtifactsSpawner() : base( 1 )
 		{
 			Movable = false;
 

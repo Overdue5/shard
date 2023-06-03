@@ -58,11 +58,11 @@ namespace Server.Custom.Polymorph
                 m_SummonCreatureEntries.Add(m_Entries[i].ArtID, m_Entries[i]);
         }
 
-        public int ArtID { get { return m_Art; } }
-        public Type Creature{ get { return m_Creature; } }
-        public string LocName { get { return m_LocName; } }
-        public double SkillRequired { get { return m_SkillRequired; } }
-        static public Dictionary<int, SummonCreatureEntry> EntryInfo { get { return m_SummonCreatureEntries; } }
+        public int ArtID => m_Art;
+        public Type Creature => m_Creature;
+        public string LocName => m_LocName;
+        public double SkillRequired => m_SkillRequired;
+        static public Dictionary<int, SummonCreatureEntry> EntryInfo => m_SummonCreatureEntries;
 
         private SummonCreatureEntry(int Art, Type Creature, string LocName, double SkillRequired)
         {
@@ -86,8 +86,8 @@ namespace Server.Custom.Polymorph
                 m_Entries = entries;
             }
 
-            public SummonCreatureEntry[] Entries { get { return m_Entries; } }
-            public int LocNumber { get { return m_Num; } }
+            public SummonCreatureEntry[] Entries => m_Entries;
+            public int LocNumber => m_Num;
         }
 
         private static readonly SummonCreatureCategory[] Categories = new[]

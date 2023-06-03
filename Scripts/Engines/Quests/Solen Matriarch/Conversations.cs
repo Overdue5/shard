@@ -34,9 +34,9 @@ namespace Server.Engines.Quests.Matriarch
 			}
 		}
 
-		public override bool Logged{ get{ return false; } }
+		public override bool Logged => false;
 
-		public DontOfferConversation( bool friend )
+        public DontOfferConversation( bool friend )
 		{
 			m_Friend = friend;
 		}
@@ -62,22 +62,17 @@ namespace Server.Engines.Quests.Matriarch
 
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch looks pleased that you've accepted.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch looks pleased that you've accepted.</I><BR><BR>
 				 * 
 				 * Very good. Please start by hunting some infiltrators from the other solen
 				 * colony and eliminating them. Slay 7 of them and then return to me.<BR><BR>
 				 * 
 				 * Farewell for now and good hunting.
 				 */
-				return 1054084;
-			}
-		}
+            1054084;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new KillInfiltratorsObjective() );
 		}
@@ -85,31 +80,23 @@ namespace Server.Engines.Quests.Matriarch
 
 	public class DuringKillInfiltratorsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch looks up as you approach.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch looks up as you approach.</I><BR><BR>
 				 * 
 				 * You're back, but you have not yet eliminated 7 infiltrators from the enemy
 				 * colony. Return when you have completed this task.<BR><BR>
 				 * 
 				 * Carry on. I'll be waiting for your return.
 				 */
-				return 1054089;
-			}
-		}
+            1054089;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class GatherWaterConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch nods favorably as you approach her.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch nods favorably as you approach her.</I><BR><BR>
 				 * 
 				 * Marvelous! I'm impressed at your ability to hunt and kill enemies for me.
 				 * My colony is thankful.<BR><BR>
@@ -120,11 +107,9 @@ namespace Server.Engines.Quests.Matriarch
 				 * 
 				 * Farewell for now.
 				 */
-				return 1054091;
-			}
-		}
+            1054091;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new GatherWaterObjective() );
 		}
@@ -132,23 +117,18 @@ namespace Server.Engines.Quests.Matriarch
 
 	public class DuringWaterGatheringConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch looks up as you approach.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch looks up as you approach.</I><BR><BR>
 				 * 
 				 * You're back, but you have not yet gathered 8 gallons of water. Return when
 				 * you have completed this task.<BR><BR>
 				 * 
 				 * Carry on. I'll be waiting for your return.
 				 */
-				return 1054094;
-			}
-		}
+            1054094;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ProcessFungiConversation : QuestConversation
 	{
@@ -225,45 +205,35 @@ namespace Server.Engines.Quests.Matriarch
 
 	public class DuringFungiProcessConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch smiles as you greet her.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch smiles as you greet her.</I><BR><BR>
 				 * 
 				 * I will gladly process some zoogi fungus into powder of translocation for you.
 				 * Two of the zoogi fungi are required for each measure of the powder.
 				 * I will process up to 200 zoogi fungi into 100 measures of powder of translocation.
 				 */
-				return 1054099;
-			}
-		}
+            1054099;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class FullBackpackConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch looks at you with a smile.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch looks at you with a smile.</I><BR><BR>
 				 * 
 				 * While I'd like to finish conducting our business, it seems that you're a
 				 * bit overloaded with equipment at the moment.<BR><BR>
 				 * 
 				 * Perhaps you should free some room in your backpack before we proceed.
 				 */
-				return 1054102;
-			}
-		}
+            1054102;
 
-		private readonly bool m_Logged;
+        private readonly bool m_Logged;
 
-		public override bool Logged{ get{ return m_Logged; } }
+		public override bool Logged => m_Logged;
 
-		public FullBackpackConversation( bool logged )
+        public FullBackpackConversation( bool logged )
 		{
 			m_Logged = logged;
 		}
@@ -282,20 +252,15 @@ namespace Server.Engines.Quests.Matriarch
 
 	public class EndConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The Solen Matriarch smiles as you greet her.</I><BR><BR>
+		public override object Message =>
+            /* <I>The Solen Matriarch smiles as you greet her.</I><BR><BR>
 				 * 
 				 * Ah good, you've returned. I will conclude our business by giving you
 				 * gold I owe you for aiding me.
 				 */
-				return 1054101;
-			}
-		}
+            1054101;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}

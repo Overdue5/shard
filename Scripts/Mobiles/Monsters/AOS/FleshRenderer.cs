@@ -10,9 +10,9 @@ namespace Server.Mobiles
 			return Utility.RandomBool() ? WeaponAbility.Dismount : WeaponAbility.ParalyzingBlow;
 		}
 
-		public override bool IgnoreYoungProtection { get { return Core.ML; } }
+		public override bool IgnoreYoungProtection => Core.ML;
 
-		[Constructable]
+        [Constructable]
 		public FleshRenderer() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Fleshrenderer";
@@ -61,15 +61,15 @@ namespace Server.Mobiles
 				DemonKnight.DistributeArtifact( this );
 		}*/
 
-		public override bool AutoDispel{ get{ return true; } }
-		public override bool BardImmune { get { return true; } }
-		public override bool Unprovokable { get { return true; } }
-		public override bool AreaPeaceImmune { get { return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool AutoDispel => true;
+        public override bool BardImmune => true;
+        public override bool Unprovokable => true;
+        public override bool AreaPeaceImmune => true;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public override int TreasureMapLevel{ get{ return 4; } }
+        public override int TreasureMapLevel => 4;
 
-		public override int GetAttackSound()
+        public override int GetAttackSound()
 		{
 			return 0x34C;
 		}

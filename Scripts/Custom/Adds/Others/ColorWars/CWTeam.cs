@@ -37,7 +37,9 @@ namespace Server.Custom.Games
 
         #region Getters & Setters
 
-        public Point3D Home2 { get { return m_Home2; } set { m_Home2 = value; } }
+        public Point3D Home2 { get => m_Home2;
+            set => m_Home2 = value;
+        }
 
 	    public int KillPoints { get; set; }
         #endregion

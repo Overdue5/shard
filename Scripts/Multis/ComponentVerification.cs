@@ -119,9 +119,9 @@ namespace Server.Multis
 		private readonly ColumnInfo[] m_Columns;
 		private readonly DataRecord[] m_Records;
 
-		public DataRecord[] Records { get { return m_Records; } }
+		public DataRecord[] Records => m_Records;
 
-		public int GetColumnID( string name )
+        public int GetColumnID( string name )
 		{
 			for ( int i = 0; i < m_Columns.Length; ++i )
 			{
@@ -199,10 +199,10 @@ namespace Server.Multis
 		private readonly Spreadsheet m_Spreadsheet;
 		private readonly object[] m_Data;
 
-		public Spreadsheet Spreadsheet { get { return m_Spreadsheet; } }
-		public object[] Data { get { return m_Data; } }
+		public Spreadsheet Spreadsheet => m_Spreadsheet;
+        public object[] Data => m_Data;
 
-		public DataRecord( Spreadsheet ss, object[] data )
+        public DataRecord( Spreadsheet ss, object[] data )
 		{
 			m_Spreadsheet = ss;
 			m_Data = data;
@@ -231,15 +231,9 @@ namespace Server.Multis
 			return this[name] as string;
 		}
 
-		public object this[string name]
-		{
-			get
-			{
-				return this[m_Spreadsheet.GetColumnID( name )];
-			}
-		}
+		public object this[string name] => this[m_Spreadsheet.GetColumnID( name )];
 
-		public object this[int id]
+        public object this[int id]
 		{
 			get
 			{

@@ -6,22 +6,22 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		public override int AosStrengthReq{ get{ return 50; } }
-		public override int AosMinDamage{ get{ return 13; } }
-		public override int AosMaxDamage{ get{ return 15; } }
-		public override int AosSpeed{ get{ return 42; } }
+		public override int AosStrengthReq => 50;
+        public override int AosMinDamage => 13;
+        public override int AosMaxDamage => 15;
+        public override int AosSpeed => 42;
 
-		public override int OldStrengthReq{ get{ return 30; } }
-		public override int OldMinDamage{ get{ return 13; } }
-		public override int OldMaxDamage{ get{ return 30; } }
-		public override int OldSpeed{ get{ return 362; } }
+        public override int OldStrengthReq => 30;
+        public override int OldMinDamage => 13;
+        public override int OldMaxDamage => 30;
+        public override int OldSpeed => 362;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 80; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 80;
 
-		public override int VirtualDamageBonus{ get{ return 10; } }
+        public override int VirtualDamageBonus => 10;
 
-		[Constructable]
+        [Constructable]
 		public TribalSpear() : base( 0xF62 )
 		{
 			Weight = 7.0;

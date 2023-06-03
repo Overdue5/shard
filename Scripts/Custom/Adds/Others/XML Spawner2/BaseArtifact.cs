@@ -16,13 +16,13 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public virtual int ArtifactRarity
 		{ 
-			get{ return 0; }
-			set {}
+			get => 0;
+            set {}
 		}
 
-		public override bool ForceShowProperties{ get{ return true; } }
-            
-		public override void GetProperties( ObjectPropertyList list )
+		public override bool ForceShowProperties => true;
+
+        public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
 			if(ArtifactRarity > 0)

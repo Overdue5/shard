@@ -16,8 +16,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string LabelMessage
 		{
-			get { return _LabelMessage; }
-			set
+			get => _LabelMessage;
+            set
 			{
 				_LabelMessage = value;
 				InvalidateProperties();

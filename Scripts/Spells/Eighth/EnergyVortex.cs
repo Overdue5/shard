@@ -8,12 +8,12 @@ namespace Server.Spells.Eighth
 {
     public class EnergyVortexSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Eighth; } }
-        public override int Sound { get { return 0x212; } }
+        public override SpellCircle Circle => SpellCircle.Eighth;
+        public override int Sound => 0x212;
 
-        public override bool CanTargetGround { get { return true; } }
+        public override bool CanTargetGround => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Energy Vortex", "Vas Corp Por",
 				263,
                 9032,

@@ -70,9 +70,9 @@ namespace Server.Engines.Help
 
 		private readonly Queue<SpeechLogEntry> m_Queue;
 
-		public int Count{ get{ return m_Queue.Count; } }
+		public int Count => m_Queue.Count;
 
-		public SpeechLog()
+        public SpeechLog()
 		{
 			m_Queue = new Queue<SpeechLogEntry>();
 		}
@@ -135,11 +135,11 @@ namespace Server.Engines.Help
 		private readonly string m_Speech;
 		private readonly DateTime m_Created;
 
-		public Mobile From{ get{ return m_From; } }
-		public string Speech{ get{ return m_Speech; } }
-		public DateTime Created{ get{ return m_Created; } }
+		public Mobile From => m_From;
+        public string Speech => m_Speech;
+        public DateTime Created => m_Created;
 
-		public SpeechLogEntry( Mobile from, string speech )
+        public SpeechLogEntry( Mobile from, string speech )
 		{
 			m_From = from;
 			m_Speech = speech;

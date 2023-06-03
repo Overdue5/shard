@@ -26,17 +26,9 @@ namespace Server.Diagnostics {
 	public abstract class BasePacketProfile : BaseProfile {
 		private long _totalLength;
 
-		public long TotalLength {
-			get {
-				return _totalLength;
-			}
-		}
+		public long TotalLength => _totalLength;
 
-		public double AverageLength {
-			get {
-				return ( double ) _totalLength / Math.Max( 1, this.Count );
-			}
-		}
+        public double AverageLength => ( double ) _totalLength / Math.Max( 1, this.Count );
 
         protected BasePacketProfile(string name)
             : base(name) {
@@ -58,13 +50,9 @@ namespace Server.Diagnostics {
 	public class PacketSendProfile : BasePacketProfile {
 		private static Dictionary<Type, PacketSendProfile> _profiles = new Dictionary<Type, PacketSendProfile>();
 
-		public static IEnumerable<PacketSendProfile> Profiles {
-			get {
-				return _profiles.Values;
-			}
-		}
+		public static IEnumerable<PacketSendProfile> Profiles => _profiles.Values;
 
-		public static PacketSendProfile Acquire( Type type ) {
+        public static PacketSendProfile Acquire( Type type ) {
 			if ( !Core.Profiling ) {
 				return null;
 			}
@@ -81,13 +69,9 @@ namespace Server.Diagnostics {
 		private long _created;
 
 		public long Created {
-			get {
-				return _created;
-			}
-			set {
-				_created = value;
-			}
-		}
+			get => _created;
+            set => _created = value;
+        }
 
 		public PacketSendProfile( Type type )
 			: base( type.FullName ) {
@@ -103,13 +87,9 @@ namespace Server.Diagnostics {
 	public class PacketReceiveProfile : BasePacketProfile {
 		private static Dictionary<int, PacketReceiveProfile> _profiles = new Dictionary<int, PacketReceiveProfile>();
 
-		public static IEnumerable<PacketReceiveProfile> Profiles {
-			get {
-				return _profiles.Values;
-			}
-		}
+		public static IEnumerable<PacketReceiveProfile> Profiles => _profiles.Values;
 
-		public static PacketReceiveProfile Acquire( int packetId ) {
+        public static PacketReceiveProfile Acquire( int packetId ) {
 			if ( !Core.Profiling ) {
 				return null;
 			}

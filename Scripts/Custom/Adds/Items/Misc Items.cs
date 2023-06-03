@@ -26,7 +26,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int GuildID
         {
-            get { return m_Guild; }
+            get => m_Guild;
             set
             {
                 m_Guild = value;
@@ -138,7 +138,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;
@@ -240,7 +240,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;
@@ -332,7 +332,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Owner
         {
-            get { return m_Owner; }
+            get => m_Owner;
             set
             {
                 m_Owner = value;

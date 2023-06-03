@@ -33,8 +33,8 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public bool NewbieAllItems
         {
-            get { return m_NewbieAllItems; }
-            set { m_NewbieAllItems = value; }
+            get => m_NewbieAllItems;
+            set => m_NewbieAllItems = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -46,7 +46,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public string TeamName
         {
-            get { return m_TeamName; }
+            get => m_TeamName;
             set
             {
                 if (m_Game != null && !m_Game.Deleted)
@@ -71,7 +71,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public CWGame Game
         {
-            get { return m_Game;}
+            get => m_Game;
             set
             {
                 if (m_Game != value)
@@ -89,7 +89,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D TeamHome
         {
-            get { return m_TeamHome;}
+            get => m_TeamHome;
             set
             {
                 if (m_Game != null && !m_Game.Deleted)
@@ -114,7 +114,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D TeamHome2
         {
-            get { return m_TeamHome2; }
+            get => m_TeamHome2;
             set
             {
                 if (m_Game != null && !m_Game.Deleted)
@@ -139,7 +139,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public Map TeamHomeMap
         {
-            get { return m_TeamHomeMap;}
+            get => m_TeamHomeMap;
             set
             {
                 if (m_Game != null && !m_Game.Deleted)
@@ -163,7 +163,7 @@ namespace Server.Custom.Games
         [CommandProperty(AccessLevel.GameMaster)]
         public int TeamID
         {
-            get { return m_TeamID;}
+            get => m_TeamID;
             set
             {
                 if (m_Game != null && !m_Game.Deleted)

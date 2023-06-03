@@ -9,7 +9,7 @@ namespace Server.Mobiles
 		private Mobile m_Queen;
 		private bool m_SpawnedQueen;
 
-		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Enlightenment; } }
+		public override ChampionSkullType SkullType => ChampionSkullType.Enlightenment;
 
         public override Type[] UniqueList { get { return new Type[] { typeof(OrcChieftainHelm) }; } }
         public override Type[] SharedList
@@ -91,19 +91,17 @@ namespace Server.Mobiles
 			AddLoot( LootPack.UltraRich, 5 );
 		}
 		
-		public override bool AutoDispel{ get{ return true; } }
+		public override bool AutoDispel => true;
 
-		public override bool BardImmune{ get{ return !Core.SE; } }
-		public override bool Unprovokable{ get{ return Core.SE; } }
-		public override bool Uncalmable{ get{ return Core.SE; } }
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
-		
-		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
+        public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
+        public override bool Uncalmable => Core.SE;
 
-		public void SpawnPixies( Mobile target )
+        public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
+
+        public override Poison PoisonImmune => Poison.Deadly;
+
+        public void SpawnPixies( Mobile target )
 		{
 			Map map = Map;
 

@@ -11,9 +11,9 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public bool Cut
 		{
-			get { return m_Cut; }
-			set { m_Cut = value; }
-		}
+			get => m_Cut;
+            set => m_Cut = value;
+        }
 
 		[Constructable]
 		public PlagueBeastMutationCore() : base( 0x1CF0 )

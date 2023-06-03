@@ -16,67 +16,46 @@ namespace Arya.Chess
 		/// <summary>
 		/// Gets the initial position of the piece
 		/// </summary>
-		public Point2D From
-		{
-			get { return m_From; }
-		}
+		public Point2D From => m_From;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the target destination of the move
 		/// </summary>
-		public Point2D To
-		{
-			get { return m_To; }
-		}
+		public Point2D To => m_To;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the chess piece performing this move
 		/// </summary>
-		public BaseChessPiece Piece
-		{
-			get { return m_Piece; }
-		}
+		public BaseChessPiece Piece => m_Piece;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the piece captured by this move
 		/// </summary>
-		public BaseChessPiece CapturedPiece
-		{
-			get { return m_Captured; }
-		}
+		public BaseChessPiece CapturedPiece => m_Captured;
 
-		/// <summary>
+        /// <summary>
 		/// Specifies if this move captures a piece
 		/// </summary>
-		public bool Capture
-		{
-			get { return m_Captured != null; }
-		}
+		public bool Capture => m_Captured != null;
 
-		/// <summary>
+        /// <summary>
 		/// The color of the player making this move
 		/// </summary>
-		public ChessColor Color
-		{
-			get { return m_Piece.Color; }
-		}
+		public ChessColor Color => m_Piece.Color;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the color of the opponent of the player who made the move
 		/// </summary>
-		public ChessColor EnemyColor
-		{
-			get { return m_Piece.EnemyColor; }
-		}
+		public ChessColor EnemyColor => m_Piece.EnemyColor;
 
-		/// <summary>
+        /// <summary>
 		/// Specifies if the capture is made EnPassant
 		/// </summary>
 		public bool EnPassant
 		{
-			get { return m_EnPassant; }
-			set { m_EnPassant = value; }
-		}
+			get => m_EnPassant;
+            set => m_EnPassant = value;
+        }
 
 		/// <summary>
 		/// Creates a new Move object without capturing a piece

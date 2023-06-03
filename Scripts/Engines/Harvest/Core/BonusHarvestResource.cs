@@ -12,7 +12,7 @@ namespace Server.Engines.Harvest
 
         public double Chance { get; set; }
 
-        public TextDefinition SuccessMessage { get { return m_SuccessMessage; } }
+        public TextDefinition SuccessMessage => m_SuccessMessage;
 
         public void SendSuccessTo(Mobile m)
         {

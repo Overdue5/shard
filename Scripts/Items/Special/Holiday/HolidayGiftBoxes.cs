@@ -2,10 +2,10 @@
 {
 	public class GiftBoxHues
 	{
-		public static int RandomGiftBoxHue{ get { return m_NormalHues[Utility.Random(m_NormalHues.Length)]; }}
-		public static int RandomNeonBoxHue{ get { return m_NeonHues[Utility.Random(m_NeonHues.Length)]; }}
+		public static int RandomGiftBoxHue => m_NormalHues[Utility.Random(m_NormalHues.Length)];
+        public static int RandomNeonBoxHue => m_NeonHues[Utility.Random(m_NeonHues.Length)];
 
-		/* there's possibly a couple more, but this is what we could verify on OSI */
+        /* there's possibly a couple more, but this is what we could verify on OSI */
 
 		private static readonly int[] m_NormalHues =
 		{
@@ -44,9 +44,9 @@
 	[FlipableAttribute(0x46A5, 0x46A6)]
 	public class GiftBoxRectangle  : BaseContainer
 	{
-		public override int DefaultGumpID { get { return 0x11E; } }
+		public override int DefaultGumpID => 0x11E;
 
-		[Constructable]
+        [Constructable]
 		public GiftBoxRectangle()
 			: base(Utility.RandomBool() ? 0x46A5 : 0x46A6)
 		{
@@ -73,9 +73,9 @@
 
 	public class GiftBoxCube : BaseContainer
 	{
-		public override int DefaultGumpID { get { return 0x11B; } }
+		public override int DefaultGumpID => 0x11B;
 
-		[Constructable]
+        [Constructable]
 		public GiftBoxCube()
 			: base(0x46A2)
 		{
@@ -102,9 +102,9 @@
 
 	public class GiftBoxCylinder : BaseContainer
 	{
-		public override int DefaultGumpID { get { return 0x11C; } }
+		public override int DefaultGumpID => 0x11C;
 
-		[Constructable]
+        [Constructable]
 		public GiftBoxCylinder()
 			: base(0x46A3)
 		{
@@ -131,9 +131,9 @@
 
 	public class GiftBoxOctogon : BaseContainer
 	{
-		public override int DefaultGumpID { get { return 0x11D; } }
+		public override int DefaultGumpID => 0x11D;
 
-		[Constructable]
+        [Constructable]
 		public GiftBoxOctogon()
 			: base(0x46A4)
 		{
@@ -160,9 +160,9 @@
 
 	public class GiftBoxAngel : BaseContainer
 	{
-		public override int DefaultGumpID { get { return 0x11F; } }
+		public override int DefaultGumpID => 0x11F;
 
-		[Constructable]
+        [Constructable]
 		public GiftBoxAngel()
 			: base(0x46A7)
 		{

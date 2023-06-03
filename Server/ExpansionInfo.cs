@@ -116,7 +116,8 @@ namespace Server
 
     public class ExpansionInfo
     {
-        public static ExpansionInfo[] Table { get { return m_Table; } }
+        public static ExpansionInfo[] Table => m_Table;
+
         private static ExpansionInfo[] m_Table = new ExpansionInfo[]
 			{
 				new ExpansionInfo( 0, "None"				, ClientFlags.None,					FeatureFlags.ExpansionNone,	CharacterListFlags.ExpansionNone,	0x0000 ),
@@ -139,13 +140,13 @@ namespace Server
 
         private ClientVersion m_RequiredClient;	// Used as an alternative to the flags
 
-        public string Name { get { return m_Name; } }
-        public int ID { get { return m_ID; } }
-        public ClientFlags ClientFlags { get { return m_ClientFlags; } }
-        public FeatureFlags SupportedFeatures { get { return m_SupportedFeatures; } }
-        public CharacterListFlags CharacterListFlags { get { return m_CharListFlags; } }
-        public int CustomHousingFlag { get { return m_CustomHousingFlag; } }
-        public ClientVersion RequiredClient { get { return m_RequiredClient; } }
+        public string Name => m_Name;
+        public int ID => m_ID;
+        public ClientFlags ClientFlags => m_ClientFlags;
+        public FeatureFlags SupportedFeatures => m_SupportedFeatures;
+        public CharacterListFlags CharacterListFlags => m_CharListFlags;
+        public int CustomHousingFlag => m_CustomHousingFlag;
+        public ClientVersion RequiredClient => m_RequiredClient;
 
         public ExpansionInfo(int id, string name, ClientFlags clientFlags, FeatureFlags supportedFeatures, CharacterListFlags charListFlags, int customHousingFlag)
         {
@@ -182,7 +183,7 @@ namespace Server
             return m_Table[v];
         }
 
-        public static ExpansionInfo CurrentExpansion { get { return GetInfo(Core.Expansion); } }
+        public static ExpansionInfo CurrentExpansion => GetInfo(Core.Expansion);
 
         public override string ToString()
         {

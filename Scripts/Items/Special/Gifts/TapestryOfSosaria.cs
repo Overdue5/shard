@@ -11,14 +11,14 @@ namespace Server.Items
 	{
 		private SecureLevel m_Level;
 
-		public override int LabelNumber{ get{ return 1062917; } } // The Tapestry of Sosaria
+		public override int LabelNumber => 1062917; // The Tapestry of Sosaria
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SecureLevel Level
 		{
-			get{ return m_Level; }
-			set{ m_Level = value; }
-		}
+			get => m_Level;
+            set => m_Level = value;
+        }
 
 		[Constructable]
 		public TapestryOfSosaria() : base( 0x234E )

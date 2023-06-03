@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class ParalyzeScroll : SpellScroll
 	{
-        public override int ManaCost { get { return 10; } } //Loki edit: was 18
+        public override int ManaCost => 10; //Loki edit: was 18
 
 		[Constructable]
 		public ParalyzeScroll() : this( 1 )

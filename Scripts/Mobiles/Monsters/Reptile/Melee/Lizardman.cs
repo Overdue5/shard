@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	[CorpseName( "a lizardman corpse" )]
 	public class Lizardman : BaseCreature
 	{
-		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Lizardman; } }
+		public override InhumanSpeech SpeechType => InhumanSpeech.Lizardman;
 
-		[Constructable]
+        [Constructable]
 		public Lizardman() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "lizardman" );
@@ -44,12 +44,12 @@ namespace Server.Mobiles
 			// TODO: weapon
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int Meat{ get{ return 1; } }
-		public override int Hides{ get{ return 12; } }
-		public override HideType HideType{ get{ return HideType.Regular; } }
+		public override bool CanRummageCorpses => true;
+        public override int Meat => 1;
+        public override int Hides => 12;
+        public override HideType HideType => HideType.Regular;
 
-		public Lizardman( Serial serial ) : base( serial )
+        public Lizardman( Serial serial ) : base( serial )
 		{
 		}
 

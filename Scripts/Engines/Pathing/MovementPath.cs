@@ -17,13 +17,13 @@ namespace Server
 		private readonly Point3D m_Goal;
 		private readonly Direction[] m_Directions = null;
 
-		public Map Map{ get{ return m_Map; } }
-		public Point3D Start{ get{ return m_Start; } }
-		public Point3D Goal{ get{ return m_Goal; } }
-		public Direction[] Directions{ get{ return m_Directions; } }
-		public bool Success{ get{ return ( m_Directions != null && m_Directions.Length > 0 ); } }
+		public Map Map => m_Map;
+        public Point3D Start => m_Start;
+        public Point3D Goal => m_Goal;
+        public Direction[] Directions => m_Directions;
+        public bool Success => ( m_Directions != null && m_Directions.Length > 0 );
 
-		public static void Initialize()
+        public static void Initialize()
 		{
 			CommandSystem.Register( "Path", AccessLevel.GameMaster, Path_OnCommand );
 		}
@@ -123,9 +123,9 @@ namespace Server
 
 		public static PathAlgorithm OverrideAlgorithm
 		{
-			get{ return m_OverrideAlgorithm; }
-			set{ m_OverrideAlgorithm = value; }
-		}
+			get => m_OverrideAlgorithm;
+            set => m_OverrideAlgorithm = value;
+        }
 
 		public MovementPath( Mobile m, Point3D goal )
 		{

@@ -2,11 +2,8 @@ namespace Server.Engines.Quests.Hag
 {
 	public class DontOfferConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The ancient, wrinkled hag looks up from her vile-smelling cauldron.
+		public override object Message =>
+            /* <I>The ancient, wrinkled hag looks up from her vile-smelling cauldron.
 				 * Her single, unblinking eye attempts to focus in on you, but to
 				 * little avail.</I><BR><BR>
 				 * 
@@ -22,20 +19,15 @@ namespace Server.Engines.Quests.Hag
 				 * <I>The witch rushes you off with a wave of her decrepit hand and returns
 				 * to tending the noxious brew boiling in her cauldron.</I>
 				 */
-				return 1055000;
-			}
-		}
+            1055000;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Somewhat out of character for the vile old witch, she actually seems
+		public override object Message =>
+            /* <I>Somewhat out of character for the vile old witch, she actually seems
 				 * delighted that you've accepted her offer.</I><BR><BR>
 				 * 
 				 * Ah! That's the spirit! You're not a useless bag of bones after all, are ye?
@@ -51,11 +43,9 @@ namespace Server.Engines.Quests.Hag
 				 * 
 				 * What are you still doing here?  Get to it!  Shoo!
 				 */
-				return 1055002;
-			}
-		}
+            1055002;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindApprenticeObjective( true ) );
 		}
@@ -63,31 +53,23 @@ namespace Server.Engines.Quests.Hag
 
 	public class HagDuringCorpseSearchConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The wrinkled hag looks up at you with venom in her eyes.</I><BR><BR>
+		public override object Message =>
+            /* <I>The wrinkled hag looks up at you with venom in her eyes.</I><BR><BR>
 				 * 
 				 * What're you doing back here?  I thought I told you to go find my lost
 				 * Apprentice!  I don't have time for your laziness, you wretched little worm!
 				 * Shoo! Away with ye! And don't come back until you've found out what's
 				 * happened to my Apprentice!
 				 */
-				return 1055003;
-			}
-		}
+            1055003;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ApprenticeCorpseConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You inspect the charred and bloodied corpse, recognizing it from the
+		public override object Message =>
+            /* You inspect the charred and bloodied corpse, recognizing it from the
 				 * Hag's description as the lost Apprentice you were tasked to
 				 * bring back.<BR><BR>
 				 * 
@@ -98,11 +80,9 @@ namespace Server.Engines.Quests.Hag
 				 * of which the Hag spoke.  You decide you'd best return to the Hag and
 				 * report your findings.
 				 */
-				return 1055004;
-			}
-		}
+            1055004;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindGrizeldaAboutMurderObjective() );
 		}
@@ -110,11 +90,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class MurderConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The wrinkled old Hag looks up from her cauldron of boiling
+		public override object Message =>
+            /* <I>The wrinkled old Hag looks up from her cauldron of boiling
 				 * innards.</I><BR><BR>
 				 * 
 				 * Bah!  Back already?  Can't you see I'm busy with my cooking?  You
@@ -142,11 +119,9 @@ namespace Server.Engines.Quests.Hag
 				 * know each others' secret hiding places.  Go on!  Shoo! Go slay a few imps
 				 * until they cough up their secrets!  No mercy for those little nasties!
 				 */
-				return 1055005;
-			}
-		}
+            1055005;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new KillImpsObjective( true ) );
 		}
@@ -154,11 +129,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class HagDuringImpSearchConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The sickly old hag looks up from her boiling cauldron.</I><BR><BR>
+		public override object Message =>
+            /* <I>The sickly old hag looks up from her boiling cauldron.</I><BR><BR>
 				 * 
 				 * Have you found that vile little Zeefzorpul yet?  What!?  You've come
 				 * back here without finding out where Zeefzorpul is, and what he's done
@@ -167,22 +139,17 @@ namespace Server.Engines.Quests.Hag
 				 * I told you what needs to be done, you little whelp!  Now away with ye!
 				 * And don't you return until you've found my list of ingredients!
 				 */
-				return 1055006;
-			}
-		}
+            1055006;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ImpDeathConversation : QuestConversation
 	{
 		private Point3D m_ImpLocation;
 
-		public override object Message
-		{
-			get
-			{
-				/* <I>The wretched imp cries out for mercy.</I><BR><BR>
+		public override object Message =>
+            /* <I>The wretched imp cries out for mercy.</I><BR><BR>
 				 * 
 				 * Forgive me! You master! You great warrior, great hooman, great greatest!
 				 * Forgive! Forgive! I give up Zeef! He no good any way!  He always smack me
@@ -202,11 +169,9 @@ namespace Server.Engines.Quests.Hag
 				 * 
 				 * <I>With this last request, the miserable little imp falls and breathes no more.</I>
 				 */
-				return 1055007;
-			}
-		}
+            1055007;
 
-		public ImpDeathConversation( Point3D impLocation )
+        public ImpDeathConversation( Point3D impLocation )
 		{
 			m_ImpLocation = impLocation;
 		}
@@ -237,11 +202,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class ZeefzorpulConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>In a puff of smoke that smells of brimstone, the imp Zeefzorpul
+		public override object Message =>
+            /* <I>In a puff of smoke that smells of brimstone, the imp Zeefzorpul
 				 * appears.</I><BR><BR>
 				 * 
 				 * Wuh-whut!? How did stupid hooman find mighty Zeefzorpul?  This crazy
@@ -269,11 +231,9 @@ namespace Server.Engines.Quests.Hag
 				 * 
 				 * <I>With that, the imp Zeefzorpul disappears in another puff of rancid smoke.</I>
 				 */
-				return 1055008;
-			}
-		}
+            1055008;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnRecipeObjective() );
 		}
@@ -281,11 +241,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class RecipeConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The wart-covered witch looks up from pouring fetid scraps of meat
+		public override object Message =>
+            /* <I>The wart-covered witch looks up from pouring fetid scraps of meat
 				 * into her cauldron.</I><BR><BR>
 				 * 
 				 * You've dealt with that troublesome imp Zeefzorpul?  Good for you, little
@@ -303,11 +260,9 @@ namespace Server.Engines.Quests.Hag
 				 * I've heads to boil and stews to spice!  Don't you return until you've completed
 				 * every item on that list!
 				 */
-				return 1055009;
-			}
-		}
+            1055009;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindIngredientObjective( new Ingredient[0] ) );
 		}
@@ -315,11 +270,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class HagDuringIngredientsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The ancient crone looks up from her bubbling brew, staring you down
+		public override object Message =>
+            /* <I>The ancient crone looks up from her bubbling brew, staring you down
 				 * with her one good eye.</I><BR><BR>
 				 * 
 				 * You've returned already have you?  And what of your task?  Have you gathered
@@ -337,20 +289,15 @@ namespace Server.Engines.Quests.Hag
 				 * <I>With a disgusting hacking noise, the vile witch spits upon the ground and
 				 * brushes you off with a wave of her wrinkled old hand.</I>
 				 */
-				return 1055012;
-			}
-		}
+            1055012;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class BlackheartFirstConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The bawdy old pirate captain looks up from his bottle of Wild Harpy
+		public override object Message =>
+            /* <I>The bawdy old pirate captain looks up from his bottle of Wild Harpy
 				 * whiskey, as drunk as any man you've ever seen.<BR><BR>
 				 * 
 				 * With an excruciatingly slow movement, he pushes back his tricorne hat
@@ -378,11 +325,9 @@ namespace Server.Engines.Quests.Hag
 				 * and drinking his whiskey.  It seems as if you'll have to find some way to
 				 * change his mind about your worthiness.</I>
 				 */
-				return 1055010;
-			}
-		}
+            1055010;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			FindIngredientObjective obj = System.FindObjective( typeof( FindIngredientObjective ) ) as FindIngredientObjective;
 
@@ -488,9 +433,9 @@ namespace Server.Engines.Quests.Hag
 			}
 		}
 
-		public override bool Logged{ get{ return false; } }
+		public override bool Logged => false;
 
-		public BlackheartNoPirateConversation( bool tricorne, bool drunken )
+        public BlackheartNoPirateConversation( bool tricorne, bool drunken )
 		{
 			m_Tricorne = tricorne;
 			m_Drunken = drunken;
@@ -607,11 +552,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class EndConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The horrible wretch of a witch looks up from her vile experiments
+		public override object Message =>
+            /* <I>The horrible wretch of a witch looks up from her vile experiments
 				 * and focuses her one good eye on you.</I><BR><BR>
 				 * 
 				 * Eh?  What's that?  You say you've gathered the ingredients for my delicious
@@ -644,11 +586,9 @@ namespace Server.Engines.Quests.Hag
 				 * <I>Your reward in hand, you decide to leave the old Hag to her mumblings
 				 * before she realizes you're still around and puts you back to work.</I>
 				 */
-				return 1055013;
-			}
-		}
+            1055013;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}
@@ -656,11 +596,8 @@ namespace Server.Engines.Quests.Hag
 
 	public class RecentlyFinishedConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>The wrinkled old crone stops stirring her noxious stew, looking up at
+		public override object Message =>
+            /* <I>The wrinkled old crone stops stirring her noxious stew, looking up at
 				 * you with an annoyed expression on her face.</I><BR><BR>
 				 * 
 				 * You again? Listen, you little wretch, I'm in no mood for any of your meddlesome
@@ -672,10 +609,8 @@ namespace Server.Engines.Quests.Hag
 				 * <I>The vile hag hacks up a gob of phlegm, spitting it on the ground before
 				 * returning to her work.</I>
 				 */
-				return 1055064;
-			}
-		}
+            1055064;
 
-	    public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 }

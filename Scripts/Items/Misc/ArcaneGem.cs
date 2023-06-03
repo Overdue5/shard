@@ -5,10 +5,7 @@ namespace Server.Items
 {
     public class ArcaneGem : Item
     {
-        public override string DefaultName
-        {
-            get { return "arcane gem"; }
-        }
+        public override string DefaultName => "arcane gem";
 
         [Constructable]
         public ArcaneGem()

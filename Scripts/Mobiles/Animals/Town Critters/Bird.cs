@@ -32,12 +32,12 @@ namespace Server.Mobiles
 			MinTameSkill = -6.9;
 		}
 
-		public override MeatType MeatType{ get{ return MeatType.Bird; } }
-		public override int Meat{ get{ return 1; } }
-		public override int Feathers{ get{ return 2; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+		public override MeatType MeatType => MeatType.Bird;
+        public override int Meat => 1;
+        public override int Feathers => 2;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public Bird( Serial serial ) : base( serial )
+        public Bird( Serial serial ) : base( serial )
 		{
 		}
 
@@ -93,12 +93,12 @@ namespace Server.Mobiles
 			MinTameSkill = -6.9;
 		}
 
-		public override MeatType MeatType{ get{ return MeatType.Bird; } }
-		public override int Meat{ get{ return 1; } }
-		public override int Feathers{ get{ return 25; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
+		public override MeatType MeatType => MeatType.Bird;
+        public override int Meat => 1;
+        public override int Feathers => 25;
+        public override FoodType FavoriteFood => FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
 
-		public TropicalBird( Serial serial ) : base( serial )
+        public TropicalBird( Serial serial ) : base( serial )
 		{
 		}
 

@@ -2,15 +2,9 @@ namespace Server.Items
 {
 	public class BonesTankAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new BonesTankAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new BonesTankAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public BonesTankAddon()
 		{
 			AddonComponent ac = null;
@@ -155,15 +149,9 @@ namespace Server.Items
 
 	public class BonesTankAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new BonesTankAddon();
-			}
-		}
+		public override BaseAddon Addon => new BonesTankAddon();
 
-		[Constructable]
+        [Constructable]
 		public BonesTankAddonDeed()
 		{
 			Name = "a Dead Fish tank";

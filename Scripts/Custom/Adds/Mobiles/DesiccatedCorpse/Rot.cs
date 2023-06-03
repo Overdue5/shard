@@ -28,9 +28,9 @@ namespace Server.Items
 	             }
          }
 }    
-     public override bool HandlesOnMovement{ get{ return true; } }
-   		
-      public Rot( Serial serial ) : base( serial ) 
+     public override bool HandlesOnMovement => true;
+
+     public Rot( Serial serial ) : base( serial ) 
       { 
       } 
 

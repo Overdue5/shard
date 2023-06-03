@@ -16,15 +16,9 @@ namespace Server.Items
 
  
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SinkAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SinkAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SinkAddon()
 		{
 
@@ -83,15 +77,9 @@ namespace Server.Items
 
 	public class SinkAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SinkAddon();
-			}
-		}
+		public override BaseAddon Addon => new SinkAddon();
 
-		[Constructable]
+        [Constructable]
 		public SinkAddonDeed()
 		{
 			Name = "Sink Deed";

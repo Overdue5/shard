@@ -26,12 +26,9 @@ namespace Xanthos.ShrinkSystem
 			CommandHandlers.Register( "ShrinkRelease", AccessLevel.Administrator, ShrinkRelease_OnCommand );
 		}
 
-		public static bool LockDown
-		{
-			get { return m_LockDown; }
-		}
+		public static bool LockDown => m_LockDown;
 
-		[Usage( "Shrink" )]
+        [Usage( "Shrink" )]
 		[Description( "Shrinks a creature." )]
 		private static void Shrink_OnCommand( CommandEventArgs e )
 		{

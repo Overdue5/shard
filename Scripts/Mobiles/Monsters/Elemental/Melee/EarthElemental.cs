@@ -5,10 +5,10 @@ namespace Server.Mobiles
 	[CorpseName( "an earth elemental corpse" )]
 	public class EarthElemental : BaseCreature
 	{
-		public override double DispelDifficulty{ get{ return 117.5; } }
-		public override double DispelFocus{ get{ return 45.0; } }
+		public override double DispelDifficulty => 117.5;
+        public override double DispelFocus => 45.0;
 
-		[Constructable]
+        [Constructable]
 		public EarthElemental() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = "Earth Elemental";
@@ -54,10 +54,10 @@ namespace Server.Mobiles
             PackGold(200);
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 1; } }
+		public override bool BleedImmune => true;
+        public override int TreasureMapLevel => 1;
 
-		public EarthElemental( Serial serial ) : base( serial )
+        public EarthElemental( Serial serial ) : base( serial )
 		{
 		}
 

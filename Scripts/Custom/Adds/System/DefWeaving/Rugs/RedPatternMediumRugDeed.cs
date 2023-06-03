@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class RedPatternMediumRugAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new RedPatternMediumRugDeed(); } }
+		public override BaseAddonDeed Deed => new RedPatternMediumRugDeed();
 
-		[Constructable]
+        [Constructable]
 		public RedPatternMediumRugAddon()
 		{
             AddComponent(new AddonComponent(0x0AC7), 0, 0, 0); //center
@@ -47,9 +47,9 @@ namespace Server.Items
 
 	public class RedPatternMediumRugDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new RedPatternMediumRugAddon(); } }
+		public override BaseAddon Addon => new RedPatternMediumRugAddon();
 
-		[Constructable]
+        [Constructable]
 		public RedPatternMediumRugDeed()
 		{
             Name = "Red pattern medium rug";

@@ -5,9 +5,9 @@ namespace Server.Items
 {
 	public class HangingAxesAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new HangingAxesDeed(); } }
+		public override BaseAddonDeed Deed => new HangingAxesDeed();
 
-		[Constructable]
+        [Constructable]
 		public HangingAxesAddon( bool east ) : base()
 		{
 			if ( east ) // east
@@ -43,8 +43,8 @@ namespace Server.Items
 
 	public class HangingAxesDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new HangingAxesAddon( m_East ); } }
-		public override int LabelNumber { get { return 1076271; } } // Hanging Axes
+		public override BaseAddon Addon => new HangingAxesAddon( m_East );
+        public override int LabelNumber => 1076271; // Hanging Axes
 
 		private bool m_East;
 

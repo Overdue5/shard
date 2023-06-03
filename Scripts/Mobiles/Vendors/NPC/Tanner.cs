@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class Tanner : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Tanner() : base( "the tanner" )
 		{
 			SetSkill( SkillName.Tailoring, 36.0, 68.0 );

@@ -5,8 +5,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Counselor)]
         public override bool EventItem
         {
-            get { return base.EventItem; }
-            set { base.EventItem = value; }
+            get => base.EventItem;
+            set => base.EventItem = value;
         }
 
         [Constructable]

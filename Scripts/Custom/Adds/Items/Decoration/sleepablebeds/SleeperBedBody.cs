@@ -22,23 +22,14 @@ namespace Server.Items
 		private bool m_spell;
 	
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Mobile Owner
-		{
-			get{ return m_Owner; }
-		}
+		public Mobile Owner => m_Owner;
 
-		public ArrayList EquipItems
-		{
-			get{ return m_EquipItems; }
-		}
+        public ArrayList EquipItems => m_EquipItems;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Invuln
-		{
-			get{ return m_Blessed; }
-		}
+        [CommandProperty( AccessLevel.GameMaster )]
+		public bool Invuln => m_Blessed;
 
-		[Constructable] 
+        [Constructable] 
 		public SleeperBedBody( Mobile owner, bool blessed ) : this( owner, blessed, true )
 		{
 		}
@@ -127,9 +118,9 @@ namespace Server.Items
 			return false;
 		}
 
-		public override bool DisplaysContent{ get{ return false; } }
+		public override bool DisplaysContent => false;
 
-		public override void OnAfterDelete()
+        public override void OnAfterDelete()
 		{
 			if ( m_Timer != null )
 				m_Timer.Stop();

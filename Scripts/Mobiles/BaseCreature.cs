@@ -141,13 +141,7 @@ namespace Server.Mobiles
         //future use: Talisman 'Protection/Bonus vs. Specific Creature
         private readonly TextDefinition m_FriendlyName;
 
-        public TextDefinition FriendlyName
-        {
-            get
-            {
-                return m_FriendlyName;
-            }
-        }
+        public TextDefinition FriendlyName => m_FriendlyName;
 
         public FriendlyNameAttribute(TextDefinition friendlyName)
         {
@@ -284,49 +278,49 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual InhumanSpeech SpeechType { get { return null; } }
+        public virtual InhumanSpeech SpeechType => null;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public string CorpseNameOverride
         {
-            get { return m_CorpseNameOverride; }
-            set { m_CorpseNameOverride = value; }
+            get => m_CorpseNameOverride;
+            set => m_CorpseNameOverride = value;
         }
 
         public bool IsStabled
         {
-            get { return m_IsStabled; }
-            set { m_IsStabled = value; }
+            get => m_IsStabled;
+            set => m_IsStabled = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsPrisoner
         {
-            get { return m_IsPrisoner; }
-            set { m_IsPrisoner = value; }
+            get => m_IsPrisoner;
+            set => m_IsPrisoner = value;
         }
 
         protected DateTime SummonEnd
         {
-            get { return m_SummonEnd; }
-            set { m_SummonEnd = value; }
+            get => m_SummonEnd;
+            set => m_SummonEnd = value;
         }
 
-        public virtual Faction FactionAllegiance { get { return null; } }
-        public virtual int FactionSilverWorth { get { return 30; } }
+        public virtual Faction FactionAllegiance => null;
+        public virtual int FactionSilverWorth => 30;
 
         #region Bonding
         public const bool BondingEnabled = false;
 
-        public virtual bool IsBondable { get { return (false); } }
-        public virtual TimeSpan BondingDelay { get { return TimeSpan.FromDays(7.0); } }
-        public virtual TimeSpan BondingAbandonDelay { get { return TimeSpan.FromDays(1.0); } }
+        public virtual bool IsBondable => (false);
+        public virtual TimeSpan BondingDelay => TimeSpan.FromDays(7.0);
+        public virtual TimeSpan BondingAbandonDelay => TimeSpan.FromDays(1.0);
 
-        public override bool CanRegenHits { get { return !m_IsDeadPet && base.CanRegenHits; } }
-        public override bool CanRegenStam { get { return !m_IsDeadPet && base.CanRegenStam; } }
-        public override bool CanRegenMana { get { return !m_IsDeadPet && base.CanRegenMana; } }
+        public override bool CanRegenHits => !m_IsDeadPet && base.CanRegenHits;
+        public override bool CanRegenStam => !m_IsDeadPet && base.CanRegenStam;
+        public override bool CanRegenMana => !m_IsDeadPet && base.CanRegenMana;
 
-        public override bool IsDeadBondedPet { get { return m_IsDeadPet; } }
+        public override bool IsDeadBondedPet => m_IsDeadPet;
 
         private bool m_IsBonded;
         private bool m_IsDeadPet;
@@ -348,32 +342,32 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsBonded
         {
-            get { return m_IsBonded; }
+            get => m_IsBonded;
             set { m_IsBonded = value; InvalidateProperties(); }
         }
 
         public bool IsDeadPet
         {
-            get { return m_IsDeadPet; }
-            set { m_IsDeadPet = value; }
+            get => m_IsDeadPet;
+            set => m_IsDeadPet = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime BondingBegin
         {
-            get { return m_BondingBegin; }
-            set { m_BondingBegin = value; }
+            get => m_BondingBegin;
+            set => m_BondingBegin = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime OwnerAbandonTime
         {
-            get { return m_OwnerAbandonTime; }
-            set { m_OwnerAbandonTime = value; }
+            get => m_OwnerAbandonTime;
+            set => m_OwnerAbandonTime = value;
         }
         #endregion
 
-        public virtual double WeaponAbilityChance { get { return 0.4; } }
+        public virtual double WeaponAbilityChance => 0.4;
 
         public virtual WeaponAbility GetWeaponAbility()
         {
@@ -382,55 +376,74 @@ namespace Server.Mobiles
 
         #region Elemental Resistance/Damage
 
-        public override int BasePhysicalResistance { get { return m_PhysicalResistance; } }
-        public override int BaseFireResistance { get { return m_FireResistance; } }
-        public override int BaseColdResistance { get { return m_ColdResistance; } }
-        public override int BasePoisonResistance { get { return m_PoisonResistance; } }
-        public override int BaseEnergyResistance { get { return m_EnergyResistance; } }
+        public override int BasePhysicalResistance => m_PhysicalResistance;
+        public override int BaseFireResistance => m_FireResistance;
+        public override int BaseColdResistance => m_ColdResistance;
+        public override int BasePoisonResistance => m_PoisonResistance;
+        public override int BaseEnergyResistance => m_EnergyResistance;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int PhysicalResistanceSeed { get { return m_PhysicalResistance; } set { m_PhysicalResistance = value; UpdateResistances(); } }
+        public int PhysicalResistanceSeed { get => m_PhysicalResistance;
+            set { m_PhysicalResistance = value; UpdateResistances(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int FireResistSeed { get { return m_FireResistance; } set { m_FireResistance = value; UpdateResistances(); } }
+        public int FireResistSeed { get => m_FireResistance;
+            set { m_FireResistance = value; UpdateResistances(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int ColdResistSeed { get { return m_ColdResistance; } set { m_ColdResistance = value; UpdateResistances(); } }
+        public int ColdResistSeed { get => m_ColdResistance;
+            set { m_ColdResistance = value; UpdateResistances(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int PoisonResistSeed { get { return m_PoisonResistance; } set { m_PoisonResistance = value; UpdateResistances(); } }
+        public int PoisonResistSeed { get => m_PoisonResistance;
+            set { m_PoisonResistance = value; UpdateResistances(); } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int EnergyResistSeed { get { return m_EnergyResistance; } set { m_EnergyResistance = value; UpdateResistances(); } }
+        public int EnergyResistSeed { get => m_EnergyResistance;
+            set { m_EnergyResistance = value; UpdateResistances(); } }
 
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int PhysicalDamage { get { return m_PhysicalDamage; } set { m_PhysicalDamage = value; } }
+        public int PhysicalDamage { get => m_PhysicalDamage;
+            set => m_PhysicalDamage = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int FireDamage { get { return m_FireDamage; } set { m_FireDamage = value; } }
+        public int FireDamage { get => m_FireDamage;
+            set => m_FireDamage = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int ColdDamage { get { return m_ColdDamage; } set { m_ColdDamage = value; } }
+        public int ColdDamage { get => m_ColdDamage;
+            set => m_ColdDamage = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int PoisonDamage { get { return m_PoisonDamage; } set { m_PoisonDamage = value; } }
+        public int PoisonDamage { get => m_PoisonDamage;
+            set => m_PoisonDamage = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int EnergyDamage { get { return m_EnergyDamage; } set { m_EnergyDamage = value; } }
+        public int EnergyDamage { get => m_EnergyDamage;
+            set => m_EnergyDamage = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int ChaosDamage { get { return m_ChaosDamage; } set { m_ChaosDamage = value; } }
+        public int ChaosDamage { get => m_ChaosDamage;
+            set => m_ChaosDamage = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int DirectDamage { get { return m_DirectDamage; } set { m_DirectDamage = value; } }
+        public int DirectDamage { get => m_DirectDamage;
+            set => m_DirectDamage = value;
+        }
 
         #endregion
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsParagon
         {
-            get { return m_Paragon; }
+            get => m_Paragon;
             set
             {
                 if (m_Paragon == value)
@@ -446,38 +459,38 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual FoodType FavoriteFood { get { return FoodType.Meat; } }
-        public virtual PackInstinct PackInstinct { get { return PackInstinct.None; } }
+        public virtual FoodType FavoriteFood => FoodType.Meat;
+        public virtual PackInstinct PackInstinct => PackInstinct.None;
 
-        public List<Mobile> Owners { get { return m_Owners; } }
+        public List<Mobile> Owners => m_Owners;
 
-        public virtual bool AllowMaleTamer { get { return true; } }
-        public virtual bool AllowFemaleTamer { get { return true; } }
-        public virtual bool SubdueBeforeTame { get { return false; } }
-        public virtual bool StatLossAfterTame { get { return SubdueBeforeTame; } }
-        public virtual bool ReduceSpeedWithDamage { get { return false; } }
-        public virtual bool IsSubdued { get { return SubdueBeforeTame && (Hits < (HitsMax / 10)); } }
+        public virtual bool AllowMaleTamer => true;
+        public virtual bool AllowFemaleTamer => true;
+        public virtual bool SubdueBeforeTame => false;
+        public virtual bool StatLossAfterTame => SubdueBeforeTame;
+        public virtual bool ReduceSpeedWithDamage => false;
+        public virtual bool IsSubdued => SubdueBeforeTame && (Hits < (HitsMax / 10));
 
-        public virtual bool Commandable { get { return true; } }
+        public virtual bool Commandable => true;
 
-        public virtual Poison HitPoison { get { return null; } }
-        public virtual double HitPoisonChance { get { return 0.5; } }
-        public virtual Poison PoisonImmune { get { return null; } }
+        public virtual Poison HitPoison => null;
+        public virtual double HitPoisonChance => 0.5;
+        public virtual Poison PoisonImmune => null;
 
-        public virtual bool BardImmune { get { return false; } }
-        public virtual bool Unprovokable { get { return BardImmune || m_IsDeadPet; } }
-        public virtual bool Uncalmable { get { return BardImmune || m_IsDeadPet; } }
-        public virtual bool AreaPeaceImmune { get { return BardImmune || m_IsDeadPet; } }
+        public virtual bool BardImmune => false;
+        public virtual bool Unprovokable => BardImmune || m_IsDeadPet;
+        public virtual bool Uncalmable => BardImmune || m_IsDeadPet;
+        public virtual bool AreaPeaceImmune => BardImmune || m_IsDeadPet;
 
-        public virtual bool BleedImmune { get { return false; } }
-        public virtual double BonusPetDamageScalar { get { return 1.0; } }
+        public virtual bool BleedImmune => false;
+        public virtual double BonusPetDamageScalar => 1.0;
 
-        public virtual bool DeathAdderCharmable { get { return false; } }
+        public virtual bool DeathAdderCharmable => false;
 
         //TODO: Find the pub 31 tweaks to the DispelDifficulty and apply them of course.
-        public virtual double DispelDifficulty { get { return 0.0; } } // at this skill level we dispel 50% chance
-        public virtual double DispelFocus { get { return 20.0; } } // at difficulty - focus we have 0%, at difficulty + focus we have 100%
-        public virtual bool DisplayWeight { get { return Backpack is StrongBackpack; } }
+        public virtual double DispelDifficulty => 0.0; // at this skill level we dispel 50% chance
+        public virtual double DispelFocus => 20.0; // at difficulty - focus we have 0%, at difficulty + focus we have 100%
+        public virtual bool DisplayWeight => Backpack is StrongBackpack;
 
         public override bool ClickTitle
         {
@@ -494,51 +507,51 @@ namespace Server.Mobiles
         private DateTime m_NextBreathTime;
 
         // Must be overriden in subclass to enable
-        public virtual bool HasBreath { get { return false; } }
+        public virtual bool HasBreath => false;
 
         // Base damage given is: CurrentHitPoints * BreathDamageScalar
-        public virtual double BreathDamageScalar { get { return (Core.AOS ? 0.16 : 0.05); } }
+        public virtual double BreathDamageScalar => (Core.AOS ? 0.16 : 0.05);
 
         // Min/max seconds until next breath
-        public virtual double BreathMinDelay { get { return 10.0; } }
-        public virtual double BreathMaxDelay { get { return 15.0; } }
+        public virtual double BreathMinDelay => 10.0;
+        public virtual double BreathMaxDelay => 15.0;
 
         // Creature stops moving for 1.0 seconds while breathing
-        public virtual double BreathStallTime { get { return 1.0; } }
+        public virtual double BreathStallTime => 1.0;
 
         // Effect is sent 1.3 seconds after BreathAngerSound and BreathAngerAnimation is played
-        public virtual double BreathEffectDelay { get { return 1.3; } }
+        public virtual double BreathEffectDelay => 1.3;
 
         // Damage is given 1.0 seconds after effect is sent
-        public virtual double BreathDamageDelay { get { return 1.5; } }
+        public virtual double BreathDamageDelay => 1.5;
 
-        public virtual int BreathRange { get { return RangePerception; } }
+        public virtual int BreathRange => RangePerception;
 
         // Damage types
-        public virtual int BreathChaosDamage { get { return 0; } }
-        public virtual int BreathPhysicalDamage { get { return 0; } }
-        public virtual int BreathFireDamage { get { return 100; } }
-        public virtual int BreathColdDamage { get { return 0; } }
-        public virtual int BreathPoisonDamage { get { return 0; } }
-        public virtual int BreathEnergyDamage { get { return 0; } }
+        public virtual int BreathChaosDamage => 0;
+        public virtual int BreathPhysicalDamage => 0;
+        public virtual int BreathFireDamage => 100;
+        public virtual int BreathColdDamage => 0;
+        public virtual int BreathPoisonDamage => 0;
+        public virtual int BreathEnergyDamage => 0;
 
         // Is immune to breath damages
-        public virtual bool BreathImmune { get { return false; } }
+        public virtual bool BreathImmune => false;
 
         // Effect details and sound
-        public virtual int BreathEffectItemID { get { return 0x36D4; } }
-        public virtual int BreathEffectSpeed { get { return 5; } }
-        public virtual int BreathEffectDuration { get { return 0; } }
-        public virtual bool BreathEffectExplodes { get { return false; } }
-        public virtual bool BreathEffectFixedDir { get { return false; } }
-        public virtual int BreathEffectHue { get { return 0; } }
-        public virtual int BreathEffectRenderMode { get { return 0; } }
+        public virtual int BreathEffectItemID => 0x36D4;
+        public virtual int BreathEffectSpeed => 5;
+        public virtual int BreathEffectDuration => 0;
+        public virtual bool BreathEffectExplodes => false;
+        public virtual bool BreathEffectFixedDir => false;
+        public virtual int BreathEffectHue => 0;
+        public virtual int BreathEffectRenderMode => 0;
 
-        public virtual int BreathEffectSound { get { return 0x227; } }
+        public virtual int BreathEffectSound => 0x227;
 
         // Anger sound/animations
-        public virtual int BreathAngerSound { get { return GetAngerSound(); } }
-        public virtual int BreathAngerAnimation { get { return 12; } }
+        public virtual int BreathAngerSound => GetAngerSound();
+        public virtual int BreathAngerAnimation => 12;
 
         public virtual void BreathStart(Mobile target)
         {
@@ -707,8 +720,8 @@ namespace Server.Mobiles
 
         public DateTime EndFleeTime
         {
-            get { return m_EndFlee; }
-            set { m_EndFlee = value; }
+            get => m_EndFlee;
+            set => m_EndFlee = value;
         }
 
         public virtual void StopFlee()
@@ -736,22 +749,16 @@ namespace Server.Mobiles
         }
         #endregion
 
-        public BaseAI AIObject { get { return m_AI; } }
+        public BaseAI AIObject => m_AI;
 
         public const int MaxOwners = 5;
 
-        public virtual OppositionGroup OppositionGroup
-        {
-            get { return null; }
-        }
+        public virtual OppositionGroup OppositionGroup => null;
 
         #region Friends
-        public List<Mobile> Friends { get { return m_Friends; } }
+        public List<Mobile> Friends => m_Friends;
 
-        public virtual bool AllowNewPetFriend
-        {
-            get { return (m_Friends == null || m_Friends.Count < 5); }
-        }
+        public virtual bool AllowNewPetFriend => (m_Friends == null || m_Friends.Count < 5);
 
         public virtual bool IsPetFriend(Mobile m)
         {
@@ -789,7 +796,7 @@ namespace Server.Mobiles
         #endregion
 
         #region Allegiance
-        public virtual Ethic EthicAllegiance { get { return null; } }
+        public virtual Ethic EthicAllegiance => null;
 
         public enum Allegiance
         {
@@ -1038,13 +1045,7 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual bool DeleteCorpseOnDeath
-        {
-            get
-            {
-                return m_bSummoned;
-            }
-        }
+        public virtual bool DeleteCorpseOnDeath => m_bSummoned;
 
         public override void SetLocation(Point3D newLocation, bool isTeleport)
         {
@@ -1100,81 +1101,43 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int Loyalty
         {
-            get
-            {
-                return m_Loyalty;
-            }
-            set
-            {
-                m_Loyalty = Math.Min(Math.Max(value, 0), MaxLoyalty);
-            }
+            get => m_Loyalty;
+            set => m_Loyalty = Math.Min(Math.Max(value, 0), MaxLoyalty);
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public WayPoint CurrentWayPoint
         {
-            get
-            {
-                return m_CurrentWayPoint;
-            }
-            set
-            {
-                m_CurrentWayPoint = value;
-            }
+            get => m_CurrentWayPoint;
+            set => m_CurrentWayPoint = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public IPoint2D TargetLocation
         {
-            get
-            {
-                return m_TargetLocation;
-            }
-            set
-            {
-                m_TargetLocation = value;
-            }
+            get => m_TargetLocation;
+            set => m_TargetLocation = value;
         }
 
-        public virtual Mobile ConstantFocus { get { return null; } }
+        public virtual Mobile ConstantFocus => null;
 
-        public virtual bool DisallowAllMoves
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public virtual bool DisallowAllMoves => false;
 
-        public virtual bool InitialInnocent
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public virtual bool InitialInnocent => false;
 
-        public virtual bool AlwaysMurderer
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public virtual bool AlwaysMurderer => false;
 
-        public virtual bool AlwaysAttackable
-        {
-            get
-            {
-                return false;
-            }
+        public virtual bool AlwaysAttackable => false;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public virtual int DamageMin { get => m_DamageMin;
+            set => m_DamageMin = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public virtual int DamageMin { get { return m_DamageMin; } set { m_DamageMin = value; } }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public virtual int DamageMax { get { return m_DamageMax; } set { m_DamageMax = value; } }
+        public virtual int DamageMax { get => m_DamageMax;
+            set => m_DamageMax = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public override int HitsMax
@@ -1191,8 +1154,8 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int HitsMaxSeed
         {
-            get { return m_HitsMax; }
-            set { m_HitsMax = value; }
+            get => m_HitsMax;
+            set => m_HitsMax = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1210,8 +1173,8 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int StamMaxSeed
         {
-            get { return m_StamMax; }
-            set { m_StamMax = value; }
+            get => m_StamMax;
+            set => m_StamMax = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1229,34 +1192,17 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int ManaMaxSeed
         {
-            get { return m_ManaMax; }
-            set { m_ManaMax = value; }
+            get => m_ManaMax;
+            set => m_ManaMax = value;
         }
 
-        public virtual bool CanOpenDoors
-        {
-            get
-            {
-                return !Body.IsAnimal && !Body.IsSea;
-            }
-        }
+        public virtual bool CanOpenDoors => !Body.IsAnimal && !Body.IsSea;
 
-        public virtual bool CanMoveOverObstacles
-        {
-            get
-            {
-                return Core.AOS || Body.IsMonster;
-            }
-        }
+        public virtual bool CanMoveOverObstacles => Core.AOS || Body.IsMonster;
 
-        public virtual bool CanDestroyObstacles
-        {
-            get
-            {
-                // to enable breaking of furniture, 'return CanMoveOverObstacles;'
-                return false;
-            }
-        }
+        public virtual bool CanDestroyObstacles =>
+            // to enable breaking of furniture, 'return CanMoveOverObstacles;'
+            false;
 
         public void Unpacify()
         {
@@ -1266,7 +1212,9 @@ namespace Server.Mobiles
 
         private HonorContext m_ReceivedHonorContext;
 
-        public HonorContext ReceivedHonorContext { get { return m_ReceivedHonorContext; } set { m_ReceivedHonorContext = value; } }
+        public HonorContext ReceivedHonorContext { get => m_ReceivedHonorContext;
+            set => m_ReceivedHonorContext = value;
+        }
 
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
@@ -2028,7 +1976,7 @@ namespace Server.Mobiles
             return false;
         }
 
-        public override bool ShouldCheckStatTimers { get { return false; } }
+        public override bool ShouldCheckStatTimers => false;
 
         #region Food
         private static readonly Type[] m_Eggs = new Type[]
@@ -2209,7 +2157,7 @@ namespace Server.Mobiles
             return false;
         }
 
-        public virtual bool CanAngerOnTame { get { return false; } }
+        public virtual bool CanAngerOnTame => false;
 
         #region OnAction[...]
         public virtual void OnActionWander()
@@ -2251,7 +2199,7 @@ namespace Server.Mobiles
             return base.OnDragDrop(from, dropped);
         }
 
-        protected virtual BaseAI ForcedAI { get { return null; } }
+        protected virtual BaseAI ForcedAI => null;
 
         public void ChangeAIType(AIType NewAI)
         {
@@ -2322,10 +2270,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public AIType AI
         {
-            get
-            {
-                return m_CurrentAI;
-            }
+            get => m_CurrentAI;
             set
             {
                 m_CurrentAI = value;
@@ -2342,23 +2287,14 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.Administrator)]
         public bool Debug
         {
-            get
-            {
-                return m_bDebugAI;
-            }
-            set
-            {
-                m_bDebugAI = value;
-            }
+            get => m_bDebugAI;
+            set => m_bDebugAI = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Team
         {
-            get
-            {
-                return m_iTeam;
-            }
+            get => m_iTeam;
             set
             {
                 m_iTeam = value;
@@ -2374,10 +2310,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile FocusMob
         {
-            get
-            {
-                return m_FocusMob;
-            }
+            get => m_FocusMob;
             set
             {
                 //Maka - KillInfo
@@ -2389,79 +2322,43 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public FightMode FightMode
         {
-            get
-            {
-                return m_FightMode;
-            }
-            set
-            {
-                m_FightMode = value;
-            }
+            get => m_FightMode;
+            set => m_FightMode = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int RangePerception
         {
-            get
-            {
-                return m_iRangePerception;
-            }
-            set
-            {
-                m_iRangePerception = value;
-            }
+            get => m_iRangePerception;
+            set => m_iRangePerception = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int RangeFight
         {
-            get
-            {
-                return m_iRangeFight;
-            }
-            set
-            {
-                m_iRangeFight = value;
-            }
+            get => m_iRangeFight;
+            set => m_iRangeFight = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int RangeHome
         {
-            get
-            {
-                return m_iRangeHome;
-            }
-            set
-            {
-                m_iRangeHome = value;
-            }
+            get => m_iRangeHome;
+            set => m_iRangeHome = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public double ActiveSpeed
         {
-            get
-            {
-                return m_dActiveSpeed;
-            }
-            set
-            {
-                m_dActiveSpeed = value;
-            }
+            get => m_dActiveSpeed;
+            set => m_dActiveSpeed = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public double PassiveSpeed
         {
-            get
-            {
-                return m_dPassiveSpeed;
-            }
-            set
-            {
-                m_dPassiveSpeed = value;
-            }
+            get => m_dPassiveSpeed;
+            set => m_dPassiveSpeed = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -2489,23 +2386,14 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D Home
         {
-            get
-            {
-                return m_pHome;
-            }
-            set
-            {
-                m_pHome = value;
-            }
+            get => m_pHome;
+            set => m_pHome = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Controlled
         {
-            get
-            {
-                return m_bControlled;
-            }
+            get => m_bControlled;
             set
             {
                 if (m_bControlled == value)
@@ -2575,10 +2463,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile ControlMaster
         {
-            get
-            {
-                return m_ControlMaster;
-            }
+            get => m_ControlMaster;
             set
             {
                 if (m_ControlMaster == value || this == value)
@@ -2595,10 +2480,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile SummonMaster
         {
-            get
-            {
-                return m_SummonMaster;
-            }
+            get => m_SummonMaster;
             set
             {
                 if (m_SummonMaster == value || this == value)
@@ -2615,36 +2497,21 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile ControlTarget
         {
-            get
-            {
-                return m_ControlTarget;
-            }
-            set
-            {
-                m_ControlTarget = value;
-            }
+            get => m_ControlTarget;
+            set => m_ControlTarget = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D ControlDest
         {
-            get
-            {
-                return m_ControlDest;
-            }
-            set
-            {
-                m_ControlDest = value;
-            }
+            get => m_ControlDest;
+            set => m_ControlDest = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public OrderType ControlOrder
         {
-            get
-            {
-                return m_ControlOrder;
-            }
+            get => m_ControlOrder;
             set
             {
                 m_ControlOrder = value;
@@ -2662,53 +2529,29 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool BardProvoked
         {
-            get
-            {
-                return m_bBardProvoked;
-            }
-            set
-            {
-                m_bBardProvoked = value;
-            }
+            get => m_bBardProvoked;
+            set => m_bBardProvoked = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool BardPacified
         {
-            get
-            {
-                return m_bBardPacified;
-            }
-            set
-            {
-                m_bBardPacified = value;
-            }
+            get => m_bBardPacified;
+            set => m_bBardPacified = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile BardMaster
         {
-            get
-            {
-                return m_bBardMaster;
-            }
-            set
-            {
-                m_bBardMaster = value;
-            }
+            get => m_bBardMaster;
+            set => m_bBardMaster = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile BardTarget
         {
-            get
-            {
-                return m_bBardTarget;
-            }
-            set
-            {
-                m_bBardTarget = value;
-            }
+            get => m_bBardTarget;
+            set => m_bBardTarget = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -2717,36 +2560,21 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public double MinTameSkill
         {
-            get
-            {
-                return m_dMinTameSkill;
-            }
-            set
-            {
-                m_dMinTameSkill = value;
-            }
+            get => m_dMinTameSkill;
+            set => m_dMinTameSkill = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Tamable
         {
-            get
-            {
-                return m_bTamable && !m_Paragon;
-            }
-            set
-            {
-                m_bTamable = value;
-            }
+            get => m_bTamable && !m_Paragon;
+            set => m_bTamable = value;
         }
 
         [CommandProperty(AccessLevel.Administrator)]
         public bool Summoned
         {
-            get
-            {
-                return m_bSummoned;
-            }
+            get => m_bSummoned;
             set
             {
                 if (m_bSummoned == value)
@@ -2764,42 +2592,37 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.Administrator)]
         public int ControlSlots
         {
-            get
-            {
-                return m_iControlSlots;
-            }
-            set
-            {
-                m_iControlSlots = value;
-            }
+            get => m_iControlSlots;
+            set => m_iControlSlots = value;
         }
 
-        public virtual bool CanUseMoonGates { get { return ControlMaster != null; } } //Taran: Creatures with a controlmaster can be gated
+        public virtual bool CanUseMoonGates => ControlMaster != null; //Taran: Creatures with a controlmaster can be gated
 
-        public virtual bool NoHouseRestrictions { get { return false; } }
-        public virtual bool IsHouseSummonable { get { return false; } }
+        public virtual bool NoHouseRestrictions => false;
+        public virtual bool IsHouseSummonable => false;
 
         #region Corpse Resources
-        public virtual int Feathers { get { return 0; } }
-        public virtual int Wool { get { return 0; } }
+        public virtual int Feathers => 0;
+        public virtual int Wool => 0;
 
-        public virtual MeatType MeatType { get { return MeatType.Ribs; } }
-        public virtual int Meat { get { return 0; } }
+        public virtual MeatType MeatType => MeatType.Ribs;
+        public virtual int Meat => 0;
 
-        public virtual int Hides { get { return 0; } }
-        public virtual HideType HideType { get { return HideType.Regular; } }
+        public virtual int Hides => 0;
+        public virtual HideType HideType => HideType.Regular;
 
-        public virtual int Scales { get { return 0; } }
-        public virtual ScaleType ScaleType { get { return ScaleType.Red; } }
+        public virtual int Scales => 0;
+        public virtual ScaleType ScaleType => ScaleType.Red;
+
         #endregion
 
-        public virtual bool AutoDispel { get { return false; } }
-        public virtual double AutoDispelChance { get { return ((Core.SE) ? .10 : 1.0); } }
+        public virtual bool AutoDispel => false;
+        public virtual double AutoDispelChance => ((Core.SE) ? .10 : 1.0);
 
-        public virtual bool IsScaryToPets { get { return false; } }
-        public virtual bool IsScaredOfScaryThings { get { return true; } }
+        public virtual bool IsScaryToPets => false;
+        public virtual bool IsScaredOfScaryThings => true;
 
-        public virtual bool CanRummageCorpses { get { return false; } }
+        public virtual bool CanRummageCorpses => false;
 
         public virtual void OnGotMeleeAttack(Mobile attacker)
         {
@@ -2815,7 +2638,7 @@ namespace Server.Mobiles
             m.Delete();
         }
 
-        public virtual bool DeleteOnRelease { get { return m_bSummoned; } }
+        public virtual bool DeleteOnRelease => m_bSummoned;
 
         public virtual void OnGaveMeleeAttack(Mobile defender)
         {
@@ -2972,7 +2795,7 @@ namespace Server.Mobiles
         }
 
         #region Teaching
-        public virtual bool CanTeach { get { return false; } }
+        public virtual bool CanTeach => false;
 
         public virtual bool CheckTeach(SkillName skill, Mobile from)
         {
@@ -3229,7 +3052,7 @@ namespace Server.Mobiles
         {
         }
 
-        public virtual bool CanDrop { get { return true; } } //IsBonded; } }
+        public virtual bool CanDrop => true; //IsBonded; } }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {
@@ -4333,12 +4156,12 @@ namespace Server.Mobiles
                     base.OnSingleClick( from );
                 }*/
 
-        public virtual double TreasureMapChance { get { return TreasureMap.LootChance; } }
-        public virtual int TreasureMapLevel { get { return -1; } }
+        public virtual double TreasureMapChance => TreasureMap.LootChance;
+        public virtual int TreasureMapLevel => -1;
 
-        public virtual bool IgnoreYoungProtection { get { return false; } }
+        public virtual bool IgnoreYoungProtection => false;
 
-        public virtual bool ParalyzeImmune { get { return false; } }
+        public virtual bool ParalyzeImmune => false;
 
         public override bool OnBeforeDeath()
         {
@@ -4467,8 +4290,8 @@ namespace Server.Mobiles
 
         public bool NoKillAwards
         {
-            get { return m_NoKillAwards; }
-            set { m_NoKillAwards = value; }
+            get => m_NoKillAwards;
+            set => m_NoKillAwards = value;
         }
 
         public int ComputeBonusDamage(List<DamageEntry> list, Mobile m)
@@ -4624,7 +4447,8 @@ namespace Server.Mobiles
         }
 
         #region Mondain's Legacy
-        public virtual bool GivesMLMinorArtifact { get { return false; } }
+        public virtual bool GivesMLMinorArtifact => false;
+
         #endregion
 
         public virtual void OnKilledBy(Mobile mob)
@@ -4841,10 +4665,12 @@ namespace Server.Mobiles
 
         private DateTime m_NextReacquireTime;
 
-        public DateTime NextReacquireTime { get { return m_NextReacquireTime; } set { m_NextReacquireTime = value; } }
+        public DateTime NextReacquireTime { get => m_NextReacquireTime;
+            set => m_NextReacquireTime = value;
+        }
 
-        public virtual TimeSpan ReacquireDelay { get { return TimeSpan.FromSeconds(10.0); } }
-        public virtual bool ReacquireOnMovement { get { return false; } }
+        public virtual TimeSpan ReacquireDelay => TimeSpan.FromSeconds(10.0);
+        public virtual bool ReacquireOnMovement => false;
 
         public void ForceReacquire()
         {
@@ -4961,8 +4787,8 @@ namespace Server.Mobiles
 
         public static bool Summoning
         {
-            get { return m_Summoning; }
-            set { m_Summoning = value; }
+            get => m_Summoning;
+            set => m_Summoning = value;
         }
 
         public static bool Summon(BaseCreature creature, Mobile caster, Point3D p, int sound, TimeSpan duration)
@@ -5031,31 +4857,31 @@ namespace Server.Mobiles
 
         private DateTime m_NextRummageTime;
 
-        public virtual bool CanBreath { get { return HasBreath && !Summoned; } }
-        public virtual bool IsDispellable { get { return Summoned && !IsAnimatedDead; } }
+        public virtual bool CanBreath => HasBreath && !Summoned;
+        public virtual bool IsDispellable => Summoned && !IsAnimatedDead;
 
         #region Healing
-        public virtual bool CanHeal { get { return false; } }
-        public virtual bool CanHealOwner { get { return false; } }
-        public virtual double HealScalar { get { return 1.0; } }
+        public virtual bool CanHeal => false;
+        public virtual bool CanHealOwner => false;
+        public virtual double HealScalar => 1.0;
 
-        public virtual int HealSound { get { return 0x57; } }
-        public virtual int HealStartRange { get { return 2; } }
-        public virtual int HealEndRange { get { return RangePerception; } }
-        public virtual double HealTrigger { get { return 0.78; } }
-        public virtual double HealDelay { get { return 6.5; } }
-        public virtual double HealInterval { get { return 0.0; } }
-        public virtual bool HealFully { get { return true; } }
-        public virtual double HealOwnerTrigger { get { return 0.78; } }
-        public virtual double HealOwnerDelay { get { return 6.5; } }
-        public virtual double HealOwnerInterval { get { return 30.0; } }
-        public virtual bool HealOwnerFully { get { return false; } }
+        public virtual int HealSound => 0x57;
+        public virtual int HealStartRange => 2;
+        public virtual int HealEndRange => RangePerception;
+        public virtual double HealTrigger => 0.78;
+        public virtual double HealDelay => 6.5;
+        public virtual double HealInterval => 0.0;
+        public virtual bool HealFully => true;
+        public virtual double HealOwnerTrigger => 0.78;
+        public virtual double HealOwnerDelay => 6.5;
+        public virtual double HealOwnerInterval => 30.0;
+        public virtual bool HealOwnerFully => false;
 
         private DateTime m_NextHealTime = DateTime.UtcNow;
         private DateTime m_NextHealOwnerTime = DateTime.UtcNow;
         private Timer m_HealTimer = null;
 
-        public bool IsHealing { get { return (m_HealTimer != null); } }
+        public bool IsHealing => (m_HealTimer != null);
 
         public virtual void HealStart(Mobile patient)
         {
@@ -5439,7 +5265,7 @@ namespace Server.Mobiles
             return base.CanBeDamaged();
         }
 
-        public virtual bool PlayerRangeSensitive { get { return (CurrentWayPoint == null); } }	//If they are following a waypoint, they'll continue to follow it even if players aren't around
+        public virtual bool PlayerRangeSensitive => (CurrentWayPoint == null); //If they are following a waypoint, they'll continue to follow it even if players aren't around
 
         public override void OnSectorDeactivate()
         {
@@ -5463,10 +5289,14 @@ namespace Server.Mobiles
         private int m_RemoveStep;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool RemoveIfUntamed { get { return m_RemoveIfUntamed; } set { m_RemoveIfUntamed = value; } }
+        public bool RemoveIfUntamed { get => m_RemoveIfUntamed;
+            set => m_RemoveIfUntamed = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int RemoveStep { get { return m_RemoveStep; } set { m_RemoveStep = value; } }
+        public int RemoveStep { get => m_RemoveStep;
+            set => m_RemoveStep = value;
+        }
 
         #region KillInfo
 
@@ -5476,10 +5306,7 @@ namespace Server.Mobiles
 
         private bool m_SaveKillInfo = true;
 
-        public TimeSpan KillDuration
-        {
-            get { return m_KillingEnded - m_KillingStarted; }
-        }
+        public TimeSpan KillDuration => m_KillingEnded - m_KillingStarted;
 
         private void OnFocusMobChanged(Mobile oldFocus, Mobile newFocus)
         {

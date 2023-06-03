@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class CandelabraOfSouls : Item
 	{
-		public override int LabelNumber{ get{ return 1063478; } }
-		
-		[Constructable]
+		public override int LabelNumber => 1063478;
+
+        [Constructable]
 		public CandelabraOfSouls() : base( 0xB26 )
 		{
 		}

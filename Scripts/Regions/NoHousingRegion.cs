@@ -9,9 +9,9 @@ namespace Server.Regions
 		 */
 		private readonly bool m_SmartChecking;
 
-		public bool SmartChecking{ get{ return m_SmartChecking; } }
+		public bool SmartChecking => m_SmartChecking;
 
-		public NoHousingRegion( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )
+        public NoHousingRegion( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )
 		{
 			ReadBoolean( xml["smartNoHousing"], "active", ref m_SmartChecking, false );
 		}

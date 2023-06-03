@@ -9,7 +9,7 @@ namespace Server.Spells
 	    private int[] m_Amounts;
 	    private static Dictionary<Type, string> m_ReagentShortStringList;
 
-        public static Dictionary<Type, string> ReagentShortStringList { get { return m_ReagentShortStringList; } }
+        public static Dictionary<Type, string> ReagentShortStringList => m_ReagentShortStringList;
 
         public static void Initialize()
         {
@@ -81,7 +81,9 @@ namespace Server.Spells
 
 	    public bool AllowTown { get; set; }
 
-	    public int[] Amounts{ get{ return m_Amounts; } set{ m_Amounts = value; } }
+	    public int[] Amounts{ get => m_Amounts;
+            set => m_Amounts = value;
+        }
 	    public string Mantra { get; set; }
 
 	    public string Name { get; set; }

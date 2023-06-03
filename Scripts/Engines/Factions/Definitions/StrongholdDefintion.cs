@@ -7,14 +7,14 @@ namespace Server.Factions
 		private readonly Point3D m_FactionStone;
 		private readonly Point3D[] m_Monoliths;
 
-		public Rectangle2D[] Area{ get{ return m_Area; } }
+		public Rectangle2D[] Area => m_Area;
 
-		public Point3D JoinStone{ get{ return m_JoinStone; } }
-		public Point3D FactionStone{ get{ return m_FactionStone; } }
+        public Point3D JoinStone => m_JoinStone;
+        public Point3D FactionStone => m_FactionStone;
 
-		public Point3D[] Monoliths{ get{ return m_Monoliths; } }
+        public Point3D[] Monoliths => m_Monoliths;
 
-		public StrongholdDefinition( Rectangle2D[] area, Point3D joinStone, Point3D factionStone, Point3D[] monoliths )
+        public StrongholdDefinition( Rectangle2D[] area, Point3D joinStone, Point3D factionStone, Point3D[] monoliths )
 		{
 			m_Area = area;
 			m_JoinStone = joinStone;

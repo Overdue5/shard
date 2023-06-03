@@ -53,11 +53,11 @@ namespace Server.Engines.Quests.Necro
 			return base.IsHarmfulCriminal( target );
 		}
 
-		public override bool ClickTitle{ get { return false; } }
+		public override bool ClickTitle => false;
 
-		public override bool PlayerRangeSensitive{ get { return false; } }
+        public override bool PlayerRangeSensitive => false;
 
-		public override void OnThink()
+        public override void OnThink()
 		{
 			if ( !m_ToDelete && !Frozen )
 			{

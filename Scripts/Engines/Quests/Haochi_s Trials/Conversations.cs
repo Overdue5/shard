@@ -2,11 +2,8 @@ namespace Server.Engines.Quests.Samurai
 {
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I><U>Important Quest Information</U></I><BR><BR>
+		public override object Message =>
+            /* <I><U>Important Quest Information</U></I><BR><BR>
 				 * 
 				 * During your quest, any important information that a
 				 * <a href = "?ForceTopic31">NPC</a> gives you, will appear in a window
@@ -28,11 +25,9 @@ namespace Server.Engines.Quests.Samurai
 				 * Bringing up your avatar's context menu will give you options to cancel your quest
 				 * and review various quest information.<BR><BR>
 				 */
-				return 1049092;
-			}
-		}
+            1049092;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindHaochiObjective() );
 		}
@@ -40,11 +35,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class RadarConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* To view the surrounding area, you should learn about the Radar Map.<BR><BR>
+		public override object Message =>
+            /* To view the surrounding area, you should learn about the Radar Map.<BR><BR>
 				 * 
 				 * The Radar Map (or Overhead View) can be opened by pressing 'ALT-R'
 				 * on your keyboard. It shows your immediate surroundings from a
@@ -54,20 +46,15 @@ namespace Server.Engines.Quests.Samurai
 				 * Use the Radar Map often as you travel throughout the world
 				 * to familiarize yourself with your surroundings.
 				 * */
-				return 1063033;
-			}
-		}
+            1063033;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class FirstTrialIntroConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Greetings. I am Daimyo Haochi, the Feudal Lord of this region. <BR><BR>
+		public override object Message =>
+            /* Greetings. I am Daimyo Haochi, the Feudal Lord of this region. <BR><BR>
 				 * 
 				 * Since you are here at my side, you must wish to learn the ways of the Samurai.<BR><BR>
 				 * 
@@ -90,11 +77,9 @@ namespace Server.Engines.Quests.Samurai
 				 * but do so at your own risk. You may not be able to return and complete your
 				 * trials once you have chosen to escape.
 				 */
-				return 1063029;
-			}
-		}
+            1063029;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FirstTrialIntroObjective() );
 		}
@@ -102,11 +87,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class FirstTrialKillConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Beyond you are two troubled groups.<BR><BR>
+		public override object Message =>
+            /* Beyond you are two troubled groups.<BR><BR>
 				 * 
 				 * The Cursed Souls were once proud warriors that were ensorcelled
 				 * by an evil mage. The mage trapped and killed them later but the spell
@@ -125,11 +107,9 @@ namespace Server.Engines.Quests.Samurai
 				 * and you will be resurrected. You should retrieve your belongings from your
 				 * body before returning to the Daimyo or you may not be able to return to your corpse.
 				 */
-				return 1063031;
-			}
-		}
+            1063031;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FirstTrialKillObjective() );
 		}
@@ -154,9 +134,9 @@ namespace Server.Engines.Quests.Samurai
 			}
 		}
 
-		public override bool Logged{ get{ return false; } }
+		public override bool Logged => false;
 
-		private bool m_CursedSoul;
+        private bool m_CursedSoul;
 
 		public GainKarmaConversation( bool cursedSoul )
 		{
@@ -249,11 +229,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class SecondTrialAttackConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Beyond the guards is a test of courage.  You must face your fear and attack a
+		public override object Message =>
+            /* Beyond the guards is a test of courage.  You must face your fear and attack a
 				 * great beast. You must choose which beast to slay for there is more than
 				 * one beyond the courtyard doors. <BR><BR>
 				 * 
@@ -263,11 +240,9 @@ namespace Server.Engines.Quests.Samurai
 				 * You must rid the courtyard of these beasts but you may only choose one to
 				 * attack. Go and choose wisely.
 				 */
-				return 1063057;
-			}
-		}
+            1063057;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new SecondTrialAttackObjective() );
 		}
@@ -349,21 +324,16 @@ namespace Server.Engines.Quests.Samurai
 
 	public class ThirdTrialKillConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* A pack of wolves circle your feet. They have been injured and are in pain.
+		public override object Message =>
+            /* A pack of wolves circle your feet. They have been injured and are in pain.
 				 * A quick death will end their suffering.<br><br>
 				 * 
 				 * Use your Honorable Execution skill or other means to finish off a wounded wolf.
 				 * Do so and return to Daimyo Haochi.
 				 */
-				return 1063062;
-			}
-		}
+            1063062;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ThirdTrialKillObjective() );
 		}
@@ -371,11 +341,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class FourthTrialIntroConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Daimyo Haochi smiles as you walk up to him. Quietly he says:</I><BR><BR>
+		public override object Message =>
+            /* <I>Daimyo Haochi smiles as you walk up to him. Quietly he says:</I><BR><BR>
 				 * 
 				 * A Samurai understands the need to help others even as he wields a blade against
 				 * them. <BR><BR>
@@ -386,11 +353,9 @@ namespace Server.Engines.Quests.Samurai
 				 * And now you must prove yourself again. Walk the red path.
 				 * We will talk again later.
 				 */
-				return 1063065;
-			}
-		}
+            1063065;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FourthTrialIntroObjective() );
 		}
@@ -398,11 +363,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class FourthTrialCatsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>You approach a disheveled gypsy standing near a small shed.
+		public override object Message =>
+            /* <I>You approach a disheveled gypsy standing near a small shed.
 				 * You sense that she has not eaten nor bathed in quite some time. <BR><BR>
 				 * 
 				 * Around her is a large colony of mangy and diseased cats. It appears
@@ -416,11 +378,9 @@ namespace Server.Engines.Quests.Samurai
 				 * If you elect to give the gypsy money, you can do so by clicking your stack
 				 * of gold and selecting ‘1’. Then dragging it and dropping it on the Gypsy.
 				 */
-				return 1063067;
-			}
-		}
+            1063067;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FourthTrialCatsObjective() );
 		}
@@ -499,11 +459,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class FifthTrialReturnConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <i>The guards let you through without question, and pay you no mind as
+		public override object Message =>
+            /* <i>The guards let you through without question, and pay you no mind as
 				 * you walk into the Daimyo's treasure cache.  A vast fortune in gold,
 				 * gemstones, and jewelry is stored here!  Surely, the Daimyo wouldn't
 				 * miss a single small item...<br><br>
@@ -511,11 +468,9 @@ namespace Server.Engines.Quests.Samurai
 				 * You spot the sword quickly amongst the cache of gemstones and other valuables.
 				 * In one quick motion you retrieve it and stash it in your pack.</i>
 				 */
-				return 1063248;
-			}
-		}
+            1063248;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FifthTrialReturnObjective() );
 		}
@@ -523,17 +478,12 @@ namespace Server.Engines.Quests.Samurai
 
 	public class LostSwordConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				// What? You have returned without the sword? Go back and look for it again.
-				return 1063074;
-			}
-		}
+		public override object Message =>
+            // What? You have returned without the sword? Go back and look for it again.
+            1063074;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class SixthTrialIntroConversation : QuestConversation
 	{
@@ -604,11 +554,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class SeventhTrialIntroConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have done well young Samurai. There is but one thing left to do. <BR><BR>
+		public override object Message =>
+            /* You have done well young Samurai. There is but one thing left to do. <BR><BR>
 				 * 
 				 * In the final room is the holding cell containing young Ninjas who came to
 				 * take my life. They were caught and placed in my custody. <BR><BR>
@@ -617,11 +564,9 @@ namespace Server.Engines.Quests.Samurai
 				 * 
 				 * This is your final act as a Samurai in training.
 				 */
-				return 1063079;
-			}
-		}
+            1063079;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new SeventhTrialIntroObjective() );
 		}
@@ -629,11 +574,8 @@ namespace Server.Engines.Quests.Samurai
 
 	public class EndConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* You have proven yourself young one. You will continue to improve as your skills
+		public override object Message =>
+            /* You have proven yourself young one. You will continue to improve as your skills
 				 * are honed with age. <BR><BR>
 				 * 
 				 * Now it is time for you to explore the lands. Beyond this path lies Zento
@@ -648,11 +590,9 @@ namespace Server.Engines.Quests.Samurai
 				 * Please accept the gifts I have placed in your pack. You have earned them.
 				 * Farewell for now.
 				 */
-				return 1063125;
-			}
-		}
+            1063125;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}

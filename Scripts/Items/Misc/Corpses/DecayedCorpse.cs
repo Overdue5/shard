@@ -59,9 +59,9 @@ namespace Server.Items
 		}
 
 		// Do not display (x items, y stones)
-		public override bool DisplaysContent{ get{ return false; } }
+		public override bool DisplaysContent => false;
 
-		public override void AddNameProperty( ObjectPropertyList list )
+        public override void AddNameProperty( ObjectPropertyList list )
 		{
 			list.Add( 1046414, Name ); // the remains of ~1_NAME~
 		}

@@ -5,9 +5,9 @@ namespace Server.Items
 {
 	public class HolidayPottedPlant : Item
 	{
-		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public HolidayPottedPlant()
 			: this( Utility.RandomMinMax( 0x11C8, 0x11CC ) )
 		{
@@ -41,10 +41,10 @@ namespace Server.Items
 
 	public class PottedPlantDeed : Item
 	{
-		public override int LabelNumber { get { return 1041114; } } // A deed for a potted plant.
-		public override double DefaultWeight { get { return 1.0; } }
+		public override int LabelNumber => 1041114; // A deed for a potted plant.
+		public override double DefaultWeight => 1.0;
 
-		[Constructable]
+        [Constructable]
 		public PottedPlantDeed()
 			: base( 0x14F0 )
 		{

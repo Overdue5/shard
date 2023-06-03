@@ -17,22 +17,22 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int UsesRemaining
 		{
-			get { return m_UsesRemaining; }
-			set { m_UsesRemaining = value; InvalidateProperties(); }
+			get => m_UsesRemaining;
+            set { m_UsesRemaining = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int RawBeeswax
 		{
-			get { return m_RawBeeswax; }
-			set { if(value<0)value=0;if(value>MaxWax)value=MaxWax;m_RawBeeswax = value; InvalidateProperties(); }
+			get => m_RawBeeswax;
+            set { if(value<0)value=0;if(value>MaxWax)value=MaxWax;m_RawBeeswax = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int PureBeeswax
 		{
-			get { return m_PureBeeswax; }
-			set { if(value<0)value=0;if(value>MaxWax)value=MaxWax;m_PureBeeswax = value; InvalidateProperties(); }
+			get => m_PureBeeswax;
+            set { if(value<0)value=0;if(value>MaxWax)value=MaxWax;m_PureBeeswax = value; InvalidateProperties(); }
 		}
 
 		[Constructable]

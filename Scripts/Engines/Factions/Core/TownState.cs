@@ -18,20 +18,20 @@ namespace Server.Factions
 
 		public Town Town
 		{
-			get{ return m_Town; }
-			set{ m_Town = value; }
-		}
+			get => m_Town;
+            set => m_Town = value;
+        }
 
 		public Faction Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
 		public Mobile Sheriff
 		{
-			get{ return m_Sheriff; }
-			set
+			get => m_Sheriff;
+            set
 			{
 				if ( m_Sheriff != null )
 				{
@@ -55,8 +55,8 @@ namespace Server.Factions
 
 		public Mobile Finance
 		{
-			get{ return m_Finance; }
-			set
+			get => m_Finance;
+            set
 			{
 				if ( m_Finance != null )
 				{
@@ -80,27 +80,27 @@ namespace Server.Factions
 
 		public int Silver
 		{
-			get{ return m_Silver; }
-			set{ m_Silver = value; }
-		}
+			get => m_Silver;
+            set => m_Silver = value;
+        }
 
 		public int Tax
 		{
-			get{ return m_Tax; }
-			set{ m_Tax = value; }
-		}
+			get => m_Tax;
+            set => m_Tax = value;
+        }
 
 		public DateTime LastTaxChange
 		{
-			get{ return m_LastTaxChange; }
-			set{ m_LastTaxChange = value; }
-		}
+			get => m_LastTaxChange;
+            set => m_LastTaxChange = value;
+        }
 
 		public DateTime LastIncome
 		{
-			get{ return m_LastIncome; }
-			set{ m_LastIncome = value; }
-		}
+			get => m_LastIncome;
+            set => m_LastIncome = value;
+        }
 
 		public TownState( Town town )
 		{

@@ -13,19 +13,29 @@ namespace Server.Engines.XmlSpawner2
 		private int proximityrange = 5;                 // default movement activation from 5 tiles away
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string Message { get { return m_MessageStr; } set { m_MessageStr  = value; } }
+		public string Message { get => m_MessageStr;
+            set => m_MessageStr  = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Range { get { return proximityrange; } set { proximityrange  = value; } }
+		public int Range { get => proximityrange;
+            set => proximityrange  = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public string ActivationWord { get { return m_Word; } set { m_Word  = value; } }
+		public string ActivationWord { get => m_Word;
+            set => m_Word  = value;
+        }
         
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Charges { get { return m_Charges; } set { m_Charges  = value; } }
+		public int Charges { get => m_Charges;
+            set => m_Charges  = value;
+        }
         
 		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan Refractory { get { return m_Refractory; } set { m_Refractory  = value; } }
+		public TimeSpan Refractory { get => m_Refractory;
+            set => m_Refractory  = value;
+        }
 
 		// These are the various ways in which the message attachment can be constructed.  
 		// These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.
@@ -130,9 +140,9 @@ namespace Server.Engines.XmlSpawner2
 
 		}
 		
-		public override bool HandlesOnSpeech { get { return (ActivationWord != null); } }
+		public override bool HandlesOnSpeech => (ActivationWord != null);
 
-		public override void OnSpeech(SpeechEventArgs e )
+        public override void OnSpeech(SpeechEventArgs e )
 		{
 			base.OnSpeech(e);
 		    
@@ -144,9 +154,9 @@ namespace Server.Engines.XmlSpawner2
 			}
 		}
 		
-		public override bool HandlesOnMovement { get { return (ActivationWord == null); } }
-		
-		public override void OnMovement(MovementEventArgs e )
+		public override bool HandlesOnMovement => (ActivationWord == null);
+
+        public override void OnMovement(MovementEventArgs e )
 		{
 			base.OnMovement(e);
 

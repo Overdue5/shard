@@ -57,8 +57,8 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Rich );
 		}
 
-		public override int TreasureMapLevel{ get{ return 4; } }
-        public override int Meat { get { return 2; } }
+		public override int TreasureMapLevel => 4;
+        public override int Meat => 2;
 
         public override void OnCarve(Mobile from, Corpse corpse, Item item)
         {

@@ -5,12 +5,12 @@ namespace Server.Items
 {
 	public class BaseQuiver : Container, ICraftable
 	{
-		public override int DefaultGumpID{ get{ return 0x108; } }
-		public override int DefaultMaxItems{ get{ return 1; } }
-		public override int DefaultMaxWeight{ get{ return 50; } }
-		public override double DefaultWeight{ get{ return 2.0; } }
+		public override int DefaultGumpID => 0x108;
+        public override int DefaultMaxItems => 1;
+        public override int DefaultMaxWeight => 50;
+        public override double DefaultWeight => 2.0;
 
-		private AosAttributes m_Attributes;
+        private AosAttributes m_Attributes;
 		private int m_Capacity;
 		private int m_LowerAmmoCost;
 		private int m_WeightReduction;
@@ -19,36 +19,36 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster)]
 		public AosAttributes Attributes
 		{
-			get{ return m_Attributes; }
-			set{}
+			get => m_Attributes;
+            set{}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster)]
 		public int Capacity
 		{
-			get{ return m_Capacity; }
-			set{ m_Capacity = value; InvalidateProperties(); }
+			get => m_Capacity;
+            set{ m_Capacity = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster)]
 		public int LowerAmmoCost
 		{
-			get{ return m_LowerAmmoCost; }
-			set{ m_LowerAmmoCost = value; InvalidateProperties(); }
+			get => m_LowerAmmoCost;
+            set{ m_LowerAmmoCost = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster)]
 		public int WeightReduction
 		{
-			get{ return m_WeightReduction; }
-			set{ m_WeightReduction = value; InvalidateProperties(); }
+			get => m_WeightReduction;
+            set{ m_WeightReduction = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster)]
 		public int DamageIncrease
 		{
-			get{ return m_DamageIncrease; }
-			set{ m_DamageIncrease = value; InvalidateProperties(); }
+			get => m_DamageIncrease;
+            set{ m_DamageIncrease = value; InvalidateProperties(); }
 		}
 
 		private Mobile m_Crafter;
@@ -57,23 +57,20 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Crafter
 		{
-			get{ return m_Crafter; }
-			set{ m_Crafter = value; InvalidateProperties(); }
+			get => m_Crafter;
+            set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public ClothingQuality Quality
 		{
-			get{ return m_Quality; }
-			set{ m_Quality = value; InvalidateProperties(); }
+			get => m_Quality;
+            set{ m_Quality = value; InvalidateProperties(); }
 		}
 		
-		public Item Ammo
-		{
-			get{ return Items.Count > 0 ? Items[ 0 ] : null; }
-		}
+		public Item Ammo => Items.Count > 0 ? Items[ 0 ] : null;
 
-		public BaseQuiver() : this( 0x2FB7 )
+        public BaseQuiver() : this( 0x2FB7 )
 		{
 		}
 

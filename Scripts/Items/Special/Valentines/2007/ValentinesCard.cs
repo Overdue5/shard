@@ -7,10 +7,14 @@ namespace Server.Items
 	public class ValentinesCard : Item
 	{
 		[CommandProperty(AccessLevel.GameMaster)]
-		public virtual string From { get { return m_From; } set { m_From = value; } }
+		public virtual string From { get => m_From;
+            set => m_From = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public virtual string To { get { return m_To; } set { m_To = value; } }
+		public virtual string To { get => m_To;
+            set => m_To = value;
+        }
 
 		private static string Unsigned = "___";
 

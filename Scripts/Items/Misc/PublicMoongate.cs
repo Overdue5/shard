@@ -10,9 +10,9 @@ namespace Server.Items
 {
 	public class PublicMoongate : Item
 	{
-		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public PublicMoongate() : base( 0xF6C )
 		{
 			Movable = false;
@@ -88,9 +88,9 @@ namespace Server.Items
             Effects.SendLocationParticles(EffectItem.Create(randomGate, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 2023);
         }
 
-	    public override bool HandlesOnMovement{ get{ return true; } }
+	    public override bool HandlesOnMovement => true;
 
-		public override void OnMovement( Mobile m, Point3D oldLocation )
+        public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
 			if ( m is PlayerMobile )
 			{
@@ -202,23 +202,11 @@ namespace Server.Items
 		private readonly Point3D m_Location;
 		private readonly int m_Number;
 
-		public Point3D Location
-		{
-			get
-			{
-				return m_Location;
-			}
-		}
+		public Point3D Location => m_Location;
 
-		public int Number
-		{
-			get
-			{
-				return m_Number;
-			}
-		}
+        public int Number => m_Number;
 
-		public PMEntry( Point3D loc, int number )
+        public PMEntry( Point3D loc, int number )
 		{
 			m_Location = loc;
 			m_Number = number;
@@ -232,39 +220,15 @@ namespace Server.Items
 	    private readonly Map m_Map;
 		private readonly PMEntry[] m_Entries;
 
-		public int Number
-		{
-			get
-			{
-				return m_Number;
-			}
-		}
+		public int Number => m_Number;
 
-		public int SelNumber
-		{
-			get
-			{
-				return m_SelNumber;
-			}
-		}
+        public int SelNumber => m_SelNumber;
 
-		public Map Map
-		{
-			get
-			{
-				return m_Map;
-			}
-		}
+        public Map Map => m_Map;
 
-		public PMEntry[] Entries
-		{
-			get
-			{
-				return m_Entries;
-			}
-		}
+        public PMEntry[] Entries => m_Entries;
 
-		public PMList( int number, int selNumber, Map map, PMEntry[] entries )
+        public PMList( int number, int selNumber, Map map, PMEntry[] entries )
 		{
 			m_Number = number;
 			m_SelNumber = selNumber;

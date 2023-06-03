@@ -16,12 +16,14 @@ namespace Knives.Chat3
         private static bool s_ForceMenu = false;
         private static Hashtable s_ForceInfos = new Hashtable();
 
-        public static ArrayList Backgrounds { get { return s_Backgrounds; } }
-        public static ArrayList TextColors { get { return s_TextColors; } }
-        public static bool ForceMenu { get { return s_ForceMenu; } set { s_ForceMenu = value; } }
-        public static Hashtable ForceInfos { get { return s_ForceInfos; } }
+        public static ArrayList Backgrounds => s_Backgrounds;
+        public static ArrayList TextColors => s_TextColors;
+        public static bool ForceMenu { get => s_ForceMenu;
+            set => s_ForceMenu = value;
+        }
+        public static Hashtable ForceInfos => s_ForceInfos;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
 			s_Backgrounds.Add( 0xA3C );
 			s_Backgrounds.Add( 0x53 );
@@ -213,15 +215,20 @@ namespace Knives.Chat3
 		private string c_TextColorRGB;
 		private int c_Background;
 
-		public Mobile Mobile{ get{ return c_Mobile; } }
-		public Type Type{ get{ return c_Type; } }
-        public bool Transparent { get { return c_Transparent; } set { c_Transparent = value; c_DefaultTrans = false; } }
-		public bool DefaultTrans{ get{ return c_DefaultTrans; } set{ c_DefaultTrans = value; } }
-		public string TextColorRGB{ get{ return c_TextColorRGB; } set{ c_TextColorRGB = value; } }
-		public string TextColor{ get{ return String.Format( "<BASEFONT COLOR=#{0}>", c_TextColorRGB ); } }
-		public int Background{ get{ return c_Background; } }
+		public Mobile Mobile => c_Mobile;
+        public Type Type => c_Type;
+        public bool Transparent { get => c_Transparent;
+            set { c_Transparent = value; c_DefaultTrans = false; } }
+		public bool DefaultTrans{ get => c_DefaultTrans;
+            set => c_DefaultTrans = value;
+        }
+		public string TextColorRGB{ get => c_TextColorRGB;
+            set => c_TextColorRGB = value;
+        }
+		public string TextColor => String.Format( "<BASEFONT COLOR=#{0}>", c_TextColorRGB );
+        public int Background => c_Background;
 
-		public GumpInfo()
+        public GumpInfo()
 		{
 		}
 

@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new RouletteTableAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new RouletteTableAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public RouletteTableAddon()
 		{
 
@@ -74,15 +68,9 @@ namespace Server.Items
 
 	public class RouletteTableAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new RouletteTableAddon();
-			}
-		}
+		public override BaseAddon Addon => new RouletteTableAddon();
 
-		[Constructable]
+        [Constructable]
 		public RouletteTableAddonDeed()
 		{
 			Name = "RouletteTable";

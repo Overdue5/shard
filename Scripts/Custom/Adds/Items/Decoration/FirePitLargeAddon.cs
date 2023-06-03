@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class FirePitLargeAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new FirePitLargeAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new FirePitLargeAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public FirePitLargeAddon()
 		{
 			AddonComponent ac = null;
@@ -91,15 +85,9 @@ namespace Server.Items
 
 	public class FirePitLargeAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new FirePitLargeAddon();
-			}
-		}
+		public override BaseAddon Addon => new FirePitLargeAddon();
 
-		[Constructable]
+        [Constructable]
 		public FirePitLargeAddonDeed()
 		{
 			Name = "FirePitLarge";

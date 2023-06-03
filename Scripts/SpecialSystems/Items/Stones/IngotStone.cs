@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class IngotStone : Item
 	{
-		public override string DefaultName
-		{
-			get { return "an Ingot stone"; }
-		}
+		public override string DefaultName => "an Ingot stone";
 
-		[Constructable]
+        [Constructable]
 		public IngotStone() : base( 0xED4 )
 		{
 			Movable = false;

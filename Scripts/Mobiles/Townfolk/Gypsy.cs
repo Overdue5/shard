@@ -54,10 +54,10 @@ namespace Server.Mobiles
 		}
 
 
-		public override bool CanTeach { get { return true; } }
-		public override bool ClickTitle { get { return false; } }
+		public override bool CanTeach => true;
+        public override bool ClickTitle => false;
 
-		public Gypsy( Serial serial )
+        public Gypsy( Serial serial )
 			: base( serial )
 		{
 		}

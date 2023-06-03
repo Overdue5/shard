@@ -8,14 +8,14 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile TubOwner
         {
-            get { return m_TubOwner; }
-            set { m_TubOwner = value; }
+            get => m_TubOwner;
+            set => m_TubOwner = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool HasColor
         {
-            get { return m_HasColor; }
+            get => m_HasColor;
             set
             {
                 if (!value)
@@ -43,10 +43,7 @@ namespace Server.Items
         {
         }
 
-        public override bool AllowRunebooks
-        {
-            get { return true; }
-        }
+        public override bool AllowRunebooks => true;
 
         public override void OnDoubleClick(Mobile from)
         {

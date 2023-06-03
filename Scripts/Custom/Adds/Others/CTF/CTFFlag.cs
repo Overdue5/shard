@@ -41,18 +41,15 @@ namespace Server.Custom.Games
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CTFGame Game 
 		{ 
-			get{ return m_Game; } 
-			set
-			{ 
-				m_Game = value;
-			} 
-		}
+			get => m_Game;
+            set => m_Game = value;
+        }
 
-		public bool Home{ get { return m_Home; } }
+		public bool Home => m_Home;
 
-		public CTFTeam Team { get { return m_Team; } }
+        public CTFTeam Team => m_Team;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 		}
@@ -153,9 +150,9 @@ namespace Server.Custom.Games
 				MoveToWorld( GetWorldLocation(), Map );
 		}
 
-		public override bool Decays{ get{ return false; } }
+		public override bool Decays => false;
 
-		public override void OnDoubleClick( Mobile from )
+        public override void OnDoubleClick( Mobile from )
 		{
 			if ( from.AccessLevel >= AccessLevel.GameMaster )
 			{

@@ -39,7 +39,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D FirstNW
         {
-            get { return m_FirstNW; }
+            get => m_FirstNW;
             set
             {
                 m_FirstNW = value;
@@ -50,7 +50,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D FirstSE
         {
-            get { return m_FirstSE; }
+            get => m_FirstSE;
             set
             {
                 m_FirstSE = value;
@@ -61,7 +61,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D SecondNW
         {
-            get { return m_SecondNW; }
+            get => m_SecondNW;
             set
             {
                 m_SecondNW = value;
@@ -72,7 +72,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D SecondSE
         {
-            get { return m_SecondSE; }
+            get => m_SecondSE;
             set
             {
                 m_SecondSE = value;
@@ -83,7 +83,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D ThirdNW
         {
-            get { return m_ThirdNW; }
+            get => m_ThirdNW;
             set
             {
                 m_ThirdNW = value;
@@ -94,7 +94,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D ThirdSE
         {
-            get { return m_ThirdSE; }
+            get => m_ThirdSE;
             set
             {
                 m_ThirdSE = value;
@@ -105,7 +105,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D FourthNW
         {
-            get { return m_FourthNW; }
+            get => m_FourthNW;
             set
             {
                 m_FourthNW = value;
@@ -116,7 +116,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D FourthSE
         {
-            get { return m_FourthSE; }
+            get => m_FourthSE;
             set
             {
                 m_FourthSE = value;
@@ -127,7 +127,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Map MapDest
         {
-            get { return m_MapDest; }
+            get => m_MapDest;
             set
             {
                 m_MapDest = value;
@@ -138,7 +138,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Count
         {
-            get { return m_Count; }
+            get => m_Count;
             set
             {
                 m_Count = value;
@@ -149,7 +149,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int Boxes
         {
-            get { return m_Boxes; }
+            get => m_Boxes;
             set
             {
                 m_Boxes = value;
@@ -158,10 +158,7 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool Running
-        {
-            get { return m_Running; }
-        }
+        public bool Running => m_Running;
 
         #endregion
 

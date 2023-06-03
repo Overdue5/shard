@@ -2,9 +2,9 @@ namespace Server.Mobiles
 {
 	public class MerchantGuildmaster : BaseGuildmaster
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.MerchantsGuild; } }
+		public override NpcGuild NpcGuild => NpcGuild.MerchantsGuild;
 
-		[Constructable]
+        [Constructable]
 		public MerchantGuildmaster() : base( "merchant" )
 		{
 			SetSkill( SkillName.ItemID, 85.0, 100.0 );

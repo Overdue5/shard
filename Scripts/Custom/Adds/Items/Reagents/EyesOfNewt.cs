@@ -27,21 +27,15 @@ namespace Server.Items
             }
         }
 
-		public override int PotionGroupIndex
-		{
-			get { return 8; }
-		}
+		public override int PotionGroupIndex => 8;
 
-		//Total Mana pot
-		public override int PotionIndex
-		{
-			get { return 1; }
-		}
+        //Total Mana pot
+		public override int PotionIndex => 1;
 
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
 
-		public override void Serialize( GenericWriter writer )
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 

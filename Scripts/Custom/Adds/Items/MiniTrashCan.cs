@@ -7,13 +7,11 @@ namespace Server.Items
     public class MiniTrashCan : Container
 	{
 
-        public override int DefaultMaxWeight { get { return 0; } } // A value of 0 signals unlimited weight
+        public override int DefaultMaxWeight => 0; // A value of 0 signals unlimited weight
 
-        public override bool IsDecoContainer
-        {
-            get { return false; }
-        }
-		[Constructable]
+        public override bool IsDecoContainer => false;
+
+        [Constructable]
 		public MiniTrashCan() : base( 0xE7A )
 		{
 			Weight = 0.1;

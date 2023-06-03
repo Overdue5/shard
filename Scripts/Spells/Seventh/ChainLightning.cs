@@ -7,9 +7,9 @@ namespace Server.Spells.Seventh
 {
     public class ChainLightningSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 0x29; } }
-        
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 0x29;
+
         private static readonly SpellInfo m_Info = new SpellInfo(
 				"Chain Lightning", "Vas Ort Grav",
 				263,
@@ -33,9 +33,9 @@ namespace Server.Spells.Seventh
 				Caster.Target = new InternalTarget( this );
 		}
 
-		public override bool DelayedDamage{ get{ return false; } }
+		public override bool DelayedDamage => false;
 
-		public void Target( IPoint3D p )
+        public void Target( IPoint3D p )
 		{
 			if ( !Caster.CanSee( p ) )
 			{

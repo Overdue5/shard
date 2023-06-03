@@ -15,9 +15,9 @@ namespace Server.Items
 		{
 		}
 
-		public override int BaseMana{ get{ return 20; } }
+		public override int BaseMana => 20;
 
-		public override bool Validate( Mobile from )
+        public override bool Validate( Mobile from )
 		{
 			if ( !base.Validate( from ) )
 				return false;

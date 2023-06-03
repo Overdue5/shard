@@ -12,9 +12,9 @@ namespace Server.Spells
 
 		public abstract SpellCircle Circle { get; }
 
-        public virtual int ManaCost { get { return ManaTable[(int)Circle]; } }
+        public virtual int ManaCost => ManaTable[(int)Circle];
 
-		public override bool ConsumeReagents()
+        public override bool ConsumeReagents()
 		{
             if (Scroll != null || !Caster.Player)
                 return true;
@@ -207,12 +207,6 @@ namespace Server.Spells
             return TimeSpan.FromSeconds(delay);
         }
 
-		public override TimeSpan CastDelayBase
-		{
-			get
-			{
-				return TimeSpan.FromSeconds( (3 + (int)Circle) * CastDelaySecondsPerTick );
-			}
-		}
-	}
+		public override TimeSpan CastDelayBase => TimeSpan.FromSeconds( (3 + (int)Circle) * CastDelaySecondsPerTick );
+    }
 }

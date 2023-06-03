@@ -2,12 +2,12 @@ namespace Server.Items
 {
 	public class FleshRipper : AssassinSpike
 	{
-		public override int LabelNumber{ get{ return 1075045; } } // Flesh Ripper
+		public override int LabelNumber => 1075045; // Flesh Ripper
 
-		public override int InitMinHits{ get{ return 255; } }
-		public override int InitMaxHits{ get{ return 255; } }
+		public override int InitMinHits => 255;
+        public override int InitMaxHits => 255;
 
-		[Constructable]
+        [Constructable]
 		public FleshRipper()
 		{
 			Hue = 0x341;

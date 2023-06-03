@@ -50,8 +50,8 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public DuelStoneEventType StoneType
 		{
-			get { return eventType; }
-			set
+			get => eventType;
+            set
 			{
 				if( value.ToString().Contains( "Loot" ) )
 					DuelCost = 0;
@@ -66,22 +66,22 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D DuelerLocation1
 		{
-			get { return duelerLocation1; }
-			set { duelerLocation1 = value; }
-		}
+			get => duelerLocation1;
+            set => duelerLocation1 = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D DuelerLocation2
 		{
-			get { return duelerLocation2; }
-			set { duelerLocation2 = value; }
-		}
+			get => duelerLocation2;
+            set => duelerLocation2 = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Combatant1
 		{
-			get { return combatant1; }
-			set
+			get => combatant1;
+            set
 			{
 				if( value != null && !usingStone.Contains( value ) )
 					usingStone.Add( value );
@@ -95,8 +95,8 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Combatant2
 		{
-			get { return combatant2; }
-			set
+			get => combatant2;
+            set
 			{
 				if( value != null && !usingStone.Contains( value ) )
 					usingStone.Add( value );
@@ -110,8 +110,8 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Combatant3
 		{
-			get { return combatant3; }
-			set
+			get => combatant3;
+            set
 			{
 				if( value != null && !usingStone.Contains( value ) )
 					usingStone.Add( value );
@@ -125,8 +125,8 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Combatant4
 		{
-			get { return combatant4; }
-			set
+			get => combatant4;
+            set
 			{
 				if( value != null && !usingStone.Contains( value ) )
 					usingStone.Add( value );
@@ -139,16 +139,16 @@ namespace Server.DuelSystem
 
 		public ArrayList UsingStone
 		{
-			get { return usingStone; }
-			set { usingStone = value; }
-		}
+			get => usingStone;
+            set => usingStone = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D AfterDuelLocation
 		{
-			get { return afterDuelLocation; }
-			set { afterDuelLocation = value; }
-		}
+			get => afterDuelLocation;
+            set => afterDuelLocation = value;
+        }
 
 	    public Timer CountTimer { get; set; }
 
@@ -156,24 +156,24 @@ namespace Server.DuelSystem
 
 	    public Timer EndDuelTimer
 		{
-			get { return endDuelTimer; }
-			set { endDuelTimer = value; }
-		}
+			get => endDuelTimer;
+            set => endDuelTimer = value;
+        }
 
 	    public bool EndTimer { get; set; }
 
 	    [CommandProperty( AccessLevel.Administrator )]
 		public bool IsLadderStone
 		{
-			get { return isLadderStone; }
-			set { isLadderStone = value; }
-		}
+			get => isLadderStone;
+            set => isLadderStone = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int StoneIdleTime
 		{
-			get { return stoneIdleTime; }
-			set
+			get => stoneIdleTime;
+            set
 			{
 				if( value > 60 && value < 5 )
 					value = 15;
@@ -185,8 +185,8 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int StoneMaxIdleTime
 		{
-			get { return stoneMaxIdleTime; }
-			set
+			get => stoneMaxIdleTime;
+            set
 			{
 				if( value > 60 && value < 5 )
 					value = 15;
@@ -198,12 +198,9 @@ namespace Server.DuelSystem
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int DuelCost
 		{
-			get { return moneyTaken; }
-			set
-			{
-				moneyTaken = value;
-			}
-			/*{
+			get => moneyTaken;
+            set => moneyTaken = value;
+            /*{
 				if( StoneType.ToString().Contains( "Loot" ) )
 					value = 0;
 				else if( value < 1000 )

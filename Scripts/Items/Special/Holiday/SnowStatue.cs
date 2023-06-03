@@ -6,9 +6,9 @@ namespace Server.Items
 	[Flipable( 0x456E, 0x456F )]
 	public class SnowStatuePegasus : Item
 	{
-		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public SnowStatuePegasus()
 			: base( 0x456E )
 		{
@@ -37,9 +37,9 @@ namespace Server.Items
 	[Flipable( 0x4578, 0x4579 )]
 	public class SnowStatueSeahorse : Item
 	{
-		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public SnowStatueSeahorse()
 			: base( 0x4578 )
 		{
@@ -68,9 +68,9 @@ namespace Server.Items
 	[Flipable( 0x457A, 0x457B )]
 	public class SnowStatueMermaid : Item
 	{
-		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public SnowStatueMermaid()
 			: base( 0x457A )
 		{
@@ -99,9 +99,9 @@ namespace Server.Items
 	[Flipable( 0x457C, 0x457D )]
 	public class SnowStatueGriffon : Item
 	{
-		public override bool ForceShowProperties { get { return ObjectPropertyList.Enabled; } }
+		public override bool ForceShowProperties => ObjectPropertyList.Enabled;
 
-		[Constructable]
+        [Constructable]
 		public SnowStatueGriffon()
 			: base( 0x457C )
 		{
@@ -129,10 +129,10 @@ namespace Server.Items
 
 	public class SnowStatueDeed : Item
 	{
-		public override int LabelNumber { get { return 1114296; } } // snow statue deed
-		public override double DefaultWeight { get { return 1.0; } }
+		public override int LabelNumber => 1114296; // snow statue deed
+		public override double DefaultWeight => 1.0;
 
-		[Constructable]
+        [Constructable]
 		public SnowStatueDeed()
 			: base( 0x14F0 )
 		{

@@ -7,15 +7,12 @@ namespace Server.Items
         private const string notEnoughRegs = "You do not have enough reagents to make that potion.";
         private const string notSkilledEnough = "You do not have the required skills to create that potion.";
 
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-        public virtual int PotionGroupIndex { get { return -1; } }
-        public virtual int PotionIndex { get { return -1; } }
+        public virtual int PotionGroupIndex => -1;
+        public virtual int PotionIndex => -1;
 
-		public BaseReagent( int itemID ) : this( itemID, 1 )
+        public BaseReagent( int itemID ) : this( itemID, 1 )
 		{
 		}
 

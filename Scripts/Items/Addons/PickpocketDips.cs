@@ -13,24 +13,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public double MinSkill
 		{
-			get{ return m_MinSkill; }
-			set{ m_MinSkill = value; }
-		}
+			get => m_MinSkill;
+            set => m_MinSkill = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public double MaxSkill
 		{
-			get{ return m_MaxSkill; }
-			set{ m_MaxSkill = value; }
-		}
+			get => m_MaxSkill;
+            set => m_MaxSkill = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Swinging
-		{
-			get{ return ( m_Timer != null ); } 
-		}
+		public bool Swinging => ( m_Timer != null );
 
-		public PickpocketDip( int itemID ) : base( itemID )
+        public PickpocketDip( int itemID ) : base( itemID )
 		{
 			m_MinSkill = -40.0;
 			m_MaxSkill = +40.0;
@@ -157,9 +154,9 @@ namespace Server.Items
 
 	public class PickpocketDipEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new PickpocketDipEastDeed(); } }
+		public override BaseAddonDeed Deed => new PickpocketDipEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public PickpocketDipEastAddon()
 		{
 			AddComponent( new PickpocketDip( 0x1EC3 ), 0, 0, 0 );
@@ -186,8 +183,8 @@ namespace Server.Items
 
 	public class PickpocketDipEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new PickpocketDipEastAddon(); } }
-		public override int LabelNumber{ get{ return 1044337; } } // pickpocket dip (east)
+		public override BaseAddon Addon => new PickpocketDipEastAddon();
+        public override int LabelNumber => 1044337; // pickpocket dip (east)
 
 		[Constructable]
 		public PickpocketDipEastDeed()
@@ -215,9 +212,9 @@ namespace Server.Items
 
 	public class PickpocketDipSouthAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new PickpocketDipSouthDeed(); } }
+		public override BaseAddonDeed Deed => new PickpocketDipSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public PickpocketDipSouthAddon()
 		{
 			AddComponent( new PickpocketDip( 0x1EC0 ), 0, 0, 0 );
@@ -244,8 +241,8 @@ namespace Server.Items
 
 	public class PickpocketDipSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new PickpocketDipSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1044338; } } // pickpocket dip (south)
+		public override BaseAddon Addon => new PickpocketDipSouthAddon();
+        public override int LabelNumber => 1044338; // pickpocket dip (south)
 
 		[Constructable]
 		public PickpocketDipSouthDeed()

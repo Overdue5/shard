@@ -3,7 +3,8 @@
     [Flipable(0x390E, 0x390D, 0x390C)]
     public class GiftBoxes : BaseContainer
     {
-        public override int DefaultGumpID { get { return 0x102; } }
+        public override int DefaultGumpID => 0x102;
+
         [Constructable]
         public GiftBoxes()
             : base(0x390E)
@@ -97,7 +98,8 @@
     [Flipable(0x3BC5, 0x3BC6)]
     public class OakNightStand : BaseContainer
     {
-        public override int DefaultGumpID { get { return 0x51; } }
+        public override int DefaultGumpID => 0x51;
+
         [Constructable]
         public OakNightStand()
             : base(0x3BC5)
@@ -284,7 +286,8 @@
     [Flipable(0x3BC7, 0x3BC8)]
     public class SmallBookShelf : BaseContainer
     {
-        public override int DefaultGumpID { get { return 0x4D; } }
+        public override int DefaultGumpID => 0x4D;
+
         [Constructable]
         public SmallBookShelf()
             : base(0x3BC7)

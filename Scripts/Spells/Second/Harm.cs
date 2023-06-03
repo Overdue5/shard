@@ -6,11 +6,11 @@ namespace Server.Spells.Second
 {
     public class HarmSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Second; } }
-        public override int ManaCost { get { return 11; } } //Loki edit: New PvP changes
-        public override int Sound { get { return 0x1F1; } }
+        public override SpellCircle Circle => SpellCircle.Second;
+        public override int ManaCost => 11; //Loki edit: New PvP changes
+        public override int Sound => 0x1F1;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Harm", "An Mani",
 				212,
 				Core.AOS ? 9001 : 9041,
@@ -46,9 +46,9 @@ namespace Server.Spells.Second
 			Caster.Target = new InternalTarget( this );
 		}
 
-		public override bool DelayedDamage{ get{ return false; } }
+		public override bool DelayedDamage => false;
 
-		public void Target( Mobile m )
+        public void Target( Mobile m )
 		{
 			if ( !Caster.CanSee( m ) )
 			{

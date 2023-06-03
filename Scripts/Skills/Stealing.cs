@@ -477,14 +477,14 @@ namespace Server.SkillHandlers
 		private readonly Mobile m_Victim;
 		private DateTime m_Expires;
 
-		public Item Stolen{ get{ return m_Stolen; } }
-		public Mobile Thief{ get{ return m_Thief; } }
-		public Mobile Victim{ get{ return m_Victim; } }
-		public DateTime Expires{ get{ return m_Expires; } }
+		public Item Stolen => m_Stolen;
+        public Mobile Thief => m_Thief;
+        public Mobile Victim => m_Victim;
+        public DateTime Expires => m_Expires;
 
-		public bool IsExpired{ get{ return ( DateTime.UtcNow >= m_Expires ); } }
+        public bool IsExpired => ( DateTime.UtcNow >= m_Expires );
 
-		public StolenItem( Item stolen, Mobile thief, Mobile victim )
+        public StolenItem( Item stolen, Mobile thief, Mobile victim )
 		{
 			m_Stolen = stolen;
 			m_Thief = thief;

@@ -34,12 +34,9 @@ namespace Server.Custom.Games
 		[CommandProperty( AccessLevel.GameMaster )]
 		public BombermanBombPlacer BombPlacer
 		{ 
-			get{ return m_Placer; } 
-			set
-			{ 
-				m_Placer = value;
-			} 
-		}
+			get => m_Placer;
+            set => m_Placer = value;
+        }
 
         public override void OnAfterDelete()
         {
@@ -47,9 +44,9 @@ namespace Server.Custom.Games
             base.OnAfterDelete();
         }
 
-		public override bool Decays{ get{ return false; } }
-		
-		public void detonate()
+		public override bool Decays => false;
+
+        public void detonate()
 		{
 			Visible = false;
 			

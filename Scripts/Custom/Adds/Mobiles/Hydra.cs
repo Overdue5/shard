@@ -50,11 +50,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MedScrolls, 2 );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
-		public override int TreasureMapLevel{ get{ return 4; } }
+		public override bool CanRummageCorpses => true;
+        public override Poison PoisonImmune => Poison.Lethal;
+        public override int TreasureMapLevel => 4;
 
-		public Hydra( Serial serial ) : base( serial )
+        public Hydra( Serial serial ) : base( serial )
 		{
 		}
 

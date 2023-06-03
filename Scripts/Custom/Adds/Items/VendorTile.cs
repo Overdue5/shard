@@ -10,13 +10,7 @@
             Movable = false;
         }
 
-        public override bool Decays
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool Decays => false;
 
         public VendorTile(Serial serial)
             : base(serial)

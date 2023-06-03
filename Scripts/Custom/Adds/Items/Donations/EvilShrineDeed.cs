@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class EvilShrineAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new EvilShrineDeed(); } }
+		public override BaseAddonDeed Deed => new EvilShrineDeed();
 
-		[Constructable]
+        [Constructable]
 		public EvilShrineAddon()
 		{
 			AddComponent( new AddonComponent( 0x2A9B ), 0, 0, 0 ); //N
@@ -33,9 +33,9 @@ namespace Server.Items
 
 	public class EvilShrineDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new EvilShrineAddon(); } }
+		public override BaseAddon Addon => new EvilShrineAddon();
 
-		[Constructable]
+        [Constructable]
 		public EvilShrineDeed()
 		{
             Name = "Evil shrine deed";

@@ -43,28 +43,16 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				m_X = value;
-			}
-		}
+			get => m_X;
+            set => m_X = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				m_Y = value;
-			}
-		}
+			get => m_Y;
+            set => m_Y = value;
+        }
 
 		public override string ToString()
 		{
@@ -248,41 +236,23 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				m_X = value;
-			}
-		}
+			get => m_X;
+            set => m_X = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				m_Y = value;
-			}
-		}
+			get => m_Y;
+            set => m_Y = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Z
 		{
-			get
-			{
-				return m_Z;
-			}
-			set
-			{
-				m_Z = value;
-			}
-		}
+			get => m_Z;
+            set => m_Z = value;
+        }
 
 		public override string ToString()
 		{
@@ -430,80 +400,44 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public Point2D Start
 		{
-			get
-			{
-				return m_Start;
-			}
-			set
-			{
-				m_Start = value;
-			}
-		}
+			get => m_Start;
+            set => m_Start = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Point2D End
 		{
-			get
-			{
-				return m_End;
-			}
-			set
-			{
-				m_End = value;
-			}
-		}
+			get => m_End;
+            set => m_End = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int X
 		{
-			get
-			{
-				return m_Start.m_X;
-			}
-			set
-			{
-				m_Start.m_X = value;
-			}
-		}
+			get => m_Start.m_X;
+            set => m_Start.m_X = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Y
 		{
-			get
-			{
-				return m_Start.m_Y;
-			}
-			set
-			{
-				m_Start.m_Y = value;
-			}
-		}
+			get => m_Start.m_Y;
+            set => m_Start.m_Y = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Width
 		{
-			get
-			{
-				return m_End.m_X - m_Start.m_X;
-			}
-			set
-			{
-				m_End.m_X = m_Start.m_X + value;
-			}
-		}
+			get => m_End.m_X - m_Start.m_X;
+            set => m_End.m_X = m_Start.m_X + value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public int Height
 		{
-			get
-			{
-				return m_End.m_Y - m_Start.m_Y;
-			}
-			set
-			{
-				m_End.m_Y = m_Start.m_Y + value;
-			}
-		}
+			get => m_End.m_Y - m_Start.m_Y;
+            set => m_End.m_Y = m_Start.m_Y + value;
+        }
 
 		public void MakeHold( Rectangle2D r )
 		{
@@ -565,57 +499,27 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public Point3D Start
 		{
-			get
-			{
-				return m_Start;
-			}
-			set
-			{
-				m_Start = value;
-			}
-		}
+			get => m_Start;
+            set => m_Start = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Point3D End
 		{
-			get
-			{
-				return m_End;
-			}
-			set
-			{
-				m_End = value;
-			}
-		}
+			get => m_End;
+            set => m_End = value;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public int Width
-		{
-			get
-			{
-				return m_End.X - m_Start.X;
-			}
-		}
+		public int Width => m_End.X - m_Start.X;
 
-		[CommandProperty( AccessLevel.Counselor )]
-		public int Height
-		{
-			get
-			{
-				return m_End.Y - m_Start.Y;
-			}
-		}
+        [CommandProperty( AccessLevel.Counselor )]
+		public int Height => m_End.Y - m_Start.Y;
 
-		[CommandProperty( AccessLevel.Counselor )]
-		public int Depth
-		{
-			get
-			{
-				return m_End.Z - m_Start.Z;
-			}
-		}
+        [CommandProperty( AccessLevel.Counselor )]
+		public int Depth => m_End.Z - m_Start.Z;
 
-		public bool Contains( Point3D p )
+        public bool Contains( Point3D p )
 		{
 			return ( p.m_X >= m_Start.m_X )
 				&& ( p.m_X <  m_End.m_X )

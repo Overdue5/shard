@@ -7,9 +7,9 @@ namespace Server.Engines.Craft
 	{
 		private readonly int m_ItemID;
 
-		public int ItemID{ get{ return m_ItemID; } }
+		public int ItemID => m_ItemID;
 
-		public CraftItemIDAttribute( int itemID )
+        public CraftItemIDAttribute( int itemID )
 		{
 			m_ItemID = itemID;
 		}

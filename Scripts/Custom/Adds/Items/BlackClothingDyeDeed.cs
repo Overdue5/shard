@@ -49,10 +49,7 @@ namespace Server.Items
 
     public class BlackDyeDeed : Item 
     {
-        public override string DefaultName
-        {
-            get { return "Clothing black dye deed"; }
-        }
+        public override string DefaultName => "Clothing black dye deed";
 
         [Constructable]
         public BlackDyeDeed()
@@ -83,7 +80,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
 
-        public override bool DisplayLootType { get { return false; } }
+        public override bool DisplayLootType => false;
 
         public override void OnDoubleClick(Mobile from)
         {

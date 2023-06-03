@@ -13,7 +13,8 @@ namespace Server.SkillHandlers
             SkillInfo.Table[(int)SkillName.Stealth].Callback = OnUse;
         }
 
-        public static int[,] ArmorTable { get { return m_ArmorTable; } }
+        public static int[,] ArmorTable => m_ArmorTable;
+
         private static readonly int[,] m_ArmorTable = new int[,]
 			{
 							//	Gorget	Gloves	Helmet	Arms	Legs	Chest	Shield

@@ -55,10 +55,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
-		public override bool HasBreath{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 2; } }
-		public override int Scales{ get{ return 8; } }
-		public override ScaleType ScaleType{ get{ return ScaleType.Blue; } }
+		public override bool HasBreath => true;
+        public override int TreasureMapLevel => 2;
+        public override int Scales => 8;
+        public override ScaleType ScaleType => ScaleType.Blue;
 
         public override void OnCarve(Mobile from, Corpse corpse, Item item)
         {

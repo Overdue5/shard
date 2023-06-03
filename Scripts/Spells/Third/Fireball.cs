@@ -7,10 +7,10 @@ namespace Server.Spells.Third
 {
     public class FireballSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Third; } }
-        public override int Sound { get { return 0x15f; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Third;
+        public override int Sound => 0x15f;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Fireball", "Vas Flam",
 				212,
 				9041,

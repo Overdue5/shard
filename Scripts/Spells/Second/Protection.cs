@@ -8,10 +8,10 @@ namespace Server.Spells.Second
     {
         private static readonly Dictionary<Mobile, Timer> m_Timers = new Dictionary<Mobile, Timer>();
 
-        public static int ArmorModValue { get { return 6; } }
+        public static int ArmorModValue => 6;
 
-        public override SpellCircle Circle { get { return SpellCircle.Second; } }
-        public override int Sound { get { return 493; } }
+        public override SpellCircle Circle => SpellCircle.Second;
+        public override int Sound => 493;
 
         private static readonly SpellInfo m_Info = new SpellInfo(
                 "Protection", "Uus Sanct",
@@ -53,10 +53,7 @@ namespace Server.Spells.Second
             FinishSequence();
         }
 
-        public static Dictionary<Mobile, Timer> Registry
-        {
-            get { return m_Timers; }
-        }
+        public static Dictionary<Mobile, Timer> Registry => m_Timers;
 
         public static void ApplyProtectionEffect(Mobile target)
         {

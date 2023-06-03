@@ -3,9 +3,9 @@ namespace Server.Mobiles
 	[CorpseName( "a giant ice worm corpse" )]
 	public class GiantIceWorm : BaseCreature
 	{
-		public override bool SubdueBeforeTame { get { return true; } }
+		public override bool SubdueBeforeTame => true;
 
-		[Constructable]
+        [Constructable]
 		public GiantIceWorm() : base( AIType.AI_SphereMelee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Body = 89;
@@ -44,13 +44,13 @@ namespace Server.Mobiles
 			MinTameSkill = 71.1;
 		}
 
-		public override Poison PoisonImmune { get { return Poison.Greater; } }
+		public override Poison PoisonImmune => Poison.Greater;
 
-		public override Poison HitPoison { get { return Poison.Greater; } }
+        public override Poison HitPoison => Poison.Greater;
 
-		public override FoodType FavoriteFood { get { return FoodType.Meat; } }
+        public override FoodType FavoriteFood => FoodType.Meat;
 
-		public GiantIceWorm( Serial serial ) : base ( serial )
+        public GiantIceWorm( Serial serial ) : base ( serial )
 		{
 		}
 

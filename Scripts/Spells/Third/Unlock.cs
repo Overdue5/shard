@@ -7,12 +7,12 @@ namespace Server.Spells.Third
 {
     public class UnlockSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Third; } }
-        public override int Sound { get { return 0x1FF; } }
-        
-        public override bool SpellDisabled { get { return false; } }
+        public override SpellCircle Circle => SpellCircle.Third;
+        public override int Sound => 0x1FF;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override bool SpellDisabled => false;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Unlock Spell", "Ex Por",
 				263,
 				9001,

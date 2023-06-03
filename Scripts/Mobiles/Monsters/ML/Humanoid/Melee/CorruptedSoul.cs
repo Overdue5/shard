@@ -2,9 +2,9 @@ namespace Server.Mobiles
 {
 	public class CorruptedSoul : BaseCreature
 	{
-		public override bool DeleteCorpseOnDeath{ get{ return true; } }
-		
-		[Constructable]
+		public override bool DeleteCorpseOnDeath => true;
+
+        [Constructable]
 		public CorruptedSoul() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, .1, 5 )
 		{
 			Name = "a corrupted soul";
@@ -37,8 +37,8 @@ namespace Server.Mobiles
 			// VirtualArmor = 6; Not sure
 		}
 
-		public override bool AlwaysAttackable{ get{ return true; } }
-		public override bool BleedImmune{ get{ return true; } } // NEED TO VERIFY
+		public override bool AlwaysAttackable => true;
+        public override bool BleedImmune => true; // NEED TO VERIFY
 
 		// NEED TO VERIFY SOUNDS! Known: No Idle Sound.
 
@@ -57,9 +57,9 @@ namespace Server.Mobiles
 			return 0x0;
 		}*/
 
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		// TODO: Proper OnDeath Effect
+        // TODO: Proper OnDeath Effect
 
 		public override bool OnBeforeDeath()
 		{

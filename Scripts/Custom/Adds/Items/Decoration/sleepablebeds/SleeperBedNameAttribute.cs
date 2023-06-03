@@ -15,12 +15,9 @@ namespace Server
 	{
 		private string m_Name;
 
-		public string Name
-		{
-			get{ return m_Name; }
-		}
+		public string Name => m_Name;
 
-		public SleeperBedNameAttribute( string name )
+        public SleeperBedNameAttribute( string name )
 		{
 			m_Name = name;
 		}

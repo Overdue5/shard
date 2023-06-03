@@ -8,10 +8,10 @@ namespace Server.Spells.Seventh
 {
     public class FlameStrikeSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Seventh; } }
-        public override int Sound { get { return 0x208; } }
-        
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override SpellCircle Circle => SpellCircle.Seventh;
+        public override int Sound => 0x208;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Flame Strike", "Kal Vas Flam",
 				263,
 				9042,
@@ -53,7 +53,7 @@ namespace Server.Spells.Seventh
 				Caster.Target = new InternalTarget( this );
 		}
 
-		public override bool DelayedDamage{ get{ return false; } }//XUO insta damage
+		public override bool DelayedDamage => false; //XUO insta damage
 
         public void iTarget(BaseExplosionPotion pot) //Taran: When casted on explosion pots they explode
         {

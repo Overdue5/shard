@@ -8,12 +8,12 @@ namespace Server.Mobiles
 	public class CustomHairstylist : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override bool ClickTitle{ get{ return false; } }
+        public override bool ClickTitle => false;
 
-		public override bool IsActiveBuyer{ get{ return false; } }
-		public override bool IsActiveSeller{ get{ return true; } }
+        public override bool IsActiveBuyer => false;
+        public override bool IsActiveSeller => true;
 
         public override bool OnBuyItems(Mobile buyer, List<BuyItemResponse> list)
 		{
@@ -59,12 +59,9 @@ namespace Server.Mobiles
 			return RandomBrightHue();
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return Utility.RandomBool() ? VendorShoeType.Shoes : VendorShoeType.Sandals; }
-		}
+		public override VendorShoeType ShoeType => Utility.RandomBool() ? VendorShoeType.Shoes : VendorShoeType.Sandals;
 
-		public override void InitOutfit()
+        public override void InitOutfit()
 		{
 			base.InitOutfit();
 
@@ -103,14 +100,14 @@ namespace Server.Mobiles
 		private readonly Type m_GumpType;
 		private readonly object[] m_GumpArgs;
 
-		public int Title{ get{ return m_Title; } }
-		public string TitleString{ get{ return m_TitleString; } }
-		public int Price{ get{ return m_Price; } }
-		public bool FacialHair{ get{ return m_FacialHair; } }
-		public Type GumpType{ get{ return m_GumpType; } }
-		public object[] GumpArgs{ get{ return m_GumpArgs; } }
+		public int Title => m_Title;
+        public string TitleString => m_TitleString;
+        public int Price => m_Price;
+        public bool FacialHair => m_FacialHair;
+        public Type GumpType => m_GumpType;
+        public object[] GumpArgs => m_GumpArgs;
 
-		public HairstylistBuyInfo( int title, int price, bool facialHair, Type gumpType, object[] args )
+        public HairstylistBuyInfo( int title, int price, bool facialHair, Type gumpType, object[] args )
 		{
 			m_Title = title;
 			m_Price = price;
@@ -236,10 +233,10 @@ namespace Server.Mobiles
 		private readonly string m_Name;
 		private readonly int[] m_Hues;
 
-		public string Name{ get{ return m_Name; } }
-		public int[] Hues{ get{ return m_Hues; } }
+		public string Name => m_Name;
+        public int[] Hues => m_Hues;
 
-		public ChangeHairHueEntry( string name, int[] hues )
+        public ChangeHairHueEntry( string name, int[] hues )
 		{
 			m_Name = name;
 			m_Hues = hues;
@@ -397,12 +394,12 @@ namespace Server.Mobiles
 		private readonly int m_X;
 	    private readonly int m_Y;
 
-	    public int ItemID{ get{ return m_ItemID; } }
-		public int GumpID{ get{ return m_GumpID; } }
-		public int X{ get{ return m_X; } }
-		public int Y{ get{ return m_Y; } }
+	    public int ItemID => m_ItemID;
+        public int GumpID => m_GumpID;
+        public int X => m_X;
+        public int Y => m_Y;
 
-		public ChangeHairstyleEntry( int gumpID, int x, int y, int itemID )
+        public ChangeHairstyleEntry( int gumpID, int x, int y, int itemID )
 		{
 			m_GumpID = gumpID;
 			m_X = x;

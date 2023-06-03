@@ -74,10 +74,10 @@ namespace Server.Games.PaintBall
 		}
 		
 
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
 
-		public override bool IsEnemy( Mobile m )
+        public override bool IsEnemy( Mobile m )
 		{
 			if ( m_PBGI != null && m_PBGI.Active && this != null && m != null )
 			{

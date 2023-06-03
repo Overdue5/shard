@@ -33,14 +33,14 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string EngravedText
         {
-            get { return m_EngravedText; }
+            get => m_EngravedText;
             set { m_EngravedText = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public BookQuality Quality
         {
-            get { return m_Quality; }
+            get => m_Quality;
             set { m_Quality = value; InvalidateProperties(); }
         }
 
@@ -288,7 +288,7 @@ namespace Server.Items
             return (book.SpellbookType == type && (spellID == -1 || book.HasSpell(spellID)));
         }
 
-        public override bool DisplayWeight { get { return false; } }
+        public override bool DisplayWeight => false;
 
         private AosAttributes m_AosAttributes;
         private AosSkillBonuses m_AosSkillBonuses;
@@ -296,20 +296,20 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public AosAttributes Attributes
         {
-            get { return m_AosAttributes; }
+            get => m_AosAttributes;
             set { }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public AosSkillBonuses SkillBonuses
         {
-            get { return m_AosSkillBonuses; }
+            get => m_AosSkillBonuses;
             set { }
         }
 
-        public virtual SpellbookType SpellbookType { get { return SpellbookType.Regular; } }
-        public virtual int BookOffset { get { return 0; } }
-        public virtual int BookCount { get { return 64; } }
+        public virtual SpellbookType SpellbookType => SpellbookType.Regular;
+        public virtual int BookOffset => 0;
+        public virtual int BookCount => 64;
 
         private ulong m_Content;
         private int m_Count;
@@ -387,10 +387,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public ulong Content
         {
-            get
-            {
-                return m_Content;
-            }
+            get => m_Content;
             set
             {
                 if (m_Content != value)
@@ -411,13 +408,7 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int SpellCount
-        {
-            get
-            {
-                return m_Count;
-            }
-        }
+        public int SpellCount => m_Count;
 
         [Constructable]
         public Spellbook()
@@ -565,11 +556,11 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Crafter
         {
-            get { return m_Crafter; }
+            get => m_Crafter;
             set { m_Crafter = value; InvalidateProperties(); }
         }
 
-        public override bool DisplayLootType { get { return Core.AOS; } }
+        public override bool DisplayLootType => Core.AOS;
 
         public override void GetProperties(ObjectPropertyList list)
         {
@@ -703,14 +694,14 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public SlayerName Slayer
         {
-            get { return m_Slayer; }
+            get => m_Slayer;
             set { m_Slayer = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public SlayerName Slayer2
         {
-            get { return m_Slayer2; }
+            get => m_Slayer2;
             set { m_Slayer2 = value; InvalidateProperties(); }
         }
 

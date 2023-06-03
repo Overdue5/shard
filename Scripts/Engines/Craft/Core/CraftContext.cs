@@ -13,8 +13,8 @@ namespace Server.Engines.Craft
 	{
         private readonly List<CraftItem> m_Items;
 
-	    public List<CraftItem> Items { get { return m_Items; } }
-	    public int LastResourceIndex { get; set; }
+	    public List<CraftItem> Items => m_Items;
+        public int LastResourceIndex { get; set; }
 
 	    public int LastResourceIndex2 { get; set; }
 

@@ -20,17 +20,11 @@ namespace Server.Items
 
 		}
 
-		public override int DefaultMaxWeight
-		{
-			get { return 0; }
-		}
+		public override int DefaultMaxWeight => 0;
 
-		public override int DefaultMaxItems
-		{
-			get { return 0; }
-		}
+        public override int DefaultMaxItems => 0;
 
-		public void StoreEquip()
+        public void StoreEquip()
 		{
 			if( !m_Owner.Player || m_Owner.HasTrade )
 			{
@@ -218,17 +212,11 @@ namespace Server.Items
 				m_Location = location;
 			}
 
-			public Item ItemStored
-			{
-				get { return m_Item; }
-			}
+			public Item ItemStored => m_Item;
 
-			public Point3D Location
-			{
-				get { return m_Location; }
-			}
+            public Point3D Location => m_Location;
 
-			public void Serialize( GenericWriter writer )
+            public void Serialize( GenericWriter writer )
 			{
 				writer.Write( m_Item );
 				writer.Write( m_Location );

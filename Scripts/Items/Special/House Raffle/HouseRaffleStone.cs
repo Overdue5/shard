@@ -16,22 +16,13 @@ namespace Server.Items
 		private IPAddress m_Address;
 		private DateTime m_Date;
 
-		public Mobile From
-		{
-			get { return m_From; }
-		}
+		public Mobile From => m_From;
 
-		public IPAddress Address
-		{
-			get { return m_Address; }
-		}
+        public IPAddress Address => m_Address;
 
-		public DateTime Date
-		{
-			get { return m_Date; }
-		}
+        public DateTime Date => m_Date;
 
-		public RaffleEntry( Mobile from )
+        public RaffleEntry( Mobile from )
 		{
 			m_From = from;
 
@@ -123,8 +114,8 @@ namespace Server.Items
 
 		public bool Active
 		{
-			get { return m_Active; }
-			set
+			get => m_Active;
+            set
 			{
 				if ( m_Active != value )
 				{
@@ -145,8 +136,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public Rectangle2D PlotBounds
 		{
-			get { return m_Bounds; }
-			set
+			get => m_Bounds;
+            set
 			{
 				m_Bounds = value;
 
@@ -158,8 +149,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public Map PlotFacet
 		{
-			get { return m_Facet; }
-			set
+			get => m_Facet;
+            set
 			{
 				m_Facet = value;
 
@@ -171,29 +162,29 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public Mobile Winner
 		{
-			get { return m_Winner; }
-			set { m_Winner = value; InvalidateProperties(); }
+			get => m_Winner;
+            set { m_Winner = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public HouseRaffleDeed Deed
 		{
-			get { return m_Deed; }
-			set { m_Deed = value; }
-		}
+			get => m_Deed;
+            set => m_Deed = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public DateTime Started
 		{
-			get { return m_Started; }
-			set { m_Started = value; InvalidateProperties(); }
+			get => m_Started;
+            set { m_Started = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public TimeSpan Duration
 		{
-			get { return m_Duration; }
-			set { m_Duration = value; InvalidateProperties(); }
+			get => m_Duration;
+            set { m_Duration = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
@@ -211,37 +202,28 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public HouseRaffleExpireAction ExpireAction
 		{
-			get { return m_ExpireAction; }
-			set { m_ExpireAction = value; }
-		}
+			get => m_ExpireAction;
+            set => m_ExpireAction = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
 		public int TicketPrice
 		{
-			get { return m_TicketPrice; }
-			set
+			get => m_TicketPrice;
+            set
 			{
 				m_TicketPrice = Math.Max( 0, value );
 				InvalidateProperties();
 			}
 		}
 
-		public List<RaffleEntry> Entries
-		{
-			get { return m_Entries; }
-		}
+		public List<RaffleEntry> Entries => m_Entries;
 
-		public override string DefaultName
-		{
-			get { return "a house raffle stone"; }
-		}
+        public override string DefaultName => "a house raffle stone";
 
-		public override bool DisplayWeight
-		{
-			get { return false; }
-		}
+        public override bool DisplayWeight => false;
 
-		private static List<HouseRaffleStone> m_AllStones = new List<HouseRaffleStone>();
+        private static List<HouseRaffleStone> m_AllStones = new List<HouseRaffleStone>();
 
 		public static void CheckEnd_OnTick()
 		{

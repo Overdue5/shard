@@ -131,18 +131,15 @@ namespace Server.Items
 
 		public bool HelpGump
 		{
-			get { return m_HelpGump; }
-			set
-			{
-				m_HelpGump = value;
-			}
-		}
+			get => m_HelpGump;
+            set => m_HelpGump = value;
+        }
 
 		[CommandProperty(AccessLevel.Administrator)]
 		public bool TestMode
 		{
-			get { return m_TestMode; }
-			set
+			get => m_TestMode;
+            set
 			{
 				if (m_InUseBy != null)
 				{
@@ -160,8 +157,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Active
 		{
-			get { return m_Active; }
-			set
+			get => m_Active;
+            set
 			{
 				if (!m_Active && value)
 				{
@@ -205,15 +202,15 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int OrigHue
 		{
-			get { return m_OrigHue; }
-			set { m_OrigHue = value; if (Active) Hue = m_OrigHue; }
+			get => m_OrigHue;
+            set { m_OrigHue = value; if (Active) Hue = m_OrigHue; }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Casino CasinoTheme
 		{
-			get { return m_Casino; }
-			set
+			get => m_Casino;
+            set
 			{
 				m_Casino = value;
 				switch (m_Casino)
@@ -458,8 +455,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string CasinoName
 		{
-			get { return m_CasinoName; }
-			set
+			get => m_CasinoName;
+            set
 			{
 				m_CasinoName = value;
 				Name = m_CasinoName + " Blackjack";
@@ -469,34 +466,31 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile SecurityCamMob
 		{
-			get { return m_SecurityCamMobile; }
-			set { m_SecurityCamMobile = value; }
-		}
+			get => m_SecurityCamMobile;
+            set => m_SecurityCamMobile = value;
+        }
 				[CommandProperty(AccessLevel.GameMaster)]
 		public bool CardSounds
 		{
-			get { return m_CardSounds; }
-			set { m_CardSounds = value; }
-		}
+			get => m_CardSounds;
+            set => m_CardSounds = value;
+        }
 
 		
 		[CommandProperty(AccessLevel.GameMaster)]
 		public VerboseType SecurityChatter
 		{
-			get { return m_SecurityChatter; }
-			set { m_SecurityChatter = value; }
-		}
+			get => m_SecurityChatter;
+            set => m_SecurityChatter = value;
+        }
 
-		public int Won
-		{
-			get { return m_Won; }
-		}
+		public int Won => m_Won;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public bool ResetStats
 		{
-			get { return true; }
-			set
+			get => true;
+            set
 			{
 				if (value)
 				{
@@ -509,22 +503,16 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int CurrentBet
-		{
-			get { return m_CurrentBet; }
-		}
+		public int CurrentBet => m_CurrentBet;
 
-		[CommandProperty(AccessLevel.GameMaster)]
-		public int Escrow
-		{
-			get { return m_Escrow; }
-		}
+        [CommandProperty(AccessLevel.GameMaster)]
+		public int Escrow => m_Escrow;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public BetValues MinBet
 		{
-			get { return m_MinBet; }
-			set
+			get => m_MinBet;
+            set
 			{
 				m_MinBet = value;
 				if (m_MinBet > m_MaxBet)
@@ -535,8 +523,8 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public BetValues MaxBet
 		{
-			get { return m_MaxBet; }
-			set
+			get => m_MaxBet;
+            set
 			{
 				m_MaxBet = value;
 				if (m_MaxBet < m_MinBet)
@@ -545,18 +533,12 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public ulong TotalPlays
-		{
-			get { return m_TotalPlays; }
-		}
+		public ulong TotalPlays => m_TotalPlays;
 
-		[CommandProperty(AccessLevel.GameMaster)]
-		public long TotalNetProfit
-		{
-			get { return (long)(m_TotalCollected - m_TotalWon); }
-		}
+        [CommandProperty(AccessLevel.GameMaster)]
+		public long TotalNetProfit => (long)(m_TotalCollected - m_TotalWon);
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public ulong TotalCollected
 		{
 			get { return m_TotalCollected; }
@@ -566,12 +548,9 @@ namespace Server.Items
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
-		public ulong TotalWon
-		{
-			get { return m_TotalWon; }
-		}
+		public ulong TotalWon => m_TotalWon;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public float WinningPercentage
 		{
 			get
@@ -587,44 +566,44 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CreditCashOutAt
 		{
-			get { return m_CreditCashOut; }
-			set { m_CreditCashOut = value; }
-		}
+			get => m_CreditCashOut;
+            set => m_CreditCashOut = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CreditATMLimit
 		{
-			get { return m_CreditATMLimit; }
-			set { m_CreditATMLimit = value; }
-		}
+			get => m_CreditATMLimit;
+            set => m_CreditATMLimit = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int CreditATMIncrements
 		{
-			get { return m_CreditATMIncrements; }
-			set { m_CreditATMIncrements = value; }
-		}
+			get => m_CreditATMIncrements;
+            set => m_CreditATMIncrements = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Mobile InUseBy
 		{
-			get { return m_InUseBy; }
-			set { m_InUseBy = value; InvalidateProperties(); }
+			get => m_InUseBy;
+            set { m_InUseBy = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int ErrorCode
 		{
-			get { return m_ErrorCode; }
-			set { m_ErrorCode = value; InvalidateProperties(); }
+			get => m_ErrorCode;
+            set { m_ErrorCode = value; InvalidateProperties(); }
 		}
 
 		
 		[CommandProperty(AccessLevel.GameMaster)]
 		public short NumberOfDecks
 		{
-			get { return m_NumberOfDecks; }
-			set
+			get => m_NumberOfDecks;
+            set
 			{
 				if (value > 10)
 					value = 10;
@@ -638,100 +617,100 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool ContinuousShuffle
 		{
-			get { return m_ContinuousShuffle; }
-			set { m_ContinuousShuffle = value; }
-		}
+			get => m_ContinuousShuffle;
+            set => m_ContinuousShuffle = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool PlayerCardsFaceUp
 		{
-			get { return m_PlayerCardsFaceUp; }
-			set { m_PlayerCardsFaceUp = value; }
-		}
+			get => m_PlayerCardsFaceUp;
+            set => m_PlayerCardsFaceUp = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DealerCardsFaceUp
 		{
-			get { return m_DealerCardsFaceUp; }
-			set { m_DealerCardsFaceUp = value; }
-		}
+			get => m_DealerCardsFaceUp;
+            set => m_DealerCardsFaceUp = value;
+        }
 		
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DealerTakesPush
 		{
-			get { return m_DealerTakesPush; }
-			set { m_DealerTakesPush = value; }
-		}
+			get => m_DealerTakesPush;
+            set => m_DealerTakesPush = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool OfferInsurance
 		{
-			get { return m_OfferInsurance; }
-			set { m_OfferInsurance = value; }
-		}
+			get => m_OfferInsurance;
+            set => m_OfferInsurance = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public DoubleDown DoubleRule
 		{
-			get { return m_DoubleDown; }
-			set { m_DoubleDown = value; }
-		}
+			get => m_DoubleDown;
+            set => m_DoubleDown = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DoubleAfterSplit
 		{
-			get { return m_DoubleAfterSplit; }
-			set { m_DoubleAfterSplit = value; }
-		}
+			get => m_DoubleAfterSplit;
+            set => m_DoubleAfterSplit = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool Resplits
 		{
-			get { return m_Resplits; }
-			set { m_Resplits = value; }
-		}
+			get => m_Resplits;
+            set => m_Resplits = value;
+        }
 	
 		[CommandProperty(AccessLevel.GameMaster)]
 		public SplitAces SplitAcesRule
 		{
-			get { return m_SplitAces; }
-			set { m_SplitAces = value; }
-		}
+			get => m_SplitAces;
+            set => m_SplitAces = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool BJSplitAces21
 		{
-			get { return m_BJSplitAces21; }
-			set { m_BJSplitAces21 = value; }
-		}
+			get => m_BJSplitAces21;
+            set => m_BJSplitAces21 = value;
+        }
 		
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool BJSplitAPaysEven
 		{
-			get { return m_BJSplitAcesPaysEven; }
-			set { m_BJSplitAcesPaysEven = value; }
-		}
+			get => m_BJSplitAcesPaysEven;
+            set => m_BJSplitAcesPaysEven = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public  BlackJackPays BJMultiplier
 		{
-			get { return m_BlackJackPays; }
-			set { m_BlackJackPays = value; }
-		}
+			get => m_BlackJackPays;
+            set => m_BlackJackPays = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DealerHitsSoft17
 		{
-			get { return m_DealerHitsSoft17; }
-			set { m_DealerHitsSoft17 = value; }
-		}
+			get => m_DealerHitsSoft17;
+            set => m_DealerHitsSoft17 = value;
+        }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public bool DealerDelay
 		{
-			get { return m_DealerDelay; }
-			set { m_DealerDelay = value; }
-		}
+			get => m_DealerDelay;
+            set => m_DealerDelay = value;
+        }
 
 		
 		[Constructable]
@@ -879,7 +858,7 @@ namespace Server.Items
 			}
 		}
 
-		public override bool HandlesOnMovement { get { return (m_InUseBy != null && m_Active); } }// Tell the core that we implement OnMovement
+		public override bool HandlesOnMovement => (m_InUseBy != null && m_Active); // Tell the core that we implement OnMovement
 
 		public override void OnMovement(Mobile m, Point3D oldLocation)
 		{

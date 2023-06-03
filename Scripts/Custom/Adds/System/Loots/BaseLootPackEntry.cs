@@ -9,20 +9,20 @@
 
         public double Chance
         {
-            get { return m_Chance; }
-            set { m_Chance = value; }
+            get => m_Chance;
+            set => m_Chance = value;
         }
 
         public LootPackItem[] Items
         {
-            get { return m_Items; }
-            set { m_Items = value; }
+            get => m_Items;
+            set => m_Items = value;
         }
 
         public LootPackDice Quantity
         {
-            get { return m_Quantity; }
-            set { m_Quantity = value; }
+            get => m_Quantity;
+            set => m_Quantity = value;
         }
 
         public abstract Item Construct(Mobile from, int luckChance, bool spawning);
@@ -33,20 +33,20 @@
 
             public int Count
             {
-                get { return m_Count; }
-                set { m_Count = value; }
+                get => m_Count;
+                set => m_Count = value;
             }
 
             public int Sides
             {
-                get { return m_Sides; }
-                set { m_Sides = value; }
+                get => m_Sides;
+                set => m_Sides = value;
             }
 
             public int Bonus
             {
-                get { return m_Bonus; }
-                set { m_Bonus = value; }
+                get => m_Bonus;
+                set => m_Bonus = value;
             }
 
             public int Roll()

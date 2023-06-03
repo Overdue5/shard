@@ -54,10 +54,11 @@ namespace Server.Mobiles
             PackGold(200);
 		}
 
-		public override bool ReacquireOnMovement{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return 4; } }
-		public override int Meat{ get{ return 19; } }
-		public override int Hides{ get{ return 20; } }
+		public override bool ReacquireOnMovement => true;
+        public override int TreasureMapLevel => 4;
+        public override int Meat => 19;
+        public override int Hides => 20;
+
         public override HideType HideType
         {
             get
@@ -74,10 +75,10 @@ namespace Server.Mobiles
                 return HideType.Regular;
             }
         }
-		public override int Scales{ get{ return 9; } }
-		public override ScaleType ScaleType{ get{ return ScaleType.White; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Meat | FoodType.Gold; } }
-		public override bool CanAngerOnTame { get { return true; } }
+		public override int Scales => 9;
+        public override ScaleType ScaleType => ScaleType.White;
+        public override FoodType FavoriteFood => FoodType.Meat | FoodType.Gold;
+        public override bool CanAngerOnTame => true;
 
         public override void OnCarve(Mobile from, Corpse corpse, Item item)
         {

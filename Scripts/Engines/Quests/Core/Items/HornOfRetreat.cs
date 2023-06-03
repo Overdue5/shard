@@ -13,25 +13,25 @@ namespace Server.Engines.Quests
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Point3D DestLoc
 		{
-			get{ return m_DestLoc; }
-			set{ m_DestLoc = value; }
-		}
+			get => m_DestLoc;
+            set => m_DestLoc = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Map DestMap
 		{
-			get{ return m_DestMap; }
-			set{ m_DestMap = value; }
-		}
+			get => m_DestMap;
+            set => m_DestMap = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges
 		{
-			get{ return m_Charges; }
-			set{ m_Charges = value; InvalidateProperties(); }
+			get => m_Charges;
+            set{ m_Charges = value; InvalidateProperties(); }
 		}
 
-		public override int LabelNumber{ get{ return 1049117; } } // Horn of Retreat
+		public override int LabelNumber => 1049117; // Horn of Retreat
 
 		[Constructable]
 		public HornOfRetreat() : base( 0xFC4 )
@@ -143,7 +143,7 @@ namespace Server.Engines.Quests
 
 	public class HornOfRetreatMoongate : Moongate
 	{
-		public override int LabelNumber{ get{ return 1049114; } } // Sanctuary Gate
+		public override int LabelNumber => 1049114; // Sanctuary Gate
 
 		private readonly Mobile m_Caster;
 

@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class AppleTrunkAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new AppleTrunkDeed(); } }
-		
-		[Constructable]
+		public override BaseAddonDeed Deed => new AppleTrunkDeed();
+
+        [Constructable]
 		public AppleTrunkAddon() : base()
 		{
 			AddComponent( new LocalizedAddonComponent( 0xD98, 1076785 ), 0, 0, 0 );
@@ -31,8 +31,8 @@ namespace Server.Items
 
 	public class AppleTrunkDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon { get { return new AppleTrunkAddon(); } }
-		public override int LabelNumber { get { return 1076785; } } // Apple Trunk
+		public override BaseAddon Addon => new AppleTrunkAddon();
+        public override int LabelNumber => 1076785; // Apple Trunk
 
 		[Constructable]
 		public AppleTrunkDeed() : base()

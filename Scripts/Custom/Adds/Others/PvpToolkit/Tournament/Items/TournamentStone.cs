@@ -47,11 +47,8 @@ namespace Server.Custom.PvpToolkit.Tournament
         [CommandProperty( AccessLevel.GameMaster )]
 		public ForceEndType ForceEnd
 		{
-			get
-			{
-				return m_forceEndType;
-			}
-			set
+			get => m_forceEndType;
+            set
 			{
 				if ( m_forceEndType != value )
 				{
@@ -109,7 +106,7 @@ namespace Server.Custom.PvpToolkit.Tournament
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Started
         {
-            get { return m_Started; }
+            get => m_Started;
             set
             {
                 if (!CheckAreas())

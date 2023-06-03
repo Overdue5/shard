@@ -6,7 +6,7 @@ namespace Server.Mobiles
 {
 	public class Neira : BaseChampion
 	{
-		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Death; } }
+		public override ChampionSkullType SkullType => ChampionSkullType.Death;
 
         public override Type[] UniqueList { get { return new Type[] { typeof(ShroudOfDeciet) }; } }
         public override Type[] SharedList
@@ -142,8 +142,8 @@ namespace Server.Mobiles
 
 			public Mobile Rider
 			{
-				get { return m_Item.Rider; }
-				set { }
+				get => m_Item.Rider;
+                set { }
 			}
 
 			public VirtualMount( VirtualMountItem item )
@@ -161,9 +161,9 @@ namespace Server.Mobiles
 			private Mobile m_Rider;
 			private readonly VirtualMount m_Mount;
 
-			public Mobile Rider { get { return m_Rider; } }
+			public Mobile Rider => m_Rider;
 
-			public VirtualMountItem( Mobile mob )
+            public VirtualMountItem( Mobile mob )
 				: base( 0x3EBB )
 			{
 				Layer = Layer.Mount;
@@ -174,12 +174,9 @@ namespace Server.Mobiles
 				m_Mount = new VirtualMount( this );
 			}
 
-			public IMount Mount
-			{
-				get { return m_Mount; }
-			}
+			public IMount Mount => m_Mount;
 
-			public VirtualMountItem( Serial serial )
+            public VirtualMountItem( Serial serial )
 				: base( serial )
 			{
 				m_Mount = new VirtualMount( this );
@@ -207,16 +204,16 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool BardImmune{ get{ return !Core.SE; } }
-		public override bool Unprovokable{ get{ return Core.SE; } }
-		public override bool Uncalmable{ get{ return Core.SE; } }
-		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
+		public override bool AlwaysMurderer => true;
+        public override bool BardImmune => !Core.SE;
+        public override bool Unprovokable => Core.SE;
+        public override bool Uncalmable => Core.SE;
+        public override Poison PoisonImmune => Poison.Deadly;
 
-		public override bool ShowFameTitle{ get{ return false; } }
-		public override bool ClickTitle{ get{ return false; } }
+        public override bool ShowFameTitle => false;
+        public override bool ClickTitle => false;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 

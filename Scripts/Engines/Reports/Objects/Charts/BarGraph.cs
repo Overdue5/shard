@@ -19,8 +19,9 @@ namespace Server.Engines.Reports
 			return new BarGraph();
 		}
 
-		public override PersistableType TypeID{ get{ return ThisTypeID; } }
-		#endregion
+		public override PersistableType TypeID => ThisTypeID;
+
+        #endregion
 
 		private int m_Ticks;
 		private BarGraphRenderMode m_RenderMode;
@@ -31,14 +32,26 @@ namespace Server.Engines.Reports
 		private int m_FontSize = 7;
 		private int m_Interval = 1;
 
-	    public int Ticks{ get{ return m_Ticks; } set{ m_Ticks = value; } }
-		public BarGraphRenderMode RenderMode{ get{ return m_RenderMode; } set{ m_RenderMode = value; } }
+	    public int Ticks{ get => m_Ticks;
+            set => m_Ticks = value;
+        }
+		public BarGraphRenderMode RenderMode{ get => m_RenderMode;
+            set => m_RenderMode = value;
+        }
 
-		public string xTitle{ get{ return m_xTitle; } set{ m_xTitle = value; } }
-		public string yTitle{ get{ return m_yTitle; } set{ m_yTitle = value; } }
+		public string xTitle{ get => m_xTitle;
+            set => m_xTitle = value;
+        }
+		public string yTitle{ get => m_yTitle;
+            set => m_yTitle = value;
+        }
 
-		public int FontSize{ get{ return m_FontSize; } set{ m_FontSize = value; } }
-		public int Interval{ get{ return m_Interval; } set{ m_Interval = value; } }
+		public int FontSize{ get => m_FontSize;
+            set => m_FontSize = value;
+        }
+		public int Interval{ get => m_Interval;
+            set => m_Interval = value;
+        }
 
 	    public BarRegion[] Regions { get; set; }
 

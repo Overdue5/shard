@@ -23,14 +23,8 @@ namespace Server.Engines.Reports
         /// </summary>
         public ResponseInfo this[int index]
         {
-            get
-            {
-                return ((ResponseInfo)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
+            get => ((ResponseInfo)(List[index]));
+            set => List[index] = value;
         }
 
 		public int Add( string sentBy, string message )

@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class Rancher : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public Rancher() : base( "the rancher" )
 		{
 			SetSkill( SkillName.AnimalLore, 55.0, 78.0 );

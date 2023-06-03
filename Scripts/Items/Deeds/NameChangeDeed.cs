@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class NameChangeDeed : Item
 	{
-		public override string DefaultName
-		{
-			get { return "a name change deed"; }
-		}
+		public override string DefaultName => "a name change deed";
 
-		[Constructable]
+        [Constructable]
 		public NameChangeDeed() : base( 0x14F0 )
 		{
 			base.Weight = 1.0;

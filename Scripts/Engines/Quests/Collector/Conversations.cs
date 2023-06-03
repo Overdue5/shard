@@ -2,28 +2,20 @@ namespace Server.Engines.Quests.Collector
 {
 	public class DontOfferConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood looks up from his ale as you greet him.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood looks up from his ale as you greet him.</I><BR><BR>
 				 * 
 				 * What's that? Who me? No, no. You must be looking for someone else.
 				 */
-				return 1055080;
-			}
-		}
+            1055080;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class DeclineConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood looks a bit flustered and nearly knocks over his
+		public override object Message =>
+            /* <I>Elwood looks a bit flustered and nearly knocks over his
 				 * bottle of ale.</I><BR><BR>
 				 * 
 				 * Well, I see. It's like that, is it? Yes. Well then. Okay.
@@ -32,20 +24,15 @@ namespace Server.Engines.Quests.Collector
 				 * 
 				 * <I>Elwood trails off, though you can still hear him muttering softly.</I>
 				 */
-				return 1055082;
-			}
-		}
+            1055082;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class AcceptConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood slaps his knee and grins at you.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood slaps his knee and grins at you.</I><BR><BR>
 				 * 
 				 * Yes. Yes. That's the spirit. I knew it. Knew it when I
 				 * first saw you. You remind me so much of your dear departed
@@ -74,11 +61,9 @@ namespace Server.Engines.Quests.Collector
 				 * 
 				 * <I>Elwood turns back to his ale and now seems oblivious to you.</I>
 				 */
-				return 1055083;
-			}
-		}
+            1055083;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FishPearlsObjective() );
 		}
@@ -86,30 +71,22 @@ namespace Server.Engines.Quests.Collector
 
 	public class ElwoodDuringFishConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood looks up as you tap him on the shoulder.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood looks up as you tap him on the shoulder.</I><BR><BR>
 				 * 
 				 * Good. Good. You're back. Wait. You don't have the rainbow pearls I
 				 * need. Taking a break? Yeah. Sure. There's no hurry. Let me know when
 				 * you've got all those pearls, though. I'll be here.
 				 */
-				return 1055089;
-			}
-		}
+            1055089;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ReturnPearlsConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood jumps slightly when you call his name.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood jumps slightly when you call his name.</I><BR><BR>
 				 * 
 				 * What. I'm awake. Oh, It's you. Hey, look at those pearls.
 				 * Beautiful. Wow. Where'd you get those... oh right. I sent you to get
@@ -126,11 +103,9 @@ namespace Server.Engines.Quests.Collector
 				 * <I>Elwood starts playing with the pearls you brought him and seems
 				 * to have forgotten you're there.</I>
 				 */
-				return 1055090;
-			}
-		}
+            1055090;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindAlbertaObjective() );
 		}
@@ -138,11 +113,8 @@ namespace Server.Engines.Quests.Collector
 
 	public class AlbertaPaintingConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Alberta looks up from the painting she is working on and
+		public override object Message =>
+            /* <I>Alberta looks up from the painting she is working on and
 				 * faces you.</I><BR><BR>
 				 * 
 				 * Excuse me. I don't mean to be rude, but I'm in the middle
@@ -155,11 +127,9 @@ namespace Server.Engines.Quests.Collector
 				 * 
 				 * <I>Alberta exchanges the painting she was working on for a blank canvas.</I>
 				 */
-				return 1055092;
-			}
-		}
+            1055092;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new SitOnTheStoolObjective() );
 		}
@@ -167,11 +137,8 @@ namespace Server.Engines.Quests.Collector
 
 	public class AlbertaStoolConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Alberta looks at you sympathetically.</I><BR><BR>
+		public override object Message =>
+            /* <I>Alberta looks at you sympathetically.</I><BR><BR>
 				 * 
 				 * Don't worry, this will only take a few seconds. I realize
 				 * that stool can be uncomfortable, and I apologize for that.
@@ -179,20 +146,15 @@ namespace Server.Engines.Quests.Collector
 				 * But then again, it's that very discomfort that helps produce
 				 * such wonderful facial expressions for my paintings. Ah well.
 				 */
-				return 1055096;
-			}
-		}
+            1055096;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class AlbertaEndPaintingConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Alberta stands back from the canvas and surveys her
+		public override object Message =>
+            /* <I>Alberta stands back from the canvas and surveys her
 				 * work.</I><BR><BR>
 				 * 
 				 * Not too bad. Quite good even, if I do say so myself. As always,
@@ -204,11 +166,9 @@ namespace Server.Engines.Quests.Collector
 				 * <I>Alberta removes the portrait from her easel and sets
 				 * it aside to dry.</I>
 				 */
-				return 1055098;
-			}
-		}
+            1055098;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnPaintingObjective() );
 		}
@@ -216,29 +176,21 @@ namespace Server.Engines.Quests.Collector
 
 	public class AlbertaAfterPaintingConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Alberta stops cleaning her brushes and looks your way.</I><BR><BR>
+		public override object Message =>
+            /* <I>Alberta stops cleaning her brushes and looks your way.</I><BR><BR>
 				 * 
 				 * Don't worry, I'll send the painting to Elwood once it's dry. Please
 				 * let him know that the painting has been finished.
 				 */
-				return 1055102;
-			}
-		}
+            1055102;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringPainting1Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood yawns and stretches, then focuses his gaze
+		public override object Message =>
+            /* <I>Elwood yawns and stretches, then focuses his gaze
 				 * on you.</I><BR><BR>
 				 * 
 				 * Hello. Do I know you? Hold on a second. Yes. Yes, I do.
@@ -247,20 +199,15 @@ namespace Server.Engines.Quests.Collector
 				 * portrait painted. Alberta is in Vesper. Go to her. Alberta
 				 * Giacco. Come back when she's done.
 				 */
-				return 1055094;
-			}
-		}
+            1055094;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringPainting2Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood drums his fingers on the counter then looks
+		public override object Message =>
+            /* <I>Elwood drums his fingers on the counter then looks
 				 * up at you expectantly.</I><BR><BR>
 				 * 
 				 * Ah, finally. I'm famished. This so-called tavern doesn't
@@ -275,20 +222,15 @@ namespace Server.Engines.Quests.Collector
 				 * Off you go. If you happen to see anyone with my pizza,
 				 * please insist they hurry.<BR><BR>
 				 */
-				return 1055097;
-			}
-		}
+            1055097;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ReturnPaintingConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood notices you immediately and waves you over.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood notices you immediately and waves you over.</I><BR><BR>
 				 * 
 				 * You're back. Good. That's good. Hmm. You don't seem to have that
 				 * painting yet. Don't tell me Alberta refused. That's no good. I made
@@ -310,11 +252,9 @@ namespace Server.Engines.Quests.Collector
 				 * <I>Elwood falls silent though his lips are still  moving. It looks like
 				 * he's quietly repeating the word, "autograph."</I>
 				 */
-				return 1055100;
-			}
-		}
+            1055100;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindGabrielObjective() );
 		}
@@ -322,11 +262,8 @@ namespace Server.Engines.Quests.Collector
 
 	public class GabrielAutographConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Gabriel sighs loudly as you address him and stops whatever
+		public override object Message =>
+            /* <I>Gabriel sighs loudly as you address him and stops whatever
 				 * it was that he was doing.</I><BR><BR>
 				 * 
 				 * WHAT?!? Can you not see that I'm working here?  Ugh, sometimes
@@ -343,11 +280,9 @@ namespace Server.Engines.Quests.Collector
 				 * Speak to the impresario... the theater manager. My last three
 				 * performances were in Nujel'm, Jhelom, and here in Britian.
 				 */
-				return 1055103;
-			}
-		}
+            1055103;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindSheetMusicObjective( true ) );
 		}
@@ -355,51 +290,36 @@ namespace Server.Engines.Quests.Collector
 
 	public class GabrielNoSheetMusicConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Gabriel does not look happy to see you.</I><BR><BR>
+		public override object Message =>
+            /* <I>Gabriel does not look happy to see you.</I><BR><BR>
 				 * 
 				 * Do you have any sheet music? No. Please return when you do,
 				 * but until then please leave me to my work.
 				 */
-				return 1055111;
-			}
-		}
+            1055111;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class NoSheetMusicConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* Sheet music for a Gabriel Piete song? No, I'm sorry, but we've run out.
+		public override object Message =>
+            /* Sheet music for a Gabriel Piete song? No, I'm sorry, but we've run out.
 				 * We might get some more after he performs here again, but right now
 				 * we don't have any. My apologies.
 				 */
-				return 1055106;
-			}
-		}
+            1055106;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class GetSheetMusicConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				// The theater impresario hands you some sheet of music for one of Gabriel Piete's songs.
-				return 1055109;
-			}
-		}
+		public override object Message =>
+            // The theater impresario hands you some sheet of music for one of Gabriel Piete's songs.
+            1055109;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnSheetMusicObjective() );
 		}
@@ -407,22 +327,17 @@ namespace Server.Engines.Quests.Collector
 
 	public class GabrielSheetMusicConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Gabriel looks up impatiently as you approach.</I><BR><BR>
+		public override object Message =>
+            /* <I>Gabriel looks up impatiently as you approach.</I><BR><BR>
 				 * 
 				 * Good. We can finally be done with one another. Here, let me
 				 * sign that and have this business completed.<BR><BR>
 				 * 
 				 * <I>Gabriel takes the sheet music, autographs it, and then hands it back to you.</I>
 				 */
-				return 1055113;
-			}
-		}
+            1055113;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnAutographObjective() );
 		}
@@ -430,25 +345,17 @@ namespace Server.Engines.Quests.Collector
 
 	public class GabrielIgnoreConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				// <I>Gabriel ignores you.</I>
-				return 1055118;
-			}
-		}
+		public override object Message =>
+            // <I>Gabriel ignores you.</I>
+            1055118;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringAutograph1Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood jumps and almost falls from his stool when you
+		public override object Message =>
+            /* <I>Elwood jumps and almost falls from his stool when you
 				 * tap his shoulder.</I><BR><BR>
 				 * 
 				 * Oh my. Don't do that. Scared me half to death. Sneaking up on
@@ -463,20 +370,15 @@ namespace Server.Engines.Quests.Collector
 				 * What's that? Oh. The autograph. Gabriel Piete. Yes. Of course.
 				 * Do you have it? No. Well. Hmm. Don't sneak up on people like that. Not polite.
 				 */
-				return 1055105;
-			}
-		}
+            1055105;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringAutograph2Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood seems to be studying the bottom of his bottle of ale
+		public override object Message =>
+            /* <I>Elwood seems to be studying the bottom of his bottle of ale
 				 * as you approach.</I><BR><BR>
 				 * 
 				 * What's this? Strange. Quite strange. I could have sworn I was
@@ -487,39 +389,29 @@ namespace Server.Engines.Quests.Collector
 				 * Can't get it open no matter how hard you try. Or something. No luck
 				 * yet? Ah well. keep trying. I have faith in you. Whoever you are.
 				 */
-				return 1055112;
-			}
-		}
+            1055112;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringAutograph3Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood scratches his ear then notices you.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood scratches his ear then notices you.</I><BR><BR>
 				 * 
 				 * Good day. What brings you to the Albatross? Me? An autograph?
 				 * You want my autograph? Well, I suppose. What's that? Oh. Yes.
 				 * Gabriel Piete. Yes. Get his autograph and return to me. Good day.
 				 */
-				return 1055115;
-			}
-		}
+            1055115;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ReturnAutographConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood looks up eagerly as you tell him about the autographed
+		public override object Message =>
+            /* <I>Elwood looks up eagerly as you tell him about the autographed
 				 * sheet music.</I><BR><BR>
 				 * 
 				 * Quite good work. Not an easy one to deal with, that one. Gabriel Piete.
@@ -532,11 +424,9 @@ namespace Server.Engines.Quests.Collector
 				 * You're doing quite well. Quite well indeed. Knew you would. Just like old
 				 * times. Yes. Quite good.
 				 */
-				return 1055116;
-			}
-		}
+            1055116;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new FindTomasObjective() );
 		}
@@ -544,11 +434,8 @@ namespace Server.Engines.Quests.Collector
 
 	public class TomasToysConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Tomas smiles freely as you speak to him.</I><BR><BR>
+		public override object Message =>
+            /* <I>Tomas smiles freely as you speak to him.</I><BR><BR>
 				 * 
 				 * Ah, to be sure I can make you some toy monster figurines.
 				 * That's my work, making toys. Worry not, we'll put together
@@ -561,11 +448,9 @@ namespace Server.Engines.Quests.Collector
 				 * set of figurines. Oh, and I'll be needing those enchanted paints
 				 * back when all is said and done.<BR><BR>
 				 */
-				return 1055119;
-			}
-		}
+            1055119;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new CaptureImagesObjective( true ) );
 		}
@@ -573,31 +458,23 @@ namespace Server.Engines.Quests.Collector
 
 	public class TomasDuringCollectingConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Tomas greets you warmly as you approach.</I><BR><BR>
+		public override object Message =>
+            /* <I>Tomas greets you warmly as you approach.</I><BR><BR>
 				 * 
 				 * 'Tis good to see you. I see that you have not yet collected
 				 * all of the images we need. 'Tis fine, but I'll be needing
 				 * those before I can make the toy figurines. Return when you have
 				 * the complete set of images.<BR><BR>
 				 */
-				return 1055129;
-			}
-		}
+            1055129;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ReturnImagesConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Tomas grins as you walk toward him.</I><BR><BR>
+		public override object Message =>
+            /* <I>Tomas grins as you walk toward him.</I><BR><BR>
 				 * 
 				 * I see that you have collected all of the images we need.
 				 * 'Tis good. I'll begin straight away on the toy figurines.
@@ -606,11 +483,9 @@ namespace Server.Engines.Quests.Collector
 				 * in the past. Odd fellow.<BR><BR>Tomas smiles as you return his
 				 * enchanted paints back to him.<BR><BR>
 				 */
-				return 1055131;
-			}
-		}
+            1055131;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.AddObjective( new ReturnToysObjective() );
 		}
@@ -618,11 +493,8 @@ namespace Server.Engines.Quests.Collector
 
 	public class ElwoodDuringToys1Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>You watch as Elwood spins around blissfully on his stool.</I><BR><BR>
+		public override object Message =>
+            /* <I>You watch as Elwood spins around blissfully on his stool.</I><BR><BR>
 				 * 
 				 * Oh. Forgive me. Didn't see you there. Whoo. Dizzy. Can't see straight.
 				 * Have you gotten those figurines yet? No. Ah. Not to worry. Keep at it.
@@ -632,20 +504,15 @@ namespace Server.Engines.Quests.Collector
 				 * Good then. Yes. Sitting down.<BR><BR><I>Elwood reaches out and takes hold
 				 * of the counter as if to steady himself.</I>
 				 */
-				return 1055123;
-			}
-		}
+            1055123;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringToys2Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood suddenly stops and beckons you over to him.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood suddenly stops and beckons you over to him.</I><BR><BR>
 				 * 
 				 * Over here. Come here. Don't be alarmed, but I think one of the
 				 * tavernkeepers used to be a wandering healer. Said something about
@@ -657,20 +524,15 @@ namespace Server.Engines.Quests.Collector
 				 * Right. Anyway. Let me know when those toy figurines are ready.
 				 * I'll be here. As always.
 				 */
-				return 1055130;
-			}
-		}
+            1055130;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class ElwoodDuringToys3Conversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood is singing as you greet him.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood is singing as you greet him.</I><BR><BR>
 				 * 
 				 * Come. Join in. It's a Gabriel Piete song. I have the sheet music
 				 * for it. It's even autographed by Gabriel Piete himself. Yes.
@@ -679,20 +541,15 @@ namespace Server.Engines.Quests.Collector
 				 * So let me see the toys. Figurines. Let's see them. Oh. You don't
 				 * have them yet. I see. Well. Okay. That's too bad.
 				 */
-				return 1055133;
-			}
-		}
+            1055133;
 
-		public override bool Logged{ get{ return false; } }
-	}
+        public override bool Logged => false;
+    }
 
 	public class EndConversation : QuestConversation
 	{
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood takes a sip of his ale as you address him.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood takes a sip of his ale as you address him.</I><BR><BR>
 				 * 
 				 * Ah. That's the stuff. Ale. Nothing better. What's that? Toy figurines
 				 * will be delivered. Right. Yes. Perhaps better than Ale. Tough one.<BR><BR>
@@ -705,11 +562,9 @@ namespace Server.Engines.Quests.Collector
 				 * <I>With that Elwood rummages around in his backpack. He eventually
 				 * pulls out a small bag and hands it to you.</I>
 				 */
-				return 1055134;
-			}
-		}
+            1055134;
 
-	    public override void OnRead()
+        public override void OnRead()
 		{
 			System.Complete();
 		}
@@ -719,24 +574,19 @@ namespace Server.Engines.Quests.Collector
 	{
 		private readonly bool m_Logged;
 
-		public override object Message
-		{
-			get
-			{
-				/* <I>Elwood stares at you as you approach.</I><BR><BR>
+		public override object Message =>
+            /* <I>Elwood stares at you as you approach.</I><BR><BR>
 				 * 
 				 * I know you. Oh yes. You've been running some errands for me.
 				 * We are about done. Noticed that your backpack is a bit full.
 				 * Might want to make some room. Won't be able to hold your payment.
 				 * Come back when you have more room, and we'll conclude our business.
 				 */
-				return 1055135;
-			}
-		}
+            1055135;
 
-		public override bool Logged{ get{ return m_Logged; } }
+        public override bool Logged => m_Logged;
 
-		public FullEndConversation( bool logged )
+        public FullEndConversation( bool logged )
 		{
 			m_Logged = logged;
 		}

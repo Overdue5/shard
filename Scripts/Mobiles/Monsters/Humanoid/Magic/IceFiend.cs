@@ -43,10 +43,10 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MedScrolls, 2 );
 		}
 
-		public override int TreasureMapLevel{ get{ return 4; } }
-		public override int Meat{ get{ return 1; } }
+		public override int TreasureMapLevel => 4;
+        public override int Meat => 1;
 
-		public IceFiend( Serial serial ) : base( serial )
+        public IceFiend( Serial serial ) : base( serial )
 		{
 		}
 

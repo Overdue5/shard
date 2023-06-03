@@ -8,8 +8,8 @@ namespace Server.Items
 	{
 		public int Quantity
 		{
-			get{ return 500; }
-			set{}
+			get => 500;
+            set{}
 		}
 		
 
@@ -67,7 +67,7 @@ namespace Server.Items
 
     public class RedWellDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new RedWellAddon(); } }
+        public override BaseAddon Addon => new RedWellAddon();
 
         [Constructable]
         public RedWellDeed()
@@ -105,8 +105,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public RedWellAddon redwell
 		{
-			get{ return m_redwell; }
-			set{}
+			get => m_redwell;
+            set{}
 		}
 
 		public RedWellPiece( RedWellAddon redwell, int itemid ) : base( itemid )

@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	[CorpseName( "a glowing ratman corpse" )]
 	public class RatmanMage : BaseCreature
 	{
-		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Ratman; } }
+		public override InhumanSpeech SpeechType => InhumanSpeech.Ratman;
 
-		[Constructable]
+        [Constructable]
 		public RatmanMage() : base( AIType.AI_SphereMage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			Name = NameList.RandomName( "ratman" );
@@ -61,12 +61,12 @@ namespace Server.Mobiles
 			AddLoot( LootPack.LowScrolls );
 		}
 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override int Meat{ get{ return 1; } }
-		public override int Hides{ get{ return 8; } }
-        public override HideType HideType { get { return HideType.Regular; } }
+		public override bool CanRummageCorpses => true;
+        public override int Meat => 1;
+        public override int Hides => 8;
+        public override HideType HideType => HideType.Regular;
 
-		public RatmanMage( Serial serial ) : base( serial )
+        public RatmanMage( Serial serial ) : base( serial )
 		{
 		}
 

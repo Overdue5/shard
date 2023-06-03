@@ -15,22 +15,23 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		public override int AosStrengthReq{ get{ return 0; } }
-		public override int AosMinDamage{ get{ return 1; } }
-		public override int AosMaxDamage{ get{ return 4; } }
-		public override int AosSpeed{ get{ return 50; } }
+		public override int AosStrengthReq => 0;
+        public override int AosMinDamage => 1;
+        public override int AosMaxDamage => 4;
+        public override int AosSpeed => 50;
 
-		public override int OldStrengthReq{ get{ return 0; } }
-		public override int OldMinDamage{ get{ return 1; } }
-		public override int OldMaxDamage{ get{ return 8; } }
-		public override int OldSpeed{ get{ return 220; } }
+        public override int OldStrengthReq => 0;
+        public override int OldMinDamage => 1;
+        public override int OldMaxDamage => 8;
+        public override int OldSpeed => 220;
 
-		public override int DefHitSound {get { return Utility.RandomList(0x135, 0x137, 0x13B, 0x13D); }}
-		public override int DefMissSound {get { return Utility.RandomList(0x238, 0x239, 0x23A); }}
+        public override int DefHitSound => Utility.RandomList(0x135, 0x137, 0x13B, 0x13D);
+        public override int DefMissSound => Utility.RandomList(0x238, 0x239, 0x23A);
 
-		public override SkillName DefSkill{ get{ return SkillName.Wrestling; } }
-		public override WeaponType DefType{ get{ return WeaponType.Fists; } }
-		//public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
+        public override SkillName DefSkill => SkillName.Wrestling;
+
+        public override WeaponType DefType => WeaponType.Fists;
+        //public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
 
 
         	public override int GetSwingAnim(Mobile from)

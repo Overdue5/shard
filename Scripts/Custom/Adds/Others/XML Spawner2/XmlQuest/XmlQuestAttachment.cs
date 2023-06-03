@@ -7,7 +7,9 @@ namespace Server.Engines.XmlSpawner2
 		private DateTime m_DataValue;
 
 
-		public DateTime Date { get { return m_DataValue; } set { m_DataValue = value; } }
+		public DateTime Date { get => m_DataValue;
+            set => m_DataValue = value;
+        }
 
 		// These are the various ways in which the message attachment can be constructed.  
 		// These can be called via the [addatt interface, via scripts, via the spawner ATTACH keyword.

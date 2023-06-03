@@ -48,27 +48,24 @@ namespace Server.Items
     {
 		private PotionEffect m_PotionEffect;
 
-        public virtual double PotionDelay { get { return 17.0; } }
+        public virtual double PotionDelay => 17.0;
 
-		public PotionEffect PotionEffect
+        public PotionEffect PotionEffect
 		{
-			get
-			{
-				return m_PotionEffect;
-			}
-			set
+			get => m_PotionEffect;
+            set
 			{
 				m_PotionEffect = value;
 				InvalidateProperties();
 			}
 		}
 
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return (Core.ML); } }
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => (Core.ML);
 
-		public override int LabelNumber{ get{ return 1041314 + (int)m_PotionEffect; } }
+        public override int LabelNumber => 1041314 + (int)m_PotionEffect;
 
-		public BasePotion( int itemID, PotionEffect effect ) : base( itemID )
+        public BasePotion( int itemID, PotionEffect effect ) : base( itemID )
 		{
 			m_PotionEffect = effect;
 
@@ -81,9 +78,9 @@ namespace Server.Items
 		{
 		}
 
-		public virtual bool RequireFreeHand{ get{ return false; } }
+		public virtual bool RequireFreeHand => false;
 
-		public static bool HasFreeHand( Mobile m )
+        public static bool HasFreeHand( Mobile m )
 		{
 			Item handOne = m.FindItemOnLayer( Layer.OneHanded );
 			Item handTwo = m.FindItemOnLayer( Layer.TwoHanded );

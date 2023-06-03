@@ -41,28 +41,28 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int DetonationDelay
         {
-            get { return m_DetonationDelay; }
-            set { m_DetonationDelay = value; }
+            get => m_DetonationDelay;
+            set => m_DetonationDelay = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int UseDelay
         {
-            get { return m_UseDelay; }
-            set { m_UseDelay = value; }
+            get => m_UseDelay;
+            set => m_UseDelay = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Range
         {
-            get { return m_Range; }
-            set { m_Range = value; }
+            get => m_Range;
+            set => m_Range = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public int MinDamage
         {
-            get { return m_MinDamage; }
+            get => m_MinDamage;
             set
             {
                 m_MinDamage = value;
@@ -75,7 +75,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int MaxDamage
         {
-            get { return m_MaxDamage; }
+            get => m_MaxDamage;
             set
             {
                 m_MaxDamage = value;
@@ -88,105 +88,105 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int AnimationID
         {
-            get { return m_AnimationId; }
-            set { m_AnimationId = value; }
+            get => m_AnimationId;
+            set => m_AnimationId = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public int AnimationHue
         {
-            get { return m_AnimationHue; }
-            set { m_AnimationHue = value; }
+            get => m_AnimationHue;
+            set => m_AnimationHue = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DeleteOnUse
         {
-            get { return m_DeleteOnUse; }
-            set { m_DeleteOnUse = value; }
+            get => m_DeleteOnUse;
+            set => m_DeleteOnUse = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public bool RequireFreeHands
         {
-            get { return m_RequireFreeHands; }
-            set { m_RequireFreeHands = value; }
+            get => m_RequireFreeHands;
+            set => m_RequireFreeHands = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DetonateNearby
         {
-            get { return m_DetonateNearby; }
-            set { m_DetonateNearby = value; }
+            get => m_DetonateNearby;
+            set => m_DetonateNearby = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool CheckGuarded
         {
-            get { return m_CheckGuarded; }
-            set { m_CheckGuarded = value; }
+            get => m_CheckGuarded;
+            set => m_CheckGuarded = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public int BlastRadius
         {
-            get { return m_BlastRadius; }
-            set { m_BlastRadius = value; }
+            get => m_BlastRadius;
+            set => m_BlastRadius = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int DetonationEffect
         {
-            get { return m_DetonationEffect; }
-            set { m_DetonationEffect = value; }
+            get => m_DetonationEffect;
+            set => m_DetonationEffect = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int DetonationEffectHue
         {
-            get { return m_DetonationEffectHue; }
-            set { m_DetonationEffectHue = value; }
+            get => m_DetonationEffectHue;
+            set => m_DetonationEffectHue = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int DetonationEffectDuration
         {
-            get { return m_DetonationEffectDuration; }
-            set { m_DetonationEffectDuration = value; }
+            get => m_DetonationEffectDuration;
+            set => m_DetonationEffectDuration = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int DetonationSound
         {
-            get { return m_DetonationSound; }
-            set { m_DetonationSound = value; }
+            get => m_DetonationSound;
+            set => m_DetonationSound = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int TargetItemID
         {
-            get { return m_TargetItemID; }
-            set { m_TargetItemID = value; }
+            get => m_TargetItemID;
+            set => m_TargetItemID = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public int TargetItemHue
         {
-            get { return m_TargetItemHue; }
-            set { m_TargetItemHue = value; }
+            get => m_TargetItemHue;
+            set => m_TargetItemHue = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan TargetItemDuration
         {
-            get { return m_TargetItemDuration; }
-            set { m_TargetItemDuration = value; }
+            get => m_TargetItemDuration;
+            set => m_TargetItemDuration = value;
         }
         
         [CommandProperty(AccessLevel.GameMaster)]
         public int TargetItemMinDamage
         {
-            get { return m_TargetItemMinDamage; }
+            get => m_TargetItemMinDamage;
             set
             {
                 m_TargetItemMinDamage = value;
@@ -199,7 +199,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public int TargetItemMaxDamage
         {
-            get { return m_TargetItemMaxDamage; }
+            get => m_TargetItemMaxDamage;
             set
             {
                 m_TargetItemMaxDamage = value;
@@ -212,22 +212,22 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public string TargetItemName
         {
-            get { return m_TargetItemName; }
-            set { m_TargetItemName = value; }
+            get => m_TargetItemName;
+            set => m_TargetItemName = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool MoveOnUse
         {
-            get { return m_MoveOnUse; }
-            set { m_MoveOnUse = value; }
+            get => m_MoveOnUse;
+            set => m_MoveOnUse = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool CheckLoS
         {
-            get { return m_CheckLoS; }
-            set { m_CheckLoS = value; }
+            get => m_CheckLoS;
+            set => m_CheckLoS = value;
         }
 
         #endregion
@@ -471,10 +471,7 @@ namespace Server.Items
         {
             private readonly ThrowableItem m_ThrowableItem;
 
-            public ThrowableItem ThrowableItem
-            {
-                get { return m_ThrowableItem; }
-            }
+            public ThrowableItem ThrowableItem => m_ThrowableItem;
 
             public ThrowTarget(ThrowableItem throwableItem) : base(throwableItem.m_Range, true, TargetFlags.None)
             {

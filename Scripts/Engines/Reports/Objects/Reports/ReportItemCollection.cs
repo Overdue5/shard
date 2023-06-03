@@ -23,15 +23,9 @@ namespace Server.Engines.Reports
         /// </summary>
         public ReportItem this[int index]
         {
-            get
-            {
-                return ((ReportItem)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
-		}
+            get => ((ReportItem)(List[index]));
+            set => List[index] = value;
+        }
 
 		public int Add( string name, object value )
 		{

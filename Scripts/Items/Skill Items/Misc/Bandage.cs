@@ -17,12 +17,9 @@ namespace Server.Items
 	{
 		public static int Range = 2; 
 
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+		public override double DefaultWeight => 0.1;
 
-		[Constructable]
+        [Constructable]
 		public Bandage() : this( 1 )
 		{
 		}
@@ -163,28 +160,19 @@ namespace Server.Items
 		private int m_Slips;
 		private Timer m_Timer;
 
-		public Mobile Healer
-		{
-			get { return m_Healer; }
-		}
+		public Mobile Healer => m_Healer;
 
-		public Mobile Patient
-		{
-			get { return m_Patient; }
-		}
+        public Mobile Patient => m_Patient;
 
-		public int Slips
+        public int Slips
 		{
-			get { return m_Slips; }
-			set { m_Slips = value; }
-		}
+			get => m_Slips;
+            set => m_Slips = value;
+        }
 
-		public Timer Timer
-		{
-			get { return m_Timer; }
-		}
+		public Timer Timer => m_Timer;
 
-		public void Slip()
+        public void Slip()
 		{
 			m_Healer.SendMessage( "You fail to heal." );
 			StopHeal();

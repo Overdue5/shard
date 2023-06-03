@@ -282,9 +282,9 @@ namespace Server.Commands
 		public int PrintId;
 		public string LastRequest = "";
 
-		public bool IsAnyMap { get { return MapsCheckBox.ContainsKey(AllMaps) && MapsCheckBox[AllMaps]; } }
+		public bool IsAnyMap => MapsCheckBox.ContainsKey(AllMaps) && MapsCheckBox[AllMaps];
 
-		public void ResetFlags()
+        public void ResetFlags()
 		{
 			IsMobiles = false;
 			IsItems = false;

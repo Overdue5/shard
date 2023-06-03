@@ -4,10 +4,11 @@ namespace Server.Items
 	{
 		private int m_LabelNumber;
 
-		public override int LabelNumber{ get{ return m_LabelNumber; } }
+		public override int LabelNumber => m_LabelNumber;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Number{ get{ return m_LabelNumber; } set{ m_LabelNumber = value; InvalidateProperties(); } }
+        [CommandProperty( AccessLevel.GameMaster )]
+		public int Number{ get => m_LabelNumber;
+            set{ m_LabelNumber = value; InvalidateProperties(); } }
 
 		[Constructable]
 		public LocalizedSign( SignType type, SignFacing facing, int labelNumber ) : base( ( 0xB95 + (2 * (int)type) ) + (int)facing )

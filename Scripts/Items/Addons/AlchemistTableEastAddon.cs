@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class AlchemistTableEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new AlchemistTableEastDeed(); } }
+		public override BaseAddonDeed Deed => new AlchemistTableEastDeed();
 
-		[Constructable]
+        [Constructable]
 		public AlchemistTableEastAddon()
 		{
 			AddComponent( new AddonComponent( 0x2DD3 ), 0, 0, 0 );
@@ -31,8 +31,8 @@ namespace Server.Items
 
 	public class AlchemistTableEastDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new AlchemistTableEastAddon(); } }
-		public override int LabelNumber{ get{ return 1073397; } } // alchemist table (east)
+		public override BaseAddon Addon => new AlchemistTableEastAddon();
+        public override int LabelNumber => 1073397; // alchemist table (east)
 
 		[Constructable]
 		public AlchemistTableEastDeed()

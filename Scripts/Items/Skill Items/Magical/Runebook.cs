@@ -22,7 +22,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public BookQuality Quality
         {
-            get { return m_Quality; }
+            get => m_Quality;
             set { m_Quality = value; InvalidateProperties(); }
         }
 
@@ -41,22 +41,22 @@ namespace Server.Items
 	    [CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Crafter
 		{
-			get{ return m_Crafter; }
-			set{ m_Crafter = value; InvalidateProperties(); }
+			get => m_Crafter;
+            set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SecureLevel Level
 		{
-			get{ return m_Level; }
-			set{ m_Level = value; }
-		}
+			get => m_Level;
+            set => m_Level = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Description
 		{
-			get { return m_Description; }
-			set {
+			get => m_Description;
+            set {
 				m_Description = value;
 				InvalidateProperties(); }
 		}
@@ -64,35 +64,29 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int CurCharges
 		{
-			get { return m_CurCharges; }
-			set { m_CurCharges = value; }
-		}
+			get => m_CurCharges;
+            set => m_CurCharges = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int MaxCharges
 		{
-			get { return m_MaxCharges; }
-			set { m_MaxCharges = value; }
-		}
+			get => m_MaxCharges;
+            set => m_MaxCharges = value;
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int MaxRunes
         {
-            get { return m_MaxRunes; }
-            set { m_MaxRunes = value; }
+            get => m_MaxRunes;
+            set => m_MaxRunes = value;
         }
 
-        public Point3D LastUsedLocation
-        {
-            get { return m_LastUsedLocation; }
-        }
+        public Point3D LastUsedLocation => m_LastUsedLocation;
 
-        public Dictionary<Mobile, Point3D> Dictionary
-        {
-            get { return m_Dictionary; }
-        }
+        public Dictionary<Mobile, Point3D> Dictionary => m_Dictionary;
 
-		public override int LabelNumber{ get{ return 1041267; } } // runebook
+        public override int LabelNumber => 1041267; // runebook
 
 		[Constructable]
 		public Runebook( int maxCharges ) : base( Core.AOS ? 0x22C5 : 0xEFA )
@@ -118,15 +112,9 @@ namespace Server.Items
 		{
 		}
 
-        public List<RunebookEntry> Entries
-		{
-			get
-			{
-				return m_Entries;
-			}
-		}
+        public List<RunebookEntry> Entries => m_Entries;
 
-		public RunebookEntry Default
+        public RunebookEntry Default
 		{
 			get
 			{
@@ -293,9 +281,9 @@ namespace Server.Items
 			return false;
 		}
 
-		public override bool DisplayLootType{ get{ return Core.AOS; } }
+		public override bool DisplayLootType => Core.AOS;
 
-		public override void GetProperties( ObjectPropertyList list )
+        public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
 
@@ -489,31 +477,19 @@ namespace Server.Items
 
         public int ChargesLeft
         {
-            get { return m_ChargesLeft; }
-            set { m_ChargesLeft = value; }
+            get => m_ChargesLeft;
+            set => m_ChargesLeft = value;
         }
 
-		public Point3D Location
-		{
-			get{ return m_Location; }
-		}
+		public Point3D Location => m_Location;
 
-		public Map Map
-		{
-			get{ return m_Map; }
-		}
+        public Map Map => m_Map;
 
-		public string Description
-		{
-			get{ return m_Description; }
-		}
+        public string Description => m_Description;
 
-		public BaseHouse House
-		{
-			get{ return m_House; }
-		}
+        public BaseHouse House => m_House;
 
-		public RunebookEntry( Point3D loc, Map map, string desc, BaseHouse house, int charges)
+        public RunebookEntry( Point3D loc, Map map, string desc, BaseHouse house, int charges)
 		{
 			m_Location = loc;
 			m_Map = map;

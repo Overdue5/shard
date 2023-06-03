@@ -8,10 +8,10 @@ namespace Server.Factions
 		private readonly GuardDefinition m_Definition;
 		private readonly List<BaseFactionGuard> m_Guards;
 
-		public GuardDefinition Definition{ get{ return m_Definition; } }
-		public List<BaseFactionGuard> Guards{ get{ return m_Guards; } }
+		public GuardDefinition Definition => m_Definition;
+        public List<BaseFactionGuard> Guards => m_Guards;
 
-		public BaseFactionGuard Construct()
+        public BaseFactionGuard Construct()
 		{
 			try{ return Activator.CreateInstance( m_Definition.Type ) as BaseFactionGuard; }
 			catch{ return null; }

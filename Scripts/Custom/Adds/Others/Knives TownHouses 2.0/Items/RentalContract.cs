@@ -13,11 +13,16 @@ namespace Knives.TownHouses
 		private BaseHouse c_ParentHouse;
 		private bool c_Completed, c_EntireHouse;
 
-		public BaseHouse ParentHouse{ get{ return c_ParentHouse; } }
-		public Mobile RentalClient{ get{ return c_RentalClient; } set{ c_RentalClient = value; InvalidateProperties(); } }
-		public Mobile RentalMaster{ get{ return c_RentalMaster; } }
-		public bool Completed{ get{ return c_Completed; } set{ c_Completed = value; } }
-		public bool EntireHouse{ get{ return c_EntireHouse; } set{ c_EntireHouse = value; } }
+		public BaseHouse ParentHouse => c_ParentHouse;
+        public Mobile RentalClient{ get => c_RentalClient;
+            set{ c_RentalClient = value; InvalidateProperties(); } }
+		public Mobile RentalMaster => c_RentalMaster;
+        public bool Completed{ get => c_Completed;
+            set => c_Completed = value;
+        }
+		public bool EntireHouse{ get => c_EntireHouse;
+            set => c_EntireHouse = value;
+        }
 
 		public RentalContract()
 		{

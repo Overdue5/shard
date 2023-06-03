@@ -28,9 +28,9 @@ namespace Server.Items
 			Bounds = entry.Bounds;
 		}
 
-		public override int LabelNumber{ get{ return (m_LabelNumber == 0 ? base.LabelNumber : m_LabelNumber); } }
+		public override int LabelNumber => (m_LabelNumber == 0 ? base.LabelNumber : m_LabelNumber);
 
-		public PresetMap( Serial serial ) : base( serial )
+        public PresetMap( Serial serial ) : base( serial )
 		{
 		}
 
@@ -67,12 +67,12 @@ namespace Server.Items
 	    private readonly int m_Height;
 	    private readonly Rectangle2D m_Bounds;
 
-		public int Name{ get{ return m_Name; } }
-		public int Width{ get{ return m_Width; } }
-		public int Height{ get{ return m_Height; } }
-		public Rectangle2D Bounds{ get{ return m_Bounds; } }
+		public int Name => m_Name;
+        public int Width => m_Width;
+        public int Height => m_Height;
+        public Rectangle2D Bounds => m_Bounds;
 
-		public PresetMapEntry( int name, int width, int height, int xLeft, int yTop, int xRight, int yBottom )
+        public PresetMapEntry( int name, int width, int height, int xLeft, int yTop, int xRight, int yBottom )
 		{
 			m_Name = name;
 			m_Width = width;
@@ -112,8 +112,8 @@ namespace Server.Items
 				new PresetMapEntry( 1041202, 200, 200, 0000, 0512, 1792, 2048 )  // map of Yew to Britain
 			};
 
-		public static PresetMapEntry[] Table{ get{ return m_Table; } }
-	}
+		public static PresetMapEntry[] Table => m_Table;
+    }
 
 	public enum PresetMapType
 	{

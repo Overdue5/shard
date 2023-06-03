@@ -13,12 +13,9 @@ namespace Server.Commands.Generic
 			ExtensionInfo.Register( ExtInfo );
 		}
 
-		public override ExtensionInfo Info
-		{
-			get { return ExtInfo; }
-		}
+		public override ExtensionInfo Info => ExtInfo;
 
-		private readonly List<Property> m_Properties;
+        private readonly List<Property> m_Properties;
 
 		private IComparer m_Comparer;
 

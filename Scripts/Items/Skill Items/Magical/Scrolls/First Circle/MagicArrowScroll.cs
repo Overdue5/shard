@@ -2,7 +2,7 @@ namespace Server.Items
 {
 	public class MagicArrowScroll : SpellScroll
 	{
-        public override int ManaCost { get { return 4; } } //Loki edit
+        public override int ManaCost => 4; //Loki edit
 
 		[Constructable]
 		public MagicArrowScroll() : this( 1 )

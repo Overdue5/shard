@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class WaterTroughSouthAddon : BaseAddon, IWaterSource
 	{
-		public override BaseAddonDeed Deed{ get{ return new WaterTroughSouthDeed(); } }
+		public override BaseAddonDeed Deed => new WaterTroughSouthDeed();
 
-		[Constructable]
+        [Constructable]
 		public WaterTroughSouthAddon()
 		{
 			AddComponent( new AddonComponent( 0xB43 ), 0, 0, 0 );
@@ -31,15 +31,15 @@ namespace Server.Items
 
 		public int Quantity
 		{
-			get{ return 500; }
-			set{}
+			get => 500;
+            set{}
 		}
 	}
 
 	public class WaterTroughSouthDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new WaterTroughSouthAddon(); } }
-		public override int LabelNumber{ get{ return 1044350; } } // water trough (south)
+		public override BaseAddon Addon => new WaterTroughSouthAddon();
+        public override int LabelNumber => 1044350; // water trough (south)
 
 		[Constructable]
 		public WaterTroughSouthDeed()

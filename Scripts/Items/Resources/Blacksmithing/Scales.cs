@@ -2,26 +2,23 @@ namespace Server.Items
 {
 	public abstract class BaseScales : Item, ICommodity
 	{
-		public override int LabelNumber{ get{ return 1053139; } } // dragon scales
+		public override int LabelNumber => 1053139; // dragon scales
 
 		private CraftResource m_Resource;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public CraftResource Resource
 		{
-			get{ return m_Resource; }
-			set{ m_Resource = value; InvalidateProperties(); }
+			get => m_Resource;
+            set{ m_Resource = value; InvalidateProperties(); }
 		}
 
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
-		
-        int ICommodity.DescriptionNumber { get { return LabelNumber; } }
-        bool ICommodity.IsDeedable { get { return true; } }
+		public override double DefaultWeight => 0.1;
 
-		public override void Serialize( GenericWriter writer )
+        int ICommodity.DescriptionNumber => LabelNumber;
+        bool ICommodity.IsDeedable => true;
+
+        public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
@@ -231,7 +228,7 @@ namespace Server.Items
 
 	public class BlueScales : BaseScales
 	{
-		public override int LabelNumber{ get{ return 1053140; } } // sea serpent scales
+		public override int LabelNumber => 1053140; // sea serpent scales
 
 		[Constructable]
 		public BlueScales() : this( 1 )

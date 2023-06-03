@@ -106,11 +106,11 @@ namespace Server.Mobiles
 			Skills[SkillName.Lumberjacking].Base = 100.0; 
 
 		} 
-		public override bool CanRummageCorpses{ get{ return true; } }
-		public override bool AlwaysMurderer{ get{ return true; } }
-		public override int TreasureMapLevel{ get{ return Core.AOS ? 1 : 0; } }
+		public override bool CanRummageCorpses => true;
+        public override bool AlwaysMurderer => true;
+        public override int TreasureMapLevel => Core.AOS ? 1 : 0;
 
-		public virtual void CreateBones_Callback( object state )
+        public virtual void CreateBones_Callback( object state )
 		{
 			Mobile from = (Mobile)state;
 			Map map = from.Map;

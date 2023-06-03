@@ -10,7 +10,8 @@ namespace Server.Items
 
         private bool m_Filled;
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool Filled { get { return m_Filled; } set { m_Filled = value; InvalidateProperties(); } }
+        public bool Filled { get => m_Filled;
+            set { m_Filled = value; InvalidateProperties(); } }
 
         [Constructable]
         public Gravestone()

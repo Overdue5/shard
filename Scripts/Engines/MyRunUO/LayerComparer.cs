@@ -38,12 +38,9 @@ namespace Server.Engines.MyRunUO
 
 		private static readonly int[] m_TranslationTable;
 
-		public static int[] TranslationTable
-		{
-			get{ return m_TranslationTable; }
-		}
+		public static int[] TranslationTable => m_TranslationTable;
 
-		static LayerComparer()
+        static LayerComparer()
 		{
 			m_TranslationTable = new int[256];
 

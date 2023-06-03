@@ -5,20 +5,20 @@ namespace Server.Items
         //public override WeaponAbility PrimaryAbility { get { return WeaponAbility.Dismount; } }
         //public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Disarm; } }
 
-		public override int AosStrengthReq{ get{ return 5; } }
-		public override int AosMinDamage{ get{ return 9; } }
-		public override int AosMaxDamage{ get{ return 11; } }
-		public override int AosSpeed{ get{ return 40; } }
+		public override int AosStrengthReq => 5;
+        public override int AosMinDamage => 9;
+        public override int AosMaxDamage => 11;
+        public override int AosSpeed => 40;
 
-		public override int OldStrengthReq{ get{ return 0; } }
-		public override int OldMinDamage{ get{ return 2; } }
-		public override int OldMaxDamage{ get{ return 6; } }
-		public override int OldSpeed{ get{ return 400; } }
+        public override int OldStrengthReq => 0;
+        public override int OldMinDamage => 2;
+        public override int OldMaxDamage => 6;
+        public override int OldSpeed => 400;
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 110; } }
+        public override int InitMinHits => 31;
+        public override int InitMaxHits => 110;
 
-		[Constructable]
+        [Constructable]
 		public MagicWand() : base( 0xDF2 )
 		{
 			Weight = 1.0;

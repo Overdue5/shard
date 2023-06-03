@@ -6,9 +6,9 @@ namespace Server.Mobiles
 	public class IronWorker : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public IronWorker() : base( "the iron worker" )
 		{
 			SetSkill( SkillName.ArmsLore, 36.0, 68.0 );
@@ -40,12 +40,9 @@ namespace Server.Mobiles
 			m_SBInfos.Add( new SBLeatherArmor() );
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return VendorShoeType.None; }
-		}
+		public override VendorShoeType ShoeType => VendorShoeType.None;
 
-		public override void InitOutfit()
+        public override void InitOutfit()
 		{
 			base.InitOutfit();
 

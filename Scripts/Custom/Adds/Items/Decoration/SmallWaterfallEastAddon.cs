@@ -8,15 +8,9 @@ namespace Server.Items
 {
 	public class SmallWaterfallEastAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new SmallWaterfallEastAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new SmallWaterfallEastAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public SmallWaterfallEastAddon()
 		{
 			AddonComponent ac;
@@ -156,15 +150,9 @@ namespace Server.Items
 
 	public class SmallWaterfallEastAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new SmallWaterfallEastAddon();
-			}
-		}
+		public override BaseAddon Addon => new SmallWaterfallEastAddon();
 
-		[Constructable]
+        [Constructable]
 		public SmallWaterfallEastAddonDeed()
 		{
 			Name = "SmallWaterfallEast";

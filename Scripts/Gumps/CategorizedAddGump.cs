@@ -20,14 +20,14 @@ namespace Server.Gumps
 		private readonly int m_Hue;
 		private readonly CAGCategory m_Parent;
 
-		public Type Type{ get{ return m_Type; } }
-		public int ItemID{ get{ return m_ItemID; } }
-		public int Hue{ get{ return m_Hue; } }
-		public CAGCategory Parent{ get{ return m_Parent; } }
+		public Type Type => m_Type;
+        public int ItemID => m_ItemID;
+        public int Hue => m_Hue;
+        public CAGCategory Parent => m_Parent;
 
-		public override string Caption{ get{ return ( m_Type == null ? "bad type" : m_Type.Name ); } }
+        public override string Caption => ( m_Type == null ? "bad type" : m_Type.Name );
 
-		public override void OnClick( Mobile from, int page )
+        public override void OnClick( Mobile from, int page )
 		{
 			if ( m_Type == null )
 			{
@@ -62,13 +62,13 @@ namespace Server.Gumps
 		private readonly CAGNode[] m_Nodes;
 		private readonly CAGCategory m_Parent;
 
-		public string Title{ get{ return m_Title; } }
-		public CAGNode[] Nodes{ get{ return m_Nodes; } }
-		public CAGCategory Parent{ get{ return m_Parent; } }
+		public string Title => m_Title;
+        public CAGNode[] Nodes => m_Nodes;
+        public CAGCategory Parent => m_Parent;
 
-		public override string Caption{ get{ return m_Title; } }
+        public override string Caption => m_Title;
 
-		public override void OnClick( Mobile from, int page )
+        public override void OnClick( Mobile from, int page )
 		{
 			from.SendGump( new CategorizedAddGump( from, this, 0 ) );
 		}

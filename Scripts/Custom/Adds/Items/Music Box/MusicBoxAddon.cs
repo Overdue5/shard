@@ -107,7 +107,7 @@ namespace Server.Items.MusicBox
             }
         }
 
-        public bool Turning { get { return m_Timer != null; } }
+        public bool Turning => m_Timer != null;
 
         public void BeginTurn(Mobile from, double duration, MusicBoxComponent box)
         {
@@ -169,7 +169,7 @@ namespace Server.Items.MusicBox
 
     public class MusicBoxEastDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new MusicBoxAddon(0x2AFD); } }
+        public override BaseAddon Addon => new MusicBoxAddon(0x2AFD);
 
         [Constructable]
         public MusicBoxEastDeed()
@@ -199,7 +199,7 @@ namespace Server.Items.MusicBox
 
     public class MusicBoxSouthDeed : BaseAddonDeed
     {
-        public override BaseAddon Addon { get { return new MusicBoxAddon(0x2AF9); } }
+        public override BaseAddon Addon => new MusicBoxAddon(0x2AF9);
 
         [Constructable]
         public MusicBoxSouthDeed()

@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class GoldenRugAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed{ get{ return new GoldenRugDeed(); } }
+		public override BaseAddonDeed Deed => new GoldenRugDeed();
 
-		[Constructable]
+        [Constructable]
 		public GoldenRugAddon()
 		{
 			AddComponent( new AddonComponent( 0x0AB8 ), -1, -1, 0 );
@@ -39,9 +39,9 @@ namespace Server.Items
 
 	public class GoldenRugDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon{ get{ return new GoldenRugAddon(); } }
+		public override BaseAddon Addon => new GoldenRugAddon();
 
-		[Constructable]
+        [Constructable]
 		public GoldenRugDeed()
 		{
 			Name = "Large golden rug";

@@ -6,7 +6,7 @@ namespace Knives.Chat3
     {
         private Mobile c_Target;
 
-        public Mobile Current { get { return (c_Target == null ? Owner : c_Target); } }
+        public Mobile Current => (c_Target == null ? Owner : c_Target);
 
         public GlobalGump(Mobile m, Mobile targ)
             : base(m, 100, 100)

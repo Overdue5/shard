@@ -4,12 +4,9 @@ namespace Server.Items
 {
 	public class MasonryBook : Item
 	{
-		public override string DefaultName
-		{
-			get { return "Making Valuables With Stonecrafting"; }
-		}
+		public override string DefaultName => "Making Valuables With Stonecrafting";
 
-		[Constructable]
+        [Constructable]
 		public MasonryBook() : base( 0xFBE )
 		{
 			Weight = 1.0;

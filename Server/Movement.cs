@@ -26,9 +26,9 @@ namespace Server.Movement
 
 		public static IMovementImpl Impl
 		{
-			get{ return m_Impl; }
-			set{ m_Impl = value; }
-		}
+			get => m_Impl;
+            set => m_Impl = value;
+        }
 
 		public static bool CheckMovement( Mobile m, Direction d, out int newZ )
 		{

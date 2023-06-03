@@ -7,10 +7,10 @@ namespace Server.Spells.First
 {
     public class ClumsySpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.First; } }
-        public override int Sound { get { return 0x1DF; } }
+        public override SpellCircle Circle => SpellCircle.First;
+        public override int Sound => 0x1DF;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Clumsy", "Uus Jux",
 				212,
 				9031,

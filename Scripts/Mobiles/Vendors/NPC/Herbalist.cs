@@ -5,11 +5,11 @@ namespace Server.Mobiles
 	public class Herbalist : BaseVendor 
 	{ 
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>(); 
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.MagesGuild; } }
+        public override NpcGuild NpcGuild => NpcGuild.MagesGuild;
 
-		[Constructable]
+        [Constructable]
 		public Herbalist() : base( "the herbalist" ) 
 		{ 
 			SetSkill( SkillName.Alchemy, 80.0, 100.0 );
@@ -22,12 +22,9 @@ namespace Server.Mobiles
 			m_SBInfos.Add( new SBHerbalist() ); 
 		} 
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return Utility.RandomBool() ? VendorShoeType.Shoes : VendorShoeType.Sandals; } 
-		}
+		public override VendorShoeType ShoeType => Utility.RandomBool() ? VendorShoeType.Shoes : VendorShoeType.Sandals;
 
-		public Herbalist( Serial serial ) : base( serial ) 
+        public Herbalist( Serial serial ) : base( serial ) 
 		{ 
 		} 
 

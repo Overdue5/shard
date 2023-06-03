@@ -6,11 +6,11 @@ namespace Server.Mobiles
 	public class Glassblower : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.MagesGuild; } }
+        public override NpcGuild NpcGuild => NpcGuild.MagesGuild;
 
-		[Constructable]
+        [Constructable]
 		public Glassblower() : base( "the glassblower" )
 		{
 			SetSkill( SkillName.Alchemy, 85.0, 100.0 );

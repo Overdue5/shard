@@ -2,9 +2,9 @@ namespace Server.Items
 {
 	public class AlchemistsBauble : GoldBracelet
 	{
-		public override int LabelNumber{ get{ return 1070638; } }
+		public override int LabelNumber => 1070638;
 
-		[Constructable]
+        [Constructable]
 		public AlchemistsBauble()
 		{
 			Hue = 0x290;

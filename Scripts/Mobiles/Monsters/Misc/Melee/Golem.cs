@@ -9,14 +9,14 @@ namespace Server.Mobiles
 	{
 		private bool m_Stunning;
 
-		public override bool IsScaredOfScaryThings{ get{ return false; } }
-		public override bool IsScaryToPets{ get{ return true; } }
+		public override bool IsScaredOfScaryThings => false;
+        public override bool IsScaryToPets => true;
 
-		public override bool IsBondable{ get{ return false; } }
+        public override bool IsBondable => false;
 
-        public override FoodType FavoriteFood { get { return FoodType.None; } }
+        public override FoodType FavoriteFood => FoodType.None;
 
-		[Constructable]
+        [Constructable]
 		public Golem() : this( false, 1.0 )
 		{
 		}
@@ -102,9 +102,9 @@ namespace Server.Mobiles
             }
         }
 
-		public override bool DeleteOnRelease{ get{ return true; } }
+		public override bool DeleteOnRelease => true;
 
-		public override int GetAngerSound()
+        public override int GetAngerSound()
 		{
 			return 541;
 		}
@@ -138,10 +138,10 @@ namespace Server.Mobiles
 			return base.GetHurtSound();
 		}
 
-		public override bool AutoDispel{ get{ return !Controlled; } }
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool AutoDispel => !Controlled;
+        public override bool BleedImmune => true;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 
@@ -206,10 +206,10 @@ namespace Server.Mobiles
 			base.OnDamage( amount, from, willKill );
 		}
 
-		public override bool BardImmune{ get{ return !Core.AOS || Controlled; } }
-		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
+		public override bool BardImmune => !Core.AOS || Controlled;
+        public override Poison PoisonImmune => Poison.Lethal;
 
-		public Golem( Serial serial ) : base( serial )
+        public Golem( Serial serial ) : base( serial )
 		{
 		}
 

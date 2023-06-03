@@ -9,11 +9,11 @@ namespace Server.Items
 {
 	public class TreasureMapChest : LockableContainer
 	{
-		public override int LabelNumber{ get{ return 3000541; } }
+		public override int LabelNumber => 3000541;
 
-		public static Type[] Artifacts { get { return m_Artifacts; } }
+        public static Type[] Artifacts => m_Artifacts;
 
-		private static readonly Type[] m_Artifacts = new Type[]
+        private static readonly Type[] m_Artifacts = new Type[]
 		{
 			typeof( CandelabraOfSouls ), typeof( GoldBricks ), typeof( PhillipsWoodenSteed ),
 			typeof( ArcticDeathDealer ), typeof( BlazeOfDeath ), typeof( BurglarsBandana ),
@@ -33,20 +33,26 @@ namespace Server.Items
 		private List<Mobile> m_Guardians;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public int Level{ get{ return m_Level; } set{ m_Level = value; } }
+		public int Level{ get => m_Level;
+            set => m_Level = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Mobile Owner{ get{ return m_Owner; } set{ m_Owner = value; } }
+		public Mobile Owner{ get => m_Owner;
+            set => m_Owner = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime DeleteTime{ get{ return m_DeleteTime; } }
+		public DateTime DeleteTime => m_DeleteTime;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool Temporary{ get{ return m_Temporary; } set{ m_Temporary = value; } }
+        [CommandProperty( AccessLevel.GameMaster )]
+		public bool Temporary{ get => m_Temporary;
+            set => m_Temporary = value;
+        }
 
-		public List<Mobile> Guardians { get { return m_Guardians; } }
+		public List<Mobile> Guardians => m_Guardians;
 
-		[Constructable]
+        [Constructable]
 		public TreasureMapChest( int level ) : this( null, level, false )
 		{
 		}
@@ -354,12 +360,9 @@ namespace Server.Items
 			return false;
 		}
 
-		public override bool IsDecoContainer
-		{
-			get{ return false; }
-		}
+		public override bool IsDecoContainer => false;
 
-		public override bool CheckItemUse( Mobile from, Item item )
+        public override bool CheckItemUse( Mobile from, Item item )
 		{
 			return CheckLoot( from, item != this ) && base.CheckItemUse( from, item );
 		}

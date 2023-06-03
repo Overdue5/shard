@@ -18,7 +18,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool RefreshSlotList
         {
-            get { return m_refresh; }
+            get => m_refresh;
             set {
                 if (value)
                     BuildArrayList(null);
@@ -27,10 +27,7 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public TimeSpan NextRefresh
-        {
-            get { return (m_UpdateTimer - (DateTime.UtcNow - m_LastBuild)); }
-        }
+        public TimeSpan NextRefresh => (m_UpdateTimer - (DateTime.UtcNow - m_LastBuild));
 
         [Constructable]
         public TurboSlotStats()

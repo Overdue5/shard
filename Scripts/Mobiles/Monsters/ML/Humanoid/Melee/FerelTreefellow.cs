@@ -42,12 +42,9 @@ namespace Server.Mobiles
 			PackItem( new Log( Utility.RandomMinMax( 23, 34 ) ) );
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
+		public override OppositionGroup OppositionGroup => OppositionGroup.FeyAndUndead;
 
-		public override int GetIdleSound()
+        public override int GetIdleSound()
 		{
 			return 443;
 		}
@@ -62,9 +59,9 @@ namespace Server.Mobiles
 			return 672;
 		}
 
-		public override bool BleedImmune{ get{ return true; } }
+		public override bool BleedImmune => true;
 
-		public override void GenerateLoot()
+        public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average ); //Unknown
 		}

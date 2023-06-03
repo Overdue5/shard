@@ -8,12 +8,12 @@ namespace Server.Spells.Fifth
 {
 	public class BladeSpiritsSpell : MagerySpell
 	{
-        public override SpellCircle Circle { get { return SpellCircle.Fifth; } }
-        public override int Sound { get { return 0x212; } }
+        public override SpellCircle Circle => SpellCircle.Fifth;
+        public override int Sound => 0x212;
 
-        public override bool CanTargetGround { get { return true; } }
+        public override bool CanTargetGround => true;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Blade Spirits", "In Jux Hur Ylem", 
 				263,
 				9040,

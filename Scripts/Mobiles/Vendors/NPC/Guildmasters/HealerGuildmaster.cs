@@ -4,9 +4,9 @@ namespace Server.Mobiles
 {
 	public class HealerGuildmaster : BaseGuildmaster
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.HealersGuild; } }
+		public override NpcGuild NpcGuild => NpcGuild.HealersGuild;
 
-		[Constructable]
+        [Constructable]
 		public HealerGuildmaster() : base( "healer" )
 		{
 			SetSkill( SkillName.Anatomy, 85.0, 100.0 );
@@ -16,12 +16,9 @@ namespace Server.Mobiles
 			SetSkill( SkillName.SpiritSpeak, 65.0, 88.0 );
 		}
 
-		public override VendorShoeType ShoeType
-		{
-			get{ return VendorShoeType.Sandals; }
-		}
+		public override VendorShoeType ShoeType => VendorShoeType.Sandals;
 
-		public override void InitOutfit()
+        public override void InitOutfit()
 		{
 			base.InitOutfit();
 

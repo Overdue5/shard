@@ -23,15 +23,9 @@ namespace Server.Engines.Reports
         /// </summary>
         public ChartItem this[int index]
         {
-            get
-            {
-                return ((ChartItem)(List[index]));
-            }
-            set
-            {
-                List[index] = value;
-            }
-		}
+            get => ((ChartItem)(List[index]));
+            set => List[index] = value;
+        }
 
 		public int Add( string name, int value )
 		{

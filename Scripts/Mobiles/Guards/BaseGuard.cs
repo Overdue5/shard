@@ -25,14 +25,14 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.Counselor, AccessLevel.Owner)]
         public bool Disappears
         {
-            get { return m_Disappears; }
-            set { m_Disappears = value; }
+            get => m_Disappears;
+            set => m_Disappears = value;
         }
 
         [CommandProperty(AccessLevel.Counselor, AccessLevel.Owner)]
         public CraftResource GuardTheme
         {
-            get { return m_GuardTheme; }
+            get => m_GuardTheme;
             set
             {
                 CraftResource oldValue = m_GuardTheme;
@@ -46,7 +46,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.Counselor, AccessLevel.Owner)]
         public GuardType Type
         {
-            get { return m_GuardType; }
+            get => m_GuardType;
             set
             {
                 if (value == GuardType.Standard)

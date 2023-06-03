@@ -23,9 +23,9 @@ namespace Server.Items
 			return base.CheckSkills( from );
 		}
 
-		public override int BaseMana { get { return 30; } }
+		public override int BaseMana => 30;
 
-		public override void OnHit( Mobile attacker, Mobile defender, int damage )
+        public override void OnHit( Mobile attacker, Mobile defender, int damage )
 		{
 			if( !Validate( attacker ) || !CheckMana( attacker, true ) )
 				return;

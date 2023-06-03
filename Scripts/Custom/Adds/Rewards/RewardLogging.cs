@@ -11,16 +11,13 @@ namespace Server.IN.Logging
 
 		public static bool Enabled
 		{
-			get { return m_Enabled; }
-			set { m_Enabled = value; }
-		}
+			get => m_Enabled;
+            set => m_Enabled = value;
+        }
 
-		public static StreamWriter Output
-		{
-			get { return m_Output; }
-		}
+		public static StreamWriter Output => m_Output;
 
-		public static void Initialize()
+        public static void Initialize()
 		{
 			if( !Directory.Exists( "Logs" ) )
 				Directory.CreateDirectory( "Logs" );

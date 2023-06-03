@@ -5,9 +5,9 @@ namespace Server.Mobiles
 	public class GolemCrafter : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-		protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+		protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		[Constructable]
+        [Constructable]
 		public GolemCrafter() : base( "the golem crafter" )
 		{
 			SetSkill( SkillName.Lockpicking, 60.0, 83.0 );

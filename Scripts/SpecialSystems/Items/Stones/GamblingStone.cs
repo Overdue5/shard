@@ -7,23 +7,17 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int GamblePot
 		{
-			get
-			{
-				return m_GamblePot;
-			}
-			set
+			get => m_GamblePot;
+            set
 			{
 				m_GamblePot = value;
 				InvalidateProperties();
 			}
 		}
 
-		public override string DefaultName
-		{
-			get { return "a gambling stone"; }
-		}
+		public override string DefaultName => "a gambling stone";
 
-		[Constructable]
+        [Constructable]
 		public GamblingStone() : base( 0xED4 )
 		{
 			Movable = false;

@@ -2,12 +2,9 @@ namespace Server.Items
 {
 	public class SwarmOfFlies : Item
 	{
-		public override string DefaultName
-		{
-			get { return "a swarm of flies"; }
-		}
+		public override string DefaultName => "a swarm of flies";
 
-		[Constructable]
+        [Constructable]
 		public SwarmOfFlies() : base( 0x91B )
 		{
 			Hue = 1;

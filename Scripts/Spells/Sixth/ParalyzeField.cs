@@ -10,12 +10,12 @@ namespace Server.Spells.Sixth
 {
     public class ParalyzeFieldSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 529; } }
-        
-		public override bool CanTargetGround { get { return true; } }
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 529;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override bool CanTargetGround => true;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 						"Paralyze Field", "In Ex Grav",
 						263,
 						9012,
@@ -242,9 +242,9 @@ namespace Server.Spells.Sixth
 			private DateTime m_End;
 		    private int m_Duration;
 
-			public override bool BlocksFit { get { return true; } }
+			public override bool BlocksFit => true;
 
-			public InternalItem(Mobile caster, int itemID, Point3D loc, Map map, TimeSpan duration)
+            public InternalItem(Mobile caster, int itemID, Point3D loc, Map map, TimeSpan duration)
 				: base(itemID)
 			{
 				//Visible = false;

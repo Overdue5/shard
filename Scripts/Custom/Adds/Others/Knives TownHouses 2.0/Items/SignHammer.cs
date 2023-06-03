@@ -157,7 +157,9 @@ namespace Knives.TownHouses
 
 		private HammerJob c_Job;
 
-		public HammerJob Job{ get{ return c_Job; } set{ c_Job = value; } }
+		public HammerJob Job{ get => c_Job;
+            set => c_Job = value;
+        }
 
 		[Constructable]
 		public SignHammer() : base( 0x13E3 )

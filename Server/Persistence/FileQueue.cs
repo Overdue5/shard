@@ -35,25 +35,13 @@ namespace Server {
 			private int offset;
 			private int size;
 
-			public byte[] Buffer {
-				get {
-					return buffer;
-				}
-			}
+			public byte[] Buffer => buffer;
 
-			public int Offset {
-				get {
-					return 0;
-				}
-			}
+            public int Offset => 0;
 
-			public int Size {
-				get {
-					return size;
-				}
-			}
+            public int Size => size;
 
-			public Chunk( FileQueue owner, int slot, byte[] buffer, int offset, int size ) {
+            public Chunk( FileQueue owner, int slot, byte[] buffer, int offset, int size ) {
 				this.owner = owner;
 				this.slot = slot;
 
@@ -94,13 +82,9 @@ namespace Server {
 
 		private long position;
 
-		public long Position {
-			get {
-				return position;
-			}
-		}
+		public long Position => position;
 
-		public FileQueue( int concurrentWrites, FileCommitCallback callback ) {
+        public FileQueue( int concurrentWrites, FileCommitCallback callback ) {
 			if ( concurrentWrites < 1 ) {
 				throw new ArgumentOutOfRangeException( "concurrentWrites" );
 			} else if ( bufferSize < 1 ) {

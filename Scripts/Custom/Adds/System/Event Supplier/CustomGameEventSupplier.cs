@@ -57,22 +57,22 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D Target
         {
-            get { return m_TargetLocation; }
-            set { m_TargetLocation = value; }
+            get => m_TargetLocation;
+            set => m_TargetLocation = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Map TargetMap
         {
-            get { return m_TargetMap; }
-            set { m_TargetMap = value; }
+            get => m_TargetMap;
+            set => m_TargetMap = value;
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public EventType EventType
         {
-            get { return m_EventType; }
-            set { m_EventType = value; }
+            get => m_EventType;
+            set => m_EventType = value;
         }
 
         public bool Teleport(Mobile m)

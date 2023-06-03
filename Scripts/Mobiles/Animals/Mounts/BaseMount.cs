@@ -12,24 +12,24 @@ namespace Server.Mobiles
 		private Item m_InternalItem;
 		private DateTime m_NextMountAbility;
 
-		public virtual TimeSpan MountAbilityDelay { get { return TimeSpan.Zero; } }
+		public virtual TimeSpan MountAbilityDelay => TimeSpan.Zero;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.GameMaster )]
 		public DateTime NextMountAbility
 		{
-			get { return m_NextMountAbility; }
-			set { m_NextMountAbility = value; }
-		}
+			get => m_NextMountAbility;
+            set => m_NextMountAbility = value;
+        }
 
 	    [CommandProperty(AccessLevel.GameMaster)]
 	    public bool DonationMount { get; set; }
 
-        protected Item InternalItem { get { return m_InternalItem; } }
+        protected Item InternalItem => m_InternalItem;
 
-		public virtual bool AllowMaleRider{ get{ return true; } }
-		public virtual bool AllowFemaleRider{ get{ return true; } }
+        public virtual bool AllowMaleRider => true;
+        public virtual bool AllowFemaleRider => true;
 
-		public BaseMount( string name, int bodyID, int itemID, AIType aiType, FightMode fightMode, int rangePerception, int rangeFight, double activeSpeed, double passiveSpeed ) : base ( aiType, fightMode, rangePerception, rangeFight, activeSpeed, passiveSpeed )
+        public BaseMount( string name, int bodyID, int itemID, AIType aiType, FightMode fightMode, int rangePerception, int rangeFight, double activeSpeed, double passiveSpeed ) : base ( aiType, fightMode, rangePerception, rangeFight, activeSpeed, passiveSpeed )
 		{
 			Name = name;
 			Body = bodyID;
@@ -59,11 +59,8 @@ namespace Server.Mobiles
 		[Hue, CommandProperty( AccessLevel.GameMaster )]
 		public override int Hue
 		{
-			get
-			{
-				return base.Hue;
-			}
-			set
+			get => base.Hue;
+            set
 			{
 				base.Hue = value;
 
@@ -236,11 +233,8 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Mobile Rider
 		{
-			get
-			{
-				return m_Rider;
-			}
-			set
+			get => m_Rider;
+            set
 			{
 				if ( m_Rider != value )
 				{
@@ -296,9 +290,9 @@ namespace Server.Mobiles
 			public BlockMountType m_Type;
 			public DateTime m_Expiration;
 
-			public bool IsExpired{ get{ return ( DateTime.UtcNow >= m_Expiration ); } }
+			public bool IsExpired => ( DateTime.UtcNow >= m_Expiration );
 
-			public BlockEntry( BlockMountType type, DateTime expiration )
+            public BlockEntry( BlockMountType type, DateTime expiration )
 			{
 				m_Type = type;
 				m_Expiration = expiration;
@@ -411,9 +405,9 @@ namespace Server.Mobiles
 	{
 		private BaseMount m_Mount;
 
-        public override double DefaultWeight { get { return 0; } }
+        public override double DefaultWeight => 0;
 
-		public MountItem( BaseMount mount, int itemID ) : base( itemID )
+        public MountItem( BaseMount mount, int itemID ) : base( itemID )
 		{
 			Layer = Layer.Mount;
 			Movable = false;
@@ -472,14 +466,8 @@ namespace Server.Mobiles
 			}
 		}
 
-		public IMount Mount
-		{
-			get
-			{
-				return m_Mount;
-			}
-		}
-	}
+		public IMount Mount => m_Mount;
+    }
 
 	public enum BlockMountType
 	{

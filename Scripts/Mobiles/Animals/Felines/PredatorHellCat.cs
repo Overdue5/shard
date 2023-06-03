@@ -44,13 +44,13 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override bool HasBreath{ get{ return true; } } // fire breath enabled
-		public override int Hides{ get{ return 10; } }
-        public override HideType HideType { get { return HideType.Regular; } }
-		public override FoodType FavoriteFood{ get{ return FoodType.Meat; } }
-		public override PackInstinct PackInstinct{ get{ return PackInstinct.Feline; } }
+		public override bool HasBreath => true; // fire breath enabled
+		public override int Hides => 10;
+        public override HideType HideType => HideType.Regular;
+        public override FoodType FavoriteFood => FoodType.Meat;
+        public override PackInstinct PackInstinct => PackInstinct.Feline;
 
-		public PredatorHellCat(Serial serial) : base(serial)
+        public PredatorHellCat(Serial serial) : base(serial)
 		{
 		}
 

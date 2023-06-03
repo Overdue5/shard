@@ -59,9 +59,9 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override int TreasureMapLevel{ get{ return 4; } }
+		public override int TreasureMapLevel => 4;
 
-		public Efreet( Serial serial ) : base( serial )
+        public Efreet( Serial serial ) : base( serial )
 		{
 		}
 

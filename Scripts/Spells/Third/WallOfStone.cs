@@ -8,12 +8,12 @@ namespace Server.Spells.Third
 {
     public class WallOfStoneSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Third; } }
-        public override int Sound { get { return 0x1F6; } }
-        
-        public override bool CanTargetGround { get { return true; } }
+        public override SpellCircle Circle => SpellCircle.Third;
+        public override int Sound => 0x1F6;
 
-		private static readonly SpellInfo m_Info = new SpellInfo(
+        public override bool CanTargetGround => true;
+
+        private static readonly SpellInfo m_Info = new SpellInfo(
 				"Wall of Stone", "In Sanct Ylem",
 				263,//269
 				9011,

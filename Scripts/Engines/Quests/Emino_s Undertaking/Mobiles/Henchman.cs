@@ -30,9 +30,9 @@ namespace Server.Engines.Quests.Ninja
 			SetSkill( SkillName.Tactics, 50.0 );
 		}
 
-		public override bool AlwaysMurderer{ get{ return true; } }
+		public override bool AlwaysMurderer => true;
 
-		public Henchman( Serial serial ) : base( serial )
+        public Henchman( Serial serial ) : base( serial )
 		{
 		}
 

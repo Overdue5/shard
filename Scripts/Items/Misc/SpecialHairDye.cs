@@ -5,12 +5,9 @@ namespace Server.Items
 {
 	public class SpecialHairDye : Item
 	{
-		public override string DefaultName
-		{
-			get { return "Special Hair Dye"; }
-		}
+		public override string DefaultName => "Special Hair Dye";
 
-		[Constructable]
+        [Constructable]
 		public SpecialHairDye() : base( 0xE26 )
 		{
 			Weight = 1.0;
@@ -60,31 +57,13 @@ namespace Server.Items
 			private readonly int m_HueStart;
 			private readonly int m_HueCount;
 
-			public string Name
-			{
-				get
-				{
-					return m_Name;
-				}
-			}
+			public string Name => m_Name;
 
-			public int HueStart
-			{
-				get
-				{
-					return m_HueStart;
-				}
-			}
+            public int HueStart => m_HueStart;
 
-			public int HueCount
-			{
-				get
-				{
-					return m_HueCount;
-				}
-			}
+            public int HueCount => m_HueCount;
 
-			public SpecialHairDyeEntry( string name, int hueStart, int hueCount )
+            public SpecialHairDyeEntry( string name, int hueStart, int hueCount )
 			{
 				m_Name = name;
 				m_HueStart = hueStart;

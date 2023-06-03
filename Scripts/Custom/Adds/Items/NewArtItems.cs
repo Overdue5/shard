@@ -4,7 +4,8 @@
     [Flipable(0x3859, 0x385A)]
     public class EngravedArmoire : BaseContainer
     {
-        public override int DefaultGumpID { get { return 0x4E; } }
+        public override int DefaultGumpID => 0x4E;
+
         [Constructable]
         public EngravedArmoire()
             : base(0x3859)
@@ -97,7 +98,8 @@
     [Flipable(0x3871, 0x3872)]
     public class FullStoneBookcase : BaseContainer
     {
-        public override int DefaultGumpID { get { return 0x4D; } }
+        public override int DefaultGumpID => 0x4D;
+
         [Constructable]
         public FullStoneBookcase()
             : base(0x3871)
@@ -129,7 +131,8 @@
     [Flipable(0x3873, 0x3874)]
     public class EmptyStoneBookcase : BaseContainer
     {
-        public override int DefaultGumpID { get { return 0x4D; } }
+        public override int DefaultGumpID => 0x4D;
+
         [Constructable]
         public EmptyStoneBookcase()
                 : base(0x3873)

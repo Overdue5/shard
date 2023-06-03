@@ -68,11 +68,11 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.Rich );
 		}
-		public override int Meat { get { return 4; } }
-		public override int Hides { get { return 25; } }
-		public override FoodType FavoriteFood { get { return FoodType.Meat; } }
+		public override int Meat => 4;
+        public override int Hides => 25;
+        public override FoodType FavoriteFood => FoodType.Meat;
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+        public override void OnGaveMeleeAttack( Mobile defender )
 		{
 			base.OnGaveMeleeAttack( defender );
 

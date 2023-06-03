@@ -12,9 +12,9 @@ namespace Server.Items
 		{
 		}
 
-		public override int BaseMana{ get{ return 30; } }
+		public override int BaseMana => 30;
 
-		public static readonly TimeSpan PlayerFreezeDuration = TimeSpan.FromSeconds( 3.0 );
+        public static readonly TimeSpan PlayerFreezeDuration = TimeSpan.FromSeconds( 3.0 );
 		public static readonly TimeSpan NPCFreezeDuration = TimeSpan.FromSeconds( 6.0 );
 
 		public static readonly TimeSpan FreezeDelayDuration = TimeSpan.FromSeconds( 8.0 );

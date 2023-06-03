@@ -6,9 +6,9 @@ namespace Server.Spells.Sixth
 {
     public class MassCurseSpell : MagerySpell
     {
-        public override SpellCircle Circle { get { return SpellCircle.Sixth; } }
-        public override int Sound { get { return 0x1FB; } }
-        
+        public override SpellCircle Circle => SpellCircle.Sixth;
+        public override int Sound => 0x1FB;
+
         //public override bool SpellDisabled { get { return true; } }
 
 		private static readonly SpellInfo m_Info = new SpellInfo(

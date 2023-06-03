@@ -48,16 +48,16 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Average );
 		}
 
-		public override Poison PoisonImmune{ get{ return Poison.Greater; } }
-		public override Poison HitPoison{ get{ return (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly); } }
+		public override Poison PoisonImmune => Poison.Greater;
+        public override Poison HitPoison => (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly);
 
-		public override bool DeathAdderCharmable{ get{ return true; } }
+        public override bool DeathAdderCharmable => true;
 
-		public override int Meat{ get{ return 4; } }
-		public override int Hides{ get{ return 15; } }
-        public override HideType HideType { get { return HideType.Regular; } }
+        public override int Meat => 4;
+        public override int Hides => 15;
+        public override HideType HideType => HideType.Regular;
 
-		public GiantSerpent(Serial serial) : base(serial)
+        public GiantSerpent(Serial serial) : base(serial)
 		{
 		}
 

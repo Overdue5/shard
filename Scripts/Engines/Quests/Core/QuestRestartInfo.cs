@@ -10,9 +10,9 @@ namespace Server.Engines.Quests
 
 	    public DateTime RestartTime
 		{
-			get{ return m_RestartTime; }
-			set{ m_RestartTime = value; }
-		}
+			get => m_RestartTime;
+            set => m_RestartTime = value;
+        }
 
 		public void Reset( TimeSpan restartDelay )
 		{

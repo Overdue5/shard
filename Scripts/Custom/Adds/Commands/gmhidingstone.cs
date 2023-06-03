@@ -28,28 +28,28 @@ namespace Server.Items
 		[CommandProperty(AccessLevel.Counselor)]
 		public StoneEffect AppearEffect
 		{
-			get { return mAppearEffect; }
-			set { mAppearEffect = value; }
-		}
+			get => mAppearEffect;
+            set => mAppearEffect = value;
+        }
 		[Hue, CommandProperty(AccessLevel.Counselor)]
 		public int AppearEffectHue
 		{
-			get { return mAppearEffectHue; }
-			set { mAppearEffectHue = value; }
-		}
+			get => mAppearEffectHue;
+            set => mAppearEffectHue = value;
+        }
 		[CommandProperty(AccessLevel.Counselor)]
 		public StoneEffect HideEffect
 		{
-			get { return mHideEffect; }
-			set { mHideEffect = value; }
-		}
+			get => mHideEffect;
+            set => mHideEffect = value;
+        }
 
 		[Hue, CommandProperty(AccessLevel.Counselor)]
 		public int HideEffectHue
 		{
-			get { return mHideEffectHue; }
-			set { mHideEffectHue = value; }
-		}
+			get => mHideEffectHue;
+            set => mHideEffectHue = value;
+        }
 
 		[Constructable]
 		public GMHidingStone()

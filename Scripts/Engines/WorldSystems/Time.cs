@@ -40,34 +40,31 @@ namespace Server.Engines
 
 		private static int m_MinutesInYear = MonthsInYear * MinutesInMonth;
 
-		public static int DaysInMonth { get { return m_DaysInMonth; } }
+		public static int DaysInMonth => m_DaysInMonth;
 
-		public static int DaysInWeek { get { return m_DaysInWeek; } }
+        public static int DaysInWeek => m_DaysInWeek;
 
-		public static int DaysInYear { get { return m_DaysInYear; } }
+        public static int DaysInYear => m_DaysInYear;
 
-		public static TimeSpan DayTime { get { return m_DayTime; } }
+        public static TimeSpan DayTime => m_DayTime;
 
-		public static int HoursInDay { get { return m_HoursInDay; } }
+        public static int HoursInDay => m_HoursInDay;
 
-		public static int MinutesInDay { get { return m_MinutesInDay; } }
+        public static int MinutesInDay => m_MinutesInDay;
 
-		public static int MinutesInHour { get { return m_MinutesInHour; } }
+        public static int MinutesInHour => m_MinutesInHour;
 
-		public static int MinutesInMonth { get { return m_MinutesInMonth; } }
+        public static int MinutesInMonth => m_MinutesInMonth;
 
-		public static int MinutesInYear { get { return m_MinutesInYear; } }
+        public static int MinutesInYear => m_MinutesInYear;
 
-		public static int MonthsInYear { get { return m_MonthsInYear; } }
+        public static int MonthsInYear => m_MonthsInYear;
 
-		public static TimeSpan MonthTime
-		{
-			get { return TimeSpan.FromSeconds(DayTime.TotalSeconds * DaysInMonth); }
-		}
+        public static TimeSpan MonthTime => TimeSpan.FromSeconds(DayTime.TotalSeconds * DaysInMonth);
 
-		public static int ReferencePoint { get { return m_ReferencePoint; } }
+        public static int ReferencePoint => m_ReferencePoint;
 
-#endregion Config
+        #endregion Config
 
 #region Consts
 
@@ -86,34 +83,34 @@ namespace Server.Engines
 		/// <summary>
 		/// The number of real seconds in one game day 
 		/// </summary>
-		public static int SecInDay { get { return m_SecInDay; } }
+		public static int SecInDay => m_SecInDay;
 
-		/// <summary>
+        /// <summary>
 		/// The number of real seconds in one game hour 
 		/// </summary>
-		public static int SecInHour { get { return m_SecInHour; } }
+		public static int SecInHour => m_SecInHour;
 
-		/// <summary>
+        /// <summary>
 		/// The number of real seconds in one game minute
 		/// </summary>
-		public static float SecInMinute { get { return m_SecInMinute; } }
+		public static float SecInMinute => m_SecInMinute;
 
-		/// <summary>
+        /// <summary>
 		/// The number of real seconds in one game month
 		/// </summary>
-		public static int SecInMonth { get { return m_SecInMonth; } }
+		public static int SecInMonth => m_SecInMonth;
 
-		/// <summary>
+        /// <summary>
 		/// The number of real seconds in one game year 
 		/// </summary>
-		public static int SecInYear { get { return m_SecInYear; } }
+		public static int SecInYear => m_SecInYear;
 
-		/// <summary>
+        /// <summary>
 		/// Time reference point  (2020.01.01 00:00:00)
 		/// </summary>
-		public static DateTime StartPoint { get { return m_StartPoint; } }
+		public static DateTime StartPoint => m_StartPoint;
 
-#endregion Consts
+        #endregion Consts
 
 #region Public Fields
 
@@ -196,12 +193,9 @@ namespace Server.Engines
 			}
 		}
 
-		public static int NowLightLevel
-		{
-			get { return m_NowLightLevel; }
-		}
+		public static int NowLightLevel => m_NowLightLevel;
 
-		#endregion Public Properties
+        #endregion Public Properties
 
 		#region Public Methods
 
@@ -768,17 +762,14 @@ namespace Server.Engines
 
 #region Public Properties
 
-		public static WorldDateTime Now
-		{
-			get { return new WorldDateTime(DateTime.UtcNow); }
-		}
+		public static WorldDateTime Now => new WorldDateTime(DateTime.UtcNow);
 
-		public DateTime DateTime { get { return m_DateTime; } }
+        public DateTime DateTime => m_DateTime;
 
-		public int Day
+        public int Day
 		{
-			get { return m_Day; }
-			set
+			get => m_Day;
+            set
 			{
 				if (m_Day == value) return;
 				m_Day = Utility.LimitMinMax(1, value, UtilityWorldTime.DaysInMonth);
@@ -788,14 +779,14 @@ namespace Server.Engines
 
 		public Daylight Daylight { get { if (m_Daylight == Daylight.None) m_Daylight = UtilityWorldTime.GetDayLight(this); return m_Daylight; } }
 
-		public Day DayOfWeek { get { return m_DayOfWeek; } }
+		public Day DayOfWeek => m_DayOfWeek;
 
-		public int DayOfYear { get { return ((int)m_Month - 1) * UtilityWorldTime.DaysInMonth + Day; } }
+        public int DayOfYear => ((int)m_Month - 1) * UtilityWorldTime.DaysInMonth + Day;
 
-		public int Hours
+        public int Hours
 		{
-			get { return m_Hours; }
-			set
+			get => m_Hours;
+            set
 			{
 				m_Hours = Utility.LimitMinMax(0, value, UtilityWorldTime.HoursInDay - 1);
 				m_Daylight = Daylight.None;
@@ -804,8 +795,8 @@ namespace Server.Engines
 
 		public int Minutes
 		{
-			get { return m_Minutes; }
-			set
+			get => m_Minutes;
+            set
 			{
 				m_Minutes = Utility.LimitMinMax(0, value, UtilityWorldTime.MinutesInHour - 1);
 				m_Daylight = Daylight.None;
@@ -814,8 +805,8 @@ namespace Server.Engines
 
 		public Month Month
 		{
-			get { return m_Month; }
-			set
+			get => m_Month;
+            set
 			{
 				if (m_Month == value) return;
 				m_Month = value;
@@ -828,9 +819,9 @@ namespace Server.Engines
 
 		public int Year
 		{
-			get { return m_Year; }
-			set { m_Year = Utility.LimitMin(0, value); }
-		}
+			get => m_Year;
+            set => m_Year = Utility.LimitMin(0, value);
+        }
 
 #endregion Public Properties
 
@@ -905,41 +896,30 @@ namespace Server.Engines
 
 		private int m_Years;
 
-		public int Days
-		{ get { return m_Days; } }
+		public int Days => m_Days;
 
-		public int Hours
-		{ get { return m_Hours; } }
+        public int Hours => m_Hours;
 
-		public int Minutes
-		{ get { return m_Minutes; } }
+        public int Minutes => m_Minutes;
 
-		public int Months
-		{ get { return m_Months; } }
+        public int Months => m_Months;
 
-		public TimeSpan TimeSpan
-		{ get { return m_TimeSpan; } }
+        public TimeSpan TimeSpan => m_TimeSpan;
 
-		public double TotalDays
-		{ get { return m_TotalDays; } }
+        public double TotalDays => m_TotalDays;
 
-		public double TotalHours
-		{ get { return m_TotalHours; } }
+        public double TotalHours => m_TotalHours;
 
-		public double TotalMinutes
-		{ get { return m_TotalMinutes; } }
+        public double TotalMinutes => m_TotalMinutes;
 
-		public double TotalMonths
-		{ get { return m_TotalMonths; } }
+        public double TotalMonths => m_TotalMonths;
 
-		public double TotalYears
-		{ get { return m_TotalYears; } }
+        public double TotalYears => m_TotalYears;
 
-		public int Years
-		{ get { return m_Years; } }
+        public int Years => m_Years;
 
 
-#region Public Constructors
+        #region Public Constructors
 
 		public WorldTimeSpan(TimeSpan span) : this((int)span.TotalSeconds)
 		{
@@ -975,12 +955,9 @@ namespace Server.Engines
 
 #region Public Properties
 
-		public static WorldTimeSpan Zero
-		{
-			get { return new WorldTimeSpan(0); }
-		}
+		public static WorldTimeSpan Zero => new WorldTimeSpan(0);
 
-#endregion Public Properties
+        #endregion Public Properties
 
 #region Public Methods
 

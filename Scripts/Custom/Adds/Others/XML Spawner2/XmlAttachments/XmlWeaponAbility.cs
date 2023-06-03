@@ -10,9 +10,9 @@ namespace Server.Engines.XmlSpawner2
 
 		public WeaponAbility WeaponAbility
 		{
-			get { return m_Ability;  }
-			set { m_Ability = value;  }
-		}
+			get => m_Ability;
+            set => m_Ability = value;
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Ability 

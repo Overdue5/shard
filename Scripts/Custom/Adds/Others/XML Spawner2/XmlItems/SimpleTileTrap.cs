@@ -38,8 +38,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int SwitchSound
 		{
-			get{ return m_SwitchSound; }
-			set 
+			get => m_SwitchSound;
+            set 
 			{
 				m_SwitchSound = value;
 				InvalidateProperties();
@@ -50,15 +50,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target0Item
 		{
-			get{ return m_TargetItem0; }
-			set { m_TargetItem0 = value;InvalidateProperties();}
+			get => m_TargetItem0;
+            set { m_TargetItem0 = value;InvalidateProperties();}
 		}
    
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target0Property
 		{
-			get{ return m_TargetProperty0; }
-			set { m_TargetProperty0 = value;InvalidateProperties();}
+			get => m_TargetProperty0;
+            set { m_TargetProperty0 = value;InvalidateProperties();}
 		}
    
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -69,15 +69,15 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.GameMaster )]
 		public Item Target1Item
 		{
-			get{ return m_TargetItem1; }
-			set { m_TargetItem1 = value;InvalidateProperties();}
+			get => m_TargetItem1;
+            set { m_TargetItem1 = value;InvalidateProperties();}
 		}
    
 		[CommandProperty( AccessLevel.GameMaster )]
 		public string Target1Property
 		{
-			get{ return m_TargetProperty1; }
-			set { m_TargetProperty1 = value;InvalidateProperties();}
+			get => m_TargetProperty1;
+            set { m_TargetProperty1 = value;InvalidateProperties();}
 		}
    
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -130,7 +130,7 @@ namespace Server.Items
 		}
    
    
-		public override bool HandlesOnMovement{ get{ return true; } } // Tell the core that we implement OnMovement
+		public override bool HandlesOnMovement => true; // Tell the core that we implement OnMovement
    
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{

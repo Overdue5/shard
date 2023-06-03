@@ -2,11 +2,11 @@ namespace Server.Items
 {
 	public class DeathknightsHelm : DragonHelm
 	{
-		public override int InitMinHits{ get{ return 75; } }
-		public override int InitMaxHits{ get{ return 95; } }
-		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
+		public override int InitMinHits => 75;
+        public override int InitMaxHits => 95;
+        public override CraftResource DefaultResource => CraftResource.Iron;
 
-		[Constructable]
+        [Constructable]
 		public DeathknightsHelm()
 		{
 			Name = "Crown of the Deathknight";

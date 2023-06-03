@@ -36,39 +36,33 @@ namespace Server.Mobiles
 
 	    public string VendorName
 		{
-			get{ return m_VendorName; }
-			set{ m_VendorName = value; }
-		}
+			get => m_VendorName;
+            set => m_VendorName = value;
+        }
 
 		public string ShopName
 		{
-			get{ return m_ShopName; }
-			set{ m_ShopName = value; }
-		}
+			get => m_ShopName;
+            set => m_ShopName = value;
+        }
 
 		public Mobile Owner
 		{
-			get{ return m_Owner; }
-			set{ m_Owner = value; }
-		}
+			get => m_Owner;
+            set => m_Owner = value;
+        }
 
-		public List<Item> Items
+		public List<Item> Items => m_Items;
+
+        public int Gold
 		{
-			get{ return m_Items; }
-		}
+			get => m_Gold;
+            set => m_Gold = value;
+        }
 
-		public int Gold
-		{
-			get{ return m_Gold; }
-			set{ m_Gold = value; }
-		}
+		public DateTime ExpireTime => m_ExpireTime;
 
-		public DateTime ExpireTime
-		{
-			get{ return m_ExpireTime; }
-		}
-
-		public void AddItem( Item item )
+        public void AddItem( Item item )
 		{
 			item.Internalize();
 			m_Items.Add( item );

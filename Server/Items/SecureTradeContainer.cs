@@ -26,15 +26,9 @@ namespace Server.Items
 	{
 		private SecureTrade m_Trade;
 
-		public SecureTrade Trade
-		{
-			get
-			{
-				return m_Trade;
-			}
-		}
+		public SecureTrade Trade => m_Trade;
 
-		public SecureTradeContainer( SecureTrade trade ) : base( 0x1E5E )
+        public SecureTradeContainer( SecureTrade trade ) : base( 0x1E5E )
 		{
 			m_Trade = trade;
 

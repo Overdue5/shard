@@ -6,22 +6,22 @@ namespace Server.Items
 		////public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		//public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 
-		public override int AosStrengthReq{ get{ return 40; } }
-		public override int AosMinDamage{ get{ return 14; } }
-		public override int AosMaxDamage{ get{ return 16; } }
-		public override int AosSpeed{ get{ return 37; } }
+		public override int AosStrengthReq => 40;
+        public override int AosMinDamage => 14;
+        public override int AosMaxDamage => 16;
+        public override int AosSpeed => 37;
 
-		public override int OldStrengthReq{ get{ return 40; } }
-		public override int OldMinDamage{ get{ return 14; } }
-		public override int OldMaxDamage{ get{ return 16; } }
-		public override int OldSpeed{ get{ return 383; } }
+        public override int OldStrengthReq => 40;
+        public override int OldMinDamage => 14;
+        public override int OldMaxDamage => 16;
+        public override int OldSpeed => 383;
 
-		public override int InitMinHits{ get{ return 21; } }
-		public override int InitMaxHits{ get{ return 110; } }
+        public override int InitMinHits => 21;
+        public override int InitMaxHits => 110;
 
-		public override SkillName DefSkill{ get{ return SkillName.Swords; } }
+        public override SkillName DefSkill => SkillName.Swords;
 
-        	public override int GetSwingAnim(Mobile from)
+        public override int GetSwingAnim(Mobile from)
 	        {
         	    if (from.Mounted)
                 	return 29;

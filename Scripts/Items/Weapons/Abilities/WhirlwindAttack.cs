@@ -13,9 +13,9 @@ namespace Server.Items
 		{
 		}
 
-		public override int BaseMana{ get{ return 15; } }
+		public override int BaseMana => 15;
 
-		public override void OnHit( Mobile attacker, Mobile defender, int damage )
+        public override void OnHit( Mobile attacker, Mobile defender, int damage )
 		{
 			if ( !Validate( attacker )  )
 				return;

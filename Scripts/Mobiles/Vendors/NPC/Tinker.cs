@@ -5,11 +5,11 @@ namespace Server.Mobiles
 	public class Tinker : BaseVendor
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
+        protected override List<SBInfo> SBInfos => m_SBInfos;
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.TinkersGuild; } }
+        public override NpcGuild NpcGuild => NpcGuild.TinkersGuild;
 
-		[Constructable]
+        [Constructable]
 		public Tinker() : base( "the tinker" )
 		{
 			SetSkill( SkillName.Lockpicking, 60.0, 83.0 );

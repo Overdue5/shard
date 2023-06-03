@@ -15,15 +15,9 @@ namespace Server.Items
 		private Item m_Commodity;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public Item Commodity
-		{
-			get
-			{
-				return m_Commodity;
-			}
-		}
+		public Item Commodity => m_Commodity;
 
-		public bool SetCommodity( Item item )
+        public bool SetCommodity( Item item )
 		{
 			InvalidateProperties();
 
@@ -103,9 +97,9 @@ namespace Server.Items
 			base.OnDelete();
 		}
 
-		public override int LabelNumber{ get{ return m_Commodity == null ? 1047016 : 1047017; } }
+		public override int LabelNumber => m_Commodity == null ? 1047016 : 1047017;
 
-		public override void GetProperties(ObjectPropertyList list)
+        public override void GetProperties(ObjectPropertyList list)
 		{
 			base.GetProperties( list );
 

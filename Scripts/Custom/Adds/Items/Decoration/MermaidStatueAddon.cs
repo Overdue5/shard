@@ -12,15 +12,9 @@ namespace Server.Items
 	{
          
             
-		public override BaseAddonDeed Deed
-		{
-			get
-			{
-				return new MermaidStatueAddonDeed();
-			}
-		}
+		public override BaseAddonDeed Deed => new MermaidStatueAddonDeed();
 
-		[ Constructable ]
+        [ Constructable ]
 		public MermaidStatueAddon()
 		{
 
@@ -73,15 +67,9 @@ namespace Server.Items
 
 	public class MermaidStatueAddonDeed : BaseAddonDeed
 	{
-		public override BaseAddon Addon
-		{
-			get
-			{
-				return new MermaidStatueAddon();
-			}
-		}
+		public override BaseAddon Addon => new MermaidStatueAddon();
 
-		[Constructable]
+        [Constructable]
 		public MermaidStatueAddonDeed()
 		{
 			Name = "MermaidStatue";
