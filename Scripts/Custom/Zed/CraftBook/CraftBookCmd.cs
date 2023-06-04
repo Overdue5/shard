@@ -63,7 +63,18 @@ namespace Server.Items
                 "Embark on a quest for knowledge as you explore the realm's diverse tomes on the subject of $Skill$, with a particular volume awaiting your discovery in the city of $City$.",
                 "Discover the secrets of $Skill$ within the hallowed pages of books, including one located in the city of $City$",
                 "Unleash the power of $Skill$ through the sacred knowledge contained within books, with a tome of great wisdom awaiting you in the city of $City$.",
-                "\r\nBooks on $Skill$ abound,\r\n$City$'s treasure holds one close,\r\nKnowledge, waiting, grows."
+                "Books on $Skill$ abound,\r\n$City$'s treasure holds one close,\r\nKnowledge, waiting, grows."
+            };
+            m_CraftBooksLocationWithName = new List<string>
+            {
+                "I heard vendor $Name$ from $City$ recently received a book about all the secrets of $Skill$",
+                "Hear ye, hear ye! Vendor $Name$ in $City$ is the proud owner of the exclusive book that unveils the mysteries of $Skill$.",
+                "Calling all knowledge seekers! Head to $City$ and visit merchant $Name$ to uncover the ancient tome on $Skill$.",
+                "Word has spread that merchant $Name$ in $City$ has come into possession of a tome containing the profound secrets of $Skill$.",
+                "Rumor has it that a renowned merchant named $Name$ in $City$ has acquired a book that unveils the hidden knowledge of $Skill$.",
+                "Whispers circulate about a valuable tome discovered by merchant $Name$ in $City$, containing the coveted secrets of $Skill$",
+                "The news has spread far and wide that merchant $Name$ in $City$ has obtained a rare book divulging the ancient wisdom of $Skill$.",
+                "There is talk of a remarkable book now in the possession of merchant $Name$ in $City$, which reveals the enigmatic secrets of $Skill$."
             };
 
             Timer.DelayCall(TimeSpan.FromDays(1), TimeSpan.FromDays(1), CraftBook.CraftBookRespawn);
@@ -264,6 +275,7 @@ namespace Server.Items
                         Map = vendor.Map;
                         moved = true;
                         SkillToLearn = SkillToLearn;
+                        m_NearestVendorName = vendor.Name;
                         break;
                     }
                 }

@@ -17,14 +17,16 @@ namespace Server.Items
         private double m_MinSkill;
         private double m_MaxSkill;
 
-        private static DateTime m_LastHelpInfo = DateTime.MinValue; 
         private static string m_cityName = "$City$";
         private static string m_SkillName = "$Skill$";
+        private static string m_VendorName = "$Name$";
+        private string m_NearestVendorName;
         private static int m_MaxVendorRange = 10;
         private static string m_UnknownBook = "Unknown book";
         private static Dictionary<SkillName, HashSet<CraftBook>> m_Books = new Dictionary<SkillName, HashSet<CraftBook>>();
         private static Dictionary<SkillName, string[]> m_BookNames = new Dictionary<SkillName, string[]>();
         private static List<CraftBook> m_AllCraftBooks = new List<CraftBook>();
+        private static List<string> m_CraftBooksLocationWithName;
         private static List<string> m_CraftBooksLocation;
 
         private static HashSet<int> m_TableTypes = new HashSet<int>()
@@ -66,15 +68,22 @@ namespace Server.Items
 
         public static void PrintBooksLocation(Mobile vendor, SkillName skill)
         {
-            if (DateTime.UtcNow < m_LastHelpInfo + TimeSpan.FromMinutes(1)) return;
-            m_LastHelpInfo = DateTime.UtcNow;
-            var books = Books.Where(m => m.Map == vendor.Map && m.SkillToLearn == skill && m.IsActive && !String.IsNullOrEmpty(Region.Find(m.Location, m.Map).Name)).Select(m => Region.Find(m.Location, m.Map).Name).Distinct().ToArray();
+            var books = Books.Where(m => m.Map == vendor.Map && m.SkillToLearn == skill && m.IsActive && !String.IsNullOrEmpty(Region.Find(m.Location, m.Map).Name)).ToArray();
             if (!books.Any()) return;
-            var city = Utility.RandomList(books);
-            var text =  Utility.RandomList(m_CraftBooksLocation).Replace(m_cityName, city).Replace(m_SkillName, skill.ToString());
+            var  rnd_book = Utility.RandomList(books);
+            var loc = "";
+            if (String.IsNullOrEmpty( rnd_book.m_NearestVendorName))
+            {
+                loc = Utility.RandomList(m_CraftBooksLocation).Replace(m_cityName, Region.Find(rnd_book.Location, rnd_book.Map).Name).Replace(m_SkillName, skill.ToString());
+            }
+            else
+            {
+                loc = Utility.RandomList(m_CraftBooksLocationWithName).Replace(m_cityName, Region.Find( rnd_book.Location,  rnd_book.Map).Name).Replace(m_SkillName, skill.ToString()).Replace(m_VendorName,  rnd_book.m_NearestVendorName);
+            }
+                
             Timer.DelayCall(TimeSpan.FromMilliseconds(500), () =>
             {
-                vendor.PublicOverheadMessage(MessageType.Emote, 1510, false, text);
+                vendor.PublicOverheadMessage(MessageType.Emote, 1510, false, loc);
             });
 
         }
@@ -269,7 +278,8 @@ namespace Server.Items
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write(0); // version 
+            writer.Write(1); // version 
+            writer.Write(m_NearestVendorName);
             writer.Write((int)m_SkillToLearn);
             writer.Write(m_StudyTime);
             writer.Write(m_StamCost);
@@ -281,14 +291,26 @@ namespace Server.Items
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
-            _ = reader.ReadInt();
-            m_SkillToLearn = (SkillName)Enum.ToObject(typeof(SkillName), reader.ReadInt());
-            m_StudyTime = reader.ReadInt();
-            m_StamCost = reader.ReadInt();
+            var version = reader.ReadInt();
+            switch (version)
+            {
+                case 1:
+                {
+                    m_NearestVendorName = reader.ReadString();
+                    goto case 0;
+                }
+                case 0:
+                {
+                    m_SkillToLearn = (SkillName)Enum.ToObject(typeof(SkillName), reader.ReadInt());
+                    m_StudyTime = reader.ReadInt();
+                    m_StamCost = reader.ReadInt();
 
-            m_MinSkill = reader.ReadDouble();
-            m_MaxSkill = reader.ReadDouble();
-            m_AllCraftBooks.Add(this);
+                    m_MinSkill = reader.ReadDouble();
+                    m_MaxSkill = reader.ReadDouble();
+                    m_AllCraftBooks.Add(this);
+                    break;
+                }
+            }
         }
 
         public override string ToString()
