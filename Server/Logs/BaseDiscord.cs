@@ -222,7 +222,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                ConsoleLog.Write.Error($"Discord sending critical error: {e.Message}");
+                ConsoleLog.Write.Error($"Discord sending critical error:", e);
             }
             finally
             {
