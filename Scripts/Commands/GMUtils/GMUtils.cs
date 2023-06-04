@@ -35,12 +35,26 @@ namespace Scripts.Commands
             CommandSystem.Register("shutdown", AccessLevel.GameMaster, new CommandEventHandler(ShutDown_OnCommand));
             CommandSystem.Register("DeleteType", AccessLevel.GameMaster, new CommandEventHandler(DeleteType_OnCommand));
             EventSink.WorldSave += args => { DiscordBot.Send.WoldChat(GetOnlineReport()); };
+            EventSink.Login += new LoginEventHandler(CheckKeysInPack);
 #if DEBUG
             CommandSystem.Register("harvestStat", AccessLevel.Player, new CommandEventHandler(CheckHarvestStat_OnCommand));
             CommandSystem.Register("saycheck", AccessLevel.Player, new CommandEventHandler(Say_OnCommand));
             CommandSystem.Register("tt", AccessLevel.Player, new CommandEventHandler(Gump_OnCommand));
 #endif
 
+        }
+
+        private static void CheckKeysInPack(LoginEventArgs e)
+        {
+            if (e.Mobile.Backpack != null && e.Mobile.NetState != null)
+            {
+                var keysCount = e.Mobile.Backpack.Items.Count(x => x is Key key && key.KeyValue > 0 && x.LootType!=LootType.Blessed && x.LootType != LootType.Newbied);
+                if (keysCount == 1)
+                    e.Mobile.PrivateOverheadMessage(MessageType.Emote, 32, true, "The key in your bag makes you nervous.", e.Mobile.NetState);
+                else if (keysCount >= 1)
+                    e.Mobile.PrivateOverheadMessage(MessageType.Emote, 32, true, "A sense of unease washes over you as you notice the keys lying in your bag.", e.Mobile.NetState);
+                PacketHandlers.SingleClickProps = false;
+            }
         }
 
         private static string GetOnlineReport()

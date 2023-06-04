@@ -346,10 +346,11 @@ namespace Server.Multis
 			packKey.MaxRange = 10;
 			bankKey.MaxRange = 10;
 
-			packKey.Name = "ship key";
-			bankKey.Name = "ship key";
+			packKey.Name = $"{this.GetType().Name} key";
+            bankKey.Name = packKey.Name;
 
-			BankBox box = m.BankBox;
+
+            BankBox box = m.BankBox;
 
 			if ( !box.TryDropItem( m, bankKey, false ) )
 				bankKey.Delete();

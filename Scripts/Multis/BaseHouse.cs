@@ -1513,7 +1513,8 @@ namespace Server.Multis
 
 				packKey.KeyValue = value;
 				bankKey.KeyValue = value;
-
+                packKey.Name = $"Key to: {this.GetType().Name}";
+                bankKey.Name = packKey.Name;
                 //Maka
                 m_HouseKeyVal = value;
 
