@@ -161,7 +161,7 @@ namespace Server.Items
             LootType = LootType.Blessed;
             Weight = 5;
             StudyTime = 3;
-            StamCost = 0;
+            StamCost = 2;
             MinSkill = 30.0;
             MaxSkill = 80.0;
             m_AllCraftBooks.Add(this);
