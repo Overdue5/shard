@@ -99,7 +99,7 @@ namespace Server.Items
 				case 1:
 				{
 						m_From.PlaySound( 579 );
-                        m_From.LaunchBrowser(string.Format(""));
+                        m_From.LaunchBrowser(string.Format("http://www.deluxeuo.com/"));
                         m_From.SendAsciiMessage( page );
 
 					break;
@@ -108,7 +108,7 @@ namespace Server.Items
 				case 2:
 				{
 						m_From.PlaySound( 579 );
-                        m_From.LaunchBrowser(string.Format("https://discord.gg/kbTkGUAKpX"));
+                        m_From.LaunchBrowser(string.Format("https://discord.gg/48TUWrhRU3"));
                         m_From.SendAsciiMessage( page );
 
 					break;
