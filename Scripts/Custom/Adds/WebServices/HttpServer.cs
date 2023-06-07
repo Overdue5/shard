@@ -23,10 +23,10 @@ namespace Server.WebServices
 
         private static void ServerStarted()
         {
-//            Server = new HttpServer();
+            Server = new HttpServer();
 //            Server.AddHandler(new VendorItems());
-//            Server.AddHandler(new OnlinePlayers());
-//            Server.Start();
+            Server.AddHandler(new OnlinePlayers());
+            Server.Start();
         }
 
         private static void Shutdown(ShutdownEventArgs args)
