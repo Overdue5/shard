@@ -137,7 +137,7 @@ namespace Server.Engines.Craft
 
                 Type resourceType = craftSystem.CraftSubRes.ResType;
 
-                if (resIndex > -1)
+                if (resIndex > -1 && craftSystem.CraftSubRes.Count>resIndex)
                 {
                     CraftSubRes subResource = craftSystem.CraftSubRes.GetAt(resIndex);
 
